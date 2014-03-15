@@ -1,0 +1,3 @@
+Web-ContextPath: ${project.artifactId}
+Webapp-Context: ${project.artifactId}
+Bundle-ClassPath: .

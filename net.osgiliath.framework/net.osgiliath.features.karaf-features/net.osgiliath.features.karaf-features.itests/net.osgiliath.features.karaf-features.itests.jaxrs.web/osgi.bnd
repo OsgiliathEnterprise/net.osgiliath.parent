@@ -1,0 +1,22 @@
+Web-ContextPath: /helloService
+Import-Package: javax.servlet,javax.servlet.http,\
+ org.apache.cxf.binding.soap,\
+ org.apache.cxf.binding.xml,\
+ org.apache.cxf.binding.xml.wsdl11,\
+ org.apache.cxf.jaxrs.servlet,\
+ org.apache.cxf.jaxrs.provider,\
+ org.apache.cxf.jaxrs.provider.json,\
+ org.apache.cxf.jaxrs.impl.tl,\
+ org.apache.cxf.jaxws.context,\
+ org.apache.cxf.policy,\
+ org.apache.cxf.transport.http,\
+ org.apache.cxf.transport.http_jetty,\
+ org.apache.cxf.transport.http_jetty.continuations,\
+ org.apache.cxf.ws.policy.attachment.external,\
+ org.apache.cxf.ws.policy.mtom,\
+ org.apache.cxf.ws.policy,\
+ org.apache.cxf.ws.policy.attachment,\
+ org.apache.camel.component.cxf.transport,\
+ helpers.cxf.exception.handling.jaxrs.mapper,\
+ *
+ 

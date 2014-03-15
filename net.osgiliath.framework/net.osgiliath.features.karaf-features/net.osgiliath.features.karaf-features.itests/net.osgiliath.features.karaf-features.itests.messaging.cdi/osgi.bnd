@@ -1,0 +1,10 @@
+Require-Capability: osgi.extender; filter:="(osgi.extender=pax.cdi)", org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)"
+Import-Package: javax.validation,\
+ org.springframework.transaction,\
+ javax.transaction,\
+ org.apache.camel,\
+ javax.annotation;version="0",\
+ org.apache.camel.cdi.component.properties,\
+ org.apache.camel.support,\
+ org.apache.camel.cdi.internal,\
+ *

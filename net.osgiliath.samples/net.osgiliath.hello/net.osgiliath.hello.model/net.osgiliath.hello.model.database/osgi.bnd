@@ -1,0 +1,4 @@
+Import-Package: javax.sql,\
+ org.osgi.service.jndi;resolution:=optional,\
+ org.apache.derby.jdbc,\
+ *

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#%L
+karaf-features-jpa
+%%
+Copyright (C) 2013 Osgiliath corp
+%%
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+#L%
+-->
+
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+	<feature name='osgiliath-jpa-cdi' version='${project.version}'>
+		<feature version='${project.version}'>osgiliath-jpa</feature>
+		<feature version='${project.version}'>osgiliath-cdi</feature>
+		
+	</feature>
+	<feature name='osgiliath-jpa' version='${project.version}'>
+		<bundle >mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
+		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles.serp.version}</bundle>
+		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
+		<feature version='${karaf.version}'>jndi</feature>
+		<feature version='${karaf.version}'>jdbc</feature>
+		<feature version='${karaf.feature.jpa.version}'>jpa</feature>
+		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections/${org.apache.servicemix.bundles.commons-collections.version}</bundle>
+		<bundle >mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
+		<bundle >mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
+		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${org.apache.servicemix.bundles.commons-dbcp.version}</bundle>
+		<bundle >mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>
+		<bundle >mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
+		<bundle >mvn:org.apache.xbean/xbean-asm4-shaded/${xbean.version}</bundle>
+		<bundle >mvn:org.apache.xbean/xbean-reflect/${xbean.version}</bundle>
+		<feature version='${karaf.feature.spring.version}'>spring</feature>
+		<feature version='${karaf.feature.spring.version}'>spring-orm</feature>
+		<feature version='${karaf.feature.spring.version}'>spring-tx</feature>
+		<feature version='${karaf.feature.spring.version}'>spring-jdbc</feature>
+		<bundle >mvn:org.springframework.data/spring-data-commons/${org.springframework.data.common.version}</bundle>
+		<bundle >mvn:org.springframework.data/spring-data-jpa/${org.springframework.data.version}</bundle>
+	</feature>
+	<!-- <feature name='eclipselink' version='${eclipselink.version}'>
+	Not working but not too long to hack
+	<feature version='${com.springsource.org.apache.derby.client.version}'>com.springsource.org.apache.derby</feature>
+	<feature version='${org.apache.servicemix.bundles.serp.version}'>org.apache.servicemix.bundles.serp</feature>
+	<feature version='${karaf.feature.transaction.version}'>transaction</feature>
+	<feature version='${karaf.feature.jndi.version}'>jndi</feature>
+	<feature version='${karaf.feature.jpa.version}'>jpa</feature>
+	<feature version='${org.apache.servicemix.bundles.commons-collections.version}'>org.apache.servicemix.bundles.commons-collections</feature>
+	<bundle >mvn:org.springframework/spring-tx/${org.springframework.version}</bundle>
+	<bundle >mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
+	<feature version='${org.apache.servicemix.bundles.commons-dbcp.version}'>org.apache.servicemix.bundles.commons-dbcp</feature>
+	<bundle >mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version}</bundle>
+	<bundle >mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>
+	<bundle >mvn:org.eclipse.persistence/org.eclipse.persistence.asm/${org.eclipse.persistence.asm.version}</bundle>
+	<bundle >mvn:org.eclipse.persistence/org.eclipse.persistence.antlr/${org.eclipse.persistence.antlr.version}</bundle>
+	<bundle >mvn:org.eclipse.persistence/org.eclipse.persistence.core/${eclipselink.version}</bundle>
+	<bundle >mvn:org.eclipse.persistence/org.eclipse.persistence.jpa/${eclipselink.version}</bundle>
+	<bundle >mvn:org.eclipse.persistence/org.eclipse.persistence.jpa.jpql/${eclipselink.version}</bundle>
+	<bundle>mvn:org.eclipse.persistence/org.eclipse.persistence.osgi/${eclipselink.version}</bundle>
+	<bundle >mvn:net.osgiliath.framework/net.osgiliath.helpers.org.eclipse.eclipselink.persistence.provider.exporter/${project.version}</bundle>
+
+	</feature>
+
+	<feature name='org.apache.aries.util' version='${org.apache.aries.util.version}'>
+	<bundle >mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries.util.version}</bundle>
+	</feature>
+
+	<feature name='spring-data-jpa-eclipselink' version='${org.springframework.data.version}'>
+	<feature version='${eclipselink.version}'>eclipselink</feature>
+	<feature version='${org.springframework.data.version}'>spring-data-commons-core</feature>
+	<feature version='${com.springsource.org.aopalliance.version}'>com.springsource.org.aopalliance</feature>
+	<feature version='${org.glassfish.javax.annotation.version}'>javax.annotation</feature>
+	<bundle start-level="33">mvn:org.springframework.data/spring-data-jpa/${org.springframework.data.version}</bundle>
+	</feature>-->
+
+</features>

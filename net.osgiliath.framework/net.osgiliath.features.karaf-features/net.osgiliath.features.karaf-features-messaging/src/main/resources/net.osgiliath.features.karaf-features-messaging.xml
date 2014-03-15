@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#%L
+karaf-features-messaging
+%%
+Copyright (C) 2013 Osgiliath corp
+%%
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+#L%
+-->
+
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-cdi/${project.version}/xml/features</repository>
+	<feature name="osgiliath-messaging" version="${project.version}">
+		<bundle >mvn:javax.validation/validation-api/${validation-api.version}</bundle>
+		<bundle >mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
+		<feature>jetty</feature>
+		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
+		<feature version='${karaf.version}'>jms</feature>
+		<bundle>mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
+		<bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${geronimo-j2ee-management_1.1_spec.version}</bundle>
+		<bundle>mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections/${org.apache.servicemix.bundles.commons-collections.version}</bundle>
+		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
+		<bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/${org.apache.servicemix.bundles.oro.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.velocity/${org.apache.servicemix.bundles.velocity.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${org.apache.servicemix.bundles.jasypt.version}</bundle>
+		<bundle>mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq.version}</bundle>
+		<bundle>mvn:org.apache.commons/commons-jexl/${commons-jexl.version}</bundle>
+		<bundle>mvn:org.apache.xbean/xbean-blueprint/${xbean.version}</bundle>
+		<bundle>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq.version}</bundle>
+		<bundle>mvn:org.apache.activemq/activemq-blueprint/${org.apache.activemq.version}</bundle>
+		<feature version='${karaf.feature.spring.version}'>spring-jms</feature>
+		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.activemq.jms.connectionfactory.exporter/${project.version}</bundle>
+		<feature version='${camel-version}'>camel-jms</feature>
+		<feature version="${camel-version}">camel-http</feature>
+		<feature version="${camel-version}">camel-spring</feature>
+		<feature version="${camel-version}">camel-blueprint</feature>
+		<feature version="${camel-version}">camel-jackson</feature>
+		<feature version="${camel-version}">camel-jaxb</feature>
+		<feature version="${camel-version}">camel-xstream</feature>
+		<feature version="${camel-version}">camel-xmljson</feature>
+		<bundle>mvn:javax.json/javax.json-api/${javax.json-api.version}</bundle>
+		<bundle>mvn:org.glassfish/javax.json/${org.glassfish.javax.json.version}</bundle>
+		<bundle>mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
+		<bundle >mvn:org.eclipse.jetty/jetty-websocket/${karaf.feature.jetty.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles.jdom.version}</bundle>
+		<feature version="${camel-version}">camel-core</feature>
+		<bundle>mvn:org.apache.camel/camel-websocket/${camel-version}</bundle>
+	</feature>
+	<feature name="osgiliath-messaging-cdi" version="${project.version}">
+		<feature version='${project.version}'>osgiliath-messaging</feature>
+		<feature version='${project.version}'>osgiliath-cdi</feature>
+		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.camel.cdi.osgi/${project.version}</bundle>
+	</feature>
+</features>

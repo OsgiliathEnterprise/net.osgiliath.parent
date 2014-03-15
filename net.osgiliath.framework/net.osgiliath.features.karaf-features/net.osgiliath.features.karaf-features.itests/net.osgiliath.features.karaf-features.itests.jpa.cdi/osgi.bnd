@@ -1,0 +1,9 @@
+Meta-Persistence: META-INF/persistence.xml
+JPA-PersistenceUnits: myTestPu
+Import-Package: org.apache.openjpa.enhance;resolution:=optional,\
+ org.apache.openjpa.util;resolution:=optional,\
+ org.springframework.data.domain,\
+ org.springframework.data.jpa.domain,\
+ org.apache.deltaspike.jpa.impl.transaction,\
+ !net.osgiliath.jpa.*,\
+ *

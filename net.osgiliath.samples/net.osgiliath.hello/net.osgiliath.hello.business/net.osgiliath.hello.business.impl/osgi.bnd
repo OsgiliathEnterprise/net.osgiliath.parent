@@ -1,0 +1,24 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)", org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=validation)", org.ops4j.pax.cdi.extension;filter:="(extension=jaxrs-cdi)"
+Bundle-ClassPath: .,WEB-INF/classes
+Require-Bundle: org.hibernate.validator
+Import-Package: javax.validation,\
+ org.hibernate.validator.internal.cdi.interceptor,\
+ org.springframework.transaction,\
+ org.apache.cxf.jaxrs.servlet,\
+ javax.transaction,\
+ org.apache.camel,\
+ org.apache.cxf.jaxrs.provider,\
+ org.apache.cxf.jaxrs.provider.json,\
+ org.apache.cxf.jaxrs.impl.tl,\
+ helpers.cxf.exception.handling.jaxrs.mapper,\
+ javax.annotation;version="0",\
+ org.jboss.weld.bootstrap, javax.servlet.*;version="[2,4)",\
+ *
+Pax-ManagedBeans: WEB-INF/beans.xml
+XX-TestImport: org.ops4j.pax.cdi.extension; filter:="(extension=camel-cdi-extension)",\
+ org.jboss.weld.environment.servlet,\
+ org.jboss.weld.bootstrap;version="0",\
+ javax.servlet,javax.servlet.http,\
+ javax.servlet.annotation,\
+ 
+ 
