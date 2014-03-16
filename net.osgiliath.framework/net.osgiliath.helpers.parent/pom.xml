@@ -11,9 +11,10 @@
 		the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath.poms</groupId>
+		<groupId>net.osgiliath</groupId>
 		<version>0.0.4-SNAPSHOT</version>
-		<artifactId>net.osgiliath.pom.projects.definition</artifactId>
+		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
+		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
 	<name>Osgiliath Helper</name>
 	<url>https://blog.osgiliath.net/?page_id=224</url>
@@ -22,8 +23,10 @@
 	</description>
 	<groupId>net.osgiliath.framework</groupId>
 	<artifactId>net.osgiliath.helpers.parent</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
-	<packaging>pom</packaging>
+ 	<packaging>pom</packaging>
+ 	<organization>
+		<name>Osgiliath</name>
+	</organization>
 	<properties>
 		<repositoryName>osgiliath-helpers</repositoryName>
 		<repositoryOwner>Tcharl</repositoryOwner>
@@ -62,7 +65,7 @@
 		<module>net.osgiliath.helpers.cxf.exception.handling</module>
 		<module>net.osgiliath.helpers.hibernate.validator.cdi.osgi</module>
 		<module>net.osgiliath.helpers.cdi.cxf.jaxrs</module>
-		<module>net.osgiliath.helpers.camel.cdi.osgi</module>
+		<module>net.osgiliath.wrappers</module>
 	</modules>
 	<scm>
 		<connection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</connection>

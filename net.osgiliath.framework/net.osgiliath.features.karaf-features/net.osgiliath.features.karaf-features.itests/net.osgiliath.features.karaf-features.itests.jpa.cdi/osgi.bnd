@@ -1,3 +1,4 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-jpa-api), org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-jpa-impl)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-data-api), org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-data-impl)"
 Meta-Persistence: META-INF/persistence.xml
 JPA-PersistenceUnits: myTestPu
 Import-Package: org.apache.openjpa.enhance;resolution:=optional,\

@@ -1,0 +1,2 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)"
+Provide-Capability: org.ops4j.pax.cdi.extension;extension="deltaspike-jpa-api"

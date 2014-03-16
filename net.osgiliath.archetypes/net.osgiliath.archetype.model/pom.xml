@@ -12,15 +12,15 @@
 		the specific language governing permissions and limitations under the License. -->
 
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-			<groupId>net.osgiliath.poms</groupId>
-	<artifactId>net.osgiliath.pom.superpom</artifactId>
-	<version>0.0.3</version>
+		<parent>
+		<groupId>net.osgiliath</groupId>
+		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
+		<version>0.0.4-SNAPSHOT</version>
+		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
 
   <groupId>net.osgiliath.archetypes</groupId>
   <artifactId>net.osgiliath.archetype.model</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>net.osgiliath.archetype.model</name>

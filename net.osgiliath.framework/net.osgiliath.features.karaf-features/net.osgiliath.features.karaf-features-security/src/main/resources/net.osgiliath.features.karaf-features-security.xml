@@ -22,6 +22,7 @@ limitations under the License.
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+	<!--<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-standard/${project.version}/xml/features</repository>-->
 	<feature name='osgiliath-security' version='${project.version}'>
 		<feature version='${karaf.feature.spring.version}'>spring</feature>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr250-1.0/${org.apache.servicemix.specs.jsr250-1.0.version}</bundle>

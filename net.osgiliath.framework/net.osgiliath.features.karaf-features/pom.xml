@@ -11,11 +11,15 @@
 		OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
 		the specific language governing permissions and limitations under the License. -->
 	<parent>
-		<groupId>net.osgiliath.poms</groupId>
+		<groupId>net.osgiliath</groupId>
 		<version>0.0.4-SNAPSHOT</version>
-		<artifactId>net.osgiliath.pom.projects.definition</artifactId>
+		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
+		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
 	<name>Osgiliath Features</name>
+	<organization>
+		<name>Osgiliath</name>
+	</organization>
 	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<description>
 	These are Karaf features wrapping the entire Osgiliath framework
@@ -59,6 +63,7 @@
 		<module>net.osgiliath.features.karaf-features-functional</module>
 		<module>net.osgiliath.features.karaf-features.routes</module>
 		<module>net.osgiliath.features.karaf-features.itests</module>
+		<module>net.osgiliath.features.karaf-features-standard</module>
 	</modules>
 	<scm>
 		<connection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</connection>

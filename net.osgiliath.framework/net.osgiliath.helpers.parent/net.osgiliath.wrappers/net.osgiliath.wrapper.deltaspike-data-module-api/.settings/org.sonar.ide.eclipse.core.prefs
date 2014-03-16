@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+extraProperties=sonar.jacoco.reportPath\=/Users/charliemordant/Documents/workspaces/workspace/net.osgiliath.parent/net.osgiliath.framework/net.osgiliath.helpers.parent/net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-data-module-api/target/jacoco-ut.exec\r\nsonar.jacoco.itReportPath\=${session.executionRootDirectory}/target/jacoco-it.exec\r\nsonar.java.coveragePlugin\=jacoco\r\nsonar.scm.enabled\=true\r\nsonar.scm.url\=scm\:git\:git\://github.com/Tcharl/net.osgiliath.wrapper.deltaspike-data-module-api.git/master\r\nsonar.dynamicAnalysis\=reuseReports
+projectKey=net.osgiliath.wrappers\:net.osgiliath.wrapper.deltaspike-data-module-api
+serverUrl=http\://quality.osgiliath.net/sonar
+version=2

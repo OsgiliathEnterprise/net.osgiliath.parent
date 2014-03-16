@@ -32,6 +32,11 @@
 			<artifactId>validation-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.camel-cdi</artifactId>
+			<version>${project.version}</version>
+			</dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.helpers.activemq.jms.connectionfactory.exporter</artifactId>
 			<version>${project.version}</version>
@@ -49,6 +54,13 @@
 		 <dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-cdi</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		 <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
@@ -248,11 +260,7 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
-			<version>1.1_4</version>
-		</dependency>
+		
 		
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>

@@ -11,11 +11,11 @@
 		the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath.poms</groupId>
+		<groupId>net.osgiliath</groupId>
 		<version>0.0.4-SNAPSHOT</version>
-		<artifactId>net.osgiliath.pom.projects.definition</artifactId>
+		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
+		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
-	<version>0.0.4-SNAPSHOT</version>
 	<groupId>net.osgiliath.hello</groupId>
 	<artifactId>net.osgiliath.hello</artifactId>
 	<packaging>pom</packaging>

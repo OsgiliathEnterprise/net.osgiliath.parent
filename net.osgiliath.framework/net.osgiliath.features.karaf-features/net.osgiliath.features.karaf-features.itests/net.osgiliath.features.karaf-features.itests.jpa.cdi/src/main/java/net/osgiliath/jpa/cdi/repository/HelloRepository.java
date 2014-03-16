@@ -20,18 +20,13 @@ package net.osgiliath.jpa.cdi.repository;
  * #L%
  */
 
-import java.util.Collection;
-import java.util.List;
-
 import net.osgiliath.jpa.cdi.model.HelloEntity;
+
+import org.apache.deltaspike.data.api.EntityRepository;
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
+
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
-public interface HelloRepository {
-	@Transactional
-	public Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
-	@Transactional
-	public <S extends HelloEntity> S save(S entity);
-	@Transactional
-	public List<HelloEntity> findAll();
-	@Transactional
-	void deleteAll();
+@Transactional
+public interface HelloRepository extends EntityRepository<HelloEntity, Long> {
+
 }

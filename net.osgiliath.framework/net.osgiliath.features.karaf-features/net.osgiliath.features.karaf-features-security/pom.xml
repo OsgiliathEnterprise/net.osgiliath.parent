@@ -23,20 +23,13 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<dependency>
+		 <!-- <dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-derby</artifactId>
+			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
-			<version>${project.version}</version>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>standard</artifactId>
