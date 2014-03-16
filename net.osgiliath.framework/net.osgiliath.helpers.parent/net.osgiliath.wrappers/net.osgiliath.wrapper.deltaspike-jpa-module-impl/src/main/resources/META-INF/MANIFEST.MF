@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1378900200823
+Build-Jdk: 1.7.0_40
+Built-By: struberg
+Bundle-Description: Apache DeltaSpike Parent for container projects
+Bundle-DocURL: http://www.apache.org/
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: deltaspike-jpa-module-impl
+Bundle-SymbolicName: org.apache.deltaspike.modules.deltaspike-jpa-module
+ -impl
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 0.5.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.deltaspike.jpa.impl.transaction.context;uses:
+ ="javax.enterprise.inject,javax.persistence,javax.enterprise.context.sp
+ i,javax.enterprise.context,org.apache.deltaspike.jpa.api.transaction,or
+ g.apache.deltaspike.core.util,javax.enterprise.inject.spi,javax.enterpr
+ ise.event,org.apache.deltaspike.core.spi.activation";version="0.5",org.
+ apache.deltaspike.jpa.impl.datasource;uses:="org.apache.deltaspike.jpa.
+ api.datasource,javax.sql,org.apache.deltaspike.core.api.provider,org.ap
+ ache.deltaspike.core.impl.util";version="0.5",org.apache.deltaspike.jpa
+ .impl.transaction;uses:="org.apache.deltaspike.core.util,javax.transact
+ ion,javax.persistence,org.apache.deltaspike.jpa.impl.transaction.contex
+ t,javax.enterprise.context,org.apache.deltaspike.core.impl.util,javax.e
+ nterprise.inject,javax.enterprise.inject.spi,javax.interceptor,org.apac
+ he.deltaspike.jpa.api.transaction,javax.enterprise.context.spi,org.apac
+ he.deltaspike.jpa.spi.transaction,org.apache.deltaspike.core.api.litera
+ l,javax.inject";version="0.5",org.apache.deltaspike.jpa.impl.entitymana
+ ger;uses:="org.apache.deltaspike.jpa.spi.entitymanager,javax.enterprise
+ .context,javax.enterprise.inject.spi,javax.enterprise.inject,org.apache
+ .deltaspike.jpa.api.entitymanager,javax.inject,javax.persistence";versi
+ on="0.5"
+Implementation-Title: Apache DeltaSpike JPA-Module Impl
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache.deltaspike.modules
+Implementation-Version: 0.5
+Import-Package: javax.enterprise.context;version="[1.0,2)",javax.enterpr
+ ise.context.spi;version="[1.0,2)",javax.enterprise.event;version="[1.0,
+ 2)",javax.enterprise.inject;version="[1.0,2)",javax.enterprise.inject.s
+ pi;version="[1.0,2)",javax.inject;version="[1.0,2)",javax.interceptor;v
+ ersion="[1.1,2)",javax.persistence;version="[1.1,2)",javax.sql,javax.tr
+ ansaction;version="[1.1,2)",org.apache.deltaspike.core.api.literal;vers
+ ion="[0.5,1)",org.apache.deltaspike.core.api.provider;version="[0.5,1)"
+ ,org.apache.deltaspike.core.impl.util;version="[0.5,1)",org.apache.delt
+ aspike.core.spi.activation;version="[0.5,1)",org.apache.deltaspike.core
+ .util;version="[0.5,1)",org.apache.deltaspike.jpa.api.datasource;versio
+ n="[0.5,1)",org.apache.deltaspike.jpa.api.entitymanager;version="[0.5,1
+ )",org.apache.deltaspike.jpa.api.transaction;version="[0.5,1)",org.apac
+ he.deltaspike.jpa.spi.entitymanager;version="[0.5,1)",org.apache.deltas
+ pike.jpa.spi.transaction;version="[0.5,1)"
+Karaf-Info: DeltaSpike;deltaspike-jpa-module-impl=0.5
+Pax-ManagedBeans: META-INF/beans.xml
+Specification-Title: Apache DeltaSpike JPA-Module Impl
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 0.5
+Tool: Bnd-1.50.0

@@ -1,0 +1,38 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1378900164446
+Build-Jdk: 1.7.0_40
+Built-By: struberg
+Bundle-Description: Apache DeltaSpike Parent for container projects
+Bundle-DocURL: http://www.apache.org/
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: deltaspike-jpa-module-api
+Bundle-SymbolicName: org.apache.deltaspike.modules.deltaspike-jpa-module
+ -api
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 0.5.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.deltaspike.jpa.spi.transaction;uses:="org.apa
+ che.deltaspike.core.spi";version="0.5",org.apache.deltaspike.jpa.spi.en
+ titymanager;version="0.5",org.apache.deltaspike.jpa.api.datasource;uses
+ :="org.apache.deltaspike.core.api.config";version="0.5",org.apache.delt
+ aspike.jpa.api.entitymanager;uses:="javax.enterprise.util,javax.inject"
+ ;version="0.5",org.apache.deltaspike.jpa.api.transaction;uses:="javax.e
+ nterprise.context,org.apache.deltaspike.core.api.provider,javax.enterpr
+ ise.util,javax.interceptor";version="0.5"
+Implementation-Title: Apache DeltaSpike JPA-Module API
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache.deltaspike.modules
+Implementation-Version: 0.5
+Import-Package: javax.enterprise.context;version="[1.0,2)",javax.enterpr
+ ise.inject;version="[1.0,2)",javax.enterprise.util;version="[1.0,2)",ja
+ vax.inject;version="[1.0,2)",javax.interceptor;version="[1.1,2)",org.ap
+ ache.deltaspike.core.api.config;version="[0.5,1)",org.apache.deltaspike
+ .core.api.provider;version="[0.5,1)",org.apache.deltaspike.core.spi;ver
+ sion="[0.5,1)"
+Karaf-Info: DeltaSpike;deltaspike-jpa-module-api=0.5
+Pax-ManagedBeans: META-INF/beans.xml
+Specification-Title: Apache DeltaSpike JPA-Module API
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 0.5
+Tool: Bnd-1.50.0

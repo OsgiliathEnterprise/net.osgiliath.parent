@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1378900527897
+Build-Jdk: 1.7.0_40
+Built-By: struberg
+Bundle-Description: Apache DeltaSpike Parent for container projects
+Bundle-DocURL: http://www.apache.org/
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: deltaspike-data-module-api
+Bundle-SymbolicName: org.apache.deltaspike.modules.deltaspike-data-modul
+ e-api
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 0.5.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.deltaspike.data.api;uses:="javax.persistence,
+ javax.persistence.criteria,javax.persistence.metamodel,org.apache.delta
+ spike.partialbean.api";version="0.5",org.apache.deltaspike.data.api.aud
+ it;uses:="javax.inject";version="0.5",org.apache.deltaspike.data.api.cr
+ iteria;uses:="javax.persistence.criteria,javax.persistence,javax.persis
+ tence.metamodel";version="0.5",org.apache.deltaspike.data.spi;uses:="ja
+ vax.persistence";version="0.5"
+Implementation-Title: Apache DeltaSpike Data-Module API
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache.deltaspike.modules
+Implementation-Version: 0.5
+Import-Package: javax.inject;version="[1.0,2)",javax.persistence;version
+ ="[1.1,2)",javax.persistence.criteria;version="[1.1,2)",javax.persisten
+ ce.metamodel;version="[1.1,2)",org.apache.deltaspike.partialbean.api
+Karaf-Info: DeltaSpike;deltaspike-data-module-api=0.5
+Pax-ManagedBeans: META-INF/beans.xml
+Specification-Title: Apache DeltaSpike Data-Module API
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 0.5
+Tool: Bnd-1.50.0
