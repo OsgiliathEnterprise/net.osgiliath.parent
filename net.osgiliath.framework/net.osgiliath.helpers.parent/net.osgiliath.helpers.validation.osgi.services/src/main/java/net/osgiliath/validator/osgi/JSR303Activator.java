@@ -45,20 +45,20 @@ public class JSR303Activator implements BundleActivator {
 				ValidationProvider.class, null);
 
 		tracker.open();
-//		ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
-//				.byProvider(HibernateValidator.class);
+		ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
+				.byProvider(HibernateValidator.class);
 //
 //		// bootstrap to properly resolve in an OSGi environment
-//		validationBootStrap
-//				.providerResolver(HibernateValidationOSGIServicesProviderResolver
-//						.getInstance());
+		validationBootStrap
+				.providerResolver(HibernateValidationOSGIServicesProviderResolver
+						.getInstance());
 //
-//		HibernateValidatorConfiguration configure = validationBootStrap
-//				.configure();
-//		ValidatorFactory validatorFactory = configure/*
-//									 * .constraintValidatorFactory (new
-//									 * CDIAwareConstraintValidatorFactory ())
-//									 */.buildValidatorFactory();
+		HibernateValidatorConfiguration configure = validationBootStrap
+				.configure();
+		ValidatorFactory validatorFactory = configure/*
+									 * .constraintValidatorFactory (new
+									 * CDIAwareConstraintValidatorFactory ())
+									 */.buildValidatorFactory();
 		/* */
 		// Validator validator = validatorFactory.getValidator();
 		// configure Spring to autowire our constraints not mandatory
@@ -68,8 +68,8 @@ public class JSR303Activator implements BundleActivator {
 
 		// now that we've done configuring the ValidatorFactory, let's build it
 
-//		context.registerService(ValidatorFactory.class.getName(),
-//				validatorFactory, null);
+		context.registerService(ValidatorFactory.class.getName(),
+				validatorFactory, null);
 
 	}
 
@@ -77,9 +77,9 @@ public class JSR303Activator implements BundleActivator {
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-//		ServiceReference<ValidatorFactory> reference = context
-//				.getServiceReference(ValidatorFactory.class);
-//		context.ungetService(reference);
+		ServiceReference<ValidatorFactory> reference = context
+				.getServiceReference(ValidatorFactory.class);
+		context.ungetService(reference);
 		//
 		tracker.close();
 

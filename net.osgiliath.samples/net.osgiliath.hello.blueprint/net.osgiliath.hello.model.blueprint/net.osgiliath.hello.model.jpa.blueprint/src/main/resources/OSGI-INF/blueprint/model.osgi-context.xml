@@ -31,7 +31,7 @@
 	<!-- osgi service export -->
 	<service ref="helloObjectRepository" interface="${project.groupId}.model.jpa.repository.HelloObjectRepository" /><!-- TODO your OSGI services here -->
 	<bean id="helloObjectRepository" class="${project.groupId}.model.jpa.repository.impl.HelloObjectJpaRepository">
-		<argument value="${project.groupId}.model.jpa.HelloObject"></argument>
+		<argument value="${project.groupId}.model.jpa.model.HelloObject"></argument>
 		<jpa:context unitname="${project.groupId}Pu"></jpa:context> 
 		<tx:transaction method="*" value="Required" />
 	</bean>

@@ -23,35 +23,35 @@ limitations under the License.
 	<!-- TODO add your features here-->
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
 	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${osgiliath.framework.maven.version}/xml/features</repository>
-	<feature name="${project.parent.groupId}.model.blueprint" version="${project.version}">
+	<feature name="${project.groupId}.model.blueprint" version="${project.version}">
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-derby</feature>
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-model</feature>
-		<bundle>mvn:${project.parent.groupId}/${project.groupId}.model.database.blueprint/${project.version}/jar</bundle>
-		<bundle>mvn:${project.parent.groupId}/${project.groupId}.model.jpa.blueprint/${project.version}/jar</bundle>
+		<bundle>mvn:${project.groupId}/${project.groupId}.model.database.blueprint/${project.version}/jar</bundle>
+		<bundle>mvn:${project.groupId}/${project.groupId}.model.jpa.blueprint/${project.version}/jar</bundle>
 	</feature>
-	<feature name="${project.parent.groupId}.business.impl.blueprint.itests" version="${project.version}">
+	<feature name="${project.groupId}.business.impl.blueprint.itests" version="${project.version}">
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-business</feature>
-		<feature version='${project.version}'>${project.parent.groupId}.model.blueprint</feature>
-		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.business.spi.blueprint/${project.version}/jar</bundle>
-		<bundle>file:${parent.project.basedir}/${project.parent.groupId}.business.blueprint/${project.parent.groupId}.business.impl.blueprint/target/${project.parent.groupId}.business.impl.blueprint-${project.version}.jar</bundle>
+		<feature version='${project.version}'>${project.groupId}.model.blueprint</feature>
+		<bundle>mvn:${project.groupId}/${project.groupId}.business.spi.blueprint/${project.version}/jar</bundle>
+		<bundle>file:${parent.basedir}/${project.groupId}.business.blueprint/${project.groupId}.business.impl.blueprint/target/${project.groupId}.business.impl.blueprint-${project.version}.jar</bundle>
 
 	</feature>
-	<feature name="${project.parent.groupId}.ui" version="${project.version}">
+	<feature name="${project.groupId}.ui" version="${project.version}">
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-full</feature>
 		<feature version='${karaf.version}'>war</feature>
-		<configfile finalname="/etc/net.osgiliath.hello.routes.cfg">mvn:${project.groupId}/n${project.parent.groupId}.routes.blueprint/${project.version}/cfg/camel</configfile>
+		<configfile finalname="/etc/net.osgiliath.hello.routes.cfg">mvn:${project.groupId}/n${project.groupId}.routes.blueprint/${project.version}/cfg/camel</configfile>
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-routes</feature>
-		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.routes.blueprint/${project.version}/jar</bundle>
-		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.ui.blueprint/${project.version}/war</bundle>
+		<bundle>mvn:${project.groupId}/${project.groupId}.routes.blueprint/${project.version}/jar</bundle>
+		<bundle>mvn:${project.groupId}/${project.groupId}.ui.blueprint/${project.version}/war</bundle>
 	</feature>
-	<feature name="${project.parent.groupId}.business.blueprint" version="${project.version}">
+	<feature name="${project.groupId}.business.blueprint" version="${project.version}">
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-business</feature>
-		<feature version='${project.version}'>${project.parent.groupId}.model.blueprint</feature>
-		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.business.spi.blueprint/${project.version}/jar</bundle>
-		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.business.impl.blueprint/${project.version}/jar</bundle>
+		<feature version='${project.version}'>${project.groupId}.model.blueprint</feature>
+		<bundle>mvn:${project.groupId}/${project.groupId}.business.spi.blueprint/${project.version}/jar</bundle>
+		<bundle>mvn:${project.groupId}/${project.groupId}.business.impl.blueprint/${project.version}/jar</bundle>
 	</feature>
-	<feature name="${project.parent.groupId}.full.blueprint" version="${project.version}">
-		<feature version='${project.version}'>${project.parent.groupId}.business.blueprint</feature>
-		<feature version='${project.version}'>${project.parent.groupId}.ui.blueprint</feature>
+	<feature name="${project.groupId}.full.blueprint" version="${project.version}">
+		<feature version='${project.version}'>${project.groupId}.business.blueprint</feature>
+		<feature version='${project.version}'>${project.groupId}.ui.blueprint</feature>
 	</feature>
 </features>

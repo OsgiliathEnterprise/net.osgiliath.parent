@@ -75,7 +75,7 @@ public abstract class AbstractKarafPaxExamConfiguration {
 		Option[] base = options(
 				cleanCaches(),
 				
-				//keepRuntimeFolder(),
+				keepRuntimeFolder(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")

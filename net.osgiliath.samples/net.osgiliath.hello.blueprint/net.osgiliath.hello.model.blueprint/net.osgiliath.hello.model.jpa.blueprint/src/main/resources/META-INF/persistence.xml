@@ -27,8 +27,8 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 		<!-- TODO exported by database module -->
 		<jta-data-source>osgi:service/jdbc/${project.groupId}.database.xa</jta-data-source>
 		<non-jta-data-source>osgi:service/jdbc/${project.groupId}.database</non-jta-data-source>
-		<class>net.osgiliath.hello.model.jpa.model.AbstractEntity</class>
-		<class>net.osgiliath.hello.model.jpa.model.HelloObject</class>
+		<class>${project.groupId}.model.jpa.model.AbstractEntity</class>
+		<class>${project.groupId}.model.jpa.model.HelloObject</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<validation-mode>NONE</validation-mode>
 		<properties>
