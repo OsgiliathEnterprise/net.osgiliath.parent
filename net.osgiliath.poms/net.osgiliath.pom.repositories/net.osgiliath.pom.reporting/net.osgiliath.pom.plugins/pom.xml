@@ -366,9 +366,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<execute>
-											<runOnIncremental>true</runOnIncremental>
-										</execute>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -927,11 +925,11 @@
 			</build>
 		</profile>
 		<profile>
-			<id>lombok-needs-tools-jar-mac</id>
+			<id>lombok-needs-tools-jar-jre</id>
 			<activation>
-				<os>
-					<family>mac</family>
-				</os>
+				<file>
+					<exists>${java.home}/../lib/tools.jar</exists>
+				</file>
 			</activation>
 			<build>
 				<plugins>
@@ -944,7 +942,7 @@
 								<artifactId>tools</artifactId>
 								<version>${maven.compiler.source}</version>
 								<scope>system</scope>
-								<systemPath>${java.home}/lib/tools.jar</systemPath>
+								<systemPath>${java.home}/../lib/tools.jar</systemPath>
 							</dependency>
 						</dependencies>
 					</plugin>
