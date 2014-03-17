@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#%L
+net.osgiliath.hello.features
+%%
+Copyright (C) 2013 Osgiliath
+%%
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+#L%
+-->
+
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+	<!-- TODO add your features here-->
+	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${osgiliath.framework.maven.version}/xml/features</repository>
+	<feature name="${project.parent.groupId}.model.blueprint" version="${project.version}">
+		<feature version='${osgiliath.framework.maven.version}'>osgiliath-derby</feature>
+		<feature version='${osgiliath.framework.maven.version}'>osgiliath-model</feature>
+		<bundle>mvn:${project.parent.groupId}/${project.groupId}.model.database.blueprint/${project.version}/jar</bundle>
+		<bundle>mvn:${project.parent.groupId}/${project.groupId}.model.jpa.blueprint/${project.version}/jar</bundle>
+	</feature>
+	<feature name="${project.parent.groupId}.business.impl.blueprint.itests" version="${project.version}">
+		<feature version='${osgiliath.framework.maven.version}'>osgiliath-business</feature>
+		<feature version='${project.version}'>${project.parent.groupId}.model.blueprint</feature>
+		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.business.spi.blueprint/${project.version}/jar</bundle>
+		<bundle>file:${parent.project.basedir}/${project.parent.groupId}.business.blueprint/${project.parent.groupId}.business.impl.blueprint/target/${project.parent.groupId}.business.impl.blueprint-${project.version}.jar</bundle>
+
+	</feature>
+	<feature name="${project.parent.groupId}.ui" version="${project.version}">
+		<feature version='${osgiliath.framework.maven.version}'>osgiliath-full</feature>
+		<feature version='${karaf.version}'>war</feature>
+		<configfile finalname="/etc/net.osgiliath.hello.routes.cfg">mvn:${project.groupId}/n${project.parent.groupId}.routes.blueprint/${project.version}/cfg/camel</configfile>
+		<feature version='${osgiliath.framework.maven.version}'>osgiliath-routes</feature>
+		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.routes.blueprint/${project.version}/jar</bundle>
+		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.ui.blueprint/${project.version}/war</bundle>
+	</feature>
+	<feature name="${project.parent.groupId}.business.blueprint" version="${project.version}">
+		<feature version='${osgiliath.framework.maven.version}'>osgiliath-business</feature>
+		<feature version='${project.version}'>${project.parent.groupId}.model.blueprint</feature>
+		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.business.spi.blueprint/${project.version}/jar</bundle>
+		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.business.impl.blueprint/${project.version}/jar</bundle>
+	</feature>
+	<feature name="${project.parent.groupId}.full.blueprint" version="${project.version}">
+		<feature version='${project.version}'>${project.parent.groupId}.business.blueprint</feature>
+		<feature version='${project.version}'>${project.parent.groupId}.ui.blueprint</feature>
+	</feature>
+</features>

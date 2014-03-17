@@ -1,0 +1,11 @@
+XXX-Require-Capability: osgi.extender; filter:="(osgi.extender=pax.cdi)"
+Import-Package: javax.validation,\
+ org.springframework.transaction,\
+ javax.transaction,\
+ org.apache.camel,\
+ org.springframework.validation.beanvalidation,\
+ org.apache.cxf.jaxrs.provider,\
+ org.apache.cxf.jaxrs.provider.json,\
+ org.apache.cxf.jaxrs.impl.tl,\
+ helpers.cxf.exception.handling.jaxrs.mapper,\
+ *

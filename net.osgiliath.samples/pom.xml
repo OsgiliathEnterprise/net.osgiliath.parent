@@ -10,5 +10,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>net.osgiliath.hello</module>
+        <module>net.osgiliath.hello.blueprint</module>
 	</modules>
 </project>
