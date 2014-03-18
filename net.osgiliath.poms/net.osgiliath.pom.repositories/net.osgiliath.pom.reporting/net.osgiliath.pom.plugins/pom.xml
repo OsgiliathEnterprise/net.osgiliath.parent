@@ -47,7 +47,6 @@
 						<dependency>
 							<groupId>org.springframework.data</groupId>
 							<artifactId>spring-data-commons-core</artifactId>
-
 							<version>${org.springframework.data.commons.core.version}</version>
 						</dependency>
 					</dependencies>
@@ -62,7 +61,6 @@
 					<artifactId>maven-download-plugin</artifactId>
 					<version>${com.googlecode.maven-download-plugin.version}</version>
 				</plugin>
-
 				<plugin>
 					<groupId>de.qu.maven.maven-plugins</groupId>
 					<artifactId>copy-maven-plugin</artifactId>
@@ -146,7 +144,6 @@
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${maven-antrun-plugin.version}</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -172,7 +169,6 @@
 								<goal>verify</goal>
 							</goals>
 							<configuration>
-								<argLine>${jcoverage.command}</argLine>
 								<systemPropertyVariables>
 									<coverage.command>${jcoverage.command}</coverage.command>
 									<mavenSettingsPath>${mavenSettings.location}</mavenSettingsPath>
@@ -213,7 +209,6 @@
 						</execution>
 					</executions>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -793,7 +788,7 @@
 								<propertyName>jcoverage.command</propertyName>
 								<destFile>${sonar.jacoco.reportPath}</destFile>
 								<includes>
-									<include>${project.parent.artifactId}.*</include>
+									<include>${project.groupId}.*</include>
 								</includes>
 								<excludes>
 									<exclude>*.itests.*</exclude>
