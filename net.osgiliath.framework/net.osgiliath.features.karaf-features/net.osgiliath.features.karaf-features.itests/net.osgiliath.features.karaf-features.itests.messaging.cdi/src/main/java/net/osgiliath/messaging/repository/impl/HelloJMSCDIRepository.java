@@ -61,7 +61,6 @@ public class HelloJMSCDIRepository implements HelloCDIRepository  {
 	private List<HelloEntity> entities = new ArrayList<HelloEntity>();
 	
 
-	boolean received = false;
 	@Inject
 	@Uri("jms:queue:helloServiceQueueOut")
 	private ProducerTemplate producer;
@@ -71,9 +70,8 @@ public class HelloJMSCDIRepository implements HelloCDIRepository  {
 	@Inject
 	@Uri("jms:queue:helloServiceQueueIn")
 	private ProducerTemplate routeProducer;
-	public boolean isProcessed() {
-		return received;
-	}
+	private boolean isProcessed = false;
+	
 	
 	public <S extends HelloEntity> void directSave(@Body S entity) {
 		internalProducer.sendBody(entity);
@@ -85,7 +83,18 @@ public class HelloJMSCDIRepository implements HelloCDIRepository  {
 	public <S extends HelloEntity> void save(@Body S entity) {
 		LOG.info("receiving message on internally (via @Consumer");
 		 entities.add(entity);
-		 received = true;
+		 Hellos hellos = new Hellos();
+		 Collection<HelloEntity> entities = new ArrayList<>();
+		 entities.add(entity);
+		 hellos.setEntities(entities);
+		 isProcessed = true;
+		 LOG.info("Sending hellos: "+ hellos);
+		producer.sendBody(hellos);
+	}
+	@Override
+	public boolean isProcessed() {
+		
+		return isProcessed ;
 	}
 
 

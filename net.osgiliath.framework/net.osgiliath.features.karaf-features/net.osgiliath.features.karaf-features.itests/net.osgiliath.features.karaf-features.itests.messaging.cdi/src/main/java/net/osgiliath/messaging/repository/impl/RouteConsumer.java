@@ -20,16 +20,28 @@ package net.osgiliath.messaging.repository.impl;
  * #L%
  */
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
+import net.osgiliath.messaging.HelloEntity;
+import net.osgiliath.messaging.Hellos;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
+import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
+import org.apache.camel.cdi.Uri;
 @ApplicationScoped
 @ContextName
 public class RouteConsumer extends RouteBuilder{
+//	@Inject
+//	@Uri("jms:queue:helloServiceQueueOut")
+//	private ProducerTemplate producer;
 	private boolean processed = false;
 	@Override
 	public void configure() throws Exception {
@@ -38,9 +50,15 @@ public class RouteConsumer extends RouteBuilder{
 			@Override
 			public void process(Exchange exchange) throws Exception {
 				processed = true;
+				 Hellos hellos = new Hellos();
+				 HelloEntity entity = exchange.getIn().getBody(HelloEntity.class);
+				 Collection<HelloEntity> entities = new ArrayList<>();
+				 entities.add(entity);
+				 hellos.setEntities(entities);
+				 exchange.getOut().setBody(hellos);
 				
 			}
-		});
+		}).to("jms:queue:helloServiceQueueOut");
 		
 	}
 	public boolean isDelivered() {

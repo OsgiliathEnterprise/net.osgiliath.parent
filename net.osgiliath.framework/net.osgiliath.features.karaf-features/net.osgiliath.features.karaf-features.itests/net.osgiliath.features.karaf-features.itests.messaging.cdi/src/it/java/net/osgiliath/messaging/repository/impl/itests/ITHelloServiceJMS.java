@@ -20,14 +20,21 @@ package net.osgiliath.messaging.repository.impl.itests;
  * #L%
  */
 
+import static org.junit.Assert.assertEquals;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
 
 import net.osgiliath.messaging.HelloEntity;
+import net.osgiliath.messaging.Hellos;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.Component;
+import org.apache.camel.ConsumerTemplate;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.osgi.CamelContextFactory;
+import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.ProbeBuilder;
@@ -57,9 +64,13 @@ public class ITHelloServiceJMS extends AbstractKarafPaxExamConfiguration {
 	
 	@Inject
 	private BundleContext bundleContext;
-//	@Inject
-//	private IBootstrap bootfinished;
-	//JMS template
+	@Inject
+	@Filter(timeout = 40000)
+	private BootFinished bootFinished;
+	
+	@Inject
+	@Filter(value="(component-type=jms)")
+	private Component jmsComponent;
 	
 	
 	@Inject
@@ -90,15 +101,17 @@ public class ITHelloServiceJMS extends AbstractKarafPaxExamConfiguration {
 		HelloEntity entity = new HelloEntity();
  		entity.setHelloMessage("Charlie");
  		LOG.info("Sending Body");
- 		repository.directSave(entity);
- 		Thread.sleep(1000);
- 		repository.ensureDelivery();
-		//template.sendBody("jms:queue:helloServiceQueueIn", entity);
+// 		repository.directSave(entity);
+// 		Thread.sleep(1000);
+// 		repository.ensureDelivery();
+ 		ProducerTemplate template = jmsComponent.getCamelContext().createProducerTemplate();
+ 		template.sendBody("jms:queue:helloServiceQueueIn", entity);
 //		repository.directSave(entity);
-//		ConsumerTemplate consumer = repository.getCdiBootStrap().getJms().getCamelContext().createConsumerTemplate();
-//		LOG.info("Waiting answer");
-//		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut", 4000,Hellos.class);
-//		assertEquals(1, hellos.getEntities().size());
+		ConsumerTemplate consumer = template.getCamelContext().createConsumerTemplate();
+		LOG.info("Waiting answer");
+		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut", 4000, Hellos.class);
+		LOG.warn("Hellos: " + hellos);
+		assertEquals(1, hellos.getEntities().size());
 //		 Connection connection = connectionFactory.createConnection();
 //         connection.start();
 //
