@@ -66,6 +66,7 @@ limitations under the License.
 	<feature name="osgiliath-messaging-cdi" version="${project.version}">
 		<feature version='${project.version}'>osgiliath-messaging</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
+		<!--<bundle>mvn:org.apache.camel/camel-cdi/${camel-version}</bundle>-->
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.camel-cdi/${project.version}</bundle>
 	</feature>
 </features>

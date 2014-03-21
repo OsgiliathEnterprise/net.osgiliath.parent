@@ -1579,7 +1579,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<properties>
-		<camel-version>2.12.3</camel-version>
+		<camel-version>2.13.0</camel-version>
 		<!-- <camel-version>2.13-SNAPSHOT</camel-version> -->
 		<cdi-api.version>1.1-20130918</cdi-api.version>
 		<com.atomikos.version>3.8.0</com.atomikos.version>
