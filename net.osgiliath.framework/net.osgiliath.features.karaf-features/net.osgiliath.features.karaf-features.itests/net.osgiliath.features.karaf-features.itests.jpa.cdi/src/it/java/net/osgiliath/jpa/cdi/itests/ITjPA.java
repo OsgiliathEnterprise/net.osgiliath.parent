@@ -70,7 +70,6 @@ public class ITjPA extends AbstractKarafPaxExamConfiguration {
         return builder;
     }
 	@Test
-	@Ignore
 	public void testSayHello() throws Exception {
 		
 		HelloEntity entity = new HelloEntity();

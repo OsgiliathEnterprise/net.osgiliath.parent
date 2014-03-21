@@ -14,5 +14,11 @@
   	<module>net.osgiliath.wrapper.deltaspike-jpa-module-impl</module>
   	<module>net.osgiliath.wrapper.deltaspike-data-module-api</module>
   	<module>net.osgiliath.wrapper.deltaspike-data-module-impl</module>
+  	<module>
+  		net.osgiliath.wrapper.deltaspike-partial-bean-module-api
+  	</module>
+  	<module>
+  		net.osgiliath.wrapper.deltaspike-partial-bean-module-impl
+  	</module>
   </modules>
 </project>

@@ -1,2 +1,2 @@
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api), org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-impl)"
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-impl)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-partial-bean-impl)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-jpa-impl)"
 Provide-Capability: org.ops4j.pax.cdi.extension;extension="deltaspike-data-impl"
