@@ -93,6 +93,7 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
+					<include>**/*.cfg</include>
 				</includes>
 			</resource>
 		</resources>
@@ -117,6 +118,11 @@
 									<file>${project.build.directory}/classes/${project.artifactId}.xml</file>
 									<type>xml</type>
 									<classifier>features</classifier>
+								</artifact>
+								<artifact>
+									<file>${project.build.directory}/classes/${project.artifactId}.cfg</file>
+									<type>cfg</type>
+									<classifier>camel</classifier>
 								</artifact>
 							</artifacts>
 						</configuration>

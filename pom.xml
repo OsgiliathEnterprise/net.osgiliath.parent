@@ -170,7 +170,7 @@
 		<maven-javadoc-plugin.version>2.9</maven-javadoc-plugin.version>
 		<maven-release-plugin.version>2.1</maven-release-plugin.version>
 		<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
-		<nexus-staging-maven-plugin.version>1.4.8</nexus-staging-maven-plugin.version>
+		<nexus-staging-maven-plugin.version>1.5.1</nexus-staging-maven-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<repositoryName>superpom</repositoryName>
 		<sonar.scm.url>scm:git:http://sources.osgiliath.net/git-private/net.osgiliath.pom.superpom.git/master</sonar.scm.url>
@@ -226,7 +226,7 @@
 			<properties>
 				<maven-javadoc-plugin.version>2.9</maven-javadoc-plugin.version>
 				<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
-				<nexus-staging-maven-plugin.version>1.4.8</nexus-staging-maven-plugin.version>
+				<nexus-staging-maven-plugin.version>1.5.1</nexus-staging-maven-plugin.version>
 				<maven-gpg-plugin.version>1.1</maven-gpg-plugin.version>
 			</properties>
 		</profile>

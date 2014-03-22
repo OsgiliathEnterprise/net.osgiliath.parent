@@ -3,7 +3,6 @@ Provide-Capability: org.ops4j.pax.cdi.extension;extension="deltaspike-partial-be
 Import-Package: org.apache.deltaspike.core.api.config,\
  org.apache.deltaspike.core.api.config.view,\
  org.apache.deltaspike.core.api.config.view.controller,\
- org.apache.deltaspike.core.api.config.view.controller.literal,\
  org.apache.deltaspike.core.api.config.view.metadata,\
  org.apache.deltaspike.core.api.config.view.navigation,\
  org.apache.deltaspike.core.api.config.view.navigation.event,\

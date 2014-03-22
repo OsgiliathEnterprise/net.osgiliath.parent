@@ -44,6 +44,7 @@ limitations under the License.
 		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-api/${project.version}</bundle>
 		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-impl/${project.version}</bundle>
 		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${org.apache.servicemix.bundles.commons-dbcp.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${org.apache.servicemix.bundles.javassist.version}</bundle>
 		<bundle >mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>
 		<bundle >mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
 		<bundle >mvn:org.apache.xbean/xbean-asm4-shaded/${xbean.version}</bundle>

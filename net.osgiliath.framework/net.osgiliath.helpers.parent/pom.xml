@@ -66,6 +66,7 @@
 		<module>net.osgiliath.helpers.hibernate.validator.cdi.osgi</module>
 		<module>net.osgiliath.helpers.cdi.cxf.jaxrs</module>
 		<module>net.osgiliath.wrappers</module>
+		<module>net.osgiliath.helper.camel.cdi.configadmin</module>
 	</modules>
 	<scm>
 		<connection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</connection>

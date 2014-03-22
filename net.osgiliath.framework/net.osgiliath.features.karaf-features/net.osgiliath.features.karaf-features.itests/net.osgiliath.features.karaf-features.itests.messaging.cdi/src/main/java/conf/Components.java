@@ -31,14 +31,15 @@ import org.slf4j.LoggerFactory;
 
 public class Components {
 	private Logger LOG = LoggerFactory.getLogger(Components.class);
-	
+
 	@Inject
-	@OsgiService( filter="(component-type=jms)",dynamic=true)
+	@OsgiService(filter = "(component-type=jms)", dynamic = true)
 	private Component jms;
+
 	@Produces
-		@Named("jms")
-		public Component getJms() {
-			LOG.info("Inject jms route");
-			return jms;
-		}
+	@Named("jms")
+	public Component getJms() {
+		LOG.info("Inject jms route");
+		return jms;
+	}
 }

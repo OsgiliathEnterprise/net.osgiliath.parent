@@ -33,19 +33,20 @@ import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
+import org.apache.camel.PropertyInject;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 import org.apache.camel.cdi.Uri;
+import org.apache.camel.component.properties.PropertiesComponent;
+import org.ops4j.pax.cdi.api.OsgiService;
 @ApplicationScoped
 @ContextName
 public class RouteConsumer extends RouteBuilder{
-//	@Inject
-//	@Uri("jms:queue:helloServiceQueueOut")
-//	private ProducerTemplate producer;
 	private boolean processed = false;
+	
 	@Override
 	public void configure() throws Exception {
-		from("jms:queue:helloServiceQueueIn").log(LoggingLevel.INFO, "received JMS message on the queue").process(new Processor() {
+		from("{{messaging.routequeuein}}"/*"jms:queue:helloServiceQueueIn"*/).log(LoggingLevel.INFO, "received JMS message on the queue").process(new Processor() {
 			
 			@Override
 			public void process(Exchange exchange) throws Exception {

@@ -45,13 +45,9 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- <dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
-			<version>${project.version}</version>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency> -->
+		<!-- <dependency> <groupId>${project.groupId}</groupId> <artifactId>net.osgiliath.features.karaf-features-standard</artifactId> 
+			<version>${project.version}</version> <type>xml</type> <classifier>features</classifier> 
+			</dependency> -->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
@@ -195,6 +191,10 @@
 			<artifactId>org.apache.servicemix.bundles.commons-dbcp</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.javassist</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-asm4-shaded</artifactId>
 		</dependency>
@@ -255,24 +255,11 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-commons-core</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-tx</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-jdbc</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-orm</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-commons-core</artifactId> 
+			<exclusions> <exclusion> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
+			</exclusion> <exclusion> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
+			</exclusion> <exclusion> <groupId>org.springframework</groupId> <artifactId>spring-orm</artifactId> 
+			</exclusion> </exclusions> </dependency> -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>

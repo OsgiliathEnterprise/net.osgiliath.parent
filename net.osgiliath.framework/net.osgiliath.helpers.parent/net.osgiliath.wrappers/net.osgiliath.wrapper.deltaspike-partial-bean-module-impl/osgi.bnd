@@ -1,9 +1,9 @@
 Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-impl)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-partial-bean-api)"
 Provide-Capability: org.ops4j.pax.cdi.extension;extension="deltaspike-partial-bean-impl"
+Require-Bundle: org.apache.servicemix.bundles.javassist
 Import-Package: org.apache.deltaspike.core.api.config,\
  org.apache.deltaspike.core.api.config.view,\
  org.apache.deltaspike.core.api.config.view.controller,\
- org.apache.deltaspike.core.api.config.view.controller.literal,\
  org.apache.deltaspike.core.api.config.view.metadata,\
  org.apache.deltaspike.core.api.config.view.navigation,\
  org.apache.deltaspike.core.api.config.view.navigation.event,\

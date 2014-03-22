@@ -27,6 +27,7 @@ limitations under the License.
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxrs</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxb</feature>
 		<feature version='${camel-version}'>camel-cxf</feature>
+		<feature version='${karaf.feature.cxf.version}'>cxf-ws-policy</feature>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles.jdom.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cxf.exception.handling/${project.version}</bundle>
