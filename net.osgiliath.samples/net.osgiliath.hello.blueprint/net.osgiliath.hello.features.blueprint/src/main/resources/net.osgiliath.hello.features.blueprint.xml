@@ -39,7 +39,7 @@ limitations under the License.
 	<feature name="${project.groupId}.ui" version="${project.version}">
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-full</feature>
 		<feature version='${karaf.version}'>war</feature>
-		<configfile finalname="/etc/net.osgiliath.hello.routes.cfg">mvn:${project.groupId}/n${project.groupId}.routes.blueprint/${project.version}/cfg/camel</configfile>
+		<configfile finalname="/etc/net.osgiliath.hello.routes.cfg">mvn:${project.groupId}/${project.groupId}.routes.blueprint/${project.version}/cfg/camel</configfile>
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-routes</feature>
 		<bundle>mvn:${project.groupId}/${project.groupId}.routes.blueprint/${project.version}/jar</bundle>
 		<bundle>mvn:${project.groupId}/${project.groupId}.ui.blueprint/${project.version}/war</bundle>
