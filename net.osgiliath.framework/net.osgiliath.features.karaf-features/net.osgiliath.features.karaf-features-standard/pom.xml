@@ -99,6 +99,10 @@
 			<artifactId>org.apache.servicemix.bundles.xpp3</artifactId>
 		</dependency>
 		<dependency>
+		<groupId>org.codehaus.jettison</groupId>
+		<artifactId>jettison</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.mvel</groupId>
 			<artifactId>mvel2</artifactId>
 		</dependency>

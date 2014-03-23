@@ -21,7 +21,6 @@ limitations under the License.
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<feature name='osgiliath-camel-xstream' version='${camel-version}' resolver='(obr)' start-level='50'>
-    <bundle dependency='true'>mvn:org.codehaus.jettison/jettison/${jettison.version}</bundle>
     <feature version='${camel-version}'>camel-core</feature>
     <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${org.apache.servicemix.bundles.xpp3.version}</bundle>
     <bundle dependency='true'>mvn:joda-time/joda-time/${joda-time.version}</bundle>
@@ -30,6 +29,7 @@ limitations under the License.
     <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.kxml2/${org.apache.servicemix.bundles.kxml2.version}</bundle>
     <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${org.apache.servicemix.bundles.xstream.version}</bundle>
     <bundle>mvn:org.apache.camel/camel-xstream/${camel-version}</bundle>
+    <bundle>mvn:org.codehaus.jettison/jettison/${jettison.version}</bundle>
   </feature>
   
   <feature name='osgiliath-camel-elasticsearch' version='${camel-version}' resolver='(obr)' start-level='50'>
