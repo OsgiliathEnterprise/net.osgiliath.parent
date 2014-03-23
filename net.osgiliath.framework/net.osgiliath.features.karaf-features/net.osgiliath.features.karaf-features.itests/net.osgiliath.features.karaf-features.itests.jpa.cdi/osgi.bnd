@@ -1,10 +1,18 @@
 Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-jpa-api)", org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-data-api)"
 Meta-Persistence: META-INF/persistence.xml
 JPA-PersistenceUnits: myTestPu
-Import-Package: org.apache.openjpa.enhance;resolution:=optional,\
+Import-Package: org.apache.deltaspike.data.api.criteria,\
+ org.apache.deltaspike.jpa.api.datasource,\
+ org.apache.deltaspike.jpa.api.entitymanager,\
+ org.apache.deltaspike.data.api.audit,\
+ org.apache.deltaspike.data.api.mapping,\
+ org.apache.deltaspike.data.spi,\
+ org.apache.deltaspike.jpa.impl.transaction,\
+ org.apache.deltaspike.jpa.spi.transaction,\
+ org.apache.deltaspike.jpa.spi.entitymanager,\
+ org.apache.openjpa.enhance;resolution:=optional,\
  org.apache.openjpa.util;resolution:=optional,\
  org.springframework.data.domain,\
  org.springframework.data.jpa.domain,\
- org.apache.deltaspike.jpa.impl.transaction,\
  !net.osgiliath.jpa.*,\
  *

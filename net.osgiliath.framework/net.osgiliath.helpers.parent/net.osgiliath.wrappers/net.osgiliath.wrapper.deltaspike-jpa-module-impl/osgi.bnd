@@ -26,5 +26,19 @@ Import-Package: org.apache.deltaspike.core.api.config,\
  org.apache.deltaspike.core.util.context,\
  org.apache.deltaspike.core.util.metadata.builder,\
  org.apache.deltaspike.core.util.securitymanaged,\
+ org.apache.deltaspike.core.impl.config,\
+ org.apache.deltaspike.core.impl.exception.control,\
+ org.apache.deltaspike.core.impl.exception.control.extension,\
+ org.apache.deltaspike.core.impl.exclude,\
+ org.apache.deltaspike.core.impl.exclude.extension,\
+ org.apache.deltaspike.core.impl.interpreter,\
+ org.apache.deltaspike.core.impl.jmx,\
+ org.apache.deltaspike.core.impl.message,\
+ org.apache.deltaspike.core.impl.scope,\
+ org.apache.deltaspike.core.impl.scope.conversation,\
+ org.apache.deltaspike.core.impl.scope.viewaccess,\
+ org.apache.deltaspike.core.impl.resourceloader,\
+ org.apache.deltaspike.core.impl.scope.window,\
+ org.apache.deltaspike.core.impl.util,\
  org.apache.deltaspike.partialbean.impl,\
  *

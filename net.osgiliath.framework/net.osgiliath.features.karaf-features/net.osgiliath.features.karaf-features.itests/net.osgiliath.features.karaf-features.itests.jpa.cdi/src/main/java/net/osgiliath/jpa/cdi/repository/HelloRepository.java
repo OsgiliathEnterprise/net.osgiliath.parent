@@ -23,10 +23,12 @@ package net.osgiliath.jpa.cdi.repository;
 import net.osgiliath.jpa.cdi.model.HelloEntity;
 
 import org.apache.deltaspike.data.api.EntityRepository;
+import org.apache.deltaspike.data.api.Repository;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
 @Transactional
+@Repository(forEntity=HelloEntity.class)
 public interface HelloRepository extends EntityRepository<HelloEntity, Long> {
 
 }

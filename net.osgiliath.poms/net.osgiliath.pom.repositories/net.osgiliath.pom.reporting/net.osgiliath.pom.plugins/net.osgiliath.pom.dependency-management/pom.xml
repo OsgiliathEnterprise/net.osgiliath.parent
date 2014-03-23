@@ -633,6 +633,11 @@
 				<type>zip</type>
 			</dependency>
 			<dependency>
+				<groupId>org.apache.karaf.bundle</groupId>
+				<artifactId>org.apache.karaf.bundle.springstate</artifactId>
+				<version>${karaf.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.karaf.deployer</groupId>
 				<artifactId>org.apache.karaf.deployer.spring</artifactId>
 				<version>${karaf.version}</version>
@@ -657,16 +662,6 @@
 				<version>${karaf.version}</version>
 				<type>xml</type>
 				<classifier>features</classifier>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.karaf.bundle</groupId>
-				<artifactId>org.apache.karaf.bundle.springstate</artifactId>
-				<version>${karaf.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.karaf.deployer</groupId>
-				<artifactId>org.apache.karaf.deployer.spring</artifactId>
-				<version>${karaf.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.karaf.http</groupId>
