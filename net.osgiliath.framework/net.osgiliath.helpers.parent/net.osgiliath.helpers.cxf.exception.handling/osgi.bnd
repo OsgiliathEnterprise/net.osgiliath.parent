@@ -1,2 +1,4 @@
 Import-Package: javax.ws.rs.ext,\
- javax.ws.rs.core
+ javax.ws.rs.core,\
+ org.jdom2,\
+ org.jdom2.output
