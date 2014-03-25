@@ -1,28 +1,49 @@
-h1. Superpom
+#Osgiliath Enterprise framework
 
-h2. What's this?
+## Purpose
 
-This is the superpom of all osgiliath projects, it's composed of multiple maven modules containing the different standard configurations, libraries...
+Osgiliath EF aims to provides a way to develop Web/backend/enterprise applications in a clean, modular way
 
-h2. How to use?
+## Technologies
 
-h3. Prerequisite
+Osgiliath EF uses many existing first class frameworks, like AngularJS, twitter Bootstrap, Apache Karaf, Apache Camel, CXF, ActiveMQ, JPA, JTA...
 
-You must have maven installed on your PC.
+## What could I find
 
-h3. Usage one: without maven configuration
+### Features
+You'll find here a bunch of Karaf features allowing you to enable persistence on your project, Web-Servicing, Async messaging, Transactions, validation, Security, dependency injection...
 
-You just have either to download the project (git pull http://subversion.osgiliath.net/git-private/superpom.git) and run mvn install on the project root
+### Archetypes
+Osgiliath come with Maven archetypes generating your project skeleton, adding capabilities to it...
+There are four archetypes: 
+* Parent, that describes an entire application
+* Routes, that enable communication between your different web services/parent modules...
+* Business that embeds validation, web services, async ones, transactions, functional programming style...
+* Model that permits you to save your elements in a/some relational databases easily
 
-h3. Usage two: as a mirror in maven settings
+###Samples
+There are two way of programming with Osgiliath framework: using blueprint or using CDI.
+Blueprint configuration as an xml based syntax and is a proven OSGI technology while CDI offers configuration based on annotation (more conscise but may be a little bit less featured), so choose your weapons!
 
-You just have to configure the osgiliath nexus (http://nexus.osgiliath.net/nexus) as a mirror on your <MAVEN_HOME>/conf/settings.xml (see: http://maven.apache.org/settings.html#Mirrors)
+### Superpom
+The entire Osgiliath EF uses these Maven configuration to configure dependency versions, plugin execution... So feel free to use it in your own framework ;).
 
-h2. Architecture
+# Where to start?
 
-Here is a little description of the different modules:
-* osgiliath.repositories: contains the different repositories to grab the different dependencies
-* osgiliath.reporting: contains the reporting configuration (checkstyle, pmd, sonar, ...)
-* osgiliath.plugins: contains the global plugins configuration (weaving, creating manifests...)
-* osgiliath.dependency-management: the dependency management of the projects and their versions
-* osgiliath.projects.definition: the main configuration of osgiliath projects (where is sonar, jenkins...)
+You can first take a look at the documentation: https://blog.osgiliath.net/?page_id=224.
+Then, you can directly use the archectypes as they're published in Maven central (mvn archetype:generate ...).
+Or look at the examples or even the features integration tests to see how to code something.
+Readme.md will describe what's doing a module all along your way through this repo, so don't hesitate to crawl into!
+
+
+# License
+
+Osgiliath EF is fully Apache 2.0 License so feel free to use, modify, sell... Just don't forget to cite me or at least send me a mail...
+
+
+# Contributor
+In order to contribute: Clone the repo, install Maven, Java, Npm and Bower, then run mvn clean install on the root...
+On Mac, add a java.home property in your Maven settings.xml pointing to your JDK installation (mandatory for lombok)
+We'll accept most of contributions in a very short time so don't be shy!
+
+Enjoy Osgiliath coding!
