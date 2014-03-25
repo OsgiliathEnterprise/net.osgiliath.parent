@@ -40,4 +40,10 @@ Readme.md will describe what's doing a module all along your way through this re
 
 Osgiliath EF is fully Apache 2.0 License so feel free to use, modify, sell... Just don't forget to cite me or at least send me a mail...
 
+
+# Contributor
+In order to contribute: Clone the repo, install Maven, Java, Npm and Bower, then run mvn clean install on the root...
+On Mac, add a java.home property in your Maven settings.xml pointing to your JDK installation (mandatory for lombok)
+We'll accept most of contributions in a very short time so don't be shy!
+
 Enjoy Osgiliath coding!
