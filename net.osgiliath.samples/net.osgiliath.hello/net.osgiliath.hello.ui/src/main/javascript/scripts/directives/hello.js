@@ -6,7 +6,7 @@ angular.module('hello', [ 'ui.bootstrap', 'commonapp', 'ngRoute' ]).directive('h
 				restrict : 'E',
 				scope : {},
 				controller : 'HelloCtrl',
-				templateUrl : 'scripts/templates/hello.html',
+				templateUrl : 'views/templates/hello.html',
 				replace : true
 			};
 		}).config(function ($routeProvider) {

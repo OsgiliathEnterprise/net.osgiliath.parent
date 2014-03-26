@@ -225,7 +225,7 @@
 						<archive>
 							<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
 						</archive>
-						<packagingExcludes>WEB-INF/lib/**</packagingExcludes>
+						<packagingExcludes>WEB-INF/lib/**,WEB-INF/classes/**</packagingExcludes>
 						<archive>
 							<manifest>
 								<addClasspath>true</addClasspath>
