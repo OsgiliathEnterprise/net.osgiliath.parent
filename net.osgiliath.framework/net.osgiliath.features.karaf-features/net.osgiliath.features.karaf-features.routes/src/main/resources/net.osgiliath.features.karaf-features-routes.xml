@@ -32,7 +32,7 @@ limitations under the License.
 		<feature version="${camel-version}">camel-jaxb</feature>
 		<feature version='${camel-version}'>camel-jackson</feature>
 		<feature version='${camel-version}'>camel-spring</feature>
-		<feature version='${camel-version}'>camel-xstream</feature>
+		<feature version='${camel-version}'>osgiliath-camel-xstream</feature>
 		<feature version='${camel-version}'>camel-xmljson</feature>
 		<feature version='${camel-version}'>camel-http</feature>
 		<feature version='${camel-version}'>camel-cxf</feature>

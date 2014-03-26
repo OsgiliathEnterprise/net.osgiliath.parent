@@ -66,6 +66,11 @@
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
+		<groupId>net.osgiliath.framework</groupId>
+  <artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
+  <version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.json</groupId>
 			<artifactId>javax.json-api</artifactId>
 		</dependency>

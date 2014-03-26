@@ -24,37 +24,26 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Default;
-import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
-import javax.inject.Named;
 
-import org.apache.camel.Body;
-import org.apache.camel.CamelContext;
-import org.apache.camel.CamelContextAware;
-import org.apache.camel.Component;
-import org.apache.camel.Consume;
-import org.apache.camel.EndpointInject;
-import org.apache.camel.Produce;
-import org.apache.camel.ProducerTemplate;
-import org.apache.camel.cdi.ContextName;
-import org.apache.camel.cdi.Uri;
-import org.ops4j.pax.cdi.api.OsgiService;
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import conf.CdiBootstrap;
-import conf.Components;
+import net.osgiliath.helpers.cdi.eager.Eager;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 import net.osgiliath.messaging.repository.HelloCDIRepository;
 
+import org.apache.camel.Body;
+import org.apache.camel.Consume;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.cdi.ContextName;
+import org.apache.camel.cdi.Uri;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //TODO Spring data jpa repository declaration
 
 @ApplicationScoped
+@Eager
 @ContextName
 public class HelloJMSCDIRepository implements HelloCDIRepository  {
 	private Logger LOG = LoggerFactory.getLogger(HelloJMSCDIRepository.class);

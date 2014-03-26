@@ -26,6 +26,7 @@ import java.util.Collection;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import net.osgiliath.helpers.cdi.eager.Eager;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 
@@ -39,18 +40,14 @@ import org.apache.camel.cdi.ContextName;
 import org.apache.camel.cdi.Uri;
 import org.apache.camel.component.properties.PropertiesComponent;
 import org.ops4j.pax.cdi.api.OsgiService;
-@ApplicationScoped
 @ContextName
 public class RouteConsumer extends RouteBuilder{
-	private boolean processed = false;
-	
 	@Override
 	public void configure() throws Exception {
-		from("{{messaging.routequeuein}}"/*"jms:queue:helloServiceQueueIn"*/).log(LoggingLevel.INFO, "received JMS message on the queue").process(new Processor() {
+		from("{{messaging.routequeuein}}").log(LoggingLevel.INFO, "received JMS message on the queue").process(new Processor() {
 			
 			@Override
 			public void process(Exchange exchange) throws Exception {
-				processed = true;
 				 Hellos hellos = new Hellos();
 				 HelloEntity entity = exchange.getIn().getBody(HelloEntity.class);
 				 Collection<HelloEntity> entities = new ArrayList<>();
@@ -62,7 +59,5 @@ public class RouteConsumer extends RouteBuilder{
 		}).to("jms:queue:helloServiceQueueOut");
 		
 	}
-	public boolean isDelivered() {
-		return processed;
-	}
+	
 }

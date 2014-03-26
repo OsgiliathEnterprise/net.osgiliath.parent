@@ -28,12 +28,9 @@ import javax.inject.Inject;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 
-import org.apache.camel.CamelContext;
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
-import org.apache.camel.component.jms.JmsComponent;
-import org.apache.camel.osgi.CamelContextFactory;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,8 +46,6 @@ import org.osgi.framework.Constants;
 //import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import conf.CdiBootstrap;
 
 /**
  * TODO example of an integration test
@@ -71,12 +66,7 @@ public class ITHelloServiceJMS extends AbstractKarafPaxExamConfiguration {
 	@Inject
 	@Filter(value="(component-type=jms)")
 	private Component jmsComponent;
-	
-	
-	@Inject
-	@Filter(timeout = 40000)
-	private CdiBootstrap repository;
-	
+
 	
 	
 	//probe

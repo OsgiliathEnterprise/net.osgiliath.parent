@@ -20,15 +20,21 @@ package conf;
  * #L%
  */
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import net.osgiliath.helpers.cdi.eager.Eager;
+
 import org.apache.camel.Component;
+import org.apache.camel.cdi.ContextName;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+@Eager
+@ContextName
+@ApplicationScoped
 public class Components {
 	private Logger LOG = LoggerFactory.getLogger(Components.class);
 
