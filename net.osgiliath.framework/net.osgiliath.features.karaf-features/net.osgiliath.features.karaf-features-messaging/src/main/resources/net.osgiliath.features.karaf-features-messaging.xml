@@ -35,6 +35,7 @@ limitations under the License.
 		<bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${geronimo-j2ee-management_1.1_spec.version}</bundle>
 		<bundle>mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections/${org.apache.servicemix.bundles.commons-collections.version}</bundle>
+		<bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
 		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
 		<bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/${org.apache.servicemix.bundles.oro.version}</bundle>
@@ -55,6 +56,7 @@ limitations under the License.
 		<feature version="${camel-version}">camel-jaxb</feature>
 		<feature version="${camel-version}">osgiliath-camel-xstream</feature>
 		<feature version="${camel-version}">camel-xmljson</feature>
+		<feature version="${camel-version}">camel-cxf</feature>
 		<bundle>mvn:javax.json/javax.json-api/${javax.json-api.version}</bundle>
 		<bundle>mvn:org.glassfish/javax.json/${org.glassfish.javax.json.version}</bundle>
 		<bundle>mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>

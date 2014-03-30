@@ -23,23 +23,33 @@ package net.osgiliath.hello.business.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+import net.osgiliath.hello.model.jpa.model.HelloObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
+import lombok.Value;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @XmlRootElement
-public class Hellos implements Serializable{
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Hellos implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5352246104371387691L;
-//@XmlElement
-private List<String> helloCollection;
+	@XmlElementWrapper(name="collection")
+	@XmlElement(name = "hello")
+	private List<String> helloCollection;
 }

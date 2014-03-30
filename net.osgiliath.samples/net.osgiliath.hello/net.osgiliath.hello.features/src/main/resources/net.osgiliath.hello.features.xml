@@ -37,13 +37,19 @@ limitations under the License.
 		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.business/${project.parent.artifactId}.business.impl/target/${project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
 	</feature>
 	<feature name="${project.parent.artifactId}.ui" version="${project.version}">
+		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.ui/${project.version}/war</bundle>
+		<feature version='${project.version}'>${project.parent.artifactId}.route</feature>
+	</feature>
+	<feature name="${project.parent.artifactId}.route" version="${project.version}">
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-full</feature>
 		<feature version='${karaf.version}'>war</feature>
-		<configfile finalname="/etc/${project.parent.artifactId}.routes.cfg">mvn:${project.groupId}/${project.parent.artifactId}.routes/${project.version}/cfg/camel</configfile>
+		<configfile finalname="/etc/${project.parent.artifactId}.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/camel</configfile>
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-routes</feature>
+		<feature version='${project.version}'>${project.parent.artifactId}.business</feature>
 		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.routes/${project.version}/jar</bundle>
-		<bundle>mvn:${project.parent.groupId}/${project.parent.groupId}.ui/${project.version}/war</bundle>
+		
 	</feature>
+	
 	<feature name="${project.parent.artifactId}.business" version="${project.version}">
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-business</feature>
 		<feature version='${project.version}'>${project.parent.artifactId}.model</feature>

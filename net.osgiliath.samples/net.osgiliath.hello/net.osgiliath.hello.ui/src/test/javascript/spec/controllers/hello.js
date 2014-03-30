@@ -8,6 +8,11 @@ describe('Controller: HelloCtrl', function () {
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
+	  mockedService = {
+	          subscribe: function () {
+	             
+	          }
+	      };
     scope = $rootScope.$new();
     HelloCtrl = $controller('HelloCtrl', {
       $scope: scope,

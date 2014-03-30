@@ -5,6 +5,7 @@ Import-Package: *,\
  javax.transaction,\
  org.apache.camel.spring.spi,\
  org.apache.camel,\
+ org.apache.camel.component.cxf,\
  org.apache.camel.component.http,\
  org.apache.camel.component.jackson,\
  org.apache.camel.dataformat.xmljson

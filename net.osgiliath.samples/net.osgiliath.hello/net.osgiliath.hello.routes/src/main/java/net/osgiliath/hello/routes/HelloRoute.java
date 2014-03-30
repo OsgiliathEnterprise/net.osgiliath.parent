@@ -20,6 +20,11 @@ package net.osgiliath.hello.routes;
  * #L%
  */
 
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.xml.bind.JAXBContext;
 
 import lombok.Setter;
@@ -27,16 +32,19 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloObject;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spi.DataFormat;
+import org.apache.commons.io.IOUtils;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 //TODO sample route, see apache camel and EIP keyword on the net ;)
 public class HelloRoute extends RouteBuilder {
+	
 	private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
 			HelloObject.class, Hellos.class);
 	@Setter
@@ -44,10 +52,18 @@ public class HelloRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		// initialize a jaxb context to xml marshall
+		
 		JAXBContext ctx = JAXBContext
-				.newInstance(new Class[] { HelloObject.class });
+				.newInstance(new Class[] { HelloObject.class, Hellos.class });
 		DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
-		from("{{hello.helloJmsEntryPoint}}")
+		Map<String, String> xmlJsonOptions = new HashMap<String, String>();
+		xmlJsonOptions.put(org.apache.camel.model.dataformat.XmlJsonDataFormat.ENCODING, "UTF-8");
+		xmlJsonOptions.put(org.apache.camel.model.dataformat.XmlJsonDataFormat.SKIP_NAMESPACES, "true");
+		xmlJsonOptions.put(org.apache.camel.model.dataformat.XmlJsonDataFormat.REMOVE_NAMESPACE_PREFIXES, "true");
+		
+		
+		
+		from("{{hello.helloJMSEntryPoint}}").log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
 				.filter(header("webSocketMsgType").isNotEqualTo("heartBeat"))
 				.choice()
 				.when(header("httpRequestType").isEqualTo("POST"))
@@ -63,20 +79,38 @@ public class HelloRoute extends RouteBuilder {
 
 		from("direct:helloObjectGET")
 				.setHeader(Exchange.HTTP_METHOD, constant("GET"))
+				.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
 				.inOut("{{net.osgiliath.hello.business.url.helloservice}}/hello")
-				.log("hello data retrieved from JaxRS : ${body}")
-				.marshal()
-				.xmljson(
-						Maps.newHashMap(ImmutableMap.<String, String> builder()
-								.put("forceTopLevelObject", "true").build()))
-				.to("{{hello.helloJaxRSEndPoint}}");
-
-		from("direct:helloObjectPOST").doTry().log("registering hello ${body}")
+				
+				.to("direct:marshallandsend")
+				;
+		from("direct:marshallandsend").process(new Processor() {
+			
+			@Override
+			public void process(Exchange exchange) throws Exception {
+				InputStream bodyObject = exchange.getIn().getBody(InputStream.class);
+				StringWriter writer = new StringWriter();
+				IOUtils.copy(bodyObject, writer);
+				String theString = writer.toString();
+				exchange.getIn().setBody(theString);
+				
+			}
+		}).log("hello data retrieved from JaxRS : ${in.body}").marshal()
+		.xmljson(
+				Maps.newHashMap(ImmutableMap.<String, String> builder()
+						.put("forceTopLevelObject", "true").build()))
+		.log(LoggingLevel.INFO, "marshalled: ${body}")
+		.to("{{hello.helloJMSEndPoint}}");
+		from("direct:helloObjectPOST").log("registering hello ${body}")
 				.setHeader(Exchange.HTTP_METHOD, constant("POST"))
+				.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
 				.unmarshal(helloObjectJSonFormat)
 				.marshal(jaxBDataFormat)
-				.to("{{net.osgiliath.hello.business.url.helloservice}}/hello").doCatch(Exception.class)
-				.to("direct:helloValidationError");
+				.log(LoggingLevel.INFO, "marshalled: ${body}")
+				.doTry()
+				.to("{{net.osgiliath.hello.business.url.helloservice}}/hello")
+				.doCatch(Exception.class).log(LoggingLevel.WARN, "Exception: " + exceptionMessage().toString())
+				.to("direct:helloValidationError").end();
 		
 		from("direct:helloValidationError")
 		.process(thrownExceptionMessageToInBodyProcessor)

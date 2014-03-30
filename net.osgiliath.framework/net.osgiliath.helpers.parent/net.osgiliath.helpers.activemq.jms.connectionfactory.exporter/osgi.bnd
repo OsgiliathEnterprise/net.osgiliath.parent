@@ -7,6 +7,7 @@ Import-Package: org.apache.activemq.broker.region.policy,\
  org.apache.activemq.usage,\
  org.apache.activemq.broker,\
  org.apache.activemq,\
+ org.apache.activemq.spring,\
  org.apache.activemq.transport.ws,\
  org.apache.activemq.transport.tcp,\
  org.apache.activemq.transport.stomp,\

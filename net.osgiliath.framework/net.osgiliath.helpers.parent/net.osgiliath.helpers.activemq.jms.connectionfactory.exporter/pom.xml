@@ -43,6 +43,18 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-osgi</artifactId>
+			<scope>provided</scope>
+			<exclusions>
+			<exclusion>
+			<artifactId>jms</artifactId>
+			<groupId>javax.jms</groupId>
+			
+			</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 			<scope>provided</scope>

@@ -85,6 +85,11 @@
 				<version>${commons-codec.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>${commons-lang.version}</version>
@@ -1590,6 +1595,7 @@
 		<commons-codec.version>1.7</commons-codec.version>
 		<commons-dbcp.osgi.version>1.4</commons-dbcp.osgi.version>
 		<commons-jexl.version>2.1.1</commons-jexl.version>
+		<commons-io.version>2.4</commons-io.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-management.version>1.0</commons-management.version>
 		<commons-pool.version>1.6</commons-pool.version>

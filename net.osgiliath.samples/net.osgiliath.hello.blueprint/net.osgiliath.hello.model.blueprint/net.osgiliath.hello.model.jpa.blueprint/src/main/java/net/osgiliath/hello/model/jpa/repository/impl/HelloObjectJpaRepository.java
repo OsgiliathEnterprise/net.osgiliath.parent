@@ -22,14 +22,17 @@ package net.osgiliath.hello.model.jpa.repository.impl;
 
 import java.util.Collection;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+
 import lombok.Setter;
 import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloObject_;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -48,7 +51,7 @@ public class HelloObjectJpaRepository extends SimpleJpaRepository<HelloObject, L
 		CriteriaQuery<HelloObject> cq = cb.createQuery(HelloObject.class);
 		Root<HelloObject> helloObject = cq.from(HelloObject.class);
 		cq.select(helloObject);
-		Predicate where = cb.equal(helloObject.get("message"), message_p);
+		Predicate where = cb.equal(helloObject.get(HelloObject_.helloMessage), message_p);
 		cq.where(where);
 		TypedQuery<HelloObject> q = entityManager.createQuery(cq);
 		List<HelloObject> result = q.getResultList();

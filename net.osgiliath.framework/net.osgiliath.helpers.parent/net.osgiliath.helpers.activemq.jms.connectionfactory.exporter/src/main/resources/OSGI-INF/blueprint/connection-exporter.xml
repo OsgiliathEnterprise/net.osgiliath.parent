@@ -15,12 +15,14 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.
 	<cm:property-placeholder persistent-id="amqconfig"
 		id="amqconfig" placeholder-prefix="$[" placeholder-suffix="]">
 		<cm:default-properties>
-			<cm:property name="stompTransportConnector.uri" value="stomp://0.0.0.0:61613" />
-			<cm:property name="jmsTransportConnector.uri" value="tcp://0.0.0.0:61616" />
-			<cm:property name="webSocketTransportConnector.uri" value="ws://0.0.0.0:61614" />
-			<cm:property name="jmsXATransportConnector.uri" value="tcp://0.0.0.0:61626" />
-			<cm:property name="webSocketXATransportConnector.uri" value="ws://0.0.0.0:61624" />
-			<cm:property name="stompXATransportConnector.uri" value="stomp://0.0.0.0:61623" />
+			<cm:property name="jmsTransportConnector.uri" value="tcp://localhost:61616" />
+			<cm:property name="jmsXATransportConnector.uri" value="tcp://localhost:61626" />
+			<cm:property name="stompTransportConnector.uri" value="stomp://localhost:61612" />
+			<cm:property name="stompXATransportConnector.uri" value="stomp://localhost:61623" />
+			<cm:property name="webSocketTransportConnector.uri"
+				value="ws://localhost:61614" />
+			<cm:property name="webSocketXATransportConnector.uri"
+				value="ws://localhost:61624" />
 		</cm:default-properties>
 	</cm:property-placeholder>
 	<reference id="osgiPlatformTransactionManager"
@@ -42,7 +44,7 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.
 			</amq:policyMap>
 		</amq:destinationPolicy>
 		<amq:managementContext>
-			<amq:managementContext createConnector="false" />
+			<amq:managementContext createConnector="true" />
 		</amq:managementContext>
 		<amq:persistenceAdapter>
 			<amq:kahaDB directory="activeMQ/kahadb-jms"
@@ -69,34 +71,35 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.
 			<!-- stomp (from/to web) -->
 			<amq:transportConnector name="stomp"
 				uri="$[stompTransportConnector.uri]" />
+			<amq:transportConnector name="stompXA"
+				uri="$[stompXATransportConnector.uri]" />
 			<!-- websocket (stomp underlay) -->
 			<amq:transportConnector name="websocket"
 				uri="$[webSocketTransportConnector.uri]" />
-			<!-- jms -->
-			<amq:transportConnector name="tcp"
-				uri="$[jmsTransportConnector.uri]" />
-			<!-- Transactionnal websocket -->
 			<amq:transportConnector name="websocketXA"
 				uri="$[webSocketXATransportConnector.uri]" />
-			<!-- jms xa -->
-			<amq:transportConnector name="tcpXA"
+			<!-- jms -->
+			<amq:transportConnector name="jms"
+				uri="$[jmsTransportConnector.uri]" />
+			<amq:transportConnector name="jmsXA"
 				uri="$[jmsXATransportConnector.uri]" />
 		</amq:transportConnectors>
 	</amq:broker>
-	<!-- JMS and stomp ConnectionFactories to use, configuring the embedded 
-		broker using XML <amq:connectionFactory id="jmsFactory" brokerURL="$[jmsTransportConnector.uri]" 
-		/> <amq:connectionFactory id="webSocketFactory" brokerURL="$[webSocketTransportConnector.uri]" 
-		/> <amq:connectionFactory id="stompConnectionFactory" brokerURL="$[stompTransportConnector.uri]" 
-		/> <amq:xaConnectionFactory id="jmsXAFactory" brokerURL="$[jmsXATransportConnector.uri]" 
-		/> <amq:xaConnectionFactory id="webSocketXAFactory" brokerURL="$[webSocketXATransportConnector.uri]" 
-		/> <amq:xaConnectionFactory id="stompXAConnectionFactory" brokerURL="$[stompXATransportConnector.uri]" 
-		/> -->
-	<bean id="jmsXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
-		<property name="brokerURL" value="$[jmsXATransportConnector.uri]" />
-	</bean>
-	<!--<bean id="jmsXACachedFactory" class="org.springframework.jms.connection.CachingConnectionFactory"> 
-		<property name="sessionCacheSize" value="3" /> <property name="targetConnectionFactory" 
-		ref="jmsXAFactory" /> </bean> -->
+	<!-- <amq:connectionFactory id="jmsFactory" brokerURL="$[jmsTransportConnector.uri]" 
+		beanName="jmsFactory" /> -->
+	<!-- <amq:xaConnectionFactory id="jmsXAFactory" brokerURL="$[jmsXATransportConnector.uri]" 
+		beanName="jmsXAFactory" /> -->
+	<!-- <amq:connectionFactory id="webSocketFactory" brokerURL="$[webSocketTransportConnector.uri]" 
+		beanName="webSocketFactory" /> -->
+	<!-- <amq:xaConnectionFactory id="webSocketXAFactory"
+		brokerURL="$[webSocketXATransportConnector.uri]" beanName="webSocketXAFactory" /> -->
+	<!-- <amq:connectionFactory id="stompConnectionFactory"
+		brokerURL="$[stompTransportConnector.uri]" beanName="stompConnectionFactory" />
+	<amq:xaConnectionFactory id="stompXAConnectionFactory"
+		brokerURL="$[stompXATransportConnector.uri]" beanName="stompXAConnectionFactory" /> -->
+
+
+
 	<!-- jms confactory -->
 	<bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="$[jmsTransportConnector.uri]" />
@@ -106,15 +109,24 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.
 		<property name="targetConnectionFactory" ref="jmsFactory" />
 		<property name="sessionCacheSize" value="3" />
 	</bean>
-	<!-- to remove -->
+	<bean id="jmsXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
+		<property name="brokerURL" value="$[jmsXATransportConnector.uri]" />
+	</bean>
+
+	<bean id="stompConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="$[stompTransportConnector.uri]" />
+	</bean>
+	<bean id="stompXAConnectionFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
+		<property name="brokerURL" value="$[stompXATransportConnector.uri]" />
+	</bean>
+
 	<bean id="webSocketFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="$[webSocketTransportConnector.uri]" />
 	</bean>
-	<bean id="cachedWebSocketConnectionFactory"
-		class="org.springframework.jms.connection.CachingConnectionFactory">
-		<property name="targetConnectionFactory" ref="webSocketFactory" />
-		<property name="sessionCacheSize" value="3" />
+	<bean id="webSocketXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
+		<property name="brokerURL" value="$[webSocketXATransportConnector.uri]" />
 	</bean>
+	
 	<!-- jms connection factory to export -->
 	<service ref="cachedJmsConnectionFactory" interface="javax.jms.ConnectionFactory">
 		<service-properties>
@@ -123,11 +135,9 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.
 	</service>
 
 	<!-- to remove: normally you don't have to use websocket as a transport -->
-	<service ref="cachedWebSocketConnectionFactory" interface="javax.jms.ConnectionFactory">
-		<service-properties>
-			<entry key="component-type" value="websocket" />
-		</service-properties>
-	</service>
+	<!-- <service ref="cachedWebSocketConnectionFactory" interface="javax.jms.ConnectionFactory"> 
+		<service-properties> <entry key="component-type" value="websocket" /> </service-properties> 
+		</service> -->
 
 	<!-- JMS XA factory export -->
 	<service ref="jmsXAFactory" interface="javax.jms.XAConnectionFactory">
@@ -153,8 +163,8 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.
 		<property name="maxConcurrentConsumers" value="100" />
 		<property name="cacheLevelName" value="CACHE_NONE" />
 	</bean>
-	
-	
+
+
 	<!-- OSGI service for camel jms component -->
 	<service ref="camel-jms-component" interface="org.apache.camel.Component">
 		<service-properties>

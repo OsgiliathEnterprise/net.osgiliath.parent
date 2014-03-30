@@ -9,16 +9,16 @@
 	governing permissions and limitations under the License. #L% -->
 
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
 	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.0.0.xsd
+	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://svn.apache.org/repos/asf/aries/trunk/blueprint/blueprint-cm/src/main/resources/org/apache/aries/blueprint/compendium/cm/blueprint-cm-1.1.0.xsd
 	http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 	 http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
        http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 	<!-- configuration exported by the feature module -->
-	<cm:property-placeholder persistent-id="${project.groupId}.routes"
-		id="camelRoutes" placeholder-prefix="$[" placeholder-suffix="]" />
+	<cm:property-placeholder persistent-id="${project.parent.artifactId}"
+		id="camelRoutes" update-strategy="reload" />
 
 	<bean id="properties"
 		class="org.apache.camel.component.properties.PropertiesComponent">
@@ -40,6 +40,7 @@
 		filter="(component-type=jmsXA)">
 	</reference>
 	<bean id="http" class="org.apache.camel.component.http.HttpComponent"></bean>
+<bean id="cxfrs" class="org.apache.camel.component.cxf.CxfComponent"></bean>
 
 	<bean id="json-jackson" class="org.apache.camel.component.jackson.JacksonDataFormat"></bean>
 	<bean id="xmljson" class="org.apache.camel.dataformat.xmljson.XmlJsonDataFormat"></bean>

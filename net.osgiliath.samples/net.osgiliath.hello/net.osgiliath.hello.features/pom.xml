@@ -46,7 +46,7 @@
 									<classifier>features</classifier>
 								</artifact>
 								<artifact>
-									<file>${project.build.directory}/classes/${project.parent.artifactId}.routes.cfg</file>
+									<file>${project.build.directory}/classes/${project.artifactId}.cfg</file>
 									<type>cfg</type>
 									<classifier>camel</classifier>
 								</artifact>

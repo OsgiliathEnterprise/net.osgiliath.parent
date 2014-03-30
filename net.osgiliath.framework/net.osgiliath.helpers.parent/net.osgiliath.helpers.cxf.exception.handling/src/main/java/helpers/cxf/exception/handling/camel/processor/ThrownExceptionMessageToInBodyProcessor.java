@@ -46,8 +46,10 @@ public class ThrownExceptionMessageToInBodyProcessor implements Processor {
 		CxfOperationException c = exchange.getProperty(Exchange.EXCEPTION_CAUGHT, 
 				CxfOperationException.class);
 		SAXBuilder sxb = new SAXBuilder();
+		if(c!= null && c.getResponseBody() != null) {
 		Document doc = sxb.build(new StringReader(c.getResponseBody()));
 		exchange.getIn().setBody(doc.getRootElement().getChild("message").getText());
+		}
 	}
 
 }

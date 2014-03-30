@@ -39,10 +39,6 @@ html, body {
 	 width: 400px; 
     height: 300px
 }
-#goGameButton {
-	text-align: center;
-	margin-bottom: 8px;
-}
 /* Lastly, apply responsive CSS fixes as necessary */
 @media (max-width: 767px) {
 	.footer {

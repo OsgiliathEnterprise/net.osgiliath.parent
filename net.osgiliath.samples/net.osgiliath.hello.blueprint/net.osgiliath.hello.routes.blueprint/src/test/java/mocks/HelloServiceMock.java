@@ -28,10 +28,11 @@ import net.osgiliath.hello.model.jpa.model.HelloObject;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 //TODO Mock service
 public class HelloServiceMock implements HelloService {
-	private List mockedMessageStrings = Lists.newArrayList();
+	private List<HelloObject> mockedMessageStrings = Lists.newArrayList();
 
 	@Override
 	public void persistHello(HelloObject helloMessage_p) {
@@ -41,7 +42,7 @@ public class HelloServiceMock implements HelloService {
 	@Override
 	public Hellos getHellos() {
 		
-		return Hellos.builder().helloCollection(Lists.newArrayList(Collections2.transform(mockedMessageStrings,new Function<HelloObject, String>() {
+		return Hellos.builder().helloCollection(Lists.newArrayList(Iterables.transform(mockedMessageStrings,new Function<HelloObject, String>() {
 
 			@Override
 			public String apply(HelloObject arg0) {
