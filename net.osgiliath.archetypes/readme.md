@@ -40,7 +40,7 @@ It embed a descriptor allowing you to deploy an entire app in a command.
 ### Technologies
 Karaf features
 
-### Building
+### Building/using
 
 Add to the settings.xml of your maven:
 ```xml
@@ -50,7 +50,7 @@ Add to the settings.xml of your maven:
     <profile>
       <id>osgiliath-exec</id>
       <properties>
-        <mavenSettingsPath>/usr/share/maven/conf/settings.xml</mavenSettingsPath>
+        <mavenSettings.location>/usr/share/maven/conf/settings.xml</mavenSettings.location>
       </properties>
     </profile>
   </profiles>
