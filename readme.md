@@ -42,8 +42,10 @@ Osgiliath EF is fully Apache 2.0 License so feel free to use, modify, sell... Ju
 
 
 # Contributor
-In order to contribute: Clone the repo, install Maven, Java, Npm and Bower, then run mvn clean install on the root...
-On Mac, add a java.home property in your Maven settings.xml pointing to your JDK installation (mandatory for lombok)
+In order to contribute: Clone the repo, install Maven, Java, Npm and Bower.
+Then, add a property mavenSettings.location property pointing to your settings file in this settings file (in an active pofile).
+Finally run mvn clean install on the root...
+On Mac, add a java.home property in your Maven settings.xml pointing to your JDK installation (mandatory for lombok).
 We'll accept most of contributions in a very short time so don't be shy!
 
 Enjoy Osgiliath coding!
