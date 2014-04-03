@@ -1,4 +1,4 @@
-angular.module('hello', [ 'ui.bootstrap', 'commonapp' ]).directive('hellowindow',
+angular.module('hello', [ 'ui.bootstrap', 'commonapp', 'ngRoute' ]).directive('hellowindow',
 		function() {
 			console.log('loaded hello module');
 			return {

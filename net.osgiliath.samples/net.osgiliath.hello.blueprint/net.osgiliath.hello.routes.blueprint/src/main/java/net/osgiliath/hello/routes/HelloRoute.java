@@ -71,7 +71,7 @@ public class HelloRoute extends RouteBuilder {
 								.put("forceTopLevelObject", "true").build()))
 				.to("{{hello.helloJaxRSEndPoint}}");
 
-		from("direct://helloObjectPOST").doTry().log("registering hello ${body}")
+		from("direct:helloObjectPOST").doTry().log("registering hello ${body}")
 				.setHeader(Exchange.HTTP_METHOD, constant("POST"))
 				.unmarshal(helloObjectJSonFormat)
 				.marshal(jaxBDataFormat)

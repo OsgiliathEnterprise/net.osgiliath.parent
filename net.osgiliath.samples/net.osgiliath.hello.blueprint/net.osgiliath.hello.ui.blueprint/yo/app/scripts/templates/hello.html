@@ -4,11 +4,21 @@
 			<label id="helloFieldLabel" for="helloInput" class="control-label">Message</label>
 			<div id="helloInputDiv" class="control">
 				<input type="text" id="helloInput" placeholder="Hello message"
-					ng-model="helloMessage"/>
+					ng-model="helloMessage" />
 			</div>
 			<div id="loginModalFooter">
 				<input type="submit" id="helloButton" class="btn" value="Say hello" />
 			</div>
 		</div>
+	</form>
+	<form id="helloResultForm" ng-submit="refreshHello()">
+	<table id="helloResult" class="table table-striped">
+		<tr ng-repeat="hello in helloMessages">
+		<td>{{hello}}</td>
+		</tr>
+	</table>
+	<div id="helloResultModalFooter">
+				<input type="submit" id="refreshButton" class="btn" value="Refresh hello" />
+			</div>
 	</form>
 </div>

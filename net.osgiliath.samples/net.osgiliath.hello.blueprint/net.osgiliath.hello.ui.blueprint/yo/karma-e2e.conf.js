@@ -17,7 +17,8 @@ var e2e = function(config) {
 			'app/scripts/services/stompservice.js',
 			'app/scripts/directives/hello.js',
 			'app/scripts/controllers/hello.js', 'test/e2e/indexTest.js' ]);
-
+	config.proxies = {
+		'/' : 'http://localhost:9001/'
 	// list of files to exclude
 
 	// test results reporter to use

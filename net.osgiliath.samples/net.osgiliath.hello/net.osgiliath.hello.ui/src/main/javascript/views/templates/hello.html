@@ -13,8 +13,8 @@
 	</form>
 	<form id="helloResultForm" ng-submit="refreshHello()">
 	<table id="helloResult" class="table table-striped">
-		<tr>
-		<td ng-repeat="hello in helloMessages">{{hello}}</td>
+		<tr ng-repeat="hello in helloMessages">
+		<td>{{hello}}</td>
 		</tr>
 	</table>
 	<div id="helloResultModalFooter">
