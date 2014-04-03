@@ -39,3 +39,27 @@ It embed a descriptor allowing you to deploy an entire app in a command.
 
 ### Technologies
 Karaf features
+
+### Building/using
+
+Add to the settings.xml of your maven:
+```xml
+<settings>
+  [...]
+  <profiles>
+    <profile>
+      <id>osgiliath-exec</id>
+      <properties>
+        <mavenSettings.location>/usr/share/maven/conf/settings.xml</mavenSettings.location>
+      </properties>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>osgiliath-exec</activeProfile>
+  </activeProfiles>
+</settings>
+```
+If you're on a Mac, you've also to add a java.home property pointing on your jdk 1.7 installation root.
+
+
