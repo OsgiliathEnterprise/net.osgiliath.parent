@@ -56,8 +56,6 @@
 	</camelContext>
 	<!-- TODO route declaration -->
 	<bean id="helloRoute" class="net.osgiliath.hello.routes.HelloRoute">
-		<property name="playerAggregationStrategy" ref="playerAggregationStrategy"></property>
-		<property name="uriToXmlObjectAggregationStrategy" ref="uriToXmlObjectAggregationStrategy"></property>
 		<property name="thrownExceptionMessageToInBodyProcessor" ref="thrownExceptionMessageToInBodyProcessor"></property>
 	</bean>
 
