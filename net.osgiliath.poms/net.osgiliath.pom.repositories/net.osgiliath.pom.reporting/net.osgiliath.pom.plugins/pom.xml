@@ -1005,7 +1005,7 @@
 		<eclipselink.version>2.4.2</eclipselink.version>
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<features-maven-plugin.version>2.2.5</features-maven-plugin.version>
-		<jacoco.plugin.version>0.6.4.201312101107</jacoco.plugin.version>
+		<jacoco.plugin.version>0.7.0.201403182114</jacoco.plugin.version>
 		<karaf.version>3.0.0</karaf.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>

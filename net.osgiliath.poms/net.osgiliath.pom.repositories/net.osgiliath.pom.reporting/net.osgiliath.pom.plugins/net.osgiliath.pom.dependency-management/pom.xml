@@ -1685,7 +1685,7 @@
 		<org.glassfish.javax.annotation.version>3.1.1</org.glassfish.javax.annotation.version>
 		<org.glassfish.javax.json.version>1.0.3</org.glassfish.javax.json.version>
 		<org.hibernate.validator.version>5.0.2.Final</org.hibernate.validator.version>
-		<org.jacoco.agent.version>0.6.5-SNAPSHOT</org.jacoco.agent.version>
+		<org.jacoco.agent.version>0.7.0.201403182114</org.jacoco.agent.version>
 		<org.jboss.logging.version>3.1.3.GA</org.jboss.logging.version>
 		<org.jboss.weld.version>2.1.1.Final</org.jboss.weld.version>
 		<org.jcloud.karaf.version>1.4.0</org.jcloud.karaf.version>
