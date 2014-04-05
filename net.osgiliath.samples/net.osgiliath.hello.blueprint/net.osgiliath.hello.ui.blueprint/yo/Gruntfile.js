@@ -78,7 +78,7 @@ module.exports = function (grunt) {
         options: {
           port: 9001,
           base: [
-            '.tmp',
+            '../target/.tmp',
             'test',
             '<%= yeoman.app %>'
           ]
@@ -115,13 +115,13 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '.tmp',
+            '../target/.tmp',
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*'
           ]
         }]
       },
-      server: '.tmp'
+      server: '../target/.tmp'
     },
 
     // Add vendor prefixed styles
@@ -132,9 +132,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: '../target/.tmp/styles/',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '../target/.tmp/styles/'
         }]
       }
     },
@@ -154,7 +154,7 @@ module.exports = function (grunt) {
     compass: {
       options: {
         sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
+        cssDir: '../target/.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
@@ -256,9 +256,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
+          cwd: '../target/.tmp/concat/scripts',
           src: '*.js',
-          dest: '.tmp/concat/scripts'
+          dest: '../target/.tmp/concat/scripts'
         }]
       }
     },
@@ -289,7 +289,7 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
-          cwd: '.tmp/images',
+          cwd: '../target/.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
         }]
@@ -297,7 +297,7 @@ module.exports = function (grunt) {
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
+        dest: '../target/.tmp/styles/',
         src: '{,*/}*.css'
       }
     },

@@ -13,11 +13,19 @@ var unit = function(config) {
 	};
 	config.frameworks = [ "jasmine" ];
 	config.files = shared.sharedfiles.concat([
-			'app/scripts/services/stompservice.js',
-			'app/scripts/directives/hello.js',
-			'app/scripts/controllers/hello.js',
-			/* 'test/mock/*.js', */'test/spec/**/*.js' ]);
+			unit.mainfolder + 'scripts/services/stompservice.js',
+			unit.mainfolder + 'scripts/directives/hello.js',
+			unit.mainfolder + 'scripts/controllers/hello.js',
+			unit.bowercomponent + 'angular-mocks/angular-mocks.js',
+			/* 'test/mock/*.js', */unit.testfolder + '/spec/**/*.js' ]);
 	config.urlRoot = '/__unit/';
+	config.port = 8081;
+	config.proxies = {
+			'/' : 'http://localhost:9001/'
+	};
 };
+unit.mainfolder = 'app/';
+unit.bowercomponent = shared.mainfolder + 'bower_components/';
+unit.testfolder = 'test/';
 
 module.exports = unit;

@@ -24,6 +24,7 @@ var e2e = function(config) {
 	// test results reporter to use
 	// possible values: dots || progress || growl
 
+}
 };
 
 module.exports = e2e;
