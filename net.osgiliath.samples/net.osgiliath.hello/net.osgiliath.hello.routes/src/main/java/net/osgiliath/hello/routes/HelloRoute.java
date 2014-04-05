@@ -61,29 +61,32 @@ public class HelloRoute extends RouteBuilder {
 		xmlJsonOptions.put(org.apache.camel.model.dataformat.XmlJsonDataFormat.SKIP_NAMESPACES, "true");
 		xmlJsonOptions.put(org.apache.camel.model.dataformat.XmlJsonDataFormat.REMOVE_NAMESPACE_PREFIXES, "true");
 		
-		
-		
 		from("{{hello.helloJMSEntryPoint}}").log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
-				.filter(header("webSocketMsgType").isNotEqualTo("heartBeat"))
-				.choice()
+		.choice()
 				.when(header("httpRequestType").isEqualTo("POST"))
-				.to("direct:helloObjectPOST")
-				.endChoice()
-				.when(header("httpRequestType").isEqualTo("GET"))
-				.to("direct:helloObjectGET")
+				.to("direct:persistObject")
 				.endChoice()
 				.otherwise()
 				.setBody(
 						simple("{error:  'Command not supported for the JaxRS queue'}"))
 				.to("direct:toError");
+		
+		from("direct:persistObject").setHeader(Exchange.HTTP_METHOD, constant("POST"))
+		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
+		.unmarshal(helloObjectJSonFormat)
+		.marshal(jaxBDataFormat)
+		.log(LoggingLevel.INFO, "marshalled: ${body}")
+		.doTry()
+		.inOnly("{{net.osgiliath.hello.business.url.helloservice}}/hello")
+		.to("direct:updateTopic")
+		.doCatch(Exception.class).log(LoggingLevel.WARN, "Exception: " + exceptionMessage().toString())
+		.to("direct:helloValidationError").end();
 
-		from("direct:helloObjectGET")
-				.setHeader(Exchange.HTTP_METHOD, constant("GET"))
-				.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
-				.inOut("{{net.osgiliath.hello.business.url.helloservice}}/hello")
-				
-				.to("direct:marshallandsend")
-				;
+		from("direct:updateTopic").setHeader(Exchange.HTTP_METHOD, constant("GET"))
+		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
+		.inOut("{{net.osgiliath.hello.business.url.helloservice}}/hello")
+		.to("direct:marshallandsend");
+		
 		from("direct:marshallandsend").process(new Processor() {
 			
 			@Override
@@ -101,16 +104,8 @@ public class HelloRoute extends RouteBuilder {
 						.put("forceTopLevelObject", "true").build()))
 		.log(LoggingLevel.INFO, "marshalled: ${body}")
 		.to("{{hello.helloJMSEndPoint}}");
-		from("direct:helloObjectPOST").log("registering hello ${body}")
-				.setHeader(Exchange.HTTP_METHOD, constant("POST"))
-				.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
-				.unmarshal(helloObjectJSonFormat)
-				.marshal(jaxBDataFormat)
-				.log(LoggingLevel.INFO, "marshalled: ${body}")
-				.doTry()
-				.to("{{net.osgiliath.hello.business.url.helloservice}}/hello")
-				.doCatch(Exception.class).log(LoggingLevel.WARN, "Exception: " + exceptionMessage().toString())
-				.to("direct:helloValidationError").end();
+		
+		
 		
 		from("direct:helloValidationError")
 		.process(thrownExceptionMessageToInBodyProcessor)

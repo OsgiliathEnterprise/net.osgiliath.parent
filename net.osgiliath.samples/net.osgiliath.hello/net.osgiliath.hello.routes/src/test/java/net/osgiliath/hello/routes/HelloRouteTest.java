@@ -69,9 +69,9 @@ public class HelloRouteTest {
 		helloEntryPoint.sendBodyAndHeaders(model.toString(), headers);
 		verify(helloService).persistHello((HelloObject) anyObject());
 		// set mock expectations
-		headers = new HashMap();
-		headers.put("httpRequestType",Builder.constant("GET"));
-		helloEntryPoint.sendBodyAndHeaders("", headers);
+//		headers = new HashMap();
+//		headers.put("httpRequestType",Builder.constant("GET"));
+//		helloEntryPoint.sendBodyAndHeaders("", headers);
 		helloRouteMock.expectedMessageCount(1);
 		helloRouteMock.assertIsSatisfied();
 	}

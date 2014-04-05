@@ -11,14 +11,14 @@
 			</div>
 		</div>
 	</form>
-	<form id="helloResultForm" ng-submit="refreshHello()">
+	<!-- <form id="helloResultForm" ng-submit="refreshHello()"> -->
 	<table id="helloResult" class="table table-striped">
-		<tr ng-repeat="hello in helloMessages">
+		<tr ng-repeat="hello in helloMessages track by $index">
 		<td>{{hello}}</td>
 		</tr>
 	</table>
-	<div id="helloResultModalFooter">
+	<!-- <div id="helloResultModalFooter">
 				<input type="submit" id="refreshButton" class="btn" value="Refresh hello" />
 			</div>
-	</form>
+	</form> -->
 </div>
