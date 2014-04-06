@@ -15,14 +15,12 @@ angular.module('hello').controller(
 							var body = message.body;
 							console.log('helloMessage received: ' + body);
 							var json = JSON.parse(body);
-							var hellos = json.hellos;
-							if (!hellos == undefined) {
+							var hellos = json.collection;
+							if (hellos != undefined) {
 								$scope.helloMessages = [];
 								console.log('hellos: ' + hellos);
-								var collection = hellos.collection;
-								console.log('collection: ' + collection);
-								for ( var i in collection) {
-									$scope.helloMessages.push(collection[i]);
+								for ( var i in hellos) {
+									$scope.helloMessages.push(hellos[i]);
 								}
 								$scope.$apply();
 							}

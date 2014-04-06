@@ -20,7 +20,8 @@ package conf;
  * #L%
  */
 
-import javax.enterprise.context.ApplicationScoped;
+import helpers.cxf.exception.handling.camel.processor.ThrownExceptionMessageToInBodyProcessor;
+
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -28,7 +29,11 @@ import javax.inject.Named;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.camel.Component;
-import org.apache.camel.cdi.ContextName;
+import org.apache.camel.Processor;
+import org.apache.camel.component.http.HttpComponent;
+import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
+import org.apache.camel.spi.DataFormat;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,11 +44,47 @@ public class Components {
 	@Inject
 	@OsgiService(filter = "(component-type=jms)", dynamic = true)
 	private Component jms;
-
+	
+	@Inject
+	@OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
+	private Component jmsXA;
+		
+	@Produces
+	@Named("thrownExceptionMessageToInBodyProcessor")
+	public Processor getThrownExceptionMessageToInBodyProcessor() {
+		LOG.info("Inject Processor in body");
+		return new ThrownExceptionMessageToInBodyProcessor();
+	}
 	@Produces
 	@Named("jms")
 	public Component getJms() {
-		LOG.info("Inject jms route");
+		LOG.info("Inject jms");
 		return jms;
+	}
+
+	@Produces
+	@Named("jmsXA")
+	public Component getJmsXA() {
+		LOG.info("Inject jmsXA");
+		return jmsXA;
+	}
+	
+	@Produces
+	@Named("http")
+	public Component getHttp() {
+		LOG.info("Inject httpComponent");
+		return new HttpComponent();
+	}
+	
+	
+	@Produces
+	@Named("json")
+	public DataFormat getJacksonDataFormat() {
+		return new JacksonDataFormat();
+	}
+	@Produces
+	@Named("xmljson")
+	public DataFormat getXmlJsonDataFormat() {
+		return new XmlJsonDataFormat();
 	}
 }

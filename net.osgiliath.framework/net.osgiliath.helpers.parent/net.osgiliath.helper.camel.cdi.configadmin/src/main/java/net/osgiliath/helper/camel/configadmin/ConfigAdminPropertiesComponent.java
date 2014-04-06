@@ -21,6 +21,7 @@ package net.osgiliath.helper.camel.configadmin;
  */
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Specializes;
 import javax.inject.Named;
 
 import net.osgiliath.helper.camel.configadmin.internal.ConfigAdminPropertiesParser;
@@ -36,8 +37,8 @@ import org.ops4j.pax.cdi.api.Property;
 		@Property(name="component-type",value="configAdminProperties" )
 })
 @ApplicationScoped
-@Named("properties")
-public class ConfigAdminPropertiesComponent extends PropertiesComponent {
+@Specializes
+public class ConfigAdminPropertiesComponent extends CdiPropertiesComponent {
 
 	public ConfigAdminPropertiesComponent() {
 		

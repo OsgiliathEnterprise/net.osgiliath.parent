@@ -25,6 +25,8 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.xml.bind.JAXBContext;
 
 import lombok.Setter;
@@ -35,20 +37,28 @@ import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.cdi.ContextName;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.camel.model.dataformat.XmlJsonDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.apache.commons.io.IOUtils;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 //TODO sample route, see apache camel and EIP keyword on the net ;)
+@ContextName
 public class HelloRoute extends RouteBuilder {
 	
 	private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
 			HelloObject.class, Hellos.class);
+	@Inject
+	@Named("thrownExceptionMessageToInBodyProcessor")
 	@Setter
 	private Processor thrownExceptionMessageToInBodyProcessor;
+	@Inject
+	@Named("xmljson")
+	private DataFormat xmljson;
 	@Override
 	public void configure() throws Exception {
 		// initialize a jaxb context to xml marshall
@@ -99,10 +109,9 @@ public class HelloRoute extends RouteBuilder {
 				exchange.getIn().setBody(theString);
 				
 			}
-		}).log("hello data retrieved from JaxRS : ${in.body}").marshal()
-		.xmljson(
-				Maps.newHashMap(ImmutableMap.<String, String> builder()
-						.put("forceTopLevelObject", "true").build()))
+		}).log("hello data retrieved from JaxRS : ${in.body}").marshal(xmljson)
+//		.xmljson(Maps.newHashMap(ImmutableMap.<String, String> builder()
+//				.put("forceTopLevelObject", "true").build()))
 		.log(LoggingLevel.INFO, "marshalled: ${body}")
 		;
 		
