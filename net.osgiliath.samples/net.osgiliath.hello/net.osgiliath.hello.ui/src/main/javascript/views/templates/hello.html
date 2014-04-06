@@ -4,7 +4,7 @@
 			<label id="helloFieldLabel" for="helloInput" class="control-label">Message</label>
 			<div id="helloInputDiv" class="control">
 				<input type="text" id="helloInput" placeholder="Hello message"
-					ng-model="helloMessage" />
+					ng-model="helloMessage" /><span class="label label-important">{{errors}}</span>
 			</div>
 			<div id="loginModalFooter">
 				<input type="submit" id="helloButton" class="btn" value="Say hello" />

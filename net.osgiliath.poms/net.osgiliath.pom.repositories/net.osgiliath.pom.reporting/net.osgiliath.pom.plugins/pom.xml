@@ -213,9 +213,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
-					<configuration>
-						<argLine>${jcoverage.command}</argLine>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -825,6 +822,7 @@
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
 					<version>${jacoco.plugin.version}</version>
+					<inherited>true</inherited>
 					<executions>
 						<execution>
 							<id>pre-test</id>
@@ -833,10 +831,9 @@
 							</goals>
 							<phase>process-sources</phase>
 							<configuration>
-								<propertyName>jcoverage.command</propertyName>
 								<destFile>${sonar.jacoco.reportPath}</destFile>
 								<includes>
-									<include>${project.groupId}.*</include>
+									<include>${project.artifactId}.*</include>
 								</includes>
 								<excludes>
 									<exclude>*.itests.*</exclude>
@@ -863,10 +860,10 @@
 							</goals>
 							<phase>pre-integration-test</phase>
 							<configuration>
-								<propertyName>jcoverage.command</propertyName>
+							<propertyName>jcoverage.command</propertyName>
 								<destFile>${sonar.jacoco.itReportPath}</destFile>
 								<includes>
-									<include>${project.parent.artifactId}.*</include>
+									<include>${project.artifactId}.*</include>
 								</includes>
 								<excludes>
 									<exclude>*.itests.*</exclude>

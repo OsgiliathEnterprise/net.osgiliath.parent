@@ -1,7 +1,10 @@
 Import-Package: javax.ws.rs.ext,\
- javax.ws.rs.core,\
- org.apache.camel,\
- org.apache.camel.component.cxf,\
- org.jdom2,\
- org.jdom2.output,\
- org.jdom2.input
+	javax.ws.rs.core,\
+	org.apache.camel,\
+	org.apache.camel.component.cxf,\
+	org.jdom2,\
+	org.jdom2.output,\
+	org.jdom2.input,\
+	*
+Bundle-Activator: helpers.cxf.exception.handling.CxfExceptionHandlerActivator
+Private-Package: helpers.cxf.exception.handling

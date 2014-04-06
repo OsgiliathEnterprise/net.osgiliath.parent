@@ -21,7 +21,6 @@ package net.osgiliath.validator.osgi;
  */
 
 import javax.validation.Validation;
-
 import javax.validation.ValidatorFactory;
 import javax.validation.bootstrap.ProviderSpecificBootstrap;
 import javax.validation.spi.ValidationProvider;
@@ -34,17 +33,19 @@ import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+import org.osgi.util.tracker.ServiceTracker;
 
 public class JSR303Activator implements BundleActivator {
-	private OsgiServiceValidationProviderTracker tracker;
+	private ServiceTracker tracker;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
 
-		tracker = new OsgiServiceValidationProviderTracker(context,
-				ValidationProvider.class, null);
+		tracker = new ServiceTracker(context,
+				ValidationProvider.class, new OsgiServiceValidationProviderTracker(context));
 
 		tracker.open();
+		OsgiServiceValidationProviderTracker.handleInitialReferences(context);
 		ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
 				.byProvider(HibernateValidator.class);
 //

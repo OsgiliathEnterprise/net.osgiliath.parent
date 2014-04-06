@@ -63,7 +63,7 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	protected static String paxRunnerVmOption = null;
 	static {
 		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+		 //paxRunnerVmOption = DEBUG_VM_OPTION;
 
 	}
 
@@ -73,7 +73,7 @@ public abstract class AbstractKarafPaxExamConfiguration {
 		Option[] base = options(
 				cleanCaches(),
 				
-				keepRuntimeFolder(),
+				//keepRuntimeFolder(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")

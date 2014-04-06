@@ -1,10 +1,10 @@
-package net.osgiliath.validator.osgi.internal;
+package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.trackers;
 
 /*
  * #%L
- * net.osgiliath.helpers.validation.osgi.services
+ * net.osgiliath.helpers.cdi.cxf.jaxrs
  * %%
- * Copyright (C) 2013 Osgiliath corp
+ * Copyright (C) 2013 - 2014 Osgiliath
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,10 +22,11 @@ package net.osgiliath.validator.osgi.internal;
 
 import java.util.Collection;
 
-import javax.validation.spi.ValidationProvider;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.MessageBodyReader;
+import javax.ws.rs.ext.MessageBodyWriter;
 
-
-
+import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
@@ -33,46 +34,48 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
-public class OsgiServiceValidationProviderTracker implements ServiceTrackerCustomizer {
-	private BundleContext context;
+public class MessageBodyWriterProvidersServiceTracker implements ServiceTrackerCustomizer {
 
-	public OsgiServiceValidationProviderTracker(BundleContext context) {
+	private BundleContext context;
+	
+	public MessageBodyWriterProvidersServiceTracker(BundleContext context) {
 		this.context = context;
 	}
 
 	// callback method if MyClass service object is registered
 	public Object addingService(ServiceReference reference) {
 		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof ValidationProvider<?>) {
-			if (!HibernateValidationOSGIServicesProviderResolver.getInstance()
-					.getValidationProviders().contains(serviceObject))
-				HibernateValidationOSGIServicesProviderResolver.getInstance()
-						.getValidationProviders()
-						.add((ValidationProvider<?>) serviceObject);
-		}
+		if (serviceObject instanceof MessageBodyWriter<?>) {
+			ProvidersServiceRegistry.getInstance().getWriters()
+					.add((MessageBodyWriter) serviceObject);
 
-		return reference;
+		}
+		
+
+		return serviceObject;
 		// return service object
 	}
 
 	// callback if necessary class is deregistred
 	public void removedService(ServiceReference reference, Object service) {
 		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof ValidationProvider<?>) {
-			if (HibernateValidationOSGIServicesProviderResolver.getInstance()
-					.getValidationProviders().contains(serviceObject))
-				HibernateValidationOSGIServicesProviderResolver.getInstance()
-						.getValidationProviders()
-						.remove((ValidationProvider<?>) serviceObject);
+		if (serviceObject instanceof MessageBodyWriter<?>) {
+			ProvidersServiceRegistry.getInstance().getWriters()
+					.remove((MessageBodyWriter) serviceObject);
+
 		}
+		
 	}
+	
 	public static void handleInitialReferences(BundleContext context)
 			throws InvalidSyntaxException {
-		Collection<ServiceReference<ValidationProvider>> refs = context
-				.getServiceReferences(ValidationProvider.class, null);
-		for (ServiceReference<ValidationProvider> reference : refs) {
-			HibernateValidationOSGIServicesProviderResolver.getInstance().getValidationProviders()
-					.add(context.getService(reference));
+		Collection<ServiceReference<MessageBodyWriter>> refs = context
+				.getServiceReferences(MessageBodyWriter.class, null);
+		for (ServiceReference<MessageBodyWriter> reference : refs) {
+			MessageBodyWriter svc = context.getService(reference);
+			svc.toString();
+			ProvidersServiceRegistry.getInstance().getWriters()
+					.add(svc);
 		}
 	}
 
@@ -81,5 +84,4 @@ public class OsgiServiceValidationProviderTracker implements ServiceTrackerCusto
 		// TODO Auto-generated method stub
 		
 	}
-
 }

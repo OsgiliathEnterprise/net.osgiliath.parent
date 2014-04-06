@@ -20,20 +20,13 @@ package net.osgiliath.hello.business.impl.services.impl;
  * #L%
  */
 
+import helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
+
 import java.util.Collection;
-import java.util.Set;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-import javax.validation.ValidationException;
-import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
-
-import org.ops4j.pax.cdi.api.OsgiService;
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +34,11 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloObject;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
-import net.osgiliath.validator.osgi.ValidatorHelper;
+
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
+import org.apache.cxf.jaxrs.provider.json.JSONProvider;
+import org.ops4j.pax.cdi.api.OsgiService;
+import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -54,7 +51,7 @@ import com.google.common.collect.Lists;
 @Slf4j
 //@Default @OsgiServiceProvider(classes= {HelloServiceJaxRS.class})
 @OsgiServiceProvider
-@CXFEndpoint(url="/helloService")
+@CXFEndpoint(url="/helloService", providersClasses= {JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class})
 public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.HelloServiceJaxRS {
 	//TODO you can use annotation intra bundle, but its not so compatible with blueprint xml file @Inject @OsgiService(dynamic=true)
 	@Setter

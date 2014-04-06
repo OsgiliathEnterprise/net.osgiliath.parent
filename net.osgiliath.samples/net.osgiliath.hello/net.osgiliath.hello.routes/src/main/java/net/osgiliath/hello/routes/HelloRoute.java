@@ -85,9 +85,10 @@ public class HelloRoute extends RouteBuilder {
 		from("direct:updateTopic").setHeader(Exchange.HTTP_METHOD, constant("GET"))
 		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
 		.inOut("{{net.osgiliath.hello.business.url.helloservice}}/hello")
-		.to("direct:marshallandsend");
+		.inOut("direct:marshall")
+		.to("{{hello.helloJMSEndPoint}}");
 		
-		from("direct:marshallandsend").process(new Processor() {
+		from("direct:marshall").process(new Processor() {
 			
 			@Override
 			public void process(Exchange exchange) throws Exception {
@@ -103,14 +104,14 @@ public class HelloRoute extends RouteBuilder {
 				Maps.newHashMap(ImmutableMap.<String, String> builder()
 						.put("forceTopLevelObject", "true").build()))
 		.log(LoggingLevel.INFO, "marshalled: ${body}")
-		.to("{{hello.helloJMSEndPoint}}");
+		;
 		
 		
 		
 		from("direct:helloValidationError")
 		.process(thrownExceptionMessageToInBodyProcessor)
-		.setBody(simple("{\"error\": \"${in.body}\"}"))
-		.log("Subscription error: ${in.body}").to("{{hello.errors}}");
+		.setBody(simple("{\"error\": \"${body}\"}"))
+		.log("Subscription error: ${body}").to("{{hello.errors}}");
 
 	}
 
