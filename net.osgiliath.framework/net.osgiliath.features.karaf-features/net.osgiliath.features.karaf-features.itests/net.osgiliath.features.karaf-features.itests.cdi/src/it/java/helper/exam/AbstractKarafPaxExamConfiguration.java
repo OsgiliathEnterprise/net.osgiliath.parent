@@ -20,39 +20,29 @@ package helper.exam;
  * #L%
  */
 
-import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
-import static org.ops4j.pax.exam.CoreOptions.frameworkProperty;
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.maven;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.keepRuntimeFolder;
 import static org.ops4j.pax.exam.CoreOptions.options;
+import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.keepRuntimeFolder;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
-import static org.ops4j.pax.tinybundles.core.TinyBundles.withBnd;
-import static org.ops4j.pax.exam.CoreOptions.streamBundle;
 
 import java.io.File;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 
 import javax.inject.Inject;
 
-import net.osgiliath.cdi.IConsumer;
-import net.osgiliath.cdi.IProvider;
-import net.osgiliath.cdi.impl.Consumer;
-import net.osgiliath.cdi.impl.Provider;
-
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
+import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
-import org.ops4j.pax.tinybundles.core.TinyBundles;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +56,6 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	@Inject
 	protected BundleContext bundleContext;
 	protected static final String COVERAGE_COMMAND = "coverage.command";
-	private static final String KARAF_VERSION = "karaf-version";
 	private static final Logger LOG = LoggerFactory.getLogger(AbstractKarafPaxExamConfiguration.class);
 
 	// the JVM option to set to enable remote debugging
@@ -90,9 +79,11 @@ public abstract class AbstractKarafPaxExamConfiguration {
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
-										.versionAsInProject())
-						.karafVersion(System.getProperty(KARAF_VERSION)).name("Apache Karaf"),
-				//		keepRuntimeFolder(),
+										.versionAsInProject()).name("Apache Karaf")
+						.karafVersion(MavenUtils.getArtifactVersion("org.apache.karaf", "apache-karaf"))
+						.unpackDirectory(new File("target/exam/unpack/")),
+						keepRuntimeFolder(),
+						cleanCaches(),
 				// the current project (the bundle under test)
 				features(
 						maven().artifactId(

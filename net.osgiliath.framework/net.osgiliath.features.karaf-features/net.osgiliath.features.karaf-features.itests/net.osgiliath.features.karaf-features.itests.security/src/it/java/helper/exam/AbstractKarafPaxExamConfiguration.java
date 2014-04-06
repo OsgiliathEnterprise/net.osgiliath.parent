@@ -37,21 +37,22 @@ import javax.inject.Inject;
 
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
+import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
 import org.osgi.framework.BundleContext;
+
 /**
  * General integration test declaration
+ * 
  * @author charliemordant
- *
+ * 
  */
 public abstract class AbstractKarafPaxExamConfiguration {
-	
 
 	protected static final String COVERAGE_COMMAND = "coverage.command";
-	private static final String KARAF_VERSION = "karaf-version";
 
 	// the JVM option to set to enable remote debugging
 	@SuppressWarnings("UnusedDeclaration")
@@ -69,52 +70,56 @@ public abstract class AbstractKarafPaxExamConfiguration {
 
 	@Configuration
 	public Option[] config() {
-//		final String bundleFileName = System.getProperty(BUNDLE_JAR_SYS_PROP);
-//		final File bundleFile = new File("target" + File.separator
-//				+ bundleFileName);
-//		
-//		if (!bundleFile.canRead()) {
-//			throw new IllegalArgumentException("Cannot read from bundle file "
-//					+ bundleFileName + " specified in the "
-//					+ BUNDLE_JAR_SYS_PROP + " system property");
-//		}
+		// final String bundleFileName =
+		// System.getProperty(BUNDLE_JAR_SYS_PROP);
+		// final File bundleFile = new File("target" + File.separator
+		// + bundleFileName);
+		//
+		// if (!bundleFile.canRead()) {
+		// throw new IllegalArgumentException("Cannot read from bundle file "
+		// + bundleFileName + " specified in the "
+		// + BUNDLE_JAR_SYS_PROP + " system property");
+		// }
 		Option[] base = options(
-				//cleanCaches(),
-				
-				 //keepRuntimeFolder(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
 										.versionAsInProject())
-						.karafVersion(System.getProperty(KARAF_VERSION)).name("Apache Karaf"),
+						.name("Apache Karaf")
+						.karafVersion(
+								MavenUtils.getArtifactVersion(
+										"org.apache.karaf", "apache-karaf"))
+						.unpackDirectory(new File("target/exam/unpack/")),
+				keepRuntimeFolder(),
+				cleanCaches(),
 				// the current project (the bundle under test)
-					//	CoreOptions.bundle(bundleFile.toURI().toString()),
-						features(
-								maven().artifactId("net.osgiliath.features.karaf-features.itests.feature").groupId("net.osgiliath.framework").type("xml")
-										.classifier("features").versionAsInProject(),
-										"osgiliath-itests-security"),
-						
-						
-				//frameworkProperty("osgi.clean").value("true"),
-//				systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
-//						.value("INFO"),
+				// CoreOptions.bundle(bundleFile.toURI().toString()),
+				features(
+						maven().artifactId(
+								"net.osgiliath.features.karaf-features.itests.feature")
+								.groupId("net.osgiliath.framework").type("xml")
+								.classifier("features").versionAsInProject(),
+						"osgiliath-itests-security"),
+
+				// frameworkProperty("osgi.clean").value("true"),
+				// systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
+				// .value("INFO"),
 				editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 						"org.ops4j.pax.url.mvn.settings",
 						System.getProperty("mavenSettingsPath")),
-				logLevel(LogLevel.INFO), 
-				 junitBundles(),
-				 addCodeCoverageOption(),
-//				 addJVMOptions(),
-				 addExtraOptions());
-		
+				logLevel(LogLevel.INFO), junitBundles(),
+				addCodeCoverageOption(),
+				// addJVMOptions(),
+				addExtraOptions());
+
 		final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions
 				.vmOption(paxRunnerVmOption) : null;
 		return OptionUtils.combine(base, vmOption);
 	}
 
 	private Option addJVMOptions() {
-		String memVmOptsString="-Xmx1024m -Xms128m -XX:MaxPermSize=512m";
+		String memVmOptsString = "-Xmx1024m -Xms128m -XX:MaxPermSize=512m";
 		return CoreOptions.vmOption(memVmOptsString);
 	}
 
@@ -129,7 +134,5 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	protected Option addExtraOptions() {
 		return new DefaultCompositeOption();
 	}
-	
-	
 
 }

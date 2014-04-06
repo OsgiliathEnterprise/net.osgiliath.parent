@@ -37,6 +37,7 @@ import javax.inject.Inject;
 
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
+import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
@@ -71,15 +72,15 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	public Option[] config() {
 		
 		Option[] base = options(
-				cleanCaches(),
-				
-				//keepRuntimeFolder(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
-										.versionAsInProject())
-						.karafVersion(System.getProperty(KARAF_VERSION)).name("Apache Karaf"),
+										.versionAsInProject()).name("Apache Karaf")
+										.karafVersion(MavenUtils.getArtifactVersion("org.apache.karaf", "apache-karaf"))
+										.unpackDirectory(new File("target/exam/unpack/")),
+										keepRuntimeFolder(),
+										cleanCaches(),
 				// the current project (the bundle under test)
 						features(
 								maven().artifactId(

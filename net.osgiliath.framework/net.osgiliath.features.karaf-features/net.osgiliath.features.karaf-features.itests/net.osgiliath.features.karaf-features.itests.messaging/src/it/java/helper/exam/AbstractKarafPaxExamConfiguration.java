@@ -37,26 +37,26 @@ import javax.inject.Inject;
 
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
+import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
 import org.osgi.framework.BundleContext;
+
 /**
  * General integration test declaration
+ * 
  * @author charliemordant
- *
+ * 
  */
 public abstract class AbstractKarafPaxExamConfiguration {
-	protected static final String BUNDLE_JAR_SYS_PROP = "project.bundle.file";
 
 	protected static final String COVERAGE_COMMAND = "coverage.command";
-	
 
 	// the JVM option to set to enable remote debugging
 	@SuppressWarnings("UnusedDeclaration")
 	protected static final String DEBUG_VM_OPTION = "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=31313";
-	private static final String KARAF_VERSION = "karaf-version";
 	// the actual JVM option set, extensions may implement a static
 	// initializer overwriting this value to have the configuration()
 	// method include it when starting the OSGi framework JVM
@@ -69,45 +69,46 @@ public abstract class AbstractKarafPaxExamConfiguration {
 
 	@Configuration
 	public Option[] config() {
-		
+
 		Option[] base = options(
-				cleanCaches(),
-				
-				//keepRuntimeFolder(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
 										.versionAsInProject())
-						.karafVersion(System.getProperty(KARAF_VERSION)).name("Apache Karaf"),
+						.name("Apache Karaf")
+						.karafVersion(
+								MavenUtils.getArtifactVersion(
+										"org.apache.karaf", "apache-karaf"))
+						.unpackDirectory(new File("target/exam/unpack/")),
+				keepRuntimeFolder(),
+				cleanCaches(),
 				// the current project (the bundle under test)
-						features(
-								maven().artifactId(
-										"net.osgiliath.features.karaf-features.itests.feature")
-										.groupId("net.osgiliath.framework").type("xml")
-										.classifier("features").versionAsInProject(),
-								"osgiliath-itests-messaging"),
-						
-						
+				features(
+						maven().artifactId(
+								"net.osgiliath.features.karaf-features.itests.feature")
+								.groupId("net.osgiliath.framework").type("xml")
+								.classifier("features").versionAsInProject(),
+						"osgiliath-itests-messaging"),
+
 				frameworkProperty("osgi.clean").value("true"),
-//				systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
-//						.value("INFO"),
+				// systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
+				// .value("INFO"),
 				editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 						"org.ops4j.pax.url.mvn.settings",
 						System.getProperty("mavenSettingsPath")),
-				logLevel(LogLevel.INFO), 
-				 junitBundles(),
-				 addCodeCoverageOption(),
-//				 addJVMOptions(),
-				 addExtraOptions());
-		
+				logLevel(LogLevel.INFO), junitBundles(),
+				addCodeCoverageOption(),
+				// addJVMOptions(),
+				addExtraOptions());
+
 		final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions
 				.vmOption(paxRunnerVmOption) : null;
 		return OptionUtils.combine(base, vmOption);
 	}
 
 	private Option addJVMOptions() {
-		String memVmOptsString="-Xmx1024m -Xms128m -XX:MaxPermSize=512m";
+		String memVmOptsString = "-Xmx1024m -Xms128m -XX:MaxPermSize=512m";
 		return CoreOptions.vmOption(memVmOptsString);
 	}
 
@@ -122,7 +123,5 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	protected Option addExtraOptions() {
 		return new DefaultCompositeOption();
 	}
-	
-	
 
 }

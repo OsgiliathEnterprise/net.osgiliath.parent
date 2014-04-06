@@ -35,6 +35,7 @@ import java.io.File;
 
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
+import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
@@ -47,11 +48,7 @@ import org.ops4j.pax.exam.options.DefaultCompositeOption;
  * 
  */
 public abstract class AbstractKarafPaxExamConfiguration {
-	protected static final String BUNDLE_JAR_SYS_PROP = "project.bundle.file";
-
 	protected static final String COVERAGE_COMMAND = "coverage.command";
-	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
-	protected static final String BUNDLE_ARTIFACT_ID = "bundle.artifactId";
 
 	// the JVM option to set to enable remote debugging
 	@SuppressWarnings("UnusedDeclaration")
@@ -63,30 +60,37 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	protected static String paxRunnerVmOption = null;
 	static {
 		// uncomment to enable debugging of this test class
-	//	 paxRunnerVmOption = DEBUG_VM_OPTION;
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
 
 	}
 
 	@Configuration
 	public Option[] config() {
-//		final String bundleFileName = System.getProperty(BUNDLE_JAR_SYS_PROP);
-//		final File bundleFile = new File("target" + File.separator
-//				+ bundleFileName);
-//
-//		if (!bundleFile.canRead()) {
-//			throw new IllegalArgumentException("Cannot read from bundle file "
-//					+ bundleFileName + " specified in the "
-//					+ BUNDLE_JAR_SYS_PROP + " system property");
-//		}
+		// final String bundleFileName =
+		// System.getProperty(BUNDLE_JAR_SYS_PROP);
+		// final File bundleFile = new File("target" + File.separator
+		// + bundleFileName);
+		//
+		// if (!bundleFile.canRead()) {
+		// throw new IllegalArgumentException("Cannot read from bundle file "
+		// + bundleFileName + " specified in the "
+		// + BUNDLE_JAR_SYS_PROP + " system property");
+		// }
 		Option[] base = options(
-				//cleanCaches(),
-				//keepRuntimeFolder(),
+				// cleanCaches(),
+				// keepRuntimeFolder(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
 										.versionAsInProject())
-						.karafVersion(System.getProperty("karaf.version")).name("Apache Karaf"),
+						.name("Apache Karaf")
+						.karafVersion(
+								MavenUtils.getArtifactVersion(
+										"org.apache.karaf", "apache-karaf"))
+						.unpackDirectory(new File("target/exam/unpack/")),
+				keepRuntimeFolder(),
+				cleanCaches(),
 				// the current project (the bundle under test)
 				features(
 						maven().artifactId(
@@ -94,19 +98,18 @@ public abstract class AbstractKarafPaxExamConfiguration {
 								.groupId("net.osgiliath.framework").type("xml")
 								.classifier("features").versionAsInProject(),
 						"osgiliath-itests-jpa-cdi"),
-				
-//						CoreOptions.bundle(bundleFile.toURI().toString()),
-						
-				//frameworkProperty("osgi.clean").value("true"),
+
+				// CoreOptions.bundle(bundleFile.toURI().toString()),
+
+				// frameworkProperty("osgi.clean").value("true"),
 				// systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
 				// .value("INFO"),
 				editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 						"org.ops4j.pax.url.mvn.settings",
 						System.getProperty("mavenSettingsPath")),
-				logLevel(LogLevel.INFO), 
-				junitBundles(),
+				logLevel(LogLevel.INFO), junitBundles(),
 				addCodeCoverageOption(),
-				//addJVMOptions(),
+				// addJVMOptions(),
 				addExtraOptions());
 
 		final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions

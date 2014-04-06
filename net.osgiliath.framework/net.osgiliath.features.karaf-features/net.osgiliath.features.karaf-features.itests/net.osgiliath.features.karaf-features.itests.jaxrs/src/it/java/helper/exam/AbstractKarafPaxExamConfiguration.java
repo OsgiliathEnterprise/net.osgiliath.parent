@@ -21,6 +21,7 @@ package helper.exam;
  */
 
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
+import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.keepRuntimeFolder;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.CoreOptions.options;
@@ -29,10 +30,13 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
+import java.io.File;
+
 import javax.inject.Inject;
 
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
+import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
@@ -68,17 +72,16 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	public Option[] config() {
 
 		Option[] base = options(
-				//cleanCaches(),
-				
-				//keepRuntimeFolder(),
+				cleanCaches(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
-										.versionAsInProject())
-						.karafVersion(System.getProperty(KARAF_VERSION)).name("Apache Karaf"),
+										.versionAsInProject()).name("Apache Karaf")
+										.karafVersion(MavenUtils.getArtifactVersion("org.apache.karaf", "apache-karaf"))
+										.unpackDirectory(new File("target/exam/unpack/")),
+										keepRuntimeFolder(),
 				// the current project (the bundle under test)
-						//CoreOptions.bundle(bundleFile.toURI().toString()),
 						features(
 								maven().artifactId(
 										"net.osgiliath.features.karaf-features.itests.feature")

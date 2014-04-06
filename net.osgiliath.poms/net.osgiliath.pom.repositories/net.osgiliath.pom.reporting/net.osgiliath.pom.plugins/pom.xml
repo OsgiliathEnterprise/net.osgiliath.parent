@@ -172,7 +172,6 @@
 								<systemPropertyVariables>
 									<coverage.command>${jcoverage.command}</coverage.command>
 									<mavenSettingsPath>${mavenSettings.location}</mavenSettingsPath>
-									<karaf-version>${karaf.version}</karaf-version>
 									<skipITs>${failsafe.skiptests}</skipITs>
 									<bundle.groupId>${project.groupId}</bundle.groupId>
 									<bundle.parent.artifactId>${project.parent.artifactId}</bundle.parent.artifactId>
