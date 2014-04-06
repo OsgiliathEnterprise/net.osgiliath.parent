@@ -54,7 +54,6 @@ import com.google.common.collect.Lists;
 @CXFEndpoint(url="/helloService", providersClasses= {JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class})
 public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.HelloServiceJaxRS {
 	//TODO you can use annotation intra bundle, but its not so compatible with blueprint xml file @Inject @OsgiService(dynamic=true)
-	@Setter
 	@Inject @OsgiService
 	private HelloObjectRepository helloObjectRepository;
 	//JSR 303 validator
@@ -85,6 +84,7 @@ public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.Hell
 	
 	@Override
 	public void deleteAll() {
+		log.info("deleting all datas");
 		helloObjectRepository.deleteAll();
 	}
 	

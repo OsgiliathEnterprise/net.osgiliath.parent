@@ -22,7 +22,6 @@ package net.osgiliath.hello.business.spi.services;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.executable.ValidateOnExecution;
 
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloObject;

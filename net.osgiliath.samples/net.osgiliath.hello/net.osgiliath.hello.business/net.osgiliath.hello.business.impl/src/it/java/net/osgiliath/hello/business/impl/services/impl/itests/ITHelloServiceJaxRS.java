@@ -21,6 +21,7 @@ package net.osgiliath.hello.business.impl.services.impl.itests;
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
@@ -60,15 +61,12 @@ import org.slf4j.LoggerFactory;
 public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 	private static Logger LOG = LoggerFactory.getLogger(ITHelloServiceJaxRS.class);
 	@Inject
-	private BundleContext bundleContext;
-	//Exported service via blueprint.xml
-	@Inject
 	@Filter(timeout = 400000)
 	private BootFinished bootFinished;
 	//JMS template
-//	@Inject
-//	@Filter(value="(component-type=jms)")
-//	private Component jmsComponent;
+	@Inject
+	@Filter(value="(component-type=jms)")
+	private Component jmsComponent;
 	//exported REST adress
 	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 	
@@ -101,30 +99,28 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
 		helloServiceClient.path("/hello");
 		helloServiceClient.type(MediaType.APPLICATION_XML);
-		//helloServiceClient.query("helloObject", HelloObject.builder().helloMessage("John").build());
 		helloServiceClient.post(HelloObject.builder().helloMessage("J").build());
 		helloServiceClient.accept(MediaType.APPLICATION_XML);
 		LOG.trace("************ end testSayHelloValidationError **********************");
 		
 	}
-//	@Test
-//	public void testSayHelloJMS()  {
-//		System.out.println("************ start testSayHelloJMS **********************");	
-//		System.out.println("Component: " +jmsComponent);
-//		System.out.println("Camel context: " + jmsComponent.getCamelContext());
-//		ProducerTemplate template = jmsComponent.getCamelContext().createProducerTemplate();
-//		System.out.println("Producer template: " + template);
-//		template.sendBody("jms:queue:helloServiceQueueIn", HelloObject.builder().helloMessage("Doe").build());
-//		ConsumerTemplate consumer = jmsComponent.getCamelContext().createConsumerTemplate();
-//		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut", Hellos.class);
-//		assertEquals(1, hellos.getHelloCollection().size());
-//		WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-//		helloServiceClient.path("/hello");
-//		helloServiceClient.type(MediaType.APPLICATION_XML);
-//		helloServiceClient.delete();
-//		System.out.println("************ end testSayHelloJMS **********************");
+	@Test
+	public void testSayHelloJMS()  {
+		LOG.info("************ start testSayHelloJMS **********************");	
+		LOG.debug("Component: " +jmsComponent);
+		LOG.trace("Camel context: " + jmsComponent.getCamelContext());
+		ProducerTemplate template = jmsComponent.getCamelContext().createProducerTemplate();
+		LOG.trace("Producer template: " + template);
+		template.sendBody("jms:queue:helloServiceQueueIn", HelloObject.builder().helloMessage("Doe").build());
+		ConsumerTemplate consumer = jmsComponent.getCamelContext().createConsumerTemplate();
+		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut", Hellos.class);
+		assertTrue(hellos.getHelloCollection().size() > 0);
+		WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
+		helloServiceClient.path("/hello");
+		helloServiceClient.delete();
+		LOG.info("************ end testSayHelloJMS **********************");
 //		
 //		
-//	}
+	}
 	
 }

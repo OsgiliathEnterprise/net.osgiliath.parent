@@ -24,14 +24,14 @@ limitations under the License.
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
 	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${osgiliath.framework.maven.version}/xml/features</repository>
 	<feature name="${project.parent.artifactId}.model" version="${project.version}">
-		<feature version='${osgiliath.framework.maven.version}'>osgiliath-derby</feature>
-		<feature version='${osgiliath.framework.maven.version}'>osgiliath-model</feature>
+		<feature version='${project.version}'>osgiliath-derby</feature>
+		<feature version='${project.version}'>osgiliath-model</feature>
 		<bundle>mvn:${project.parent.groupId}/${project.parent.artifactId}.model.database/${project.version}/jar</bundle>
 		<bundle>mvn:${project.parent.groupId}/${project.parent.artifactId}.model.jpa/${project.version}/jar</bundle>
 	</feature>
 	<feature name="${project.parent.artifactId}.business.itests" version="${project.version}">
 		<feature version='${karaf.version}'>war</feature>
-		<feature version='${osgiliath.framework.maven.version}'>osgiliath-business</feature>
+		<feature version='${project.version}'>osgiliath-business</feature>
 		<feature version='${project.version}'>${project.parent.artifactId}.model</feature>
 		<bundle>mvn:${project.parent.groupId}/${project.parent.artifactId}.business.spi/${project.version}/jar</bundle>
 		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.business/${project.parent.artifactId}.business.impl/target/${project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
@@ -41,7 +41,7 @@ limitations under the License.
 		<feature version='${project.version}'>${project.parent.artifactId}.route</feature>
 	</feature>
 	<feature name="${project.parent.artifactId}.route" version="${project.version}">
-		<feature version='${osgiliath.framework.maven.version}'>osgiliath-full</feature>
+		<feature version='${project.version}'>osgiliath-full</feature>
 		<feature version='${karaf.version}'>war</feature>
 		<configfile finalname="/etc/${project.parent.artifactId}.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/camel</configfile>
 		<feature version='${osgiliath.framework.maven.version}'>osgiliath-routes</feature>
@@ -51,7 +51,7 @@ limitations under the License.
 	</feature>
 	
 	<feature name="${project.parent.artifactId}.business" version="${project.version}">
-		<feature version='${osgiliath.framework.maven.version}'>osgiliath-business</feature>
+		<feature version='${project.version}'>osgiliath-business</feature>
 		<feature version='${project.version}'>${project.parent.artifactId}.model</feature>
 		<bundle>mvn:${project.parent.groupId}/${project.parent.artifactId}.business.spi/${project.version}/jar</bundle>
 		<bundle>mvn:${project.parent.groupId}/${project.parent.artifactId}.business.impl/${project.version}/jar</bundle>

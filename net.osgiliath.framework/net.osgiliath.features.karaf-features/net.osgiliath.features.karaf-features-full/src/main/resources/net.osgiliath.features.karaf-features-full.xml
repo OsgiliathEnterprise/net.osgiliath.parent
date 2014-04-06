@@ -41,7 +41,7 @@ limitations under the License.
 		<feature version='${project.version}'>osgiliath-validation</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${project.version}'>osgiliath-jaxrs-cdi</feature>
-		<feature version='${project.version}'>osgiliath-messaging</feature>
+		<feature version='${project.version}'>osgiliath-messaging-cdi</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 	</feature>
 	

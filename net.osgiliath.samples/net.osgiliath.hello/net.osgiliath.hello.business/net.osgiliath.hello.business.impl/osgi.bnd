@@ -1,20 +1,28 @@
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)", org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)", org.ops4j.pax.cdi.extension;filter:="(extension=validation)", org.ops4j.pax.cdi.extension;filter:="(extension=jaxrs-cdi)"
-Bundle-ClassPath: .,WEB-INF/classes
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=validation)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=jaxrs-cdi)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=osgiliath-camel-cdi-extension)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=camel-configadmin-extension)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=eager)"
 Require-Bundle: org.hibernate.validator
-Import-Package: javax.validation,\
- org.hibernate.validator.internal.cdi.interceptor,\
- org.springframework.transaction,\
- org.apache.cxf.jaxrs.servlet,\
+Import-Package: helpers.cxf.exception.handling.jaxrs.mapper,\
+ javax.annotation;version=0,\
+ javax.servlet.*;version="[2,4)",\
  javax.transaction,\
+ javax.validation,\
  org.apache.camel,\
+ org.apache.camel.builder.xml,\
+ org.apache.camel.support,\
+ org.apache.camel.cdi.internal,\
+ org.apache.cxf.jaxrs.impl.tl,\
  org.apache.cxf.jaxrs.provider,\
  org.apache.cxf.jaxrs.provider.json,\
- org.apache.cxf.jaxrs.impl.tl,\
- helpers.cxf.exception.handling.jaxrs.mapper,\
- javax.annotation;version="0",\
- org.jboss.weld.bootstrap, javax.servlet.*;version="[2,4)",\
+ org.apache.cxf.jaxrs.servlet,\
+ org.hibernate.validator.internal.cdi.interceptor,\
+ org.jboss.weld.bootstrap,\
+ org.springframework.transaction,\
  *
-Pax-ManagedBeans: WEB-INF/beans.xml
 XX-TestImport: org.ops4j.pax.cdi.extension; filter:="(extension=camel-cdi-extension)",\
  org.jboss.weld.environment.servlet,\
  org.jboss.weld.bootstrap;version="0",\
