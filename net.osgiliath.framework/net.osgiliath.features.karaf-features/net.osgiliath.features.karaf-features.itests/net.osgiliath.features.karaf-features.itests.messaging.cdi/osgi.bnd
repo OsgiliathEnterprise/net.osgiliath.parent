@@ -11,4 +11,5 @@ Import-Package: javax.validation,\
  javax.annotation;version="0",\
  org.apache.camel.support,\
  org.apache.camel.cdi.internal,\
+ org.apache.camel.cdi.component.properties,\
  *
