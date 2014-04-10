@@ -33,7 +33,7 @@ limitations under the License.
 		<feature version='${karaf.version}'>war</feature>
 		<feature version='${project.version}'>osgiliath-business</feature>
 		<feature version='${project.version}'>${project.groupId}.model</feature>
-		<bundle>mvn:${project.groupId}/${pproject.groupId}.business.spi/${project.version}/jar</bundle>
+		<bundle>mvn:${project.groupId}/${project.groupId}.business.spi/${project.version}/jar</bundle>
 		<bundle>file:${project.parent.basedir}/${project.groupId}.business/${project.groupId}.business.impl/target/${project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
 	</feature>
 	<feature name="${project.groupId}.ui" version="${project.version}">

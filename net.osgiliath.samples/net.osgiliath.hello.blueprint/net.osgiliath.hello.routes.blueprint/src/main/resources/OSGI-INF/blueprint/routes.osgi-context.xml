@@ -57,6 +57,7 @@
 	<!-- TODO route declaration -->
 	<bean id="helloRoute" class="net.osgiliath.hello.routes.HelloRoute">
 		<property name="thrownExceptionMessageToInBodyProcessor" ref="thrownExceptionMessageToInBodyProcessor"></property>
+		<property name="xmljson" ref="xmljson"></property>
 	</bean>
 
 
