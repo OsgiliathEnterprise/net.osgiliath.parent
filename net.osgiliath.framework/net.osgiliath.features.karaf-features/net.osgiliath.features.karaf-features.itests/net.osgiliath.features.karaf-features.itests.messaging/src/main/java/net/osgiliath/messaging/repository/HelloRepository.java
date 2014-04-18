@@ -21,10 +21,6 @@ package net.osgiliath.messaging.repository;
  */
 
 import java.util.Collection;
-import java.util.List;
-
-import javax.ws.rs.Path;
-
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the template.mf cxf package export)

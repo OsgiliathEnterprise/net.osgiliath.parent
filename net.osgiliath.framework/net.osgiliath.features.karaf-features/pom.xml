@@ -32,7 +32,6 @@
 		<repositoryName>net.osgiliath.features.karaf.features</repositoryName>
 		<repositoryOwner>Tcharl</repositoryOwner>
 		<sonar.scm.url>scm:git:git://github.com/Tcharl/net.osgiliath.features.karaf-features.git/master</sonar.scm.url>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>	
 		<sonar.host.url>http://quality.osgiliath.net</sonar.host.url>
 	</properties>
 	<build>

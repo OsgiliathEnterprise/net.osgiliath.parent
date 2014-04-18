@@ -22,10 +22,6 @@ package net.osgiliath.messaging.repository.impl.itests;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
-
-import helper.exam.AbstractKarafPaxExamConfiguration;
-
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.CharSequenceUtils;

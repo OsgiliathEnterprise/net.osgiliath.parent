@@ -67,7 +67,15 @@ limitations under the License.
 		<feature version='${project.version}'>osgiliath-derby</feature>
 		<feature version='${project.version}'>osgiliath-jpa-cdi</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features.itests.jpa.database/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features.itests.jpa.cdi.model/${project.version}</bundle>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa.cdi/target/net.osgiliath.features.karaf-features.itests.jpa.cdi-${project.version}.jar</bundle>
+	</feature>
+	<feature name='osgiliath-itests-jpa-cdi-data' version='${project.version}'>
+		<feature version='${project.version}'>osgiliath-derby</feature>
+		<feature version='${project.version}'>osgiliath-jpa-cdi</feature>
+		<bundle>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features.itests.jpa.database/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features.itests.jpa.cdi.model/${project.version}</bundle>
+		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa.cdi.data/target/net.osgiliath.features.karaf-features.itests.jpa.cdi.data-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-messaging' version='${project.version}'>
 		<feature version='${project.version}'>osgiliath-messaging</feature>

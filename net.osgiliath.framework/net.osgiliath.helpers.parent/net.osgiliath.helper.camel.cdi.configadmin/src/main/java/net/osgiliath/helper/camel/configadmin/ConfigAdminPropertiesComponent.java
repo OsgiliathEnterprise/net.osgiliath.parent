@@ -22,12 +22,9 @@ package net.osgiliath.helper.camel.configadmin;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Specializes;
-import javax.inject.Named;
-
 import net.osgiliath.helper.camel.configadmin.internal.ConfigAdminPropertiesParser;
 
 import org.apache.camel.cdi.component.properties.CdiPropertiesComponent;
-import org.apache.camel.cdi.component.properties.CdiPropertiesParser;
 import org.apache.camel.component.properties.PropertiesComponent;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import org.ops4j.pax.cdi.api.Properties;

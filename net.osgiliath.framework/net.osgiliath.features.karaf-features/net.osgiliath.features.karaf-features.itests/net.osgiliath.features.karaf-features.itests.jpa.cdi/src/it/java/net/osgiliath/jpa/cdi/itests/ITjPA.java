@@ -28,8 +28,9 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 
-import net.osgiliath.jpa.cdi.model.HelloEntity;
+import net.osgiliath.features.jpa.cdi.model.HelloEntity;
 import net.osgiliath.jpa.cdi.repository.HelloRepository;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,14 +70,14 @@ public class ITjPA extends AbstractKarafPaxExamConfiguration {
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
         return builder;
     }
-	@Test
 	@Ignore
+	@Test
 	public void testSayHello() throws Exception {
 		
 		HelloEntity entity = new HelloEntity();
 		entity.setHelloMessage("hello");
 		entity = repository.save(entity);
-		Collection<? extends HelloEntity> entities = repository.findAll();
+		Collection<? extends HelloEntity> entities = repository.getAll();
 		
 		assertEquals(entities.size(), 1);
 		HelloEntity persisted = entities.iterator().next();

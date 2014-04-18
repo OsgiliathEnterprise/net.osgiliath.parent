@@ -21,9 +21,7 @@ package net.osgiliath.validation.impl;
  */
 
 import javax.enterprise.inject.Default;
-import javax.inject.Inject;
 import javax.validation.Valid;
-import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
 
 import net.osgiliath.validation.HelloObject;

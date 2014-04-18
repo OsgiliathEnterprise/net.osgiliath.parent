@@ -962,6 +962,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+			<tools-jar.location>${java.home}/lib/tools.jar</tools-jar.location>
+			</properties>
 		</profile>
 		<profile>
 			<id>lombok-needs-tools-jar-jre</id>
@@ -987,6 +990,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+			<tools-jar.location>${java.home}/../lib/tools.jar</tools-jar.location>
+			</properties>
 		</profile>
 	</profiles>
 	<properties>
@@ -1002,7 +1008,7 @@
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<features-maven-plugin.version>2.2.5</features-maven-plugin.version>
 		<jacoco.plugin.version>0.7.0.201403182114</jacoco.plugin.version>
-		<karaf.version>3.0.0</karaf.version>
+		<karaf.version>3.0.1</karaf.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>

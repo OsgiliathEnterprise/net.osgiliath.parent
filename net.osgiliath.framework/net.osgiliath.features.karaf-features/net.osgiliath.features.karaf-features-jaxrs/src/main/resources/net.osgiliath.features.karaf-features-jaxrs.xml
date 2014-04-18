@@ -23,7 +23,7 @@ limitations under the License.
 	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${karaf.feature.cxf.version}/xml/features</repository>
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-cdi/${project.version}/xml/features</repository>
-	<feature name="osgiliath-jaxrs" version="${project.version}">
+	<feature name="osgiliath-jaxrs" version="${project.version}" resolver="(obr)">
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxrs</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxb</feature>
 		<feature version='${camel-version}'>camel-cxf</feature>
@@ -33,7 +33,7 @@ limitations under the License.
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cxf.exception.handling/${project.version}</bundle>
 		<configfile finalname="/etc/cxfconfig.cfg">mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/cfg/cxf</configfile>
 	</feature>
-	<feature name="osgiliath-jaxrs-cdi" version="${project.version}">
+	<feature name="osgiliath-jaxrs-cdi" version="${project.version}" resolver="(obr)">
 		<feature version='${project.version}'>osgiliath-jaxrs</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.cxf.jaxrs/${project.version}</bundle>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
+	<persistence-unit name="myTestPu" transaction-type="RESOURCE_LOCAL">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<!-- TODO exported by database module -->
+		<!--<jta-data-source>osgi:service/jdbc/myXADB</jta-data-source>
+		<non-jta-data-source>osgi:service/jdbc/myDB</non-jta-data-source>-->
+		<class>net.osgiliath.features.jpa.cdi.model.HelloEntity</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<validation-mode>NONE</validation-mode>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.AutoloadedDriver" />
+            <property name="javax.persistence.jdbc.url" value="osgi:service/jdbc/myDB;create=true" />
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+			<property name="openjpa.jdbc.DBDictionary" value="derby"/>
+			 <!-- Example Open JPA Properties -->
+            <property name="openjpa.Log" value="slf4j" />
+            <property name="openjpa.jdbc.SynchronizeMappings"
+                value="buildSchema(SchemaAction='add,deleteTableContents')" />
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -37,7 +37,6 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.Builder;
-import org.apache.camel.builder.BuilderSupport;
 import org.apache.camel.component.http.HttpConstants;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.commons.collections.map.HashedMap;

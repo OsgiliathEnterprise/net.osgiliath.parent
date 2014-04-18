@@ -2,7 +2,6 @@ package helpers.cxf.exception.handling;
 
 import java.util.Collection;
 import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.Hashtable;
 
 import helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;

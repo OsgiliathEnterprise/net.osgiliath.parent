@@ -22,9 +22,6 @@ package net.osgiliath.features.karaf.jaxrs.web.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Default;
-
 import net.osgiliath.features.karaf.jaxrs.web.HelloServiceJaxRS;
 import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;

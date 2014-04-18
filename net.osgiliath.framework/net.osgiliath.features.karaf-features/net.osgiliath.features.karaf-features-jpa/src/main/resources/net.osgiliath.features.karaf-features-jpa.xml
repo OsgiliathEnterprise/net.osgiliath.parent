@@ -23,53 +23,45 @@ limitations under the License.
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
 	<!--<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-standard/${project.version}/xml/features</repository>-->
-	<feature name='osgiliath-jpa-cdi' version='${project.version}'>
+	<feature name='osgiliath-jpa-cdi' version='${project.version}' resolver="(obr)">
 		<feature version='${project.version}'>osgiliath-cdi</feature>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles.serp.version}</bundle>
-		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jndi</feature>
 		<feature version='${karaf.version}'>jdbc</feature>
-		<feature version='${karaf.feature.jpa.version}'>jpa</feature>
+		<feature version='${project.version}'>osgiliath-openjpa</feature>
 		<feature version='${karaf.feature.spring.version}'>spring</feature>
 		<feature version='${karaf.feature.spring.version}'>spring-jdbc</feature>
 		<feature version='${karaf.feature.spring.version}'>spring-orm</feature>
 		<feature version='${karaf.feature.spring.version}'>spring-tx</feature>
-		<bundle >mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
-		<bundle >mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-data-module-api/${project.version}</bundle>
-		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-data-module-impl/${project.version}</bundle>
-		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-jpa-module-api/${project.version}</bundle>
-		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-jpa-module-impl/${project.version}</bundle>
-		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-api/${project.version}</bundle>
-		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-impl/${project.version}</bundle>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${org.apache.servicemix.bundles.commons-dbcp.version}</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javassist/${org.apache.servicemix.bundles.javassist.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>
-		<bundle >mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
-		<bundle >mvn:org.apache.xbean/xbean-asm4-shaded/${xbean.version}</bundle>
-		<bundle >mvn:org.apache.xbean/xbean-reflect/${xbean.version}</bundle>
-		<!-- TODO add deltaspike wrappers-->
+		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
+		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.fragment-ds-data/${project.version}</bundle>
+		<!--<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-api/${project.version}</bundle>
+		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-impl/${project.version}</bundle>-->
 		<bundle >mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.version}</bundle>
 		<bundle >mvn:org.apache.deltaspike.core/deltaspike-core-impl/${org.apache.deltaspike.version}</bundle>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections/${org.apache.servicemix.bundles.commons-collections.version}</bundle>
+		<!--<bundle >mvn:org.apache.deltaspike.modules/deltaspike-data-module-api/${org.apache.deltaspike.version}</bundle>
+		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-data-module-impl/${org.apache.deltaspike.version}</bundle>-->
+		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-api/${org.apache.deltaspike.version}</bundle>
+		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-impl/${org.apache.deltaspike.version}</bundle>
+		<bundle start-level="30" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-jta_1.1_spec.version}</bundle>
+		<bundle start-level="30" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version}</bundle>
+		<!--<bundle>mvn:org.javassist/javassist/${org.javassist.version}</bundle>-->
+		<bundle >mvn:org.apache.xbean/xbean-reflect/${xbean.version}</bundle>
+		<!-- TODO add deltaspike wrappers-->
+		<bundle >mvn:org.ops4j.pax.jdbc/pax-jdbc/${pax.jdbc.version}</bundle>
+		<bundle >mvn:org.ops4j.pax.jpa/pax-jpa/${pax-jpa.version}</bundle>
+		<bundle >mvn:org.ops4j.pax.cdi.fragment/pax-cdi-fragment-ds-jpa/${pax-cdi.version}</bundle>
+		<bundle >mvn:org.osgi/org.osgi.compendium/${org.osgi.version}</bundle>
+		<bundle >mvn:org.ow2.spec.osgi/ow2-jdbc-service-1.0-spec/${ow2-jdbc-service-1.0-spec.version}</bundle>
 		<bundle >mvn:org.springframework.data/spring-data-commons/${org.springframework.data.commons.version}</bundle>
 		<bundle >mvn:org.springframework.data/spring-data-jpa/${org.springframework.data.jpa.version}</bundle>
 	</feature>
-	<feature name='osgiliath-jpa' version='${project.version}'>
+	<feature name='osgiliath-jpa' version='${project.version}' resolver="(obr)">
 		<bundle >mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles.serp.version}</bundle>
 		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jndi</feature>
 		<feature version='${karaf.version}'>jdbc</feature>
 		<feature version='${karaf.feature.jpa.version}'>jpa</feature>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections/${org.apache.servicemix.bundles.commons-collections.version}</bundle>
-		<bundle >mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
-		<bundle >mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${org.apache.servicemix.bundles.commons-dbcp.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>
-		<bundle >mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
-		<bundle >mvn:org.apache.xbean/xbean-asm4-shaded/${xbean.version}</bundle>
+		<feature version='${project.version}'>osgiliath-openjpa</feature>
 		<bundle >mvn:org.apache.xbean/xbean-reflect/${xbean.version}</bundle>
 		<feature version='${karaf.feature.spring.version}'>spring</feature>
 		<feature version='${karaf.feature.spring.version}'>spring-orm</feature>
@@ -78,6 +70,24 @@ limitations under the License.
 		<bundle >mvn:org.springframework.data/spring-data-commons/${org.springframework.data.commons.version}</bundle>
 		<bundle >mvn:org.springframework.data/spring-data-jpa/${org.springframework.data.jpa.version}</bundle>
 	</feature>
+	<feature name="osgiliath-openjpa" version="${project.version}" resolver="(obr)">
+		<details>Enable Apache OpenJPA as persistence engine.</details>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/${geronimo-annotation_1.1_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-el_2.2_spec/${geronimo-el_2.2_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-jta_1.1_spec.version}</bundle>
+		<bundle dependency="true">mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
+		<bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections.version}</bundle>
+		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${org.apache.servicemix.bundles.commons-dbcp.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles.ant.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles.serp.version}</bundle>
+		<feature version='${karaf.version}'>jms</feature>
+		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm4-shaded/${xbean.version}</bundle>
+		<bundle start-level="29">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
+	</feature>
+
 	<!-- <feature name='eclipselink' version='${eclipselink.version}'>
 	Not working but not too long to hack
 	<feature version='${com.springsource.org.apache.derby.client.version}'>com.springsource.org.apache.derby</feature>

@@ -23,10 +23,6 @@ package net.osgiliath.messaging.repository.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
-import net.osgiliath.helpers.cdi.eager.Eager;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 

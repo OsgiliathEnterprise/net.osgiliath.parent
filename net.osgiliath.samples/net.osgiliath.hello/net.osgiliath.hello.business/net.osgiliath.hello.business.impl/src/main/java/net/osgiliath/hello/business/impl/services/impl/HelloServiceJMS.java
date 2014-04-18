@@ -21,26 +21,15 @@ package net.osgiliath.hello.business.impl.services.impl;
  */
 
 import java.util.Collection;
-import java.util.Set;
-
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-import javax.validation.ValidationException;
-import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
 
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloObject;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
-import net.osgiliath.helpers.cdi.eager.Eager;
-import net.osgiliath.validator.osgi.ValidatorHelper;
-
-import org.apache.camel.Body;
 import org.apache.camel.Consume;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

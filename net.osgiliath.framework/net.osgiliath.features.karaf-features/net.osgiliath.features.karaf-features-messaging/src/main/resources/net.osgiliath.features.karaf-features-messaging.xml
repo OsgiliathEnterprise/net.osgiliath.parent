@@ -34,7 +34,7 @@ limitations under the License.
 		<bundle>mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
 		<bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${geronimo-j2ee-management_1.1_spec.version}</bundle>
 		<bundle>mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-collections/${org.apache.servicemix.bundles.commons-collections.version}</bundle>
+		<bundle>mvn:commons-collections/commons-collections/${commons-collections.version}</bundle>
 		<bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
 		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
 		<bundle>mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>

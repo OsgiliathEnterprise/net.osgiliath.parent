@@ -22,13 +22,7 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.trackers;
 
 import java.util.Collection;
 
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.MessageBodyReader;
-import javax.ws.rs.ext.MessageBodyWriter;
-
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.InterceptorsServiceRegistry;
-import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
-
 import org.apache.cxf.interceptor.Interceptor;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;

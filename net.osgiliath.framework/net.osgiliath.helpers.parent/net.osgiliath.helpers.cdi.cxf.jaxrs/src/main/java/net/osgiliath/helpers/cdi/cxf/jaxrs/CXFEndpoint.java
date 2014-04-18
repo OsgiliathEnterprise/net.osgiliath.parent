@@ -27,8 +27,6 @@ import java.lang.annotation.RetentionPolicy;
 import javax.enterprise.inject.spi.Interceptor;
 import javax.enterprise.util.Nonbinding;
 import javax.inject.Qualifier;
-import javax.ws.rs.ext.MessageBodyWriter;
-
 import org.apache.cxf.jaxrs.provider.AbstractConfigurableProvider;
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.cxf.jaxrs.provider.json.JSONProvider;

@@ -21,15 +21,9 @@ package net.osgiliath.helper.camel.configadmin.internal;
  */
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.apache.deltaspike.core.spi.config.ConfigSource;
 import org.osgi.framework.BundleContext;

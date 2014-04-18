@@ -32,7 +32,6 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
-import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.JaxRSService;
 @Default
 @Path("/hello")

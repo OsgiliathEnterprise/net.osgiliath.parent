@@ -22,8 +22,6 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.trackers;
 
 import java.util.Collection;
 
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;

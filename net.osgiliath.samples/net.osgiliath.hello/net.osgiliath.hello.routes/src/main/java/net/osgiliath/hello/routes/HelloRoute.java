@@ -43,9 +43,6 @@ import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.model.dataformat.XmlJsonDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.apache.commons.io.IOUtils;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 //TODO sample route, see apache camel and EIP keyword on the net ;)
 @ContextName
 public class HelloRoute extends RouteBuilder {

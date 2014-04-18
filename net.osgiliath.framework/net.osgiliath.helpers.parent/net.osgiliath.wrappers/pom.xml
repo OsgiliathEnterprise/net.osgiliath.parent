@@ -10,8 +10,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>net.osgiliath.wrapper.camel-cdi</module>
-  	<module>net.osgiliath.wrapper.deltaspike-jpa-module-api</module>
-  	<module>net.osgiliath.wrapper.deltaspike-jpa-module-impl</module>
   	<module>net.osgiliath.wrapper.deltaspike-data-module-api</module>
   	<module>net.osgiliath.wrapper.deltaspike-data-module-impl</module>
   	<module>
@@ -20,5 +18,6 @@
   	<module>
   		net.osgiliath.wrapper.deltaspike-partial-bean-module-impl
   	</module>
+  	<module>net.osgiliath.wrapper.fragment-ds-data</module>
   </modules>
 </project>

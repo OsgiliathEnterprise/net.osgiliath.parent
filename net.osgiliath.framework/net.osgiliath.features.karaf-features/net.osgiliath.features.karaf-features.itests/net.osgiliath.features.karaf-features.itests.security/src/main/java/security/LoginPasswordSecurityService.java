@@ -20,17 +20,12 @@ package security;
  * #L%
  */
 
-import java.util.Collection;
-import java.util.Set;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.SaltSource;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import com.google.common.collect.Lists;
 
 /**
  * {@link SecurityService} implementation

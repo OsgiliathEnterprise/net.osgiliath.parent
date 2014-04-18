@@ -1,0 +1,5 @@
+Meta-Persistence: META-INF/persistence.xml
+Import-Package:  org.apache.openjpa.enhance;resolution:=optional,\
+ org.apache.openjpa.util;resolution:=optional,\
+ !net.osgiliath.jpa.*,\
+ *
