@@ -52,7 +52,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class HelloRouteTest {
 	
 	
-	@Produce(uri = "direct:helloJmsEntryPoint")
+	@Produce(uri = "direct:helloJMSEntryPoint")
 	protected ProducerTemplate helloEntryPoint;
 	@EndpointInject(uri = "mock:helloJaxRSEndPoint")
 	protected MockEndpoint helloRouteMock;

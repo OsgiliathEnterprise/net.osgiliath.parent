@@ -6,12 +6,12 @@ Osgiliath EF aims to provides a way to develop Web/backend/enterprise applicatio
 
 ## Technologies
 
-Osgiliath EF uses many existing first class frameworks, like AngularJS, twitter Bootstrap, Apache Karaf, Apache Camel, CXF, ActiveMQ, JPA, JTA...
+Osgiliath EF uses many existing first class frameworks, like AngularJS, Twitter Bootstrap, Apache Karaf, Apache Camel, CXF, ActiveMQ, JPA, JTA...
 
 ## What could I find
 
 ### Features
-You'll find here a bunch of Karaf features allowing you to enable persistence on your project, Web-Servicing, Async messaging, Transactions, validation, Security, dependency injection...
+You'll find here a bunch of Karaf features allowing you to enable persistence on your project, Web-Servicing, Async messaging, Transactions, Validation, Security, Dependency Injection...
 
 ### Archetypes
 Osgiliath come with Maven archetypes generating your project skeleton, adding capabilities to it...
@@ -23,7 +23,7 @@ There are four archetypes:
 
 ###Samples
 There are two way of programming with Osgiliath framework: using blueprint or using CDI.
-Blueprint configuration as an xml based syntax and is a proven OSGI technology while CDI offers configuration based on annotation (more conscise but may be a little bit less featured), so choose your weapons!
+Blueprint configuration has an xml based syntax and is a proven OSGI technology while CDI offers configuration based on annotation (more concise but may be a little bit less featured), so choose your weapons!
 
 ### Superpom
 The entire Osgiliath EF uses these Maven configuration to configure dependency versions, plugin execution... So feel free to use it in your own framework ;).
@@ -42,7 +42,7 @@ Osgiliath EF is fully Apache 2.0 License so feel free to use, modify, sell... Ju
 
 
 # Contributor
-In order to contribute: Clone the repo, install Maven, Java, Npm and Bower.
+In order to contribute: Clone the repo, install Java, Maven, Npm, Grunt, Bower, PhantomJS and Compass.
 Then, add a property mavenSettings.location property pointing to your settings file in this settings file (in an active pofile).
 Finally run mvn clean install on the root...
 On Mac, add a java.home property in your Maven settings.xml pointing to your JDK installation (mandatory for lombok).

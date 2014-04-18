@@ -38,6 +38,7 @@
 	<bean id="mockedEndpointRoute" class="mocks.routes.HelloRouteEndpointsMock"></bean>
 
 	<bean id="helloRoute" class="net.osgiliath.hello.routes.HelloRoute">
+		<property name="xmljson" ref="xmljson"></property>
 		<property name="thrownExceptionMessageToInBodyProcessor" ref="thrownExceptionMessageToInBodyProcessor"></property>
 	</bean>
 	<bean id="helloService" class="mocks.HelloServiceMock" />

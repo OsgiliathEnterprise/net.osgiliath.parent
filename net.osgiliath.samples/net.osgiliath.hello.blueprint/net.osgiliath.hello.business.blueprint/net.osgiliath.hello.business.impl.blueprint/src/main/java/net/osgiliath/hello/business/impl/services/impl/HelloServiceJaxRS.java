@@ -72,7 +72,7 @@ public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.Hell
 	public Hellos getHellos() {
 		Collection<HelloObject> helloObjects = helloObjectRepository.findAll();
 		if (helloObjects.isEmpty()) {
-			throw new UnsupportedOperationException("You could not call this method when ");
+			throw new UnsupportedOperationException("You should not call this method when there is no Hello yet !");
 		}
 		return Hellos.builder().helloCollection(Lists.newArrayList(Iterables.transform(helloObjects, helloObjectToStringFunction))).build();
 	}
