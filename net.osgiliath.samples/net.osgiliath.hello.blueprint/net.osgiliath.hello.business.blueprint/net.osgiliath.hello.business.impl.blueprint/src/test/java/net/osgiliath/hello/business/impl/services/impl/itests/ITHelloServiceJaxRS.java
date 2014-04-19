@@ -21,6 +21,8 @@ package net.osgiliath.hello.business.impl.services.impl.itests;
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
@@ -37,6 +39,7 @@ import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -57,6 +60,9 @@ import org.osgi.framework.Constants;
 public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 	@Inject
 	private BundleContext bundleContext;
+	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
+	protected static final String BUNDLE_ARTIFACT_ID = "bundle.artifactId";
+
 	//Exported service via blueprint.xml
 	@Inject
 	@Filter(timeout = 40000)
@@ -123,6 +129,17 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		helloServiceClient.delete();
 		
 		
+	}
+	@Override
+	protected Option featureToTest() {
+		return features(
+				maven().groupId(System.getProperty(BUNDLE_GROUP_ID))
+				.artifactId(
+						System.getProperty(BUNDLE_GROUP_ID)
+								+ ".features.blueprint")
+				.type("xml").classifier("features")
+				.versionAsInProject(),
+		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests");
 	}
 	
 }

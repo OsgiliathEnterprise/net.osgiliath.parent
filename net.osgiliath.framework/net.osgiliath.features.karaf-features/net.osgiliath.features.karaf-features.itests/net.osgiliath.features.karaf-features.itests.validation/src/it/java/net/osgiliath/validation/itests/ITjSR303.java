@@ -21,6 +21,8 @@ package net.osgiliath.validation.itests;
  */
 
 import static org.junit.Assert.fail;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
@@ -31,6 +33,7 @@ import net.osgiliath.validation.IValidatorFactorySample;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -55,7 +58,7 @@ import org.slf4j.LoggerFactory;
 @ExamReactorStrategy(PerClass.class)
 public class ITjSR303 extends AbstractKarafPaxExamConfiguration {
 	private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
-	
+
 	@Inject
 	private BundleContext bundleContext;
 	// Exported service via blueprint.xml
@@ -72,7 +75,7 @@ public class ITjSR303 extends AbstractKarafPaxExamConfiguration {
 		return builder;
 	}
 
-	 @Test(expected=ConstraintViolationException.class)
+	@Test(expected = ConstraintViolationException.class)
 	public void testValidateNull() throws Exception {
 		for (Bundle b : bundleContext.getBundles()) {
 			LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
@@ -82,13 +85,23 @@ public class ITjSR303 extends AbstractKarafPaxExamConfiguration {
 			consumer.nullMessageValidation(null);
 			fail("Tho shall not be here");
 		} catch (Exception iae) {
-iae.printStackTrace();
+			iae.printStackTrace();
 		}
 		HelloObject object = new HelloObject();
 		object.setMessage(null);
-			consumer.nullMessageValidation(object);
-			fail("Tho shall not be here");
-		
+		consumer.nullMessageValidation(object);
+		fail("Tho shall not be here");
+
+	}
+
+	@Override
+	protected Option featureToTest() {
+		return features(
+				maven().artifactId(
+						"net.osgiliath.features.karaf-features.itests.feature")
+						.groupId("net.osgiliath.framework").type("xml")
+						.classifier("features").versionAsInProject(),
+				"osgiliath-itests-validation");
 	}
 
 }

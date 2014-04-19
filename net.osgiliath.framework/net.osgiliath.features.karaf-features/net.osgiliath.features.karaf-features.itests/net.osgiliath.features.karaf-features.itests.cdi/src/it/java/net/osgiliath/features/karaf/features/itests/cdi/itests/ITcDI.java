@@ -21,6 +21,8 @@ package net.osgiliath.features.karaf.features.itests.cdi.itests;
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
@@ -29,6 +31,7 @@ import net.osgiliath.cdi.IConsumer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -51,8 +54,6 @@ import org.slf4j.LoggerFactory;
 @ExamReactorStrategy(PerClass.class)
 public class ITcDI extends AbstractKarafPaxExamConfiguration {
 	private static Logger LOG = LoggerFactory.getLogger(ITcDI.class);
-	@Inject
-	private BundleContext bundleContext;
 	//Exported service via blueprint.xml
 	@Inject
 	@Filter(timeout = 40000)
@@ -70,6 +71,15 @@ public class ITcDI extends AbstractKarafPaxExamConfiguration {
 	public void testSayHello() throws Exception {
 		LOG.info("consumer should be injected");
 		assertEquals(consumer.getHello(), "hello");
+	}
+	@Override
+	protected Option featureToTest() {
+		return features(
+				maven().artifactId(
+						"net.osgiliath.features.karaf-features.itests.feature")
+						.groupId("net.osgiliath.framework").type("xml")
+						.classifier("features").versionAsInProject(),
+				"osgiliath-itests-cdi");
 	}
 	
 		

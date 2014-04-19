@@ -21,6 +21,8 @@ package net.osgiliath.messaging.repository.impl.itests;
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
@@ -34,6 +36,7 @@ import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -92,6 +95,15 @@ public class ITHelloServiceJMS extends AbstractKarafPaxExamConfiguration {
 		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut", Hellos.class);
 		assertEquals(1, hellos.getEntities().size());
 		helloService.deleteAll();
+	}
+	@Override
+	protected Option featureToTest() {
+		return features(
+				maven().artifactId(
+						"net.osgiliath.features.karaf-features.itests.feature")
+						.groupId("net.osgiliath.framework").type("xml")
+						.classifier("features").versionAsInProject(),
+				"osgiliath-itests-messaging");
 	}
 
 	

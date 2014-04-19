@@ -22,6 +22,8 @@ package net.osgiliath.jpa.cdi.itests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import java.util.Collection;
@@ -34,6 +36,7 @@ import net.osgiliath.jpa.cdi.repository.HelloRepository;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -83,6 +86,15 @@ public class ITjPA extends AbstractKarafPaxExamConfiguration {
 		HelloEntity persisted = entities.iterator().next();
 		assertEquals(persisted.getHelloMessage(), "hello");
 		assertNotNull(persisted.getEntityId());
+	}
+	@Override
+	protected Option featureToTest() {
+		return features(
+				maven().artifactId(
+						"net.osgiliath.features.karaf-features.itests.feature")
+						.groupId("net.osgiliath.framework").type("xml")
+						.classifier("features").versionAsInProject(),
+				"osgiliath-itests-jpa-cdi");
 	}
 		
 }

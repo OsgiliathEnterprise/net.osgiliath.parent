@@ -56,7 +56,11 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	@Inject
 	protected BundleContext bundleContext;
 	protected static final String COVERAGE_COMMAND = "coverage.command";
-	private static final Logger LOG = LoggerFactory.getLogger(AbstractKarafPaxExamConfiguration.class);
+	protected static final String USER_SETTINGS_REFERENCE = "user-settings";
+	protected static final String GLOBAL_SETTINGS_REFERENCE = "global-settings";
+
+	private static final Logger LOG = LoggerFactory
+			.getLogger(AbstractKarafPaxExamConfiguration.class);
 
 	// the JVM option to set to enable remote debugging
 	@SuppressWarnings("UnusedDeclaration")
@@ -79,48 +83,68 @@ public abstract class AbstractKarafPaxExamConfiguration {
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
-										.versionAsInProject()).name("Apache Karaf")
-						.karafVersion(MavenUtils.getArtifactVersion("org.apache.karaf", "apache-karaf"))
+										.versionAsInProject())
+						.name("Apache Karaf")
+						.karafVersion(
+								MavenUtils.getArtifactVersion(
+										"org.apache.karaf", "apache-karaf"))
 						.unpackDirectory(new File("target/exam/unpack/")),
-						keepRuntimeFolder(),
-						cleanCaches(),
-				// the current project (the bundle under test)
-				features(
-						maven().artifactId(
-								"net.osgiliath.features.karaf-features.itests.feature")
-								.groupId("net.osgiliath.framework").type("xml")
-								.classifier("features").versionAsInProject(),
-						"osgiliath-itests-cdi"),
-				editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
-						"org.ops4j.pax.url.mvn.settings",
-						System.getProperty("mavenSettingsPath")),
-				logLevel(LogLevel.INFO), junitBundles(),
-				addCodeCoverageOption(),
-				// addJVMOptions(),
-				addExtraOptions());
-
+				keepRuntimeFolder(), cleanCaches(), loggingLevel(),
+				junitBundles(), addCodeCoverageOption(), addExtraOptions(),
+				 addMavenSettingsOptions(), featureToTest());
+		OptionUtils.combine(base, addJVMOptions());
 		final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions
 				.vmOption(paxRunnerVmOption) : null;
 		return OptionUtils.combine(base, vmOption);
 	}
 
-	private Option addJVMOptions() {
-		String memVmOptsString = "-Xmx1024m -Xms128m -XX:MaxPermSize=512m";
-		return CoreOptions.vmOption(memVmOptsString);
+	private Option addMavenSettingsOptions() {
+		if (System.getProperty(USER_SETTINGS_REFERENCE) != null) {
+			LOG.info("adding user reference settings "
+					+ System.getProperty(USER_SETTINGS_REFERENCE));
+			return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
+					"org.ops4j.pax.url.mvn.settings",
+					System.getProperty(USER_SETTINGS_REFERENCE));
+		}
+		if (System.getProperty(GLOBAL_SETTINGS_REFERENCE) != null) {
+			LOG.info("adding global reference settings "
+					+ System.getProperty(GLOBAL_SETTINGS_REFERENCE));
+			return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
+					"org.ops4j.pax.url.mvn.settings",
+					System.getProperty(GLOBAL_SETTINGS_REFERENCE));
+		}
+		return new DefaultCompositeOption();
+
+	}
+
+	private Option[] addJVMOptions() {
+		
+		String maxHeap = "-Xmx1024m";
+		String minHeap = "-Xms128m";
+		String maxPerm = "-XX:MaxPermSize=512m";
+		return options(CoreOptions
+		.vmOption(maxHeap), CoreOptions
+		.vmOption(minHeap), CoreOptions
+		.vmOption(maxPerm));
 	}
 
 	private Option addCodeCoverageOption() {
 		String coverageCommand = System.getProperty(COVERAGE_COMMAND);
-		//System.out.println("*********** coverag command " + coverageCommand);
+		// System.out.println("*********** coverag command " + coverageCommand);
 		if (coverageCommand != null) {
 			LOG.info("covering code with command " + coverageCommand);
 			return CoreOptions.vmOption(coverageCommand);
 		}
-		return null;
+		return new DefaultCompositeOption();
 	}
+
+	protected abstract Option featureToTest();
 
 	protected Option addExtraOptions() {
 		return new DefaultCompositeOption();
+	}
+	protected Option loggingLevel() {
+		return logLevel(LogLevel.INFO);
 	}
 
 }

@@ -21,6 +21,8 @@ package net.osgiliath.jaxrs.repository.impl.itests;
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import java.util.Collection;
@@ -35,6 +37,7 @@ import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -93,6 +96,15 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		Collection<? extends HelloEntity> hellos = helloServiceClient.getCollection(HelloEntity.class);
 		assertEquals(1, hellos.size());
 		helloServiceClient.delete();
+	}
+	@Override
+	protected Option featureToTest() {
+		return features(
+				maven().artifactId(
+						"net.osgiliath.features.karaf-features.itests.feature")
+						.groupId("net.osgiliath.framework").type("xml")
+						.classifier("features").versionAsInProject(),
+				"osgiliath-itests-jaxrs");
 	}
 
 	

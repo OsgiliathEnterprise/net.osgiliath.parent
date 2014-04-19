@@ -22,6 +22,8 @@ package net.osgiliath.hello.business.impl.services.impl.itests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
@@ -38,6 +40,7 @@ import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -62,6 +65,8 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 	@Inject
 	@Filter(timeout = 400000)
 	private BootFinished bootFinished;
+	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
+	protected static final String BUNDLE_ARTIFACT_ID = "bundle.parent.artifactId";
 	//JMS template
 	@Inject
 	@Filter(value="(component-type=jms)")
@@ -120,6 +125,17 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		LOG.info("************ end testSayHelloJMS **********************");
 //		
 //		
+	}
+	@Override
+	protected Option featureToTest() {
+		
+		return features(
+				maven().groupId(System.getProperty(BUNDLE_GROUP_ID))
+				.artifactId(
+						System.getProperty(BUNDLE_GROUP_ID)
+								+ ".features").type("xml")
+				.classifier("features").versionAsInProject(),
+		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests");
 	}
 	
 }

@@ -21,6 +21,8 @@ package net.osgiliath.features.karaf.features.itests.jaxrs.web;
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.ops4j.pax.exam.CoreOptions.maven;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
@@ -34,13 +36,13 @@ import org.apache.karaf.features.BootFinished;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,8 +51,7 @@ import org.slf4j.LoggerFactory;
 public class ITPaxWebCxf extends AbstractKarafPaxExamConfiguration {
 	private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 	
-	@Inject
-	private BundleContext bundleContext;
+	
 	//Exported service via blueprint.xml
 	@Inject
 	@Filter(timeout = 400000)
@@ -85,5 +86,14 @@ public class ITPaxWebCxf extends AbstractKarafPaxExamConfiguration {
 		assertEquals(1, hellos.getHelloCollection().size());
 		//helloServiceClient.delete();
 		LOG.trace("************ end testSayHello **********************");
+	}
+	@Override
+	protected Option featureToTest() {
+		return features(
+				maven().artifactId(
+						"net.osgiliath.features.karaf-features.itests.feature")
+						.groupId("net.osgiliath.framework").type("xml")
+						.classifier("features").versionAsInProject(),
+				"osgiliath-itests-jaxrs-web-cdi");
 	}
 }
