@@ -830,7 +830,7 @@
 							</goals>
 							<phase>process-sources</phase>
 							<configuration>
-								<skip>${jacoco-coverage-enable}</skip>
+								<skip>${jacoco-coverage-skip}</skip>
 								<destFile>${sonar.jacoco.reportPath}</destFile>
 								<includes>
 									<include>${project.artifactId}.*</include>
@@ -860,7 +860,7 @@
 							</goals>
 							<phase>pre-integration-test</phase>
 							<configuration>
-								<skip>${jacoco-coverage-enable}</skip>
+								<skip>${jacoco-coverage-skip}</skip>
 								<propertyName>jcoverage.command</propertyName>
 								<destFile>${sonar.jacoco.itReportPath}</destFile>
 								<includes>
@@ -997,9 +997,9 @@
 			</properties>
 		</profile>
 		<profile>
-        <id>env-prod</id>
+        <id>coverage</id>
         <properties>
-            <jacoco-coverage-enable>true</jacoco-coverage-enable>
+            <jacoco-coverage-skip>false</jacoco-coverage-skip>
         </properties>
     </profile>
 	</profiles>
@@ -1049,7 +1049,7 @@
 		<project.root.build.directory>${session.executionRootDirectory}/target</project.root.build.directory>
 		<wagon-maven-plugin.version>1.0-beta-4</wagon-maven-plugin.version>
 		<xerces.version>2.4.0</xerces.version>
-		<jacoco-coverage-enable>false</jacoco-coverage-enable>
+		<jacoco-coverage-skip>true</jacoco-coverage-skip>
 	</properties>
 	<modules>
 		<module>net.osgiliath.pom.dependency-management</module>
