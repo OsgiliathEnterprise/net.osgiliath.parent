@@ -118,7 +118,7 @@ public class AbstractKarafPaxExamConfiguration {
 
 	private  Option addCodeCoverageOption() {
 		String coverageCommand = System.getProperty(COVERAGE_COMMAND);
-		if (coverageCommand != null) {
+		if (coverageCommand != null && !coverageCommand.isEmpty()) {
 			return CoreOptions.vmOption(coverageCommand);
 		}
 		return null;

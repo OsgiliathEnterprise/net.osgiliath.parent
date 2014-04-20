@@ -569,7 +569,7 @@
 											[1.8,)
 										</versionRange>
 										<goals>
-										<goal>add-source</goal>
+											<goal>add-source</goal>
 											<goal>add-test-source</goal>
 											<goal>
 												add-test-resource
@@ -830,6 +830,7 @@
 							</goals>
 							<phase>process-sources</phase>
 							<configuration>
+								<skip>${jacoco-coverage-skip}</skip>
 								<destFile>${sonar.jacoco.reportPath}</destFile>
 								<includes>
 									<include>${project.artifactId}.*</include>
@@ -859,7 +860,8 @@
 							</goals>
 							<phase>pre-integration-test</phase>
 							<configuration>
-							<propertyName>jcoverage.command</propertyName>
+								<skip>${jacoco-coverage-skip}</skip>
+								<propertyName>jcoverage.command</propertyName>
 								<destFile>${sonar.jacoco.itReportPath}</destFile>
 								<includes>
 									<include>${project.artifactId}.*</include>
@@ -963,7 +965,7 @@
 				</plugins>
 			</build>
 			<properties>
-			<tools-jar.location>${java.home}/lib/tools.jar</tools-jar.location>
+				<tools-jar.location>${java.home}/lib/tools.jar</tools-jar.location>
 			</properties>
 		</profile>
 		<profile>
@@ -991,9 +993,15 @@
 				</plugins>
 			</build>
 			<properties>
-			<tools-jar.location>${java.home}/../lib/tools.jar</tools-jar.location>
+				<tools-jar.location>${java.home}/../lib/tools.jar</tools-jar.location>
 			</properties>
 		</profile>
+		<profile>
+        <id>env-prod</id>
+        <properties>
+            <jacoco-coverage-skip>true</jacoco-coverage-skip>
+        </properties>
+    </profile>
 	</profiles>
 	<properties>
 		<apache-rat-plugin.version>0.10</apache-rat-plugin.version>
@@ -1041,6 +1049,7 @@
 		<project.root.build.directory>${session.executionRootDirectory}/target</project.root.build.directory>
 		<wagon-maven-plugin.version>1.0-beta-4</wagon-maven-plugin.version>
 		<xerces.version>2.4.0</xerces.version>
+		<jacoco-coverage-skip>false</jacoco-coverage-skip>
 	</properties>
 	<modules>
 		<module>net.osgiliath.pom.dependency-management</module>

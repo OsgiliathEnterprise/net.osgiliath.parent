@@ -130,7 +130,7 @@ public abstract class AbstractKarafPaxExamConfiguration {
 
 	private Option addCodeCoverageOption() {
 		String coverageCommand = System.getProperty(COVERAGE_COMMAND);
-		if (coverageCommand != null) {
+		if (coverageCommand != null && !coverageCommand.isEmpty()) {
 			LOG.info("covering code with command " + coverageCommand);
 			System.out.println("covering code with command " + coverageCommand);
 			return CoreOptions.vmOption(coverageCommand);
