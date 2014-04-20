@@ -21,7 +21,6 @@
 	<properties>
 	<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 </properties>
-  
 	<build>
 		<resources>
 			<resource>

@@ -22,11 +22,5 @@ Import-Package: helpers.cxf.exception.handling.jaxrs.mapper,\
  org.hibernate.validator.internal.cdi.interceptor,\
  org.jboss.weld.bootstrap,\
  org.springframework.transaction,\
- *
-XX-TestImport: org.ops4j.pax.cdi.extension; filter:="(extension=camel-cdi-extension)",\
- org.jboss.weld.environment.servlet,\
- org.jboss.weld.bootstrap;version="0",\
- javax.servlet,javax.servlet.http,\
- javax.servlet.annotation,\
- 
+ * 
  

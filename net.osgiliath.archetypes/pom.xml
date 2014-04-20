@@ -8,10 +8,12 @@
   <artifactId>net.osgiliath.archetypes</artifactId>
   <packaging>pom</packaging>
   <modules>
-  <module>net.osgiliath.archetype.business</module>
+  <module>net.osgiliath.archetype.business.blueprint</module>
+  <module>net.osgiliath.archetype.business.cdi</module>
   <module>net.osgiliath.archetype.model</module>
   <module>net.osgiliath.archetype.parent</module>
-  <module>net.osgiliath.archetype.routes</module>
+  <module>net.osgiliath.archetype.routes.cdi</module>
+  <module>net.osgiliath.archetype.routes.blueprint</module>
   <module>net.osgiliath.archetype.ui</module>
   </modules>
 </project>

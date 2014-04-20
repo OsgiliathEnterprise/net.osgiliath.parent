@@ -33,7 +33,6 @@ import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 @Eager
-@ContextName
 @ApplicationScoped
 public class Components {
 	private Logger LOG = LoggerFactory.getLogger(Components.class);

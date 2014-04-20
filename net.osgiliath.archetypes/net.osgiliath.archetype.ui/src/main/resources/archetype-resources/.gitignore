@@ -1,3 +1,6 @@
 /target
 /node_modules
 /src/main/javascript/bower_components
+/.settings
+/.classpath
+/.project

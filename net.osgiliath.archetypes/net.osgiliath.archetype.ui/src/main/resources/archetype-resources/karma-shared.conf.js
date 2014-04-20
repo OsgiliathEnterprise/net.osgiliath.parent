@@ -8,7 +8,7 @@ var shared = function(config) {
 		reporters : [ 'coverage' ],
 		logLevel: config.LOG_DEBUG,
 		loggers : [ {type: 'console'} ],
-		browsers : [ 'Chrome' ],//'PhantomJS'
+		browsers : [ 'PhantomJS' ],//'Firefox'
 		captureTimeout : 5000,
 		runnerPort : 9100,
 		port : 8080,
@@ -25,7 +25,7 @@ shared.bowercomponent = shared.mainfolder + 'bower_components/';
 
 
 shared.sharedfiles = [ 
-                      shared.bowercomponent + 'jquery/jquery.js',
+                      shared.bowercomponent + 'jquery/dist/jquery.js',
                       shared.bowercomponent + 'angular/angular.js',
                       shared.bowercomponent + 'angular-bootstrap/ui-bootstrap-tpls.js',
                       shared.bowercomponent + 'angular-resource/angular-resource.js',
@@ -33,7 +33,7 @@ shared.sharedfiles = [
                       shared.bowercomponent + 'angular-sanitize/angular-sanitize.js',
                       shared.bowercomponent + 'angular-route/angular-route.js',
                       shared.bowercomponent + 'angular-bootstrap/ui-bootstrap-tpls.min.js',
-                      shared.bowercomponent + 'angular-ui/build/angular-ui.min.js',
+                      //shared.bowercomponent + 'angular-ui/build/angular-ui.min.js',
                       shared.bowercomponent + 'ng-grid/build/ng-grid.min.js',
                       shared.mainfolder + 'components/stomp/stomp.js'
 		 ];

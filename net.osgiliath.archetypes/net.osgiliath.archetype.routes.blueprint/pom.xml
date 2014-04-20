@@ -19,12 +19,11 @@
 		<version>0.0.4-SNAPSHOT</version>
 		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
-
 	<groupId>net.osgiliath.archetypes</groupId>
-	<artifactId>net.osgiliath.archetype.parent</artifactId>
+	<artifactId>net.osgiliath.archetype.routes.blueprint</artifactId>
 	<packaging>maven-archetype</packaging>
 
-	<name>net.osgiliath.archetype.parent</name>
+	<name>net.osgiliath.archetype.routes with blueprint</name>
 
 	<build>
 		<extensions>
@@ -45,7 +44,7 @@
 		</pluginManagement>
 	</build>
 
-	<description>This is the parent archetype of Osgiliath framework</description>
+	<description>This is the route archetype of osgiliath framework</description>
 
 	<url>https://blog.osgiliath.net/?page_id=224</url>
 
@@ -60,6 +59,7 @@
 			</roles>
 		</developer>
 	</developers>
+
 	<licenses>
 		<license>
 			<name>Apache Licence 2.0</name>
@@ -67,9 +67,12 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+
 	<scm>
-		<connection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.parent.git</connection>
-		<developerConnection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.parent.git</developerConnection>
-		<url>git@github.com:Tcharl/net.osgiliath.archetype.parent.git</url>
+		<connection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.routes.git</connection>
+		<developerConnection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.routes.git</developerConnection>
+		<url>git@github.com:Tcharl/net.osgiliath.archetype.routes.git</url>
 	</scm>
+
+
 </project>
