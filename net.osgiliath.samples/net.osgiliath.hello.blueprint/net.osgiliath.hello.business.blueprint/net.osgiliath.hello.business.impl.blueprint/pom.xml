@@ -16,6 +16,9 @@
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.business.impl.blueprint</artifactId>
+	<properties>
+  <sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+  </properties>
 	<build>
 		<resources>
 			<resource>

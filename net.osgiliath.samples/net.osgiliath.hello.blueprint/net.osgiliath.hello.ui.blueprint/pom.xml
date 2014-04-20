@@ -19,9 +19,8 @@
 	<packaging>war</packaging>
 	<properties>
 		<sonar.language>js</sonar.language>
-		<sonar.sources>${project.sourceDirectory}</sonar.sources>
-		<sonar.tests>${testSourceDirectory}</sonar.tests>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.sources>yo/app</sonar.sources>
+		<sonar.tests>yo/test</sonar.tests>
 		<sonar.javascript.lcov.reportPath>${basedir}/target/coverage/**/lcov.info</sonar.javascript.lcov.reportPath>
 	</properties>
 	<build>

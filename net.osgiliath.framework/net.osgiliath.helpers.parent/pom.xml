@@ -27,21 +27,11 @@
  	<organization>
 		<name>Osgiliath</name>
 	</organization>
-	<properties>
-		<repositoryName>osgiliath-helpers</repositoryName>
-		<repositoryOwner>Tcharl</repositoryOwner>
-		<sonar.scm.url>scm:git:git://github.com/Tcharl/${project.artifactId}.git/master</sonar.scm.url>
-		<sonar.scm.enabled>true</sonar.scm.enabled>
-	</properties>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>downloads-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -69,9 +59,4 @@
 		<module>net.osgiliath.wrappers</module>
 		<module>net.osgiliath.helper.camel.cdi.configadmin</module>
 	</modules>
-	<scm>
-		<connection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</developerConnection>
-		<url>git@github.com:Tcharl/${project.artifactId}.git</url>
-	</scm>
 </project>

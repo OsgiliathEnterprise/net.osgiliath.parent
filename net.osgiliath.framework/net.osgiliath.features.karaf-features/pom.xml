@@ -28,12 +28,7 @@
 	<groupId>net.osgiliath.framework</groupId>
 	<artifactId>net.osgiliath.features.karaf-features</artifactId>
 	<packaging>pom</packaging>
-	<properties>
-		<repositoryName>net.osgiliath.features.karaf.features</repositoryName>
-		<repositoryOwner>Tcharl</repositoryOwner>
-		<sonar.scm.url>scm:git:git://github.com/Tcharl/net.osgiliath.features.karaf-features.git/master</sonar.scm.url>
-		<sonar.host.url>http://quality.osgiliath.net</sonar.host.url>
-	</properties>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -60,15 +55,11 @@
 		<module>net.osgiliath.features.karaf-features-cdi</module>
 		<module>net.osgiliath.features.karaf-features-jaxrs</module>
 		<module>net.osgiliath.features.karaf-features-functional</module>
-		<module>net.osgiliath.features.karaf-features.routes</module>
+		<module>net.osgiliath.features.karaf-features-routes</module>
 		<module>net.osgiliath.features.karaf-features.itests</module>
 		<module>net.osgiliath.features.karaf-features-standard</module>
 	</modules>
-	<scm>
-		<connection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</developerConnection>
-		<url>git@github.com:Tcharl/${project.artifactId}.git</url>
-	</scm>
+
 	<licenses>
 		<license>
 			<name>Apache v2</name>

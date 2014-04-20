@@ -46,10 +46,5 @@
 		</plugins>
 	</build>
 	
-	<properties>
-		<sonar.jacoco.reportPath>${project.build.directory}/jacoco-ut.exec</sonar.jacoco.reportPath>
-		<sonar.jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-	</properties>
 
 </project>

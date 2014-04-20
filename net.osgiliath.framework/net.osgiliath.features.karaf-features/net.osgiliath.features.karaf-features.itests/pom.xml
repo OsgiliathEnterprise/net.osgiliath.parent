@@ -7,6 +7,9 @@
   </parent>
   <artifactId>net.osgiliath.features.karaf-features.itests</artifactId>
   <packaging>pom</packaging>
+  <properties>
+  <sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+  </properties>
   <modules>
   <module>
   		net.osgiliath.features.karaf-features.itests.feature

@@ -18,6 +18,10 @@
 	</parent>
 	<artifactId>net.osgiliath.hello.business.impl</artifactId>
 	<packaging>jar</packaging>
+	<properties>
+	<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+</properties>
+  
 	<build>
 		<resources>
 			<resource>
@@ -33,12 +37,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
-			
+			</plugin>		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-
 			</plugin>
 			<plugin>
 				<groupId>org.apache.servicemix.tooling</groupId>

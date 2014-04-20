@@ -33,10 +33,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
@@ -47,15 +44,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<scm>
-		<connection>scm:git:git://github.com/Tcharl/net.osgiliath.hello.git</connection>
-		<developerConnection>scm:git:git://github.com/Tcharl/net.osgiliath.hello.git</developerConnection>
-		<url>git@github.com:Tcharl/net.osgiliath.hello.git</url>
-	</scm>
+	
 	<properties>
-		<sonar.jacoco.reportPath>${project.build.directory}/jacoco-ut.exec</sonar.jacoco.reportPath>
-		<sonar.jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<!-- TODO change your organization, all your Manifests will be signed with 
 			this -->
 		<manifest.organization>Osgiliath</manifest.organization>
