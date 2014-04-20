@@ -11,7 +11,7 @@ Osgiliath samples uses many existing first class frameworks, like AngularJS, Twi
 ## What could I find
 
 You'll find a full stacked sample:
-![Sample stack](Helloworld.png "Sample stack")
+![Sample stack](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/raw/master/net.osgiliath.samples/Helloworld.jpg "Sample stack")
 
 ###Samples
 There are two way of programming with Osgiliath framework: using blueprint or using CDI.
