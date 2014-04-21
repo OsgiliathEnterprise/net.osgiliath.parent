@@ -1024,11 +1024,11 @@
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
 		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
-		<maven-failsafe-plugin.version>2.16</maven-failsafe-plugin.version>
+		<maven-failsafe-plugin.version>2.17</maven-failsafe-plugin.version>
 		<maven-install-plugin.version>2.4</maven-install-plugin.version>
 		<maven-processor-plugin.version>2.2.4</maven-processor-plugin.version>
-		<maven-jar-plugin.version>2.3.2</maven-jar-plugin.version>
-		<maven-surefire-plugin.version>2.13</maven-surefire-plugin.version>
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-war-plugin.version>2.3</maven-war-plugin.version>
 		<org.eclipse.virgo.bundlor.maven.version>1.1.2.RELEASE</org.eclipse.virgo.bundlor.maven.version>
 		<org.projectlombok.lombok.plugin.version>1.12.4.0</org.projectlombok.lombok.plugin.version>
