@@ -170,6 +170,7 @@
 							</goals>
 							<configuration>
 								<systemPropertyVariables>
+									<reportFormat>xml</reportFormat>
 									<coverage.command>${jcoverage.command}</coverage.command>
 									<user-settings>${org.apache.maven.user-settings}</user-settings>
 									<global-settings>${org.apache.maven.global-settings}</global-settings>
@@ -1036,9 +1037,11 @@
 		<org.springframework.data.commons.core.version>1.4.1.RELEASE</org.springframework.data.commons.core.version>
 		<maven-pax-plugin.version>1.5</maven-pax-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<selenium-maven-plugin.version>2.3</selenium-maven-plugin.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
 		<sonar-maven-plugin.version>2.2</sonar-maven-plugin.version>
 		<virgo.user.repository>${virgo.path}/repository/usr</virgo.user.repository>
 		<virgo.pickup.repository>${virgo.path}/pickup</virgo.pickup.repository>
