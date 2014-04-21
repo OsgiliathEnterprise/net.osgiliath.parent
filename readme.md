@@ -12,6 +12,7 @@ Osgiliath EF uses many existing first class frameworks, like AngularJS, Twitter 
 
 ### Features
 You'll find here a bunch of Karaf features allowing you to enable persistence on your project, Web-Servicing, Async messaging, Transactions, Validation, Security, Dependency Injection...
+Look at their itegration test counter part on how to use it
 
 ### Archetypes
 Osgiliath come with Maven archetypes generating your project skeleton, adding capabilities to it...
