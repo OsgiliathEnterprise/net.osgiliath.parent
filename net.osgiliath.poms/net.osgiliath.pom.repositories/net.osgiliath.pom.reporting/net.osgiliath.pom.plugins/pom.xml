@@ -997,11 +997,11 @@
 			</properties>
 		</profile>
 		<profile>
-        <id>coverage</id>
-        <properties>
-            <jacoco-coverage-skip>false</jacoco-coverage-skip>
-        </properties>
-    </profile>
+			<id>coverage-enabled</id>
+			<properties>
+				<jacoco-coverage-skip>false</jacoco-coverage-skip>
+			</properties>
+		</profile>
 	</profiles>
 	<properties>
 		<apache-rat-plugin.version>0.10</apache-rat-plugin.version>
