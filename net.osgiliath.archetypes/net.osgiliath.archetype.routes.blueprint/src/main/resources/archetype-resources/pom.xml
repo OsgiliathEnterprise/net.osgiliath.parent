@@ -51,22 +51,15 @@
 				<executions>
 					<execution>
 						<id>pre-test</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<phase>process-sources</phase>
 						<configuration>
-							<destFile>../${project.build.directory}/jacoco-ut.exec</destFile>
-							<propertyName>surefire.argLine</propertyName>
 							<includes>
-								<include>net.osgiliath.*</include>
+								<include>${groupId}.*</include>
 							</includes>
 							<excludes>
 								<exclude>*.test.*</exclude>
 								<exclude>*.mock.*</exclude>
 								<exclude>*.model.*</exclude>
 							</excludes>
-							<append>true</append>
 						</configuration>
 					</execution>
 				</executions>
@@ -74,9 +67,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<argLine>${surefire.argLine}</argLine>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
