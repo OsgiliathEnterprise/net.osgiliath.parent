@@ -842,7 +842,6 @@
 									<exclude>*.model.*</exclude>
 									<exclude>*.coverage.*</exclude>
 								</excludes>
-								<append>true</append>
 							</configuration>
 						</execution>
 						<execution>

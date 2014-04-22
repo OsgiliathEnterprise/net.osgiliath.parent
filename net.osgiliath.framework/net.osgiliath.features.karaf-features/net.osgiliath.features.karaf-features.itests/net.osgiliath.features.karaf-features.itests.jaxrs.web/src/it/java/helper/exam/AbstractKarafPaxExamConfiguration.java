@@ -119,9 +119,9 @@ public abstract class AbstractKarafPaxExamConfiguration {
 
 	private Option[] addJVMOptions() {
 		
-		String maxHeap = "-Xmx1024m";
+		String maxHeap = "-Xmx512m";
 		String minHeap = "-Xms128m";
-		String maxPerm = "-XX:MaxPermSize=512m";
+		String maxPerm = "-XX:MaxPermSize=256m";
 		return options(CoreOptions
 		.vmOption(maxHeap), CoreOptions
 		.vmOption(minHeap), CoreOptions

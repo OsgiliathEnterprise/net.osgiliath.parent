@@ -112,7 +112,7 @@ public class AbstractKarafPaxExamConfiguration {
 	}
 
 	private Option addJVMOptions() {
-		String memVmOptsString="-Xmx1024m -Xms128m -XX:MaxPermSize=512m";
+		String memVmOptsString="-Xmx512m -Xms128m -XX:MaxPermSize=256m";
 		return CoreOptions.vmOption(memVmOptsString);
 	}
 
