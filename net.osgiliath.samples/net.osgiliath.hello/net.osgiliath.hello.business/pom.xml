@@ -19,6 +19,7 @@
   <packaging>pom</packaging>
   <modules>
   	<module>net.osgiliath.hello.business.spi</module>
-  	<module>net.osgiliath.hello.business.impl</module>
+  	<module>net.osgiliath.hello.business.impl.blueprint</module>
+  	<module>net.osgiliath.hello.business.impl.cdi</module>
   </modules>
 </project>

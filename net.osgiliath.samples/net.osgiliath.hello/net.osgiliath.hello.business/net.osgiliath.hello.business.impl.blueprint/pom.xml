@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.hello</groupId>
-		<artifactId>net.osgiliath.hello.business.blueprint</artifactId>
+		<artifactId>net.osgiliath.hello.business</artifactId>
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.business.impl.blueprint</artifactId>
@@ -177,17 +177,17 @@
 		<dependency><!-- TODO your model & databases module here -->
 			<groupId>${project.groupId}</groupId> 
 			<version>${project.version}</version>
-			<artifactId>${project.groupId}.business.spi.blueprint</artifactId>
+			<artifactId>${project.groupId}.business.spi</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
-			<artifactId>${project.groupId}.model.jpa.blueprint</artifactId>
+			<artifactId>${project.groupId}.model.jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
-			<artifactId>${project.groupId}.features.blueprint</artifactId>
+			<artifactId>${project.groupId}.features</artifactId>
 			<classifier>features</classifier>
 			<type>xml</type>
 		</dependency>

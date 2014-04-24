@@ -16,7 +16,7 @@
 		<artifactId>net.osgiliath.hello.business</artifactId>
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.hello.business.impl</artifactId>
+	<artifactId>net.osgiliath.hello.business.impl.cdi</artifactId>
 	<packaging>jar</packaging>
 	<properties>
 	<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
