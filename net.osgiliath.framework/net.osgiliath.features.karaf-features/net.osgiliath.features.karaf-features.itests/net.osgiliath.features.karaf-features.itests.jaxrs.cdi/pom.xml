@@ -37,7 +37,7 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-								<include>net.osgiliath.karaf.features.karaf.jaxrs.*</include>
+								<include>net.osgiliath.*</include>
 							</includes>
 						</configuration>
 					</execution>

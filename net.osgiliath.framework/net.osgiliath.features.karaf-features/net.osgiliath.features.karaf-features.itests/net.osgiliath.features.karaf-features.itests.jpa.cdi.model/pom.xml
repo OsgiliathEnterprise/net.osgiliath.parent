@@ -32,28 +32,24 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.openjpa</groupId>
-				<artifactId>openjpa-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>pre-integration-test</id>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
 						<configuration>
-							<includes>
-								<include>net.osgiliath.jpa.cdi.model.*</include>
-							</includes>
+							<sources>
+								<source>target/generated-sources/metamodel</source>
+							</sources>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
+				<groupId>org.apache.openjpa</groupId>
+				<artifactId>openjpa-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

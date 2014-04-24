@@ -48,8 +48,8 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-									<include>net.osgiliath.messaging.*</include>
-								</includes>
+								<include>net.osgiliath.*</include>
+							</includes>
 						</configuration>
 					</execution>
 				</executions>

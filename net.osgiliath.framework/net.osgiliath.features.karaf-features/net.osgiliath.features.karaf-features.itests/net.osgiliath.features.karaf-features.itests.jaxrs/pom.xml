@@ -44,7 +44,7 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-								<include>net.osgiliath.jaxrs.*</include>
+								<include>net.osgiliath.*</include>
 							</includes>
 						</configuration>
 					</execution>

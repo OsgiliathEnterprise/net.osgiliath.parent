@@ -42,8 +42,8 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-									<include>net.osgiliath.validation.*</include>
-								</includes>
+								<include>net.osgiliath.*</include>
+							</includes>
 						</configuration>
 					</execution>
 				</executions>

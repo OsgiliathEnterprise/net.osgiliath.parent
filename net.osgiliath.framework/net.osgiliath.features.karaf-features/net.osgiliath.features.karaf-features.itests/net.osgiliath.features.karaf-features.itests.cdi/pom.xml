@@ -43,7 +43,7 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-								<include>net.osgiliath.cdi.*</include>
+								<include>net.osgiliath.*</include>
 							</includes>
 						</configuration>
 					</execution>

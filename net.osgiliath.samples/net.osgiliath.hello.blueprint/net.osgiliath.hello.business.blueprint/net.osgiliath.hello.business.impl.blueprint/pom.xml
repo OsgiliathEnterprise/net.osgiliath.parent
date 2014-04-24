@@ -66,7 +66,7 @@
 							<destFile>${project.build.directory}/jacoco-it.exec</destFile>
 							<propertyName>failsafe.argLine</propertyName>
 							<includes>
-								<include>${project.parent.artifactId}.*</include>
+								<include>${project.groupId}.*</include>
 							</includes>
 							<excludes>
 								<exclude>*.itests.*</exclude>

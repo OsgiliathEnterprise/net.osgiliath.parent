@@ -35,7 +35,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
-
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -44,7 +43,7 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-								<include>net.osgiliath.jpa.cdi.*</include>
+								<include>net.osgiliath.*</include>
 							</includes>
 						</configuration>
 					</execution>

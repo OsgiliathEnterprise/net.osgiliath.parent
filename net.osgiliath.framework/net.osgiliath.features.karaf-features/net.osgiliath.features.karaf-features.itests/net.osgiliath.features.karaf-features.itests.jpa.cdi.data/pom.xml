@@ -31,29 +31,6 @@
 				<groupId>org.apache.servicemix.tooling</groupId>
 				<artifactId>depends-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>pre-integration-test</id>
-						<configuration>
-							<includes>
-								<include>net.osgiliath.jpa.cdi.*</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
