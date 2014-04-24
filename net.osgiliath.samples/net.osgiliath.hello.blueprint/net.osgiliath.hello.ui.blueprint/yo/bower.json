@@ -1,6 +1,7 @@
 {
   "name": "net.osgiliath.hello.ui",
   "version": "0.0.0",
+  "appPath": "yo/app",
   "dependencies": {
     "angular": "1.2.11",
     "json3": "3.3.0",
