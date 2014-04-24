@@ -15,7 +15,7 @@
 		<artifactId>net.osgiliath.hello</artifactId>
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.hello.routes</artifactId>
+	<artifactId>net.osgiliath.hello.routes.cdi</artifactId>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<resources>
