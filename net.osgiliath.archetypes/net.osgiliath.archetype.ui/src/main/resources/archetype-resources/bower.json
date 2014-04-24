@@ -1,6 +1,7 @@
 {
   "name": "${artifactId}",
   "version": "${version}",
+   "appPath": "src/main/javascript",
   "dependencies": {
     "angular": "1.2.11",
     "json3": "3.3.0",
@@ -17,5 +18,8 @@
   "devDependencies": {
     "angular-mocks": "1.2.11",
     "angular-scenario": "1.2.11"
+  },
+  "resolutions": {
+    "jquery": "2.1.0"
   }
 }
