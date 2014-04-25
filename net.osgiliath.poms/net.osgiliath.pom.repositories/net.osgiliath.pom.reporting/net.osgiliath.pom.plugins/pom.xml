@@ -839,7 +839,7 @@
 								<excludes>
 									<exclude>*.itests.*</exclude>
 									<exclude>*.mock.*</exclude>
-									<exclude>*.model.*</exclude>
+									<!--<exclude>*.model.*</exclude>-->
 									<exclude>*.coverage.*</exclude>
 								</excludes>
 							</configuration>
@@ -869,7 +869,7 @@
 								<excludes>
 									<exclude>*.itests.*</exclude>
 									<exclude>*.mock.*</exclude>
-									<exclude>*.model.*</exclude>
+									<!--<exclude>*.model.*</exclude>-->
 									<exclude>*.coverage.*</exclude>
 								</excludes>
 								<append>true</append>
