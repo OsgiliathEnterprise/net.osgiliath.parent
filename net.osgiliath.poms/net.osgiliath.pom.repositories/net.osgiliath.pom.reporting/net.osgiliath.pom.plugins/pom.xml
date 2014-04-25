@@ -996,17 +996,6 @@
 				<tools-jar.location>${java.home}/../lib/tools.jar</tools-jar.location>
 			</properties>
 		</profile>
-		<profile>
-			<id>coverage-full</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 	</profiles>
 	<properties>
 		<apache-rat-plugin.version>0.10</apache-rat-plugin.version>
