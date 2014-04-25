@@ -997,10 +997,15 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>coverage-disabled</id>
-			<properties>
-				<jacoco-coverage-skip>true</jacoco-coverage-skip>
-			</properties>
+			<id>coverage-full</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 	<properties>
