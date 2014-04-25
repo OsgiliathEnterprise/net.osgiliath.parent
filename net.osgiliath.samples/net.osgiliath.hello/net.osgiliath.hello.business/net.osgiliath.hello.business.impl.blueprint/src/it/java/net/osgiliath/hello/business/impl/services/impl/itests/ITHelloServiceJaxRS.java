@@ -61,7 +61,7 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 	@Inject
 	private BundleContext bundleContext;
 	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
-	protected static final String BUNDLE_ARTIFACT_ID = "bundle.artifactId";
+	protected static final String BUNDLE_ARTIFACT_ID = "bundle.parent.artifactId";
 
 	//Exported service via blueprint.xml
 	@Inject
@@ -136,10 +136,10 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 				maven().groupId(System.getProperty(BUNDLE_GROUP_ID))
 				.artifactId(
 						System.getProperty(BUNDLE_GROUP_ID)
-								+ ".features.blueprint")
+								+ ".features")
 				.type("xml").classifier("features")
 				.versionAsInProject(),
-		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests");
+		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests.blueprint");
 	}
 	
 }

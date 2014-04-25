@@ -135,7 +135,7 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 						System.getProperty(BUNDLE_GROUP_ID)
 								+ ".features").type("xml")
 				.classifier("features").versionAsInProject(),
-		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests");
+		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests.cdi");
 	}
 	
 }

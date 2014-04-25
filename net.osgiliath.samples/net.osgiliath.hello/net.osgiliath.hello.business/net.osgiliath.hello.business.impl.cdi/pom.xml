@@ -19,8 +19,8 @@
 	<artifactId>net.osgiliath.hello.business.impl.cdi</artifactId>
 	<packaging>jar</packaging>
 	<properties>
-	<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-</properties>
+		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+	</properties>
 	<build>
 		<resources>
 			<resource>
@@ -36,7 +36,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>		
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -57,8 +57,8 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-									<include>net.osgiliath.business.*</include>
-								</includes>
+								<include>net.osgiliath.business.*</include>
+							</includes>
 						</configuration>
 					</execution>
 				</executions>

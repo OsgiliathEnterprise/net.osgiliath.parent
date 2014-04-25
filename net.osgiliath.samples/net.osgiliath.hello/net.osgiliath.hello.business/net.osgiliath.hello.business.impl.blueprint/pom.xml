@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -17,8 +18,8 @@
 	</parent>
 	<artifactId>net.osgiliath.hello.business.impl.blueprint</artifactId>
 	<properties>
-  <sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-  </properties>
+		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+	</properties>
 	<build>
 		<resources>
 			<resource>
@@ -32,8 +33,8 @@
 				<artifactId>lombok-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
 
 			<plugin>
@@ -159,25 +160,25 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		
+
 		<dependency><!-- TODO your model & databases module here -->
-			<groupId>${project.groupId}</groupId> 
+			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
-			<artifactId>${project.groupId}.business.spi</artifactId>
+			<artifactId>${project.parent.artifactId}.spi</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
