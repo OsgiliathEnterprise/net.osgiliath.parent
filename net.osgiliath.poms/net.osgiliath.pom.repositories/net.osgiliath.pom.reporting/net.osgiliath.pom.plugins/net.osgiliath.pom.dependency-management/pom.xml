@@ -1611,7 +1611,7 @@
 		<logback.version>0.9.29</logback.version>
 		<mockito.version>1.8.4</mockito.version>
 		<openwebbeans.version>1.1.7</openwebbeans.version>
-		<org.apache.activemq.version>5.9.0</org.apache.activemq.version>
+		<org.apache.activemq.version>5.9.1</org.apache.activemq.version>
 		<org.apache.aries.blueprint.version>0.3.1</org.apache.aries.blueprint.version>
 		<org.apache.aries.jpa.api.version>1.0.0</org.apache.aries.jpa.api.version>
 		<org.apache.aries.proxy.api.version>0.3.0</org.apache.aries.proxy.api.version>
