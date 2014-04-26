@@ -84,7 +84,7 @@
 		<maven-doap-plugin.version>1.1</maven-doap-plugin.version>
 		<maven-jxr-plugin.version>2.4</maven-jxr-plugin.version>
 		<maven-linkcheck-plugin.version>1.1</maven-linkcheck-plugin.version>
-		<findbugs-maven-plugin.version>2.5.4-SNAPSHOT</findbugs-maven-plugin.version>
+		<findbugs-maven-plugin.version>2.5.3</findbugs-maven-plugin.version>
 		<maven-pmd-plugin.version>3.1</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
 	</properties>
