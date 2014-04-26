@@ -9,7 +9,7 @@ angular.module('hello').controller(
 			$scope.sendHello = function() {
 				$scope.errors = '';
 				if (!$scope.registered) {
-					stompservice.subscribe("/topic/helloJMSEndPoint", function(
+					stompservice.subscribe("/topic/MessagingEndPoint", function(
 							message) {
 						if (!stompservice.heartBeatFilter(message)) {
 							var body = message.body;
@@ -26,7 +26,7 @@ angular.module('hello').controller(
 							}
 						}
 					});
-					stompservice.subscribe("/queue/helloErrors", function(
+					stompservice.subscribe("/queue/MessagingErrors", function(
 							message) {
 						if (!stompservice.heartBeatFilter(message)) {
 							var body = message.body;
@@ -39,7 +39,7 @@ angular.module('hello').controller(
 						$scope.registered = true;
 					});
 				}
-				stompservice.send("/queue/helloJMSEntryPoint", {
+				stompservice.send("/queue/MessagingEntryPoint", {
 					"httpRequestType" : "POST"
 				}, '{"helloMessage": "' + $scope.helloMessage + '"}');
 			};
