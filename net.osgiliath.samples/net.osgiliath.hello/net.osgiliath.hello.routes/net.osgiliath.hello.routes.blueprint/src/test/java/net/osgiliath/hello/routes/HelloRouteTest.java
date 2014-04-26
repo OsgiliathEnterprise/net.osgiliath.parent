@@ -52,9 +52,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class HelloRouteTest {
 	
 	
-	@Produce(uri = "direct:helloJMSEntryPoint")
+	@Produce(uri = "{{hello.MessagingEntryPoint}}")
 	protected ProducerTemplate helloEntryPoint;
-	@EndpointInject(uri = "mock:helloJaxRSEndPoint")
+	@EndpointInject(uri = "{{hello.MessagingEndPoint}}")
 	protected MockEndpoint helloRouteMock;
 	@Autowired
 	private HelloService helloService;
@@ -62,16 +62,12 @@ public class HelloRouteTest {
 	@Test
 	public void helloRouteMustHaveBeenCalled() throws InterruptedException {
 		//JsonObject model = Json.createObjectBuilder().add("helloObject", Json.createObjectBuilder().add("helloMessage", "toto").build()).build();
-		JsonObject model = Json.createObjectBuilder().add("helloMessage", "toto").build();
-		Map headers = new HashMap();
-		headers.put("httpRequestType",Builder.constant("POST"));
-		helloEntryPoint.sendBodyAndHeaders(model.toString(), headers);
-		verify(helloService).persistHello((HelloObject) anyObject());
-		// set mock expectations
-		headers = new HashMap();
-		headers.put("httpRequestType",Builder.constant("GET"));
-		helloEntryPoint.sendBodyAndHeaders("", headers);
-		helloRouteMock.expectedMessageCount(1);
-		helloRouteMock.assertIsSatisfied();
+				JsonObject model = Json.createObjectBuilder().add("helloMessage", "toto").build();
+				Map headers = new HashMap();
+				headers.put("httpRequestType",Builder.constant("POST"));
+				helloEntryPoint.sendBodyAndHeaders(model.toString(), headers);
+				verify(helloService).persistHello((HelloObject) anyObject());
+				helloRouteMock.expectedMessageCount(1);
+				helloRouteMock.assertIsSatisfied();
 	}
 }

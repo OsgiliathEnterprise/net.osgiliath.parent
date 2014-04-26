@@ -37,7 +37,7 @@ public class HelloRouteEndpointsMock extends RouteBuilder {
 		JAXBContext ctx = JAXBContext.newInstance(new Class[]{HelloObject.class, Hellos.class}); 
 		// initialize jaxbformat from jaxbcontext
 		DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
-		from("{{net.osgiliath.hello.business.url.helloservice}}/hello").choice().
+		from("{{net.osgiliath.hello.business.url.restservice}}/hello").choice().
 		when(header(Exchange.HTTP_METHOD).isEqualTo(constant("GET")))
 		.beanRef("helloService", "getHellos").marshal(jaxBDataFormat).
 		when(header(Exchange.HTTP_METHOD).isEqualTo(constant("POST")))

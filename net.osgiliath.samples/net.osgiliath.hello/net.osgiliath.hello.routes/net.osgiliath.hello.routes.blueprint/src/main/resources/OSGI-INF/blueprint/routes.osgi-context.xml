@@ -17,7 +17,7 @@
 	 http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
        http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 	<!-- configuration exported by the feature module -->
-	<cm:property-placeholder persistent-id="${project.groupId}.routes"
+	<cm:property-placeholder persistent-id="${project.groupId}"
 		id="camelRoutes" placeholder-prefix="$[" placeholder-suffix="]" />
 
 	<bean id="properties"

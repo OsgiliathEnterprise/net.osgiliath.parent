@@ -52,9 +52,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class HelloRouteTest {
 	
 	
-	@Produce(uri = "direct:helloJMSEntryPoint")
+	@Produce(uri = "{{hello.MessagingEntryPoint}}")
 	protected ProducerTemplate helloEntryPoint;
-	@EndpointInject(uri = "mock:helloJMSEndPoint")
+	@EndpointInject(uri = "{{hello.MessagingEndPoint}}")
 	protected MockEndpoint helloRouteMock;
 	@Autowired
 	private HelloService helloService;
@@ -67,10 +67,6 @@ public class HelloRouteTest {
 		headers.put("httpRequestType",Builder.constant("POST"));
 		helloEntryPoint.sendBodyAndHeaders(model.toString(), headers);
 		verify(helloService).persistHello((HelloObject) anyObject());
-		// set mock expectations
-//		headers = new HashMap();
-//		headers.put("httpRequestType",Builder.constant("GET"));
-//		helloEntryPoint.sendBodyAndHeaders("", headers);
 		helloRouteMock.expectedMessageCount(1);
 		helloRouteMock.assertIsSatisfied();
 	}
