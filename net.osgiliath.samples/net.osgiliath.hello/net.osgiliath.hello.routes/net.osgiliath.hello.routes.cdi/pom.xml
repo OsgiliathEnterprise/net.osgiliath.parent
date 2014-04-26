@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.hello</groupId>
-		<artifactId>net.osgiliath.hello</artifactId>
+		<artifactId>net.osgiliath.routes</artifactId>
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.routes.cdi</artifactId>
