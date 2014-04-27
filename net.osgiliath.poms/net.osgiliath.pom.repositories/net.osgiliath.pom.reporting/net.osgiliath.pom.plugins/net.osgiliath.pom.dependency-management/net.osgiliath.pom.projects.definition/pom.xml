@@ -30,11 +30,6 @@
 		<system>Hudson</system>
 		<url>http://build.osgiliath.net/</url>
 	</ciManagement>
-	<scm>
-		<connection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git://github.com/Tcharl/${project.artifactId}.git</developerConnection>
-		<url>git@github.com:Tcharl/${project.artifactId}.git</url>
-	</scm>
 	<properties>
 		<sonar.scm.enabled>true</sonar.scm.enabled>
 		<github.global.server>github</github.global.server>

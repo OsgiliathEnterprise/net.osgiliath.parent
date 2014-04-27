@@ -23,7 +23,7 @@
 	<artifactId>net.osgiliath.archetype.ui</artifactId>
 	<packaging>maven-archetype</packaging>
 
-	<name>${artifactId}</name>
+	<name>${project.artifactId}</name>
 
 	<build>
 		<extensions>
@@ -68,11 +68,7 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<connection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.ui.git</connection>
-		<developerConnection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.ui.git</developerConnection>
-		<url>git@github.com:Tcharl/net.osgiliath.archetype.ui.git</url>
-	</scm>
+	
 
 
 </project>

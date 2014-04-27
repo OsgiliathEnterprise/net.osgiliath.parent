@@ -68,11 +68,7 @@
     </license>
   </licenses>
 
-  <scm>
-		<connection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.model.git</connection>
-		<developerConnection>scm:git:git://github.com/Tcharl/net.osgiliath.archetype.model.git</developerConnection>
-		<url>git@github.com:Tcharl/net.osgiliath.archetype.model.git</url>
-	</scm>
+
 
   
 </project>
