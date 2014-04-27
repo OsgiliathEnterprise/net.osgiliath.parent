@@ -12,9 +12,9 @@
 		the specific language governing permissions and limitations under the License. -->
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>net.osgiliath.poms</groupId>
+    <groupId>net.osgiliath</groupId>
     <artifactId>net.osgiliath.pom.dependency-management</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
   </parent>
   <artifactId>${artifactId}</artifactId>
   <groupId>${groupId}</groupId>

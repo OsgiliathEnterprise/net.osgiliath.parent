@@ -23,18 +23,16 @@ package helper.exam;
  * #L%
  */
 
+import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.CoreOptions.options;
-import static org.ops4j.pax.exam.CoreOptions.cleanCaches;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.keepRuntimeFolder;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import java.io.File;
-import java.net.MalformedURLException;
 
 import javax.inject.Inject;
 
@@ -80,8 +78,9 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	}
 
 	@Configuration
-	public Option[] config() throws MalformedURLException {
+	public Option[] config() {
 		Option[] base = options(
+				cleanCaches(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
@@ -135,7 +134,6 @@ public abstract class AbstractKarafPaxExamConfiguration {
 		String coverageCommand = System.getProperty(COVERAGE_COMMAND);
 		if (coverageCommand != null && !coverageCommand.isEmpty()) {
 			LOG.info("covering code with command " + coverageCommand);
-			System.out.println("covering code with command " + coverageCommand);
 			return CoreOptions.vmOption(coverageCommand);
 		}
 		return new DefaultCompositeOption();

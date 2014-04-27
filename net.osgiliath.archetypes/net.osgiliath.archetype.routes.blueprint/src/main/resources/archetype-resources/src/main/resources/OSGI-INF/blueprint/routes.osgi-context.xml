@@ -59,7 +59,8 @@
 	</camelContext>
 	<!--
 	<bean id="helloRoute" class="net.osgiliath.hello.routes.HelloRoute">
-		<property name="playerAggregationStrategy" ref="playerAggregationStrategy"></property>
+		<property name="thrownExceptionMessageToInBodyProcessor" ref="thrownExceptionMessageToInBodyProcessor"></property>
+		<property name="xmljson" ref="xmljson"></property>
 	</bean> -->
 
 

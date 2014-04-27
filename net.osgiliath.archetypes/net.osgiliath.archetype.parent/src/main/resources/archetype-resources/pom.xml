@@ -13,15 +13,17 @@
 		the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath.poms</groupId>
+		<groupId>net.osgiliath</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 	</parent>
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
 	<version>${version}</version>
 	<packaging>pom</packaging>
-	
+	<organization>
+		<name>YOUR_ORGANIZATION_HERE</name>
+	</organization>
 	<build>
 		<plugins>
 			<plugin>
@@ -31,20 +33,17 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
-				<configuration>
-						<organizationName>YOUR_ORGANIZATION_HERE</organizationName>
-					</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.rat</groupId>
 				<artifactId>apache-rat-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
-	
+	<properties>
+		<!-- TODO change your organization, all your Manifests will be signed with 
+			this -->
+		<manifest.organization>Osgiliath</manifest.organization>
+	</properties>
 
 </project>

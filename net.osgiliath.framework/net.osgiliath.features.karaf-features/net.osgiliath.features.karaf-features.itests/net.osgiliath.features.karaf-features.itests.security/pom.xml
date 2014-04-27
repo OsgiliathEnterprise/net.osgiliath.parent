@@ -98,6 +98,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>

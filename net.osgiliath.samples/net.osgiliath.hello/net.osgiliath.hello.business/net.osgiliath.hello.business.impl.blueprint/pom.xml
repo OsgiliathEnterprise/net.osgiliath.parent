@@ -29,14 +29,13 @@
 		</resources>
 		<plugins>
 			<plugin>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -44,14 +43,10 @@
 			<plugin>
 				<groupId>org.apache.servicemix.tooling</groupId>
 				<artifactId>depends-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>generate-depends-file</id>
-						<goals>
-							<goal>generate-depends-file</goal>
-						</goals>
-					</execution>
-				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -59,58 +54,17 @@
 				<executions>
 					<execution>
 						<id>pre-integration-test</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<phase>pre-integration-test</phase>
 						<configuration>
-							<destFile>${project.build.directory}/jacoco-it.exec</destFile>
-							<propertyName>failsafe.argLine</propertyName>
 							<includes>
-								<include>${project.parent.artifactId}.*</include>
+								<include>net.osgiliath.*</include>
 							</includes>
-							<excludes>
-								<exclude>*.itests.*</exclude>
-								<exclude>*.mock.*</exclude>
-								<exclude>*.model.*</exclude>
-								<exclude>*.coverage.*</exclude>
-							</excludes>
-							<append>true</append>
-						</configuration>
-					</execution>
-					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<phase>post-integration-test</phase>
-						<configuration>
-							<dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<!-- <goal>verify</goal> -->
-						</goals>
-						<configuration>
-							<systemPropertyVariables>
-								<mavenSettingsPath>${mavenSettings.location}</mavenSettingsPath>
-								<coverage.command>${failsafe.argLine}</coverage.command>
-								<bundle.groupId>${project.groupId}</bundle.groupId>
-								<bundle.artifactId>${project.artifactId}</bundle.artifactId>
-								<project.bundle.file>${project.build.finalName}.jar</project.bundle.file>
-								<karaf-version>${karaf.version}</karaf-version>
-							</systemPropertyVariables>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

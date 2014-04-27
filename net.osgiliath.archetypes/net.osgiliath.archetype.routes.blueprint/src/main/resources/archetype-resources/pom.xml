@@ -14,10 +14,11 @@
 	<parent>
 		<groupId>net.osgiliath.poms</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
 	<groupId>${groupId}</groupId>
+	<version>${version}</version>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<resources>
@@ -70,8 +71,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>${version}</version>
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -164,6 +163,18 @@
 
 		
 		<!-- TODO add your business dependencies here -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.groupId}.business.spi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.groupId}.model.jpa</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- TODO add your business dependencies here -->
+
 	</dependencies>
 
 </project>

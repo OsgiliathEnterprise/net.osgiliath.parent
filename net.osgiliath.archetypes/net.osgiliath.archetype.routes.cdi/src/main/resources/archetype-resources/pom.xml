@@ -12,12 +12,13 @@
 		the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath.poms</groupId>
+		<groupId>net.osgiliath</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
 	<groupId>${groupId}</groupId>
+	<version>${version}</version>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<resources>
@@ -56,12 +57,6 @@
 							<includes>
 								<include>${groupId}.*</include>
 							</includes>
-							<excludes>
-								<exclude>*.test.*</exclude>
-								<exclude>*.mock.*</exclude>
-								<exclude>*.model.*</exclude>
-							</excludes>
-							<append>true</append>
 						</configuration>
 					</execution>
 				</executions>
@@ -72,8 +67,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>${version}</version>
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -166,6 +159,15 @@
 
 		
 		<!-- TODO add your business dependencies here -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.groupId}.business.spi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.groupId}.model.jpa</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
-
 </project>

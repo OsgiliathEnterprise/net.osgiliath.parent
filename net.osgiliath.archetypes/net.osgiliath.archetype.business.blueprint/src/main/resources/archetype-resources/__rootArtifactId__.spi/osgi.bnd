@@ -1,1 +1,2 @@
-Import-Package: *
+Import-Package: org.hibernate.validator.internal.cdi.interceptor,\
+ *

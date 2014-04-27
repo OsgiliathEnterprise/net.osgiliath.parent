@@ -18,6 +18,9 @@
 		<version>${version}</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
+	<properties> <!-- TODO point to your parent project target folder -->
+		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+	</properties>
 	<build>
 		<resources>
 			<resource>

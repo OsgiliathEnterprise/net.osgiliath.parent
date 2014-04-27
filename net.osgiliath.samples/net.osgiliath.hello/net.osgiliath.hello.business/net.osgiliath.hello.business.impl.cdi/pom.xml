@@ -57,7 +57,7 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-								<include>net.osgiliath.business.*</include>
+								<include>net.osgiliath.*</include>
 							</includes>
 						</configuration>
 					</execution>

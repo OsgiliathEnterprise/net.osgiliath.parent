@@ -23,10 +23,13 @@ package utils;
  * ${symbol_pound}L%
  */
 
+import javax.inject.Named;
+
 import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 
 import com.thoughtworks.xstream.XStream;
 //Mandatory for xstream camel processing (xstream is not able to recognize its classloader
+@Named("xstream")
 public class XStreamDataFormatWithGoodClassLoader extends XStreamDataFormat {
 	/**
 	 * sets the right classloader for xstream

@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>${groupId}</groupId>
 		<artifactId>${parent.artifactId}</artifactId>
-		<version>0.0.4-SNAPSHOT</version>
+		<version>0.0.4</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
 	<groupId>${groupId}</groupId>
@@ -210,6 +210,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>

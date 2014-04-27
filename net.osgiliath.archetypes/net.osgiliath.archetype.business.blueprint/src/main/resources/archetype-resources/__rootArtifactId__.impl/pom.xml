@@ -18,6 +18,9 @@
 		<version>${version}</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
+	<properties><!-- TODO point to your parent pom / target -->
+		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+	</properties>
 	<build>
 		<resources>
 			<resource>
@@ -32,11 +35,11 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
+				<artifactId>maven-failsafe-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
+				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.servicemix.tooling</groupId>
