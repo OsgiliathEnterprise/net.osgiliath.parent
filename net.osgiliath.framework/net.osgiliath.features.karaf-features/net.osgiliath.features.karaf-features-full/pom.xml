@@ -94,13 +94,18 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-validation</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		
-		
 		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-aether</artifactId>
