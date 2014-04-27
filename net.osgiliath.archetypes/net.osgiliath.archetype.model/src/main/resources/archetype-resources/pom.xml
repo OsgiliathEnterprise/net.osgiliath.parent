@@ -17,8 +17,5 @@
     <version>0.0.4</version>
   </parent>
   <artifactId>${artifactId}</artifactId>
-  <groupId>${groupId}</groupId>
   <packaging>pom</packaging>
-  <version>${version}</version>
- 
 </project>

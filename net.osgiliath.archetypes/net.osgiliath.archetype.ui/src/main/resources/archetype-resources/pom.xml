@@ -12,12 +12,11 @@
 		the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>${groupId}</groupId>
-		<artifactId>${parent.artifactId}</artifactId>
+		<groupId>net.osgiliath</groupId>
+		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 		<version>0.0.4</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
-	<groupId>${groupId}</groupId>
 	<packaging>war</packaging>
 	<properties>
 		<sonar.language>js</sonar.language>

@@ -17,8 +17,6 @@
 		<version>0.0.4</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
-	<groupId>${groupId}</groupId>
-	<version>${version}</version>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<resources>
