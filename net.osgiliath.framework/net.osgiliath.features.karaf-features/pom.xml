@@ -49,6 +49,7 @@
 		<module>net.osgiliath.features.karaf-features-jpa</module>
 		<module>net.osgiliath.features.karaf-features-derby</module>
 		<module>net.osgiliath.features.karaf-features-validation</module>
+		<module>net.osgiliath.features.karaf-features-standard</module>
 		<module>net.osgiliath.features.karaf-features-messaging</module>
 		<module>net.osgiliath.features.karaf-features-security</module>
 		<module>net.osgiliath.features.karaf-features-full</module>
@@ -57,7 +58,6 @@
 		<module>net.osgiliath.features.karaf-features-functional</module>
 		<module>net.osgiliath.features.karaf-features-routes</module>
 		<module>net.osgiliath.features.karaf-features.itests</module>
-		<module>net.osgiliath.features.karaf-features-standard</module>
 	</modules>
 
 	<licenses>
