@@ -51,9 +51,9 @@
 
 	</build>
 
-	<description>This is the business archetype of Osgiliath framework</description>
+		<description>This is the business archetype of Osgiliath framework</description>
 
-	<url>https://blog.osgiliath.net/?page_id=224</url>
+		<url>https://blog.osgiliath.net/?page_id=224</url>
 
 	<developers>
 		<developer>
@@ -66,8 +66,12 @@
 			</roles>
 		</developer>
 	</developers>
-
 	<licenses>
 		<license>
 			<name>Apache Licence 2.0</name>
-			<url>http://
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+</project>
