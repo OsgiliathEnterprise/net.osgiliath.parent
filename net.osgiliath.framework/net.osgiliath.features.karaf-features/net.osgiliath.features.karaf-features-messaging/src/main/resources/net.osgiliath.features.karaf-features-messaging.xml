@@ -70,7 +70,7 @@ limitations under the License.
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<!--<bundle>mvn:org.apache.camel/camel-cdi/${camel-version}</bundle>-->
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
-		<bundle>mvn:${project.groupId}/net.osgiliath.helper.camel.cdi.configadmin/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.cdi.configadmin/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.camel-cdi/${project.version}</bundle>
 	</feature>
 </features>

@@ -6,7 +6,7 @@
 		<artifactId>net.osgiliath.helpers.parent</artifactId>
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.helper.camel.cdi.configadmin</artifactId>
+	<artifactId>net.osgiliath.helpers.camel.cdi.configadmin</artifactId>
 	<build>
 		<plugins>
 			<plugin>

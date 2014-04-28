@@ -57,6 +57,6 @@
 		<module>net.osgiliath.helpers.cdi.cxf.jaxrs</module>
 		<module>net.osgiliath.helpers.cdi.eager</module>
 		<module>net.osgiliath.wrappers</module>
-		<module>net.osgiliath.helper.camel.cdi.configadmin</module>
+		<module>net.osgiliath.helpers.camel.cdi.configadmin</module>
 	</modules>
 </project>
