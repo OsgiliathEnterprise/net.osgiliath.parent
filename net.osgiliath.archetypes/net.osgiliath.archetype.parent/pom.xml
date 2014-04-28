@@ -43,6 +43,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		 <plugins>
+			 <plugin>
+        			<groupId>org.apache.maven.plugins</groupId>
+        			<artifactId>maven-archetype-plugin</artifactId>
+      			</plugin>
+      		</plugin>
+
 	</build>
 
 	<description>This is the parent archetype of Osgiliath framework</description>
