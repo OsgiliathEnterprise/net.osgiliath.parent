@@ -8,8 +8,7 @@
 	OF ANY KIND, either express or implied. See the License for the specific 
 	language governing permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
-	name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<!-- TODO add your features here -->
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
 	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${project.version}/xml/features</repository>
@@ -56,15 +55,13 @@
 
 
 	<!-- Blueprint -->
-	<feature name="${project.groupId}.business.itests.blueprint"
-		version="${project.version}">
+	<feature name="${project.groupId}.business.itests.blueprint" version="${project.version}">
 		<feature version='${project.version}'>osgiliath-business</feature>
 		<feature version='${project.version}'>${project.groupId}.model</feature>
 		<bundle>mvn:${project.groupId}/${project.groupId}.business.spi/${project.version}/jar</bundle>
 		<bundle>file:${project.parent.basedir}/${project.groupId}.business/${project.groupId}.business.impl.blueprint/target/${project.parent.artifactId}.business.impl.blueprint-${project.version}.jar</bundle>
 	</feature>
-	<feature name="${project.groupId}.business.blueprint"
-		version="${project.version}">
+	<feature name="${project.groupId}.business.blueprint" version="${project.version}">
 		<feature version='${project.version}'>osgiliath-business</feature>
 		<feature version='${project.version}'>${project.parent.artifactId}.model</feature>
 		<bundle>mvn:${project.parent.groupId}/${project.parent.artifactId}.business.spi/${project.version}/jar</bundle>
@@ -77,8 +74,7 @@
 		<feature version='${project.version}'>${project.groupId}.business.blueprint</feature>
 		<bundle>mvn:${project.groupId}/${project.groupId}.routes.blueprint/${project.version}/jar</bundle>
 	</feature>
-	<feature name="${project.groupId}.full.blueprint"
-		version="${project.version}">
+	<feature name="${project.groupId}.full.blueprint" version="${project.version}">
 		<feature version='${project.version}'>${project.groupId}.business.blueprint</feature>
 		<feature version='${project.version}'>${project.groupId}.route.blueprint</feature>
 		<feature version='${project.version}'>${project.parent.artifactId}.ui</feature>
