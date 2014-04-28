@@ -32,7 +32,7 @@ import javax.persistence.criteria.Root;
 
 import lombok.Setter;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
-import net.osgiliath.hello.model.jpa.model.HelloObject_;
+import net.osgiliath.hello.model.jpa.model.HelloEntity_;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -53,7 +53,7 @@ public class HelloObjectJpaRepository extends SimpleJpaRepository<HelloEntity, L
 		CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
 		Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
 		cq.select(helloObject);
-		Predicate where = cb.equal(helloObject.get(HelloObject_.helloMessage), message_p);
+		Predicate where = cb.equal(helloObject.get(HelloEntity_.helloMessage), message_p);
 		cq.where(where);
 		TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
 		List<HelloEntity> result = q.getResultList();
