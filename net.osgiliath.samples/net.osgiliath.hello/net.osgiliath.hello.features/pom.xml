@@ -66,13 +66,10 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-full</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 	</dependencies>
-	<properties>
-	<parent.project.basedir>${project.basedir}/..</parent.project.basedir>
-	</properties>
-</project>
+	<
