@@ -30,7 +30,7 @@ import javax.validation.Validator;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 
 import com.google.common.base.Function;
@@ -50,13 +50,13 @@ public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.Hell
 	@Setter
 	private Validator validator;
 	@Override
-	public void persistHello(HelloObject helloObject_p) {
+	public void persistHello(HelloEntity helloObject_p) {
 		log.info("persisting new message with jaxrs: " + helloObject_p.getHelloMessage());
-		Set<ConstraintViolation<HelloObject>> validationResults = validator
+		Set<ConstraintViolation<HelloEntity>> validationResults = validator
 				.validate(helloObject_p);
 		String errors = "";
 		if (!validationResults.isEmpty()) {
-			for (ConstraintViolation<HelloObject> violation : validationResults) {
+			for (ConstraintViolation<HelloEntity> violation : validationResults) {
 				log.info("subscription error, validating user:"
 						+ violation.getMessage());
 				errors += violation.getPropertyPath() + ": "
