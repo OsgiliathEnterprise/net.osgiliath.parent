@@ -70,17 +70,17 @@ public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.Hell
 
 	@Override
 	public Hellos getHellos() {
-		Collection<HelloObject> helloObjects = helloObjectRepository.findAll();
+		Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
 		if (helloObjects.isEmpty()) {
 			throw new UnsupportedOperationException("You should not call this method when there is no Hello yet !");
 		}
 		return Hellos.builder().helloCollection(Lists.newArrayList(Iterables.transform(helloObjects, helloObjectToStringFunction))).build();
 	}
 	//Guava function waiting for Java 8
-	private Function<HelloObject, String> helloObjectToStringFunction = new Function<HelloObject, String>() {
+	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 		@Override
-		public String apply(HelloObject arg0) {
+		public String apply(HelloEntity arg0) {
 			return arg0.getHelloMessage();
 		}
 	};
