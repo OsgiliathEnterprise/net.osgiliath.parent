@@ -88,7 +88,7 @@ public abstract class AbstractKarafPaxExamConfiguration {
 								MavenUtils.getArtifactVersion(
 										"org.apache.karaf", "apache-karaf"))
 						.unpackDirectory(new File("target/exam/unpack/")),
-				keepRuntimeFolder(), cleanCaches(), loggingLevel(),
+				keepRuntimeFolder(), loggingLevel(),
 				junitBundles(), addCodeCoverageOption(), addExtraOptions(),
 				 addMavenSettingsOptions(), featureToTest());
 		OptionUtils.combine(base, addJVMOptions());
