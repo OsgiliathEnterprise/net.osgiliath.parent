@@ -2,8 +2,8 @@
 
 ## Noticeable files
 
-* osgi.bnd: spring-data and openjpa imports, persistence.xml location declaration
-* pom.xml: openjpa plugin declaration, by default, all classes suffixed by 'Entity' will be enhanced (see management [here](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/pom.xml))
+* [osgi.bnd](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.model/net.osgiliath.hello.model.jpa/osgi.bnd): spring-data and openjpa imports, persistence.xml location declaration
+* [pom.xml](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.model/net.osgiliath.hello.model.jpa/pom.xml): openjpa plugin declaration, by default, all classes suffixed by 'Entity' will be enhanced (see management [here](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/pom.xml))
 * [persistence.xml](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.model/net.osgiliath.hello.model.jpa/src/main/resources/META-INF/persistence.xml) persistent classes mapping and database referencing.
 * [blueprint context](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.model/net.osgiliath.hello.model.jpa/src/main/resources/OSGI-INF/blueprint/model.osgi-context.xml) jpa context creation and injection with transactional behaviour and OSGI service exporting.
 * [sample entity](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.model/net.osgiliath.hello.model.jpa/src/main/java/net/osgiliath/hello/model/jpa/model/HelloObject.java) with Xml marshalling, and validation enabled
