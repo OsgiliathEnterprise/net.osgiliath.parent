@@ -44,7 +44,7 @@ import lombok.experimental.Builder;
 @Entity//persistence class declaration
 @XmlRootElement//xml marshalling
 @EqualsAndHashCode(callSuper=true)
-public class HelloObject extends AbstractEntity implements Serializable{
+public class HelloEntity extends AbstractEntity implements Serializable{
 	private static final transient long serialVersionUID = 6233801298404301547L;
 	@XmlElement//XML node
 	@NotNull(message="message must not be null")//Validation for null object

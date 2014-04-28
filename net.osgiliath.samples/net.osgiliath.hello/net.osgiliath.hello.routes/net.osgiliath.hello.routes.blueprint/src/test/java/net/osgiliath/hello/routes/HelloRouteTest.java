@@ -30,7 +30,7 @@ import javax.json.Json;
 import javax.json.JsonObject;
 
 import net.osgiliath.hello.business.spi.services.HelloService;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Exchange;
@@ -66,7 +66,7 @@ public class HelloRouteTest {
 				Map headers = new HashMap();
 				headers.put("httpRequestType",Builder.constant("POST"));
 				helloEntryPoint.sendBodyAndHeaders(model.toString(), headers);
-				verify(helloService).persistHello((HelloObject) anyObject());
+				verify(helloService).persistHello((HelloEntity) anyObject());
 				helloRouteMock.expectedMessageCount(1);
 				helloRouteMock.assertIsSatisfied();
 	}

@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
 
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
 
@@ -58,7 +58,7 @@ public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.Hell
 	//JSR 303 validator
 	
 	@Override
-	public void persistHello(@NotNull @Valid  HelloObject helloObject_p) {
+	public void persistHello(@NotNull @Valid  HelloEntity helloObject_p) {
 		log.info("persisting new message with jaxrs: " + helloObject_p.getHelloMessage());
 		helloObjectRepository.save(helloObject_p);
 		
@@ -66,17 +66,17 @@ public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.Hell
 
 	@Override
 	public Hellos getHellos() {
-		Collection<HelloObject> helloObjects = helloObjectRepository.findAll();
+		Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
 		if (helloObjects.isEmpty()) {
 			throw new UnsupportedOperationException("You could not call this method when there are no helloObjects");
 		}
 		return Hellos.builder().helloCollection(Lists.newArrayList(Iterables.transform(helloObjects, helloObjectToStringFunction))).build();
 	}
 	//Guava function waiting for Java 8
-	private Function<HelloObject, String> helloObjectToStringFunction = new Function<HelloObject, String>() {
+	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 		@Override
-		public String apply(HelloObject arg0) {
+		public String apply(HelloEntity arg0) {
 			return arg0.getHelloMessage();
 		}
 	};

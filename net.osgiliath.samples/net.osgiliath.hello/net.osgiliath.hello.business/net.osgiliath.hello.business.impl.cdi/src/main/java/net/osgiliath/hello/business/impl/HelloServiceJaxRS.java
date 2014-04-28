@@ -34,14 +34,14 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 //TODO You can remove this class, see how it configures REST web services URIs
 @Path("/hello")
 public interface HelloServiceJaxRS extends HelloService{
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	void persistHello(@NotNull @Valid  HelloObject helloObject);
+	void persistHello(@NotNull @Valid  HelloEntity helloObject);
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	Hellos getHellos();

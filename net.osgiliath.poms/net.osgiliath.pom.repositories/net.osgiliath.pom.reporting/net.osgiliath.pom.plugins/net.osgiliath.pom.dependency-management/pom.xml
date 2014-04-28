@@ -1579,7 +1579,7 @@
 		<commons-management.version>1.0</commons-management.version>
 		<commons-pool.version>1.6</commons-pool.version>
 		<derby.version>10.9.1.0</derby.version>
-		<exam.version>3.4.0</exam.version>
+		<exam.version>3.5.0</exam.version>
 		<geronimo-annotation_1.1_spec.version>1.0.1</geronimo-annotation_1.1_spec.version>
 		<geronimo-atinject_1.0_spec.version>1.0</geronimo-atinject_1.0_spec.version>
 		<geronimo-el_2.2_spec.version>1.0.3</geronimo-el_2.2_spec.version>

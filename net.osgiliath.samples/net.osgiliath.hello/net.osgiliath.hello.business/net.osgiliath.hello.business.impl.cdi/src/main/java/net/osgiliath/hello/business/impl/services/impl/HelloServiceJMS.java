@@ -28,7 +28,7 @@ import javax.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 import org.apache.camel.Consume;
 import org.apache.camel.Exchange;
@@ -60,7 +60,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 	private ProducerTemplate producer;
 	
 	@Override
-	public void persistHello(@NotNull @Valid HelloObject helloObject_p) {
+	public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
 		log.error("****************** Save on JMS Service **********************");
 		log.info("persisting new message with jms: " + helloObject_p.getHelloMessage());
 		helloObjectRepository.save(helloObject_p);
@@ -70,7 +70,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 	@Override
 	public Hellos getHellos() {
 		
-		Collection<HelloObject> helloObjects = helloObjectRepository.findAll();
+		Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
 		if (helloObjects.isEmpty()) {
 			throw new UnsupportedOperationException(
 					"You could not call this method when the list is empty");
@@ -82,10 +82,10 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 								helloObjectToStringFunction))).build();
 	}
 
-	private Function<HelloObject, String> helloObjectToStringFunction = new Function<HelloObject, String>() {
+	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 		@Override
-		public String apply(HelloObject arg0) {
+		public String apply(HelloEntity arg0) {
 			return arg0.getHelloMessage();
 		}
 	};
@@ -102,7 +102,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 
 			@Override
 			public void process(Exchange exchange) throws Exception {
-				persistHello((HelloObject) exchange.getIn().getBody());
+				persistHello((HelloEntity) exchange.getIn().getBody());
 				
 			}
 			

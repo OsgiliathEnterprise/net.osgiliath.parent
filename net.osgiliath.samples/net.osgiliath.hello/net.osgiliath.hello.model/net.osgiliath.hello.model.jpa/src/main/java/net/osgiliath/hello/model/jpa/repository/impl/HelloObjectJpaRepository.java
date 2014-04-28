@@ -31,41 +31,41 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import lombok.Setter;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.model.HelloObject_;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 //TODO Spring data jpa repository declaration
-public class HelloObjectJpaRepository extends SimpleJpaRepository<HelloObject, Long> implements HelloObjectRepository {
+public class HelloObjectJpaRepository extends SimpleJpaRepository<HelloEntity, Long> implements HelloObjectRepository {
 	@Setter
 	private EntityManager entityManager;
 	
-	public HelloObjectJpaRepository(Class<HelloObject> domainClass,
+	public HelloObjectJpaRepository(Class<HelloEntity> domainClass,
 			EntityManager em) {
 		super(domainClass, em);
 		setEntityManager(em);
 	}
 	
 	@Override
-	public Collection<? extends HelloObject> findByHelloObjectMessage(String message_p) {
+	public Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p) {
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-		CriteriaQuery<HelloObject> cq = cb.createQuery(HelloObject.class);
-		Root<HelloObject> helloObject = cq.from(HelloObject.class);
+		CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
+		Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
 		cq.select(helloObject);
 		Predicate where = cb.equal(helloObject.get(HelloObject_.helloMessage), message_p);
 		cq.where(where);
-		TypedQuery<HelloObject> q = entityManager.createQuery(cq);
-		List<HelloObject> result = q.getResultList();
+		TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
+		List<HelloEntity> result = q.getResultList();
 		return result;
 	}
 	@Override
-	public <S extends HelloObject> S save(S entity) {
+	public <S extends HelloEntity> S save(S entity) {
 		return super.save(entity);
 	}
 
 	@Override
-	public List<HelloObject> findAll() {
+	public List<HelloEntity> findAll() {
 		return super.findAll();
 	}
 	@Override

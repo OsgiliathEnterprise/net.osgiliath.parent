@@ -31,7 +31,7 @@ import javax.xml.bind.JAXBContext;
 
 import lombok.Setter;
 import net.osgiliath.hello.business.model.Hellos;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
@@ -48,7 +48,7 @@ import org.apache.commons.io.IOUtils;
 public class HelloRoute extends RouteBuilder {
 	
 	private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
-			HelloObject.class, Hellos.class);
+			HelloEntity.class, Hellos.class);
 	@Inject
 	@Named("thrownExceptionMessageToInBodyProcessor")
 	@Setter
@@ -59,7 +59,7 @@ public class HelloRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		JAXBContext ctx = JAXBContext
-				.newInstance(new Class[] { HelloObject.class, Hellos.class });
+				.newInstance(new Class[] { HelloEntity.class, Hellos.class });
 		DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 		
 		from("{{hello.MessagingEntryPoint}}").log(LoggingLevel.INFO, "Received message: \"${in.body}\"")

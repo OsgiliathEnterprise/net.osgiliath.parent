@@ -28,13 +28,13 @@ import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spi.DataFormat;
 
 import net.osgiliath.hello.business.model.Hellos;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 public class HelloRouteEndpointsMock extends RouteBuilder {
 //TODO Mock routing, you can also use integration test like in the business module
 	@Override
 	public void configure() throws Exception {
-		JAXBContext ctx = JAXBContext.newInstance(new Class[]{HelloObject.class, Hellos.class}); 
+		JAXBContext ctx = JAXBContext.newInstance(new Class[]{HelloEntity.class, Hellos.class}); 
 		// initialize jaxbformat from jaxbcontext
 		DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 		from("{{net.osgiliath.hello.business.url.restservice}}/hello").choice().

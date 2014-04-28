@@ -24,7 +24,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import net.osgiliath.hello.business.model.Hellos;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 /**
  * TODO you can remove this declaration after seen the implementation
  * @author charliemordant
@@ -33,7 +33,7 @@ import net.osgiliath.hello.model.jpa.model.HelloObject;
 
 public interface HelloService {
 	
-	void persistHello(@NotNull @Valid HelloObject helloMessage_p);
+	void persistHello(@NotNull @Valid HelloEntity helloMessage_p);
 	Hellos getHellos();
 	void deleteAll();
 

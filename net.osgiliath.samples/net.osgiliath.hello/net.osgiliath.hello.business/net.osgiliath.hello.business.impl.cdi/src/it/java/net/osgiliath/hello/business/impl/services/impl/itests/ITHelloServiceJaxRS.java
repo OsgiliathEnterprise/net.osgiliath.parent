@@ -31,7 +31,7 @@ import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.hello.business.model.Hellos;
-import net.osgiliath.hello.model.jpa.model.HelloObject;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
@@ -90,7 +90,7 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		helloServiceClient.path("/hello");
 		helloServiceClient.type(MediaType.APPLICATION_XML);
 		//helloServiceClient.query("helloObject", HelloObject.builder().helloMessage("John").build());
-		helloServiceClient.post(HelloObject.builder().helloMessage("John").build());
+		helloServiceClient.post(HelloEntity.builder().helloMessage("John").build());
 		helloServiceClient.accept(MediaType.APPLICATION_XML);
 		Hellos hellos = helloServiceClient.get(Hellos.class);
 		assertEquals(1, hellos.getHelloCollection().size());
@@ -103,7 +103,7 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
 		helloServiceClient.path("/hello");
 		helloServiceClient.type(MediaType.APPLICATION_XML);
-		helloServiceClient.post(HelloObject.builder().helloMessage("J").build());
+		helloServiceClient.post(HelloEntity.builder().helloMessage("J").build());
 		helloServiceClient.accept(MediaType.APPLICATION_XML);
 		LOG.trace("************ end testSayHelloValidationError **********************");
 		
@@ -115,7 +115,7 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		LOG.trace("Camel context: " + jmsComponent.getCamelContext());
 		ProducerTemplate template = jmsComponent.getCamelContext().createProducerTemplate();
 		LOG.trace("Producer template: " + template);
-		template.sendBody("jms:queue:helloServiceQueueIn", HelloObject.builder().helloMessage("Doe").build());
+		template.sendBody("jms:queue:helloServiceQueueIn", HelloEntity.builder().helloMessage("Doe").build());
 		ConsumerTemplate consumer = jmsComponent.getCamelContext().createConsumerTemplate();
 		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut", Hellos.class);
 		assertTrue(hellos.getHelloCollection().size() > 0);
