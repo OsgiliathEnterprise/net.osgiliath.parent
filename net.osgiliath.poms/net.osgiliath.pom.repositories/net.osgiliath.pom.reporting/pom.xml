@@ -24,11 +24,11 @@
 	</modules>
 	<reporting>
 		<plugins>
-			<plugin>
+			<!-- not working in the build pipeline <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changelog-plugin</artifactId>
 				<version>${maven-changelog-plugin.version}</version>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
