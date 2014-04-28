@@ -42,6 +42,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		 <plugins>
+			 <plugin>
+        			<groupId>org.apache.maven.plugins</groupId>
+        			<artifactId>maven-archetype-plugin</artifactId>
+      			</plugin>
+      		</plugins>
+
 	</build>
 
 	<description>This is the route archetype of osgiliath framework</description>
