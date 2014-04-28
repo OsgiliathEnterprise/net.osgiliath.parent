@@ -143,7 +143,7 @@ public abstract class AbstractKarafPaxExamConfiguration {
 	}
 	
 	protected Option loggingLevel() {
-		return logLevel(LogLevel.DEBUG);
+		return logLevel(LogLevel.INFO);
 	}
 
 }
