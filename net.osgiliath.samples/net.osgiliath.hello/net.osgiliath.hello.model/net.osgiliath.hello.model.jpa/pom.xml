@@ -78,21 +78,21 @@
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-validation</artifactId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
