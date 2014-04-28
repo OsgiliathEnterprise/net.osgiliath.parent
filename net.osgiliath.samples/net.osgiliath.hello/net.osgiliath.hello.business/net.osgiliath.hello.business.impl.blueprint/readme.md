@@ -2,7 +2,7 @@
 
 ## Relevant files
 ### Common
-* [osgi.bnd](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.business/net.osgiliath.hello.model.business.impl.blueprint/osgi.bnd): jaxrs providers imports, validation packages
+* [osgi.bnd](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.business/net.osgiliath.hello.business.impl.blueprint/osgi.bnd): jaxrs providers imports, validation packages
 
 ### Validation
 * [Validation factory import, validator instanciation and injection via blueprint](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.business/net.osgiliath.hello.business.impl.blueprint/src/main/resources/OSGI-INF/blueprint/business.osgi-context.xml)
