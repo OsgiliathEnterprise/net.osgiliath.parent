@@ -71,7 +71,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helper.camel.cdi.configadmin</artifactId>
+			<artifactId>net.osgiliath.helpers.camel.cdi.configadmin</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
