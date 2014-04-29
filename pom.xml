@@ -179,6 +179,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<repositoryName>superpom</repositoryName>
 		<sonar.scm.url>scm:git:https://github.com/OsgiliathEnterprise/net.osgiliath.parent.git/master</sonar.scm.url>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
 		<sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
 	</properties>
 	<!-- <profiles>
