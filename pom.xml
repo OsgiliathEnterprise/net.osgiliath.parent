@@ -10,16 +10,20 @@
 	<artifactId>net.osgiliath.parent</artifactId>
 	<version>0.0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Osgiliath superpom</name>
+	<name>Osgiliath framework</name>
 	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<description>
-	This is a superpom for the entire Osgiliath framework.
-	It contains all the needed plugins versions and execution specificities, also dependencies versions.	
+	This is the parent pom for the entire Osgiliath framework.
+	It contains dependencies definitions, features and helpers, archetypes, as well as a reference sample
 	</description>
 	<ciManagement>
 		<system>Jenkins</system>
 		<url>https://build.osgiliath.net</url>
 	</ciManagement>
+	<issueManagement>
+		<system>Bugzilla</system>
+		<url>http://issues.osgiliath.net/</url>
+	</issueManagement>
 	<inceptionYear>2013</inceptionYear>
 	<licenses>
 		<license>
