@@ -19,7 +19,7 @@ IDE recommandation:
 * * Lombok installation: mandatory for IDE compilation
 * * M2e (compilation)
 * * Spring-IDE (for blueprint file editing)
-* * Virgo tooling (template.mf edition)
+* * Bnd
 
 Development:
 Starting from the archetype, you have a simple helloworld made with this project, don't forget to remove every reference once you've understood the stack
@@ -38,12 +38,11 @@ Prerequisite:
 
 npm, bower (npm -g install bower), grunt (npm -g install grunt-cli)
 
-navigate to the 'yo' folder and run 'npm -g install --save-dev', then 'bower install --save-dev'
+navigate to the base folder and run mvn clean install
 
-Then mvn clean install on the project
 
 Deployement:
 
-Prerequisite: Karaf 3.0.0
+Prerequisite: Karaf 3.0.1
 
 Usage: run 'feature:repo-add mvn:<project.parent.groupId>/<project.parent.artifactId>/<version>/xml/feature', then 'feature:install <project.parent.artifactId>.full'

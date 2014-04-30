@@ -1681,7 +1681,7 @@
 		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 		<org.springframework.hateoas.version>0.8.0.RELEASE</org.springframework.hateoas.version>
-		<osgiliath.framework.maven.version>0.0.4-SNAPSHOT</osgiliath.framework.maven.version>
+		<osgiliath.framework.maven.version>0.0.4</osgiliath.framework.maven.version>
 		<ow2-jdbc-service-1.0-spec.version>1.0.13</ow2-jdbc-service-1.0-spec.version>
 		<ops4j.base.version>1.4.0</ops4j.base.version>
 		<pax-cdi.version>0.7.0</pax-cdi.version>
