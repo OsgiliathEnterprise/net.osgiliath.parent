@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package};
+package ${package}.itests;
 
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
@@ -16,6 +16,7 @@ import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
+import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +29,14 @@ public class ITService extends AbstractKarafPaxExamConfiguration {
 	private BootFinished bootFinished;
 	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
 	protected static final String BUNDLE_ARTIFACT_ID = "bundle.parent.artifactId";
+	@ProbeBuilder
+    public TestProbeBuilder extendProbe(TestProbeBuilder builder)
+    {
+        builder.setHeader("Export-Package", "${package}.itests");
+        builder.setHeader("Bundle-ManifestVersion", "2");
+        builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
+        return builder;
+    }
 	@Test
 	public void testMyService()  {
 	//TODO make the test!
