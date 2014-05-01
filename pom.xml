@@ -77,7 +77,7 @@
 		<site>
 			<id>Osgiliath</id>
 			<name>Osgiliath</name>
-			<url>https://blog.osgiliath.net/?page_id=224</url>
+			<url>http://build.osgiliath.net/job/OsgiliathEF%20Site/site/</url>
 		</site>
 	</distributionManagement>
 	<build>
