@@ -13,7 +13,7 @@ the specific language governing permissions and limitations under the License. -
 	<parent>
 		<groupId>net.osgiliath.hello</groupId>
 		<artifactId>net.osgiliath.hello</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.features</artifactId>
 	<build>
