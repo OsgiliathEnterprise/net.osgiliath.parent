@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-derby</artifactId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>

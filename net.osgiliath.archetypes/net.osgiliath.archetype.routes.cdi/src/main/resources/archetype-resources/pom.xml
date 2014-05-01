@@ -168,4 +168,7 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+	<properties>
+  		<osgiliath.framework.maven.version>0.0.4</osgiliath.framework.maven.version>
+  	</properties>
 </project>
