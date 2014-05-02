@@ -120,19 +120,11 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>start-karaf</id>
-						<goals>
-							<goal>start-container</goal>
-						</goals>
-						<phase>pre-integration-test</phase>
-					</execution>
-					<!-- <execution>
-						<id>stop-karaf</id>
-						<goals>
-							<goal>stop-container</goal>
-						</goals>
-						<phase>post-integration-test</phase>
-					</execution> -->
+                        <goals>
+                            <goal>start-container</goal>
+                            <goal>stop-container</goal>
+                        </goals>
+                    </execution>
 				</executions>
 			</plugin>
 		</plugins>
