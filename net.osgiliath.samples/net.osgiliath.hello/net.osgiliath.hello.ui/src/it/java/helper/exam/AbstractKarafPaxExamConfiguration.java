@@ -31,25 +31,35 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
+import java.io.File;
+
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
+import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
 import org.osgi.framework.BundleContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * General integration test declaration
+ * 
  * @author charliemordant
- *
+ * 
  */
 public class AbstractKarafPaxExamConfiguration {
+	private static final Logger LOG = LoggerFactory
+			.getLogger(AbstractKarafPaxExamConfiguration.class);
+	protected static final String COVERAGE_COMMAND = "coverage.command";
+	protected static final String USER_SETTINGS_REFERENCE = "user-settings";
+	protected static final String GLOBAL_SETTINGS_REFERENCE = "global-settings";
 	protected static final String BUNDLE_JAR_SYS_PROP = "project.bundle.file";
 
-	protected static final String COVERAGE_COMMAND = "coverage.command";
 	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
 	protected static final String BUNDLE_ARTIFACT_ID = "bundle.parent.artifactId";
-	
 
 	// the JVM option to set to enable remote debugging
 	@SuppressWarnings("UnusedDeclaration")
@@ -64,70 +74,81 @@ public class AbstractKarafPaxExamConfiguration {
 		// paxRunnerVmOption = DEBUG_VM_OPTION;
 
 	}
-@Configuration
-	public  Option[] config() {
-//		final String bundleFileName = System.getProperty(BUNDLE_JAR_SYS_PROP);
-//		final File bundleFile = new File("target" + File.separator
-//				+ bundleFileName);
-//		if (!bundleFile.canRead()) {
-//			throw new IllegalArgumentException("Cannot read from bundle file "
-//					+ bundleFileName + " specified in the "
-//					+ BUNDLE_JAR_SYS_PROP + " system property");
-//		}
+
+	@Configuration
+	public Option[] config() {
 		Option[] base = options(
-				//cleanCaches(),
-				
-				//keepRuntimeFolder(),
+				cleanCaches(),
 				karafDistributionConfiguration()
 						.frameworkUrl(
 								maven().groupId("org.apache.karaf")
 										.artifactId("apache-karaf").type("zip")
-										.version("3.0.0"))
-						.karafVersion("3.0.0").name("Apache Karaf"),
-				// the current project (the bundle under test)
-						//CoreOptions.bundle(bundleFile.toURI().toString()),
-						features(
-								maven().artifactId(
-										"net.osgiliath.hello.features")
-										.groupId("net.osgiliath.hello").type("xml")
-										.classifier("features").version("0.0.4-SNAPSHOT"),
-								"net.osgiliath.hello.ui"),
-						
-						
-			//	frameworkProperty("osgi.clean").value("true"),
-//				systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level")
-//						.value("INFO"),
-				editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
-						"org.ops4j.pax.url.mvn.settings",
-						System.getProperty("mavenSettingsPath")),
-				logLevel(LogLevel.INFO), 
-				 junitBundles(),
-				 addCodeCoverageOption(),
-//				 addJVMOptions(),
-				 addExtraOptions());
-		
+										.versionAsInProject())
+						.name("Apache Karaf")
+						.karafVersion(
+								MavenUtils.getArtifactVersion(
+										"org.apache.karaf", "apache-karaf"))
+						.unpackDirectory(new File("target/exam/unpack/")),
+				keepRuntimeFolder(),
+				loggingLevel(),
+				features(
+						maven().artifactId("net.osgiliath.hello.features")
+								.groupId("net.osgiliath.hello").type("xml")
+								.classifier("features")
+								.versionAsInProject(),
+						"net.osgiliath.hello.full.blueprint"), junitBundles(),
+				addCodeCoverageOption(), addExtraOptions(),
+				addMavenSettingsOptions());
+		Option[] vmMed = OptionUtils.combine(base, addJVMOptions());
 		final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions
 				.vmOption(paxRunnerVmOption) : null;
-		return OptionUtils.combine(base, vmOption);
+		return OptionUtils.combine(vmMed, vmOption);
+
 	}
 
-	private Option addJVMOptions() {
-		String memVmOptsString="-Xmx512m -Xms128m -XX:MaxPermSize=256m";
-		return CoreOptions.vmOption(memVmOptsString);
+	private Option addMavenSettingsOptions() {
+		if (System.getProperty(USER_SETTINGS_REFERENCE) != null) {
+			LOG.info("adding user reference settings "
+					+ System.getProperty(USER_SETTINGS_REFERENCE));
+			return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
+					"org.ops4j.pax.url.mvn.settings",
+					System.getProperty(USER_SETTINGS_REFERENCE));
+		}
+		if (System.getProperty(GLOBAL_SETTINGS_REFERENCE) != null) {
+			LOG.info("adding global reference settings "
+					+ System.getProperty(GLOBAL_SETTINGS_REFERENCE));
+			return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
+					"org.ops4j.pax.url.mvn.settings",
+					System.getProperty(GLOBAL_SETTINGS_REFERENCE));
+		}
+		return new DefaultCompositeOption();
+
 	}
 
-	private  Option addCodeCoverageOption() {
+	private Option[] addJVMOptions() {
+
+		String maxHeap = "-Xmx1024m";
+		String minHeap = "-Xms128m";
+		String maxPerm = "-XX:MaxPermSize=512m";
+		return options(CoreOptions.vmOption(maxHeap),
+				CoreOptions.vmOption(minHeap), CoreOptions.vmOption(maxPerm));
+	}
+
+	private Option addCodeCoverageOption() {
 		String coverageCommand = System.getProperty(COVERAGE_COMMAND);
 		if (coverageCommand != null && !coverageCommand.isEmpty()) {
+			LOG.info("covering code with command " + coverageCommand);
 			return CoreOptions.vmOption(coverageCommand);
 		}
-		return null;
-	}
-
-	protected  Option addExtraOptions() {
 		return new DefaultCompositeOption();
 	}
-	
-	
+
+	protected Option addExtraOptions() {
+		return new DefaultCompositeOption();
+	}
+
+	protected Option loggingLevel() {
+		return logLevel(LogLevel.INFO);
+	}
 
 }

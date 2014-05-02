@@ -12,14 +12,15 @@ angular.module('commonapp', []).service('stompservice', function(){
 	this.user = 'guest';
 	this.password = 'guest';
 	this.url = this.protocol + '://' + this.host + ':' + this.port ;
-	this.stompClient = Stomp.client(this.url, "v11.stomp");
-	this.stompClient.heartbeat.outgoing = 200;
+	this.stompClient = Stomp.client(this.url, 'v11.stomp');
+	this.stompClient.heartbeat.outgoing = 3000;
+	this.stompClient.heartbeat.incoming = 3000; 
 	this.stompClient.connect(this.user, this.password, function() {
 		console.info('client connected!');
 		
 	}, function(error) {
 	    // display the error's message header:
-	    alert(error.headers.message);
+	    alert(error.message);
 	  } );
 	
 	console.info('connectStomp instanciated: client: ' + JSON.stringify(this.stompClient));
@@ -31,16 +32,16 @@ angular.module('commonapp', []).service('stompservice', function(){
 	
 	
 	this.subscribe = function(queue, callback) {
-		    console.info('Subscribing to queue: ' + queue);
-			var id = this.stompClient.subscribe(queue, callback);
-			console.info('stompObject: ' + JSON.stringify(this));
-			console.info('Subscription ID: ' + id);
-			var heartBeatId = this.heartBeat(this.stompClient, queue);
-			var protocolData = {
-				'connectionId' : id,
-				'heartBeatId' : heartBeatId
-			};
-			return protocolData;
+		      console.info('Subscribing to queue: ' + queue);
+			  var id = this.stompClient.subscribe(queue, callback);
+			  console.info('stompObject: ' + JSON.stringify(this));
+			  console.info('Subscription ID: ' + id);
+			  var heartBeatId = this.heartBeat(this.stompClient, queue);
+			  var protocolData = {
+				  'connectionId' : id,
+				  'heartBeatId' : heartBeatId
+			  };
+			  return protocolData;
 	};
 	
 	

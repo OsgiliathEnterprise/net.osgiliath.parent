@@ -1610,7 +1610,7 @@
 		<logback.version>0.9.29</logback.version>
 		<mockito.version>1.8.4</mockito.version>
 		<openwebbeans.version>1.1.7</openwebbeans.version>
-		<org.apache.activemq.version>5.9.1</org.apache.activemq.version>
+		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
 		<org.apache.aries.blueprint.version>0.3.1</org.apache.aries.blueprint.version>
 		<org.apache.aries.jpa.api.version>1.0.0</org.apache.aries.jpa.api.version>
 		<org.apache.aries.proxy.api.version>0.3.0</org.apache.aries.proxy.api.version>
@@ -1673,7 +1673,7 @@
 		<org.osgi.version>4.3.1</org.osgi.version>
 		<org.osgi-core.version>5.0.0</org.osgi-core.version>
 		<org.osgi.foundation.version>1.2.0</org.osgi.foundation.version>
-		<org.seleniumhq.selenium.version>2.37.1</org.seleniumhq.selenium.version>
+		<org.seleniumhq.selenium.version>2.41.0</org.seleniumhq.selenium.version>
 		<org.springframework.data.commons.version>1.6.4.RELEASE</org.springframework.data.commons.version>
 		<org.springframework.data.jpa.version>1.4.4.RELEASE</org.springframework.data.jpa.version>
 		<org.springframework.osgi.version>1.2.1</org.springframework.osgi.version>
@@ -1700,7 +1700,7 @@
 		<wstx-asl.version>4.0.0</wstx-asl.version>
 		<xbean.version>3.16</xbean.version>
 		<xom.version>1.2.5</xom.version>
-		<xml-apis.version>2.0.2</xml-apis.version>
+		<xml-apis.version>1.4.01</xml-apis.version>
 	</properties>
 	<!-- <dependencies> <dependency> <groupId>org.apache.activemq</groupId> 
 		<artifactId>activemq-osgi</artifactId> <exclusions> <exclusion> <artifactId>jms</artifactId> 
