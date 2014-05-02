@@ -99,10 +99,10 @@ public class AbstractKarafPaxExamConfiguration {
 						"net.osgiliath.hello.full.blueprint"), junitBundles(),
 				addCodeCoverageOption(), addExtraOptions(),
 				addMavenSettingsOptions());
-		OptionUtils.combine(base, addJVMOptions());
+		Option[] vmMed = OptionUtils.combine(base, addJVMOptions());
 		final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions
 				.vmOption(paxRunnerVmOption) : null;
-		return OptionUtils.combine(base, vmOption);
+		return OptionUtils.combine(vmMed, vmOption);
 
 	}
 
@@ -127,9 +127,9 @@ public class AbstractKarafPaxExamConfiguration {
 
 	private Option[] addJVMOptions() {
 
-		String maxHeap = "-Xmx512m";
+		String maxHeap = "-Xmx1024m";
 		String minHeap = "-Xms128m";
-		String maxPerm = "-XX:MaxPermSize=256m";
+		String maxPerm = "-XX:MaxPermSize=512m";
 		return options(CoreOptions.vmOption(maxHeap),
 				CoreOptions.vmOption(minHeap), CoreOptions.vmOption(maxPerm));
 	}

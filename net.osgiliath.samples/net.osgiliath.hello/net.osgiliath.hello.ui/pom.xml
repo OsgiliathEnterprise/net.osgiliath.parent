@@ -126,13 +126,13 @@
 						</goals>
 						<phase>pre-integration-test</phase>
 					</execution>
-					<execution>
+					<!-- <execution>
 						<id>stop-karaf</id>
 						<goals>
 							<goal>stop-container</goal>
 						</goals>
 						<phase>post-integration-test</phase>
-					</execution>
+					</execution> -->
 				</executions>
 			</plugin>
 		</plugins>

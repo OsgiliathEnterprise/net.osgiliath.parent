@@ -12,15 +12,15 @@ angular.module('commonapp', []).service('stompservice', function(){
 	this.user = 'guest';
 	this.password = 'guest';
 	this.url = this.protocol + '://' + this.host + ':' + this.port ;
-	this.stompClient = Stomp.client(this.url, 'v10.stomp');
-	this.stompClient.heartbeat.outgoing = 0;
-	this.stompClient.heartbeat.incoming = 0; 
+	this.stompClient = Stomp.client(this.url, 'v11.stomp');
+	this.stompClient.heartbeat.outgoing = 3000;
+	this.stompClient.heartbeat.incoming = 3000; 
 	this.stompClient.connect(this.user, this.password, function() {
 		console.info('client connected!');
 		
 	}, function(error) {
 	    // display the error's message header:
-	    alert(error.headers.message);
+	    alert(error.message);
 	  } );
 	
 	console.info('connectStomp instanciated: client: ' + JSON.stringify(this.stompClient));

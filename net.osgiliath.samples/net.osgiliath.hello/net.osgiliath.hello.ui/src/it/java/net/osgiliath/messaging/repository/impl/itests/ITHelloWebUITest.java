@@ -116,7 +116,7 @@ public class ITHelloWebUITest {
 		.until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
 				
-				Collection<WebElement> cells =  d.findElements(By.xpath("//table[@class='SpecTable']//tr//td"));
+				Collection<WebElement> cells =  d.findElements(By.xpath("//table//tr//td"));
 				
 				return cells.size() == 1;
 			}
