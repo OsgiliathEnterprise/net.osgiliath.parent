@@ -29,31 +29,30 @@ import net.osgiliath.messaging.Hellos;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
-import org.apache.camel.ProducerTemplate;
-import org.apache.camel.PropertyInject;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
-import org.apache.camel.cdi.Uri;
-import org.apache.camel.component.properties.PropertiesComponent;
-import org.ops4j.pax.cdi.api.OsgiService;
+
 @ContextName
-public class RouteConsumer extends RouteBuilder{
-	@Override
-	public void configure() throws Exception {
-		from("{{messaging.routequeuein}}").log(LoggingLevel.INFO, "received JMS message on the queue").process(new Processor() {
-			
-			@Override
-			public void process(Exchange exchange) throws Exception {
-				 Hellos hellos = new Hellos();
-				 HelloEntity entity = exchange.getIn().getBody(HelloEntity.class);
-				 Collection<HelloEntity> entities = new ArrayList<>();
-				 entities.add(entity);
-				 hellos.setEntities(entities);
-				 exchange.getOut().setBody(hellos);
-				
-			}
+public class RouteConsumer extends RouteBuilder {
+    @Override
+    public void configure() throws Exception {
+	from("{{messaging.routequeuein}}")
+		.log(LoggingLevel.INFO, "received JMS message on the queue")
+		.process(new Processor() {
+
+		    @Override
+		    public void process(Exchange exchange) throws Exception {
+			Hellos hellos = new Hellos();
+			HelloEntity entity = exchange.getIn().getBody(
+				HelloEntity.class);
+			Collection<HelloEntity> entities = new ArrayList<>();
+			entities.add(entity);
+			hellos.setEntities(entities);
+			exchange.getOut().setBody(hellos);
+
+		    }
 		}).to("jms:queue:helloServiceQueueOut");
-		
-	}
-	
+
+    }
+
 }

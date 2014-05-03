@@ -30,23 +30,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ConfigAdminPropertiesParser extends DefaultPropertiesParser {
-	private static final Logger LOG = LoggerFactory
-			.getLogger(ConfigAdminPropertiesParser.class);
-	@Override
-	public String parseProperty(String key, String value, Properties properties) {
-		String answer = null;
-		try {
-			answer = ConfigAdminTracker.getInstance().getProperty(key);
-		} catch (IOException | InvalidSyntaxException e) {		
-			LOG.error("Exception while parsing config admin properties", e);
-		}
-		if (answer != null) {
-			return answer;
-		}
-		answer = ConfigResolver.getPropertyValue(key);
-		if (answer != null) {
-			return answer;
-		}
-		return super.parseProperty(key, value, properties);
+    private static final Logger LOG = LoggerFactory
+	    .getLogger(ConfigAdminPropertiesParser.class);
+
+    @Override
+    public String parseProperty(String key, String value, Properties properties) {
+	String answer = null;
+	try {
+	    answer = ConfigAdminTracker.getInstance().getProperty(key);
+	} catch (IOException | InvalidSyntaxException e) {
+	    LOG.error("Exception while parsing config admin properties", e);
 	}
+	if (answer != null) {
+	    return answer;
+	}
+	answer = ConfigResolver.getPropertyValue(key);
+	if (answer != null) {
+	    return answer;
+	}
+	return super.parseProperty(key, value, properties);
+    }
 }

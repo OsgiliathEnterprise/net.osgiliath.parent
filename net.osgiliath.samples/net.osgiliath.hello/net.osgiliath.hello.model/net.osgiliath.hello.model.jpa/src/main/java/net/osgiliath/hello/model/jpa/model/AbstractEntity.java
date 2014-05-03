@@ -27,14 +27,16 @@ import javax.persistence.MappedSuperclass;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+
 import lombok.Data;
 
 @Data
 @MappedSuperclass
-//@XmlRootElement on your child class
+// @XmlRootElement on your child class
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class AbstractEntity {
-	@XmlElement
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+    @XmlElement
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long entityId;
 }

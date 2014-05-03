@@ -27,22 +27,21 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import net.osgiliath.features.karaf.jaxrs.web.impl.HelloServiceImpl;
-@ApplicationPath("/helloService")
-public class JaxRSApplication extends Application{
-	@Override
-	public Set<Class<?>> getClasses() {
-		return super.getClasses();
-	}
 
-	@Override
-	public Set<Object> getSingletons() {
-		Set<Object> ret = new HashSet<Object>();
-		ret.add(new HelloServiceImpl());
-		
-		return ret;
-		
-	}
-	
-	
+@ApplicationPath("/helloService")
+public class JaxRSApplication extends Application {
+    @Override
+    public Set<Class<?>> getClasses() {
+	return super.getClasses();
+    }
+
+    @Override
+    public Set<Object> getSingletons() {
+	Set<Object> ret = new HashSet<Object>();
+	ret.add(new HelloServiceImpl());
+
+	return ret;
+
+    }
 
 }

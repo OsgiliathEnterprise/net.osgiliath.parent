@@ -24,23 +24,28 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HelloEntity {
-	@XmlElement
+    @XmlElement
     protected Long entityId;
-	@XmlElement
-	private String helloMessage;
-	public Long getEntityId() {
-		return entityId;
-	}
-	public void setEntityId(Long entityId) {
-		this.entityId = entityId;
-	}
-	public String getHelloMessage() {
-		return helloMessage;
-	}
-	public void setHelloMessage(String helloMessage) {
-		this.helloMessage = helloMessage;
-	}
+    @XmlElement
+    private String helloMessage;
+
+    public Long getEntityId() {
+	return entityId;
+    }
+
+    public void setEntityId(Long entityId) {
+	this.entityId = entityId;
+    }
+
+    public String getHelloMessage() {
+	return helloMessage;
+    }
+
+    public void setHelloMessage(String helloMessage) {
+	this.helloMessage = helloMessage;
+    }
 }

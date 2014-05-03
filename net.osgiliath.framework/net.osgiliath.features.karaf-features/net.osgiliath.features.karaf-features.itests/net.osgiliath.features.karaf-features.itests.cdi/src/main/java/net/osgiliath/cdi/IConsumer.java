@@ -21,5 +21,5 @@ package net.osgiliath.cdi;
  */
 
 public interface IConsumer {
-	String getHello();
+    String getHello();
 }

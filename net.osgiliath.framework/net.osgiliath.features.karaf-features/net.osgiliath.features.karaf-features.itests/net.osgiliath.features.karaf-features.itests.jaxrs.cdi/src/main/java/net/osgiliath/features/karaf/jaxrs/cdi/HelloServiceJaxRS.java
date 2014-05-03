@@ -28,18 +28,18 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.JaxRSService;
+
 @Default
 @Path("/hello")
-public interface HelloServiceJaxRS extends JaxRSService{
-	@POST
-	@Consumes(MediaType.APPLICATION_XML)
-	void persistHello(HelloObject helloObject);
-	@GET
-	@Produces(MediaType.APPLICATION_XML)
-	Hellos getHellos();
+public interface HelloServiceJaxRS extends JaxRSService {
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    void persistHello(HelloObject helloObject);
+
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    Hellos getHellos();
 }

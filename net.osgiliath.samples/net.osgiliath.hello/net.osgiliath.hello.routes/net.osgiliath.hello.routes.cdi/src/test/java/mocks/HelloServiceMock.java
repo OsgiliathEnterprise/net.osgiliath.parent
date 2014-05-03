@@ -29,30 +29,37 @@ import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
+
 //TODO Mock service
 public class HelloServiceMock implements HelloService {
-	private List mockedMessageStrings = Lists.newArrayList();
+    private List mockedMessageStrings = Lists.newArrayList();
 
-	@Override
-	public void persistHello(HelloEntity helloMessage_p) {
-		mockedMessageStrings.add(helloMessage_p);
-	}
+    @Override
+    public void persistHello(HelloEntity helloMessage_p) {
+	mockedMessageStrings.add(helloMessage_p);
+    }
 
-	@Override
-	public Hellos getHellos() {
-		
-		return Hellos.builder().helloCollection(Lists.newArrayList(Collections2.transform(mockedMessageStrings,new Function<HelloEntity, String>() {
+    @Override
+    public Hellos getHellos() {
 
-			@Override
-			public String apply(HelloEntity arg0) {
-				
-				return arg0.getHelloMessage();
-			}}))).build();
-	}
+	return Hellos
+		.builder()
+		.helloCollection(
+			Lists.newArrayList(Collections2.transform(
+				mockedMessageStrings,
+				new Function<HelloEntity, String>() {
 
-	@Override
-	public void deleteAll() {
-		mockedMessageStrings.clear();
-	}
+				    @Override
+				    public String apply(HelloEntity arg0) {
+
+					return arg0.getHelloMessage();
+				    }
+				}))).build();
+    }
+
+    @Override
+    public void deleteAll() {
+	mockedMessageStrings.clear();
+    }
 
 }

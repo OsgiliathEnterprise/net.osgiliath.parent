@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
-
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -61,70 +60,70 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
-	private static Logger LOG = LoggerFactory
-			.getLogger(ITHelloServiceJaxRS.class);
+    private static Logger LOG = LoggerFactory
+	    .getLogger(ITHelloServiceJaxRS.class);
 
-	@Inject
-	private BundleContext bundleContext;
-	// Exported service via blueprint.xml
-	@Inject
-	@Filter(timeout = 40000)
-	private BootFinished bootFinished;
-	// exported REST adress
-	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+    @Inject
+    private BundleContext bundleContext;
+    // Exported service via blueprint.xml
+    @Inject
+    @Filter(timeout = 40000)
+    private BootFinished bootFinished;
+    // exported REST adress
+    private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
-	// probe
-	@ProbeBuilder
-	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(PaxExamKarafConfigurationFactory.class);
-		builder.setHeader("Export-Package",
-				"helper.exam, net.osgiliath.jaxrs.repository.impl.itests");
-		builder.setHeader("Bundle-ManifestVersion", "2");
-		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-		return builder;
-	}
+    // probe
+    @ProbeBuilder
+    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.setHeader("Export-Package",
+		"helper.exam, net.osgiliath.jaxrs.repository.impl.itests");
+	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+	return builder;
+    }
 
-	@Test
-	public void testSayHello() throws Exception {
-		LOG.trace("************Listing **********************");
-		for (Bundle b : bundleContext.getBundles()) {
-			LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
-					+ b.getState());
-
-		}
-		LOG.trace("************end Listing **********************");
-		WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-		helloServiceClient.path("/hello");
-		helloServiceClient.type(MediaType.APPLICATION_XML);
-		HelloEntity entity = new HelloEntity();
-		entity.setHelloMessage("Charlie");
-		helloServiceClient.post(entity);
-		helloServiceClient.accept(MediaType.APPLICATION_XML);
-		Collection<? extends HelloEntity> hellos = helloServiceClient
-				.getCollection(HelloEntity.class);
-		assertEquals(1, hellos.size());
-		helloServiceClient.delete();
-	}
-
-	@Override
-	protected Option featureToTest() {
-		return features(
-				maven().artifactId(
-						"net.osgiliath.features.karaf-features.itests.feature")
-						.groupId("net.osgiliath.framework").type("xml")
-						.classifier("features").versionAsInProject(),
-				"osgiliath-itests-jaxrs");
-	}
-
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+    @Test
+    public void testSayHello() throws Exception {
+	LOG.trace("************Listing **********************");
+	for (Bundle b : bundleContext.getBundles()) {
+	    LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
+		    + b.getState());
 
 	}
+	LOG.trace("************end Listing **********************");
+	WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
+	helloServiceClient.path("/hello");
+	helloServiceClient.type(MediaType.APPLICATION_XML);
+	HelloEntity entity = new HelloEntity();
+	entity.setHelloMessage("Charlie");
+	helloServiceClient.post(entity);
+	helloServiceClient.accept(MediaType.APPLICATION_XML);
+	Collection<? extends HelloEntity> hellos = helloServiceClient
+		.getCollection(HelloEntity.class);
+	assertEquals(1, hellos.size());
+	helloServiceClient.delete();
+    }
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+    @Override
+    protected Option featureToTest() {
+	return features(
+		maven().artifactId(
+			"net.osgiliath.features.karaf-features.itests.feature")
+			.groupId("net.osgiliath.framework").type("xml")
+			.classifier("features").versionAsInProject(),
+		"osgiliath-itests-jaxrs");
+    }
+
+    static {
+	// uncomment to enable debugging of this test class
+	// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+    }
+
+    @Configuration
+    public Option[] config() {
+	return createConfig();
+    }
 
 }

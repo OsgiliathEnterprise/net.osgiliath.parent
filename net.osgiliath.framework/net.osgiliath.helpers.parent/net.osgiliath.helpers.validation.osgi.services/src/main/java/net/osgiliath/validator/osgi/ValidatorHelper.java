@@ -31,26 +31,27 @@ import org.hibernate.validator.HibernateValidator;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 
 public class ValidatorHelper {
-private static ValidatorFactory validatorFactory = null;
-	public static Validator getValidator() {
-		if (validatorFactory == null) {
-			
-		  ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
-  				.byProvider(HibernateValidator.class);
+    private static ValidatorFactory validatorFactory = null;
 
-  		// bootstrap to properly resolve in an OSGi environment
-  		validationBootStrap
-  				.providerResolver(HibernateValidationOSGIServicesProviderResolver
-  						.getInstance());
+    public static Validator getValidator() {
+	if (validatorFactory == null) {
 
-  		HibernateValidatorConfiguration configure = validationBootStrap
-  				.configure();
-  		 validatorFactory = configure/*
-  													 * .constraintValidatorFactory
-  													 * (new
-  													 * CDIAwareConstraintValidatorFactory
-  													 * ())
-  													 */.buildValidatorFactory();}
-  		return validatorFactory.getValidator();
+	    ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
+		    .byProvider(HibernateValidator.class);
+
+	    // bootstrap to properly resolve in an OSGi environment
+	    validationBootStrap
+		    .providerResolver(HibernateValidationOSGIServicesProviderResolver
+			    .getInstance());
+
+	    HibernateValidatorConfiguration configure = validationBootStrap
+		    .configure();
+	    validatorFactory = configure/*
+					 * .constraintValidatorFactory (new
+					 * CDIAwareConstraintValidatorFactory
+					 * ())
+					 */.buildValidatorFactory();
 	}
+	return validatorFactory.getValidator();
+    }
 }

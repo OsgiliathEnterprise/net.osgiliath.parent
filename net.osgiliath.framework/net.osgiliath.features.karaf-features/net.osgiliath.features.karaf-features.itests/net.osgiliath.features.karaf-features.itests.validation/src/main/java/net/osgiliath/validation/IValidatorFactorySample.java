@@ -25,6 +25,6 @@ import javax.validation.executable.ValidateOnExecution;
  */
 
 public interface IValidatorFactorySample {
-	@ValidateOnExecution
-	void nullMessageValidation(@NotNull @Valid HelloObject object);
+    @ValidateOnExecution
+    void nullMessageValidation(@NotNull @Valid HelloObject object);
 }

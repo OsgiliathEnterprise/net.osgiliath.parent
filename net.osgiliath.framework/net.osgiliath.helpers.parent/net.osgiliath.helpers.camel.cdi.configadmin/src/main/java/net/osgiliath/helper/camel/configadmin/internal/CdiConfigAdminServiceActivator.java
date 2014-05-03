@@ -26,18 +26,20 @@ import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.util.tracker.ServiceTracker;
 
 public class CdiConfigAdminServiceActivator implements BundleActivator {
-	private ServiceTracker tracker;
-	@Override
-	public void start(BundleContext bundleContext) throws Exception {
-		tracker = new ServiceTracker(bundleContext, ConfigurationAdmin.class,  ConfigAdminTracker.getInstance(bundleContext));
-		tracker.open();
-		
-	}
+    private ServiceTracker tracker;
 
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		tracker.close();
-		
-	}
+    @Override
+    public void start(BundleContext bundleContext) throws Exception {
+	tracker = new ServiceTracker(bundleContext, ConfigurationAdmin.class,
+		ConfigAdminTracker.getInstance(bundleContext));
+	tracker.open();
+
+    }
+
+    @Override
+    public void stop(BundleContext context) throws Exception {
+	tracker.close();
+
+    }
 
 }

@@ -24,46 +24,51 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import net.osgiliath.messaging.HelloEntity;
+import net.osgiliath.messaging.Hellos;
+import net.osgiliath.messaging.repository.HelloRepository;
+
 import org.apache.camel.Body;
 import org.apache.camel.Consume;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 
-import net.osgiliath.messaging.HelloEntity;
-import net.osgiliath.messaging.Hellos;
-import net.osgiliath.messaging.repository.HelloRepository;
 //TODO Spring data jpa repository declaration
 public class HelloJMSRepository implements HelloRepository {
-	@Produce(uri = "jms:queue:helloServiceQueueOut")
-	private ProducerTemplate producer;
-	private List<HelloEntity> entities = new ArrayList<HelloEntity>();
-	@Override
-	public Collection<? extends HelloEntity> findByHelloObjectMessage(@Body String message_p) {
-		List<HelloEntity> ret = new ArrayList<HelloEntity>();
-		for (HelloEntity ent : entities) {
-			if (ent.getHelloMessage().equals(message_p))
-				ret.add(ent);
-			
-		}
-		return ret;
-	}
-	@Override
-	@Consume(uri = "jms:queue:helloServiceQueueIn")
-	public <S extends HelloEntity> void save(@Body S entity) {
-		 entities.add(entity);
-		 producer.sendBody(findAll());
-		
-	}
+    @Produce(uri = "jms:queue:helloServiceQueueOut")
+    private ProducerTemplate producer;
+    private List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
-	@Override
-	public Hellos findAll() {
-		Hellos hellos = new Hellos();
-		hellos.setEntities(entities);
-		return hellos;
+    @Override
+    public Collection<? extends HelloEntity> findByHelloObjectMessage(
+	    @Body String message_p) {
+	List<HelloEntity> ret = new ArrayList<HelloEntity>();
+	for (HelloEntity ent : entities) {
+	    if (ent.getHelloMessage().equals(message_p))
+		ret.add(ent);
+
 	}
-	@Override
-	public void deleteAll() {
-		entities.clear();
-	}
+	return ret;
+    }
+
+    @Override
+    @Consume(uri = "jms:queue:helloServiceQueueIn")
+    public <S extends HelloEntity> void save(@Body S entity) {
+	entities.add(entity);
+	producer.sendBody(findAll());
+
+    }
+
+    @Override
+    public Hellos findAll() {
+	Hellos hellos = new Hellos();
+	hellos.setEntities(entities);
+	return hellos;
+    }
+
+    @Override
+    public void deleteAll() {
+	entities.clear();
+    }
 
 }

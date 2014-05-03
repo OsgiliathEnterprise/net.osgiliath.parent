@@ -26,60 +26,68 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
-public class HelloEntity implements Serializable{
-	/**
+public class HelloEntity implements Serializable {
+    /**
 	 * 
 	 */
-	private static final transient long serialVersionUID = -4563351879876924302L;
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+    private static final transient long serialVersionUID = -4563351879876924302L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long entityId;
-	private String helloMessage;
-	
-	public HelloEntity() {
-	}
-	public Long getEntityId() {
-		return entityId;
-	}
-	public void setEntityId(Long entityId) {
-		this.entityId = entityId;
-	}
-	public String getHelloMessage() {
-		return helloMessage;
-	}
-	public void setHelloMessage(String helloMessage) {
-		this.helloMessage = helloMessage;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((entityId == null) ? 0 : entityId.hashCode());
-		result = prime * result
-				+ ((helloMessage == null) ? 0 : helloMessage.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		HelloEntity other = (HelloEntity) obj;
-		if (entityId == null) {
-			if (other.entityId != null)
-				return false;
-		} else if (!entityId.equals(other.entityId))
-			return false;
-		if (helloMessage == null) {
-			if (other.helloMessage != null)
-				return false;
-		} else if (!helloMessage.equals(other.helloMessage))
-			return false;
-		return true;
-	}
-	
+    private String helloMessage;
+
+    public HelloEntity() {
+    }
+
+    public Long getEntityId() {
+	return entityId;
+    }
+
+    public void setEntityId(Long entityId) {
+	this.entityId = entityId;
+    }
+
+    public String getHelloMessage() {
+	return helloMessage;
+    }
+
+    public void setHelloMessage(String helloMessage) {
+	this.helloMessage = helloMessage;
+    }
+
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result
+		+ ((entityId == null) ? 0 : entityId.hashCode());
+	result = prime * result
+		+ ((helloMessage == null) ? 0 : helloMessage.hashCode());
+	return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	HelloEntity other = (HelloEntity) obj;
+	if (entityId == null) {
+	    if (other.entityId != null)
+		return false;
+	} else if (!entityId.equals(other.entityId))
+	    return false;
+	if (helloMessage == null) {
+	    if (other.helloMessage != null)
+		return false;
+	} else if (!helloMessage.equals(other.helloMessage))
+	    return false;
+	return true;
+    }
+
 }

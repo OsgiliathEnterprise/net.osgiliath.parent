@@ -29,25 +29,28 @@ import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-public class HelloServiceImpl implements HelloServiceJaxRS{
-	private Collection<HelloObject> objects = new ArrayList<HelloObject>();
-	@Override
-	public void persistHello(HelloObject helloObject) {
-		objects.add(helloObject);
-		
-	}
 
-	@Override
-	public Hellos getHellos() {
+public class HelloServiceImpl implements HelloServiceJaxRS {
+    private Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
-		return new Hellos(Lists.newArrayList(Iterables.transform(objects, new Function<HelloObject, String>() {
+    @Override
+    public void persistHello(HelloObject helloObject) {
+	objects.add(helloObject);
 
-			@Override
-			public String apply(HelloObject input) {
-				
-				return input.getHelloMessage();
-			};
+    }
+
+    @Override
+    public Hellos getHellos() {
+
+	return new Hellos(Lists.newArrayList(Iterables.transform(objects,
+		new Function<HelloObject, String>() {
+
+		    @Override
+		    public String apply(HelloObject input) {
+
+			return input.getHelloMessage();
+		    };
 		})));
-	}
+    }
 
 }

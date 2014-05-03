@@ -27,24 +27,26 @@ import javax.validation.Validator;
 import net.osgiliath.validator.osgi.ValidatorHelper;
 
 public class CDIValidator {
-	
-	@Produces
-	@org.hibernate.validator.cdi.HibernateValidator
-	@Default
-	public Validator createValidator() {
 
-//		ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
-//				.byProvider(HibernateValidator.class);
-//
-//		// bootstrap to properly resolve in an OSGi environment
-//		validationBootStrap
-//				.providerResolver(HibernateValidationOSGIServicesProviderResolver
-//						.getInstance());
-//
-//		HibernateValidatorConfiguration configure = validationBootStrap
-//				.configure();
-//		ValidatorFactory validatorFactory = configure.buildValidatorFactory();
-//		Validator validator = validatorFactory.getValidator();
-		return ValidatorHelper.getValidator();
-	}
+    @Produces
+    @org.hibernate.validator.cdi.HibernateValidator
+    @Default
+    public Validator createValidator() {
+
+	// ProviderSpecificBootstrap<HibernateValidatorConfiguration>
+	// validationBootStrap = Validation
+	// .byProvider(HibernateValidator.class);
+	//
+	// // bootstrap to properly resolve in an OSGi environment
+	// validationBootStrap
+	// .providerResolver(HibernateValidationOSGIServicesProviderResolver
+	// .getInstance());
+	//
+	// HibernateValidatorConfiguration configure = validationBootStrap
+	// .configure();
+	// ValidatorFactory validatorFactory =
+	// configure.buildValidatorFactory();
+	// Validator validator = validatorFactory.getValidator();
+	return ValidatorHelper.getValidator();
+    }
 }

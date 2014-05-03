@@ -21,5 +21,5 @@ package net.osgiliath.cdi;
  */
 
 public interface IProvider {
-String getMessage();
+    String getMessage();
 }

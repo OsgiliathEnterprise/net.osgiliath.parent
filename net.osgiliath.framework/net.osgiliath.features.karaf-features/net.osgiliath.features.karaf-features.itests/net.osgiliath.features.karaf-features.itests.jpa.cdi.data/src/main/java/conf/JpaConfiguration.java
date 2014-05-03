@@ -32,33 +32,37 @@ import javax.transaction.TransactionManager;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.ops4j.pax.cdi.api.OsgiService;
+
 @ApplicationScoped
 @Eager
 public class JpaConfiguration {
-	private static final String emfContainerConstant = "(org.apache.aries.jpa.container.managed=true)";
-	
-	
-	// or manual bootstrapping
-	@Inject
-	@OsgiService(dynamic=true,required=true, filter = "(osgi.unit.name=myTestPu)")//"(&(osgi.unit.name=myTestPu) "+emfContainerConstant+")")
-	private EntityManagerFactory emf;
-	@Inject
-	@OsgiService(dynamic=true,required=true)
-	private TransactionManager txManager;
-	
-	@Produces
-	@Default
-	protected EntityManager createEntityManager() {
-		return this.emf.createEntityManager();
+    private static final String emfContainerConstant = "(org.apache.aries.jpa.container.managed=true)";
+
+    // or manual bootstrapping
+    @Inject
+    @OsgiService(dynamic = true, required = true, filter = "(osgi.unit.name=myTestPu)")
+    // "(&(osgi.unit.name=myTestPu) "+emfContainerConstant+")")
+    private EntityManagerFactory emf;
+    @Inject
+    @OsgiService(dynamic = true, required = true)
+    private TransactionManager txManager;
+
+    @Produces
+    @Default
+    protected EntityManager createEntityManager() {
+	return this.emf.createEntityManager();
+    }
+
+    @Produces
+    @Default
+    protected TransactionManager createTx() {
+	return this.txManager;
+    }
+
+    protected void closeEntityManager(
+	    @Disposes @Default EntityManager entityManager) {
+	if (entityManager.isOpen()) {
+	    entityManager.close();
 	}
-	@Produces
-	@Default
-	protected TransactionManager createTx() {
-		return this.txManager;
-	}
-	protected void closeEntityManager(@Disposes @Default EntityManager entityManager) {
-		if (entityManager.isOpen()) {
-			entityManager.close();
-		}
-	}
+    }
 }

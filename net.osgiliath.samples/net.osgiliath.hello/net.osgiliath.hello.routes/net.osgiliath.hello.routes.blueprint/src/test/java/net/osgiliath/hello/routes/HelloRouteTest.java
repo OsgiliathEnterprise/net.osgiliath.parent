@@ -33,41 +33,42 @@ import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 import org.apache.camel.EndpointInject;
-import org.apache.camel.Exchange;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.Builder;
-import org.apache.camel.component.http.HttpConstants;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.commons.collections.map.HashedMap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 //TODO unit test route sample
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/net.osgiliath.hello.routes.test-context.xml" })
 public class HelloRouteTest {
-	
-	
-	@Produce(uri = "{{hello.MessagingEntryPoint}}")
-	protected ProducerTemplate helloEntryPoint;
-	@EndpointInject(uri = "{{hello.MessagingEndPoint}}")
-	protected MockEndpoint helloRouteMock;
-	@Autowired
-	private HelloService helloService;
-	@DirtiesContext
-	@Test
-	public void helloRouteMustHaveBeenCalled() throws InterruptedException {
-		//JsonObject model = Json.createObjectBuilder().add("helloObject", Json.createObjectBuilder().add("helloMessage", "toto").build()).build();
-				JsonObject model = Json.createObjectBuilder().add("helloMessage", "toto").build();
-				Map headers = new HashMap();
-				headers.put("httpRequestType",Builder.constant("POST"));
-				helloEntryPoint.sendBodyAndHeaders(model.toString(), headers);
-				verify(helloService).persistHello((HelloEntity) anyObject());
-				helloRouteMock.expectedMessageCount(1);
-				helloRouteMock.assertIsSatisfied();
-	}
+
+    @Produce(uri = "{{hello.MessagingEntryPoint}}")
+    protected ProducerTemplate helloEntryPoint;
+    @EndpointInject(uri = "{{hello.MessagingEndPoint}}")
+    protected MockEndpoint helloRouteMock;
+    @Autowired
+    private HelloService helloService;
+
+    @DirtiesContext
+    @Test
+    public void helloRouteMustHaveBeenCalled() throws InterruptedException {
+	// JsonObject model = Json.createObjectBuilder().add("helloObject",
+	// Json.createObjectBuilder().add("helloMessage",
+	// "toto").build()).build();
+	JsonObject model = Json.createObjectBuilder()
+		.add("helloMessage", "toto").build();
+	Map headers = new HashMap();
+	headers.put("httpRequestType", Builder.constant("POST"));
+	helloEntryPoint.sendBodyAndHeaders(model.toString(), headers);
+	verify(helloService).persistHello((HelloEntity) anyObject());
+	helloRouteMock.expectedMessageCount(1);
+	helloRouteMock.assertIsSatisfied();
+    }
 }

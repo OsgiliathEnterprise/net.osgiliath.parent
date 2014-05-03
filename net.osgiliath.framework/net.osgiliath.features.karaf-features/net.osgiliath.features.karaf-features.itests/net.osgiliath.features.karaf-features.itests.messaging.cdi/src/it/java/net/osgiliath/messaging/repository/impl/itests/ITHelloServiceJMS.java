@@ -23,10 +23,13 @@ package net.osgiliath.messaging.repository.impl.itests;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+
 import javax.inject.Inject;
+
 import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
+
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
@@ -57,83 +60,83 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJMS extends PaxExamKarafConfigurationFactory {
-	private static Logger LOG = LoggerFactory
-			.getLogger(ITHelloServiceJMS.class);
+    private static Logger LOG = LoggerFactory
+	    .getLogger(ITHelloServiceJMS.class);
 
-	@Inject
-	private BundleContext bundleContext;
-	@Inject
-	@Filter(timeout = 40000)
-	private BootFinished bootFinished;
+    @Inject
+    private BundleContext bundleContext;
+    @Inject
+    @Filter(timeout = 40000)
+    private BootFinished bootFinished;
 
-	@Inject
-	@Filter(value = "(component-type=jms)")
-	private Component jmsComponent;
+    @Inject
+    @Filter(value = "(component-type=jms)")
+    private Component jmsComponent;
 
-	// probe
-	@ProbeBuilder
-	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(PaxExamKarafConfigurationFactory.class);
-		builder.setHeader("Export-Package",
-				"net.osgiliath.messaging.repository.impl.itests");
-		builder.setHeader("Bundle-ManifestVersion", "2");
-		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    // probe
+    @ProbeBuilder
+    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.setHeader("Export-Package",
+		"net.osgiliath.messaging.repository.impl.itests");
+	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 
-		return builder;
+	return builder;
+    }
+
+    @Test
+    public void testSayHello() throws Exception {
+	LOG.trace("************Listing **********************");
+	for (Bundle b : bundleContext.getBundles()) {
+	    LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
+		    + b.getState());
 	}
+	LOG.trace("*********  End list ****************");
+	// LOG.info("JMS component on itests: " +
+	// repository.getCdiBootStrap().getJms().getCamelContext());
+	// ProducerTemplate template =
+	// repository.getCdiBootStrap().getJms().getCamelContext().createProducerTemplate();
+	HelloEntity entity = new HelloEntity();
+	entity.setHelloMessage("Charlie");
+	LOG.info("Sending Body");
+	// repository.directSave(entity);
+	// Thread.sleep(1000);
+	// repository.ensureDelivery();
+	ProducerTemplate template = jmsComponent.getCamelContext()
+		.createProducerTemplate();
+	template.sendBody("jms:queue:helloServiceQueueIn", entity);
+	// repository.directSave(entity);
+	ConsumerTemplate consumer = template.getCamelContext()
+		.createConsumerTemplate();
+	LOG.info("Waiting answer");
+	Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
+		4000, Hellos.class);
+	LOG.warn("Hellos: " + hellos);
+	assertEquals(1, hellos.getEntities().size());
 
-	@Test
-	public void testSayHello() throws Exception {
-		LOG.trace("************Listing **********************");
-		for (Bundle b : bundleContext.getBundles()) {
-			LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
-					+ b.getState());
-		}
-		LOG.trace("*********  End list ****************");
-		// LOG.info("JMS component on itests: " +
-		// repository.getCdiBootStrap().getJms().getCamelContext());
-		// ProducerTemplate template =
-		// repository.getCdiBootStrap().getJms().getCamelContext().createProducerTemplate();
-		HelloEntity entity = new HelloEntity();
-		entity.setHelloMessage("Charlie");
-		LOG.info("Sending Body");
-		// repository.directSave(entity);
-		// Thread.sleep(1000);
-		// repository.ensureDelivery();
-		ProducerTemplate template = jmsComponent.getCamelContext()
-				.createProducerTemplate();
-		template.sendBody("jms:queue:helloServiceQueueIn", entity);
-		// repository.directSave(entity);
-		ConsumerTemplate consumer = template.getCamelContext()
-				.createConsumerTemplate();
-		LOG.info("Waiting answer");
-		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
-				4000, Hellos.class);
-		LOG.warn("Hellos: " + hellos);
-		assertEquals(1, hellos.getEntities().size());
+    }
 
-	}
+    @Override
+    protected Option featureToTest() {
 
-	@Override
-	protected Option featureToTest() {
+	return features(
+		maven().artifactId(
+			"net.osgiliath.features.karaf-features.itests.feature")
+			.groupId("net.osgiliath.framework").type("xml")
+			.classifier("features").versionAsInProject(),
+		"osgiliath-itests-messaging-cdi");
+    }
 
-		return features(
-				maven().artifactId(
-						"net.osgiliath.features.karaf-features.itests.feature")
-						.groupId("net.osgiliath.framework").type("xml")
-						.classifier("features").versionAsInProject(),
-				"osgiliath-itests-messaging-cdi");
-	}
+    static {
+	// uncomment to enable debugging of this test class
+	// paxRunnerVmOption = DEBUG_VM_OPTION;
 
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+    }
 
-	}
-
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+    @Configuration
+    public Option[] config() {
+	return createConfig();
+    }
 
 }

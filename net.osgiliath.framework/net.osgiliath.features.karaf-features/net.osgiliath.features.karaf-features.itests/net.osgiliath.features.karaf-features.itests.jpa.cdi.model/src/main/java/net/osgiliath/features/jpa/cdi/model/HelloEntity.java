@@ -29,16 +29,18 @@ import javax.persistence.Id;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 @Entity
 @Data
 @EqualsAndHashCode
-public class HelloEntity implements Serializable{
-	/**
+public class HelloEntity implements Serializable {
+    /**
 	 * 
 	 */
-	private static final transient long serialVersionUID = -4563351879876924302L;
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+    private static final transient long serialVersionUID = -4563351879876924302L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long entityId;
-	private String helloMessage;
-	
+    private String helloMessage;
+
 }

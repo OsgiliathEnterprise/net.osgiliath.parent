@@ -23,27 +23,24 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry;
 import java.util.Collection;
 
 import org.apache.cxf.interceptor.Interceptor;
-import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
-import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 
 import com.google.common.collect.Sets;
 
 public class InterceptorsServiceRegistry {
 
-	private Collection<Interceptor> interceptors = Sets.newHashSet();
-	
-	public Collection<Interceptor> getInterceptors() {
-		return interceptors;
+    private Collection<Interceptor> interceptors = Sets.newHashSet();
+
+    public Collection<Interceptor> getInterceptors() {
+	return interceptors;
+    }
+
+    private static InterceptorsServiceRegistry instance = null;
+
+    public static InterceptorsServiceRegistry getInstance() {
+	if (instance == null) {
+	    instance = new InterceptorsServiceRegistry();
 	}
+	return instance;
+    }
 
-	private static InterceptorsServiceRegistry instance = null;
-
-	public static InterceptorsServiceRegistry getInstance() {
-		if (instance == null) {
-			instance = new InterceptorsServiceRegistry();
-		}
-		return instance;
-	}
-
-	
 }

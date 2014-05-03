@@ -30,13 +30,13 @@ import javax.ws.rs.core.MediaType;
 import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 
-
 @Path("/hello")
 public interface HelloServiceJaxRS {
-	@POST
-	@Consumes(MediaType.APPLICATION_XML)
-	void persistHello(HelloObject helloObject);
-	@GET
-	@Produces(MediaType.APPLICATION_XML)
-	Hellos getHellos();
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    void persistHello(HelloObject helloObject);
+
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    Hellos getHellos();
 }

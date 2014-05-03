@@ -34,43 +34,49 @@ import net.osgiliath.jpa.model.HelloEntity;
 import net.osgiliath.jpa.repository.HelloRepository;
 
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-//TODO Spring data jpa repository declaration
-public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long> implements HelloRepository {
-	
-	private EntityManager entityManager;
-	
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-	public HelloJpaRepository(Class<HelloEntity> domainClass,
-			EntityManager em) {
-		super(domainClass, em);
-		setEntityManager(em);
-	}
-	@Override
-	public Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p) {
-		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-		CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-		Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
-		cq.select(helloObject);
-		Predicate where = cb.equal(helloObject.get("helloMessage"), message_p);
-		cq.where(where);
-		TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
-		List<HelloEntity> result = q.getResultList();
-		return result;
-	}
-	@Override
-	public <S extends HelloEntity> S save(S entity) {
-		return super.save(entity);
-	}
 
-	@Override
-	public List<HelloEntity> findAll() {
-		return super.findAll();
-	}
-	@Override
-	public void deleteAll() {
-		super.deleteAll();
-	}
+//TODO Spring data jpa repository declaration
+public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long>
+	implements HelloRepository {
+
+    private EntityManager entityManager;
+
+    public void setEntityManager(EntityManager entityManager) {
+	this.entityManager = entityManager;
+    }
+
+    public HelloJpaRepository(Class<HelloEntity> domainClass, EntityManager em) {
+	super(domainClass, em);
+	setEntityManager(em);
+    }
+
+    @Override
+    public Collection<? extends HelloEntity> findByHelloObjectMessage(
+	    String message_p) {
+	CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+	CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
+	Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
+	cq.select(helloObject);
+	Predicate where = cb.equal(helloObject.get("helloMessage"), message_p);
+	cq.where(where);
+	TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
+	List<HelloEntity> result = q.getResultList();
+	return result;
+    }
+
+    @Override
+    public <S extends HelloEntity> S save(S entity) {
+	return super.save(entity);
+    }
+
+    @Override
+    public List<HelloEntity> findAll() {
+	return super.findAll();
+    }
+
+    @Override
+    public void deleteAll() {
+	super.deleteAll();
+    }
 
 }

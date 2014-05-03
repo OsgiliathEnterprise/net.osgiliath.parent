@@ -22,26 +22,29 @@ package mocks.routes;
 
 import javax.xml.bind.JAXBContext;
 
+import net.osgiliath.hello.business.model.Hellos;
+import net.osgiliath.hello.model.jpa.model.HelloEntity;
+
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spi.DataFormat;
 
-import net.osgiliath.hello.business.model.Hellos;
-import net.osgiliath.hello.model.jpa.model.HelloEntity;
-
 public class HelloRouteEndpointsMock extends RouteBuilder {
-//TODO Mock routing, you can also use integration test like in the business module
-	@Override
-	public void configure() throws Exception {
-		JAXBContext ctx = JAXBContext.newInstance(new Class[]{HelloEntity.class, Hellos.class}); 
-		// initialize jaxbformat from jaxbcontext
-		DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
-		from("{{net.osgiliath.hello.business.url.restservice}}/hello").choice().
-		when(header(Exchange.HTTP_METHOD).isEqualTo(constant("GET")))
-		.beanRef("helloService", "getHellos").marshal(jaxBDataFormat).
-		when(header(Exchange.HTTP_METHOD).isEqualTo(constant("POST")))
-		.unmarshal(jaxBDataFormat).beanRef("helloService", "persistHello(${body})").endChoice();
-	}
+    // TODO Mock routing, you can also use integration test like in the business
+    // module
+    @Override
+    public void configure() throws Exception {
+	JAXBContext ctx = JAXBContext.newInstance(new Class[] {
+		HelloEntity.class, Hellos.class });
+	// initialize jaxbformat from jaxbcontext
+	DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
+	from("{{net.osgiliath.hello.business.url.restservice}}/hello").choice()
+		.when(header(Exchange.HTTP_METHOD).isEqualTo(constant("GET")))
+		.beanRef("helloService", "getHellos").marshal(jaxBDataFormat)
+		.when(header(Exchange.HTTP_METHOD).isEqualTo(constant("POST")))
+		.unmarshal(jaxBDataFormat)
+		.beanRef("helloService", "persistHello(${body})").endChoice();
+    }
 
 }

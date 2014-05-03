@@ -25,16 +25,20 @@ import javax.validation.constraints.NotNull;
 
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
+
 /**
  * TODO you can remove this declaration after seen the implementation
+ * 
  * @author charliemordant
- *
+ * 
  */
 
 public interface HelloService {
-	
-	void persistHello(@NotNull @Valid HelloEntity helloMessage_p);
-	Hellos getHellos();
-	void deleteAll();
+
+    void persistHello(@NotNull @Valid HelloEntity helloMessage_p);
+
+    Hellos getHellos();
+
+    void deleteAll();
 
 }

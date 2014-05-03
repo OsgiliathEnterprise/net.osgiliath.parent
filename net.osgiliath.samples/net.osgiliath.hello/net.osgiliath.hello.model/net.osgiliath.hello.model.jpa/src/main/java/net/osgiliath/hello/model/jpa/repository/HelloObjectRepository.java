@@ -24,13 +24,15 @@ import java.util.Collection;
 import java.util.List;
 
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
+
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the template.mf cxf package export)
 public interface HelloObjectRepository {
-	public Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
+    public Collection<? extends HelloEntity> findByHelloObjectMessage(
+	    String message_p);
 
-	public <S extends HelloEntity> S save(S entity);
+    public <S extends HelloEntity> S save(S entity);
 
-	public List<HelloEntity> findAll();
-	
-	void deleteAll();
+    public List<HelloEntity> findAll();
+
+    void deleteAll();
 }

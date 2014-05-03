@@ -33,23 +33,27 @@ import org.jdom2.input.SAXBuilder;
 
 /**
  * Camel processor which copy the message of an exception to the message body
+ * 
  * @author Charlie
- *
+ * 
  */
 public class ThrownExceptionMessageToInBodyProcessor implements Processor {
 
-	/* (non-Javadoc)
-	 * @see org.apache.camel.Processor#process(org.apache.camel.Exchange)
-	 */
-	@Override
-	public void process(Exchange exchange) throws Exception {
-		CxfOperationException c = exchange.getProperty(Exchange.EXCEPTION_CAUGHT, 
-				CxfOperationException.class);
-		SAXBuilder sxb = new SAXBuilder();
-		if(c!= null && c.getResponseBody() != null) {
-		Document doc = sxb.build(new StringReader(c.getResponseBody()));
-		exchange.getIn().setBody(doc.getRootElement().getChild("message").getText());
-		}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.apache.camel.Processor#process(org.apache.camel.Exchange)
+     */
+    @Override
+    public void process(Exchange exchange) throws Exception {
+	CxfOperationException c = exchange.getProperty(
+		Exchange.EXCEPTION_CAUGHT, CxfOperationException.class);
+	SAXBuilder sxb = new SAXBuilder();
+	if (c != null && c.getResponseBody() != null) {
+	    Document doc = sxb.build(new StringReader(c.getResponseBody()));
+	    exchange.getIn().setBody(
+		    doc.getRootElement().getChild("message").getText());
 	}
+    }
 
 }

@@ -27,20 +27,34 @@ import java.lang.annotation.RetentionPolicy;
 import javax.enterprise.inject.spi.Interceptor;
 import javax.enterprise.util.Nonbinding;
 import javax.inject.Qualifier;
-import org.apache.cxf.jaxrs.provider.AbstractConfigurableProvider;
+
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 import org.apache.cxf.message.Message;
 
-@Retention(value=RetentionPolicy.RUNTIME)
+@Retention(value = RetentionPolicy.RUNTIME)
 @Documented
 @Qualifier
 public @interface CXFEndpoint {
-    @Nonbinding String url() default "";
-    @Nonbinding String factoryId() default "defaultCDIFactory";
-    @Nonbinding Class<? extends Object>[] providersClasses() default {JAXBElementProvider.class, JSONProvider.class};
-    @Nonbinding Class<? extends Interceptor<? extends Message>>[] inInterceptors() default {};
-    @Nonbinding Class<? extends Interceptor<? extends Message>>[] outInterceptors() default {};
-    @Nonbinding Class<? extends Interceptor<? extends Message>>[] inFaultInterceptors() default {};
-    @Nonbinding Class<? extends Interceptor<? extends Message>>[] outFaultInterceptors() default {};
+    @Nonbinding
+    String url() default "";
+
+    @Nonbinding
+    String factoryId() default "defaultCDIFactory";
+
+    @Nonbinding
+    Class<? extends Object>[] providersClasses() default {
+	    JAXBElementProvider.class, JSONProvider.class };
+
+    @Nonbinding
+    Class<? extends Interceptor<? extends Message>>[] inInterceptors() default {};
+
+    @Nonbinding
+    Class<? extends Interceptor<? extends Message>>[] outInterceptors() default {};
+
+    @Nonbinding
+    Class<? extends Interceptor<? extends Message>>[] inFaultInterceptors() default {};
+
+    @Nonbinding
+    Class<? extends Interceptor<? extends Message>>[] outFaultInterceptors() default {};
 }

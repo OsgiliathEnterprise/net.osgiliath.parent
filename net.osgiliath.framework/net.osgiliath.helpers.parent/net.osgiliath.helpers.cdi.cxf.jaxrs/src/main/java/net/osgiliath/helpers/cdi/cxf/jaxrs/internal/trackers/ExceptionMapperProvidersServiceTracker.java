@@ -23,62 +23,63 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.trackers;
 import java.util.Collection;
 
 import javax.ws.rs.ext.ExceptionMapper;
+
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
-public class ExceptionMapperProvidersServiceTracker implements ServiceTrackerCustomizer {
+public class ExceptionMapperProvidersServiceTracker implements
+	ServiceTrackerCustomizer {
 
-	private BundleContext context;
+    private BundleContext context;
 
-	public ExceptionMapperProvidersServiceTracker(BundleContext context) {
-		this.context = context;
+    public ExceptionMapperProvidersServiceTracker(BundleContext context) {
+	this.context = context;
+    }
+
+    // callback method if MyClass service object is registered
+    public Object addingService(ServiceReference reference) {
+	Object serviceObject = this.context.getService(reference);
+
+	if (serviceObject instanceof ExceptionMapper<?>) {
+	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
+		    .add((ExceptionMapper) serviceObject);
+
 	}
 
-	// callback method if MyClass service object is registered
-	public Object addingService(ServiceReference reference) {
-		Object serviceObject = this.context.getService(reference);
-		
-		if (serviceObject instanceof ExceptionMapper<?>) {
-			ProvidersServiceRegistry.getInstance().getExceptionMappers()
-					.add((ExceptionMapper) serviceObject);
+	return reference;
+	// return service object
+    }
 
-		}
+    // callback if necessary class is deregistred
+    public void removedService(ServiceReference reference, Object service) {
+	Object serviceObject = this.context.getService(reference);
+	if (serviceObject instanceof ExceptionMapper<?>) {
+	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
+		    .remove((ExceptionMapper) serviceObject);
 
-		return reference;
-		// return service object
 	}
+    }
 
-	// callback if necessary class is deregistred
-	public void removedService(ServiceReference reference, Object service) {
-		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof ExceptionMapper<?>) {
-			ProvidersServiceRegistry.getInstance().getExceptionMappers()
-					.remove((ExceptionMapper) serviceObject);
+    public static void handleInitialReferences(BundleContext context)
+	    throws InvalidSyntaxException {
+	@SuppressWarnings("rawtypes")
+	Collection<ServiceReference<ExceptionMapper>> refs = context
+		.getServiceReferences(ExceptionMapper.class, null);
+	for (ServiceReference<ExceptionMapper> reference : refs) {
+	    ExceptionMapper svc = context.getService(reference);
+	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
+		    .add(svc);
+	}
+    }
 
-		}
-	}
-	
-	public static void handleInitialReferences(BundleContext context)
-			throws InvalidSyntaxException {
-		@SuppressWarnings("rawtypes")
-		Collection<ServiceReference<ExceptionMapper>> refs = context
-				.getServiceReferences(ExceptionMapper.class, null);
-		for (ServiceReference<ExceptionMapper> reference : refs) {
-			ExceptionMapper svc = context.getService(reference);
-			ProvidersServiceRegistry.getInstance().getExceptionMappers()
-					.add(svc);
-		}
-	}
+    @Override
+    public void modifiedService(ServiceReference reference, Object service) {
+	// TODO Auto-generated method stub
 
-	@Override
-	public void modifiedService(ServiceReference reference, Object service) {
-		// TODO Auto-generated method stub
-		
-	}
-	
+    }
+
 }

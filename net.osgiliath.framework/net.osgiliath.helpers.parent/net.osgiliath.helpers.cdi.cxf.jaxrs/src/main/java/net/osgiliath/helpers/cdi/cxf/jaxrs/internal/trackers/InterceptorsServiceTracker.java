@@ -23,6 +23,7 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.trackers;
 import java.util.Collection;
 
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.InterceptorsServiceRegistry;
+
 import org.apache.cxf.interceptor.Interceptor;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
@@ -32,46 +33,46 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 public class InterceptorsServiceTracker extends ServiceTracker {
 
-	public InterceptorsServiceTracker(BundleContext context, Class clazz,
-			ServiceTrackerCustomizer customizer) {
-		super(context, clazz, customizer);
-		// TODO Auto-generated constructor stub
+    public InterceptorsServiceTracker(BundleContext context, Class clazz,
+	    ServiceTrackerCustomizer customizer) {
+	super(context, clazz, customizer);
+	// TODO Auto-generated constructor stub
+    }
+
+    // callback method if MyClass service object is registered
+    public Object addingService(ServiceReference reference) {
+	Object serviceObject = this.context.getService(reference);
+
+	if (serviceObject instanceof Interceptor) {
+	    InterceptorsServiceRegistry.getInstance().getInterceptors()
+		    .add((Interceptor) serviceObject);
+
 	}
 
-	// callback method if MyClass service object is registered
-	public Object addingService(ServiceReference reference) {
-		Object serviceObject = this.context.getService(reference);
-		
-		if (serviceObject instanceof Interceptor) {
-			InterceptorsServiceRegistry.getInstance().getInterceptors()
-					.add((Interceptor) serviceObject);
+	return reference;
+	// return service object
+    }
 
-		}
+    // callback if necessary class is deregistred
+    public void removedService(ServiceReference reference, Object service) {
+	Object serviceObject = this.context.getService(reference);
+	if (serviceObject instanceof Interceptor) {
+	    InterceptorsServiceRegistry.getInstance().getInterceptors()
+		    .remove((Interceptor) serviceObject);
 
-		return reference;
-		// return service object
 	}
+    }
 
-	// callback if necessary class is deregistred
-	public void removedService(ServiceReference reference, Object service) {
-		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof Interceptor) {
-			InterceptorsServiceRegistry.getInstance().getInterceptors()
-					.remove((Interceptor) serviceObject);
+    public static void handleInitialReferences(BundleContext context)
+	    throws InvalidSyntaxException {
+	Collection<ServiceReference<Interceptor>> refs = context
+		.getServiceReferences(Interceptor.class, null);
+	for (ServiceReference<Interceptor> reference : refs) {
+	    Interceptor svc = context.getService(reference);
+	    svc.toString();
+	    InterceptorsServiceRegistry.getInstance().getInterceptors()
+		    .add(svc);
+	}
+    }
 
-		}
-	}
-	
-	public static void handleInitialReferences(BundleContext context)
-			throws InvalidSyntaxException {
-		Collection<ServiceReference<Interceptor>> refs = context
-				.getServiceReferences(Interceptor.class, null);
-		for (ServiceReference<Interceptor> reference : refs) {
-			Interceptor svc = context.getService(reference);
-			svc.toString();
-			InterceptorsServiceRegistry.getInstance().getInterceptors()
-					.add(svc);
-		}
-	}
-	
 }

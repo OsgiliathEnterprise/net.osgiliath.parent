@@ -50,62 +50,64 @@ import org.slf4j.LoggerFactory;
 
 /**
  * TODO example of an integration test
+ * 
  * @author charliemordant
- *
+ * 
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITjPA extends PaxExamKarafConfigurationFactory {
-	private static Logger LOG = LoggerFactory.getLogger(ITjPA.class);
-	
-	//Exported service via blueprint.xml
-	@Inject
-	@Filter(timeout = 60000)
-	private HelloRepository repository;
-	
-	
-	//probe
-	@ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder)
-    {
-		builder.addTest(PaxExamKarafConfigurationFactory.class);
-        builder.setHeader("Export-Package", "net.osgiliath.jpa.itests");
-        builder.setHeader("Bundle-ManifestVersion", "2");
-        builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
-        return builder;
+    private static Logger LOG = LoggerFactory.getLogger(ITjPA.class);
+
+    // Exported service via blueprint.xml
+    @Inject
+    @Filter(timeout = 60000)
+    private HelloRepository repository;
+
+    // probe
+    @ProbeBuilder
+    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.setHeader("Export-Package", "net.osgiliath.jpa.itests");
+	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+	return builder;
     }
-	@Test
-	public void testSayHello() throws Exception {
-		
-		HelloEntity entity = new HelloEntity();
-		entity.setHelloMessage("hello");
-		entity = repository.save(entity);
-		Collection<? extends HelloEntity> entities = repository.findAll();
-		
-		assertEquals(entities.size(), 1);
-		HelloEntity persisted = entities.iterator().next();
-		assertEquals(persisted.getHelloMessage(), "hello");
-		assertNotNull(persisted.getEntityId());
-	}
-	@Override
-	protected Option featureToTest() {
-		
-		return features(
-				maven().artifactId(
-						"net.osgiliath.features.karaf-features.itests.feature")
-						.groupId("net.osgiliath.framework").type("xml")
-						.classifier("features").versionAsInProject(),
-				"osgiliath-itests-jpa");
-	}
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
 
-	}
+    @Test
+    public void testSayHello() throws Exception {
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
-		
+	HelloEntity entity = new HelloEntity();
+	entity.setHelloMessage("hello");
+	entity = repository.save(entity);
+	Collection<? extends HelloEntity> entities = repository.findAll();
+
+	assertEquals(entities.size(), 1);
+	HelloEntity persisted = entities.iterator().next();
+	assertEquals(persisted.getHelloMessage(), "hello");
+	assertNotNull(persisted.getEntityId());
+    }
+
+    @Override
+    protected Option featureToTest() {
+
+	return features(
+		maven().artifactId(
+			"net.osgiliath.features.karaf-features.itests.feature")
+			.groupId("net.osgiliath.framework").type("xml")
+			.classifier("features").versionAsInProject(),
+		"osgiliath-itests-jpa");
+    }
+
+    static {
+	// uncomment to enable debugging of this test class
+	// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+    }
+
+    @Configuration
+    public Option[] config() {
+	return createConfig();
+    }
+
 }

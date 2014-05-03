@@ -42,69 +42,73 @@ import org.apache.camel.ProducerTemplate;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
 /**
  * TODO JMS sample of Hello service exports
+ * 
  * @author charliemordant
- *
+ * 
  */
 @Slf4j
 public class HelloServiceJMS implements HelloService {
-	@Setter
-	private HelloObjectRepository helloObjectRepository;
-	@Setter
-	private Validator validator;
-	@Setter
-	@Produce(uri = "jms:queue:helloServiceQueueOut")
-	private ProducerTemplate producer;
+    @Setter
+    private HelloObjectRepository helloObjectRepository;
+    @Setter
+    private Validator validator;
+    @Setter
+    @Produce(uri = "jms:queue:helloServiceQueueOut")
+    private ProducerTemplate producer;
+
+    @Override
+    @Consume(uri = "jms:queue:helloServiceQueueIn")
+    public void persistHello(@Body HelloEntity helloObject_p) {
+	log.error("****************** Save on JMS Service **********************");
+	log.info("persisting new message with jms: "
+		+ helloObject_p.getHelloMessage());
+	Set<ConstraintViolation<HelloEntity>> validationResults = validator
+		.validate(helloObject_p);
+	StringBuilder errors = new StringBuilder("");
+
+	if (!validationResults.isEmpty()) {
+	    for (ConstraintViolation<HelloEntity> violation : validationResults) {
+		log.info("subscription error, validating user:"
+			+ violation.getMessage());
+		errors.append(violation.getPropertyPath()).append(": ")
+			.append(violation.getMessage().replaceAll("\"", ""))
+			.append(";").append(System.lineSeparator());
+	    }
+	    throw new ValidationException(errors.toString());
+	}
+	helloObjectRepository.save(helloObject_p);
+	producer.sendBody(getHellos());
+    }
+
+    @Override
+    public Hellos getHellos() {
+
+	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+	if (helloObjects.isEmpty()) {
+	    throw new UnsupportedOperationException(
+		    "You could not call this method when the list is empty");
+	}
+	return Hellos
+		.builder()
+		.helloCollection(
+			Lists.newArrayList(Iterables.transform(helloObjects,
+				helloObjectToStringFunction))).build();
+    }
+
+    private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 	@Override
-	@Consume(uri = "jms:queue:helloServiceQueueIn")
-	public void persistHello(@Body HelloEntity helloObject_p) {
-		log.error("****************** Save on JMS Service **********************");
-		log.info("persisting new message with jms: " + helloObject_p.getHelloMessage());
-		Set<ConstraintViolation<HelloEntity>> validationResults = validator
-				.validate(helloObject_p);
-		String errors = "";
-		if (!validationResults.isEmpty()) {
-			for (ConstraintViolation<HelloEntity> violation : validationResults) {
-				log.info("subscription error, validating user:"
-						+ violation.getMessage());
-				errors += violation.getPropertyPath() + ": "
-						+ violation.getMessage().replaceAll("\"", "") + ";";
-			}
-			throw new ValidationException(errors);
-		}
-		helloObjectRepository.save(helloObject_p);
-		producer.sendBody(getHellos());
+	public String apply(HelloEntity arg0) {
+	    return arg0.getHelloMessage();
 	}
+    };
 
-	@Override
-	
-	public Hellos getHellos() {
-		
-		Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
-		if (helloObjects.isEmpty()) {
-			throw new UnsupportedOperationException(
-					"You could not call this method when the list is empty");
-		}
-		return Hellos
-				.builder()
-				.helloCollection(
-						Lists.newArrayList(Iterables.transform(helloObjects,
-								helloObjectToStringFunction))).build();
-	}
+    @Override
+    public void deleteAll() {
+	helloObjectRepository.deleteAll();
 
-	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
-
-		@Override
-		public String apply(HelloEntity arg0) {
-			return arg0.getHelloMessage();
-		}
-	};
-
-	@Override
-	public void deleteAll() {
-		helloObjectRepository.deleteAll();
-		
-	}
+    }
 }

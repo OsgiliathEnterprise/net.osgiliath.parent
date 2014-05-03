@@ -37,54 +37,56 @@ import org.apache.camel.spi.DataFormat;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @Eager
 public class Components {
-	private Logger LOG = LoggerFactory.getLogger(Components.class);
+    private Logger LOG = LoggerFactory.getLogger(Components.class);
 
-	@Inject
-	@OsgiService(filter = "(component-type=jms)", dynamic = true)
-	private Component jms;
-	
-	@Inject
-	@OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
-	private Component jmsXA;
-		
-	@Produces
-	@Named("thrownExceptionMessageToInBodyProcessor")
-	public Processor getThrownExceptionMessageToInBodyProcessor() {
-		LOG.info("Inject Processor in body");
-		return new ThrownExceptionMessageToInBodyProcessor();
-	}
-	@Produces
-	@Named("jms")
-	public Component getJms() {
-		LOG.info("Inject jms");
-		return jms;
-	}
+    @Inject
+    @OsgiService(filter = "(component-type=jms)", dynamic = true)
+    private Component jms;
 
-	@Produces
-	@Named("jmsXA")
-	public Component getJmsXA() {
-		LOG.info("Inject jmsXA");
-		return jmsXA;
-	}
-	
-	@Produces
-	@Named("http")
-	public Component getHttp() {
-		LOG.info("Inject httpComponent");
-		return new HttpComponent();
-	}
-	
-	
-	@Produces
-	@Named("json")
-	public DataFormat getJacksonDataFormat() {
-		return new JacksonDataFormat();
-	}
-	@Produces
-	@Named("xmljson")
-	public DataFormat getXmlJsonDataFormat() {
-		return new XmlJsonDataFormat();
-	}
+    @Inject
+    @OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
+    private Component jmsXA;
+
+    @Produces
+    @Named("thrownExceptionMessageToInBodyProcessor")
+    public Processor getThrownExceptionMessageToInBodyProcessor() {
+	LOG.info("Inject Processor in body");
+	return new ThrownExceptionMessageToInBodyProcessor();
+    }
+
+    @Produces
+    @Named("jms")
+    public Component getJms() {
+	LOG.info("Inject jms");
+	return jms;
+    }
+
+    @Produces
+    @Named("jmsXA")
+    public Component getJmsXA() {
+	LOG.info("Inject jmsXA");
+	return jmsXA;
+    }
+
+    @Produces
+    @Named("http")
+    public Component getHttp() {
+	LOG.info("Inject httpComponent");
+	return new HttpComponent();
+    }
+
+    @Produces
+    @Named("json")
+    public DataFormat getJacksonDataFormat() {
+	return new JacksonDataFormat();
+    }
+
+    @Produces
+    @Named("xmljson")
+    public DataFormat getXmlJsonDataFormat() {
+	return new XmlJsonDataFormat();
+    }
 }

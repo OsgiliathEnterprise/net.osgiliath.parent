@@ -23,15 +23,15 @@ package net.osgiliath.validation;
 import javax.validation.constraints.NotNull;
 
 public class HelloObject {
-	@NotNull
-	private String message;
+    @NotNull
+    private String message;
 
-	public String getMessage() {
-		return message;
-	}
+    public String getMessage() {
+	return message;
+    }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+    public void setMessage(String message) {
+	this.message = message;
+    }
 
 }
