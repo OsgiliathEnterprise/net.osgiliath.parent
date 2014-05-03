@@ -24,18 +24,18 @@ import java.io.Serializable;
 import java.util.Collection;
 
 public class Hellos implements Serializable {
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1104941154797467749L;
-	Collection<HelloEntity> entities;
+    private static final long serialVersionUID = 1104941154797467749L;
+    Collection<HelloEntity> entities;
 
-	public Collection<HelloEntity> getEntities() {
-		return entities;
-	}
+    public Collection<HelloEntity> getEntities() {
+	return entities;
+    }
 
-	public void setEntities(Collection<HelloEntity> entities) {
-		this.entities = entities;
-	}
+    public void setEntities(Collection<HelloEntity> entities) {
+	this.entities = entities;
+    }
 
 }

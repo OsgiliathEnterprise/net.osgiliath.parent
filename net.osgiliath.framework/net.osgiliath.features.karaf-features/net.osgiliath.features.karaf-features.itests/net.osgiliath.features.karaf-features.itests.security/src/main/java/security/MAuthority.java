@@ -23,28 +23,29 @@ package security;
 import java.io.Serializable;
 
 import org.springframework.security.core.GrantedAuthority;
+
 /**
  * Represent an Authority for right access management
+ * 
  * @author Charlie
- *
+ * 
  */
 @SuppressWarnings("serial")
 public class MAuthority implements GrantedAuthority, Serializable {
-	
-	
-	/**
-	 * The Authority String
-	 */
-	private AUTHORITY authority;
-	public void setAuthority(AUTHORITY authority) {
-		this.authority = authority;
-	}
-	@Override
-	public String getAuthority() {
-		
-		return authority.getAuth();
-	}
-	
 
-	
+    /**
+     * The Authority String
+     */
+    private AUTHORITY authority;
+
+    public void setAuthority(AUTHORITY authority) {
+	this.authority = authority;
+    }
+
+    @Override
+    public String getAuthority() {
+
+	return authority.getAuth();
+    }
+
 }

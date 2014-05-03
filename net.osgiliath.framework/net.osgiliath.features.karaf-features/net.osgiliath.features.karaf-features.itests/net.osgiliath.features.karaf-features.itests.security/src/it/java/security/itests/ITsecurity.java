@@ -23,8 +23,11 @@ package security.itests;
 import static org.junit.Assert.assertTrue;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+
 import javax.inject.Inject;
+
 import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -47,64 +50,65 @@ import security.SecurityService;
 
 /**
  * TODO example of an integration test
+ * 
  * @author charliemordant
- *
+ * 
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITsecurity extends PaxExamKarafConfigurationFactory {
-	private static Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
-	
-	@Inject
-	private BundleContext bundleContext;
-	//Exported service via blueprint.xml
-	@Inject
-	@Filter(timeout = 40000)
-	private SecurityService securityService;
-	
-	
-	
-	//probe
-	@ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder)
-    {
-		builder.addTest(PaxExamKarafConfigurationFactory.class);
-        builder.setHeader("Export-Package", "security.itests");
-        builder.setHeader("Bundle-ManifestVersion", "2");
-        builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
-        return builder;
+    private static Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
+
+    @Inject
+    private BundleContext bundleContext;
+    // Exported service via blueprint.xml
+    @Inject
+    @Filter(timeout = 40000)
+    private SecurityService securityService;
+
+    // probe
+    @ProbeBuilder
+    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.setHeader("Export-Package", "security.itests");
+	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+	return builder;
     }
-	@Test
-	public void testAuthenticate() throws Exception {
-		LOG.trace("************Listing **********************");
-		for (Bundle b : bundleContext.getBundles()) {
-			LOG.debug("bundle: " +b.getSymbolicName() + ", state: " +b.getState() );
-		}
-		MUser user = new MUser();
-		user.setPseudo("toto");
-		user.setPassword("myPassword");
-		securityService.onSubscription(user);
-		assertTrue(securityService.authenticate("toto", "myPassword"));
-		
-		
-	}
-	@Override
-	protected Option featureToTest() {
-		return features(
-				maven().artifactId(
-						"net.osgiliath.features.karaf-features.itests.feature")
-						.groupId("net.osgiliath.framework").type("xml")
-						.classifier("features").versionAsInProject(),
-				"osgiliath-itests-security");
-	}
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
 
+    @Test
+    public void testAuthenticate() throws Exception {
+	LOG.trace("************Listing **********************");
+	for (Bundle b : bundleContext.getBundles()) {
+	    LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
+		    + b.getState());
 	}
+	MUser user = new MUser();
+	user.setPseudo("toto");
+	user.setPassword("myPassword");
+	securityService.onSubscription(user);
+	assertTrue(securityService.authenticate("toto", "myPassword"));
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}	
+    }
+
+    @Override
+    protected Option featureToTest() {
+	return features(
+		maven().artifactId(
+			"net.osgiliath.features.karaf-features.itests.feature")
+			.groupId("net.osgiliath.framework").type("xml")
+			.classifier("features").versionAsInProject(),
+		"osgiliath-itests-security");
+    }
+
+    static {
+	// uncomment to enable debugging of this test class
+	// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+    }
+
+    @Configuration
+    public Option[] config() {
+	return createConfig();
+    }
 }

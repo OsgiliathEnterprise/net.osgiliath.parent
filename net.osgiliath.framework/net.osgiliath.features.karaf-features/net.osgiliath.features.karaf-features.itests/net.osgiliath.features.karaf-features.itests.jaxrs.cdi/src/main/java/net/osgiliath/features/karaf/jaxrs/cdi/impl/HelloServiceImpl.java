@@ -36,27 +36,31 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
 @OsgiServiceProvider
-@CXFEndpoint(url="/helloService", providersClasses= {JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class})
-public class HelloServiceImpl implements HelloServiceJaxRS{
-	private Collection<HelloObject> objects = new ArrayList<HelloObject>();
-	@Override
-	public void persistHello(HelloObject helloObject) {
-		objects.add(helloObject);
-		
-	}
+@CXFEndpoint(url = "/helloService", providersClasses = {
+	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
+public class HelloServiceImpl implements HelloServiceJaxRS {
+    private Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
-	@Override
-	public Hellos getHellos() {
+    @Override
+    public void persistHello(HelloObject helloObject) {
+	objects.add(helloObject);
 
-		return new Hellos(Lists.newArrayList(Iterables.transform(objects, new Function<HelloObject, String>() {
+    }
 
-			@Override
-			public String apply(HelloObject input) {
-				
-				return input.getHelloMessage();
-			};
+    @Override
+    public Hellos getHellos() {
+
+	return new Hellos(Lists.newArrayList(Iterables.transform(objects,
+		new Function<HelloObject, String>() {
+
+		    @Override
+		    public String apply(HelloObject input) {
+
+			return input.getHelloMessage();
+		    };
 		})));
-	}
+    }
 
 }

@@ -47,64 +47,68 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPaxWebCxf extends PaxExamKarafConfigurationFactory {
-	private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
-	
-	
-	//Exported service via blueprint.xml
-	@Inject
-	@Filter(timeout = 400000)
-	private BootFinished bootFinished;
-	//JMS template
-//	@Inject
-//	@Filter(value="(component-type=jms)")
-//	private Component jmsComponent;
-	//exported REST adress
-	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
-	
-	//probe
-	@ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder)
-    {
-		builder.addTest(PaxExamKarafConfigurationFactory.class);
-        builder.setHeader("Export-Package", "net.osgiliath.hello.business.impl.services.impl.itests");
-        builder.setHeader("Bundle-ManifestVersion", "2");
-        builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
-        return builder;
+    private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
+
+    // Exported service via blueprint.xml
+    @Inject
+    @Filter(timeout = 400000)
+    private BootFinished bootFinished;
+    // JMS template
+    // @Inject
+    // @Filter(value="(component-type=jms)")
+    // private Component jmsComponent;
+    // exported REST adress
+    private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+
+    // probe
+    @ProbeBuilder
+    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.setHeader("Export-Package",
+		"net.osgiliath.hello.business.impl.services.impl.itests");
+	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+	return builder;
     }
-	@Test
-	@Ignore
-	public void testSayHello() throws Exception {
-		LOG.trace("************ start testSayHello **********************");
-		
-		WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-		helloServiceClient.path("/hello");
-		helloServiceClient.type(MediaType.APPLICATION_XML);
-		helloServiceClient.post(HelloObject.builder().helloMessage("John").build());
-		helloServiceClient.accept(MediaType.APPLICATION_XML);
-		Hellos hellos = helloServiceClient.get(Hellos.class);
-		assertEquals(1, hellos.getHelloCollection().size());
-		LOG.trace("************ end testSayHello **********************");
-	}
-	@Override
-	protected Option featureToTest() {
-		return features(
-				maven().artifactId(
-						"net.osgiliath.features.karaf-features.itests.feature")
-						.groupId("net.osgiliath.framework").type("xml")
-						.classifier("features").versionAsInProject(),
-				"osgiliath-itests-jaxrs-web-cdi");
-	}
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
 
-	}
+    @Test
+    @Ignore
+    public void testSayHello() throws Exception {
+	LOG.trace("************ start testSayHello **********************");
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+	WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
+	helloServiceClient.path("/hello");
+	helloServiceClient.type(MediaType.APPLICATION_XML);
+	helloServiceClient.post(HelloObject.builder().helloMessage("John")
+		.build());
+	helloServiceClient.accept(MediaType.APPLICATION_XML);
+	Hellos hellos = helloServiceClient.get(Hellos.class);
+	assertEquals(1, hellos.getHelloCollection().size());
+	LOG.trace("************ end testSayHello **********************");
+    }
+
+    @Override
+    protected Option featureToTest() {
+	return features(
+		maven().artifactId(
+			"net.osgiliath.features.karaf-features.itests.feature")
+			.groupId("net.osgiliath.framework").type("xml")
+			.classifier("features").versionAsInProject(),
+		"osgiliath-itests-jaxrs-web-cdi");
+    }
+
+    static {
+	// uncomment to enable debugging of this test class
+	// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+    }
+
+    @Configuration
+    public Option[] config() {
+	return createConfig();
+    }
 }

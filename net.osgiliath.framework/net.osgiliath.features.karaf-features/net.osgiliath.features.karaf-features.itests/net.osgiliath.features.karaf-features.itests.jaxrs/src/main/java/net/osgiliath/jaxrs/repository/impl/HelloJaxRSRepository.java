@@ -26,33 +26,38 @@ import java.util.List;
 
 import net.osgiliath.jaxrs.HelloEntity;
 import net.osgiliath.jaxrs.repository.HelloRepository;
+
 //TODO Spring data jpa repository declaration
 public class HelloJaxRSRepository implements HelloRepository {
-	
-	private List<HelloEntity> entities = new ArrayList<HelloEntity>();
-	@Override
-	public Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p) {
-		List<HelloEntity> ret = new ArrayList<HelloEntity>();
-		for (HelloEntity ent : entities) {
-			if (ent.getHelloMessage().equals(message_p))
-				ret.add(ent);
-			
-		}
-		return ret;
-	}
-	@Override
-	public <S extends HelloEntity> S save(S entity) {
-		 entities.add(entity);
-		 return entity;
-	}
 
-	@Override
-	public List<HelloEntity> findAll() {
-		return entities;
+    private List<HelloEntity> entities = new ArrayList<HelloEntity>();
+
+    @Override
+    public Collection<? extends HelloEntity> findByHelloObjectMessage(
+	    String message_p) {
+	List<HelloEntity> ret = new ArrayList<HelloEntity>();
+	for (HelloEntity ent : entities) {
+	    if (ent.getHelloMessage().equals(message_p))
+		ret.add(ent);
+
 	}
-	@Override
-	public void deleteAll() {
-		entities.clear();
-	}
+	return ret;
+    }
+
+    @Override
+    public <S extends HelloEntity> S save(S entity) {
+	entities.add(entity);
+	return entity;
+    }
+
+    @Override
+    public List<HelloEntity> findAll() {
+	return entities;
+    }
+
+    @Override
+    public void deleteAll() {
+	entities.clear();
+    }
 
 }

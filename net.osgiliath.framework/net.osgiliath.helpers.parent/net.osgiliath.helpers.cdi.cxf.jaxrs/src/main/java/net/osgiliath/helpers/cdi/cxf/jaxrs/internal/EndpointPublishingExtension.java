@@ -61,194 +61,205 @@ import com.google.common.collect.Sets;
  * 
  */
 public class EndpointPublishingExtension implements Extension {
-	private static final Logger LOG = LoggerFactory
-			.getLogger(EndpointPublishingExtension.class);
-	
-	private List<Server> servers = new ArrayList<Server>();
-	
-	private Collection<ProcessBean> beansToProcess = Sets.newHashSet();
-	
-	private Map<String, JAXRSServerFactoryBean> factoriesMap = Maps.newHashMap();
-	
+    private static final Logger LOG = LoggerFactory
+	    .getLogger(EndpointPublishingExtension.class);
 
-	
-	public <X> void processPublishJaxRSServices(
-			@Observes ProcessBean<X> process, BeanManager manager) {
-		if (process.getBean() instanceof Interceptor
-				|| process.getBean() instanceof Decorator
-				|| !(process.getAnnotated() instanceof AnnotatedType)) {
-			return;
+    private List<Server> servers = new ArrayList<Server>();
+
+    private Collection<ProcessBean> beansToProcess = Sets.newHashSet();
+
+    private Map<String, JAXRSServerFactoryBean> factoriesMap = Maps
+	    .newHashMap();
+
+    public <X> void processPublishJaxRSServices(
+	    @Observes ProcessBean<X> process, BeanManager manager) {
+	if (process.getBean() instanceof Interceptor
+		|| process.getBean() instanceof Decorator
+		|| !(process.getAnnotated() instanceof AnnotatedType)) {
+	    return;
+	}
+
+	AnnotatedType annotatedType = (AnnotatedType) process.getAnnotated();
+	if (annotatedType.getAnnotation(CXFEndpoint.class) == null) {
+	    return;
+	}
+	Class[] interfaces = annotatedType.getJavaClass().getInterfaces();
+	if (interfaces == null) {
+	    process.addDefinitionError(new IllegalArgumentException(
+		    String.format(
+			    "JaxRS service %s must implement at least an interface",
+			    annotatedType.getJavaClass().getName())));
+	    boolean isService = checkImplementsService(interfaces);
+	    if (!isService) {
+		process.addDefinitionError(new IllegalArgumentException(
+			String.format(
+				"JaxRS service %s must implement at least an interface that's a subinterface os JaxRSService",
+				annotatedType.getJavaClass().getName())));
+	    }
+	}
+
+	if (annotatedType.getJavaClass().isAnnotationPresent(CXFEndpoint.class)) {
+	    beansToProcess.add(process);
+	}
+    }
+
+    private boolean checkImplementsService(Class[] interfaces) {
+	boolean isService = false;
+	for (Class interfacee : interfaces) {
+	    if (interfacee.isAssignableFrom(JaxRSService.class)) {
+		isService = true;
+	    }
+	}
+	return isService;
+    }
+
+    private <X> void registerRSService(
+	    @Observes AfterDeploymentValidation event, BeanManager manager)
+	    throws ClassNotFoundException {
+
+	for (ProcessBean processBean : beansToProcess) {
+	    CXFEndpoint endpointAnnotation = processBean.getAnnotated()
+		    .getAnnotation(CXFEndpoint.class);
+	    JAXRSServerFactoryBean factory = getFactory(endpointAnnotation
+		    .factoryId());
+	    Bean<X> bean = processBean.getBean();
+	    LOG.info("Creating CXF Endpoint for "
+		    + bean.getBeanClass().getName());
+	    Object instance = manager.getReference(bean, bean.getBeanClass(),
+		    manager.createCreationalContext(bean));
+
+	    LOG.info("instance: " + bean + ", managed: ");
+	    String serviceURL = endpointAnnotation.url();
+	    LOG.info("publishing instance: " + instance + ", url: "
+		    + serviceURL);
+	    addProviders(factory, endpointAnnotation.providersClasses());
+	    addInterceptors(factory, endpointAnnotation);
+
+	    factory.setAddress(serviceURL);
+	    factory.setServiceBean(instance);
+	    servers.add(factory.create());
+	}
+    }
+
+    private void addInterceptors(JAXRSServerFactoryBean factory,
+	    CXFEndpoint endpointAnnotation) throws ClassNotFoundException {
+	addInFaultInterceptors(factory,
+		endpointAnnotation.inFaultInterceptors());
+	addInInterceptors(factory, endpointAnnotation.inInterceptors());
+	addOutFaultInterceptors(factory,
+		endpointAnnotation.outFaultInterceptors());
+	addOutInterceptors(factory, endpointAnnotation.outInterceptors());
+    }
+
+    private void addOutInterceptors(JAXRSServerFactoryBean factory,
+	    Class<? extends Interceptor<? extends Message>>[] outInterceptors)
+	    throws ClassNotFoundException {
+	Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets
+		.newHashSet(factory.getOutInterceptors());
+	fillInterceptorList(interceptors, outInterceptors);
+	factory.setOutInterceptors(Lists.newArrayList(interceptors));
+
+    }
+
+    private void addOutFaultInterceptors(
+	    JAXRSServerFactoryBean factory,
+	    Class<? extends Interceptor<? extends Message>>[] outFaultInterceptors)
+	    throws ClassNotFoundException {
+	Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets
+		.newHashSet(factory.getOutFaultInterceptors());
+	fillInterceptorList(interceptors, outFaultInterceptors);
+	factory.setOutFaultInterceptors(Lists.newArrayList(interceptors));
+
+    }
+
+    private void addInInterceptors(JAXRSServerFactoryBean factory,
+	    Class<? extends Interceptor<? extends Message>>[] inInterceptors)
+	    throws ClassNotFoundException {
+	Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets
+		.newHashSet(factory.getInInterceptors());
+	fillInterceptorList(interceptors, inInterceptors);
+	factory.setInInterceptors(Lists.newArrayList(interceptors));
+
+    }
+
+    private void addInFaultInterceptors(
+	    JAXRSServerFactoryBean factory,
+	    Class<? extends Interceptor<? extends Message>>[] inFaultInterceptors)
+	    throws ClassNotFoundException {
+	Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets
+		.newHashSet(factory.getInFaultInterceptors());
+	fillInterceptorList(interceptors, inFaultInterceptors);
+	factory.setInFaultInterceptors(Lists.newArrayList(interceptors));
+
+    }
+
+    private void fillInterceptorList(
+	    Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> setToFill,
+	    Class<? extends Interceptor<? extends Message>>[] toAddInterceptors)
+	    throws ClassNotFoundException {
+	for (Class clazz : toAddInterceptors) {
+	    boolean found = false;
+	    for (Object provider : ProvidersServiceRegistry.getInstance()
+		    .getProviders()) {
+		if (clazz.isInstance(provider)) {
+		    found = true;
+		    setToFill
+			    .add((org.apache.cxf.interceptor.Interceptor<? extends Message>) provider);
+		    break;
 		}
+	    }
+	    if (!found) {
+		throw new ClassNotFoundException("Interceptor "
+			+ clazz.getName() + " could not be instantiated");
+	    }
 
-		AnnotatedType annotatedType = (AnnotatedType) process.getAnnotated();
-		if (annotatedType.getAnnotation(CXFEndpoint.class) == null) {
-			return;
+	}
+    }
+
+    private JAXRSServerFactoryBean getFactory(String factoryId) {
+	JAXRSServerFactoryBean factory = factoriesMap.get(factoryId);
+	if (factory == null)
+	    factory = new JAXRSServerFactoryBean();
+	Bus bus = CXFBusFactory.getDefaultBus();
+
+	if (bus == null) {
+	    LOG.info("Creating a new Bus");
+	    bus = CXFBusFactory.newInstance().createBus();
+	} else {
+	    LOG.info("registering on existing bus");
+	}
+	factory.setBus(bus);
+	return factory;
+    }
+
+    private void addProviders(JAXRSServerFactoryBean factory, Class[] clazzes)
+	    throws ClassNotFoundException {
+	Set<Object> providers = Sets.newHashSet(factory.getProviders());
+	for (Class clazz : clazzes) {
+	    boolean found = false;
+	    for (Object provider : ProvidersServiceRegistry.getInstance()
+		    .getProviders()) {
+		if (clazz.isInstance(provider)) {
+		    found = true;
+		    providers.add(provider);
+		    break;
 		}
-		Class[] interfaces = annotatedType.getJavaClass().getInterfaces();
-		if (interfaces == null) {
-			process.addDefinitionError(new IllegalArgumentException(
-					String.format(
-							"JaxRS service %s must implement at least an interface",
-							annotatedType.getJavaClass().getName())));
-			boolean isService = checkImplementsService(interfaces);
-			if (!isService) {
-				process.addDefinitionError(new IllegalArgumentException(
-						String.format(
-								"JaxRS service %s must implement at least an interface that's a subinterface os JaxRSService",
-								annotatedType.getJavaClass().getName())));
-			}
-		}
-		
-		
-		
-		if (annotatedType.getJavaClass().isAnnotationPresent(CXFEndpoint.class)) {
-			beansToProcess.add(process);
-		}
+	    }
+	    if (!found) {
+		throw new ClassNotFoundException("Provider " + clazz.getName()
+			+ " could not be instantiated");
+	    }
+
 	}
+	factory.setProviders(Lists.newArrayList(providers));
 
-	private boolean checkImplementsService(Class[] interfaces) {
-		boolean isService = false;
-		for (Class interfacee : interfaces) {
-			if (interfacee.isAssignableFrom(JaxRSService.class)) {
-				isService = true;
-			}
-		}
-		return isService;
+    }
+
+    @PreDestroy
+    public void destroy() {
+	for (Server server : servers) {
+	    server.destroy();
 	}
-
-	private <X> void registerRSService(
-			@Observes AfterDeploymentValidation event, BeanManager manager) throws ClassNotFoundException {
-		
-		for (ProcessBean processBean : beansToProcess) {
-			CXFEndpoint endpointAnnotation = processBean.getAnnotated()
-			.getAnnotation(CXFEndpoint.class);
-			JAXRSServerFactoryBean factory = getFactory(endpointAnnotation.factoryId());
-			Bean<X> bean = processBean.getBean();
-			LOG.info("Creating CXF Endpoint for "
-					+ bean.getBeanClass().getName());
-			Object instance = manager.getReference(bean, bean.getBeanClass(),
-					manager.createCreationalContext(bean));
-
-			LOG.info("instance: " + bean + ", managed: ");
-			String serviceURL = endpointAnnotation.url();
-			LOG.info("publishing instance: " + instance + ", url: "
-					+ serviceURL);
-			addProviders(factory, endpointAnnotation.providersClasses());
-			addInterceptors(factory, endpointAnnotation);
-
-			factory.setAddress(serviceURL);
-			factory.setServiceBean(instance);
-			servers.add(factory.create());
-		}
-	}
-
-	private void addInterceptors(JAXRSServerFactoryBean factory,
-			CXFEndpoint endpointAnnotation) throws ClassNotFoundException {
-		addInFaultInterceptors(factory, endpointAnnotation.inFaultInterceptors());
-		addInInterceptors(factory, endpointAnnotation.inInterceptors());
-		addOutFaultInterceptors(factory, endpointAnnotation.outFaultInterceptors());
-		addOutInterceptors(factory, endpointAnnotation.outInterceptors());
-	}
-
-	private void addOutInterceptors(
-			JAXRSServerFactoryBean factory,
-			Class<? extends Interceptor<? extends Message>>[] outInterceptors) throws ClassNotFoundException {
-		Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets.newHashSet(factory.getOutInterceptors());
-		fillInterceptorList(interceptors, outInterceptors);
-		factory.setOutInterceptors(Lists.newArrayList(interceptors));
-		
-		
-	}
-	
-	private void addOutFaultInterceptors(
-			JAXRSServerFactoryBean factory,
-			Class<? extends Interceptor<? extends Message>>[] outFaultInterceptors) throws ClassNotFoundException {
-		Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets.newHashSet(factory.getOutFaultInterceptors());
-		fillInterceptorList(interceptors, outFaultInterceptors);
-		factory.setOutFaultInterceptors(Lists.newArrayList(interceptors));
-		
-		
-	}
-
-	private void addInInterceptors(JAXRSServerFactoryBean factory,
-			Class<? extends Interceptor<? extends Message>>[] inInterceptors) throws ClassNotFoundException {
-		Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets.newHashSet(factory.getInInterceptors());
-		fillInterceptorList(interceptors, inInterceptors);
-		factory.setInInterceptors(Lists.newArrayList(interceptors));
-		
-	}
-
-	private void addInFaultInterceptors(
-			JAXRSServerFactoryBean factory,
-			Class<? extends Interceptor<? extends Message>>[] inFaultInterceptors) throws ClassNotFoundException {
-		Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> interceptors = Sets.newHashSet(factory.getInFaultInterceptors());
-		fillInterceptorList(interceptors, inFaultInterceptors);
-		factory.setInFaultInterceptors(Lists.newArrayList(interceptors));
-		
-		
-	}
-
-	private void fillInterceptorList(
-			Set<org.apache.cxf.interceptor.Interceptor<? extends Message>> setToFill,
-			Class<? extends Interceptor<? extends Message>>[] toAddInterceptors)
-			throws ClassNotFoundException {
-		for(Class clazz : toAddInterceptors) {
-			boolean found= false;
-			for (Object provider : ProvidersServiceRegistry.getInstance().getProviders()) {
-				if (clazz.isInstance(provider)) {
-					found = true;
-					setToFill.add((org.apache.cxf.interceptor.Interceptor<? extends Message>) provider);
-					break;
-				}
-			}
-			if (!found) {
-				throw new ClassNotFoundException("Interceptor " + clazz.getName() + " could not be instantiated");
-			}
-			
-		}
-	}
-
-	private JAXRSServerFactoryBean getFactory(String factoryId) {
-		JAXRSServerFactoryBean factory = factoriesMap.get(factoryId);
-		if (factory == null)
-			factory = new JAXRSServerFactoryBean();
-		Bus bus = CXFBusFactory.getDefaultBus();
-
-		if (bus == null) {
-			LOG.info("Creating a new Bus");
-			bus = CXFBusFactory.newInstance().createBus();
-		} else {
-			LOG.info("registering on existing bus");
-		}
-		factory.setBus(bus);
-		return factory;
-	}
-
-	private void addProviders(JAXRSServerFactoryBean factory, Class[] clazzes) throws ClassNotFoundException {
-		Set<Object> providers = Sets.newHashSet(factory.getProviders());
-		for(Class clazz : clazzes) {
-			boolean found= false;
-			for (Object provider : ProvidersServiceRegistry.getInstance().getProviders()) {
-				if (clazz.isInstance(provider)) {
-					found = true;
-					providers.add(provider);
-					break;
-				}
-			}
-			if (!found) {
-				throw new ClassNotFoundException("Provider " + clazz.getName() + " could not be instantiated");
-			}
-			
-		}
-		factory.setProviders(Lists.newArrayList(providers));
-		
-	}
-
-	@PreDestroy
-	public void destroy() {
-		for (Server server : servers) {
-			server.destroy();
-		}
-	}
+    }
 
 }

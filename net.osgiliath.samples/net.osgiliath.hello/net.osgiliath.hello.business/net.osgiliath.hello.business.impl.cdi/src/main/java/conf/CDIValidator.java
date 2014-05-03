@@ -27,11 +27,11 @@ import javax.validation.Validator;
 import net.osgiliath.validator.osgi.ValidatorHelper;
 
 public class CDIValidator {
-	
-	@Produces
-	@org.hibernate.validator.cdi.HibernateValidator
-	@Default
-	public Validator createValidator() {
-		return ValidatorHelper.getValidator();
-	}
+
+    @Produces
+    @org.hibernate.validator.cdi.HibernateValidator
+    @Default
+    public Validator createValidator() {
+	return ValidatorHelper.getValidator();
+    }
 }

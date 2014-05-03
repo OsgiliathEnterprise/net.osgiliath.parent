@@ -23,62 +23,62 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.trackers;
 import java.util.Collection;
 
 import javax.ws.rs.ext.MessageBodyReader;
+
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 public class MessageBodyReaderProvidersServiceTracker implements
-		ServiceTrackerCustomizer<MessageBodyReader, Object> {
-	private BundleContext context;
+	ServiceTrackerCustomizer<MessageBodyReader, Object> {
+    private BundleContext context;
 
-	public MessageBodyReaderProvidersServiceTracker(BundleContext context) {
-		this.context = context;
-	}
-	@Override
-	// callback method if MyClass service object is registered
-	public Object addingService(ServiceReference reference) {
-		Object serviceObject = this.context.getService(reference);
+    public MessageBodyReaderProvidersServiceTracker(BundleContext context) {
+	this.context = context;
+    }
 
-		if (serviceObject instanceof MessageBodyReader<?>) {
-			ProvidersServiceRegistry.getInstance().getReaders()
-					.add((MessageBodyReader) serviceObject);
+    @Override
+    // callback method if MyClass service object is registered
+    public Object addingService(ServiceReference reference) {
+	Object serviceObject = this.context.getService(reference);
 
-		}
-
-		return serviceObject;
-		
-	}
-
-	@Override
-	// callback if necessary class is deregistred
-	public void removedService(ServiceReference reference, Object service) {
-		Object serviceObject = this.context.getService(reference);
-
-		if (serviceObject instanceof MessageBodyReader<?>) {
-			ProvidersServiceRegistry.getInstance().getReaders()
-					.remove((MessageBodyReader) serviceObject);
-
-		}
-	}
-
-	public static void handleInitialReferences(BundleContext context)
-			throws InvalidSyntaxException {
-		Collection<ServiceReference<MessageBodyReader>> refs = context
-				.getServiceReferences(MessageBodyReader.class, null);
-		for (ServiceReference<MessageBodyReader> reference : refs) {
-			MessageBodyReader svc = context.getService(reference);
-			svc.toString();
-			ProvidersServiceRegistry.getInstance().getReaders().add(svc);
-		}
-	}
-
-	@Override
-	public void modifiedService(ServiceReference reference, Object service) {
-		
+	if (serviceObject instanceof MessageBodyReader<?>) {
+	    ProvidersServiceRegistry.getInstance().getReaders()
+		    .add((MessageBodyReader) serviceObject);
 
 	}
+
+	return serviceObject;
+
+    }
+
+    @Override
+    // callback if necessary class is deregistred
+    public void removedService(ServiceReference reference, Object service) {
+	Object serviceObject = this.context.getService(reference);
+
+	if (serviceObject instanceof MessageBodyReader<?>) {
+	    ProvidersServiceRegistry.getInstance().getReaders()
+		    .remove((MessageBodyReader) serviceObject);
+
+	}
+    }
+
+    public static void handleInitialReferences(BundleContext context)
+	    throws InvalidSyntaxException {
+	Collection<ServiceReference<MessageBodyReader>> refs = context
+		.getServiceReferences(MessageBodyReader.class, null);
+	for (ServiceReference<MessageBodyReader> reference : refs) {
+	    MessageBodyReader svc = context.getService(reference);
+	    svc.toString();
+	    ProvidersServiceRegistry.getInstance().getReaders().add(svc);
+	}
+    }
+
+    @Override
+    public void modifiedService(ServiceReference reference, Object service) {
+
+    }
 }

@@ -29,79 +29,87 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * {@link SecurityService} implementation
+ * 
  * @author Charlie
- *
+ * 
  */
-public class LoginPasswordSecurityService implements SecurityService{
-//	@Inject
-	/**
-	 * The {@link AuthenticationManager}
-	 */
-	private AuthenticationManager authenticationManager;
-	
-	/**
-	 * The {@link PasswordEncoder}
-	 */
-	// @Inject
-	private PasswordEncoder passwordEncoder;
-	/**
-	 * The {@link SaltSource}
-	 */
-	private SaltSource saltSource;
-	
-	public AuthenticationManager getAuthenticationManager() {
-		return authenticationManager;
-	}
-	public void setAuthenticationManager(AuthenticationManager authenticationManager) {
-		this.authenticationManager = authenticationManager;
-	}
-	public PasswordEncoder getPasswordEncoder() {
-		return passwordEncoder;
-	}
-	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-		this.passwordEncoder = passwordEncoder;
-	}
-	public SaltSource getSaltSource() {
-		return saltSource;
-	}
-	public void setSaltSource(SaltSource saltSource) {
-		this.saltSource = saltSource;
-	}
-	/**
-	 * {@inheritDoc}
-	 */
+public class LoginPasswordSecurityService implements SecurityService {
+    // @Inject
+    /**
+     * The {@link AuthenticationManager}
+     */
+    private AuthenticationManager authenticationManager;
 
-	public boolean authenticate(String username, String password) {
-	
-		Authentication aut = new UsernamePasswordAuthenticationToken(username,
-				password);
-		try {
-			aut = authenticationManager.authenticate(aut);
-			SecurityContextHolder.getContext().setAuthentication(aut);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		return aut.isAuthenticated();
-	}
-	/**
-	 * {@inheritDoc}
-	 */
-	
-	public MUser onSubscription(MUser subscriptionMessageIn) {
-		MUser user = subscriptionMessageIn;
-		
-				MAuthority auth = new MAuthority();
-				auth.setAuthority(AUTHORITY.MEMBER);
-						
-				user.getAuthorities().add(auth);
-				String password = user.getPassword();
-				password = passwordEncoder.encodePassword(password,
-						saltSource.getSalt(user));
-				user.setPassword(password);
-				RepositoryUserDetailsService.getUsers().add(user);
-			return user;
+    /**
+     * The {@link PasswordEncoder}
+     */
+    // @Inject
+    private PasswordEncoder passwordEncoder;
+    /**
+     * The {@link SaltSource}
+     */
+    private SaltSource saltSource;
 
-	
+    public AuthenticationManager getAuthenticationManager() {
+	return authenticationManager;
+    }
+
+    public void setAuthenticationManager(
+	    AuthenticationManager authenticationManager) {
+	this.authenticationManager = authenticationManager;
+    }
+
+    public PasswordEncoder getPasswordEncoder() {
+	return passwordEncoder;
+    }
+
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+	this.passwordEncoder = passwordEncoder;
+    }
+
+    public SaltSource getSaltSource() {
+	return saltSource;
+    }
+
+    public void setSaltSource(SaltSource saltSource) {
+	this.saltSource = saltSource;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+
+    public boolean authenticate(String username, String password) {
+
+	Authentication aut = new UsernamePasswordAuthenticationToken(username,
+		password);
+	try {
+	    aut = authenticationManager.authenticate(aut);
+	    SecurityContextHolder.getContext().setAuthentication(aut);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    return false;
 	}
+	return aut.isAuthenticated();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+
+    public MUser onSubscription(MUser subscriptionMessageIn) {
+	MUser user = subscriptionMessageIn;
+
+	MAuthority auth = new MAuthority();
+	auth.setAuthority(AUTHORITY.MEMBER);
+
+	user.getAuthorities().add(auth);
+	String password = user.getPassword();
+	password = passwordEncoder.encodePassword(password,
+		saltSource.getSalt(user));
+	user.setPassword(password);
+	RepositoryUserDetailsService.getUsers().add(user);
+	return user;
+
+    }
 }

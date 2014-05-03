@@ -45,48 +45,44 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 @Eager
 @ContextName
-public class HelloJMSCDIRepository implements HelloCDIRepository  {
-	private Logger LOG = LoggerFactory.getLogger(HelloJMSCDIRepository.class);
-	private List<HelloEntity> entities = new ArrayList<HelloEntity>();
-	
+public class HelloJMSCDIRepository implements HelloCDIRepository {
+    private Logger LOG = LoggerFactory.getLogger(HelloJMSCDIRepository.class);
+    private List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
-	@Inject
-	@Uri("jms:queue:helloServiceQueueOut")
-	private ProducerTemplate producer;
-	@Inject
-	@Uri("jms:queue:helloServiceQueueIn2")
-	private ProducerTemplate internalProducer;
-	@Inject
-	@Uri("jms:queue:helloServiceQueueIn")
-	private ProducerTemplate routeProducer;
-	private boolean isProcessed = false;
-	
-	
-	public <S extends HelloEntity> void directSave(@Body S entity) {
-		internalProducer.sendBody(entity);
-		routeProducer.sendBody(entity);
-		
-		
-	}
-	@Consume(uri = "jms:queue:helloServiceQueueIn2")
-	public <S extends HelloEntity> void save(@Body S entity) {
-		LOG.info("receiving message on internally (via @Consumer");
-		 entities.add(entity);
-		 Hellos hellos = new Hellos();
-		 Collection<HelloEntity> entities = new ArrayList<>();
-		 entities.add(entity);
-		 hellos.setEntities(entities);
-		 isProcessed = true;
-		 LOG.info("Sending hellos: "+ hellos);
-		producer.sendBody(hellos);
-	}
-	@Override
-	public boolean isProcessed() {
-		
-		return isProcessed ;
-	}
+    @Inject
+    @Uri("jms:queue:helloServiceQueueOut")
+    private ProducerTemplate producer;
+    @Inject
+    @Uri("jms:queue:helloServiceQueueIn2")
+    private ProducerTemplate internalProducer;
+    @Inject
+    @Uri("jms:queue:helloServiceQueueIn")
+    private ProducerTemplate routeProducer;
+    private boolean isProcessed = false;
 
+    public <S extends HelloEntity> void directSave(@Body S entity) {
+	internalProducer.sendBody(entity);
+	routeProducer.sendBody(entity);
 
-	
-	
+    }
+
+    @Consume(uri = "jms:queue:helloServiceQueueIn2")
+    public <S extends HelloEntity> void save(@Body S entity) {
+	LOG.info("receiving message on internally (via @Consumer");
+	entities.add(entity);
+	Hellos hellos = new Hellos();
+	Collection<HelloEntity> entities = new ArrayList<>();
+	entities.add(entity);
+	hellos.setEntities(entities);
+	isProcessed = true;
+	LOG.info("Sending hellos: " + hellos);
+	producer.sendBody(hellos);
+    }
+
+    @Override
+    public boolean isProcessed() {
+
+	return isProcessed;
+    }
+
 }

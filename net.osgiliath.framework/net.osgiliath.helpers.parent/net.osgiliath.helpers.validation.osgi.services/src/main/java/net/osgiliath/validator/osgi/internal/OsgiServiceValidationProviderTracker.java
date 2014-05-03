@@ -24,62 +24,61 @@ import java.util.Collection;
 
 import javax.validation.spi.ValidationProvider;
 
-
-
-
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
-public class OsgiServiceValidationProviderTracker implements ServiceTrackerCustomizer {
-	private BundleContext context;
+public class OsgiServiceValidationProviderTracker implements
+	ServiceTrackerCustomizer {
+    private BundleContext context;
 
-	public OsgiServiceValidationProviderTracker(BundleContext context) {
-		this.context = context;
+    public OsgiServiceValidationProviderTracker(BundleContext context) {
+	this.context = context;
+    }
+
+    // callback method if MyClass service object is registered
+    public Object addingService(ServiceReference reference) {
+	Object serviceObject = this.context.getService(reference);
+	if (serviceObject instanceof ValidationProvider<?>) {
+	    if (!HibernateValidationOSGIServicesProviderResolver.getInstance()
+		    .getValidationProviders().contains(serviceObject))
+		HibernateValidationOSGIServicesProviderResolver.getInstance()
+			.getValidationProviders()
+			.add((ValidationProvider<?>) serviceObject);
 	}
 
-	// callback method if MyClass service object is registered
-	public Object addingService(ServiceReference reference) {
-		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof ValidationProvider<?>) {
-			if (!HibernateValidationOSGIServicesProviderResolver.getInstance()
-					.getValidationProviders().contains(serviceObject))
-				HibernateValidationOSGIServicesProviderResolver.getInstance()
-						.getValidationProviders()
-						.add((ValidationProvider<?>) serviceObject);
-		}
+	return reference;
+	// return service object
+    }
 
-		return reference;
-		// return service object
+    // callback if necessary class is deregistred
+    public void removedService(ServiceReference reference, Object service) {
+	Object serviceObject = this.context.getService(reference);
+	if (serviceObject instanceof ValidationProvider<?>) {
+	    if (HibernateValidationOSGIServicesProviderResolver.getInstance()
+		    .getValidationProviders().contains(serviceObject))
+		HibernateValidationOSGIServicesProviderResolver.getInstance()
+			.getValidationProviders()
+			.remove((ValidationProvider<?>) serviceObject);
 	}
+    }
 
-	// callback if necessary class is deregistred
-	public void removedService(ServiceReference reference, Object service) {
-		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof ValidationProvider<?>) {
-			if (HibernateValidationOSGIServicesProviderResolver.getInstance()
-					.getValidationProviders().contains(serviceObject))
-				HibernateValidationOSGIServicesProviderResolver.getInstance()
-						.getValidationProviders()
-						.remove((ValidationProvider<?>) serviceObject);
-		}
+    public static void handleInitialReferences(BundleContext context)
+	    throws InvalidSyntaxException {
+	Collection<ServiceReference<ValidationProvider>> refs = context
+		.getServiceReferences(ValidationProvider.class, null);
+	for (ServiceReference<ValidationProvider> reference : refs) {
+	    HibernateValidationOSGIServicesProviderResolver.getInstance()
+		    .getValidationProviders()
+		    .add(context.getService(reference));
 	}
-	public static void handleInitialReferences(BundleContext context)
-			throws InvalidSyntaxException {
-		Collection<ServiceReference<ValidationProvider>> refs = context
-				.getServiceReferences(ValidationProvider.class, null);
-		for (ServiceReference<ValidationProvider> reference : refs) {
-			HibernateValidationOSGIServicesProviderResolver.getInstance().getValidationProviders()
-					.add(context.getService(reference));
-		}
-	}
+    }
 
-	@Override
-	public void modifiedService(ServiceReference reference, Object service) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void modifiedService(ServiceReference reference, Object service) {
+	// TODO Auto-generated method stub
+
+    }
 
 }

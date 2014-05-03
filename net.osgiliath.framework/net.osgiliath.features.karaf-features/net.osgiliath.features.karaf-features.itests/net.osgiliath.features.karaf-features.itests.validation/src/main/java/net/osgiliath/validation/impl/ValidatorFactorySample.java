@@ -27,33 +27,33 @@ import javax.validation.constraints.NotNull;
 import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
 
-import org.hibernate.validator.cdi.HibernateValidator;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
+
 @Default
 @OsgiServiceProvider
-public class ValidatorFactorySample implements IValidatorFactorySample{
-//	@Inject
-//	@HibernateValidator
-//	private Validator validator;
+public class ValidatorFactorySample implements IValidatorFactorySample {
+    // @Inject
+    // @HibernateValidator
+    // private Validator validator;
 
-//	public Validator getValidator() {
-//		return validator;
-//	}
-//
-//	public void setValidator(Validator validator) {
-//		this.validator = validator;
-//	}
-//	
-	public void nullMessageValidation(@NotNull @Valid HelloObject object ) {
-		
-		Object mayObject = object;
-		if (mayObject != null)
-		System.out.println(mayObject.toString());
-//		Set<ConstraintViolation<HelloObject>> validationResults = validator
-//				.validate(object);
-//		String errors = "";
-//		if (!validationResults.isEmpty()) {
-//			throw new ValidationException(errors);
-//		}
-	}
+    // public Validator getValidator() {
+    // return validator;
+    // }
+    //
+    // public void setValidator(Validator validator) {
+    // this.validator = validator;
+    // }
+    //
+    public void nullMessageValidation(@NotNull @Valid HelloObject object) {
+
+	Object mayObject = object;
+	if (mayObject != null)
+	    System.out.println(mayObject.toString());
+	// Set<ConstraintViolation<HelloObject>> validationResults = validator
+	// .validate(object);
+	// String errors = "";
+	// if (!validationResults.isEmpty()) {
+	// throw new ValidationException(errors);
+	// }
+    }
 }

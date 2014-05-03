@@ -30,18 +30,19 @@ import org.apache.camel.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @Eager
 public class Components {
-	private Logger LOG = LoggerFactory.getLogger(Components.class);
+    private Logger LOG = LoggerFactory.getLogger(Components.class);
 
-	@Inject
-	@OsgiService(filter = "(component-type=jms)", dynamic = true)
-	private Component jms;
+    @Inject
+    @OsgiService(filter = "(component-type=jms)", dynamic = true)
+    private Component jms;
 
-	@Produces
-	@Named("jms")
-	public Component getJms() {
-		LOG.info("Inject jms route");
-		return jms;
-	}
+    @Produces
+    @Named("jms")
+    public Component getJms() {
+	LOG.info("Inject jms route");
+	return jms;
+    }
 }

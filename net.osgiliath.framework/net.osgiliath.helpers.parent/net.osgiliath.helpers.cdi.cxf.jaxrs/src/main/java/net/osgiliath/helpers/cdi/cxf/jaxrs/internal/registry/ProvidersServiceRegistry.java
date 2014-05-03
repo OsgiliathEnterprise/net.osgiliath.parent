@@ -37,52 +37,52 @@ import com.google.common.collect.Sets;
 
 public class ProvidersServiceRegistry {
 
-	private Collection<MessageBodyWriter<Object>> writers = Sets.newHashSet();
-	private Collection<MessageBodyReader<Object>> readers = Sets.newHashSet();
-	private Collection<ExceptionMapper<? extends Exception>> exceptionMappers = Sets
-			.newHashSet();
+    private Collection<MessageBodyWriter<Object>> writers = Sets.newHashSet();
+    private Collection<MessageBodyReader<Object>> readers = Sets.newHashSet();
+    private Collection<ExceptionMapper<? extends Exception>> exceptionMappers = Sets
+	    .newHashSet();
 
-	@Inject
-	@Any
-	private Instance<MessageBodyWriter<Object>> internalWriters;
-	@Inject
-	@Any
-	private Instance<MessageBodyReader<Object>> internalReaders;
+    @Inject
+    @Any
+    private Instance<MessageBodyWriter<Object>> internalWriters;
+    @Inject
+    @Any
+    private Instance<MessageBodyReader<Object>> internalReaders;
 
-	private static ProvidersServiceRegistry instance = null;
+    private static ProvidersServiceRegistry instance = null;
 
-	public static ProvidersServiceRegistry getInstance() {
-		if (instance == null) {
-			instance = new ProvidersServiceRegistry();
-		}
-		return instance;
+    public static ProvidersServiceRegistry getInstance() {
+	if (instance == null) {
+	    instance = new ProvidersServiceRegistry();
 	}
+	return instance;
+    }
 
-	public Collection<MessageBodyWriter<Object>> getWriters() {
+    public Collection<MessageBodyWriter<Object>> getWriters() {
 
-		return internalWriters == null ? writers : Sets.newHashSet(Iterables
-				.concat(writers, internalWriters));
-	}
+	return internalWriters == null ? writers : Sets.newHashSet(Iterables
+		.concat(writers, internalWriters));
+    }
 
-	public Collection<ExceptionMapper<? extends Exception>> getExceptionMappers() {
-		return exceptionMappers;
-	}
+    public Collection<ExceptionMapper<? extends Exception>> getExceptionMappers() {
+	return exceptionMappers;
+    }
 
-	public Collection<MessageBodyReader<Object>> getReaders() {
-		return internalReaders == null ? readers : Sets.newHashSet(Iterables
-				.concat(readers, internalReaders));
-	}
+    public Collection<MessageBodyReader<Object>> getReaders() {
+	return internalReaders == null ? readers : Sets.newHashSet(Iterables
+		.concat(readers, internalReaders));
+    }
 
-	public Collection<Object> getProviders() {
-		return Sets.newHashSet(Iterables.concat(Iterables.concat(
-				Iterables.concat(getReaders(), getWriters()),
-				getInternalProviders()), getExceptionMappers()));
-	}
+    public Collection<Object> getProviders() {
+	return Sets.newHashSet(Iterables.concat(Iterables.concat(
+		Iterables.concat(getReaders(), getWriters()),
+		getInternalProviders()), getExceptionMappers()));
+    }
 
-	private Iterable<? extends Object> getInternalProviders() {
+    private Iterable<? extends Object> getInternalProviders() {
 
-		return Sets.<Object> newHashSet(new JSONProvider<Object>(),
-				new JAXBElementProvider<Object>());
-	}
+	return Sets.<Object> newHashSet(new JSONProvider<Object>(),
+		new JAXBElementProvider<Object>());
+    }
 
 }

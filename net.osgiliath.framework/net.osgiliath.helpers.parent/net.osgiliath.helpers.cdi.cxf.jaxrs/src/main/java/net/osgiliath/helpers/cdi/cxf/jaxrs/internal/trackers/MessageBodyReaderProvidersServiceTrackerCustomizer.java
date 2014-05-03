@@ -24,9 +24,9 @@ import org.osgi.framework.BundleContext;
 
 public class MessageBodyReaderProvidersServiceTrackerCustomizer {
 
-	public MessageBodyReaderProvidersServiceTrackerCustomizer(
-			BundleContext context) {
-		// TODO Auto-generated constructor stub
-	}
+    public MessageBodyReaderProvidersServiceTrackerCustomizer(
+	    BundleContext context) {
+	// TODO Auto-generated constructor stub
+    }
 
 }

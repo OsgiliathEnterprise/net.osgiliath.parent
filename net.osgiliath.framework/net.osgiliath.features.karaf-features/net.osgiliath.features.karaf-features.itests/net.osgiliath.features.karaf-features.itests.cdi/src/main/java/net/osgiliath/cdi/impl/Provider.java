@@ -27,9 +27,9 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 @OsgiServiceProvider
 public class Provider implements IProvider {
 
-	@Override
-	public String getMessage() {
-		return "hello";
-	}
+    @Override
+    public String getMessage() {
+	return "hello";
+    }
 
 }

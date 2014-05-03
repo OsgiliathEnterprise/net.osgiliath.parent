@@ -36,59 +36,70 @@ import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
 /**
  * Sample of a business service
+ * 
  * @author charliemordant
- *
+ * 
  */
 @Slf4j
-public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.HelloServiceJaxRS {
-	//TODO you can use annotation intra bundle, but its not so compatible with blueprint xml file @Inject @OsgiService(dynamic=true)
-	@Setter
-	private HelloObjectRepository helloObjectRepository;
-	//JSR 303 validator
-	@Setter
-	private Validator validator;
-	@Override
-	public void persistHello(HelloEntity helloObject_p) {
-		log.info("persisting new message with jaxrs: " + helloObject_p.getHelloMessage());
-		Set<ConstraintViolation<HelloEntity>> validationResults = validator
-				.validate(helloObject_p);
-		String errors = "";
-		if (!validationResults.isEmpty()) {
-			for (ConstraintViolation<HelloEntity> violation : validationResults) {
-				log.info("subscription error, validating user:"
-						+ violation.getMessage());
-				errors += violation.getPropertyPath() + ": "
-						+ violation.getMessage().replaceAll("\"", "") + ";";
-			}
-			throw new ValidationException(errors);
-		}
-		helloObjectRepository.save(helloObject_p);
-		
+public class HelloServiceJaxRS implements
+	net.osgiliath.hello.business.impl.HelloServiceJaxRS {
+    // TODO you can use annotation intra bundle, but its not so compatible with
+    // blueprint xml file @Inject @OsgiService(dynamic=true)
+    @Setter
+    private HelloObjectRepository helloObjectRepository;
+    // JSR 303 validator
+    @Setter
+    private Validator validator;
+
+    @Override
+    public void persistHello(HelloEntity helloObject_p) {
+	log.info("persisting new message with jaxrs: "
+		+ helloObject_p.getHelloMessage());
+	Set<ConstraintViolation<HelloEntity>> validationResults = validator
+		.validate(helloObject_p);
+	String errors = "";
+	if (!validationResults.isEmpty()) {
+	    for (ConstraintViolation<HelloEntity> violation : validationResults) {
+		log.info("subscription error, validating user:"
+			+ violation.getMessage());
+		errors += violation.getPropertyPath() + ": "
+			+ violation.getMessage().replaceAll("\"", "") + ";";
+	    }
+	    throw new ValidationException(errors);
 	}
+	helloObjectRepository.save(helloObject_p);
+
+    }
+
+    @Override
+    public Hellos getHellos() {
+	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+	if (helloObjects.isEmpty()) {
+	    throw new UnsupportedOperationException(
+		    "You should not call this method when there is no Hello yet !");
+	}
+	return Hellos
+		.builder()
+		.helloCollection(
+			Lists.newArrayList(Iterables.transform(helloObjects,
+				helloObjectToStringFunction))).build();
+    }
+
+    // Guava function waiting for Java 8
+    private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 	@Override
-	public Hellos getHellos() {
-		Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
-		if (helloObjects.isEmpty()) {
-			throw new UnsupportedOperationException("You should not call this method when there is no Hello yet !");
-		}
-		return Hellos.builder().helloCollection(Lists.newArrayList(Iterables.transform(helloObjects, helloObjectToStringFunction))).build();
+	public String apply(HelloEntity arg0) {
+	    return arg0.getHelloMessage();
 	}
-	//Guava function waiting for Java 8
-	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+    };
 
-		@Override
-		public String apply(HelloEntity arg0) {
-			return arg0.getHelloMessage();
-		}
-	};
-	
-	@Override
-	public void deleteAll() {
-		helloObjectRepository.deleteAll();
-	}
-	
+    @Override
+    public void deleteAll() {
+	helloObjectRepository.deleteAll();
+    }
 
 }

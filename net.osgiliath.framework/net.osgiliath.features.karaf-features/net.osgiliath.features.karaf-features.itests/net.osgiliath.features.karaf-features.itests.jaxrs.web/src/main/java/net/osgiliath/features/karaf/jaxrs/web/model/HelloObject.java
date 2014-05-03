@@ -32,16 +32,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
-
 //TODO Sample of a model bean exportable by web service (xml), persistable and validatable supporting builder pattern
-@Data//equals, hashcode, getters and setters
-@Builder//builder pattern
-@NoArgsConstructor//constructor
-@AllArgsConstructor//other constructor
-@XmlRootElement//xml marshalling
+@Data
+// equals, hashcode, getters and setters
+@Builder
+// builder pattern
+@NoArgsConstructor
+// constructor
+@AllArgsConstructor
+// other constructor
+@XmlRootElement
+// xml marshalling
 @XmlAccessorType(XmlAccessType.FIELD)
-public class HelloObject implements Serializable{
-	private static final transient long serialVersionUID = 6233801298404301547L;
-	@XmlElement//XML node
-	private String helloMessage;
+public class HelloObject implements Serializable {
+    private static final transient long serialVersionUID = 6233801298404301547L;
+    @XmlElement
+    // XML node
+    private String helloMessage;
 }

@@ -20,8 +20,6 @@ package net.osgiliath.validator.osgi.internal;
  * #L%
  */
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,34 +28,34 @@ import javax.validation.spi.ValidationProvider;
 
 import org.hibernate.validator.HibernateValidator;
 
-
 /**
  * OSGi classpath aware {@link javax.validation.ValidationProviderResolver
  * ValidationProviderResolver}.
  * 
  */
-public class HibernateValidationOSGIServicesProviderResolver implements ValidationProviderResolver {
-	private static ValidationProviderResolver instance = null;
-	
-	public HibernateValidationOSGIServicesProviderResolver() {
-		super();
-//		if (instance == null)
-//			instance = new HibernateValidationOSGIServicesProviderResolver();
+public class HibernateValidationOSGIServicesProviderResolver implements
+	ValidationProviderResolver {
+    private static ValidationProviderResolver instance = null;
 
-	}
-	public static ValidationProviderResolver getInstance() {
-		if (instance == null)
-			instance = new HibernateValidationOSGIServicesProviderResolver();
-		return instance;
-	}
+    public HibernateValidationOSGIServicesProviderResolver() {
+	super();
+	// if (instance == null)
+	// instance = new HibernateValidationOSGIServicesProviderResolver();
 
-	@Override
-	public List<ValidationProvider<?>> getValidationProviders() {
-		List<ValidationProvider<?>> providers = new ArrayList<ValidationProvider<?>>(
-				1);
-		providers.add(new HibernateValidator());
-		return providers;
-	}
+    }
 
-	
+    public static ValidationProviderResolver getInstance() {
+	if (instance == null)
+	    instance = new HibernateValidationOSGIServicesProviderResolver();
+	return instance;
+    }
+
+    @Override
+    public List<ValidationProvider<?>> getValidationProviders() {
+	List<ValidationProvider<?>> providers = new ArrayList<ValidationProvider<?>>(
+		1);
+	providers.add(new HibernateValidator());
+	return providers;
+    }
+
 }

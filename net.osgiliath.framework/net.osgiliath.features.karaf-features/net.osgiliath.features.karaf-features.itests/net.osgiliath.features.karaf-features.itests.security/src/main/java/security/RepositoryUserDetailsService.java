@@ -20,42 +20,42 @@ package security;
  * #L%
  */
 
-
 import java.util.Collection;
 import java.util.HashSet;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 /**
  * Spring security {@link UserDetailsService}
+ * 
  * @author Charlie
- *
+ * 
  */
 public class RepositoryUserDetailsService implements UserDetailsService {
-	//@Inject @OsgiService(dynamic=true)
-	/**
-	 * Retrieves the user model jaxrs adress
-	 */
-private static Collection<UserDetails> users = new HashSet<UserDetails>();
+    // @Inject @OsgiService(dynamic=true)
+    /**
+     * Retrieves the user model jaxrs adress
+     */
+    private static Collection<UserDetails> users = new HashSet<UserDetails>();
 
-	public static Collection<UserDetails> getUsers() {
-		return users;
-	}
+    public static Collection<UserDetails> getUsers() {
+	return users;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String arg0)
-			throws UsernameNotFoundException{
-		for (UserDetails details : users) {
-			if (details.getUsername().equals(arg0))
-				return details;
-		}
-		throw new UsernameNotFoundException("no user with this pseudo");
-		
-		
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public UserDetails loadUserByUsername(String arg0)
+	    throws UsernameNotFoundException {
+	for (UserDetails details : users) {
+	    if (details.getUsername().equals(arg0))
+		return details;
 	}
+	throw new UsernameNotFoundException("no user with this pseudo");
+
+    }
 
 }

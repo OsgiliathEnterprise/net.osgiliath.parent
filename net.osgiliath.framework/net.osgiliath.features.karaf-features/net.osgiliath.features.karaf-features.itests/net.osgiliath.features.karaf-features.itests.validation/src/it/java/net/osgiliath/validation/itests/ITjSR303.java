@@ -23,11 +23,14 @@ package net.osgiliath.validation.itests;
 import static org.junit.Assert.fail;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+
 import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
+
 import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -55,62 +58,63 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITjSR303 extends PaxExamKarafConfigurationFactory {
-	private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
+    private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
 
-	@Inject
-	private BundleContext bundleContext;
-	// Exported service via blueprint.xml
-	@Inject
-	@Filter(timeout = 40000)
-	private IValidatorFactorySample consumer;
+    @Inject
+    private BundleContext bundleContext;
+    // Exported service via blueprint.xml
+    @Inject
+    @Filter(timeout = 40000)
+    private IValidatorFactorySample consumer;
 
-	// probe
-	@ProbeBuilder
-	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(PaxExamKarafConfigurationFactory.class);
-		builder.setHeader("Export-Package", "net.osgiliath.validation.itests");
-		builder.setHeader("Bundle-ManifestVersion", "2");
-		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-		return builder;
+    // probe
+    @ProbeBuilder
+    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.setHeader("Export-Package", "net.osgiliath.validation.itests");
+	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+	return builder;
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void testValidateNull() throws Exception {
+	for (Bundle b : bundleContext.getBundles()) {
+	    LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
+		    + b.getState());
 	}
-
-	@Test(expected = ConstraintViolationException.class)
-	public void testValidateNull() throws Exception {
-		for (Bundle b : bundleContext.getBundles()) {
-			LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
-					+ b.getState());
-		}
-		try {
-			consumer.nullMessageValidation(null);
-			fail("Tho shall not be here");
-		} catch (Exception iae) {
-			iae.printStackTrace();
-		}
-		HelloObject object = new HelloObject();
-		object.setMessage(null);
-		consumer.nullMessageValidation(object);
-		fail("Tho shall not be here");
-
+	try {
+	    consumer.nullMessageValidation(null);
+	    fail("Tho shall not be here");
+	} catch (Exception iae) {
+	    iae.printStackTrace();
 	}
+	HelloObject object = new HelloObject();
+	object.setMessage(null);
+	consumer.nullMessageValidation(object);
+	fail("Tho shall not be here");
 
-	@Override
-	protected Option featureToTest() {
-		return features(
-				maven().artifactId(
-						"net.osgiliath.features.karaf-features.itests.feature")
-						.groupId("net.osgiliath.framework").type("xml")
-						.classifier("features").versionAsInProject(),
-				"osgiliath-itests-validation");
-	}
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+    }
 
-	}
+    @Override
+    protected Option featureToTest() {
+	return features(
+		maven().artifactId(
+			"net.osgiliath.features.karaf-features.itests.feature")
+			.groupId("net.osgiliath.framework").type("xml")
+			.classifier("features").versionAsInProject(),
+		"osgiliath-itests-validation");
+    }
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+    static {
+	// uncomment to enable debugging of this test class
+	// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+    }
+
+    @Configuration
+    public Option[] config() {
+	return createConfig();
+    }
 
 }

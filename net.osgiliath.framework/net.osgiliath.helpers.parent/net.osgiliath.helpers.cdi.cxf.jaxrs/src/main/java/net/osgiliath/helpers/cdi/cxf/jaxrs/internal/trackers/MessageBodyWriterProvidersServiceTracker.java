@@ -29,57 +29,55 @@ import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceReg
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
-public class MessageBodyWriterProvidersServiceTracker implements ServiceTrackerCustomizer {
+public class MessageBodyWriterProvidersServiceTracker implements
+	ServiceTrackerCustomizer {
 
-	private BundleContext context;
-	
-	public MessageBodyWriterProvidersServiceTracker(BundleContext context) {
-		this.context = context;
+    private BundleContext context;
+
+    public MessageBodyWriterProvidersServiceTracker(BundleContext context) {
+	this.context = context;
+    }
+
+    // callback method if MyClass service object is registered
+    public Object addingService(ServiceReference reference) {
+	Object serviceObject = this.context.getService(reference);
+	if (serviceObject instanceof MessageBodyWriter<?>) {
+	    ProvidersServiceRegistry.getInstance().getWriters()
+		    .add((MessageBodyWriter) serviceObject);
+
 	}
 
-	// callback method if MyClass service object is registered
-	public Object addingService(ServiceReference reference) {
-		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof MessageBodyWriter<?>) {
-			ProvidersServiceRegistry.getInstance().getWriters()
-					.add((MessageBodyWriter) serviceObject);
+	return serviceObject;
+	// return service object
+    }
 
-		}
-		
+    // callback if necessary class is deregistred
+    public void removedService(ServiceReference reference, Object service) {
+	Object serviceObject = this.context.getService(reference);
+	if (serviceObject instanceof MessageBodyWriter<?>) {
+	    ProvidersServiceRegistry.getInstance().getWriters()
+		    .remove((MessageBodyWriter) serviceObject);
 
-		return serviceObject;
-		// return service object
 	}
 
-	// callback if necessary class is deregistred
-	public void removedService(ServiceReference reference, Object service) {
-		Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof MessageBodyWriter<?>) {
-			ProvidersServiceRegistry.getInstance().getWriters()
-					.remove((MessageBodyWriter) serviceObject);
+    }
 
-		}
-		
+    public static void handleInitialReferences(BundleContext context)
+	    throws InvalidSyntaxException {
+	Collection<ServiceReference<MessageBodyWriter>> refs = context
+		.getServiceReferences(MessageBodyWriter.class, null);
+	for (ServiceReference<MessageBodyWriter> reference : refs) {
+	    MessageBodyWriter svc = context.getService(reference);
+	    svc.toString();
+	    ProvidersServiceRegistry.getInstance().getWriters().add(svc);
 	}
-	
-	public static void handleInitialReferences(BundleContext context)
-			throws InvalidSyntaxException {
-		Collection<ServiceReference<MessageBodyWriter>> refs = context
-				.getServiceReferences(MessageBodyWriter.class, null);
-		for (ServiceReference<MessageBodyWriter> reference : refs) {
-			MessageBodyWriter svc = context.getService(reference);
-			svc.toString();
-			ProvidersServiceRegistry.getInstance().getWriters()
-					.add(svc);
-		}
-	}
+    }
 
-	@Override
-	public void modifiedService(ServiceReference reference, Object service) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void modifiedService(ServiceReference reference, Object service) {
+	// TODO Auto-generated method stub
+
+    }
 }

@@ -21,14 +21,19 @@ package net.osgiliath.messaging.repository;
  */
 
 import java.util.Collection;
+
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
+
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the template.mf cxf package export)
 public interface HelloRepository {
-	
-	public Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
-	
-	public <S extends HelloEntity> void save(S entity);
-	public Hellos findAll();
-	void deleteAll();
+
+    public Collection<? extends HelloEntity> findByHelloObjectMessage(
+	    String message_p);
+
+    public <S extends HelloEntity> void save(S entity);
+
+    public Hellos findAll();
+
+    void deleteAll();
 }

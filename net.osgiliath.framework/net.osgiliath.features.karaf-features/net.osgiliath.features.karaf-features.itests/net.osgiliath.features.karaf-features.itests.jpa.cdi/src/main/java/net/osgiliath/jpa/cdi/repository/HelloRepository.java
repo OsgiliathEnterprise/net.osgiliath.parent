@@ -24,14 +24,14 @@ import java.util.Collection;
 
 import net.osgiliath.features.jpa.cdi.model.HelloEntity;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
 @Transactional
 public interface HelloRepository {
-	HelloEntity save(HelloEntity entity);
-	Collection<HelloEntity> getAll();
-	void deleteAll();
+    HelloEntity save(HelloEntity entity);
+
+    Collection<HelloEntity> getAll();
+
+    void deleteAll();
 }

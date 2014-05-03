@@ -28,13 +28,13 @@ import net.osgiliath.cdi.IProvider;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
-@OsgiServiceProvider(classes= {IConsumer.class})
-public class Consumer implements IConsumer{
-@Inject
-@OsgiService(timeout = 2000, dynamic = true)
-private IProvider provider;
+@OsgiServiceProvider(classes = { IConsumer.class })
+public class Consumer implements IConsumer {
+    @Inject
+    @OsgiService(timeout = 2000, dynamic = true)
+    private IProvider provider;
 
-public String getHello() {
+    public String getHello() {
 	return provider.getMessage();
-}
+    }
 }

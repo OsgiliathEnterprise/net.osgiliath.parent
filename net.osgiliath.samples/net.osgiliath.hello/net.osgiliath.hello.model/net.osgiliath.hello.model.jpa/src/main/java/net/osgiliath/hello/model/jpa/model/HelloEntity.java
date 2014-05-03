@@ -35,20 +35,29 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
-
 //TODO Sample of a model bean exportable by web service (xml), persistable and validatable supporting builder pattern
-@Data//equals, hashcode, getters and setters
-@Builder//builder pattern
-@NoArgsConstructor//constructor
-@AllArgsConstructor//other constructor
-@Entity//persistence class declaration
-@XmlRootElement//xml marshalling
-@EqualsAndHashCode(callSuper=true)
-public class HelloEntity extends AbstractEntity implements Serializable{
-	private static final transient long serialVersionUID = 6233801298404301547L;
-	@XmlElement//XML node
-	@NotNull(message="message must not be null")//Validation for null object
-	@Size(min=2, max=12, message="message size must be between 2 and 12")//size validation
-	@Pattern(regexp="[a-zA-Z0-9]+", message="must not contain special characters")//pattern validation
-	private String helloMessage;
+@Data
+// equals, hashcode, getters and setters
+@Builder
+// builder pattern
+@NoArgsConstructor
+// constructor
+@AllArgsConstructor
+// other constructor
+@Entity
+// persistence class declaration
+@XmlRootElement
+// xml marshalling
+@EqualsAndHashCode(callSuper = true)
+public class HelloEntity extends AbstractEntity implements Serializable {
+    private static final transient long serialVersionUID = 6233801298404301547L;
+    @XmlElement
+    // XML node
+    @NotNull(message = "message must not be null")
+    // Validation for null object
+    @Size(min = 2, max = 12, message = "message size must be between 2 and 12")
+    // size validation
+    @Pattern(regexp = "[a-zA-Z0-9]+", message = "must not contain special characters")
+    // pattern validation
+    private String helloMessage;
 }

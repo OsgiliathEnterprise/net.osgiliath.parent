@@ -35,40 +35,40 @@ import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
 public class CXFHelperActivator implements BundleActivator {
-	private ServiceTracker readerTracker;
-	private ServiceTracker writerTracker;
-	private ServiceTracker exceptionTracker;
-	private InterceptorsServiceTracker interceptorsTracker;
+    private ServiceTracker readerTracker;
+    private ServiceTracker writerTracker;
+    private ServiceTracker exceptionTracker;
+    private InterceptorsServiceTracker interceptorsTracker;
 
-	@Override
-	public void start(BundleContext context) throws Exception {
-		readerTracker = new ServiceTracker<>(context, MessageBodyReader.class,
-				new MessageBodyReaderProvidersServiceTracker(context));
-		readerTracker.open(true);
-		writerTracker = new ServiceTracker(context, MessageBodyWriter.class,
-				new MessageBodyWriterProvidersServiceTracker(context));
-		writerTracker.open(true);
-		exceptionTracker = new ServiceTracker(context, ExceptionMapper.class,
-				new ExceptionMapperProvidersServiceTracker(context));
-		exceptionTracker.open(true);
-		interceptorsTracker = new InterceptorsServiceTracker(context,
-				Interceptor.class, null);
-		interceptorsTracker.open(true);
-		MessageBodyReaderProvidersServiceTracker
-				.handleInitialReferences(context);
-		MessageBodyWriterProvidersServiceTracker
-				.handleInitialReferences(context);
-		ExceptionMapperProvidersServiceTracker.handleInitialReferences(context);
-		InterceptorsServiceTracker.handleInitialReferences(context);
+    @Override
+    public void start(BundleContext context) throws Exception {
+	readerTracker = new ServiceTracker<>(context, MessageBodyReader.class,
+		new MessageBodyReaderProvidersServiceTracker(context));
+	readerTracker.open(true);
+	writerTracker = new ServiceTracker(context, MessageBodyWriter.class,
+		new MessageBodyWriterProvidersServiceTracker(context));
+	writerTracker.open(true);
+	exceptionTracker = new ServiceTracker(context, ExceptionMapper.class,
+		new ExceptionMapperProvidersServiceTracker(context));
+	exceptionTracker.open(true);
+	interceptorsTracker = new InterceptorsServiceTracker(context,
+		Interceptor.class, null);
+	interceptorsTracker.open(true);
+	MessageBodyReaderProvidersServiceTracker
+		.handleInitialReferences(context);
+	MessageBodyWriterProvidersServiceTracker
+		.handleInitialReferences(context);
+	ExceptionMapperProvidersServiceTracker.handleInitialReferences(context);
+	InterceptorsServiceTracker.handleInitialReferences(context);
 
-	}
+    }
 
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		readerTracker.close();
-		writerTracker.close();
-		exceptionTracker.close();
-		interceptorsTracker.close();
-	}
+    @Override
+    public void stop(BundleContext context) throws Exception {
+	readerTracker.close();
+	writerTracker.close();
+	exceptionTracker.close();
+	interceptorsTracker.close();
+    }
 
 }

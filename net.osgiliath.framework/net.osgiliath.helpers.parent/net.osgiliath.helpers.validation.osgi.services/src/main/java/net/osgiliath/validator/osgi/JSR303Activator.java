@@ -36,54 +36,53 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 
 public class JSR303Activator implements BundleActivator {
-	private ServiceTracker tracker;
+    private ServiceTracker tracker;
 
-	@Override
-	public void start(BundleContext context) throws Exception {
+    @Override
+    public void start(BundleContext context) throws Exception {
 
-		tracker = new ServiceTracker(context,
-				ValidationProvider.class, new OsgiServiceValidationProviderTracker(context));
+	tracker = new ServiceTracker(context, ValidationProvider.class,
+		new OsgiServiceValidationProviderTracker(context));
 
-		tracker.open();
-		OsgiServiceValidationProviderTracker.handleInitialReferences(context);
-		ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
-				.byProvider(HibernateValidator.class);
-//
-//		// bootstrap to properly resolve in an OSGi environment
-		validationBootStrap
-				.providerResolver(HibernateValidationOSGIServicesProviderResolver
-						.getInstance());
-//
-		HibernateValidatorConfiguration configure = validationBootStrap
-				.configure();
-		ValidatorFactory validatorFactory = configure/*
-									 * .constraintValidatorFactory (new
-									 * CDIAwareConstraintValidatorFactory ())
-									 */.buildValidatorFactory();
-		/* */
-		// Validator validator = validatorFactory.getValidator();
-		// configure Spring to autowire our constraints not mandatory
-		// configure.constraintValidatorFactory(new
-		// SpringConstraintValidatorFactory(this.applicationContext
-		// .getAutowireCapableBeanFactory()));
+	tracker.open();
+	OsgiServiceValidationProviderTracker.handleInitialReferences(context);
+	ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
+		.byProvider(HibernateValidator.class);
+	//
+	// // bootstrap to properly resolve in an OSGi environment
+	validationBootStrap
+		.providerResolver(HibernateValidationOSGIServicesProviderResolver
+			.getInstance());
+	//
+	HibernateValidatorConfiguration configure = validationBootStrap
+		.configure();
+	ValidatorFactory validatorFactory = configure
+		/*
+		 * .constraintValidatorFactory (new
+		 * CDIAwareConstraintValidatorFactory ())
+		 */.buildValidatorFactory();
+	/* */
+	// Validator validator = validatorFactory.getValidator();
+	// configure Spring to autowire our constraints not mandatory
+	// configure.constraintValidatorFactory(new
+	// SpringConstraintValidatorFactory(this.applicationContext
+	// .getAutowireCapableBeanFactory()));
 
-		// now that we've done configuring the ValidatorFactory, let's build it
+	// now that we've done configuring the ValidatorFactory, let's build it
 
-		context.registerService(ValidatorFactory.class.getName(),
-				validatorFactory, null);
+	context.registerService(ValidatorFactory.class.getName(),
+		validatorFactory, null);
 
-	}
+    }
 
-	
+    @Override
+    public void stop(BundleContext context) throws Exception {
+	ServiceReference<ValidatorFactory> reference = context
+		.getServiceReference(ValidatorFactory.class);
+	context.ungetService(reference);
+	//
+	tracker.close();
 
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		ServiceReference<ValidatorFactory> reference = context
-				.getServiceReference(ValidatorFactory.class);
-		context.ungetService(reference);
-		//
-		tracker.close();
-
-	}
+    }
 
 }

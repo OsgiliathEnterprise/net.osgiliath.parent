@@ -22,21 +22,28 @@ package security;
 
 /**
  * Authenticate a {@link MUser}
+ * 
  * @author Charlie
- *
+ * 
  */
 public interface SecurityService {
-	/**
-	 * Authenticate a {@link MUser}
-	 * @param username his username
-	 * @param password his password
-	 * @return true if the user exists
-	 */
-	public boolean authenticate(final String username, final String password );
-	/**
-	 * Register the {@link MUser}
-	 * @param arg0 the {@link MUser} to register
-	 * @return the registered {@link MUser}
-	 */
-	public MUser onSubscription(MUser arg0) ;
+    /**
+     * Authenticate a {@link MUser}
+     * 
+     * @param username
+     *            his username
+     * @param password
+     *            his password
+     * @return true if the user exists
+     */
+    public boolean authenticate(final String username, final String password);
+
+    /**
+     * Register the {@link MUser}
+     * 
+     * @param arg0
+     *            the {@link MUser} to register
+     * @return the registered {@link MUser}
+     */
+    public MUser onSubscription(MUser arg0);
 }

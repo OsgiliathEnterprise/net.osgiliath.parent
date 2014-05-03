@@ -21,6 +21,7 @@ package net.osgiliath.hello.business.impl.services.impl;
  */
 
 import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -30,83 +31,84 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
-import org.apache.camel.Consume;
+
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 import org.apache.camel.cdi.Uri;
 import org.ops4j.pax.cdi.api.OsgiService;
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
 /**
  * TODO JMS sample of Hello service exports
+ * 
  * @author charliemordant
- *
+ * 
  */
 @Slf4j
 @ContextName
 public class HelloServiceJMS extends RouteBuilder implements HelloService {
-	@Inject
-	@OsgiService
-	private HelloObjectRepository helloObjectRepository;
-	@Inject
-	@Uri("jms:queue:helloServiceQueueOut")
-	private ProducerTemplate producer;
-	
-	@Override
-	public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
-		log.error("****************** Save on JMS Service **********************");
-		log.info("persisting new message with jms: " + helloObject_p.getHelloMessage());
-		helloObjectRepository.save(helloObject_p);
-		producer.sendBody(getHellos());
+    @Inject
+    @OsgiService
+    private HelloObjectRepository helloObjectRepository;
+    @Inject
+    @Uri("jms:queue:helloServiceQueueOut")
+    private ProducerTemplate producer;
+
+    @Override
+    public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
+	log.error("****************** Save on JMS Service **********************");
+	log.info("persisting new message with jms: "
+		+ helloObject_p.getHelloMessage());
+	helloObjectRepository.save(helloObject_p);
+	producer.sendBody(getHellos());
+    }
+
+    @Override
+    public Hellos getHellos() {
+
+	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+	if (helloObjects.isEmpty()) {
+	    throw new UnsupportedOperationException(
+		    "You could not call this method when the list is empty");
 	}
+	return Hellos
+		.builder()
+		.helloCollection(
+			Lists.newArrayList(Iterables.transform(helloObjects,
+				helloObjectToStringFunction))).build();
+    }
 
-	@Override
-	public Hellos getHellos() {
-		
-		Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
-		if (helloObjects.isEmpty()) {
-			throw new UnsupportedOperationException(
-					"You could not call this method when the list is empty");
-		}
-		return Hellos
-				.builder()
-				.helloCollection(
-						Lists.newArrayList(Iterables.transform(helloObjects,
-								helloObjectToStringFunction))).build();
-	}
-
-	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
-
-		@Override
-		public String apply(HelloEntity arg0) {
-			return arg0.getHelloMessage();
-		}
-	};
+    private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 	@Override
-	public void deleteAll() {
-		helloObjectRepository.deleteAll();
-		
+	public String apply(HelloEntity arg0) {
+	    return arg0.getHelloMessage();
 	}
+    };
 
-	@Override
-	public void configure() throws Exception {
-		from("jms:queue:helloServiceQueueIn").process(new Processor() {
+    @Override
+    public void deleteAll() {
+	helloObjectRepository.deleteAll();
 
-			@Override
-			public void process(Exchange exchange) throws Exception {
-				persistHello((HelloEntity) exchange.getIn().getBody());
-				
-			}
-			
-		});
-		
-	}
+    }
+
+    @Override
+    public void configure() throws Exception {
+	from("jms:queue:helloServiceQueueIn").process(new Processor() {
+
+	    @Override
+	    public void process(Exchange exchange) throws Exception {
+		persistHello((HelloEntity) exchange.getIn().getBody());
+
+	    }
+
+	});
+
+    }
 }

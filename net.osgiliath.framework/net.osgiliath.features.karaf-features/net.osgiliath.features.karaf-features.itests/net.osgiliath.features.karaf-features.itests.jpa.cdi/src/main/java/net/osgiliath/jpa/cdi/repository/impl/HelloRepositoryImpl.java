@@ -40,34 +40,34 @@ import org.slf4j.LoggerFactory;
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
 @OsgiServiceProvider
 public class HelloRepositoryImpl implements HelloRepository {
-	private static final Logger log = LoggerFactory
-			.getLogger(HelloRepositoryImpl.class);
+    private static final Logger log = LoggerFactory
+	    .getLogger(HelloRepositoryImpl.class);
 
-	@Inject
-	private EntityManager em;
+    @Inject
+    private EntityManager em;
 
-	public HelloEntity save(HelloEntity entity) {
-		log.info("Persisting hello with message: " + entity.getHelloMessage());
-		em.persist(entity);
-		return entity;
+    public HelloEntity save(HelloEntity entity) {
+	log.info("Persisting hello with message: " + entity.getHelloMessage());
+	em.persist(entity);
+	return entity;
+    }
+
+    public Collection<HelloEntity> getAll() {
+	CriteriaBuilder cb = em.getCriteriaBuilder();
+	CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
+	Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
+	cq.select(helloObject);
+
+	TypedQuery<HelloEntity> q = em.createQuery(cq);
+	List<HelloEntity> result = q.getResultList();
+	log.info("Returning : " + result.size() + " hellomessages");
+	return result;
+
+    }
+
+    public void deleteAll() {
+	for (HelloEntity entity : getAll()) {
+	    em.remove(entity);
 	}
-
-	public Collection<HelloEntity> getAll() {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-		Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
-		cq.select(helloObject);
-
-		TypedQuery<HelloEntity> q = em.createQuery(cq);
-		List<HelloEntity> result = q.getResultList();
-		log.info("Returning : " + result.size() + " hellomessages");
-		return result;
-
-	}
-
-	public void deleteAll() {
-		for (HelloEntity entity : getAll()) {
-			em.remove(entity);
-		}
-	}
+    }
 }

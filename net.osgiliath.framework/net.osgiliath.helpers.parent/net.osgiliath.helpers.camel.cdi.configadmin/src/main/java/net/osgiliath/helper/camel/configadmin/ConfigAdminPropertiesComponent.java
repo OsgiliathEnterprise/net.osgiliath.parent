@@ -22,24 +22,23 @@ package net.osgiliath.helper.camel.configadmin;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Specializes;
+
 import net.osgiliath.helper.camel.configadmin.internal.ConfigAdminPropertiesParser;
 
 import org.apache.camel.cdi.component.properties.CdiPropertiesComponent;
-import org.apache.camel.component.properties.PropertiesComponent;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import org.ops4j.pax.cdi.api.Properties;
 import org.ops4j.pax.cdi.api.Property;
+
 @OsgiServiceProvider
-@Properties(value= {
-		@Property(name="component-type",value="configAdminProperties" )
-})
+@Properties(value = { @Property(name = "component-type", value = "configAdminProperties") })
 @ApplicationScoped
 @Specializes
 public class ConfigAdminPropertiesComponent extends CdiPropertiesComponent {
 
-	public ConfigAdminPropertiesComponent() {
-		
-		setPropertiesParser(new ConfigAdminPropertiesParser());
-	}
+    public ConfigAdminPropertiesComponent() {
+
+	setPropertiesParser(new ConfigAdminPropertiesParser());
+    }
 
 }

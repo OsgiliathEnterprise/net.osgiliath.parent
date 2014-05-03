@@ -21,30 +21,35 @@ package security;
  */
 /**
  * Right access for an {@link MUser}
+ * 
  * @author Charlie
- *
+ * 
  */
 public enum AUTHORITY {
 
-MEMBER("Member"), PREMIUM("Premium");
-public static final String S_MEMBER = "Member";
-public static final String S_PREMIUM = "Premium"; 	
+    MEMBER("Member"), PREMIUM("Premium");
+    public static final String S_MEMBER = "Member";
+    public static final String S_PREMIUM = "Premium";
 
-private final String auth;
-/**
- * Constructor
- * @param auth the string for the authority
- */
-AUTHORITY(String auth) {
+    private final String auth;
+
+    /**
+     * Constructor
+     * 
+     * @param auth
+     *            the string for the authority
+     */
+    AUTHORITY(String auth) {
 	this.auth = auth;
-}
-/**
- * return the string equivalent of the object
- * @return as it said
- */
-public  final String getAuth() {
-	return auth;
-}
+    }
 
+    /**
+     * return the string equivalent of the object
+     * 
+     * @return as it said
+     */
+    public final String getAuth() {
+	return auth;
+    }
 
 }

@@ -42,50 +42,63 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
 /**
  * Sample of a business service
+ * 
  * @author charliemordant
- *
+ * 
  */
 @Slf4j
-//@Default @OsgiServiceProvider(classes= {HelloServiceJaxRS.class})
+// @Default @OsgiServiceProvider(classes= {HelloServiceJaxRS.class})
 @OsgiServiceProvider
-@CXFEndpoint(url="/helloService", providersClasses= {JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class})
-public class HelloServiceJaxRS implements net.osgiliath.hello.business.impl.HelloServiceJaxRS {
-	//TODO you can use annotation intra bundle, but its not so compatible with blueprint xml file @Inject @OsgiService(dynamic=true)
-	@Inject @OsgiService
-	private HelloObjectRepository helloObjectRepository;
-	//JSR 303 validator
-	
-	@Override
-	public void persistHello(@NotNull @Valid  HelloEntity helloObject_p) {
-		log.info("persisting new message with jaxrs: " + helloObject_p.getHelloMessage());
-		helloObjectRepository.save(helloObject_p);
-		
+@CXFEndpoint(url = "/helloService", providersClasses = {
+	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
+public class HelloServiceJaxRS implements
+	net.osgiliath.hello.business.impl.HelloServiceJaxRS {
+    // TODO you can use annotation intra bundle, but its not so compatible with
+    // blueprint xml file @Inject @OsgiService(dynamic=true)
+    @Inject
+    @OsgiService
+    private HelloObjectRepository helloObjectRepository;
+
+    // JSR 303 validator
+
+    @Override
+    public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
+	log.info("persisting new message with jaxrs: "
+		+ helloObject_p.getHelloMessage());
+	helloObjectRepository.save(helloObject_p);
+
+    }
+
+    @Override
+    public Hellos getHellos() {
+	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+	if (helloObjects.isEmpty()) {
+	    throw new UnsupportedOperationException(
+		    "You could not call this method when there are no helloObjects");
 	}
+	return Hellos
+		.builder()
+		.helloCollection(
+			Lists.newArrayList(Iterables.transform(helloObjects,
+				helloObjectToStringFunction))).build();
+    }
+
+    // Guava function waiting for Java 8
+    private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 	@Override
-	public Hellos getHellos() {
-		Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
-		if (helloObjects.isEmpty()) {
-			throw new UnsupportedOperationException("You could not call this method when there are no helloObjects");
-		}
-		return Hellos.builder().helloCollection(Lists.newArrayList(Iterables.transform(helloObjects, helloObjectToStringFunction))).build();
+	public String apply(HelloEntity arg0) {
+	    return arg0.getHelloMessage();
 	}
-	//Guava function waiting for Java 8
-	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+    };
 
-		@Override
-		public String apply(HelloEntity arg0) {
-			return arg0.getHelloMessage();
-		}
-	};
-	
-	@Override
-	public void deleteAll() {
-		log.info("deleting all datas");
-		helloObjectRepository.deleteAll();
-	}
-	
+    @Override
+    public void deleteAll() {
+	log.info("deleting all datas");
+	helloObjectRepository.deleteAll();
+    }
 
 }

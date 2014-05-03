@@ -22,8 +22,6 @@ package net.osgiliath.hello.routes;
 
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -40,40 +38,43 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
-import org.apache.camel.model.dataformat.XmlJsonDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.apache.commons.io.IOUtils;
+
 //TODO sample route, see apache camel and EIP keyword on the net ;)
 @ContextName
 public class HelloRoute extends RouteBuilder {
-	
-	private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
-			HelloEntity.class, Hellos.class);
-	@Inject
-	@Named("thrownExceptionMessageToInBodyProcessor")
-	@Setter
-	private Processor thrownExceptionMessageToInBodyProcessor;
-	@Inject
-	@Named("xmljson")
-	private DataFormat xmljson;
-	@Override
-	public void configure() throws Exception {
-		JAXBContext ctx = JAXBContext
-				.newInstance(new Class[] { HelloEntity.class, Hellos.class });
-		DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
-		
-		from("{{hello.MessagingEntryPoint}}").log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
+
+    private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
+	    HelloEntity.class, Hellos.class);
+    @Inject
+    @Named("thrownExceptionMessageToInBodyProcessor")
+    @Setter
+    private Processor thrownExceptionMessageToInBodyProcessor;
+    @Inject
+    @Named("xmljson")
+    private DataFormat xmljson;
+
+    @Override
+    public void configure() throws Exception {
+	JAXBContext ctx = JAXBContext.newInstance(new Class[] {
+		HelloEntity.class, Hellos.class });
+	DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
+
+	from("{{hello.MessagingEntryPoint}}")
+		.log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
 		.filter(header("webSocketMsgType").isNotEqualTo("heartBeat"))
 		.choice()
-				.when(header("httpRequestType").isEqualTo("POST"))
-				.to("direct:persistObject")
-				.endChoice()
-				.otherwise()
-				.setBody(
-						simple("{error:  'Command not supported for the JaxRS queue'}"))
-				.to("direct:toError");
-		
-		from("direct:persistObject").setHeader(Exchange.HTTP_METHOD, constant("POST"))
+		.when(header("httpRequestType").isEqualTo("POST"))
+		.to("direct:persistObject")
+		.endChoice()
+		.otherwise()
+		.setBody(
+			simple("{error:  'Command not supported for the JaxRS queue'}"))
+		.to("direct:toError");
+
+	from("direct:persistObject")
+		.setHeader(Exchange.HTTP_METHOD, constant("POST"))
 		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
 		.unmarshal(helloObjectJSonFormat)
 		.marshal(jaxBDataFormat)
@@ -81,44 +82,49 @@ public class HelloRoute extends RouteBuilder {
 		.doTry()
 		.inOnly("{{net.osgiliath.hello.business.url.restservice}}/hello")
 		.to("direct:updateTopic")
-		.doCatch(Exception.class).log(LoggingLevel.WARN, "Exception: " + exceptionMessage().toString())
+		.doCatch(Exception.class)
+		.log(LoggingLevel.WARN,
+			"Exception: " + exceptionMessage().toString())
 		.to("direct:helloValidationError").end();
 
-		from("direct:updateTopic").setHeader(Exchange.HTTP_METHOD, constant("GET"))
+	from("direct:updateTopic")
+		.setHeader(Exchange.HTTP_METHOD, constant("GET"))
 		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
 		.inOut("{{net.osgiliath.hello.business.url.restservice}}/hello")
-		.inOut("direct:marshall")
-		.to("{{hello.MessagingEndPoint}}");
-		
-		from("direct:marshall").process(new Processor() {
-			
-			@Override
-			public void process(Exchange exchange) throws Exception {
-				InputStream bodyObject = exchange.getIn().getBody(InputStream.class);
-				StringWriter writer = new StringWriter();
-				IOUtils.copy(bodyObject, writer);
-				String theString = writer.toString();
-				exchange.getIn().setBody(theString);
-				
-			}
-		}).log("hello data retrieved from JaxRS : ${in.body}").marshal(xmljson)
+		.inOut("direct:marshall").to("{{hello.MessagingEndPoint}}");
+
+	from("direct:marshall")
+		.process(new Processor() {
+
+		    @Override
+		    public void process(Exchange exchange) throws Exception {
+			InputStream bodyObject = exchange.getIn().getBody(
+				InputStream.class);
+			StringWriter writer = new StringWriter();
+			IOUtils.copy(bodyObject, writer);
+			String theString = writer.toString();
+			exchange.getIn().setBody(theString);
+
+		    }
+		}).log("hello data retrieved from JaxRS : ${in.body}")
+		.marshal(xmljson)
 		.log(LoggingLevel.INFO, "marshalled: ${body}");
-		
-		
-		
-		from("direct:helloValidationError")
+
+	from("direct:helloValidationError")
 		.process(thrownExceptionMessageToInBodyProcessor)
 		.process(new Processor() {
-			
-			@Override
-			public void process(Exchange exchange) throws Exception {
-				exchange.getIn().setBody(exchange.getIn().getBody(String.class)
-						.replaceAll("\"", "'").replaceAll("\n", ""));
-			}
-		})
-		.setBody(simple("{\"error\": \"${body}\"}"))
-		.log("Subscription error: ${body}").to("{{hello.MessagingErrors}}");
 
-	}
+		    @Override
+		    public void process(Exchange exchange) throws Exception {
+			exchange.getIn().setBody(
+				exchange.getIn().getBody(String.class)
+					.replaceAll("\"", "'")
+					.replaceAll("\n", ""));
+		    }
+		}).setBody(simple("{\"error\": \"${body}\"}"))
+		.log("Subscription error: ${body}")
+		.to("{{hello.MessagingErrors}}");
+
+    }
 
 }
