@@ -26,8 +26,7 @@ public class ITWebUI {
 			driver = new FirefoxDriver();
 
 			// Sleep until the elements we want is visible or 5 seconds is over
-			long end = System.currentTimeMillis() + 10000;
-			(new WebDriverWait(driver, 120))
+			(new WebDriverWait(driver, 200))
 					.until(new ExpectedCondition<Boolean>() {
 						public Boolean apply(WebDriver d) {
 							driver.get("http://localhost:8181/${package}");
