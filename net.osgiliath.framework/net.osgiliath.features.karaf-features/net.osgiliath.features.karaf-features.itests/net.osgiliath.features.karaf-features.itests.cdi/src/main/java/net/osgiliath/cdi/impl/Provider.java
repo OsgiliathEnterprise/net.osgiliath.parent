@@ -23,10 +23,16 @@ package net.osgiliath.cdi.impl;
 import net.osgiliath.cdi.IProvider;
 
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-
+/**
+ * 
+ * @author charliemordant
+ * CDI provider class 
+ */
 @OsgiServiceProvider
 public class Provider implements IProvider {
-
+    /**
+     * CDI consumed method
+     */
     @Override
     public String getMessage() {
 	return "hello";
