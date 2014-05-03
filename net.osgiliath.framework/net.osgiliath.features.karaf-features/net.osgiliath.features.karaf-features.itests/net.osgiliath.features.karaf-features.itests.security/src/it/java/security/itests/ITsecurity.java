@@ -23,12 +23,11 @@ package security.itests;
 import static org.junit.Assert.assertTrue;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
-
 import javax.inject.Inject;
-
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -53,7 +52,7 @@ import security.SecurityService;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITsecurity extends AbstractKarafPaxExamConfiguration {
+public class ITsecurity extends PaxExamKarafConfigurationFactory {
 	private static Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
 	
 	@Inject
@@ -69,6 +68,7 @@ public class ITsecurity extends AbstractKarafPaxExamConfiguration {
 	@ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
         builder.setHeader("Export-Package", "security.itests");
         builder.setHeader("Bundle-ManifestVersion", "2");
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
@@ -97,5 +97,14 @@ public class ITsecurity extends AbstractKarafPaxExamConfiguration {
 						.classifier("features").versionAsInProject(),
 				"osgiliath-itests-security");
 	}
-		
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
+	}	
 }

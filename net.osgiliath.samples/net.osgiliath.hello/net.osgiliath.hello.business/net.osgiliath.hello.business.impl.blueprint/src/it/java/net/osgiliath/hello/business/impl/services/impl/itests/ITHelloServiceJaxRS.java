@@ -23,15 +23,11 @@ package net.osgiliath.hello.business.impl.services.impl.itests;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
-
 import javax.inject.Inject;
-//import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
-
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
@@ -39,6 +35,7 @@ import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -57,12 +54,10 @@ import org.osgi.framework.Constants;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
+public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
 	@Inject
 	private BundleContext bundleContext;
-	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
-	protected static final String BUNDLE_ARTIFACT_ID = "bundle.parent.artifactId";
-
+	
 	//Exported service via blueprint.xml
 	@Inject
 	@Filter(timeout = 40000)
@@ -78,6 +73,7 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 	@ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
         builder.setHeader("Export-Package", "net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
         builder.setHeader("Bundle-ManifestVersion", "2");
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
@@ -140,6 +136,16 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 				.type("xml").classifier("features")
 				.versionAsInProject(),
 		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests.blueprint");
+	}
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
 	}
 	
 }

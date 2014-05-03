@@ -116,20 +116,26 @@
 				<artifactId>exam-maven-plugin</artifactId>
 				<version>${exam.version}</version>
 				<configuration>
-					<configClass>helper.exam.AbstractKarafPaxExamConfiguration</configClass>
+					<configClass>helper.exam.StandaloneKarafPaxExamConfiguration</configClass>
 				</configuration>
 				<executions>
 					<execution>
-                        <goals>
-                            <goal>start-container</goal>
-                            <goal>stop-container</goal>
-                        </goals>
-                    </execution>
+						<goals>
+							<goal>start-container</goal>
+							<goal>stop-container</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
+		<dependency>
+			<groupId>net.osgiliath.framework</groupId>
+			<version>${project.version}</version>
+			<artifactId>net.osgiliath.helpers.exam</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>

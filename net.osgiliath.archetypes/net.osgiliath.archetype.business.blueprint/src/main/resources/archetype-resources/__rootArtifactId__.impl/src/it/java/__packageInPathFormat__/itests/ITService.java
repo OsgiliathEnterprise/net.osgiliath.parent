@@ -5,7 +5,7 @@ package ${package}.itests;
 
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,16 +22,15 @@ import org.slf4j.LoggerFactory;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITService extends AbstractKarafPaxExamConfiguration {
+public class ITService extends PaxExamKarafConfigurationFactory {
 	private static Logger LOG = LoggerFactory.getLogger(ITService.class);
 	@Inject
 	@Filter(timeout = 400000)
 	private BootFinished bootFinished;
-	protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
-	protected static final String BUNDLE_ARTIFACT_ID = "bundle.parent.artifactId";
 	@ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
         builder.setHeader("Export-Package", "${package}.itests");
         builder.setHeader("Bundle-ManifestVersion", "2");
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
@@ -52,5 +51,15 @@ public class ITService extends AbstractKarafPaxExamConfiguration {
 								+ ".features").type("xml")
 				.classifier("features").versionAsInProject(),
 		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests");
+	}
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
 	}
 }

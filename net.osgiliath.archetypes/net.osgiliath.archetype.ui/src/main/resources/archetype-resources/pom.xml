@@ -75,22 +75,10 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<forkMode>always</forkMode>
-					<parallel>none</parallel>
-					<threadCount>1</threadCount>
-				</configuration>
-			</plugin> -->
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -123,36 +111,30 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.ops4j.pax.exam</groupId>
 				<artifactId>exam-maven-plugin</artifactId>
-				<version>3.4.0</version>
+				<version>${exam.version}</version>
 				<configuration>
-					<configClass>helper.exam.AbstractKarafPaxExamConfiguration</configClass>
+					<configClass>exam.StandaloneKarafPaxExamConfiguration</configClass>
 				</configuration>
 				<executions>
 					<execution>
-						<id>start-karaf</id>
 						<goals>
 							<goal>start-container</goal>
-						</goals>
-						<phase>pre-integration-test</phase>
-					</execution>
-					<execution>
-						<id>stop-karaf</id>
-						<goals>
 							<goal>stop-container</goal>
 						</goals>
-						<phase>post-integration-test</phase>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
+			<groupId>net.osgiliath.framework</groupId>
+			<version>${project.version}</version>
+			<artifactId>net.osgiliath.helpers.exam</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -171,14 +153,17 @@
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-container-karaf</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-junit4</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
@@ -194,13 +179,13 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
+			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>

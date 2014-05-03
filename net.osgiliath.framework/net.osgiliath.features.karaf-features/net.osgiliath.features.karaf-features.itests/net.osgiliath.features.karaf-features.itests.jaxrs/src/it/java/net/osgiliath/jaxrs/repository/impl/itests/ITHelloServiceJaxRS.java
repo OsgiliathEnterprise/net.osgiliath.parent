@@ -23,7 +23,7 @@ package net.osgiliath.jaxrs.repository.impl.itests;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
+
 
 import java.util.Collection;
 
@@ -31,12 +31,14 @@ import javax.inject.Inject;
 //import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
 
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import net.osgiliath.jaxrs.HelloEntity;
 
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -52,38 +54,43 @@ import org.slf4j.LoggerFactory;
 
 /**
  * TODO example of an integration test
+ * 
  * @author charliemordant
- *
+ * 
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
-	private static Logger LOG = LoggerFactory.getLogger(ITHelloServiceJaxRS.class);
-	
+public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
+	private static Logger LOG = LoggerFactory
+			.getLogger(ITHelloServiceJaxRS.class);
+
 	@Inject
 	private BundleContext bundleContext;
-	//Exported service via blueprint.xml
+	// Exported service via blueprint.xml
 	@Inject
 	@Filter(timeout = 40000)
 	private BootFinished bootFinished;
-	//exported REST adress
+	// exported REST adress
 	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
-	
-	//probe
+
+	// probe
 	@ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder)
-    {
-        builder.setHeader("Export-Package", "helper.exam, net.osgiliath.jaxrs.repository.impl.itests");
-        builder.setHeader("Bundle-ManifestVersion", "2");
-        builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
-        return builder;
-    }
+	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
+		builder.setHeader("Export-Package",
+				"helper.exam, net.osgiliath.jaxrs.repository.impl.itests");
+		builder.setHeader("Bundle-ManifestVersion", "2");
+		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+		return builder;
+	}
+
 	@Test
 	public void testSayHello() throws Exception {
 		LOG.trace("************Listing **********************");
 		for (Bundle b : bundleContext.getBundles()) {
-			LOG.debug("bundle: " +b.getSymbolicName() + ", state: " +b.getState());
-			
+			LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
+					+ b.getState());
+
 		}
 		LOG.trace("************end Listing **********************");
 		WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
@@ -93,10 +100,12 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 		entity.setHelloMessage("Charlie");
 		helloServiceClient.post(entity);
 		helloServiceClient.accept(MediaType.APPLICATION_XML);
-		Collection<? extends HelloEntity> hellos = helloServiceClient.getCollection(HelloEntity.class);
+		Collection<? extends HelloEntity> hellos = helloServiceClient
+				.getCollection(HelloEntity.class);
 		assertEquals(1, hellos.size());
 		helloServiceClient.delete();
 	}
+
 	@Override
 	protected Option featureToTest() {
 		return features(
@@ -107,5 +116,15 @@ public class ITHelloServiceJaxRS extends AbstractKarafPaxExamConfiguration {
 				"osgiliath-itests-jaxrs");
 	}
 
-	
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
+	}
+
 }

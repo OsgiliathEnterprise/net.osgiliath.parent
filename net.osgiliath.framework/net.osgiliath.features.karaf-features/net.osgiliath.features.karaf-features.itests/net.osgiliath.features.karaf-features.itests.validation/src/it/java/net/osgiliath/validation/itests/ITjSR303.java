@@ -23,16 +23,14 @@ package net.osgiliath.validation.itests;
 import static org.junit.Assert.fail;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
-
 import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
-
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -56,7 +54,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITjSR303 extends AbstractKarafPaxExamConfiguration {
+public class ITjSR303 extends PaxExamKarafConfigurationFactory {
 	private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
 
 	@Inject
@@ -69,6 +67,7 @@ public class ITjSR303 extends AbstractKarafPaxExamConfiguration {
 	// probe
 	@ProbeBuilder
 	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
 		builder.setHeader("Export-Package", "net.osgiliath.validation.itests");
 		builder.setHeader("Bundle-ManifestVersion", "2");
 		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
@@ -102,6 +101,16 @@ public class ITjSR303 extends AbstractKarafPaxExamConfiguration {
 						.groupId("net.osgiliath.framework").type("xml")
 						.classifier("features").versionAsInProject(),
 				"osgiliath-itests-validation");
+	}
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
 	}
 
 }

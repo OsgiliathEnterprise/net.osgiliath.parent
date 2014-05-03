@@ -24,17 +24,18 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import java.util.Collection;
 
 import javax.inject.Inject;
 
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import net.osgiliath.jpa.model.HelloEntity;
 import net.osgiliath.jpa.repository.HelloRepository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -54,7 +55,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITjPA extends AbstractKarafPaxExamConfiguration {
+public class ITjPA extends PaxExamKarafConfigurationFactory {
 	private static Logger LOG = LoggerFactory.getLogger(ITjPA.class);
 	
 	//Exported service via blueprint.xml
@@ -67,6 +68,7 @@ public class ITjPA extends AbstractKarafPaxExamConfiguration {
 	@ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
         builder.setHeader("Export-Package", "net.osgiliath.jpa.itests");
         builder.setHeader("Bundle-ManifestVersion", "2");
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
@@ -94,6 +96,16 @@ public class ITjPA extends AbstractKarafPaxExamConfiguration {
 						.groupId("net.osgiliath.framework").type("xml")
 						.classifier("features").versionAsInProject(),
 				"osgiliath-itests-jpa");
+	}
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
 	}
 		
 }

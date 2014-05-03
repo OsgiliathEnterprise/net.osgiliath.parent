@@ -23,10 +23,11 @@ package net.osgiliath.messaging.repository.impl.itests;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
+
 
 import javax.inject.Inject;
 
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 import net.osgiliath.messaging.repository.HelloRepository;
@@ -36,6 +37,7 @@ import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -52,50 +54,59 @@ import org.slf4j.LoggerFactory;
 
 /**
  * TODO example of an integration test
+ * 
  * @author charliemordant
- *
+ * 
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJMS extends AbstractKarafPaxExamConfiguration {
-	private static Logger LOG = LoggerFactory.getLogger(ITHelloServiceJMS.class);
-	
+public class ITHelloServiceJMS extends PaxExamKarafConfigurationFactory {
+	private static Logger LOG = LoggerFactory
+			.getLogger(ITHelloServiceJMS.class);
+
 	@Inject
 	private BundleContext bundleContext;
-	//Exported service via blueprint.xml
+	// Exported service via blueprint.xml
 	@Inject
 	@Filter(timeout = 40000)
 	private HelloRepository helloService;
-	//JMS template
+	// JMS template
 	@Inject
-	@Filter(value="(component-type=jms)")
+	@Filter(value = "(component-type=jms)")
 	private Component jmsComponent;
-	
-	//probe
+
+	// probe
 	@ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder)
-    {
-        builder.setHeader("Export-Package", "net.osgiliath.messaging.repository.impl.itests");
-        builder.setHeader("Bundle-ManifestVersion", "2");
-        builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
-        return builder;
-    }
+	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
+		builder.setHeader("Export-Package",
+				"net.osgiliath.messaging.repository.impl.itests");
+		builder.setHeader("Bundle-ManifestVersion", "2");
+		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+		return builder;
+	}
+
 	@Test
 	public void testSayHello() throws Exception {
 		LOG.trace("************Listing **********************");
 		for (Bundle b : bundleContext.getBundles()) {
-			LOG.debug("bundle: " +b.getSymbolicName() + ", state: " +b.getState() );
+			LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
+					+ b.getState());
 		}
 		LOG.trace("*********  End list ****************");
-		ProducerTemplate template = jmsComponent.getCamelContext().createProducerTemplate();
+		ProducerTemplate template = jmsComponent.getCamelContext()
+				.createProducerTemplate();
 		HelloEntity entity = new HelloEntity();
 		entity.setHelloMessage("Charlie");
 		template.sendBody("jms:queue:helloServiceQueueIn", entity);
-		ConsumerTemplate consumer = jmsComponent.getCamelContext().createConsumerTemplate();
-		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut", Hellos.class);
+		ConsumerTemplate consumer = jmsComponent.getCamelContext()
+				.createConsumerTemplate();
+		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
+				Hellos.class);
 		assertEquals(1, hellos.getEntities().size());
 		helloService.deleteAll();
 	}
+
 	@Override
 	protected Option featureToTest() {
 		return features(
@@ -106,5 +117,15 @@ public class ITHelloServiceJMS extends AbstractKarafPaxExamConfiguration {
 				"osgiliath-itests-messaging");
 	}
 
-	
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
+	}
+
 }

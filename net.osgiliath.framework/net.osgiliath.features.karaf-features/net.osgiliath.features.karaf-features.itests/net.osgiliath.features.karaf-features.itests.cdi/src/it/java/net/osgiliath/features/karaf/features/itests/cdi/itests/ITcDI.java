@@ -23,14 +23,15 @@ package net.osgiliath.features.karaf.features.itests.cdi.itests;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
 
 import javax.inject.Inject;
 
 import net.osgiliath.cdi.IConsumer;
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -38,8 +39,6 @@ import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 //import javax.inject.Inject;
 import org.slf4j.Logger;
@@ -47,31 +46,36 @@ import org.slf4j.LoggerFactory;
 
 /**
  * TODO example of an integration test
+ * 
  * @author charliemordant
- *
+ * 
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITcDI extends AbstractKarafPaxExamConfiguration {
+public class ITcDI extends PaxExamKarafConfigurationFactory {
 	private static Logger LOG = LoggerFactory.getLogger(ITcDI.class);
-	//Exported service via blueprint.xml
+	// Exported service via blueprint.xml
 	@Inject
 	@Filter(timeout = 40000)
 	private IConsumer consumer;
-	//probe
+
+	// probe
 	@ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder)
-    {
-        builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-        builder.setHeader(Constants.EXPORT_PACKAGE, "helper.exam, net.osgiliath.features.karaf.features.itests.cdi.itests");
-        builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-        return builder;
-    }
+	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+		builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
+		builder.setHeader(Constants.EXPORT_PACKAGE,
+				"helper.exam, net.osgiliath.features.karaf.features.itests.cdi.itests");
+		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+		return builder;
+	}
+
 	@Test
 	public void testSayHello() throws Exception {
 		LOG.info("consumer should be injected");
 		assertEquals(consumer.getHello(), "hello");
 	}
+
 	@Override
 	protected Option featureToTest() {
 		return features(
@@ -81,6 +85,16 @@ public class ITcDI extends AbstractKarafPaxExamConfiguration {
 						.classifier("features").versionAsInProject(),
 				"osgiliath-itests-cdi");
 	}
-	
-		
+
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
+	}
+
 }

@@ -23,18 +23,16 @@ package net.osgiliath.features.karaf.features.itests.jaxrs.web;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import helper.exam.AbstractKarafPaxExamConfiguration;
-
 import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
-
+import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -47,7 +45,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITPaxWebCxf extends AbstractKarafPaxExamConfiguration {
+public class ITPaxWebCxf extends PaxExamKarafConfigurationFactory {
 	private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 	
 	
@@ -66,7 +64,8 @@ public class ITPaxWebCxf extends AbstractKarafPaxExamConfiguration {
 	@ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
-        builder.setHeader("Export-Package", "net.osgiliath.features.karaf.features.itests.jaxrs.cdi");
+		builder.addTest(PaxExamKarafConfigurationFactory.class);
+		builder.setHeader("Export-Package", "net.osgiliath.features.karaf.features.itests.jaxrs.cdi");
         builder.setHeader("Bundle-ManifestVersion", "2");
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
         return builder;
@@ -93,5 +92,15 @@ public class ITPaxWebCxf extends AbstractKarafPaxExamConfiguration {
 						.groupId("net.osgiliath.framework").type("xml")
 						.classifier("features").versionAsInProject(),
 				"osgiliath-itests-jaxrs-web");
+	}
+	static {
+		// uncomment to enable debugging of this test class
+		// paxRunnerVmOption = DEBUG_VM_OPTION;
+
+	}
+
+	@Configuration
+	public Option[] config() {
+		return createConfig();
 	}
 }
