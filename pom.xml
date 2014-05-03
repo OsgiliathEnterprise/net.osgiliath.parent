@@ -40,7 +40,6 @@
 			</roles>
 		</developer>
 	</developers>
-
 	<modules>
 		<module>net.osgiliath.poms</module>
 		<module>net.osgiliath.archetypes</module>
