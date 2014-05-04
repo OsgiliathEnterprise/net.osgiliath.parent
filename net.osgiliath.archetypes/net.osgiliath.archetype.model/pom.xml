@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
- <!-- Licensed to the Apache Software Foundation (ASF) under one or more 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
 		this file to You under the Apache License, Version 2.0 (the "License"); you 
@@ -12,70 +13,61 @@
 		the specific language governing permissions and limitations under the License. -->
 
 	<modelVersion>4.0.0</modelVersion>
-		<parent>
+	<parent>
 		<groupId>net.osgiliath</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 		<version>0.0.5-SNAPSHOT</version>
 		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
 
-  <groupId>net.osgiliath.archetypes</groupId>
-  <artifactId>net.osgiliath.archetype.model</artifactId>
-  <packaging>maven-archetype</packaging>
+	<groupId>net.osgiliath.archetypes</groupId>
+	<artifactId>net.osgiliath.archetype.model</artifactId>
+	<packaging>maven-archetype</packaging>
 
-  <name>net.osgiliath.archetype.model</name>
+	<name>Osgiliath model archetype</name>
+	<description>Must be behind an Osgiliath parent archetype, database persistence of your model</description>
 
-  <build>
-    <extensions>
-      <extension>
-        <groupId>org.apache.maven.archetype</groupId>
-        <artifactId>archetype-packaging</artifactId>
-        <version>2.2</version>
-      </extension>
-    </extensions>
+	<url>https://blog.osgiliath.net/?page_id=224</url>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-archetype-plugin</artifactId>
-          <version>2.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-		 <plugins>
-			 <plugin>
-        			<groupId>org.apache.maven.plugins</groupId>
-        			<artifactId>maven-archetype-plugin</artifactId>
-      			</plugin>
-      		</plugins>
-
-  </build>
-
-  <description>This is the Model archetype of Osgiliath framework</description>
-
-  <url>https://blog.osgiliath.net/?page_id=224</url>
-
-  <developers>
-    <developer>
-      <id>cmordant</id>
-      <name>Charlie mordant</name>
-      <organization>Osgiliath.net</organization>
-      <organizationUrl>https://blog.osgiliath.net</organizationUrl>
-      <roles>
-        <role>Architect</role>
-      </roles>
-    </developer>
-  </developers>
-
-  <licenses>
-    <license>
-      <name>Apache Licence 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-
-
-  
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>2.2</version>
+			</extension>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-archetype-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<developers>
+		<developer>
+			<id>cmordant</id>
+			<name>Charlie mordant</name>
+			<organization>Osgiliath.net</organization>
+			<organizationUrl>https://blog.osgiliath.net</organizationUrl>
+			<roles>
+				<role>Architect</role>
+			</roles>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>Apache Licence 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 </project>

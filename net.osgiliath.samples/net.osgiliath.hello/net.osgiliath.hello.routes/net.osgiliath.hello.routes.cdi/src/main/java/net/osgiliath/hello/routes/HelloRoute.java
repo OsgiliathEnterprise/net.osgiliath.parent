@@ -41,25 +41,56 @@ import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.apache.commons.io.IOUtils;
 
-//TODO sample route, see apache camel and EIP keyword on the net ;)
+/**
+ * 
+ * @author charliemordant sample route, see apache camel and EIP keyword on the
+ *         net ;)
+ */
 @ContextName
 public class HelloRoute extends RouteBuilder {
-
+    /**
+     * Json Dataformat
+     */
     private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
 	    HelloEntity.class, Hellos.class);
+    /**
+     * JSR303 Validation message processor
+     */
     @Inject
     @Named("thrownExceptionMessageToInBodyProcessor")
     @Setter
     private Processor thrownExceptionMessageToInBodyProcessor;
+    /**
+     * XmlJson processor
+     */
     @Inject
     @Named("xmljson")
     private DataFormat xmljson;
+    /**
+     * changes inputstream to string
+     */
+    private Processor octetsStreamToStringProcessor = new Processor() {
 
+	@Override
+	public void process(Exchange exchange) throws Exception {
+	    InputStream bodyObject = exchange.getIn()
+		    .getBody(InputStream.class);
+	    StringWriter writer = new StringWriter();
+	    IOUtils.copy(bodyObject, writer);
+	    String theString = writer.toString();
+	    exchange.getIn().setBody(theString);
+
+	}
+    };
+
+    /**
+     * Messaging route
+     */
     @Override
     public void configure() throws Exception {
 	JAXBContext ctx = JAXBContext.newInstance(new Class[] {
 		HelloEntity.class, Hellos.class });
-	DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
+	final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 
 	from("{{hello.MessagingEntryPoint}}")
 		.log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
@@ -76,7 +107,7 @@ public class HelloRoute extends RouteBuilder {
 	from("direct:persistObject")
 		.setHeader(Exchange.HTTP_METHOD, constant("POST"))
 		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
-		.unmarshal(helloObjectJSonFormat)
+		.unmarshal(this.helloObjectJSonFormat)
 		.marshal(jaxBDataFormat)
 		.log(LoggingLevel.INFO, "marshalled: ${body}")
 		.doTry()
@@ -93,25 +124,13 @@ public class HelloRoute extends RouteBuilder {
 		.inOut("{{net.osgiliath.hello.business.url.restservice}}/hello")
 		.inOut("direct:marshall").to("{{hello.MessagingEndPoint}}");
 
-	from("direct:marshall")
-		.process(new Processor() {
-
-		    @Override
-		    public void process(Exchange exchange) throws Exception {
-			InputStream bodyObject = exchange.getIn().getBody(
-				InputStream.class);
-			StringWriter writer = new StringWriter();
-			IOUtils.copy(bodyObject, writer);
-			String theString = writer.toString();
-			exchange.getIn().setBody(theString);
-
-		    }
-		}).log("hello data retrieved from JaxRS : ${in.body}")
-		.marshal(xmljson)
+	from("direct:marshall").process(this.octetsStreamToStringProcessor)
+		.log("hello data retrieved from JaxRS : ${in.body}")
+		.marshal(this.xmljson)
 		.log(LoggingLevel.INFO, "marshalled: ${body}");
 
 	from("direct:helloValidationError")
-		.process(thrownExceptionMessageToInBodyProcessor)
+		.process(this.thrownExceptionMessageToInBodyProcessor)
 		.process(new Processor() {
 
 		    @Override

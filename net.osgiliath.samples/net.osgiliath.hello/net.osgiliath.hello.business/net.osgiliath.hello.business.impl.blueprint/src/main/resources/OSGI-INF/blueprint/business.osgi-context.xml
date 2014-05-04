@@ -28,43 +28,47 @@
 		aware of the deplyement -->
 	<service ref="helloServiceJMS"
 		interface="net.osgiliath.hello.business.spi.services.HelloService"></service>
-	<!-- TODO your OSGI service references here (if you don't use annotations 
-		via MANIFEST) -->
-	<!-- TODO Remove below reference example -->
+	<!-- Hello database repository -->
 	<reference id="helloObjectRepository"
 		interface="net.osgiliath.hello.model.jpa.repository.HelloObjectRepository"
 		availability="mandatory" />
 	<!-- STOP remove -->
+	<!-- JSR 303 validator -->
 	<reference id="validatorFactory" interface="javax.validation.ValidatorFactory"
 		availability="mandatory" />
+	<!-- spring transaction manager -->
 	<reference id="transactionManager"
 		interface="org.springframework.transaction.PlatformTransactionManager"></reference>
+	<!-- JTA transaction manager -->
 	<reference id="jTATransactionManager" interface="javax.transaction.TransactionManager"></reference>
+	<!-- JMS component -->
 	<reference id="jms" interface="org.apache.camel.Component"
 		availability="mandatory" filter="(component-type=jms)">
 	</reference>
+	<!-- JMS transactional component -->
 	<reference id="jmsXA" interface="org.apache.camel.Component"
 		filter="(component-type=jmsXA)">
 	</reference>
+	<!-- JSR 303 validator -->
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
 		factory-ref="validatorFactory" factory-method="getValidator" />
-	<!-- TODO remove this REST declaration of the service -->
+	<!-- REST service declaration -->
 	<bean id="helloServiceJaxRs"
 		class="net.osgiliath.hello.business.impl.services.impl.HelloServiceJaxRS">
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
 	</bean>
-	<!-- TODO remove declaration if you don't use JMS -->
+	<!-- Camel context -->
 	<camel:camelContext id="camelCtx">
 	</camel:camelContext>
-	<!-- TODO remove this declaration -->
+	<!-- JMS aware service -->
 	<bean id="helloServiceJMS"
 		class="net.osgiliath.hello.business.impl.services.impl.HelloServiceJMS">
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
 	</bean>
-
+	<!-- REST service object to smtg converters -->
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
 	<bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider" />
 	<!-- TODO modify this REST web service declaration -->

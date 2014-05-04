@@ -44,34 +44,46 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * TODO JMS sample of Hello service exports
+ * JMS sample of Hello service exports
  * 
  * @author charliemordant
  * 
  */
 @Slf4j
 public class HelloServiceJMS implements HelloService {
+    /**
+     * Database persistence repository
+     */
     @Setter
     private HelloObjectRepository helloObjectRepository;
+    /**
+     * Hibernate validator
+     */
     @Setter
     private Validator validator;
+    /**
+     * JMS producer
+     */
     @Setter
     @Produce(uri = "jms:queue:helloServiceQueueOut")
     private ProducerTemplate producer;
 
+    /**
+     * JMS consumer
+     */
     @Override
     @Consume(uri = "jms:queue:helloServiceQueueIn")
     public void persistHello(@Body HelloEntity helloObject_p) {
-	log.error("****************** Save on JMS Service **********************");
-	log.info("persisting new message with jms: "
+	this.log.error("****************** Save on JMS Service **********************");
+	this.log.info("persisting new message with jms: "
 		+ helloObject_p.getHelloMessage());
-	Set<ConstraintViolation<HelloEntity>> validationResults = validator
+	final Set<ConstraintViolation<HelloEntity>> validationResults = validator
 		.validate(helloObject_p);
-	StringBuilder errors = new StringBuilder("");
+	final StringBuilder errors = new StringBuilder("");
 
 	if (!validationResults.isEmpty()) {
 	    for (ConstraintViolation<HelloEntity> violation : validationResults) {
-		log.info("subscription error, validating user:"
+		this.log.info("subscription error, validating user:"
 			+ violation.getMessage());
 		errors.append(violation.getPropertyPath()).append(": ")
 			.append(violation.getMessage().replaceAll("\"", ""))
@@ -79,14 +91,18 @@ public class HelloServiceJMS implements HelloService {
 	    }
 	    throw new ValidationException(errors.toString());
 	}
-	helloObjectRepository.save(helloObject_p);
-	producer.sendBody(getHellos());
+	this.helloObjectRepository.save(helloObject_p);
+	this.producer.sendBody(getHellos());
     }
 
+    /**
+     * Returns all entities
+     */
     @Override
     public Hellos getHellos() {
 
-	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+	final Collection<HelloEntity> helloObjects = this.helloObjectRepository
+		.findAll();
 	if (helloObjects.isEmpty()) {
 	    throw new UnsupportedOperationException(
 		    "You could not call this method when the list is empty");
@@ -98,6 +114,9 @@ public class HelloServiceJMS implements HelloService {
 				helloObjectToStringFunction))).build();
     }
 
+    /**
+     * Function that transforms entities to string
+     */
     private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 	@Override
@@ -106,9 +125,12 @@ public class HelloServiceJMS implements HelloService {
 	}
     };
 
+    /**
+     * Deletes all entities
+     */
     @Override
     public void deleteAll() {
-	helloObjectRepository.deleteAll();
+	this.helloObjectRepository.deleteAll();
 
     }
 }

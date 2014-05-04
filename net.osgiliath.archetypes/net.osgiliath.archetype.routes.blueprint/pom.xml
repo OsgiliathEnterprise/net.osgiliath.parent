@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -21,9 +22,9 @@
 	<groupId>net.osgiliath.archetypes</groupId>
 	<artifactId>net.osgiliath.archetype.routes.blueprint</artifactId>
 	<packaging>maven-archetype</packaging>
-
-	<name>net.osgiliath.archetype.routes with blueprint</name>
-
+	<name>Osgiliath route archetype with blueprint</name>
+	<description>Must be behind an Osgiliath parent archetype, routing support between modules</description>
+	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<build>
 		<extensions>
 			<extension>
@@ -32,7 +33,6 @@
 				<version>2.2</version>
 			</extension>
 		</extensions>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -41,19 +41,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		 <plugins>
-			 <plugin>
-        			<groupId>org.apache.maven.plugins</groupId>
-        			<artifactId>maven-archetype-plugin</artifactId>
-      			</plugin>
-      		</plugins>
-
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-archetype-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
-
-	<description>This is the route archetype of osgiliath framework</description>
-
-	<url>https://blog.osgiliath.net/?page_id=224</url>
-
 	<developers>
 		<developer>
 			<id>cmordant</id>

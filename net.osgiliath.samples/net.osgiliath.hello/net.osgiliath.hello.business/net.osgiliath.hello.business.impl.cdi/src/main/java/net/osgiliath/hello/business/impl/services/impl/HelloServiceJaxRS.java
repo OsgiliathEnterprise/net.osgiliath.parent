@@ -44,37 +44,41 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Sample of a business service
+ * Sample of a business service with JaxRS and CDI
  * 
  * @author charliemordant
  * 
  */
 @Slf4j
-// @Default @OsgiServiceProvider(classes= {HelloServiceJaxRS.class})
 @OsgiServiceProvider
 @CXFEndpoint(url = "/helloService", providersClasses = {
 	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
 public class HelloServiceJaxRS implements
 	net.osgiliath.hello.business.impl.HelloServiceJaxRS {
-    // TODO you can use annotation intra bundle, but its not so compatible with
-    // blueprint xml file @Inject @OsgiService(dynamic=true)
+    /**
+     * JPA persistence repository
+     */
     @Inject
     @OsgiService
     private HelloObjectRepository helloObjectRepository;
 
-    // JSR 303 validator
-
+   
+    /**
+     * persistence module
+     */
     @Override
     public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
 	log.info("persisting new message with jaxrs: "
 		+ helloObject_p.getHelloMessage());
-	helloObjectRepository.save(helloObject_p);
+	this.helloObjectRepository.save(helloObject_p);
 
     }
-
+    /**
+     * Gets hello entities
+     */
     @Override
     public Hellos getHellos() {
-	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+	final Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
 	if (helloObjects.isEmpty()) {
 	    throw new UnsupportedOperationException(
 		    "You could not call this method when there are no helloObjects");
@@ -85,7 +89,9 @@ public class HelloServiceJaxRS implements
 			Lists.newArrayList(Iterables.transform(helloObjects,
 				helloObjectToStringFunction))).build();
     }
-
+    /**
+     * converts entities to Strings
+     */
     // Guava function waiting for Java 8
     private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
@@ -94,11 +100,13 @@ public class HelloServiceJaxRS implements
 	    return arg0.getHelloMessage();
 	}
     };
-
+    /**
+     * deletes all entities
+     */
     @Override
     public void deleteAll() {
 	log.info("deleting all datas");
-	helloObjectRepository.deleteAll();
+	this.helloObjectRepository.deleteAll();
     }
 
 }

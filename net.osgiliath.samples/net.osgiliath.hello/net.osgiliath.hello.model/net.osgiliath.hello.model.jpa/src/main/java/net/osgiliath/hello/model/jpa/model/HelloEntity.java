@@ -35,7 +35,11 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
-//TODO Sample of a model bean exportable by web service (xml), persistable and validatable supporting builder pattern
+/**
+ * 
+ * @author charliemordant
+ * Sample of a model bean exportable by web service (xml), persistable and validatable supporting builder pattern
+ */
 @Data
 // equals, hashcode, getters and setters
 @Builder
@@ -50,7 +54,13 @@ import lombok.experimental.Builder;
 // xml marshalling
 @EqualsAndHashCode(callSuper = true)
 public class HelloEntity extends AbstractEntity implements Serializable {
+    /**
+     * Serial
+     */
     private static final transient long serialVersionUID = 6233801298404301547L;
+    /**
+     * Message
+     */
     @XmlElement
     // XML node
     @NotNull(message = "message must not be null")

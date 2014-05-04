@@ -46,5 +46,9 @@
 		<manifest.organization>Osgiliath</manifest.organization>
   		<osgiliath.framework.maven.version>0.0.4</osgiliath.framework.maven.version>
 	</properties>
-
+<scm>
+		<connection><!-- your scm urls here --></connection>
+		<developerConnection><!-- your scm urls here --></developerConnection>
+		<url><!-- your scm urls here --></url>
+	</scm>
 </project>

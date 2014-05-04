@@ -38,7 +38,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Sample of a business service
+ * Sample of a business service with JaxRS
  * 
  * @author charliemordant
  * 
@@ -46,37 +46,45 @@ import com.google.common.collect.Lists;
 @Slf4j
 public class HelloServiceJaxRS implements
 	net.osgiliath.hello.business.impl.HelloServiceJaxRS {
-    // TODO you can use annotation intra bundle, but its not so compatible with
-    // blueprint xml file @Inject @OsgiService(dynamic=true)
+    /**
+     * Repository to persist data
+     */
     @Setter
     private HelloObjectRepository helloObjectRepository;
+    /**
+     * JSR 303 validator
+     */
     // JSR 303 validator
     @Setter
     private Validator validator;
-
+    /**
+     * Saves the object or throw an exception if the Object is not valid
+     */
     @Override
-    public void persistHello(HelloEntity helloObject_p) {
-	log.info("persisting new message with jaxrs: "
+    public final void persistHello(final HelloEntity helloObject_p) {
+	this.log.info("persisting new message with jaxrs: "
 		+ helloObject_p.getHelloMessage());
-	Set<ConstraintViolation<HelloEntity>> validationResults = validator
+	final Set<ConstraintViolation<HelloEntity>> validationResults = validator
 		.validate(helloObject_p);
-	String errors = "";
+	final StringBuilder errors = new StringBuilder("");
 	if (!validationResults.isEmpty()) {
 	    for (ConstraintViolation<HelloEntity> violation : validationResults) {
-		log.info("subscription error, validating user:"
+		this.log.info("subscription error, validating user:"
 			+ violation.getMessage());
-		errors += violation.getPropertyPath() + ": "
-			+ violation.getMessage().replaceAll("\"", "") + ";";
+		errors.append(violation.getPropertyPath()).append(": ")
+		.append(violation.getMessage().replaceAll("\"", "")).append(";");
 	    }
-	    throw new ValidationException(errors);
+	    throw new ValidationException(errors.toString());
 	}
-	helloObjectRepository.save(helloObject_p);
+	this.helloObjectRepository.save(helloObject_p);
 
     }
-
+    /**
+     * get all hellos
+     */
     @Override
     public Hellos getHellos() {
-	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+	final Collection<HelloEntity> helloObjects = this.helloObjectRepository.findAll();
 	if (helloObjects.isEmpty()) {
 	    throw new UnsupportedOperationException(
 		    "You should not call this method when there is no Hello yet !");
@@ -85,9 +93,11 @@ public class HelloServiceJaxRS implements
 		.builder()
 		.helloCollection(
 			Lists.newArrayList(Iterables.transform(helloObjects,
-				helloObjectToStringFunction))).build();
+				this.helloObjectToStringFunction))).build();
     }
-
+    /**
+     * Function that transforms helloEntity to String
+     */
     // Guava function waiting for Java 8
     private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
@@ -96,10 +106,12 @@ public class HelloServiceJaxRS implements
 	    return arg0.getHelloMessage();
 	}
     };
-
+    /**
+     * Deletes all entities
+     */
     @Override
     public void deleteAll() {
-	helloObjectRepository.deleteAll();
+	this.helloObjectRepository.deleteAll();
     }
 
 }
