@@ -19,7 +19,11 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs;
  * limitations under the License.
  * #L%
  */
-
+/**
+ * 
+ * @author charliemordant
+ * Common interface a JaxRS service must implement
+ */
 public interface JaxRSService {
 
 }

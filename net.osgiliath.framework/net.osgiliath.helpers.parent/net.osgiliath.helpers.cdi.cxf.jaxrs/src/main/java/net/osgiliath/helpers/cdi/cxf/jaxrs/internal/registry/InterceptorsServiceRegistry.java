@@ -25,22 +25,38 @@ import java.util.Collection;
 import org.apache.cxf.interceptor.Interceptor;
 
 import com.google.common.collect.Sets;
-
+/**
+ * 
+ * @author charliemordant
+ * JaxRS endpoints registry
+ */
 public class InterceptorsServiceRegistry {
-
-    private Collection<Interceptor> interceptors = Sets.newHashSet();
-
-    public Collection<Interceptor> getInterceptors() {
-	return interceptors;
-    }
-
+    /**
+     * Singleton instance
+     */
     private static InterceptorsServiceRegistry instance = null;
 
+    /**
+     * Interceptor registry
+     */
+    private Collection<Interceptor> interceptors = Sets.newHashSet();
+    /**
+     * 
+     * @return the singleton instance
+     */
     public static InterceptorsServiceRegistry getInstance() {
 	if (instance == null) {
 	    instance = new InterceptorsServiceRegistry();
 	}
 	return instance;
     }
+    /**
+     * Getter
+     * @return interceptors
+     */
+    public Collection<Interceptor> getInterceptors() {
+	return this.interceptors;
+    }
+
 
 }

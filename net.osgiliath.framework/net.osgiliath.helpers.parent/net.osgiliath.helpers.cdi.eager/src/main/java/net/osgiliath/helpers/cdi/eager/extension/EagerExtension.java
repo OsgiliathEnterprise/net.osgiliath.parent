@@ -21,6 +21,7 @@ package net.osgiliath.helpers.cdi.eager.extension;
  */
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -32,21 +33,35 @@ import javax.enterprise.inject.spi.Extension;
 import javax.enterprise.inject.spi.ProcessBean;
 
 import net.osgiliath.helpers.cdi.eager.Eager;
-
+/**
+ * 
+ * @author charliemordant
+ * Eager bean startup CDI extension
+ */
 public class EagerExtension implements Extension {
-    private List<Bean<?>> eagerBeansList = new ArrayList<Bean<?>>();
-
+    /**
+     * List of eager startup beans
+     */
+    private Collection<Bean<?>> eagerBeansList = new ArrayList<Bean<?>>();
+    /**
+     * Add beans to eager startup beans registry 
+     * @param event
+     */
     public <T> void collect(@Observes ProcessBean<T> event) {
 	if (event.getAnnotated().isAnnotationPresent(Eager.class)
 		&& event.getAnnotated().isAnnotationPresent(
 			ApplicationScoped.class)) {
-	    eagerBeansList.add(event.getBean());
+	    this.eagerBeansList.add(event.getBean());
 	}
     }
-
+    /**
+     * Loads all eagered annotated
+     * @param event deployement hook
+     * @param beanManager bean manager
+     */
     public void load(@Observes AfterDeploymentValidation event,
 	    BeanManager beanManager) {
-	for (Bean<?> bean : eagerBeansList) {
+	for (Bean<?> bean : this.eagerBeansList) {
 	    // note: toString() is important to instantiate the bean
 	    beanManager.getReference(bean, bean.getBeanClass(),
 		    beanManager.createCreationalContext(bean)).toString();

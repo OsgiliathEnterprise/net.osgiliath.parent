@@ -28,45 +28,65 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
-
+/**
+ * 
+ * @author charliemordant
+ * Service tracker for validation providers
+ */
 public class OsgiServiceValidationProviderTracker implements
 	ServiceTrackerCustomizer {
-    private BundleContext context;
-
+    /**
+     * bundle context
+     */
+    private final BundleContext context;
+    /**
+     * CTor
+     * @param context bundle context
+     */
     public OsgiServiceValidationProviderTracker(BundleContext context) {
 	this.context = context;
     }
-
+    /**
+     * Adding validation provider
+     */
     // callback method if MyClass service object is registered
-    public Object addingService(ServiceReference reference) {
-	Object serviceObject = this.context.getService(reference);
+    public Object addingService(final ServiceReference reference) {
+	final Object serviceObject = this.context.getService(reference);
 	if (serviceObject instanceof ValidationProvider<?>) {
 	    if (!HibernateValidationOSGIServicesProviderResolver.getInstance()
-		    .getValidationProviders().contains(serviceObject))
+		    .getValidationProviders().contains(serviceObject)) {
 		HibernateValidationOSGIServicesProviderResolver.getInstance()
 			.getValidationProviders()
 			.add((ValidationProvider<?>) serviceObject);
+	    }
 	}
 
 	return reference;
 	// return service object
     }
-
+    /**
+     * Removed validation provider
+     */
     // callback if necessary class is deregistred
-    public void removedService(ServiceReference reference, Object service) {
-	Object serviceObject = this.context.getService(reference);
+    public void removedService(final ServiceReference reference, final Object service) {
+	final Object serviceObject = this.context.getService(reference);
 	if (serviceObject instanceof ValidationProvider<?>) {
 	    if (HibernateValidationOSGIServicesProviderResolver.getInstance()
-		    .getValidationProviders().contains(serviceObject))
+		    .getValidationProviders().contains(serviceObject)) {
 		HibernateValidationOSGIServicesProviderResolver.getInstance()
 			.getValidationProviders()
 			.remove((ValidationProvider<?>) serviceObject);
+	    }
 	}
     }
-
+    /**
+     * Initial providers parsing
+     * @param context bundle context
+     * @throws InvalidSyntaxException parsing error
+     */
     public static void handleInitialReferences(BundleContext context)
 	    throws InvalidSyntaxException {
-	Collection<ServiceReference<ValidationProvider>> refs = context
+	final Collection<ServiceReference<ValidationProvider>> refs = context
 		.getServiceReferences(ValidationProvider.class, null);
 	for (ServiceReference<ValidationProvider> reference : refs) {
 	    HibernateValidationOSGIServicesProviderResolver.getInstance()
@@ -74,10 +94,13 @@ public class OsgiServiceValidationProviderTracker implements
 		    .add(context.getService(reference));
 	}
     }
-
+    /**
+     * Modified service
+     */
     @Override
-    public void modifiedService(ServiceReference reference, Object service) {
-	// TODO Auto-generated method stub
+    public void modifiedService(final ServiceReference reference, final Object service) {
+	this.removedService(reference, service);
+	this.addingService(reference);
 
     }
 

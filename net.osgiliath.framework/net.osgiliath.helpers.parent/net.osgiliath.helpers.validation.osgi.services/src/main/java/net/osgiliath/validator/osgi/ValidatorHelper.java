@@ -20,38 +20,23 @@ package net.osgiliath.validator.osgi;
  * #L%
  */
 
-import javax.validation.Validation;
 import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.validation.bootstrap.ProviderSpecificBootstrap;
 
-import net.osgiliath.validator.osgi.internal.HibernateValidationOSGIServicesProviderResolver;
+import net.osgiliath.validator.osgi.internal.ValidatorFactorySingleton;
 
-import org.hibernate.validator.HibernateValidator;
-import org.hibernate.validator.HibernateValidatorConfiguration;
-
+/**
+ * 
+ * @author charliemordant gets the validator
+ */
 public class ValidatorHelper {
-    private static ValidatorFactory validatorFactory = null;
+   
 
+    /**
+     * 
+     * @return the singleton validator
+     */
     public static Validator getValidator() {
-	if (validatorFactory == null) {
-
-	    ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
-		    .byProvider(HibernateValidator.class);
-
-	    // bootstrap to properly resolve in an OSGi environment
-	    validationBootStrap
-		    .providerResolver(HibernateValidationOSGIServicesProviderResolver
-			    .getInstance());
-
-	    HibernateValidatorConfiguration configure = validationBootStrap
-		    .configure();
-	    validatorFactory = configure/*
-					 * .constraintValidatorFactory (new
-					 * CDIAwareConstraintValidatorFactory
-					 * ())
-					 */.buildValidatorFactory();
-	}
-	return validatorFactory.getValidator();
+	
+	return ValidatorFactorySingleton.getValidatorFactory().getValidator();
     }
 }

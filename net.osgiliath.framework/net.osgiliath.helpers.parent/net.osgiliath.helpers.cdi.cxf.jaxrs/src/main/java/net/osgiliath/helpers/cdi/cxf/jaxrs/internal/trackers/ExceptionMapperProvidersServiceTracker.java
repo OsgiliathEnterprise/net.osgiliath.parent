@@ -30,19 +30,30 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
-
+/**
+ * 
+ * @author charliemordant
+ * Exception mappers OSGI service trackers
+ */
 public class ExceptionMapperProvidersServiceTracker implements
 	ServiceTrackerCustomizer {
-
-    private BundleContext context;
-
+    /**
+     * The bundle context
+     */
+    private final BundleContext context;
+    /**
+     * Ctor
+     * @param context the bundle context
+     */
     public ExceptionMapperProvidersServiceTracker(BundleContext context) {
 	this.context = context;
     }
-
+    /**
+     * Service tracker added service
+     */
     // callback method if MyClass service object is registered
-    public Object addingService(ServiceReference reference) {
-	Object serviceObject = this.context.getService(reference);
+    public Object addingService(final ServiceReference reference) {
+	final Object serviceObject = this.context.getService(reference);
 
 	if (serviceObject instanceof ExceptionMapper<?>) {
 	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
@@ -51,34 +62,41 @@ public class ExceptionMapperProvidersServiceTracker implements
 	}
 
 	return reference;
-	// return service object
     }
-
+    /**
+     * remove service
+     */
     // callback if necessary class is deregistred
-    public void removedService(ServiceReference reference, Object service) {
-	Object serviceObject = this.context.getService(reference);
+    public void removedService(final ServiceReference reference, final Object service) {
+	final Object serviceObject = this.context.getService(reference);
 	if (serviceObject instanceof ExceptionMapper<?>) {
 	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
 		    .remove((ExceptionMapper) serviceObject);
 
 	}
     }
-
-    public static void handleInitialReferences(BundleContext context)
+    /**
+     * Initial call to tracker
+     * @param context bundle context
+     * @throws InvalidSyntaxException parsing error
+     */
+    public static void handleInitialReferences(final BundleContext context)
 	    throws InvalidSyntaxException {
-	@SuppressWarnings("rawtypes")
-	Collection<ServiceReference<ExceptionMapper>> refs = context
+	final Collection<ServiceReference<ExceptionMapper>> refs = context
 		.getServiceReferences(ExceptionMapper.class, null);
 	for (ServiceReference<ExceptionMapper> reference : refs) {
-	    ExceptionMapper svc = context.getService(reference);
+	    final ExceptionMapper svc = context.getService(reference);
 	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
 		    .add(svc);
 	}
     }
-
+    /**
+     * Modification of a service
+     */
     @Override
-    public void modifiedService(ServiceReference reference, Object service) {
-	// TODO Auto-generated method stub
+    public void modifiedService(final ServiceReference reference, final Object service) {
+	this.removedService(reference, service);
+	this.addingService(reference);
 
     }
 

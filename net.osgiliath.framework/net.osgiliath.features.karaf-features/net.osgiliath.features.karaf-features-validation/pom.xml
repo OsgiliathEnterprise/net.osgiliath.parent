@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
@@ -31,10 +32,8 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>com.springsource.org.aspectj.runtime</artifactId>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>com.springsource.org.aspectj.runtime</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${project.parent.artifactId}-cdi</artifactId>
@@ -80,24 +79,18 @@
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.helpers.validation.osgi.services</artifactId>
 			<version>${project.version}</version>
-		</dependency> 
+		</dependency>
 		<dependency>
-		<groupId>${project.groupId}</groupId>
-	<artifactId>net.osgiliath.helpers.hibernate.validator.cdi.osgi</artifactId>
-	<version>${project.version}</version>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.hibernate.validator.cdi.osgi</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-		<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator-cdi</artifactId>
-				
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-validator</artifactId> 
+			</dependency> <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-validator-cdi</artifactId> 
 			</dependency> -->
 	</dependencies>
 	<build>

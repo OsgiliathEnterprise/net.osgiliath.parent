@@ -31,18 +31,31 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
+import com.sun.istack.FinalArrayList;
+/**
+ * 
+ * @author charliemordant 
+ * Message body writer OSGI service tracker
+ */
 public class MessageBodyWriterProvidersServiceTracker implements
 	ServiceTrackerCustomizer {
-
-    private BundleContext context;
-
+    /**
+     * bundle context
+     */
+    private final BundleContext context;
+    /**
+     * Ctor
+     * @param context the bundle context
+     */
     public MessageBodyWriterProvidersServiceTracker(BundleContext context) {
 	this.context = context;
     }
-
+    /**
+     * Service tracker added service
+     */
     // callback method if MyClass service object is registered
-    public Object addingService(ServiceReference reference) {
-	Object serviceObject = this.context.getService(reference);
+    public Object addingService(final ServiceReference reference) {
+	final Object serviceObject = this.context.getService(reference);
 	if (serviceObject instanceof MessageBodyWriter<?>) {
 	    ProvidersServiceRegistry.getInstance().getWriters()
 		    .add((MessageBodyWriter) serviceObject);
@@ -53,9 +66,12 @@ public class MessageBodyWriterProvidersServiceTracker implements
 	// return service object
     }
 
+    /**
+     * remove service
+     */
     // callback if necessary class is deregistred
-    public void removedService(ServiceReference reference, Object service) {
-	Object serviceObject = this.context.getService(reference);
+    public void removedService(final ServiceReference reference, final Object service) {
+	final Object serviceObject = this.context.getService(reference);
 	if (serviceObject instanceof MessageBodyWriter<?>) {
 	    ProvidersServiceRegistry.getInstance().getWriters()
 		    .remove((MessageBodyWriter) serviceObject);
@@ -63,21 +79,31 @@ public class MessageBodyWriterProvidersServiceTracker implements
 	}
 
     }
-
-    public static void handleInitialReferences(BundleContext context)
+    /**
+     * Initial call to tracker
+     * 
+     * @param context
+     *            bundle context
+     * @throws InvalidSyntaxException
+     *             parsing error
+     */
+    public static void handleInitialReferences(final BundleContext context)
 	    throws InvalidSyntaxException {
-	Collection<ServiceReference<MessageBodyWriter>> refs = context
+	final Collection<ServiceReference<MessageBodyWriter>> refs = context
 		.getServiceReferences(MessageBodyWriter.class, null);
 	for (ServiceReference<MessageBodyWriter> reference : refs) {
-	    MessageBodyWriter svc = context.getService(reference);
+	    final MessageBodyWriter svc = context.getService(reference);
 	    svc.toString();
 	    ProvidersServiceRegistry.getInstance().getWriters().add(svc);
 	}
     }
-
+    /**
+     * Modification of a service
+     */
     @Override
     public void modifiedService(ServiceReference reference, Object service) {
-	// TODO Auto-generated method stub
+	this.removedService(reference, service);
+	this.addingService(reference);
 
     }
 }

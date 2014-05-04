@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
   <artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
+  <name>Helper CDI Eager extension</name>
+  <description>CDI eager bean startup portable extension</description>
   <build>
 		<resources>
 			<resource>

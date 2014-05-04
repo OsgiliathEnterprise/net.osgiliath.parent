@@ -53,7 +53,6 @@
 		<module>net.osgiliath.helpers.validation.osgi.services</module>
 		<module>net.osgiliath.helpers.activemq.jms.connectionfactory.exporter</module>
 		<module>net.osgiliath.helpers.cxf.exception.handling</module>
-		<module>net.osgiliath.helpers.hibernate.validator.cdi.osgi</module>
 		<module>net.osgiliath.helpers.cdi.cxf.jaxrs</module>
 		<module>net.osgiliath.helpers.cdi.eager</module>
 		<module>net.osgiliath.wrappers</module>

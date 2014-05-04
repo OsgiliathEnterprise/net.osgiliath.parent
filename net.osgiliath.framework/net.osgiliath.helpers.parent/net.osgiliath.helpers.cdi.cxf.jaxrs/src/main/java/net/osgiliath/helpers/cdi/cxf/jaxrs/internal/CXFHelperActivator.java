@@ -33,26 +33,44 @@ import org.apache.cxf.interceptor.Interceptor;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
-
+/**
+ * 
+ * @author charliemordant
+ * CXF CDI extension OSGI activator
+ */
 public class CXFHelperActivator implements BundleActivator {
+    /**
+     * Message body reader service tracker
+     */
     private ServiceTracker readerTracker;
+    /**
+     * Message body writer service tracker
+     */
     private ServiceTracker writerTracker;
+    /**
+     * Exception mapper service tracker
+     */
     private ServiceTracker exceptionTracker;
-    private InterceptorsServiceTracker interceptorsTracker;
-
+    /**
+     * Interceptors service tracker
+     */
+    private ServiceTracker interceptorsTracker;
+    /**
+     * Start method
+     */
     @Override
     public void start(BundleContext context) throws Exception {
-	readerTracker = new ServiceTracker<>(context, MessageBodyReader.class,
+	this.readerTracker = new ServiceTracker<>(context, MessageBodyReader.class,
 		new MessageBodyReaderProvidersServiceTracker(context));
-	readerTracker.open(true);
-	writerTracker = new ServiceTracker(context, MessageBodyWriter.class,
+	this.readerTracker.open(true);
+	this.writerTracker = new ServiceTracker(context, MessageBodyWriter.class,
 		new MessageBodyWriterProvidersServiceTracker(context));
-	writerTracker.open(true);
-	exceptionTracker = new ServiceTracker(context, ExceptionMapper.class,
+	this.writerTracker.open(true);
+	this.exceptionTracker = new ServiceTracker(context, ExceptionMapper.class,
 		new ExceptionMapperProvidersServiceTracker(context));
-	exceptionTracker.open(true);
-	interceptorsTracker = new InterceptorsServiceTracker(context,
-		Interceptor.class, null);
+	this.exceptionTracker.open(true);
+	this.interceptorsTracker = new ServiceTracker(context, Interceptor.class,
+		new InterceptorsServiceTracker(context));
 	interceptorsTracker.open(true);
 	MessageBodyReaderProvidersServiceTracker
 		.handleInitialReferences(context);
@@ -62,13 +80,15 @@ public class CXFHelperActivator implements BundleActivator {
 	InterceptorsServiceTracker.handleInitialReferences(context);
 
     }
-
+    /**
+     * Activator close
+     */
     @Override
     public void stop(BundleContext context) throws Exception {
-	readerTracker.close();
-	writerTracker.close();
-	exceptionTracker.close();
-	interceptorsTracker.close();
+	this.readerTracker.close();
+	this.writerTracker.close();
+	this.exceptionTracker.close();
+	this.interceptorsTracker.close();
     }
 
 }
