@@ -7,6 +7,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.camel.cdi.configadmin</artifactId>
+	<name>Helper configAdmin cdi support</name>
+	<description>OSGI Config admin (properties) support for Osgiliath framework </description>
 	<build>
 		<plugins>
 			<plugin>

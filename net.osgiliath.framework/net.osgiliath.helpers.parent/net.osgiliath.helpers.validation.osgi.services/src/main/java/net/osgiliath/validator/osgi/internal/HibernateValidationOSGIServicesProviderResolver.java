@@ -20,13 +20,14 @@ package net.osgiliath.validator.osgi.internal;
  * #L%
  */
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.ValidationProviderResolver;
 import javax.validation.spi.ValidationProvider;
 
 import org.hibernate.validator.HibernateValidator;
+
+import com.google.common.collect.Lists;
 
 /**
  * OSGi classpath aware {@link javax.validation.ValidationProviderResolver
@@ -35,26 +36,37 @@ import org.hibernate.validator.HibernateValidator;
  */
 public class HibernateValidationOSGIServicesProviderResolver implements
 	ValidationProviderResolver {
+    /**
+     * Singleton instance
+     */
     private static ValidationProviderResolver instance = null;
-
-    public HibernateValidationOSGIServicesProviderResolver() {
+    /**
+     * Validation providers
+     */
+    private List<ValidationProvider<?>> providers = Lists.newArrayList();
+    /**
+     * private CTor
+     */
+    private HibernateValidationOSGIServicesProviderResolver() {
 	super();
-	// if (instance == null)
-	// instance = new HibernateValidationOSGIServicesProviderResolver();
 
     }
-
+    /**
+     * Singleton
+     * @return the Singleton instance
+     */
     public static ValidationProviderResolver getInstance() {
-	if (instance == null)
+	if (instance == null) {
 	    instance = new HibernateValidationOSGIServicesProviderResolver();
+	    ((HibernateValidationOSGIServicesProviderResolver)instance).providers.add(new HibernateValidator());
+	}
 	return instance;
     }
-
+    /**
+     * gets providers
+     */
     @Override
     public List<ValidationProvider<?>> getValidationProviders() {
-	List<ValidationProvider<?>> providers = new ArrayList<ValidationProvider<?>>(
-		1);
-	providers.add(new HibernateValidator());
 	return providers;
     }
 

@@ -28,21 +28,31 @@ import org.apache.cxf.interceptor.Interceptor;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
-
-public class InterceptorsServiceTracker extends ServiceTracker {
-
-    public InterceptorsServiceTracker(BundleContext context, Class clazz,
-	    ServiceTrackerCustomizer customizer) {
-	super(context, clazz, customizer);
-	// TODO Auto-generated constructor stub
+/**
+ * 
+ * @author charliemordant
+ * Interceptors OSGI service trackers
+ */
+public final class InterceptorsServiceTracker implements ServiceTrackerCustomizer {
+    /**
+     * The bundle context
+     */
+    private final BundleContext context;
+    /**
+     * Ctor
+     * @param context the bundle context
+     */
+    public InterceptorsServiceTracker(BundleContext context) {
+	this.context = context;
     }
-
+   
+    /**
+     * Service tracker added service
+     */
     // callback method if MyClass service object is registered
-    public Object addingService(ServiceReference reference) {
-	Object serviceObject = this.context.getService(reference);
-
+    public final Object addingService(final ServiceReference reference) {
+	final Object serviceObject = this.context.getService(reference);
 	if (serviceObject instanceof Interceptor) {
 	    InterceptorsServiceRegistry.getInstance().getInterceptors()
 		    .add((Interceptor) serviceObject);
@@ -50,19 +60,24 @@ public class InterceptorsServiceTracker extends ServiceTracker {
 	}
 
 	return reference;
-	// return service object
     }
-
+    /**
+     * remove service
+     */
     // callback if necessary class is deregistred
-    public void removedService(ServiceReference reference, Object service) {
-	Object serviceObject = this.context.getService(reference);
+    public final void removedService(final ServiceReference reference, final Object service) {
+	final Object serviceObject = this.context.getService(reference);
 	if (serviceObject instanceof Interceptor) {
 	    InterceptorsServiceRegistry.getInstance().getInterceptors()
 		    .remove((Interceptor) serviceObject);
 
 	}
     }
-
+    /**
+     * Initial call to tracker
+     * @param context bundle context
+     * @throws InvalidSyntaxException parsing error
+     */
     public static void handleInitialReferences(BundleContext context)
 	    throws InvalidSyntaxException {
 	Collection<ServiceReference<Interceptor>> refs = context
@@ -73,6 +88,16 @@ public class InterceptorsServiceTracker extends ServiceTracker {
 	    InterceptorsServiceRegistry.getInstance().getInterceptors()
 		    .add(svc);
 	}
+    }
+
+    /**
+     * Modification of a service
+     */
+    @Override
+    public void modifiedService(ServiceReference reference, Object service) {
+	this.removedService(reference, service);
+	this.addingService(reference);
+	
     }
 
 }

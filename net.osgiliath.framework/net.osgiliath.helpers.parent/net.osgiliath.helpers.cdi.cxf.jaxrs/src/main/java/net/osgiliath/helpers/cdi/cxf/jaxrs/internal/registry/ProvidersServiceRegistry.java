@@ -34,51 +34,88 @@ import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
+/**
+ * 
+ * @author charliemordant
+ * CXF providers registry
+ */
 public class ProvidersServiceRegistry {
-
+    /**
+     * Message body writers
+     */
     private Collection<MessageBodyWriter<Object>> writers = Sets.newHashSet();
+    /**
+     * Message body readers
+     */
     private Collection<MessageBodyReader<Object>> readers = Sets.newHashSet();
+    /**
+     * Exception mappers
+     */
     private Collection<ExceptionMapper<? extends Exception>> exceptionMappers = Sets
 	    .newHashSet();
-
+    /**
+     * Internally declared writers
+     */
     @Inject
     @Any
     private Instance<MessageBodyWriter<Object>> internalWriters;
+    /**
+     * bundle declared readers
+     */
     @Inject
     @Any
     private Instance<MessageBodyReader<Object>> internalReaders;
-
+    /**
+     * singleton instance
+     */
     private static ProvidersServiceRegistry instance = null;
-
+    /**
+     * singleton
+     * @return the singleton
+     */
     public static ProvidersServiceRegistry getInstance() {
 	if (instance == null) {
 	    instance = new ProvidersServiceRegistry();
 	}
 	return instance;
     }
-
+    /**
+     * 
+     * @return all writers
+     */
     public Collection<MessageBodyWriter<Object>> getWriters() {
 
-	return internalWriters == null ? writers : Sets.newHashSet(Iterables
-		.concat(writers, internalWriters));
+	return this.internalWriters == null ? this.writers : Sets.newHashSet(Iterables
+		.concat(this.writers, this.internalWriters));
     }
-
+    /**
+     * 
+     * @return all exception mappers
+     */
     public Collection<ExceptionMapper<? extends Exception>> getExceptionMappers() {
-	return exceptionMappers;
+	return this.exceptionMappers;
     }
-
+    /**
+     * 
+     * @return all body readers
+     */
     public Collection<MessageBodyReader<Object>> getReaders() {
-	return internalReaders == null ? readers : Sets.newHashSet(Iterables
-		.concat(readers, internalReaders));
+	return this.internalReaders == null ? this.readers : Sets.newHashSet(Iterables
+		.concat(this.readers, this.internalReaders));
     }
-
+    /**
+     * 
+     * @return all providers
+     */
     public Collection<Object> getProviders() {
 	return Sets.newHashSet(Iterables.concat(Iterables.concat(
-		Iterables.concat(getReaders(), getWriters()),
-		getInternalProviders()), getExceptionMappers()));
+		Iterables.concat(this.getReaders(), this.getWriters()),
+		this.getInternalProviders()), this.getExceptionMappers()));
     }
-
+    /**
+     * 
+     * @return all internal providers
+     */
     private Iterable<? extends Object> getInternalProviders() {
 
 	return Sets.<Object> newHashSet(new JSONProvider<Object>(),

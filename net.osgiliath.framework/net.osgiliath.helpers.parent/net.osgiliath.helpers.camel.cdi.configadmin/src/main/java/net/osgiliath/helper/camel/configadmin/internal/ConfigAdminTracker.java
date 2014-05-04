@@ -26,6 +26,7 @@ import java.util.Dictionary;
 import java.util.HashSet;
 
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.cm.Configuration;
@@ -34,152 +35,114 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.sun.istack.FinalArrayList;
+
+/**
+ * 
+ * @author charliemordant Service tracker for camel cdi config admin properties
+ *         resolution
+ */
 public class ConfigAdminTracker implements
 	ServiceTrackerCustomizer<ConfigurationAdmin, Object> {
+    /**
+     * Logger
+     */
     private static final Logger LOG = LoggerFactory
 	    .getLogger(ConfigAdminTracker.class);
-
+    /**
+     * Properties
+     */
     private Collection<ConfigurationAdmin> admins = new HashSet<>();
+    /**
+     * Singleton of the tracker
+     */
     private static ConfigAdminTracker instance = null;
+    /**
+     * Bundle context
+     */
     private BundleContext context;
 
-    public static ConfigAdminTracker getInstance() {
+    /**
+     * 
+     * @return the singleton instance
+     */
+    public static ConfigAdminTracker getInstance(BundleContext context) {
 	if (instance == null) {
+
 	    instance = new ConfigAdminTracker();
+	    if (context == null) {
+	    instance.context = FrameworkUtil.getBundle(
+		    CdiConfigAdminServiceActivator.class).getBundleContext();
+	    } else {
+		instance.context = context;
+	    }
+	    
 	}
 	return instance;
     }
 
-    public static ConfigAdminTracker getInstance(BundleContext bundleContext) {
-	if (instance == null) {
-	    instance = new ConfigAdminTracker();
-	    instance.context = bundleContext;
-	}
-	return instance;
-    }
-
+    /**
+     * Adds config
+     */
     @Override
-    public Object addingService(ServiceReference reference) {
-	ConfigurationAdmin admin = (ConfigurationAdmin) context
+    public final Object addingService(final ServiceReference reference) {
+	final ConfigurationAdmin admin = (ConfigurationAdmin) context
 		.getService(reference);
-	admins.add(admin);
-	// try {
-	// addConfigSources(admin);
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// } catch (InvalidSyntaxException e) {
-	// e.printStackTrace();
-	// }
+	this.admins.add(admin);
 	return admin;
     }
 
+    /**
+     * Modified a config
+     */
     @Override
-    public void modifiedService(ServiceReference<ConfigurationAdmin> reference,
+    public final void modifiedService(final ServiceReference<ConfigurationAdmin> reference,
 	    Object service) {
-	ConfigurationAdmin admin = context.getService(reference);
-	admins.remove(admin);
-	admins.add(admin);
-	// ConfigResolver.freeConfigSources();
-	// try {
-	// addConfigSources(admin);
-	// } catch (IOException | InvalidSyntaxException e) {
-	//
-	// e.printStackTrace();
-	// }
+	removedService(reference, service);
+	addingService(reference);
+
+    }
+    /**
+     * removed config
+     */
+    @Override
+    public final void removedService(ServiceReference<ConfigurationAdmin> reference,
+	    final Object service) {
+	final ConfigurationAdmin admin = context.getService(reference);
+	this.admins.remove(admin);
 
     }
 
-    @Override
-    public void removedService(ServiceReference<ConfigurationAdmin> reference,
-	    Object service) {
-	ConfigurationAdmin admin = context.getService(reference);
-	admins.remove(admin);
-	// ConfigResolver.freeConfigSources();
-
-    }
-
-    // public void addConfigSources(ConfigurationAdmin admin) throws
-    // IOException,
-    // InvalidSyntaxException {
-    // List<ConfigSource> sources = new ArrayList<>();
-    // Configuration[] configurations = admin.listConfigurations(null);
-    // if (configurations != null) {
-    // for (final Configuration configuration : configurations) {
-    // LOG.info("Discovered configuration: " + configuration.getPid());
-    // final Dictionary<String, Object> dictionary = configuration
-    // .getProperties();
-    //
-    // ConfigSource source = new ConfigSource() {
-    //
-    // @Override
-    // public boolean isScannable() {
-    // return true;
-    // }
-    //
-    // @Override
-    // public String getPropertyValue(String key) {
-    // LOG.debug("Retreiving property with key: " + key);
-    // Object valObject = dictionary.get(key);
-    // if (valObject instanceof String) {
-    // LOG.trace("got value: " + valObject);
-    // return (String) dictionary.get(valObject);
-    // }
-    // return null;
-    // }
-    //
-    // @Override
-    // public Map<String, String> getProperties() {
-    // Map<String, String> ret = new HashMap<String, String>();
-    // Enumeration<String> keysEnumeration = dictionary.keys();
-    // while (keysEnumeration.hasMoreElements()) {
-    // String key = keysEnumeration.nextElement();
-    // Object valObject = dictionary.get(key);
-    // if (valObject instanceof String) {
-    // ret.put(key, (String) valObject);
-    // }
-    // }
-    // return ret;
-    // }
-    //
-    // @Override
-    // public int getOrdinal() {
-    // return 0;
-    // }
-    //
-    // @Override
-    // public String getConfigName() {
-    // return configuration.getBundleLocation();
-    // }
-    // };
-    // sources.add(source);
-    //
-    // }
-    // ConfigResolver.addConfigSources(sources);
-    // }
-    //
-    // }
-
+    /**
+     * Get the property with the according key
+     * 
+     * @param key
+     *            the propertuy key
+     * @return the corresponding property
+     * @throws IOException
+     *             read error
+     * @throws InvalidSyntaxException
+     *             wrong key
+     */
     public String getProperty(String key) throws IOException,
 	    InvalidSyntaxException {
 	LOG.info("Retreiving property key: " + key);
-	for (ConfigurationAdmin admin : admins) {
-	    Configuration[] configurations = admin.listConfigurations(null);
+	for (ConfigurationAdmin admin : this.admins) {
+	    final Configuration[] configurations = admin
+		    .listConfigurations(null);
 	    if (configurations != null) {
 		for (final Configuration configuration : configurations) {
 		    LOG.debug("parsing configuration: "
 			    + configuration.getPid());
 		    final Dictionary<String, Object> dictionary = configuration
 			    .getProperties();
-
-		    Object valObject = dictionary.get(key);
+		    final Object valObject = dictionary.get(key);
 		    if (valObject != null && valObject instanceof String) {
 			LOG.trace("got value: " + valObject);
 			return (String) valObject;
 		    }
-
 		}
 	    }
-
 	}
 	return null;
     }

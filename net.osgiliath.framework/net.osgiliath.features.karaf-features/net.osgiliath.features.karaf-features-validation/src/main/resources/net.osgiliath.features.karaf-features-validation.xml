@@ -28,7 +28,7 @@ limitations under the License.
 		<!--<feature version='${karaf.feature.spring.version}'>spring</feature>-->
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 	
-		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.hibernate.validator.cdi.osgi/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.hibernate.validator.cdi.osgi/${project.version}</bundle>
 		<bundle >mvn:${project.groupId}/net.osgiliath.helpers.validation.osgi.services/${project.version}</bundle>
 		<bundle >mvn:org.hibernate/hibernate-validator/${org.hibernate.validator.version}</bundle>
 		

@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.cdi.cxf.jaxrs</artifactId>
+	<name>Helper CDI JaxRS extension</name>
+	<description>CDI portable extension for JaxRS (CXF) endpoint declaration</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -103,6 +105,5 @@
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-atinject_1.0_spec</artifactId>
 		</dependency>
-
 	</dependencies>
 </project>

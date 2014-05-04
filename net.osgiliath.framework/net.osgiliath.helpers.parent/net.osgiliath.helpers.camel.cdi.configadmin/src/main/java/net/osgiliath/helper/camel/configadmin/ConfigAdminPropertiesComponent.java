@@ -29,15 +29,20 @@ import org.apache.camel.cdi.component.properties.CdiPropertiesComponent;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import org.ops4j.pax.cdi.api.Properties;
 import org.ops4j.pax.cdi.api.Property;
-
+/**
+ * 
+ * @author charliemordant
+ * specialization for configadmin
+ */
 @OsgiServiceProvider
 @Properties(value = { @Property(name = "component-type", value = "configAdminProperties") })
 @ApplicationScoped
 @Specializes
 public class ConfigAdminPropertiesComponent extends CdiPropertiesComponent {
-
+    /**
+     * returns property component
+     */
     public ConfigAdminPropertiesComponent() {
-
 	setPropertiesParser(new ConfigAdminPropertiesParser());
     }
 

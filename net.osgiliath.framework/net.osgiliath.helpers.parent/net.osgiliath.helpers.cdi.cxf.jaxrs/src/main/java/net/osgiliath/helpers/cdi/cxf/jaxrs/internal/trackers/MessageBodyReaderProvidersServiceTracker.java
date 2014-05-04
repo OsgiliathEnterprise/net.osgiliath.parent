@@ -31,18 +31,34 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
+/**
+ * 
+ * @author charliemordant Message body reader OSGI service tracker
+ */
 public class MessageBodyReaderProvidersServiceTracker implements
 	ServiceTrackerCustomizer<MessageBodyReader, Object> {
-    private BundleContext context;
+    /**
+     * Bundle context
+     */
+    private final BundleContext context;
 
+    /**
+     * Ctor
+     * 
+     * @param context
+     *            bundle context
+     */
     public MessageBodyReaderProvidersServiceTracker(BundleContext context) {
 	this.context = context;
     }
 
+    /**
+     * Service tracker added service
+     */
     @Override
     // callback method if MyClass service object is registered
-    public Object addingService(ServiceReference reference) {
-	Object serviceObject = this.context.getService(reference);
+    public Object addingService(final ServiceReference reference) {
+	final Object serviceObject = this.context.getService(reference);
 
 	if (serviceObject instanceof MessageBodyReader<?>) {
 	    ProvidersServiceRegistry.getInstance().getReaders()
@@ -54,10 +70,14 @@ public class MessageBodyReaderProvidersServiceTracker implements
 
     }
 
+    /**
+     * remove service
+     */
     @Override
     // callback if necessary class is deregistred
-    public void removedService(ServiceReference reference, Object service) {
-	Object serviceObject = this.context.getService(reference);
+    public void removedService(final ServiceReference reference,
+	    final Object service) {
+	final Object serviceObject = this.context.getService(reference);
 
 	if (serviceObject instanceof MessageBodyReader<?>) {
 	    ProvidersServiceRegistry.getInstance().getReaders()
@@ -66,7 +86,15 @@ public class MessageBodyReaderProvidersServiceTracker implements
 	}
     }
 
-    public static void handleInitialReferences(BundleContext context)
+    /**
+     * Initial call to tracker
+     * 
+     * @param context
+     *            bundle context
+     * @throws InvalidSyntaxException
+     *             parsing error
+     */
+    public static void handleInitialReferences(final BundleContext context)
 	    throws InvalidSyntaxException {
 	Collection<ServiceReference<MessageBodyReader>> refs = context
 		.getServiceReferences(MessageBodyReader.class, null);
@@ -77,8 +105,13 @@ public class MessageBodyReaderProvidersServiceTracker implements
 	}
     }
 
+    /**
+     * Modification of a service
+     */
     @Override
-    public void modifiedService(ServiceReference reference, Object service) {
-
+    public void modifiedService(final ServiceReference reference,
+	    final Object service) {
+	this.removedService(reference, service);
+	this.addingService(reference);
     }
 }

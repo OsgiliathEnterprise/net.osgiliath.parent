@@ -6,6 +6,8 @@
     <version>0.0.5-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.wrapper.camel-cdi</artifactId>
+  <name>Wrapper for Camel CDI</name>
+  <description>OSGI manifest wrapper for camel CDI</description>
   	<build>
 		<plugins>
 			<plugin>
