@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.jpa.database</artifactId>
+	<name>Osgiliath integration tests JPA database</name>
+	<description>JPA integration tests database definition</description>
 	<build>
 		<resources>
 			<resource>

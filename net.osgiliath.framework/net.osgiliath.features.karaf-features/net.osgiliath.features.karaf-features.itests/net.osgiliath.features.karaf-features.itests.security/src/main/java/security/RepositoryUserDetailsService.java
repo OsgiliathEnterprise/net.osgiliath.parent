@@ -23,6 +23,8 @@ package security;
 import java.util.Collection;
 import java.util.HashSet;
 
+import lombok.Getter;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,23 +36,20 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  * 
  */
 public class RepositoryUserDetailsService implements UserDetailsService {
-    // @Inject @OsgiService(dynamic=true)
     /**
      * Retrieves the user model jaxrs adress
      */
+    @Getter
     private static Collection<UserDetails> users = new HashSet<UserDetails>();
-
-    public static Collection<UserDetails> getUsers() {
-	return users;
-    }
+    
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public UserDetails loadUserByUsername(String arg0)
+    public UserDetails loadUserByUsername(final String arg0)
 	    throws UsernameNotFoundException {
-	for (UserDetails details : users) {
+	for (UserDetails details : this.users) {
 	    if (details.getUsername().equals(arg0))
 		return details;
 	}

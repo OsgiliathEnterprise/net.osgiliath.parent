@@ -23,19 +23,22 @@ package net.osgiliath.messaging;
 import java.io.Serializable;
 import java.util.Collection;
 
+import lombok.Data;
+/**
+ * 
+ * @author charliemordant
+ * message collection
+ */
+@Data
 public class Hellos implements Serializable {
     /**
-	 * 
+	 * serial
 	 */
     private static final long serialVersionUID = 1104941154797467749L;
-    Collection<HelloEntity> entities;
+    /**
+     * collection
+     */
+    private Collection<HelloEntity> entities;
 
-    public Collection<HelloEntity> getEntities() {
-	return entities;
-    }
-
-    public void setEntities(Collection<HelloEntity> entities) {
-	this.entities = entities;
-    }
 
 }

@@ -25,16 +25,13 @@ import javax.servlet.annotation.WebServlet;
 
 import org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet;
 
+/**
+ * 
+ * @author charliemordant 
+ * Services servlet
+ */
 @WebServlet(urlPatterns = { "/*" }, initParams = {
 	@WebInitParam(name = "jaxrs.providers", value = "org.apache.cxf.jaxrs.provider.JAXBElementProvider,org.apache.cxf.jaxrs.provider.json.JSONProvider"),
-	// @WebInitParam(name="jaxrs.serviceClasses",
-	// value="net.osgiliath.features.karaf.jaxrs.web.impl.HelloServiceImpl"),
-	// @WebInitParam(name="jaxrs.address", value="/helloService")
-	@WebInitParam(name = "javax.ws.rs.Application", value = "conf.JaxRSCDIApplication")
-
-}
-
-)
+	@WebInitParam(name = "javax.ws.rs.Application", value = "conf.JaxRSCDIApplication") })
 public class JaxRSServicesProviderServlet extends CXFNonSpringJaxrsServlet {
-
 }

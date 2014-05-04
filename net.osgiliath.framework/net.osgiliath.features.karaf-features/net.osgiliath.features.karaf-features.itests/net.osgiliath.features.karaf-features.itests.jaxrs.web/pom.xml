@@ -8,6 +8,8 @@
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.jaxrs.web</artifactId>
 	<packaging>jar</packaging>
+	<name>Osgiliath integration tests JaxRS web</name>
+	<description>Web integration tests for REST services</description>
 	<build>
 		<plugins>
 			<plugin>

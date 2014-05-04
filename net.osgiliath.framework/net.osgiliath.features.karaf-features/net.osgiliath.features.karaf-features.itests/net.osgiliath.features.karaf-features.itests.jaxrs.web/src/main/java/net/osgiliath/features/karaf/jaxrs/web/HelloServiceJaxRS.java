@@ -30,12 +30,27 @@ import javax.ws.rs.core.MediaType;
 import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 
+/**
+ * 
+ * @author charliemordant REST service definition
+ */
 @Path("/hello")
 public interface HelloServiceJaxRS {
+    /**
+     * Saves elements
+     * 
+     * @param helloObject
+     *            object to save
+     */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     void persistHello(HelloObject helloObject);
 
+    /**
+     * get all
+     * 
+     * @return all instances
+     */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     Hellos getHellos();

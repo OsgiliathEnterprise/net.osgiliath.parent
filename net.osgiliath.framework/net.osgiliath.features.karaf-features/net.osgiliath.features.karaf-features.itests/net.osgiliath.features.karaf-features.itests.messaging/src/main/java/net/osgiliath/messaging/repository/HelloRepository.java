@@ -25,15 +25,31 @@ import java.util.Collection;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 
-//JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the template.mf cxf package export)
+/**
+ * 
+ * @author charliemordant
+ * JMS repository defintion
+ */
 public interface HelloRepository {
-
-    public Collection<? extends HelloEntity> findByHelloObjectMessage(
+    /**
+     * finds entity by message
+     * @param message_p the message
+     * @return corrsponding entities
+     */
+    Collection<? extends HelloEntity> findByHelloObjectMessage(
 	    String message_p);
-
-    public <S extends HelloEntity> void save(S entity);
-
-    public Hellos findAll();
-
+    /**
+     * Entity persistence
+     * @param entity to save
+     */
+    <S extends HelloEntity> void save(S entity);
+    /**
+     * gets all entities
+     * @return all entities
+     */
+    Hellos findAll();
+    /**
+     * deletes all entities
+     */
     void deleteAll();
 }

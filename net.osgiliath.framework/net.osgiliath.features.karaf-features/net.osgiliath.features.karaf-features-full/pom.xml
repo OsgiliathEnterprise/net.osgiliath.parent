@@ -16,6 +16,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-full</artifactId>
+	<name>Osgiliath full features</name>
+	<description>Messaging, CDI... Corse grained features for Osgiliath</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.cxf.karaf</groupId>

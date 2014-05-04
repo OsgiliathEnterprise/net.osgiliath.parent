@@ -45,7 +45,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO example of an integration test
+ * CDI integration tests
  * 
  * @author charliemordant
  * 

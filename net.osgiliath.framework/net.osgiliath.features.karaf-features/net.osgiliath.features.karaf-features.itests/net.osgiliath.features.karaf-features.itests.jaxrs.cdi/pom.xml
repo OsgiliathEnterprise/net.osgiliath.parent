@@ -7,6 +7,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.jaxrs.cdi</artifactId>
+	<name>Osgiliath integration tests JaxRS CDI</name>
+	<description>Integration test for REST services with CDI</description>
 	<build>
 		<plugins>
 			<plugin>

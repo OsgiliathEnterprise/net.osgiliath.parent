@@ -52,7 +52,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO example of an integration test
+ * REST integration tests
  * 
  * @author charliemordant
  * 
@@ -60,6 +60,9 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
+    /**
+     * Logger
+     */
     private static Logger LOG = LoggerFactory
 	    .getLogger(ITHelloServiceJaxRS.class);
 

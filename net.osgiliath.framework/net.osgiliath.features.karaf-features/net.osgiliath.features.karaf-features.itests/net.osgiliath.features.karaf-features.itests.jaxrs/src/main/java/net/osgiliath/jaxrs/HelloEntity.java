@@ -25,27 +25,25 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import lombok.Data;
+/**
+ * 
+ * @author charliemordant
+ * Sample Model Object
+ */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@Data
 public class HelloEntity {
+    /**
+     * Id
+     */
     @XmlElement
-    protected Long entityId;
+    private Long entityId;
+    /**
+     * helloMessage
+     */
     @XmlElement
     private String helloMessage;
 
-    public Long getEntityId() {
-	return entityId;
-    }
-
-    public void setEntityId(Long entityId) {
-	this.entityId = entityId;
-    }
-
-    public String getHelloMessage() {
-	return helloMessage;
-    }
-
-    public void setHelloMessage(String helloMessage) {
-	this.helloMessage = helloMessage;
-    }
 }

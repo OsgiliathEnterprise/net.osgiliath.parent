@@ -46,20 +46,23 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * 
+ * @author charliemordant
+ * REST service tests
+ */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPaxWebCxf extends PaxExamKarafConfigurationFactory {
+    /**
+     * Logger
+     */
     private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 
     // Exported service via blueprint.xml
     @Inject
     @Filter(timeout = 400000)
     private BootFinished bootFinished;
-    // JMS template
-    // @Inject
-    // @Filter(value="(component-type=jms)")
-    // private Component jmsComponent;
     // exported REST adress
     private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 

@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.jpa.cdi.model</artifactId>
+	<name>Osgiliath integration tests persistent model classes for jpa-CDI</name>
+	<description>Persistent model classes for jpa-CDI itest</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -49,6 +51,14 @@
 			<plugin>
 				<groupId>org.apache.openjpa</groupId>
 				<artifactId>openjpa-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
+				<configuration>
+					<sourceDirectory>target/generated-sources/metamodel</sourceDirectory>
+					<sourceDirectory>src/main/java</sourceDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

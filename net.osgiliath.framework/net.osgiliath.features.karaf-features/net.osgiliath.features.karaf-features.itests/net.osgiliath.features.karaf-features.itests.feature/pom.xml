@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.feature</artifactId>
+	<name>Osgiliath integration tests features</name>
+	<description>Features for integrations tests</description>
 	<dependencies>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>

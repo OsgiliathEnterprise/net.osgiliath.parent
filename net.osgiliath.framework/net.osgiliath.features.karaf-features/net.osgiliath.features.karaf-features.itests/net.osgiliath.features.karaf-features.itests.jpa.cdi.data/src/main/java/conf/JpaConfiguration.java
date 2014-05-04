@@ -33,34 +33,62 @@ import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.ops4j.pax.cdi.api.OsgiService;
 
+/**
+ * 
+ * @author charliemordant Configuration class for jpa with CDI
+ */
 @ApplicationScoped
 @Eager
 public class JpaConfiguration {
+    /**
+     * Standard aries jpa container service constant
+     */
     private static final String emfContainerConstant = "(org.apache.aries.jpa.container.managed=true)";
-
+    /**
+     * Entity manager bottstrapping
+     */
     // or manual bootstrapping
     @Inject
     @OsgiService(dynamic = true, required = true, filter = "(osgi.unit.name=myTestPu)")
     // "(&(osgi.unit.name=myTestPu) "+emfContainerConstant+")")
     private EntityManagerFactory emf;
+    /**
+     * transaction manager
+     */
     @Inject
     @OsgiService(dynamic = true, required = true)
     private TransactionManager txManager;
 
+    /**
+     * entity manager producer
+     * 
+     * @return the produced entity manager
+     */
     @Produces
     @Default
     protected EntityManager createEntityManager() {
 	return this.emf.createEntityManager();
     }
 
+    /**
+     * transaction manager producer
+     * 
+     * @return the transaction manager
+     */
     @Produces
     @Default
     protected TransactionManager createTx() {
 	return this.txManager;
     }
 
+    /**
+     * closes the entitymanager
+     * 
+     * @param entityManager
+     *            to close
+     */
     protected void closeEntityManager(
-	    @Disposes @Default EntityManager entityManager) {
+	    @Disposes @Default final EntityManager entityManager) {
 	if (entityManager.isOpen()) {
 	    entityManager.close();
 	}

@@ -27,13 +27,22 @@ import net.osgiliath.cdi.IProvider;
 
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-
+/**
+ * 
+ * @author charliemordant
+ * Consumer of injected bean
+ */
 @OsgiServiceProvider(classes = { IConsumer.class })
 public class Consumer implements IConsumer {
+    /**
+     * Injected CDI provider
+     */
     @Inject
     @OsgiService(timeout = 2000, dynamic = true)
     private IProvider provider;
-
+    /**
+     * Consumed method by itests
+     */
     public String getHello() {
 	return provider.getMessage();
     }

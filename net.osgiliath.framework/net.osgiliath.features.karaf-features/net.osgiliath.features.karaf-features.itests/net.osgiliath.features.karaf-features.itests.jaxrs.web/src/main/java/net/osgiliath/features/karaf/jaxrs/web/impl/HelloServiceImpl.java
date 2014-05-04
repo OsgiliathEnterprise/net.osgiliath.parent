@@ -30,24 +30,34 @@ import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+/**
+ * 
+ * @author charliemordant REST service implementation
+ */
 public class HelloServiceImpl implements HelloServiceJaxRS {
+    /**
+     * Instance collection
+     */
     private Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
+    /**
+     * Saves instances
+     */
     @Override
-    public void persistHello(HelloObject helloObject) {
-	objects.add(helloObject);
-
+    public final void persistHello(final HelloObject helloObject) {
+	this.objects.add(helloObject);
     }
 
+    /**
+     * return instances
+     */
     @Override
     public Hellos getHellos() {
 
 	return new Hellos(Lists.newArrayList(Iterables.transform(objects,
 		new Function<HelloObject, String>() {
-
 		    @Override
-		    public String apply(HelloObject input) {
-
+		    public String apply(final HelloObject input) {
 			return input.getHelloMessage();
 		    };
 		})));

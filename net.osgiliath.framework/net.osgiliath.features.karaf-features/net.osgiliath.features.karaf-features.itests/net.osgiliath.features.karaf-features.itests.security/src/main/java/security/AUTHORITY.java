@@ -26,11 +26,21 @@ package security;
  * 
  */
 public enum AUTHORITY {
-
+    /**
+     * Rights access
+     */
     MEMBER("Member"), PREMIUM("Premium");
+    /**
+     * RA Strings
+     */
     public static final String S_MEMBER = "Member";
+    /**
+     * RA Strings
+     */
     public static final String S_PREMIUM = "Premium";
-
+    /**
+     * Selected RA
+     */
     private final String auth;
 
     /**

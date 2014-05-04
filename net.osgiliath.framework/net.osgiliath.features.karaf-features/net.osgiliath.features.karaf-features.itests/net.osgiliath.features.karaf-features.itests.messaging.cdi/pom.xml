@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.messaging.cdi</artifactId>
+	<name>Osgiliath integration tests messaging with cdi</name>
+	<description>Integration tests for messaging with CDI support</description>
 	<build>
 		<resources>
 			<resource>
@@ -47,6 +49,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

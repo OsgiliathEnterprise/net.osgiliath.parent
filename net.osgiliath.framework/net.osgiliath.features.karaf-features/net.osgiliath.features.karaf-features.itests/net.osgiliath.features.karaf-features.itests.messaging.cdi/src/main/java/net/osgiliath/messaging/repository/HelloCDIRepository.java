@@ -27,6 +27,6 @@ public interface HelloCDIRepository {
 
     public <S extends HelloEntity> void directSave(S entity);
 
-    boolean isProcessed();
+ 
 
 }

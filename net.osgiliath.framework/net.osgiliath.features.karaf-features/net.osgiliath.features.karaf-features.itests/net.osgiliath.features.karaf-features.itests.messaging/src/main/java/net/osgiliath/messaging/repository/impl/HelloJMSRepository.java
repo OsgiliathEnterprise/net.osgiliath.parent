@@ -33,29 +33,42 @@ import org.apache.camel.Consume;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 
-//TODO Spring data jpa repository declaration
+/**
+ * 
+ * @author charliemordant
+ * JMS repository implementation for itests purpose
+ */
 public class HelloJMSRepository implements HelloRepository {
+    /**
+     * JMS producer
+     */
     @Produce(uri = "jms:queue:helloServiceQueueOut")
     private ProducerTemplate producer;
+    /**
+     * instances registry
+     */
     private List<HelloEntity> entities = new ArrayList<HelloEntity>();
-
+    /**
+     * finds entities by message
+     */
     @Override
-    public Collection<? extends HelloEntity> findByHelloObjectMessage(
-	    @Body String message_p) {
-	List<HelloEntity> ret = new ArrayList<HelloEntity>();
-	for (HelloEntity ent : entities) {
+    public final Collection<? extends HelloEntity> findByHelloObjectMessage(
+	    @Body final String message_p) {
+	final List<HelloEntity> ret = new ArrayList<HelloEntity>();
+	for (HelloEntity ent : this.entities) {
 	    if (ent.getHelloMessage().equals(message_p))
 		ret.add(ent);
-
 	}
 	return ret;
     }
-
+    /**
+     * Consumer method for instance save 
+     */
     @Override
     @Consume(uri = "jms:queue:helloServiceQueueIn")
-    public <S extends HelloEntity> void save(@Body S entity) {
-	entities.add(entity);
-	producer.sendBody(findAll());
+    public final <S extends HelloEntity> void save(@Body final S entity) {
+	this.entities.add(entity);
+	this.producer.sendBody(findAll());
 
     }
 

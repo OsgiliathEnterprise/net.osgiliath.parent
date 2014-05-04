@@ -20,6 +20,8 @@ package security;
  * #L%
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.SaltSource;
@@ -34,7 +36,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * 
  */
 public class LoginPasswordSecurityService implements SecurityService {
-    // @Inject
+    /**
+     * Logger
+     */
+    private final static Logger LOG = LoggerFactory
+	    .getLogger(LoginPasswordSecurityService.class);
     /**
      * The {@link AuthenticationManager}
      */
@@ -43,7 +49,6 @@ public class LoginPasswordSecurityService implements SecurityService {
     /**
      * The {@link PasswordEncoder}
      */
-    // @Inject
     private PasswordEncoder passwordEncoder;
     /**
      * The {@link SaltSource}
@@ -84,10 +89,10 @@ public class LoginPasswordSecurityService implements SecurityService {
 	Authentication aut = new UsernamePasswordAuthenticationToken(username,
 		password);
 	try {
-	    aut = authenticationManager.authenticate(aut);
+	    aut = this.authenticationManager.authenticate(aut);
 	    SecurityContextHolder.getContext().setAuthentication(aut);
 	} catch (Exception e) {
-	    e.printStackTrace();
+	    LOG.error("error while authenticating", e);
 	    return false;
 	}
 	return aut.isAuthenticated();
@@ -97,19 +102,16 @@ public class LoginPasswordSecurityService implements SecurityService {
      * {@inheritDoc}
      */
 
-    public MUser onSubscription(MUser subscriptionMessageIn) {
-	MUser user = subscriptionMessageIn;
-
-	MAuthority auth = new MAuthority();
+    public final MUser onSubscription(final MUser subscriptionMessageIn) {
+	final MAuthority auth = new MAuthority();
 	auth.setAuthority(AUTHORITY.MEMBER);
-
-	user.getAuthorities().add(auth);
-	String password = user.getPassword();
-	password = passwordEncoder.encodePassword(password,
-		saltSource.getSalt(user));
-	user.setPassword(password);
-	RepositoryUserDetailsService.getUsers().add(user);
-	return user;
+	subscriptionMessageIn.getAuthorities().add(auth);
+	final String password = subscriptionMessageIn.getPassword();
+	final String saltedPassword = this.passwordEncoder.encodePassword(
+		password, this.saltSource.getSalt(subscriptionMessageIn));
+	subscriptionMessageIn.setPassword(saltedPassword);
+	RepositoryUserDetailsService.getUsers().add(subscriptionMessageIn);
+	return subscriptionMessageIn;
 
     }
 }

@@ -27,14 +27,16 @@ import org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet;
 
 @WebServlet(urlPatterns = { "/*" }, initParams = {
 	@WebInitParam(name = "jaxrs.providers", value = "org.apache.cxf.jaxrs.provider.JAXBElementProvider,org.apache.cxf.jaxrs.provider.json.JSONProvider"),
-	// @WebInitParam(name="jaxrs.serviceClasses",
-	// value="net.osgiliath.features.karaf.jaxrs.web.impl.HelloServiceImpl"),
-	// @WebInitParam(name="jaxrs.address", value="/helloService")
-	@WebInitParam(name = "javax.ws.rs.Application", value = "conf.JaxRSApplication")
-
-}
-
-)
+	@WebInitParam(name = "javax.ws.rs.Application", value = "conf.JaxRSApplication") })
+/**
+ * 
+ * @author charliemordant
+ * JaxRS main servlet
+ */
 public class JaxRSServicesProviderServlet extends CXFNonSpringJaxrsServlet {
 
+    /**
+     * serial
+     */
+    private static final long serialVersionUID = 6922224281418865476L;
 }

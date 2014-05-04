@@ -37,37 +37,51 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
+/**
+ * @author charliemordant
+ * JPA implementation with CDI injection
+ */
 @OsgiServiceProvider
 public class HelloRepositoryImpl implements HelloRepository {
-    private static final Logger log = LoggerFactory
+    /**
+     * Logger
+     */
+    private static final Logger LOG = LoggerFactory
 	    .getLogger(HelloRepositoryImpl.class);
-
+    /**
+     * Entity manager
+     */
     @Inject
-    private EntityManager em;
-
-    public HelloEntity save(HelloEntity entity) {
-	log.info("Persisting hello with message: " + entity.getHelloMessage());
-	em.persist(entity);
+    private EntityManager entityManager;
+    /**
+     * save method
+     */
+    public final HelloEntity save(final HelloEntity entity) {
+	LOG.info("Persisting hello with message: " + entity.getHelloMessage());
+	entityManager.persist(entity);
 	return entity;
     }
-
-    public Collection<HelloEntity> getAll() {
-	CriteriaBuilder cb = em.getCriteriaBuilder();
-	CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-	Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
+    /**
+     * gets all
+     */
+    public final Collection<HelloEntity> getAll() {
+	final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+	final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
+	final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
 	cq.select(helloObject);
 
-	TypedQuery<HelloEntity> q = em.createQuery(cq);
-	List<HelloEntity> result = q.getResultList();
-	log.info("Returning : " + result.size() + " hellomessages");
+	final TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
+	final List<HelloEntity> result = q.getResultList();
+	LOG.info("Returning : " + result.size() + " hellomessages");
 	return result;
 
     }
-
+    /**
+     * deletes all
+     */
     public void deleteAll() {
 	for (HelloEntity entity : getAll()) {
-	    em.remove(entity);
+	    entityManager.remove(entity);
 	}
     }
 }

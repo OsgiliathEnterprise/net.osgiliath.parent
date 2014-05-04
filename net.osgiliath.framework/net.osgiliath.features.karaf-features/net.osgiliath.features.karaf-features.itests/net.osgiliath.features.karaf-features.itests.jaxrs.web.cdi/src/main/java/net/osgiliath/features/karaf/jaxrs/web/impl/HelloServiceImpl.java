@@ -33,21 +33,33 @@ import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+/**
+ * 
+ * @author charliemordant Service implementation
+ */
 @ApplicationScoped
 @Default
 public class HelloServiceImpl implements HelloServiceJaxRS {
+    /**
+     * Instances registry
+     */
     private Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
+    /**
+     * Saves instance
+     */
     @Override
-    public void persistHello(HelloObject helloObject) {
-	objects.add(helloObject);
-
+    public final void persistHello(final HelloObject helloObject) {
+	this.objects.add(helloObject);
     }
 
+    /**
+     * Returns instances
+     */
     @Override
     public Hellos getHellos() {
 
-	return new Hellos(Lists.newArrayList(Iterables.transform(objects,
+	return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
 		new Function<HelloObject, String>() {
 
 		    @Override
