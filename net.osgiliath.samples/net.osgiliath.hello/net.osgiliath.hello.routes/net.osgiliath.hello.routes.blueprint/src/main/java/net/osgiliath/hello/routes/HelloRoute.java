@@ -38,15 +38,30 @@ import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.apache.commons.io.IOUtils;
 
-//TODO sample route, see apache camel and EIP keyword on the net ;)
+/**
+ * 
+ * @author charliemordant
+ * sample route, see apache camel and EIP keyword on the net ;)
+ */
 public class HelloRoute extends RouteBuilder {
+    /**
+     * Jackson converters
+     */
     private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
 	    HelloEntity.class, Hellos.class);
+    /**
+     * processes JSR303 validation errors
+     */
     @Setter
     private Processor thrownExceptionMessageToInBodyProcessor;
+    /**
+     * xmljson dataformat
+     */
     @Setter
     private DataFormat xmljson;
-
+    /**
+     * changes inputstream to string
+     */
     private Processor octetsStreamToStringProcessor = new Processor() {
 
 	@Override
@@ -60,12 +75,14 @@ public class HelloRoute extends RouteBuilder {
 
 	}
     };
-
+    /**
+     * Configures routes
+     */
     @Override
     public void configure() throws Exception {
 	JAXBContext ctx = JAXBContext.newInstance(new Class[] {
 		HelloEntity.class, Hellos.class });
-	DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
+	final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 
 	from("{{hello.MessagingEntryPoint}}")
 		.log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
@@ -82,7 +99,7 @@ public class HelloRoute extends RouteBuilder {
 	from("direct:persistObject")
 		.setHeader(Exchange.HTTP_METHOD, constant("POST"))
 		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
-		.unmarshal(helloObjectJSonFormat)
+		.unmarshal(this.helloObjectJSonFormat)
 		.marshal(jaxBDataFormat)
 		.log(LoggingLevel.INFO, "marshalled: ${body}")
 		.doTry()
@@ -104,7 +121,7 @@ public class HelloRoute extends RouteBuilder {
 		.marshal(xmljson).log(LoggingLevel.INFO, "marshalled: ${body}");
 
 	from("direct:helloValidationError")
-		.process(thrownExceptionMessageToInBodyProcessor)
+		.process(this.thrownExceptionMessageToInBodyProcessor)
 		.process(new Processor() {
 
 		    @Override

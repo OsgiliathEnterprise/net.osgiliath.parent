@@ -26,8 +26,15 @@ import javax.validation.Validator;
 
 import net.osgiliath.validator.osgi.ValidatorHelper;
 
+/**
+ * 
+ * @author charliemordant CDI validator producer
+ */
 public class CDIValidator {
-
+    /**
+     * 
+     * @return the CDI injected validator
+     */
     @Produces
     @org.hibernate.validator.cdi.HibernateValidator
     @Default

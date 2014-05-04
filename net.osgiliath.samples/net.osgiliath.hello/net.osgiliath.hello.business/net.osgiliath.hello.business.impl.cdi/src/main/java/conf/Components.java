@@ -25,26 +25,37 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.camel.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * 
+ * @author charliemordant
+ * Messaging components imports
+ */
 @Eager
 @ApplicationScoped
+@Slf4j
 public class Components {
-    private Logger LOG = LoggerFactory.getLogger(Components.class);
-
+    
+    /**
+     * OSGI import
+     */
     @Inject
     @OsgiService(filter = "(component-type=jms)", dynamic = true)
     private Component jms;
-
+    /**
+     * 
+     * @return Messaging component
+     */
     @Produces
     @Named("jms")
     public Component getJms() {
-	LOG.info("Inject jms route");
+	log.info("Inject jms route");
 	return jms;
     }
 }

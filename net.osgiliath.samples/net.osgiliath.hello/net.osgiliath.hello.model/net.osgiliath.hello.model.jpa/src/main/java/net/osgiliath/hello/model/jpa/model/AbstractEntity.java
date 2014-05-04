@@ -29,12 +29,19 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 import lombok.Data;
-
+/**
+ * 
+ * @author charliemordant
+ * General persistence entity
+ */
 @Data
 @MappedSuperclass
 // @XmlRootElement on your child class
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class AbstractEntity {
+    /**
+     * Identifier
+     */
     @XmlElement
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

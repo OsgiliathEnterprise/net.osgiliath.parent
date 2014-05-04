@@ -27,18 +27,26 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 /**
- * TODO you can remove this declaration after seen the implementation
+ *  Business service interface declaration
  * 
  * @author charliemordant
  * 
  */
 
 public interface HelloService {
-
+    /**
+     * Saves an entity
+     * @param helloMessage_p entity to save
+     */
     void persistHello(@NotNull @Valid HelloEntity helloMessage_p);
-
+    /**
+     * get entities
+     * @return entities
+     */
     Hellos getHellos();
-
+    /**
+     * Delete entities
+     */
     void deleteAll();
 
 }

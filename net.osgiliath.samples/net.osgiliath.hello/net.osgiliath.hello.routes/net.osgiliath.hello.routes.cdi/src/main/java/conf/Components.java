@@ -26,6 +26,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.camel.Component;
@@ -37,53 +38,74 @@ import org.apache.camel.spi.DataFormat;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * 
+ * @author charliemordant
+ * CDI configuration
+ */
+@Slf4j
 @Eager
 public class Components {
-    private Logger LOG = LoggerFactory.getLogger(Components.class);
-
+    /**
+     * Messaging component import
+     */
     @Inject
     @OsgiService(filter = "(component-type=jms)", dynamic = true)
     private Component jms;
-
+    /**
+     * transactional messaging component
+     */
     @Inject
     @OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
     private Component jmsXA;
-
+    /**
+     * 
+     * @return JSR303 message processor
+     */
     @Produces
     @Named("thrownExceptionMessageToInBodyProcessor")
     public Processor getThrownExceptionMessageToInBodyProcessor() {
-	LOG.info("Inject Processor in body");
+	log.info("Inject Processor in body");
 	return new ThrownExceptionMessageToInBodyProcessor();
     }
-
+    /**
+     * @return JMS component CDI export
+     */
     @Produces
     @Named("jms")
     public Component getJms() {
-	LOG.info("Inject jms");
+	log.info("Inject jms");
 	return jms;
     }
-
+    /**
+     * @return JMS XA component CDI export
+     */
     @Produces
     @Named("jmsXA")
     public Component getJmsXA() {
-	LOG.info("Inject jmsXA");
+	log.info("Inject jmsXA");
 	return jmsXA;
     }
-
+    /**
+     * @return HTTP component CDI export
+     */
     @Produces
     @Named("http")
     public Component getHttp() {
-	LOG.info("Inject httpComponent");
+	log.info("Inject httpComponent");
 	return new HttpComponent();
     }
-
+    /**
+     * @return Json component CDI export
+     */
     @Produces
     @Named("json")
     public DataFormat getJacksonDataFormat() {
 	return new JacksonDataFormat();
     }
-
+    /**
+     * @return XmlJson component CDI export
+     */
     @Produces
     @Named("xmljson")
     public DataFormat getXmlJsonDataFormat() {
