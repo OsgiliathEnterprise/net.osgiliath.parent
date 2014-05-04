@@ -36,28 +36,42 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.sun.istack.FinalArrayList;
 
+/**
+ * 
+ * @author charliemordant REST Service implementation for testing purpose (the
+ *         only noticeable thing is the CXFEndpoint annotation
+ */
 @OsgiServiceProvider
 @CXFEndpoint(url = "/helloService", providersClasses = {
 	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
 public class HelloServiceImpl implements HelloServiceJaxRS {
+    /**
+     * Instances elements
+     */
     private Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
+    /**
+     * Registering instance
+     */
     @Override
-    public void persistHello(HelloObject helloObject) {
-	objects.add(helloObject);
+    public final void persistHello(final HelloObject helloObject) {
+	this.objects.add(helloObject);
 
     }
 
+    /**
+     * Returns registered instances
+     */
     @Override
     public Hellos getHellos() {
 
-	return new Hellos(Lists.newArrayList(Iterables.transform(objects,
+	return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
 		new Function<HelloObject, String>() {
 
 		    @Override
-		    public String apply(HelloObject input) {
-
+		    public String apply(final HelloObject input) {
 			return input.getHelloMessage();
 		    };
 		})));

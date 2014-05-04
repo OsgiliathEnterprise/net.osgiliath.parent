@@ -24,6 +24,10 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,6 +37,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author Charlie
  * 
  */
+@Data
 @SuppressWarnings("serial")
 public class MUser implements UserDetails, Serializable {
     /**
@@ -40,7 +45,7 @@ public class MUser implements UserDetails, Serializable {
      */
     private String pseudo;
     /**
-     * His Email
+     * His pwd
      */
     private String password;
     /**
@@ -48,18 +53,16 @@ public class MUser implements UserDetails, Serializable {
      */
     private Collection<MAuthority> mAuthorities = new HashSet<MAuthority>();
 
-    public String getPseudo() {
-	return pseudo;
-    }
-
+   
     /**
      * Returns a List of Authorities
      */
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-	Collection<GrantedAuthority> ret = new HashSet<GrantedAuthority>();
-	for (MAuthority authority : mAuthorities)
+	final Collection<GrantedAuthority> ret = new HashSet<GrantedAuthority>();
+	for (MAuthority authority : this.mAuthorities) {
 	    ret.add(authority);
+	}
 	return ret;
     }
 
@@ -68,7 +71,7 @@ public class MUser implements UserDetails, Serializable {
      */
     @Override
     public String getUsername() {
-	return pseudo;
+	return this.pseudo;
     }
 
     /**
@@ -103,24 +106,7 @@ public class MUser implements UserDetails, Serializable {
 	return true;
     }
 
-    public String getPassword() {
-	return password;
-    }
 
-    public void setPassword(String password) {
-	this.password = password;
-    }
 
-    public Collection<MAuthority> getmAuthorities() {
-	return mAuthorities;
-    }
-
-    public void setmAuthorities(Collection<MAuthority> mAuthorities) {
-	this.mAuthorities = mAuthorities;
-    }
-
-    public void setPseudo(String pseudo) {
-	this.pseudo = pseudo;
-    }
 
 }

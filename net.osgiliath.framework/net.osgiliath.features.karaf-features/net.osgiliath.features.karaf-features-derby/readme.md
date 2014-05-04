@@ -17,6 +17,7 @@ Reference this feature in your pom:
 			<classifier>features</classifier>
 		</dependency>
 ```
+And don't forget to add the feature you want to use on your app features.xml
 
 You can use these feature with the jpa one, creating a blueprint database definition of your provided databases
 

@@ -26,7 +26,10 @@ import org.apache.deltaspike.data.api.EntityRepository;
 import org.apache.deltaspike.data.api.Repository;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
-//JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
+/**
+ * 
+ * @author charliemordant CDI repository declaration
+ */
 @Transactional
 @Repository
 public interface HelloRepository extends EntityRepository<HelloEntity, Long> {

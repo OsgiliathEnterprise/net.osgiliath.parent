@@ -28,32 +28,23 @@ import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
 
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-
+/**
+ * 
+ * @author charliemordant
+ * Validation test
+ */
 @Default
 @OsgiServiceProvider
 public class ValidatorFactorySample implements IValidatorFactorySample {
-    // @Inject
-    // @HibernateValidator
-    // private Validator validator;
-
-    // public Validator getValidator() {
-    // return validator;
-    // }
-    //
-    // public void setValidator(Validator validator) {
-    // this.validator = validator;
-    // }
-    //
+    /**
+     * Validation of a null message
+     */
     public void nullMessageValidation(@NotNull @Valid HelloObject object) {
 
-	Object mayObject = object;
-	if (mayObject != null)
-	    System.out.println(mayObject.toString());
-	// Set<ConstraintViolation<HelloObject>> validationResults = validator
-	// .validate(object);
-	// String errors = "";
-	// if (!validationResults.isEmpty()) {
-	// throw new ValidationException(errors);
-	// }
+	if (object != null) {
+	    // Exception must have be thrown
+	    System.out.println(object.toString());
+	}
+	
     }
 }

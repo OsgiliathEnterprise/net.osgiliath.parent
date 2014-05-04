@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.jpa.cdi</artifactId>
+	<name>Osgiliath integration tests JPA CDI</name>
+	<description>JPA integration test with CDI (not working)</description>
 	<build>
 		<resources>
 			<resource>

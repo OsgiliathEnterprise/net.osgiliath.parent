@@ -1,33 +1,36 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.osgiliath.framework</groupId>
-    <artifactId>net.osgiliath.features.karaf-features</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
-  </parent>
-  <artifactId>net.osgiliath.features.karaf-features-routes</artifactId>
-  <dependencies>
-  <dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath.framework</groupId>
+		<artifactId>net.osgiliath.features.karaf-features</artifactId>
+		<version>0.0.5-SNAPSHOT</version>
+	</parent>
+	<artifactId>net.osgiliath.features.karaf-features-routes</artifactId>
+	<name>Osgiliath routes features</name>
+	<description>Some more routing features for Osgiliath framework</description>
+	<dependencies>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-  <dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-  	<dependency>
+		<dependency>
 			<groupId>org.apache.camel.karaf</groupId>
 			<artifactId>apache-camel</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-  	<dependency>
+		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-aether</artifactId>
 		</dependency>
@@ -44,8 +47,8 @@
 		</resources>
 		<plugins>
 			<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

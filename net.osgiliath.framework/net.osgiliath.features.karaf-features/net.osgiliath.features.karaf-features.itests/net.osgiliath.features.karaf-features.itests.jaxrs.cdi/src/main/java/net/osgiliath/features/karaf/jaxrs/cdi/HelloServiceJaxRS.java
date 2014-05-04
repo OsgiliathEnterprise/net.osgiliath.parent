@@ -32,13 +32,28 @@ import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.JaxRSService;
 
+/**
+ * 
+ * @author charliemordant REST service definition
+ */
 @Default
 @Path("/hello")
 public interface HelloServiceJaxRS extends JaxRSService {
+    /**
+     * Registering instance
+     * 
+     * @param helloObject
+     *            instance
+     */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     void persistHello(HelloObject helloObject);
 
+    /**
+     * retrieving instances
+     * 
+     * @return instances
+     */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     Hellos getHellos();

@@ -17,6 +17,7 @@ Reference this feature in your pom:
 			<classifier>features</classifier>
 		</dependency>
 ```
+And don't forget to add the feature you want to use on your app features.xml
 
 Then, add these capabilities on your osgi.bnd:
 

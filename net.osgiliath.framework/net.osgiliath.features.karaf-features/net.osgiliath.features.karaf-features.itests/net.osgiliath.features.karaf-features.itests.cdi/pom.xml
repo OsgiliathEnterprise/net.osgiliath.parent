@@ -7,6 +7,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.cdi</artifactId>
+	<name>Osgiliath integration tests CDI</name>
+	<description>Dependency injection with pax cdi integration tests</description>
 	<build>
 		<resources>
 			<resource>

@@ -17,7 +17,7 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-cdi</artifactId>
-	<name>Osgiliath CDI feature</name>
+	<name>Osgiliath CDI features</name>
 	<description>Context dependency Injection for Osgiliath framework</description>
 	<build>
 		<resources>

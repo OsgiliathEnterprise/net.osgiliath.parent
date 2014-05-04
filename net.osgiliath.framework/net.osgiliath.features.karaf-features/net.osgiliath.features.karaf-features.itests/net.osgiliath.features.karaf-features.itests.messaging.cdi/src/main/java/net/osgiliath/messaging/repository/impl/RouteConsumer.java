@@ -32,8 +32,15 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 
+/**
+ * 
+ * @author charliemordant CDI consumer via routes
+ */
 @ContextName
 public class RouteConsumer extends RouteBuilder {
+    /**
+     * message consuming route
+     */
     @Override
     public void configure() throws Exception {
 	from("{{messaging.routequeuein}}")
@@ -42,10 +49,10 @@ public class RouteConsumer extends RouteBuilder {
 
 		    @Override
 		    public void process(Exchange exchange) throws Exception {
-			Hellos hellos = new Hellos();
-			HelloEntity entity = exchange.getIn().getBody(
+			final Hellos hellos = new Hellos();
+			final HelloEntity entity = exchange.getIn().getBody(
 				HelloEntity.class);
-			Collection<HelloEntity> entities = new ArrayList<>();
+			final Collection<HelloEntity> entities = new ArrayList<>();
 			entities.add(entity);
 			hellos.setEntities(entities);
 			exchange.getOut().setBody(hellos);

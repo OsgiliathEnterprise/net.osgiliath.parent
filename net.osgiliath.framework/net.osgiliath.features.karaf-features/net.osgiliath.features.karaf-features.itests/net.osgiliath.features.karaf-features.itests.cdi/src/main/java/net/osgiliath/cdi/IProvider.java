@@ -19,7 +19,15 @@ package net.osgiliath.cdi;
  * limitations under the License.
  * #L%
  */
-
+/**
+ * 
+ * @author charliemordant
+ * CDI provider definition
+ */
 public interface IProvider {
+    /**
+     * Message provider
+     * @return a message
+     */
     String getMessage();
 }

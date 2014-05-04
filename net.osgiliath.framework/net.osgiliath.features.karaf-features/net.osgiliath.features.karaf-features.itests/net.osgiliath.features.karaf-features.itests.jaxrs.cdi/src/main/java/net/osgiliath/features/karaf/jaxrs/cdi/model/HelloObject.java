@@ -43,9 +43,20 @@ import lombok.experimental.Builder;
 // other constructor
 @XmlRootElement
 // xml marshalling
+/**
+ * 
+ * @author charliemordant
+ * Element instances
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HelloObject implements Serializable {
+    /**
+     * Serial
+     */
     private static final transient long serialVersionUID = 6233801298404301547L;
+    /**
+     * message
+     */
     @XmlElement
     // XML node
     private String helloMessage;

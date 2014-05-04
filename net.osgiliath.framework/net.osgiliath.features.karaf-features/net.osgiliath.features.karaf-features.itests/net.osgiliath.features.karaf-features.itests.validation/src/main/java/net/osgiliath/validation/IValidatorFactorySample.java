@@ -23,8 +23,16 @@ import javax.validation.executable.ValidateOnExecution;
  * limitations under the License.
  * #L%
  */
-
+/**
+ * 
+ * @author charliemordant
+ * Validation service interface
+ */
 public interface IValidatorFactorySample {
+    /**
+     * must throw exception
+     * @param object
+     */
     @ValidateOnExecution
     void nullMessageValidation(@NotNull @Valid HelloObject object);
 }

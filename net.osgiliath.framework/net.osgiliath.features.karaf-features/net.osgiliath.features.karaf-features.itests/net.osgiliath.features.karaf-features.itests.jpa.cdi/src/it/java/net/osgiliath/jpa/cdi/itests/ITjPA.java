@@ -50,7 +50,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO example of an integration test
+ * Tests for JPA cdi integration
  * 
  * @author charliemordant
  * 

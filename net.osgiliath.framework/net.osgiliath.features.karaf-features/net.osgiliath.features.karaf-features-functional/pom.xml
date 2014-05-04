@@ -16,6 +16,8 @@
     <version>0.0.5-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
+  <name>Osgiliath functional programming feature</name>
+  <description>Enables Guavas, Apache commons, etc... All stuf that simplify programming in general</description>
   <build>
 		<resources>
 			<resource>

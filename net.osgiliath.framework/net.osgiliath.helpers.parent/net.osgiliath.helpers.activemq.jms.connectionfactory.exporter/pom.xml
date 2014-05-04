@@ -16,6 +16,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.activemq.jms.connectionfactory.exporter</artifactId>
+	<name>Connection factory</name>
+	<description>Connection factory for messaging in Osgiliath framework</description>
 	<build>
 		<plugins>
 			<plugin>

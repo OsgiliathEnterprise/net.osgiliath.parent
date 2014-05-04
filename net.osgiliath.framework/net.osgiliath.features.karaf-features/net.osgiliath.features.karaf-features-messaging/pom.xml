@@ -16,6 +16,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
+	<name>Osgiliath messaging features</name>
+	<description>Asynchronous messaging support for Osgiliath</description>
 	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>

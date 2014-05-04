@@ -22,6 +22,8 @@ package security;
 
 import java.io.Serializable;
 
+import lombok.Setter;
+
 import org.springframework.security.core.GrantedAuthority;
 
 /**
@@ -30,22 +32,22 @@ import org.springframework.security.core.GrantedAuthority;
  * @author Charlie
  * 
  */
+
 @SuppressWarnings("serial")
 public class MAuthority implements GrantedAuthority, Serializable {
 
     /**
-     * The Authority String
+     * The Authority
      */
+    @Setter
     private AUTHORITY authority;
 
-    public void setAuthority(AUTHORITY authority) {
-	this.authority = authority;
-    }
-
+    /**
+     * returns authority String representation
+     */
     @Override
     public String getAuthority() {
-
-	return authority.getAuth();
+	return this.authority.getAuth();
     }
 
 }

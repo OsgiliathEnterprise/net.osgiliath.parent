@@ -16,12 +16,13 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-validation</artifactId>
+	<name>Osgiliath validation features</name>
+	<description>JSR303 (validation) support for Osgiliath framework</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.fasterxml</groupId>
 			<artifactId>classmate</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>

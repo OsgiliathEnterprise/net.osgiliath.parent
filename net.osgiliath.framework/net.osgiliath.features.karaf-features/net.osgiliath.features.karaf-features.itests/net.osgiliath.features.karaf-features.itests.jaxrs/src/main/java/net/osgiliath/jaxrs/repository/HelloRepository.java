@@ -34,20 +34,31 @@ import javax.ws.rs.core.MediaType;
 import net.osgiliath.jaxrs.HelloEntity;
 
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the template.mf cxf package export)
+/**
+ * 
+ * @author charliemordant REST definition of the service
+ */
 @Path("/hello")
 public interface HelloRepository {
-
-    public Collection<? extends HelloEntity> findByHelloObjectMessage(
-	    String message_p);
-
+    /**
+     * find entities corrsponding to message
+     */
+    Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
+    /**
+     * Save an entity
+     */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
-    public <S extends HelloEntity> S save(S entity);
-
+    <S extends HelloEntity> S save(S entity);
+    /**
+     * Finds all entities
+     */
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<HelloEntity> findAll();
-
+    List<HelloEntity> findAll();
+    /**
+     * Deletes all entities
+     */
     @DELETE
     void deleteAll();
 }

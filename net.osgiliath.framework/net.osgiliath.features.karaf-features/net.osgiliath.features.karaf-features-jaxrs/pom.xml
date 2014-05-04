@@ -16,6 +16,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
+	<name>Osgiliath JaxRS features</name>
+	<description>REST features for Osgiliath framework</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.cxf.karaf</groupId>

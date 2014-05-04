@@ -17,7 +17,7 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-derby</artifactId>
-	<name>Osgiliath Derby database feature</name>
+	<name>Osgiliath Derby database features</name>
 	<description>Feature for Derby database support</description>
 	<dependencies>
 		<dependency>

@@ -6,6 +6,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
+	<name>Osgiliath standard features</name>
+	<description>Mainly overriden standard Karaf features for Osgiliath</description>
 	<build>
 		<resources>
 			<resource>

@@ -30,15 +30,27 @@ import org.apache.camel.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * 
+ * @author charliemordant
+ * Components configuration with CDI
+ */
 @Eager
 public class Components {
-    private Logger LOG = LoggerFactory.getLogger(Components.class);
-
+    /**
+     * logger
+     */
+    private static final Logger LOG = LoggerFactory.getLogger(Components.class);
+    /**
+     * OSGI service import
+     */
     @Inject
     @OsgiService(filter = "(component-type=jms)", dynamic = true)
     private Component jms;
-
+    /**
+     * Producer
+     * @return the jms component
+     */
     @Produces
     @Named("jms")
     public Component getJms() {

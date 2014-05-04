@@ -22,27 +22,26 @@ package net.osgiliath.messaging;
 
 import java.io.Serializable;
 
+import lombok.Data;
+/**
+ * 
+ * @author charliemordant
+ * sample entity
+ */
+@Data
 public class HelloEntity implements Serializable {
     /**
-	 * 
+	 * serial
 	 */
     private static final long serialVersionUID = -559379928931329555L;
-    protected Long entityId;
+    /**
+     * Id
+     */
+    private Long entityId;
+    /**
+     * message
+     */
     private String helloMessage;
 
-    public Long getEntityId() {
-	return entityId;
-    }
-
-    public void setEntityId(Long entityId) {
-	this.entityId = entityId;
-    }
-
-    public String getHelloMessage() {
-	return helloMessage;
-    }
-
-    public void setHelloMessage(String helloMessage) {
-	this.helloMessage = helloMessage;
-    }
+   
 }

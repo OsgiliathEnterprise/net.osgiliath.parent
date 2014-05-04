@@ -16,6 +16,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
+	<name>Osgiliath security features</name>
+	<description>Security (i.e. spring security) feature for Osgiliath</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>

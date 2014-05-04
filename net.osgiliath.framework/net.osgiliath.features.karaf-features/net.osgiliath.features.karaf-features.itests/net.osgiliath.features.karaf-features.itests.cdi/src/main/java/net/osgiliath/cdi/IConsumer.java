@@ -19,7 +19,15 @@ package net.osgiliath.cdi;
  * limitations under the License.
  * #L%
  */
-
+/**
+ * 
+ * @author charliemordant
+ * Interface for CDI consuming
+ */
 public interface IConsumer {
+    /**
+     * Hello method
+     * @return the hello String
+     */
     String getHello();
 }

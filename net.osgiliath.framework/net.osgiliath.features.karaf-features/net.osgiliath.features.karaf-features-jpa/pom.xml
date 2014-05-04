@@ -16,6 +16,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
+	<name>Osgiliath JPA features</name>
+	<description>Persistence support (database access) for Osgiliath framework</description>
 	<dependencies>
 		<dependency>
 			<groupId>commons-collections</groupId>

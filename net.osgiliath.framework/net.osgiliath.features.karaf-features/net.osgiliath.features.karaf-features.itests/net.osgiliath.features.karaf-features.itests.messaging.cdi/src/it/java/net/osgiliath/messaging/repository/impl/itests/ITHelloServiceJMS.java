@@ -93,20 +93,12 @@ public class ITHelloServiceJMS extends PaxExamKarafConfigurationFactory {
 		    + b.getState());
 	}
 	LOG.trace("*********  End list ****************");
-	// LOG.info("JMS component on itests: " +
-	// repository.getCdiBootStrap().getJms().getCamelContext());
-	// ProducerTemplate template =
-	// repository.getCdiBootStrap().getJms().getCamelContext().createProducerTemplate();
 	HelloEntity entity = new HelloEntity();
 	entity.setHelloMessage("Charlie");
 	LOG.info("Sending Body");
-	// repository.directSave(entity);
-	// Thread.sleep(1000);
-	// repository.ensureDelivery();
 	ProducerTemplate template = jmsComponent.getCamelContext()
 		.createProducerTemplate();
 	template.sendBody("jms:queue:helloServiceQueueIn", entity);
-	// repository.directSave(entity);
 	ConsumerTemplate consumer = template.getCamelContext()
 		.createConsumerTemplate();
 	LOG.info("Waiting answer");

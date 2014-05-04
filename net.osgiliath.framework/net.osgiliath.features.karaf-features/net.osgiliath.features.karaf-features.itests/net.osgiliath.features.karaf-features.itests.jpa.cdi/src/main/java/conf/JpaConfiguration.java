@@ -25,22 +25,40 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import net.osgiliath.helpers.cdi.eager.Eager;
+
 import org.ops4j.pax.cdi.api.OsgiService;
-
+/**
+ * 
+ * @author charliemordant
+ * JPA configuration with CDI
+ */
+@Eager
 public class JpaConfiguration {
+    /**
+     * Aries static declaration
+     */
     private static final String emfContainerConstant = "(org.apache.aries.jpa.container.managed=true)";
-
-    // or manual bootstrapping
+    
+    /**
+     * Entity manager factory
+     */
     @Inject
     @OsgiService
     // (dynamic=true,required=true/*, filter =
     // "(osgi.unit.name=myTestPu)"*/)//"(&(osgi.unit.name=myTestPu) "+emfContainerConstant+")")
     private EntityManagerFactory emf;
-
+    /**
+     * transaction manager
+     * @return manager
+     */
     // @Inject
     // @OsgiService(dynamic=true,required=true)
     // private TransactionManager txManager;
-
+    /**
+     * Entity manager producer
+     * @return the entity manager
+     */
     @Produces
     protected EntityManager createEntityManager() {
 	return this.emf.createEntityManager();

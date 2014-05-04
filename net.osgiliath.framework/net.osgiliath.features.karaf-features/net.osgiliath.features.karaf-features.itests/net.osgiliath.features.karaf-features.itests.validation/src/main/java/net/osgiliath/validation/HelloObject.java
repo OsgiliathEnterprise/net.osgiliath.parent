@@ -22,16 +22,18 @@ package net.osgiliath.validation;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+/**
+ * Sample validated entity
+ */
+@Data
 public class HelloObject {
+    /**
+     * message
+     */
     @NotNull
     private String message;
 
-    public String getMessage() {
-	return message;
-    }
-
-    public void setMessage(String message) {
-	this.message = message;
-    }
+   
 
 }
