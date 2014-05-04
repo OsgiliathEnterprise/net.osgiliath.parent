@@ -42,7 +42,7 @@ Karaf features
 
 ### Building/using
 
-Add to the settings.xml of your maven:
+Add to the settings.xml of your maven if you're behind a proxy:
 ```xml
 <settings>
   [...]

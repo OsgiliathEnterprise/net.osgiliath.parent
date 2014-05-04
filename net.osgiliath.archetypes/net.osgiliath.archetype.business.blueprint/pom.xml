@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -22,8 +23,9 @@
 	<artifactId>net.osgiliath.archetype.business.blueprint</artifactId>
 	<packaging>maven-archetype</packaging>
 
-	<name>net.osgiliath.archetypes.business blueprint version</name>
-
+	<name>Osgiliath business archetype with blueprint</name>
+	<description>Must be behind an Osgiliath parent archetype, business processing of data</description>
+	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<build>
 		<extensions>
 			<extension>
@@ -32,7 +34,6 @@
 				<version>2.2</version>
 			</extension>
 		</extensions>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -41,18 +42,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		 <plugins>
-			 <plugin>
-        			<groupId>org.apache.maven.plugins</groupId>
-        			<artifactId>maven-archetype-plugin</artifactId>
-      			</plugin>
-      		</plugins>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-archetype-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
-
-	<description>This is the business archetype of Osgiliath framework</description>
-
-	<url>https://blog.osgiliath.net/?page_id=224</url>
-
 	<developers>
 		<developer>
 			<id>cmordant</id>
@@ -64,7 +60,6 @@
 			</roles>
 		</developer>
 	</developers>
-
 	<licenses>
 		<license>
 			<name>Apache Licence 2.0</name>
