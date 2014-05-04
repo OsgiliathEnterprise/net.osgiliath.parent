@@ -1,19 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.osgiliath</groupId>
-    <artifactId>net.osgiliath.parent</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
-  </parent>
-  <artifactId>net.osgiliath.archetypes</artifactId>
-  <packaging>pom</packaging>
-  <modules>
-  <module>net.osgiliath.archetype.business.blueprint</module>
-  <module>net.osgiliath.archetype.business.cdi</module>
-  <module>net.osgiliath.archetype.model</module>
-  <module>net.osgiliath.archetype.parent</module>
-  <module>net.osgiliath.archetype.routes.cdi</module>
-  <module>net.osgiliath.archetype.routes.blueprint</module>
-  <module>net.osgiliath.archetype.ui</module>
-  </modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath</groupId>
+		<artifactId>net.osgiliath.parent</artifactId>
+		<version>0.0.5-SNAPSHOT</version>
+	</parent>
+	<artifactId>net.osgiliath.archetypes</artifactId>
+	<packaging>pom</packaging>
+	<name>Pom archetypes</name>
+	<description>Superpom for all Osgiliath Archetypes</description>
+	<modules>
+		<module>net.osgiliath.archetype.business.blueprint</module>
+		<module>net.osgiliath.archetype.business.cdi</module>
+		<module>net.osgiliath.archetype.model</module>
+		<module>net.osgiliath.archetype.parent</module>
+		<module>net.osgiliath.archetype.routes.cdi</module>
+		<module>net.osgiliath.archetype.routes.blueprint</module>
+		<module>net.osgiliath.archetype.ui</module>
+	</modules>
 </project>
