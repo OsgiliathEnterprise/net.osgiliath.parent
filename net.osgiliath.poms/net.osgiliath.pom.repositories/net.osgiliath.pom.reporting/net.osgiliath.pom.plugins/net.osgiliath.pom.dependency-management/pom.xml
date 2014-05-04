@@ -18,6 +18,8 @@
 	</parent>
 	<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 	<packaging>pom</packaging>
+	<name>Pom dependency management</name>
+	<description>Dependencies version for the entire Osgiliath submodules</description>
 	<modules>
 		<module>net.osgiliath.pom.projects.definition</module>
 	</modules>

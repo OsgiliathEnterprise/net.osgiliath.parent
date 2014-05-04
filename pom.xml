@@ -7,7 +7,7 @@
 	<artifactId>net.osgiliath.parent</artifactId>
 	<version>0.0.5-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Osgiliath framework</name>
+	<name>Pom Osgiliath framework</name>
 	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<description>
 	This is the parent pom for the entire Osgiliath framework.
