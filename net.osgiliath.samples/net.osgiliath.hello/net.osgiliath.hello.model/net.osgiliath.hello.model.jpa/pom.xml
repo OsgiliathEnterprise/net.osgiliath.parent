@@ -17,6 +17,9 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.model.jpa</artifactId>
+	<name>Helloworld sample JPA (database persistence)</name>
+	<description>JPA persistence module for helloworld</description>
+	
 	<build>
 		<resources>
 			<resource>

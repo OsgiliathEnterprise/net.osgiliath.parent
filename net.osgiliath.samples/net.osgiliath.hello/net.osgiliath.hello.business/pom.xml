@@ -17,6 +17,10 @@
   </parent>
   <artifactId>net.osgiliath.hello.business</artifactId>
   <packaging>pom</packaging>
+  <name>Helloworld sample business module</name>
+	<description>
+	Business module main pom
+	</description>
   <modules>
   	<module>net.osgiliath.hello.business.spi</module>
   	<module>net.osgiliath.hello.business.impl.blueprint</module>
