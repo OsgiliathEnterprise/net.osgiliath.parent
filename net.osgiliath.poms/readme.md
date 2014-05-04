@@ -2,14 +2,14 @@
 
 ## What's this?
 
-This is the superpom of all Osgiliath projects, it's composed of multiple maven modules containing the different standard configurations, libraries...
+This is the superpom of all Osgiliath pom projects, it's composed of multiple maven modules containing the different standard configurations, libraries...
 
 ## How to use?
 
 Just reference one of these poms at a parent pom of your project. i.e.:
 ```xml
 	<parent>
-<artifactId>net.osgiliath.pom.plugins</artifactId>
+<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 <groupId>net.osgiliath</groupId>
 <version>[Osgiliath_Version_To_Set]</version>
 <relativePath>..</relativePath>
@@ -30,7 +30,7 @@ Reference one of the superpom as a parent of your project (dependending your deg
 
 ## Architecture
 
-Here is a little description of the different modules:
+Here is a little description of the different sub poms modules:
 * osgiliath.repositories: contains the different repositories to grab the different dependencies (empty to comply sonatype Central distribution policy)
 * osgiliath.reporting: contains the reporting configuration (checkstyle, pmd, sonar, ...)
 * osgiliath.plugins: contains the global plugins configuration (weaving, creating manifests...)

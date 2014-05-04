@@ -7,6 +7,8 @@
 	</parent>
 	<artifactId>net.osgiliath.samples</artifactId>
 	<packaging>pom</packaging>
+	<name>Pom samples</name>
+	<description>Pom for Osgiliath samples</description>
 	<modules>
 		<module>net.osgiliath.hello</module>
 	</modules>
