@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -18,6 +19,9 @@
 	</parent>
 	<artifactId>net.osgiliath.pom.reporting</artifactId>
 	<packaging>pom</packaging>
+	<name>Pom reporting</name>
+	<description>Reporting configuration for the entire Osgiliath submodules</description>
+
 	<modules>
 		<module>net.osgiliath.pom.plugins</module>
 	</modules>
@@ -31,57 +35,26 @@
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${maven-checkstyle-plugin.version}</version>
 			</plugin>
-			<!-- see later for advanced reporting <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-doap-plugin</artifactId>
-				<version>${maven-doap-plugin.version}</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${maven-javadoc-plugin.version}</version>
-				<reportSets>
-					<reportSet>
-						<id>aggregate</id>
-						<inherited>false</inherited>
-						<reports>
-							<report>aggregate</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>${maven-jxr-plugin.version}</version>
-				<reportSets>
-					<reportSet>
-						<id>aggregate</id>
-						<inherited>false</inherited>
-						<reports>
-							<report>aggregate</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-linkcheck-plugin</artifactId>
-				<version>${maven-linkcheck-plugin.version}</version>
-			</plugin> -->
+			<!-- see later for advanced reporting <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-doap-plugin</artifactId> <version>${maven-doap-plugin.version}</version> 
+				</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+				<version>${maven-javadoc-plugin.version}</version> <reportSets> <reportSet> 
+				<id>aggregate</id> <inherited>false</inherited> <reports> <report>aggregate</report> 
+				</reports> </reportSet> </reportSets> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-jxr-plugin</artifactId> <version>${maven-jxr-plugin.version}</version> 
+				<reportSets> <reportSet> <id>aggregate</id> <inherited>false</inherited> 
+				<reports> <report>aggregate</report> </reports> </reportSet> </reportSets> 
+				</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-linkcheck-plugin</artifactId> 
+				<version>${maven-linkcheck-plugin.version}</version> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${maven-pmd-plugin.version}</version>
 			</plugin>
-			<!-- <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>${maven-project-info-reports-plugin.version}</version>
-				<configuration>
-					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-				</configuration>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-project-info-reports-plugin</artifactId> 
+				<version>${maven-project-info-reports-plugin.version}</version> <configuration> 
+				<dependencyLocationsEnabled>false</dependencyLocationsEnabled> </configuration> 
+				</plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>

@@ -22,21 +22,19 @@ limitations under the License.
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/${project.parent.artifactId}-cdi/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-functional/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
-	
 	<feature name='osgiliath-validation' version='${project.version}'>
 		<!--<feature version='${karaf.feature.spring.version}'>spring</feature>-->
 		<feature version='${project.version}'>osgiliath-cdi</feature>
-	
+		<feature version='${project.version}'>osgiliath-functional</feature>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.hibernate.validator.cdi.osgi/${project.version}</bundle>
 		<bundle >mvn:${project.groupId}/net.osgiliath.helpers.validation.osgi.services/${project.version}</bundle>
 		<bundle >mvn:org.hibernate/hibernate-validator/${org.hibernate.validator.version}</bundle>
-		
 		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/${org.apache.servicemix.bundles.cglib.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${geronimo-atinject_1.0_spec.version}</bundle>	
+		<bundle >mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${geronimo-atinject_1.0_spec.version}</bundle>
 		<bundle >mvn:org.jboss.logging/jboss-logging/${org.jboss.logging.version}</bundle>
 		<bundle >mvn:org.apache.geronimo.specs/geronimo-el_2.2_spec/${geronimo-el_2.2_spec.version}</bundle>
-		
 		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles.aspectj.version}</bundle>
 		<bundle >mvn:javax.validation/validation-api/${validation-api.version}</bundle>
 		<bundle >mvn:com.fasterxml/classmate/${com.fasterxml.classmate.version}</bundle>
