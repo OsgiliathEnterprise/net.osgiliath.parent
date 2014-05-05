@@ -24,8 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.sun.istack.FinalArrayList;
-
 import net.osgiliath.jaxrs.HelloEntity;
 import net.osgiliath.jaxrs.repository.HelloRepository;
 

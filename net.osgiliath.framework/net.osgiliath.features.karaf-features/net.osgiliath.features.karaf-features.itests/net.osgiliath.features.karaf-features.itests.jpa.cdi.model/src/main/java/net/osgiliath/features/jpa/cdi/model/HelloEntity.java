@@ -28,7 +28,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 /**
  * 
  * @author charliemordant
@@ -42,11 +41,14 @@ public class HelloEntity implements Serializable {
 	 */
     private static final transient long serialVersionUID = -4563351879876924302L;
     /**
-     * message
+     * id
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long entityId;
+    /**
+     * message
+     */
     private String helloMessage;
 
 }

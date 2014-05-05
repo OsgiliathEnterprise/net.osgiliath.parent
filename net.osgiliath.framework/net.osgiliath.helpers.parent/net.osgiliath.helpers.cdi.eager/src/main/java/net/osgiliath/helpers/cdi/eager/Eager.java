@@ -27,13 +27,14 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.inject.Qualifier;
+
 /**
  * 
- * @author charliemordant
- * Eager annotated bean will start at bundle startup even if they're not injected
+ * @author charliemordant Eager annotated bean will start at bundle startup even
+ *         if they're not injected
  */
 @Qualifier
 @Retention(RUNTIME)
-@Target({ TYPE })
+@Target(TYPE)
 public @interface Eager {
 }

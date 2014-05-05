@@ -36,19 +36,19 @@ public interface HelloRepository {
      * @param message_p message
      * @return corresponding entities
      */
-    public Collection<? extends HelloEntity> findByHelloObjectMessage(
+    Collection<? extends HelloEntity> findByHelloObjectMessage(
 	    String message_p);
     /**
      * Saves
      * @param entity the eneity
      * @return saved entity
      */
-    public <S extends HelloEntity> S save(S entity);
+    <S extends HelloEntity> S save(S entity);
     /**
      * 
      * @return all entities
      */
-    public List<HelloEntity> findAll();
+    List<HelloEntity> findAll();
     /**
      * deletes all
      */

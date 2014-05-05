@@ -25,6 +25,8 @@ import java.util.Collection;
 import java.util.Dictionary;
 import java.util.HashSet;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
@@ -32,23 +34,16 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.sun.istack.FinalArrayList;
 
 /**
  * 
  * @author charliemordant Service tracker for camel cdi config admin properties
  *         resolution
  */
+@Slf4j
 public class ConfigAdminTracker implements
 	ServiceTrackerCustomizer<ConfigurationAdmin, Object> {
-    /**
-     * Logger
-     */
-    private static final Logger LOG = LoggerFactory
-	    .getLogger(ConfigAdminTracker.class);
+    
     /**
      * Properties
      */
@@ -66,7 +61,7 @@ public class ConfigAdminTracker implements
      * 
      * @return the singleton instance
      */
-    public static ConfigAdminTracker getInstance(BundleContext context) {
+    public static synchronized ConfigAdminTracker getInstance(BundleContext context) {
 	if (instance == null) {
 
 	    instance = new ConfigAdminTracker();
@@ -126,19 +121,19 @@ public class ConfigAdminTracker implements
      */
     public String getProperty(String key) throws IOException,
 	    InvalidSyntaxException {
-	LOG.info("Retreiving property key: " + key);
+	log.info("Retreiving property key: " + key);
 	for (ConfigurationAdmin admin : this.admins) {
 	    final Configuration[] configurations = admin
 		    .listConfigurations(null);
 	    if (configurations != null) {
 		for (final Configuration configuration : configurations) {
-		    LOG.debug("parsing configuration: "
+		    log.debug("parsing configuration: "
 			    + configuration.getPid());
 		    final Dictionary<String, Object> dictionary = configuration
 			    .getProperties();
 		    final Object valObject = dictionary.get(key);
 		    if (valObject != null && valObject instanceof String) {
-			LOG.trace("got value: " + valObject);
+			log.trace("got value: " + valObject);
 			return (String) valObject;
 		    }
 		}

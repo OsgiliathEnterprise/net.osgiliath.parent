@@ -17,6 +17,9 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.routes.cdi</artifactId>
+	<name>Helloworld sample routes with CDI</name>
+	<description>Routes between UI and business made with CDI</description>
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<resources>

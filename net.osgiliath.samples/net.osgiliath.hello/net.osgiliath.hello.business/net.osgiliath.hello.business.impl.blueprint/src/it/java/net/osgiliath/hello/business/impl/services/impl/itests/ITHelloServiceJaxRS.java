@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
-import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
@@ -58,7 +58,7 @@ import org.osgi.framework.Constants;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
+public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactory {
     @Inject
     private BundleContext bundleContext;
 
@@ -76,7 +76,7 @@ public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
 	builder.setHeader("Export-Package",
 		"net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
 	builder.setHeader("Bundle-ManifestVersion", "2");

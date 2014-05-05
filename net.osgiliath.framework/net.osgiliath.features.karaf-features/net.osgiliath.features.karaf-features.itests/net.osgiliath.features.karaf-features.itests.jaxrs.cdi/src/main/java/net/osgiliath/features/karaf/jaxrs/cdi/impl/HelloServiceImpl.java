@@ -36,7 +36,6 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.sun.istack.FinalArrayList;
 
 /**
  * 

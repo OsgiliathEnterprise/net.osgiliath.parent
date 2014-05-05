@@ -34,17 +34,28 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
-//TODO You can remove this class, see how it configures REST web services URIs
+/**
+ *  see how it configures REST web services URIs
+ * @author charliemordant
+ *
+ */
 @Path("/hello")
 public interface HelloServiceJaxRS extends HelloService {
+    /**
+     * Saves Hello
+     */
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     void persistHello(@NotNull @Valid HelloEntity helloObject);
-
+    /**
+     * Gets hellos
+     */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     Hellos getHellos();
-
+    /**
+     * deletes all hello
+     */
     @DELETE
     void deleteAll();
 }

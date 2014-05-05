@@ -16,6 +16,8 @@
 		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.business.spi</artifactId>
+	<name>Business service API and service provider declaration</name>
+	<description>Send HelloMessages via REST or Messaging</description>
 	<build>
 		<plugins>
 			<plugin>

@@ -18,6 +18,9 @@
 	</parent>
 	<artifactId>net.osgiliath.hello.ui</artifactId>
 	<packaging>war</packaging>
+	<name>Helloworld sample Interface</name>
+	<description>UI module for helloworld sample</description>
+	
 	<properties>
 		<sonar.language>js</sonar.language>
 		<sonar.sources>src/main/javascript</sonar.sources>

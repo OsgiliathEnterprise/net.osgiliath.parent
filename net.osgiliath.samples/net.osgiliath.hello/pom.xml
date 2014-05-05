@@ -19,10 +19,10 @@
 	<groupId>net.osgiliath.hello</groupId>
 	<artifactId>net.osgiliath.hello</artifactId>
 	<packaging>pom</packaging>
+	<name>Helloworld sample made with Osgiliath archetype</name>
 	<description>
 	This is the reference sample of osgiliath framework, its a simple helloworld
 	</description>
-	<name>Helloworld sample made with Osgiliath archetype</name>
 	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<organization>
 		<name>Osgiliath</name>

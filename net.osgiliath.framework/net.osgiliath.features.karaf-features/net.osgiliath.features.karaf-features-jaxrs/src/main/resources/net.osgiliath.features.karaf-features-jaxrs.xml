@@ -37,5 +37,6 @@ limitations under the License.
 		<feature version='${project.version}'>osgiliath-jaxrs</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.cxf.jaxrs/${project.version}</bundle>
+		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
 	</feature>
 </features>

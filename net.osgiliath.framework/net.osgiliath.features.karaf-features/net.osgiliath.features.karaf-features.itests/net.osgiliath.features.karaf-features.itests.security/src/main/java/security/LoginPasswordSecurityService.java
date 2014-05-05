@@ -20,8 +20,8 @@ package security;
  * #L%
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.SaltSource;
@@ -35,13 +35,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * @author Charlie
  * 
  */
+@Slf4j
 public class LoginPasswordSecurityService implements SecurityService {
-    /**
-     * Logger
-     */
-    private final static Logger LOG = LoggerFactory
-	    .getLogger(LoginPasswordSecurityService.class);
-    /**
+      /**
      * The {@link AuthenticationManager}
      */
     private AuthenticationManager authenticationManager;
@@ -92,7 +88,7 @@ public class LoginPasswordSecurityService implements SecurityService {
 	    aut = this.authenticationManager.authenticate(aut);
 	    SecurityContextHolder.getContext().setAuthentication(aut);
 	} catch (Exception e) {
-	    LOG.error("error while authenticating", e);
+	    log.error("error while authenticating", e);
 	    return false;
 	}
 	return aut.isAuthenticated();
