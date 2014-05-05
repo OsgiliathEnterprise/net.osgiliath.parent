@@ -33,3 +33,16 @@ src/test/javascript/spec/*** : Controllers unit tests
 * [Main page](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.ui/src/main/javascript/views/main.html)
 * [Sample directive template](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.ui/src/main/javascript/views/templates/hello.html)
 * [Controller making webSocket calls](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.hello/net.osgiliath.hello.ui/src/main/javascript/scripts/controllers/hello.js)
+
+# Running
+
+* You've got to install Ruby with Sass and compass gems
+* You've got to have npm installed with bower and grun-cli nodes
+
+You can then run mvn clean install on the project (or grunt serve, grunt build...)
+
+## grunt useful commands
+
+* grunt build: make a complete build on the project
+* grunt test: execute karma tests on the project (use grunt e2e or grunt unit for launching one of them).
+* grunt serve: launch a change reactive ui server
