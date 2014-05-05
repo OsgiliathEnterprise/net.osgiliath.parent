@@ -30,37 +30,34 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.features.jpa.cdi.model.HelloEntity;
 import net.osgiliath.jpa.cdi.repository.HelloRepository;
 
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
- * @author charliemordant
- * JPA implementation with CDI injection
+ * @author charliemordant JPA implementation with CDI injection
  */
+@Slf4j
 @OsgiServiceProvider
 public class HelloRepositoryImpl implements HelloRepository {
-    /**
-     * Logger
-     */
-    private static final Logger LOG = LoggerFactory
-	    .getLogger(HelloRepositoryImpl.class);
+
     /**
      * Entity manager
      */
     @Inject
     private EntityManager entityManager;
+
     /**
      * save method
      */
     public final HelloEntity save(final HelloEntity entity) {
-	LOG.info("Persisting hello with message: " + entity.getHelloMessage());
+	log.info("Persisting hello with message: " + entity.getHelloMessage());
 	entityManager.persist(entity);
 	return entity;
     }
+
     /**
      * gets all
      */
@@ -72,10 +69,11 @@ public class HelloRepositoryImpl implements HelloRepository {
 
 	final TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
 	final List<HelloEntity> result = q.getResultList();
-	LOG.info("Returning : " + result.size() + " hellomessages");
+	log.info("Returning : " + result.size() + " hellomessages");
 	return result;
 
     }
+
     /**
      * deletes all
      */

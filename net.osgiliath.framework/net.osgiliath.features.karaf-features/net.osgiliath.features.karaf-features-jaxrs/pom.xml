@@ -19,6 +19,10 @@
 	<name>Osgiliath JaxRS features</name>
 	<description>REST features for Osgiliath framework</description>
 	<dependencies>
+	<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.cxf.karaf</groupId>
 			<artifactId>apache-cxf</artifactId>

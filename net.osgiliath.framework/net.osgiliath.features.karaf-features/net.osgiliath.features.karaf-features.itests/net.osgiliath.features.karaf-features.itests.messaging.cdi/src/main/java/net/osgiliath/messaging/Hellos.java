@@ -21,7 +21,6 @@ package net.osgiliath.messaging;
  */
 
 import java.io.Serializable;
-
 import java.util.Collection;
 
 import lombok.Data;
@@ -39,5 +38,5 @@ public class Hellos implements Serializable {
     /**
      * instances collection
      */
-    Collection<HelloEntity> entities;
+    private Collection<HelloEntity> entities;
 }

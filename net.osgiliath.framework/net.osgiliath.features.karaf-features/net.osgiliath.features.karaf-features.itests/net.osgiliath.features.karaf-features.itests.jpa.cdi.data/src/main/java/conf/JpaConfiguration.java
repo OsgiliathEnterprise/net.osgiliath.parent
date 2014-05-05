@@ -43,7 +43,7 @@ public class JpaConfiguration {
     /**
      * Standard aries jpa container service constant
      */
-    private static final String emfContainerConstant = "(org.apache.aries.jpa.container.managed=true)";
+    private static final String EMF_CONTAINER_CONSTANT = "(org.apache.aries.jpa.container.managed=true)";
     /**
      * Entity manager bottstrapping
      */

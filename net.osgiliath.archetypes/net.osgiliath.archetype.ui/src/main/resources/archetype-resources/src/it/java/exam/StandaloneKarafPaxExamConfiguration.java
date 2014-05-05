@@ -55,7 +55,7 @@ import org.slf4j.LoggerFactory;
  * @author charliemordant
  * 
  */
-public class StandaloneKarafPaxExamConfiguration extends PaxExamKarafConfigurationFactory {
+public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafConfigurationFactory {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(StandaloneKarafPaxExamConfiguration.class);
 	

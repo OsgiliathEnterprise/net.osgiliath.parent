@@ -26,7 +26,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
 
-import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 
@@ -59,7 +59,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJMS extends PaxExamKarafConfigurationFactory {
+public class ITHelloServiceJMS extends AbstractPaxExamKarafConfigurationFactory {
     private static Logger LOG = LoggerFactory
 	    .getLogger(ITHelloServiceJMS.class);
 
@@ -76,7 +76,7 @@ public class ITHelloServiceJMS extends PaxExamKarafConfigurationFactory {
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
 	builder.setHeader("Export-Package",
 		"net.osgiliath.messaging.repository.impl.itests");
 	builder.setHeader("Bundle-ManifestVersion", "2");

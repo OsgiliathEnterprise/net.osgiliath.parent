@@ -30,7 +30,6 @@ import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
-import net.osgiliath.helpers.cdi.cxf.jaxrs.JaxRSService;
 
 /**
  * 
@@ -38,7 +37,7 @@ import net.osgiliath.helpers.cdi.cxf.jaxrs.JaxRSService;
  */
 @Default
 @Path("/hello")
-public interface HelloServiceJaxRS extends JaxRSService {
+public interface HelloServiceJaxRS  {
     /**
      * Registering instance
      * 

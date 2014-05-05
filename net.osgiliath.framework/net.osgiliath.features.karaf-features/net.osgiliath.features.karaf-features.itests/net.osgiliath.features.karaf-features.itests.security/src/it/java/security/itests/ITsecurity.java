@@ -26,7 +26,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
 
-import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,7 +56,7 @@ import security.SecurityService;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITsecurity extends PaxExamKarafConfigurationFactory {
+public class ITsecurity extends AbstractPaxExamKarafConfigurationFactory {
     private static Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
 
     @Inject
@@ -69,7 +69,7 @@ public class ITsecurity extends PaxExamKarafConfigurationFactory {
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
 	builder.setHeader("Export-Package", "security.itests");
 	builder.setHeader("Bundle-ManifestVersion", "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");

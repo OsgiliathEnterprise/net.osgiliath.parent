@@ -30,7 +30,7 @@ import javax.inject.Inject;
 //import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
 
-import net.osgiliath.helpers.exam.PaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 import net.osgiliath.jaxrs.HelloEntity;
 
 import org.apache.cxf.jaxrs.client.WebClient;
@@ -59,7 +59,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
+public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactory {
     /**
      * Logger
      */
@@ -78,7 +78,7 @@ public class ITHelloServiceJaxRS extends PaxExamKarafConfigurationFactory {
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(PaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
 	builder.setHeader("Export-Package",
 		"helper.exam, net.osgiliath.jaxrs.repository.impl.itests");
 	builder.setHeader("Bundle-ManifestVersion", "2");

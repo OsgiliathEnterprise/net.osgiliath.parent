@@ -31,6 +31,8 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import java.io.File;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.ops4j.pax.exam.CoreOptions;
 import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
@@ -39,8 +41,8 @@ import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-public abstract class PaxExamKarafConfigurationFactory {
+@Slf4j
+public abstract class AbstractPaxExamKarafConfigurationFactory {
     protected static final String COVERAGE_COMMAND = "coverage.command";
     protected static final String USER_SETTINGS_REFERENCE = "user-settings";
     protected static final String GLOBAL_SETTINGS_REFERENCE = "global-settings";
@@ -50,8 +52,7 @@ public abstract class PaxExamKarafConfigurationFactory {
     @SuppressWarnings("UnusedDeclaration")
     protected static final String DEBUG_VM_OPTION = "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=31313";
     protected static String paxRunnerVmOption = null;
-    private static final Logger LOG = LoggerFactory
-	    .getLogger(PaxExamKarafConfigurationFactory.class);
+    
 
     public Option[] createConfig() {
 	Option[] base = options(
@@ -77,14 +78,14 @@ public abstract class PaxExamKarafConfigurationFactory {
 
     private Option addMavenSettingsOptions() {
 	if (System.getProperty(USER_SETTINGS_REFERENCE) != null) {
-	    LOG.info("adding user reference settings "
+	    log.info("adding user reference settings "
 		    + System.getProperty(USER_SETTINGS_REFERENCE));
 	    return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 		    "org.ops4j.pax.url.mvn.settings",
 		    System.getProperty(USER_SETTINGS_REFERENCE));
 	}
 	if (System.getProperty(GLOBAL_SETTINGS_REFERENCE) != null) {
-	    LOG.info("adding global reference settings "
+	    log.info("adding global reference settings "
 		    + System.getProperty(GLOBAL_SETTINGS_REFERENCE));
 	    return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 		    "org.ops4j.pax.url.mvn.settings",
@@ -106,7 +107,7 @@ public abstract class PaxExamKarafConfigurationFactory {
     private Option addCodeCoverageOption() {
 	String coverageCommand = System.getProperty(COVERAGE_COMMAND);
 	if (coverageCommand != null && !coverageCommand.isEmpty()) {
-	    LOG.info("covering code with command " + coverageCommand);
+	    log.info("covering code with command " + coverageCommand);
 	    return CoreOptions.vmOption(coverageCommand);
 	}
 	return new DefaultCompositeOption();
