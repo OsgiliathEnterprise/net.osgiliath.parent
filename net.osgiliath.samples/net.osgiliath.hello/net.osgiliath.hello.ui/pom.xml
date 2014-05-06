@@ -20,7 +20,7 @@
 	<packaging>war</packaging>
 	<name>Helloworld sample Interface</name>
 	<description>UI module for helloworld sample</description>
-	
+
 	<properties>
 		<sonar.language>js</sonar.language>
 		<sonar.sources>src/main/javascript</sonar.sources>
@@ -228,6 +228,7 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>bower</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -243,6 +244,7 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>npm</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -257,6 +259,7 @@
 									</goals>
 									<phase>test</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>grunt</executable>
 										<workingDirectory />
 										<arguments>
@@ -271,6 +274,7 @@
 									</goals>
 									<phase>compile</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>grunt</executable>
 										<workingDirectory />
 										<arguments>
@@ -305,6 +309,7 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>bower.cmd</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -320,6 +325,7 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>npm.cmd</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -334,6 +340,7 @@
 									</goals>
 									<phase>test</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>grunt.cmd</executable>
 										<workingDirectory />
 										<arguments>
@@ -348,6 +355,7 @@
 									</goals>
 									<phase>compile</phase>
 									<configuration>
+										<skip>${skipExec}</skip>
 										<executable>grunt.cmd</executable>
 										<workingDirectory />
 										<arguments>
