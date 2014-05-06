@@ -171,7 +171,6 @@
 								<goal>verify</goal>
 							</goals>
 							<configuration>
-								<skipITs>${failsafe.skiptests}</skipITs>
 								<skipTests>${failsafe.skiptests}</skipTests>
 								<systemPropertyVariables>
 									<reportFormat>xml</reportFormat>
