@@ -65,11 +65,11 @@
 				<artifactId>guava</artifactId>
 				<version>${com.google.guava.version}</version>
 			</dependency>			
-			<dependency>
+			<!-- <dependency>
 				<groupId>com.sun.xml</groupId>
 				<artifactId>com.springsource.com.sun.xml.ws</artifactId>
 				<version>${com.springsource.com.sun.xml.ws.version}</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
@@ -95,11 +95,11 @@
 				<artifactId>commons-pool</artifactId>
 				<version>${commons-pool.version}</version>
 			</dependency>
-			<dependency>
+			<!-- <dependency>
 				<groupId>javax.annotation</groupId>
 				<artifactId>com.springsource.javax.annotation</artifactId>
 				<version>${com.springsource.javax.annotation.version}</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>javax.el</groupId>
 				<artifactId>javax.el-api</artifactId>
@@ -125,11 +125,11 @@
 				<artifactId>javax.json-api</artifactId>
 				<version>${javax.json-api.version}</version>
 			</dependency>
-			<dependency>
+			<!-- <dependency>
 				<groupId>javax.transaction</groupId>
 				<artifactId>com.springsource.javax.transaction</artifactId>
 				<version>${com.springsource.javax.transaction.version}</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
@@ -160,7 +160,7 @@
 				<artifactId>scannotation</artifactId>
 				<version>${scannotation.version}</version>
 			</dependency>
-			<dependency>
+			<!-- <dependency>
 				<groupId>net.sourceforge.cglib</groupId>
 				<artifactId>com.springsource.net.sf.cglib</artifactId>
 				<version>${com.springsource.net.sf.cglib.version}</version>
@@ -169,7 +169,7 @@
 				<groupId>org.aopalliance</groupId>
 				<artifactId>com.springsource.org.aopalliance</artifactId>
 				<version>${com.springsource.org.aopalliance.version}</version>
-			</dependency>
+			</dependency> -->
 
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
@@ -892,7 +892,7 @@
 				<artifactId>xbean-spring</artifactId>
 				<version>${xbean.version}</version>
 			</dependency>
-			<dependency>
+		<!-- 	<dependency>
 				<groupId>org.apache.xmlcommons</groupId>
 				<artifactId>com.springsource.org.apache.xmlcommons</artifactId>
 				<version>${com.springsource.org.apache.xmlcommons.version}</version>
@@ -906,7 +906,7 @@
 				<groupId>org.aspectj</groupId>
 				<artifactId>com.springsource.org.aspectj.weaver</artifactId>
 				<version>${com.springsource.org.aspectj.runtime.version}</version>
-			</dependency>
+			</dependency> -->
 
 			<dependency>
 				<groupId>org.codehaus.jettison</groupId>
@@ -1065,11 +1065,11 @@
 				<artifactId>json</artifactId>
 				<version>${org.json.version}</version>
 			</dependency>
-			<dependency>
+		<!-- 	<dependency>
 				<groupId>org.junit</groupId>
 				<artifactId>com.springsource.org.junit</artifactId>
 				<version>${com.springsource.org.junit.version}</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>org.kubek2k</groupId>
 				<artifactId>springockito</artifactId>
@@ -1531,11 +1531,11 @@
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
-			<dependency>
+			<!-- <dependency>
 				<groupId>org.xmlpull</groupId>
 				<artifactId>com.springsource.org.xmlpull</artifactId>
 				<version>${com.springsource.org.xmlpull.version}</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>xml-apis</groupId>
 				<artifactId>xml-apis</artifactId>
@@ -1558,7 +1558,7 @@
 			Do not upgrade cause of camel-json -->
 		<com.fasterxml.classmate.version>1.0.0</com.fasterxml.classmate.version>
 		<com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version>
-		<com.springsource.com.sun.xml.ws.version>2.1.3</com.springsource.com.sun.xml.ws.version>
+		<!-- <com.springsource.com.sun.xml.ws.version>2.1.3</com.springsource.com.sun.xml.ws.version>
 		<com.springsource.com.thoughtworks.xstream.version>1.3.1</com.springsource.com.thoughtworks.xstream.version>
 		<com.springsource.javax.annotation.version>1.0.0</com.springsource.javax.annotation.version>
 		<com.springsource.javax.inject.version>1.0.0</com.springsource.javax.inject.version>
@@ -1570,7 +1570,7 @@
 		<com.springsource.org.aspectj.runtime.version>1.6.8.RELEASE</com.springsource.org.aspectj.runtime.version>
 		<com.springsource.org.jdom.version>2.0.1</com.springsource.org.jdom.version>
 		<com.springsource.org.junit.version>4.10.0</com.springsource.org.junit.version>
-		<com.springsource.org.xmlpull.version>1.1.4.c</com.springsource.org.xmlpull.version>
+		<com.springsource.org.xmlpull.version>1.1.4.c</com.springsource.org.xmlpull.version> -->
 		<commons-codec.version>1.7</commons-codec.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<commons-dbcp.osgi.version>1.4</commons-dbcp.osgi.version>

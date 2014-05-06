@@ -47,20 +47,30 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${maven-javadoc-plugin.version}</version>
+				<configuration>
+
+					<additionalJOption>-XX:MaxPermSize=512M</additionalJOption>
+				</configuration>
+
 				<reportSets>
 					<reportSet>
 						<id>aggregate</id>
-						<inherited>false</inherited>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
 						<reports>
 							<report>aggregate</report>
 						</reports>
 					</reportSet>
 				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven-project-info-reports-plugin.version}</version>
 				<configuration>
-
-					<additionalJOption>-J-XX:MaxPermSize=512</additionalJOption>
-					<maxmemory>512</maxmemory>
-					<minmemory>512</minmemory>
+					<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -97,6 +107,12 @@
 			<properties>
 				<skipExec>true</skipExec>
 				<failsafe.skiptests>true</failsafe.skiptests>
+			</properties>
+		</profile>
+		<profile>
+			<id>travis</id>
+			<properties>
+				<skipExec>true</skipExec>
 			</properties>
 		</profile>
 
