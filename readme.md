@@ -1,5 +1,7 @@
 #Osgiliath Enterprise framework
 
+[![Build Status](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent.svg?branch=master)](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent)
+
 ## Purpose
 
 Osgiliath EF aims to provides a way to develop Web/backend/enterprise applications in a clean, modular way
