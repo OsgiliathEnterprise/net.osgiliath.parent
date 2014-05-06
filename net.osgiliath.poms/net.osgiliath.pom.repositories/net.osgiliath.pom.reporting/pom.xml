@@ -37,15 +37,32 @@
 			</plugin>
 			<!-- see later for advanced reporting <plugin> <groupId>org.apache.maven.plugins</groupId> 
 				<artifactId>maven-doap-plugin</artifactId> <version>${maven-doap-plugin.version}</version> 
-				</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
-				<version>${maven-javadoc-plugin.version}</version> <reportSets> <reportSet> 
-				<id>aggregate</id> <inherited>false</inherited> <reports> <report>aggregate</report> 
-				</reports> </reportSet> </reportSets> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
-				<artifactId>maven-jxr-plugin</artifactId> <version>${maven-jxr-plugin.version}</version> 
-				<reportSets> <reportSet> <id>aggregate</id> <inherited>false</inherited> 
-				<reports> <report>aggregate</report> </reports> </reportSet> </reportSets> 
-				</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-linkcheck-plugin</artifactId> 
-				<version>${maven-linkcheck-plugin.version}</version> </plugin> -->
+				</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId> 
+				<version>${maven-jxr-plugin.version}</version> <reportSets> <reportSet> <id>aggregate</id> 
+				<inherited>false</inherited> <reports> <report>aggregate</report> </reports> 
+				</reportSet> </reportSets> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-linkcheck-plugin</artifactId> <version>${maven-linkcheck-plugin.version}</version> 
+				</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+				<configuration>
+
+					<additionalJOption>-J-XX:MaxPermSize=512</additionalJOption>
+					<maxmemory>512</maxmemory>
+					<minmemory>512</minmemory>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -71,5 +88,17 @@
 		<findbugs-maven-plugin.version>2.5.3</findbugs-maven-plugin.version>
 		<maven-pmd-plugin.version>3.1</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
+		<skipExec>false</skipExec>
 	</properties>
+	<profiles>
+		<profile>
+
+			<id>reporting</id>
+			<properties>
+				<skipExec>true</skipExec>
+				<failsafe.skiptests>true</failsafe.skiptests>
+			</properties>
+		</profile>
+
+	</profiles>
 </project>
