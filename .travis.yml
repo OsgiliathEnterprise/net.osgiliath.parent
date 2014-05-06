@@ -1,5 +1,5 @@
 language: java
-script: mvn integration-test verify
+script: mvn integration-test verify -Ptravis
 notifications:
   email:
       - cmordant1@gmail.com
