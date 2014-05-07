@@ -4,7 +4,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
   - "sudo apt-get install rubygems"
   - "sudo gem install compass"
-  - "sudo npm -g install bower grunt-cli phantomjs karma"
+  - "npm install bower grunt-cli phantomjs karma"
 install: mvn install integration-test -Ptravis
 jdk:
   - oraclejdk7
