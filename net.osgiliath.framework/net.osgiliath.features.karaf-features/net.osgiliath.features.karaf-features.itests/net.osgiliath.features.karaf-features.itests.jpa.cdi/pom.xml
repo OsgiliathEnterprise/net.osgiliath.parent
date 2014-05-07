@@ -97,11 +97,6 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
 		<!-- test deps -->
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>

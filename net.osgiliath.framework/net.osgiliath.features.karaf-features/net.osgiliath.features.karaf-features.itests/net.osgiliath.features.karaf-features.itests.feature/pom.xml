@@ -10,68 +10,68 @@
 	<description>Features for integrations tests</description>
 	<dependencies>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-derby</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features.itests.jpa.database</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-cdi</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-routes</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-validation</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
