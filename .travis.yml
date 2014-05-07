@@ -1,5 +1,8 @@
 language: java
-script: mvn integration-test verify -Ptravis
+install: mvn integration-test -Ptravis
+jdk:
+  - oraclejdk7
+  - openjdk7
 notifications:
   email:
       - cmordant1@gmail.com
