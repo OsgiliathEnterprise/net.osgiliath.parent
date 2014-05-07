@@ -114,9 +114,7 @@
 			<id>travis</id>
 			<properties>
 				<skipExec>true</skipExec>
-				<skipSelenium>true</skipSelenium>
 			</properties>
 		</profile>
-
 	</profiles>
 </project>
