@@ -2,6 +2,7 @@ language: java
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - "sudo apt-get install rubygems"
   - "sudo gem install compass"
   - "sudo npm -g install bower grunt-cli phantomjs karma"
 install: mvn install integration-test -Ptravis
