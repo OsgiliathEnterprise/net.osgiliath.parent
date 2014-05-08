@@ -46,8 +46,8 @@ public abstract class AbstractPaxExamKarafConfigurationFactory {
     protected static final String COVERAGE_COMMAND = "coverage.command";
     protected static final String USER_SETTINGS_REFERENCE = "user-settings";
     protected static final String GLOBAL_SETTINGS_REFERENCE = "global-settings";
-    protected static final String BUNDLE_GROUP_ID = "bundle.groupId";
-    protected static final String BUNDLE_ARTIFACT_ID = "bundle.parent.artifactId";
+    protected static final String MODULE_GROUP_ID = "module.groupId";
+    protected static final String MODULE_PARENT_ARTIFACT_ID = "module.parent.artifactId";
 
     @SuppressWarnings("UnusedDeclaration")
     protected static final String DEBUG_VM_OPTION = "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=31313";

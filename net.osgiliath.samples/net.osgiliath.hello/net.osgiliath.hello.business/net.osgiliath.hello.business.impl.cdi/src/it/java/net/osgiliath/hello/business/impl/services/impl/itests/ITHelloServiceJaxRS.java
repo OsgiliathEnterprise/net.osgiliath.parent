@@ -139,10 +139,10 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactor
     @Override
     protected Option featureToTest() {
 
-	return features(maven().groupId(System.getProperty(BUNDLE_GROUP_ID))
-		.artifactId(System.getProperty(BUNDLE_GROUP_ID) + ".features")
+	return features(maven().groupId(System.getProperty(MODULE_GROUP_ID))
+		.artifactId(System.getProperty(MODULE_GROUP_ID) + ".features")
 		.type("xml").classifier("features").versionAsInProject(),
-		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests.cdi");
+		System.getProperty(MODULE_PARENT_ARTIFACT_ID) + ".itests.cdi");
     }
 
     static {
