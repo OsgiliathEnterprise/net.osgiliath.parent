@@ -110,11 +110,5 @@
 				<failsafe.skiptests>true</failsafe.skiptests>
 			</properties>
 		</profile>
-		<profile>
-			<id>travis</id>
-			<properties>
-				<skipExec>true</skipExec>
-			</properties>
-		</profile>
 	</profiles>
 </project>

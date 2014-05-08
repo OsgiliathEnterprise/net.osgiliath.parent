@@ -5,7 +5,7 @@ before_install:
   - "sudo apt-get install rubygems"
   - "sudo gem install compass"
   - "npm install bower grunt-cli phantomjs karma"
-install: mvn install integration-test -Ptravis
+install: mvn install integration-test
 jdk:
   - oraclejdk7
 notifications:
