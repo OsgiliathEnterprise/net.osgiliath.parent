@@ -45,12 +45,12 @@ public class ITService extends AbstractPaxExamKarafConfigurationFactory {
 	protected Option featureToTest() {
 		
 		return features(
-				maven().groupId(System.getProperty(BUNDLE_GROUP_ID))
+				maven().groupId(System.getProperty(MODULE_GROUP_ID))
 				.artifactId(
-						System.getProperty(BUNDLE_GROUP_ID)
+						System.getProperty(MODULE_GROUP_ID)
 								+ ".features").type("xml")
 				.classifier("features").versionAsInProject(),
-		System.getProperty(BUNDLE_ARTIFACT_ID) + ".itests");
+		System.getProperty(MODULE_PARENT_ARTIFACT_ID) + ".itests");
 	}
 	static {
 		// uncomment to enable debugging of this test class

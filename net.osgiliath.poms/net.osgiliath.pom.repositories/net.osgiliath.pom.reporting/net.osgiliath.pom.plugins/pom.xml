@@ -177,8 +177,8 @@
 									<coverage.command>${jcoverage.command}</coverage.command>
 									<user-settings>${org.apache.maven.user-settings}</user-settings>
 									<global-settings>${org.apache.maven.global-settings}</global-settings>
-									<bundle.groupId>${project.groupId}</bundle.groupId>
-									<bundle.parent.artifactId>${project.parent.artifactId}</bundle.parent.artifactId>
+									<module.groupId>${project.groupId}</module.groupId>
+									<module.parent.artifactId>${project.parent.artifactId}</module.parent.artifactId>
 								</systemPropertyVariables>
 							</configuration>
 						</execution>
@@ -841,7 +841,6 @@
 								<excludes>
 									<exclude>*.itests.*</exclude>
 									<exclude>*.mock.*</exclude>
-									<!--<exclude>*.model.*</exclude> -->
 									<exclude>*.coverage.*</exclude>
 								</excludes>
 							</configuration>
@@ -871,7 +870,6 @@
 								<excludes>
 									<exclude>*.itests.*</exclude>
 									<exclude>*.mock.*</exclude>
-									<!--<exclude>*.model.*</exclude> -->
 									<exclude>*.coverage.*</exclude>
 								</excludes>
 								<append>true</append>
