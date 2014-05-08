@@ -105,7 +105,6 @@
 		<maven-pmd-plugin.version>3.1</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
 		<skipExec>false</skipExec>
-		<skipSelenium>false</skipSelenium>
 	</properties>
 	<profiles>
 		<profile>
@@ -118,10 +117,9 @@
 		</profile>
 		<profile>
 
-			<id>reporting</id>
+			<id>travis</id>
 			<properties>
 				<skipExec>true</skipExec>
-				<skipSelenium>true</skipSelenium>
 			</properties>
 		</profile>
 	</profiles>
