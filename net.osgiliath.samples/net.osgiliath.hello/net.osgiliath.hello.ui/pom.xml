@@ -82,7 +82,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
-					<skipTests>${skipExec}</skipTests>
+					<skipITs>${skipExec}</skipITs>
 				</configuration>
 			</plugin>
 			<plugin>
