@@ -9,6 +9,8 @@
 	<groupId>net.osgiliath.wrappers</groupId>
 	<artifactId>net.osgiliath.wrappers</artifactId>
 	<packaging>pom</packaging>
+	<name>OSGI wrappers</name>
+	<description>OSGI Manifests wrappers for Osgiliath</description>
 	<modules>
 		<module>net.osgiliath.wrapper.camel-cdi</module>
 		<module>net.osgiliath.wrapper.deltaspike-data-module-api</module>
