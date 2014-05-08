@@ -116,5 +116,13 @@
 				<failsafe.skiptests>true</failsafe.skiptests>
 			</properties>
 		</profile>
+		<profile>
+
+			<id>reporting</id>
+			<properties>
+				<skipExec>true</skipExec>
+				<skipSelenium>true</skipSelenium>
+			</properties>
+		</profile>
 	</profiles>
 </project>

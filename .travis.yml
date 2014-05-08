@@ -4,7 +4,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
   - "sudo apt-get install rubygems"
   - "sudo gem install compass"
-  - "npm install bower grunt-cli phantomjs karma"
+  - "npm --silent install bower grunt-cli phantomjs karma"
 install: mvn --quiet install integration-test
 jdk:
   - oraclejdk7
