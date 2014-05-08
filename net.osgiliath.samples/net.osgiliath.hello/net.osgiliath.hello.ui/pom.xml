@@ -223,6 +223,9 @@
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>exec-maven-plugin</artifactId>
+							<configuration>
+								<skip>${skipExec}</skip>
+							</configuration>
 							<executions>
 								<execution>
 									<id>bower-install</id>
@@ -231,7 +234,6 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>bower</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -247,7 +249,6 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>npm</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -262,7 +263,6 @@
 									</goals>
 									<phase>test</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>grunt</executable>
 										<workingDirectory />
 										<arguments>
@@ -277,7 +277,6 @@
 									</goals>
 									<phase>compile</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>grunt</executable>
 										<workingDirectory />
 										<arguments>
@@ -304,6 +303,9 @@
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>exec-maven-plugin</artifactId>
+							<configuration>
+								<skip>${skipExec}</skip>
+							</configuration>
 							<executions>
 								<execution>
 									<id>bower-install</id>
@@ -312,7 +314,6 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>bower.cmd</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -328,7 +329,6 @@
 									</goals>
 									<phase>generate-resources</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>npm.cmd</executable>
 										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
@@ -343,7 +343,6 @@
 									</goals>
 									<phase>test</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>grunt.cmd</executable>
 										<workingDirectory />
 										<arguments>
@@ -358,7 +357,6 @@
 									</goals>
 									<phase>compile</phase>
 									<configuration>
-										<skip>${skipExec}</skip>
 										<executable>grunt.cmd</executable>
 										<workingDirectory />
 										<arguments>
