@@ -10,6 +10,7 @@
         <include>NOTICE.txt</include>
         <include>README.txt</include>
         <include>readme.md</include>
+        <include>.travis.yml</include>
       </includes>
     </fileSet>
   </fileSets>

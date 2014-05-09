@@ -18,8 +18,8 @@
 	</parent>
 	<artifactId>net.osgiliath.hello.ui</artifactId>
 	<packaging>war</packaging>
-<!-- 	<name>Helloworld sample Interface</name>
-	<description>UI module for helloworld sample</description> -->
+ 	<name>Helloworld sample Interface</name>
+	<description>UI module for helloworld sample</description>
 	<properties>
 		<sonar.language>js</sonar.language>
 		<sonar.sources>src/main/javascript</sonar.sources>
@@ -173,6 +173,18 @@
 		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-aether</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
+			<artifactId>${project.groupId}.routes.blueprint</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
+			<artifactId>${project.groupId}.business.impl.blueprint</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<!-- Karaf Test Framework Version -->
 		<dependency>

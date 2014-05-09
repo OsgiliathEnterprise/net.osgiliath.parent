@@ -65,7 +65,7 @@ public class ITcDI extends AbstractPaxExamKarafConfigurationFactory {
 	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
 	builder.setHeader(Constants.EXPORT_PACKAGE,
-		"helper.exam, net.osgiliath.features.karaf.features.itests.cdi.itests");
+		"net.osgiliath.features.karaf.features.itests.cdi.itests");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 	return builder;
     }
@@ -81,7 +81,7 @@ public class ITcDI extends AbstractPaxExamKarafConfigurationFactory {
 	return features(
 		maven().artifactId(
 			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId("net.osgiliath.framework").type("xml")
+			.groupId(System.getProperty(MODULE_GROUP_ID)).type("xml")
 			.classifier("features").versionAsInProject(),
 		"osgiliath-itests-cdi");
     }
