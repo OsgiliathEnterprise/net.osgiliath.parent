@@ -1,3 +1,3 @@
-Web-ContextPath: ${project.artifactId}
 Webapp-Context: ${project.artifactId}
+Web-ContextPath: ${project.artifactId}
 Bundle-ClassPath: .

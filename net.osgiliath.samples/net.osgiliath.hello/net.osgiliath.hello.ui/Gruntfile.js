@@ -35,7 +35,7 @@ module.exports = function (grunt) {
         }
       },
       jsTest: {
-        files: ['test/spec/{,*/}*.js'],
+        files: ['src/test/javascript/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
@@ -79,7 +79,7 @@ module.exports = function (grunt) {
           port: 9001,
           base: [
             '.tmp',
-            'test',
+            'src/test/javascript',
             '<%= yeoman.app %>'
           ]
         }

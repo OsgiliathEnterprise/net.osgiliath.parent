@@ -46,11 +46,17 @@ ${symbol_pound}L%
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
 		<feature version='${symbol_dollar}{karaf.version}'>war</feature>
 		<!--<configfile finalname="/etc/${symbol_dollar}{project.artifactId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/cfg/camel</configfile>
-		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.groupId}.routes/${symbol_dollar}{project.version}/jar
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.groupId}.routes/${symbol_dollar}{project.version}/jar
 		</bundle>
-		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.groupId}.ui/${symbol_dollar}{project.version}/war
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.groupId}.ui/${symbol_dollar}{project.version}/war
 		</bundle>-->
 	</feature>
+	<!--<feature name="${project.groupId}.full.itests" version="${project.version}">
+		<feature version='${project.version}'>${project.groupId}.business.blueprint</feature>
+		<feature version='${project.version}'>${project.groupId}.route.blueprint</feature>
+		<feature version='${karaf.version}'>war</feature>
+		<bundle>file:${project.parent.basedir}/${project.groupId}.ui/target/${project.groupId}.ui.war</bundle>
+	</feature>-->
 	<feature name="${symbol_dollar}{project.artifactId}.business" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business</feature>
 		<feature version='${symbol_dollar}{project.version}'>${project.parent.artifactId}.model</feature>

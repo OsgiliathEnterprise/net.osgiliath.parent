@@ -34,12 +34,12 @@ limitations under the License.
 		<feature version='${karaf.feature.spring.version}'>spring-tx</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
 		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.fragment-ds-data/${project.version}</bundle>
-		<!--<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-api/${project.version}</bundle>
-		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-impl/${project.version}</bundle>-->
+		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-api/${project.version}</bundle>
+		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-impl/${project.version}</bundle>
 		<bundle >mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.version}</bundle>
 		<bundle >mvn:org.apache.deltaspike.core/deltaspike-core-impl/${org.apache.deltaspike.version}</bundle>
-		<!--<bundle >mvn:org.apache.deltaspike.modules/deltaspike-data-module-api/${org.apache.deltaspike.version}</bundle>
-		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-data-module-impl/${org.apache.deltaspike.version}</bundle>-->
+		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-data-module-api/${org.apache.deltaspike.version}</bundle>
+		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-data-module-impl/${org.apache.deltaspike.version}</bundle>
 		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-api/${org.apache.deltaspike.version}</bundle>
 		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-impl/${org.apache.deltaspike.version}</bundle>
 		<bundle start-level="30" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-jta_1.1_spec.version}</bundle>
