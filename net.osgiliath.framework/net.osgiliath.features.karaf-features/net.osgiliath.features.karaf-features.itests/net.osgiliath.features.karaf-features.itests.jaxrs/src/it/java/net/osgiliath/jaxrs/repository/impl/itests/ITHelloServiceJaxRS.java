@@ -80,7 +80,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactor
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
 	builder.setHeader("Export-Package",
-		"helper.exam, net.osgiliath.jaxrs.repository.impl.itests");
+		"net.osgiliath.jaxrs.repository.impl.itests");
 	builder.setHeader("Bundle-ManifestVersion", "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 	return builder;

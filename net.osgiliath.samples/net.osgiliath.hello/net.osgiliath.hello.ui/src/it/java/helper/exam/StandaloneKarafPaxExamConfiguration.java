@@ -42,10 +42,10 @@ public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafCon
 	protected Option featureToTest() {
 
 		return features(
-				maven().artifactId(System.getProperty(MODULE_GROUP_ID) +".features")
-				.groupId(System.getProperty(MODULE_GROUP_ID)).type("xml")
+				maven().artifactId("net.osgiliath.hello.features")
+				.groupId("net.osgiliath.hello").type("xml")
 				.classifier("features")
-				.versionAsInProject(), System.getProperty(MODULE_GROUP_ID) +".full.blueprint.itests");
+				.versionAsInProject(), "net.osgiliath.hello.full.blueprint.itests");
 	}
 	static {
 		// uncomment to enable debugging of this test class
