@@ -171,7 +171,7 @@
 								<goal>verify</goal>
 							</goals>
 							<configuration>
-								<skipTests>${failsafe.skiptests}</skipTests>
+								<skipITs>${failsafe.skiptests}</skipITs>
 								<systemPropertyVariables>
 									<reportFormat>xml</reportFormat>
 									<coverage.command>${jcoverage.command}</coverage.command>

@@ -3,7 +3,7 @@ before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 install: mvn --quiet install -Ptravis
-script: mvn --quiet integration-test -Ptravis
+script: mvn --quiet verify -Ptravis
 jdk:
   - oraclejdk7
 notifications:
