@@ -1,8 +1,7 @@
 Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)", org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)"
 Provide-Capability = org.ops4j.pax.cdi.extension; extension="validation"
 Bundle-SymbolicName: org.hibernate.validator.cdi
-Export-Package: org.hibernate.validator,\
- org.hibernate.validator.*,\
+Export-Package: org.hibernate.validator.cdi.*,\
  org.hibernate.validator.internal.cdi.interceptor
 Import-Package: *;resolution:=optional
 Fragment-Host: org.hibernate.validator

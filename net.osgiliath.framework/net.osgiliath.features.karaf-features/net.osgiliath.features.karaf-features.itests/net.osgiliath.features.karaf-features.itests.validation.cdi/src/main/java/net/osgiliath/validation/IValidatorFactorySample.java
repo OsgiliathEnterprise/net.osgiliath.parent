@@ -1,5 +1,8 @@
 package net.osgiliath.validation;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.executable.ValidateOnExecution;
 
 /*
  * #%L
@@ -30,5 +33,6 @@ public interface IValidatorFactorySample {
      * must throw exception
      * @param object
      */
-    void nullMessageValidation(HelloObject object);
+    @ValidateOnExecution
+    void nullMessageValidation(@NotNull @Valid HelloObject object);
 }

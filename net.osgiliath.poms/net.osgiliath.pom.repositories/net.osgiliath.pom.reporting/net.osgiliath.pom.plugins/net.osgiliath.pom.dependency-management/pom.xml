@@ -1558,19 +1558,6 @@
 			Do not upgrade cause of camel-json -->
 		<com.fasterxml.classmate.version>1.0.0</com.fasterxml.classmate.version>
 		<com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version>
-		<!-- <com.springsource.com.sun.xml.ws.version>2.1.3</com.springsource.com.sun.xml.ws.version>
-		<com.springsource.com.thoughtworks.xstream.version>1.3.1</com.springsource.com.thoughtworks.xstream.version>
-		<com.springsource.javax.annotation.version>1.0.0</com.springsource.javax.annotation.version>
-		<com.springsource.javax.inject.version>1.0.0</com.springsource.javax.inject.version>
-		<com.springsource.javax.transaction.version>1.1.0</com.springsource.javax.transaction.version>
-		<com.springsource.javax.validation.version>1.0.0.GA</com.springsource.javax.validation.version>
-		<com.springsource.net.sf.cglib.version>2.2.0</com.springsource.net.sf.cglib.version>
-		<com.springsource.org.aopalliance.version>1.0.0</com.springsource.org.aopalliance.version>
-		<com.springsource.org.apache.xmlcommons.version>1.3.4</com.springsource.org.apache.xmlcommons.version>
-		<com.springsource.org.aspectj.runtime.version>1.6.8.RELEASE</com.springsource.org.aspectj.runtime.version>
-		<com.springsource.org.jdom.version>2.0.1</com.springsource.org.jdom.version>
-		<com.springsource.org.junit.version>4.10.0</com.springsource.org.junit.version>
-		<com.springsource.org.xmlpull.version>1.1.4.c</com.springsource.org.xmlpull.version> -->
 		<commons-codec.version>1.7</commons-codec.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<commons-dbcp.osgi.version>1.4</commons-dbcp.osgi.version>
@@ -1661,7 +1648,7 @@
 		<org.eclipse.rap.version>1.5.0</org.eclipse.rap.version>
 		<org.glassfish.javax.annotation.version>3.1.1</org.glassfish.javax.annotation.version>
 		<org.glassfish.javax.json.version>1.0.3</org.glassfish.javax.json.version>
-		<org.hibernate.validator.version>5.0.2.Final</org.hibernate.validator.version>
+		<org.hibernate.validator.version>5.0.3.Final</org.hibernate.validator.version>
 		<org.jacoco.agent.version>0.7.0.201403182114</org.jacoco.agent.version>
 		<org.javassist.version>3.18.1-GA</org.javassist.version>
 		<org.jboss.logging.version>3.1.3.GA</org.jboss.logging.version>
@@ -1705,8 +1692,4 @@
 		<xom.version>1.2.5</xom.version>
 		<xml-apis.version>1.4.01</xml-apis.version>
 	</properties>
-	<!-- <dependencies> <dependency> <groupId>org.apache.activemq</groupId> 
-		<artifactId>activemq-osgi</artifactId> <exclusions> <exclusion> <artifactId>jms</artifactId> 
-		<groupId>javax.jms</groupId> </exclusion> </exclusions> </dependency> </dependencies> -->
-
 </project>
