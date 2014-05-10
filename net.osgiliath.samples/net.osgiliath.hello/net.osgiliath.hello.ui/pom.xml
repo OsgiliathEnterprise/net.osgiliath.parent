@@ -81,6 +81,7 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
 					<skipITs>${skipExec}</skipITs>
+					<skipTests>${skipExec}</skipTests>
 				</configuration>
 			</plugin>
 			<plugin>
