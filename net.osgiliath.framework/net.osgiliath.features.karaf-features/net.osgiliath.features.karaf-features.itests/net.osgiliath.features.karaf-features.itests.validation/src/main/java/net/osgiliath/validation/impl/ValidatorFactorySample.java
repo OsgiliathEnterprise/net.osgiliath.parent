@@ -20,27 +20,35 @@ package net.osgiliath.validation.impl;
  * #L%
  */
 
-import javax.enterprise.inject.Default;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
+
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
-
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 /**
  * 
  * @author charliemordant
  * Validation test
  */
-@Default
-@OsgiServiceProvider
+@Slf4j
 public class ValidatorFactorySample implements IValidatorFactorySample {
+    @Setter
+    private Validator validator;
     /**
      * Validation of a null message
      */
-    public void nullMessageValidation(@NotNull @Valid HelloObject object) {
+    public void nullMessageValidation(HelloObject object) {
 
+	final Set<ConstraintViolation<HelloObject>> validationResults = validator
+		.validate(object);
+	if (!validationResults.isEmpty()) {
+	    throw new ConstraintViolationException(validationResults);
+	}
 	if (object != null) {
 	    // Exception must have be thrown
 	    System.out.println(object.toString());

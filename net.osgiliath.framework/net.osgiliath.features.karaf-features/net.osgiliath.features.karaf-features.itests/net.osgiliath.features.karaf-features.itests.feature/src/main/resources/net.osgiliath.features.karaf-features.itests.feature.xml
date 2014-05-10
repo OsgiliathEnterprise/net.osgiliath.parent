@@ -94,4 +94,8 @@ limitations under the License.
 		<feature version='${project.version}'>osgiliath-validation</feature>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.validation/target/net.osgiliath.features.karaf-features.itests.validation-${project.version}.jar</bundle>
 	</feature>
+	<feature name='osgiliath-itests-validation-cdi' version='${project.version}'>
+		<feature version='${project.version}'>osgiliath-validation-cdi</feature>
+		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.validation.cdi/target/net.osgiliath.features.karaf-features.itests.validation.cdi-${project.version}.jar</bundle>
+	</feature>
 </features>

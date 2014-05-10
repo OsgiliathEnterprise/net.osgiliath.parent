@@ -34,7 +34,7 @@ ${symbol_pound}L%
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.model.jpa/${symbol_dollar}{project.version}/jar</bundle>-->
 	</feature>
 	<feature name="${symbol_dollar}{project.artifactId}.business.itests" version="${symbol_dollar}{project.version}">
-		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business</feature>
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business-cdi</feature>
 		<feature version='${symbol_dollar}{project.version}'>${project.parent.artifactId}.model</feature>
 		<!--TODO your itests dependencies here
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
@@ -57,8 +57,15 @@ ${symbol_pound}L%
 		<feature version='${karaf.version}'>war</feature>
 		<bundle>file:${project.parent.basedir}/${project.groupId}.ui/target/${project.groupId}.ui.war</bundle>
 	</feature>-->
+	<!--<feature name="${symbol_dollar}{project.groupId}.route" version="${project.version}">
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-full-cdi</feature>
+		<configfile finalname="/etc/${symbol_dollar}{project.groupId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/camel</configfile>
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
+		<feature version='${project.version}'>${symbol_dollar}{project.groupId}.business.cdi</feature>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.groupId}.routes.cdi/${symbol_dollar}{project.version}/jar</bundle>
+	</feature>-->
 	<feature name="${symbol_dollar}{project.artifactId}.business" version="${symbol_dollar}{project.version}">
-		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business</feature>
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business-cdi</feature>
 		<feature version='${symbol_dollar}{project.version}'>${project.parent.artifactId}.model</feature>
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.impl/${symbol_dollar}{project.version}/jar</bundle>

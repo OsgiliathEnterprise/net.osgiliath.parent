@@ -1,6 +1,5 @@
 package net.osgiliath.validation;
 
-
 /*
  * #%L
  * net.osgiliath.features.karaf-features.itests.validation
@@ -20,15 +19,21 @@ package net.osgiliath.validation;
  * limitations under the License.
  * #L%
  */
+
+import javax.validation.constraints.NotNull;
+
+import lombok.Data;
 /**
- * 
- * @author charliemordant
- * Validation service interface
+ * Sample validated entity
  */
-public interface IValidatorFactorySample {
+@Data
+public class HelloObject {
     /**
-     * must throw exception
-     * @param object
+     * message
      */
-    void nullMessageValidation(HelloObject object);
+    @NotNull
+    private String message;
+
+   
+
 }

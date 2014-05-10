@@ -20,6 +20,9 @@
 		<module>
   		net.osgiliath.features.karaf-features.itests.validation
   	</module>
+  	<module>
+  		net.osgiliath.features.karaf-features.itests.validation.cdi
+  	</module>
 		<module>
   		net.osgiliath.features.karaf-features.itests.jpa
   	</module>

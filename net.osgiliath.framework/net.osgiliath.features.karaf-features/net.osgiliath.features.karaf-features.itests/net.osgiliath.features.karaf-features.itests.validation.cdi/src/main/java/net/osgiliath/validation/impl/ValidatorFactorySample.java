@@ -1,5 +1,4 @@
-package net.osgiliath.validation;
-
+package net.osgiliath.validation.impl;
 
 /*
  * #%L
@@ -20,15 +19,32 @@ package net.osgiliath.validation;
  * limitations under the License.
  * #L%
  */
+
+import javax.enterprise.inject.Default;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import net.osgiliath.validation.HelloObject;
+import net.osgiliath.validation.IValidatorFactorySample;
+
+import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 /**
  * 
  * @author charliemordant
- * Validation service interface
+ * Validation test
  */
-public interface IValidatorFactorySample {
+@Default
+@OsgiServiceProvider
+public class ValidatorFactorySample implements IValidatorFactorySample {
     /**
-     * must throw exception
-     * @param object
+     * Validation of a null message
      */
-    void nullMessageValidation(HelloObject object);
+    public void nullMessageValidation(@NotNull @Valid HelloObject object) {
+
+	if (object != null) {
+	    // Exception must have be thrown
+	    System.out.println(object.toString());
+	}
+	
+    }
 }
