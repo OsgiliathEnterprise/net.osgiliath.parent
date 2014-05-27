@@ -175,6 +175,11 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
+			<artifactId>${project.groupId}.model.database</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
 			<artifactId>${project.groupId}.features</artifactId>
 			<classifier>features</classifier>
 			<type>xml</type>
