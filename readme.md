@@ -51,4 +51,14 @@ Finally run mvn clean install on the root...
 On Mac, add a java.home property in your Maven settings.xml pointing to your JDK installation (mandatory for lombok).
 We'll accept most of contributions in a very short time so don't be shy!
 
+# Releasing
+In order to release Osgiliath on m2 central, you've got to execute these two command:
+
+```
+export MAVEN_OPTS="-Xmx2048M -XX:MaxPermSize=1G" (in your .profile)
+mvn release:prepare -Psonatype-oss-release
+mvn release:perform -Dgoals=deploy
+```
+
+
 Enjoy Osgiliath coding!

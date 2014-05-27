@@ -58,5 +58,6 @@
 		<module>net.osgiliath.wrappers</module>
 		<module>net.osgiliath.helpers.camel.cdi.configadmin</module>
 		<module>net.osgiliath.helpers.exam</module>
+		<module>net.osgiliath.helpers.derby</module>
 	</modules>
 </project>

@@ -26,6 +26,14 @@
 			</resource>
 		</resources>
 		<plugins>
+		<plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -45,8 +53,8 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.bsc.maven</groupId>
-				<artifactId>maven-processor-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.projectlombok</groupId>
@@ -98,14 +106,59 @@
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>${project.parent.artifactId}.database</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+		<profiles>
+		<!-- ================= Database Profiles ================= -->
+
+		<!-- ============================================================================================ -->
+		<!-- Generate database diff with liquibase, based on previously registered 
+			liquibase db changelog -->
+		<!-- ============================================================================================ -->
+		<profile>
+			<id>db-diff</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.openjpa</groupId>
+						<artifactId>openjpa-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+						<artifactId>inmemdb-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- ============================================================================================ -->
+		<!-- Generate database data changelog for liquibase (run previously mvn 
+			-Pprod test-compile if you want to generate changelog for production data) -->
+		<!-- ============================================================================================ -->
+		<profile>
+			<id>db-data</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.openjpa</groupId>
+						<artifactId>openjpa-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+						<artifactId>inmemdb-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

@@ -22,6 +22,7 @@ limitations under the License.
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-standard/${project.version}/xml/features</repository>
@@ -31,6 +32,7 @@ limitations under the License.
 		<feature>jetty</feature>
 		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jms</feature>
+		<feature version='${karaf.feature.spring.version}'>spring-tx</feature>
 		<bundle>mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
 		<bundle>mvn:commons-collections/commons-collections/${commons-collections.version}</bundle>
 		<bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
@@ -53,16 +55,16 @@ limitations under the License.
 		<bundle>mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
 		<bundle >mvn:org.eclipse.jetty/jetty-websocket/${pax-jetty.version}</bundle>
 		<bundle>mvn:org.glassfish/javax.json/${org.glassfish.javax.json.version}</bundle>
-		<feature version='${karaf.feature.spring.version}'>spring-jms</feature>
-		<feature version='${camel-version}'>camel-jms</feature>
+		
+		<feature version='${project.version}'>osgiliath-camel-jms</feature>
 		<feature version="${camel-version}">camel-http</feature>
-		<feature version="${camel-version}">camel-spring</feature>
+		<!--<feature version="${camel-version}">camel-spring</feature>-->
 		<feature version="${camel-version}">camel-blueprint</feature>
 		<feature version="${camel-version}">camel-jackson</feature>
 		<feature version="${camel-version}">camel-jaxb</feature>
 		<feature version="${camel-version}">osgiliath-camel-xstream</feature>
 		<feature version="${camel-version}">camel-xmljson</feature>
-		<feature version="${camel-version}">camel-cxf</feature>
+		<feature version="${project.version}">osgiliath-camel-cxf</feature>
 		<feature version="${camel-version}">camel-core</feature>
 	</feature>
 	<feature name="osgiliath-messaging-cdi" version="${project.version}">
@@ -72,5 +74,26 @@ limitations under the License.
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.cdi.configadmin/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.camel-cdi/${project.version}</bundle>
+	</feature>
+	<feature name="osgiliath-camel-cxf" version="${project.version}" resolver="(obr)" start-level="50">
+		<feature version='${karaf.feature.spring.version}'>spring</feature>
+		<feature version="${karaf.feature.cxf.version}">cxf-core</feature>
+		<feature version="${karaf.feature.cxf.version}">cxf-jaxrs</feature>
+		<feature version="${karaf.feature.cxf.version}">cxf-jaxws</feature>
+		<feature version="${karaf.feature.cxf.version}">cxf-http-jetty</feature>
+		<feature version="${karaf.feature.cxf.version}">cxf-databinding-jaxb</feature>
+		<feature version="${karaf.feature.cxf.version}">cxf-bindings-soap</feature>
+		<bundle>mvn:org.apache.camel/camel-cxf-transport/${camel-version}</bundle>
+		<bundle>mvn:org.apache.camel/camel-cxf/${camel-version}</bundle>
+		<bundle>mvn:org.apache.camel/camel-spring/${camel-version}</bundle>
+	</feature>
+	<feature name="osgiliath-camel-jms" version="${project.version}" resolver="(obr)" start-level="50">
+		<feature version="${karaf.feature.spring.version}">spring</feature>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-jta_1.1_spec.version}</bundle>
+		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>
+		<feature version="${karaf.feature.spring.version}">spring-jms</feature>
+		<feature version="${camel-version}">camel-core</feature>
+		<bundle>mvn:org.apache.camel/camel-jms/${camel-version}</bundle>
 	</feature>
 </features>

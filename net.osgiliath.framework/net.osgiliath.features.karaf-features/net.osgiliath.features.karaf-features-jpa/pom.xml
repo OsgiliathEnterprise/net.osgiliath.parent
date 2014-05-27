@@ -163,14 +163,14 @@
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-servlet_3.0_spec</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.apache.karaf.bundle</groupId>
 			<artifactId>org.apache.karaf.bundle.springstate</artifactId>
-		</dependency>
-		<dependency>
+		</dependency> -->
+		<!-- <dependency>
 			<groupId>org.apache.karaf.deployer</groupId>
 			<artifactId>org.apache.karaf.deployer.spring</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>enterprise</artifactId>

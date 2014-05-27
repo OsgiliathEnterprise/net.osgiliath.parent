@@ -1,0 +1,48 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 25.0-b70 (Oracle Corporation)
+Bundle-Vendor: Apache Software Foundation
+Bundle-Name: Apache Derby 10.10
+Bundle-Version: 10.10.2000000.1582446
+Bundle-ManifestVersion: 2
+Sealed: true
+Bundle-Activator: org.apache.derby.osgi.EmbeddedActivator
+Bundle-SymbolicName: derby
+DynamicImport-Package: *
+Export-Package: org.apache.derby.authentication,org.apache.derby.datab
+ ase,org.apache.derby.io,org.apache.derby.jdbc,org.apache.derby.vti
+Class-Path: derbyLocale_cs.jar derbyLocale_de_DE.jar derbyLocale_es.ja
+ r derbyLocale_fr.jar derbyLocale_hu.jar derbyLocale_it.jar derbyLocal
+ e_ja_JP.jar derbyLocale_ko_KR.jar derbyLocale_pl.jar derbyLocale_pt_B
+ R.jar derbyLocale_ru.jar derbyLocale_zh_CN.jar derbyLocale_zh_TW.jar
+
+Name: org/apache/derby/impl/tools/sysinfo/
+Sealed: false
+
+Name: org/apache/derby/iapi/services/context/
+Sealed: false
+
+Name: org/apache/derby/iapi/services/info/
+Sealed: false
+
+Name: org/apache/derby/jdbc/
+Sealed: false
+
+Name: org/apache/derby/info/
+Sealed: false
+
+Name: org/apache/derby/iapi/services/i18n/
+Sealed: false
+
+Name: org/apache/derby/shared/common/sanity/
+Sealed: false
+
+Name: org/apache/derby/iapi/tools/i18n/
+Sealed: false
+
+Name: org/apache/derby/loc/
+Sealed: false
+
+Name: org/apache/derby/tools/
+Sealed: false
+

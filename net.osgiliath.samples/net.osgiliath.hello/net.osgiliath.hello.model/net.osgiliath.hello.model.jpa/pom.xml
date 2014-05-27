@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -18,7 +19,7 @@
 	<artifactId>net.osgiliath.hello.model.jpa</artifactId>
 	<name>Helloworld sample JPA (database persistence)</name>
 	<description>JPA persistence module for helloworld</description>
-	
+
 	<build>
 		<resources>
 			<resource>
@@ -30,6 +31,10 @@
 			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -102,14 +107,59 @@
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>${project.parent.artifactId}.database</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<!-- ================= Database Profiles ================= -->
+
+		<!-- ============================================================================================ -->
+		<!-- Generate database diff with liquibase, based on previously registered 
+			liquibase db changelog -->
+		<!-- ============================================================================================ -->
+		<profile>
+			<id>db-diff</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.openjpa</groupId>
+						<artifactId>openjpa-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+						<artifactId>inmemdb-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- ============================================================================================ -->
+		<!-- Generate database data changelog for liquibase (run previously mvn 
+			-Pprod test-compile if you want to generate changelog for production data) -->
+		<!-- ============================================================================================ -->
+		<profile>
+			<id>db-data</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.openjpa</groupId>
+						<artifactId>openjpa-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+						<artifactId>inmemdb-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

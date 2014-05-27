@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -64,12 +65,9 @@
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>${com.google.guava.version}</version>
-			</dependency>			
-			<!-- <dependency>
-				<groupId>com.sun.xml</groupId>
-				<artifactId>com.springsource.com.sun.xml.ws</artifactId>
-				<version>${com.springsource.com.sun.xml.ws.version}</version>
-			</dependency> -->
+			</dependency>
+			<!-- <dependency> <groupId>com.sun.xml</groupId> <artifactId>com.springsource.com.sun.xml.ws</artifactId> 
+				<version>${com.springsource.com.sun.xml.ws.version}</version> </dependency> -->
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
@@ -79,6 +77,11 @@
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
 				<version>${commons-collections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>${commons-dbcp.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>
@@ -95,11 +98,8 @@
 				<artifactId>commons-pool</artifactId>
 				<version>${commons-pool.version}</version>
 			</dependency>
-			<!-- <dependency>
-				<groupId>javax.annotation</groupId>
-				<artifactId>com.springsource.javax.annotation</artifactId>
-				<version>${com.springsource.javax.annotation.version}</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>javax.annotation</groupId> <artifactId>com.springsource.javax.annotation</artifactId> 
+				<version>${com.springsource.javax.annotation.version}</version> </dependency> -->
 			<dependency>
 				<groupId>javax.el</groupId>
 				<artifactId>javax.el-api</artifactId>
@@ -125,11 +125,8 @@
 				<artifactId>javax.json-api</artifactId>
 				<version>${javax.json-api.version}</version>
 			</dependency>
-			<!-- <dependency>
-				<groupId>javax.transaction</groupId>
-				<artifactId>com.springsource.javax.transaction</artifactId>
-				<version>${com.springsource.javax.transaction.version}</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>javax.transaction</groupId> <artifactId>com.springsource.javax.transaction</artifactId> 
+				<version>${com.springsource.javax.transaction.version}</version> </dependency> -->
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
@@ -156,20 +153,29 @@
 				<version>${derby.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derbyclient</artifactId>
+				<version>${derby.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derbynet</artifactId>
+				<version>${derby.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derbytools</artifactId>
+				<version>${derby.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.geronimo.bundles</groupId>
 				<artifactId>scannotation</artifactId>
 				<version>${scannotation.version}</version>
 			</dependency>
-			<!-- <dependency>
-				<groupId>net.sourceforge.cglib</groupId>
-				<artifactId>com.springsource.net.sf.cglib</artifactId>
-				<version>${com.springsource.net.sf.cglib.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.aopalliance</groupId>
-				<artifactId>com.springsource.org.aopalliance</artifactId>
-				<version>${com.springsource.org.aopalliance.version}</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>net.sourceforge.cglib</groupId> <artifactId>com.springsource.net.sf.cglib</artifactId> 
+				<version>${com.springsource.net.sf.cglib.version}</version> </dependency> 
+				<dependency> <groupId>org.aopalliance</groupId> <artifactId>com.springsource.org.aopalliance</artifactId> 
+				<version>${com.springsource.org.aopalliance.version}</version> </dependency> -->
 
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
@@ -315,6 +321,11 @@
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-cxf</artifactId>
+				<version>${camel-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-cxf-transport</artifactId>
 				<version>${camel-version}</version>
 			</dependency>
 			<dependency>
@@ -808,6 +819,91 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-aspects</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-instrument</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-jdbc</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-jms</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-orm</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-oxm</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-tx</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-web</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-webmvc</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-webmvc-portlet</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-websocket</artifactId>
+				<version>${org.apache.servicemix.bundles.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.velocity</artifactId>
 				<version>${org.apache.servicemix.bundles.velocity.version}</version>
 			</dependency>
@@ -892,21 +988,12 @@
 				<artifactId>xbean-spring</artifactId>
 				<version>${xbean.version}</version>
 			</dependency>
-		<!-- 	<dependency>
-				<groupId>org.apache.xmlcommons</groupId>
-				<artifactId>com.springsource.org.apache.xmlcommons</artifactId>
-				<version>${com.springsource.org.apache.xmlcommons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>com.springsource.org.aspectj.runtime</artifactId>
-				<version>${com.springsource.org.aspectj.runtime.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>com.springsource.org.aspectj.weaver</artifactId>
-				<version>${com.springsource.org.aspectj.runtime.version}</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>org.apache.xmlcommons</groupId> <artifactId>com.springsource.org.apache.xmlcommons</artifactId> 
+				<version>${com.springsource.org.apache.xmlcommons.version}</version> </dependency> 
+				<dependency> <groupId>org.aspectj</groupId> <artifactId>com.springsource.org.aspectj.runtime</artifactId> 
+				<version>${com.springsource.org.aspectj.runtime.version}</version> </dependency> 
+				<dependency> <groupId>org.aspectj</groupId> <artifactId>com.springsource.org.aspectj.weaver</artifactId> 
+				<version>${com.springsource.org.aspectj.runtime.version}</version> </dependency> -->
 
 			<dependency>
 				<groupId>org.codehaus.jettison</groupId>
@@ -1065,15 +1152,17 @@
 				<artifactId>json</artifactId>
 				<version>${org.json.version}</version>
 			</dependency>
-		<!-- 	<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>com.springsource.org.junit</artifactId>
-				<version>${com.springsource.org.junit.version}</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>org.junit</groupId> <artifactId>com.springsource.org.junit</artifactId> 
+				<version>${com.springsource.org.junit.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.kubek2k</groupId>
 				<artifactId>springockito</artifactId>
 				<version>${springockito.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-osgi</artifactId>
+				<version>${liquibase-osgi.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
@@ -1301,10 +1390,10 @@
 				<classifier>jettyconfig</classifier>
 			</dependency>
 			<dependency>
-                <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.compendium</artifactId>
-                <version>${org.osgi.version}</version>
-            </dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>${org.osgi.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
@@ -1531,11 +1620,8 @@
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
-			<!-- <dependency>
-				<groupId>org.xmlpull</groupId>
-				<artifactId>com.springsource.org.xmlpull</artifactId>
-				<version>${com.springsource.org.xmlpull.version}</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>org.xmlpull</groupId> <artifactId>com.springsource.org.xmlpull</artifactId> 
+				<version>${com.springsource.org.xmlpull.version}</version> </dependency> -->
 			<dependency>
 				<groupId>xml-apis</groupId>
 				<artifactId>xml-apis</artifactId>
@@ -1550,33 +1636,33 @@
 		</dependencies>
 	</dependencyManagement>
 	<properties>
-		<camel-version>2.13.0</camel-version>
-		<cdi-api.version>1.1-20130918</cdi-api.version>
-		<com.atomikos.version>3.8.0</com.atomikos.version>
-		<com.google.guava.version>15.0</com.google.guava.version>
+		<camel-version>2.13.1</camel-version>
+		<cdi-api.version>1.2</cdi-api.version>
+		<com.atomikos.version>3.9.3</com.atomikos.version>
+		<com.google.guava.version>17.0</com.google.guava.version>
 		<com.fasterxml.jackson.core.version>2.3.2</com.fasterxml.jackson.core.version><!-- 
 			Do not upgrade cause of camel-json -->
 		<com.fasterxml.classmate.version>1.0.0</com.fasterxml.classmate.version>
 		<com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version>
-		<commons-codec.version>1.7</commons-codec.version>
+		<commons-codec.version>1.9</commons-codec.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
-		<commons-dbcp.osgi.version>1.4</commons-dbcp.osgi.version>
+		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<commons-jexl.version>2.1.1</commons-jexl.version>
 		<commons-io.version>2.4</commons-io.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-management.version>1.0</commons-management.version>
 		<commons-pool.version>1.6</commons-pool.version>
-		<derby.version>10.9.1.0</derby.version>
+		<derby.version>10.10.2.0</derby.version>
 		<exam.version>3.5.0</exam.version>
 		<geronimo-annotation_1.1_spec.version>1.0.1</geronimo-annotation_1.1_spec.version>
 		<geronimo-atinject_1.0_spec.version>1.0</geronimo-atinject_1.0_spec.version>
-		<geronimo-el_2.2_spec.version>1.0.3</geronimo-el_2.2_spec.version>
+		<geronimo-el_2.2_spec.version>1.0.4</geronimo-el_2.2_spec.version>
 		<geronimo-interceptor_1.1_spec.version>1.0</geronimo-interceptor_1.1_spec.version>
 		<geronimo-j2ee-management_1.1_spec.version>1.0.1</geronimo-j2ee-management_1.1_spec.version>
 		<geronimo-jaspic_1.0_spec.version>1.1</geronimo-jaspic_1.0_spec.version>
 		<geronimo-jcdi_1.0_spec.version>1.0</geronimo-jcdi_1.0_spec.version>
 		<geronimo-jms_1.1_spec.version>1.1.1</geronimo-jms_1.1_spec.version>
-		<geronimo-jsp_2.2_spec.version>1.1</geronimo-jsp_2.2_spec.version>
+		<geronimo-jsp_2.2_spec.version>1.2</geronimo-jsp_2.2_spec.version>
 		<geronimo-jta_1.1_spec.version>1.1.1</geronimo-jta_1.1_spec.version>
 		<geronimo-servlet_2.5_spec.version>1.2</geronimo-servlet_2.5_spec.version>
 		<geronimo-servlet_3.0_spec.version>1.0</geronimo-servlet_3.0_spec.version>
@@ -1587,75 +1673,78 @@
 		<javax.json-api.version>1.0</javax.json-api.version>
 		<jdbc-stdext.version>2.0</jdbc-stdext.version>
 		<jettison.version>1.3.5</jettison.version>
-		<joda-time.version>2.1</joda-time.version>
+		<joda-time.version>2.3</joda-time.version>
 		<junit.version>4.11</junit.version>
-		<karaf.feature.cxf.version>2.7.10</karaf.feature.cxf.version>
+		<karaf.feature.cxf.version>2.7.11</karaf.feature.cxf.version>
 		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
 		<karaf.feature.jndi.version>1.0.0</karaf.feature.jndi.version>
 		<karaf.feature.jpa.version>1.0.1</karaf.feature.jpa.version>
 		<karaf.feature.spring.version>3.2.4.RELEASE</karaf.feature.spring.version>
 		<karaf.feature.spring-dm.version>1.2.1</karaf.feature.spring-dm.version>
 		<karaf.feature.transaction.version>1.0.1</karaf.feature.transaction.version>
-		<logback.version>0.9.29</logback.version>
+		<liquibase-osgi.version>3.1.1</liquibase-osgi.version>
+		<logback.version>1.1.2</logback.version>
 		<mockito.version>1.8.4</mockito.version>
-		<openwebbeans.version>1.1.7</openwebbeans.version>
-		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
-		<org.apache.aries.blueprint.version>0.3.1</org.apache.aries.blueprint.version>
+		<openwebbeans.version>1.2.4</openwebbeans.version>
+		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see 
+			https://issues.apache.org/jira/browse/AMQ-5169 -->
+		<org.apache.aries.blueprint.version>1.1.0</org.apache.aries.blueprint.version>
 		<org.apache.aries.jpa.api.version>1.0.0</org.apache.aries.jpa.api.version>
 		<org.apache.aries.proxy.api.version>0.3.0</org.apache.aries.proxy.api.version>
-		<org.apache.aries.transaction.blueprint.version>1.0.1</org.apache.aries.transaction.blueprint.version>
-		<org.apache.aries.util.version>1.0.0</org.apache.aries.util.version>
-		<org.apache.deltaspike.version>0.6</org.apache.deltaspike.version>
+		<org.apache.aries.transaction.blueprint.version>1.0.0</org.apache.aries.transaction.blueprint.version>
+		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
+		<org.apache.deltaspike.version>0.7</org.apache.deltaspike.version>
 		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>
-		<org.apache.felix.framework.version>4.0.3</org.apache.felix.framework.version>
-		<org.apache.felix.fileinstall.version>3.2.2</org.apache.felix.fileinstall.version>
-		<org.apache.felix.scr.version>1.6.2</org.apache.felix.scr.version>
+		<org.apache.felix.framework.version>4.4.0</org.apache.felix.framework.version>
+		<org.apache.felix.fileinstall.version>3.4.0</org.apache.felix.fileinstall.version>
+		<org.apache.felix.scr.version>1.8.2</org.apache.felix.scr.version>
 		<org.apache.felix.gogo.command.version>0.12.0</org.apache.felix.gogo.command.version>
-		<org.apache.felix.gogo.runtime.version>0.10.0</org.apache.felix.gogo.runtime.version>
+		<org.apache.felix.gogo.runtime.version>0.12.0</org.apache.felix.gogo.runtime.version>
 		<org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version>1.1</org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version>
 		<org.apache.openjpa.version>2.3.0</org.apache.openjpa.version>
-		<org.apache.servicemix.bundles.ant.version>1.7.0_6</org.apache.servicemix.bundles.ant.version>
+		<org.apache.servicemix.bundles.ant.version>1.9.3_1</org.apache.servicemix.bundles.ant.version>
 		<org.apache.servicemix.bundles.aopalliance.version>1.0_6</org.apache.servicemix.bundles.aopalliance.version>
-		<org.apache.servicemix.bundles.aspectj.version>1.7.1_1</org.apache.servicemix.bundles.aspectj.version>
-		<org.apache.servicemix.bundles.cglib.version>2.2.2_1</org.apache.servicemix.bundles.cglib.version>
-		<org.apache.servicemix.bundles.commons-beanutils.version>1.8.3_1</org.apache.servicemix.bundles.commons-beanutils.version>
+		<org.apache.servicemix.bundles.aspectj.version>1.7.4_1</org.apache.servicemix.bundles.aspectj.version>
+		<org.apache.servicemix.bundles.cglib.version>3.1_1</org.apache.servicemix.bundles.cglib.version>
+		<org.apache.servicemix.bundles.commons-beanutils.version>1.8.3_2</org.apache.servicemix.bundles.commons-beanutils.version>
 		<org.apache.servicemix.bundles.commons-collections.version>3.2.1_3</org.apache.servicemix.bundles.commons-collections.version>
-		<org.apache.servicemix.bundles.commons-dbcp.version>1.4_2</org.apache.servicemix.bundles.commons-dbcp.version>
+		<org.apache.servicemix.bundles.commons-dbcp.version>1.4_3</org.apache.servicemix.bundles.commons-dbcp.version>
 		<org.apache.servicemix.bundles.commons-pool.version>1.5.4_4</org.apache.servicemix.bundles.commons-pool.version>
 		<org.apache.servicemix.bundles.dom4j.version>1.6.1_5</org.apache.servicemix.bundles.dom4j.version>
-		<org.apache.servicemix.bundles.elasticsearch.version>0.19.10_1</org.apache.servicemix.bundles.elasticsearch.version>
+		<org.apache.servicemix.bundles.elasticsearch.version>1.1.0_1</org.apache.servicemix.bundles.elasticsearch.version>
 		<org.apache.servicemix.bundles.ezmorph>1.0.6_1</org.apache.servicemix.bundles.ezmorph>
 		<org.apache.servicemix.bundles.jakarta-regexp.version>1.4_1</org.apache.servicemix.bundles.jakarta-regexp.version>
-		<org.apache.servicemix.bundles.jasypt.version>1.9.0_1</org.apache.servicemix.bundles.jasypt.version>
+		<org.apache.servicemix.bundles.jasypt.version>1.9.2_1</org.apache.servicemix.bundles.jasypt.version>
 		<org.apache.servicemix.bundles.jaxb-impl.version>2.2.6_1</org.apache.servicemix.bundles.jaxb-impl.version>
 		<org.apache.servicemix.bundles.jdom.version>2.0.2_1</org.apache.servicemix.bundles.jdom.version>
-		<org.apache.servicemix.bundles.joda-time.version>1.5.2_5</org.apache.servicemix.bundles.joda-time.version>
+		<org.apache.servicemix.bundles.joda-time.version>2.3_1</org.apache.servicemix.bundles.joda-time.version>
 		<org.apache.servicemix.bundles.json-lib.version>2.4_1</org.apache.servicemix.bundles.json-lib.version>
-		<org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles.kxml2.version>
-		<org.apache.servicemix.bundles.lucene.version>3.6.0_1</org.apache.servicemix.bundles.lucene.version>
+		<org.apache.servicemix.bundles.kxml2.version>2.3.0_3</org.apache.servicemix.bundles.kxml2.version>
+		<org.apache.servicemix.bundles.lucene.version>4.7.0_1</org.apache.servicemix.bundles.lucene.version>
 		<org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles.oro.version>
-		<org.apache.servicemix.bundles.protobuf-java.version>2.3.0_3</org.apache.servicemix.bundles.protobuf-java.version>
+		<org.apache.servicemix.bundles.protobuf-java.version>2.4.1_1</org.apache.servicemix.bundles.protobuf-java.version>
 		<org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles.serp.version>
+		<org.apache.servicemix.bundles.spring.version>4.0.2.RELEASE_1</org.apache.servicemix.bundles.spring.version>
 		<org.apache.servicemix.bundles.velocity.version>1.7_6</org.apache.servicemix.bundles.velocity.version>
 		<org.apache.servicemix.bundles.woodstox.version>3.2.9_3</org.apache.servicemix.bundles.woodstox.version>
-		<org.apache.servicemix.bundles.xpp3.version>1.1.4c_6</org.apache.servicemix.bundles.xpp3.version>
+		<org.apache.servicemix.bundles.xpp3.version>1.1.4c_7</org.apache.servicemix.bundles.xpp3.version>
 		<org.apache.servicemix.bundles.xstream.version>1.4.7_1</org.apache.servicemix.bundles.xstream.version>
-		<org.apache.servicemix.specs.activation-api-1.1.version>2.2.0</org.apache.servicemix.specs.activation-api-1.1.version>
-		<org.apache.servicemix.specs.jsr250-1.0.version>2.0.0</org.apache.servicemix.specs.jsr250-1.0.version>
-		<org.apache.servicemix.specs.jsr311-api-1.1.version>2.2.0</org.apache.servicemix.specs.jsr311-api-1.1.version>
-		<org.apache.servicemix.specs.jsr339-api-m10.version>2.2.0</org.apache.servicemix.specs.jsr339-api-m10.version>
-		<org.apache.servicemix.specs.stax-api-1.0.version>2.2.0</org.apache.servicemix.specs.stax-api-1.0.version>
+		<org.apache.servicemix.specs.activation-api-1.1.version>2.4.0</org.apache.servicemix.specs.activation-api-1.1.version>
+		<org.apache.servicemix.specs.jsr250-1.0.version>2.4.0</org.apache.servicemix.specs.jsr250-1.0.version>
+		<org.apache.servicemix.specs.jsr311-api-1.1.version>2.4.0</org.apache.servicemix.specs.jsr311-api-1.1.version>
+		<org.apache.servicemix.specs.jsr339-api-m10.version>2.4.0</org.apache.servicemix.specs.jsr339-api-m10.version>
+		<org.apache.servicemix.specs.stax-api-1.0.version>2.4.0</org.apache.servicemix.specs.stax-api-1.0.version>
 		<org.eclipse.rap.version>1.5.0</org.eclipse.rap.version>
 		<org.glassfish.javax.annotation.version>3.1.1</org.glassfish.javax.annotation.version>
-		<org.glassfish.javax.json.version>1.0.3</org.glassfish.javax.json.version>
+		<org.glassfish.javax.json.version>1.0.4</org.glassfish.javax.json.version>
 		<org.hibernate.validator.version>5.0.3.Final</org.hibernate.validator.version>
 		<org.jacoco.agent.version>0.7.0.201403182114</org.jacoco.agent.version>
 		<org.javassist.version>3.18.1-GA</org.javassist.version>
 		<org.jboss.logging.version>3.1.3.GA</org.jboss.logging.version>
-		<org.jboss.weld.version>2.1.1.Final</org.jboss.weld.version>
+		<org.jboss.weld.version>2.2.1.Final</org.jboss.weld.version>
 		<org.jcloud.karaf.version>1.4.0</org.jcloud.karaf.version>
-		<org.json.version>20090211</org.json.version>
-		<org.mvel2.version>2.1.7.Final</org.mvel2.version>
+		<org.json.version>20140107</org.json.version>
+		<org.mvel2.version>2.1.9.Final</org.mvel2.version>
 		<org.mod4j.org.eclipse.jface.binding.version>1.3.0</org.mod4j.org.eclipse.jface.binding.version>
 		<org.mod4j.org.eclipse.core.binding.version>1.2.0</org.mod4j.org.eclipse.core.binding.version>
 		<org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
@@ -1669,25 +1758,25 @@
 		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 		<org.springframework.hateoas.version>0.8.0.RELEASE</org.springframework.hateoas.version>
-		<osgiliath.framework.maven.version>0.0.4</osgiliath.framework.maven.version>
+		<osgiliath.framework.maven.version>0.0.5</osgiliath.framework.maven.version>
 		<ow2-jdbc-service-1.0-spec.version>1.0.13</ow2-jdbc-service-1.0-spec.version>
 		<ops4j.base.version>1.4.0</ops4j.base.version>
 		<pax-cdi.version>0.7.0</pax-cdi.version>
 		<pax.jdbc.version>0.3.0</pax.jdbc.version>
-		<pax-jpa.version>0.1.1</pax-jpa.version>
+		<pax-jpa.version>0.2.0</pax-jpa.version>
 		<pax.swissbox.version>1.7.0</pax.swissbox.version>
 		<pax.tinybundle.version>2.0.0</pax.tinybundle.version>
 		<pax-web-features.version>3.1.0</pax-web-features.version>
 		<pax-jetty.version>8.1.14.v20131031</pax-jetty.version>
 		<scannotation.version>1.0.2_1</scannotation.version>
-		<slf4j.version>1.6.4</slf4j.version>
+		<slf4j.version>1.7.7</slf4j.version>
 		<sonar-jacoco-listeners.version>1.3</sonar-jacoco-listeners.version>
 		<spring-integration.version>2.1.3.RELEASE</spring-integration.version>
-		<springockito.version>1.0.8</springockito.version>
-		<stax2-api.version>3.0.4</stax2-api.version>
+		<springockito.version>1.0.9</springockito.version>
+		<stax2-api.version>3.1.4</stax2-api.version>
 		<url.version>1.6.0</url.version>
 		<validation-api.version>1.1.0.Final</validation-api.version>
-		<wstx-asl.version>4.0.0</wstx-asl.version>
+		<wstx-asl.version>4.0.6</wstx-asl.version>
 		<xbean.version>3.16</xbean.version>
 		<xom.version>1.2.5</xom.version>
 		<xml-apis.version>1.4.01</xml-apis.version>

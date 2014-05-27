@@ -15,6 +15,7 @@
 	
 	<!-- Model -->
 	<feature name="${project.groupId}.model" version="${project.version}">
+		<configfile finalname="/etc/${project.groupId}.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/camel</configfile>
 		<feature version='${project.version}'>osgiliath-derby</feature>
 		<feature version='${project.version}'>osgiliath-model</feature>
 		<bundle>mvn:${project.groupId}/${project.groupId}.model.database/${project.version}/jar</bundle>

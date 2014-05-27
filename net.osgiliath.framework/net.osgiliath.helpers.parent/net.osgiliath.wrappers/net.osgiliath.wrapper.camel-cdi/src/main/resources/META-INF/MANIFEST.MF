@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1395067894281
-Build-Jdk: 1.6.0_45
+Bnd-LastModified: 1399466432356
+Build-Jdk: 1.7.0_55
 Built-By: ubuntu
 Bundle-Description: Camel CDI
 Bundle-DocURL: http://www.apache.org/
@@ -9,7 +9,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: camel-cdi
 Bundle-SymbolicName: org.apache.camel.camel-cdi
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 2.13.0
+Bundle-Version: 2.13.1
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.apache.camel.cdi;uses:="org.apache.camel.util,javax.
  enterprise.inject.spi,org.apache.deltaspike.core.api.provider,org.apach
@@ -18,19 +18,19 @@ Export-Package: org.apache.camel.cdi;uses:="org.apache.camel.util,javax.
  pache.camel.model.loadbalancer,org.apache.camel.model.dataformat,org.ap
  ache.camel.model.config,org.apache.camel.main,org.apache.camel.model,or
  g.apache.camel.model.language,javax.xml.bind,javax.enterprise.util";ver
- sion="2.13.0",org.apache.camel.cdi.internal;uses:="org.apache.camel.imp
+ sion="2.13.1",org.apache.camel.cdi.internal;uses:="org.apache.camel.imp
  l,org.apache.camel.cdi,org.apache.camel,javax.enterprise.inject.spi,jav
- ax.enterprise.util,javax.enterprise.context.spi,org.apache.deltaspike.c
- ore.api.literal,org.apache.camel.util,javax.enterprise.context,org.apac
+ ax.enterprise.util,javax.enterprise.context.spi,org.apache.camel.util,o
+ rg.apache.deltaspike.core.api.literal,javax.enterprise.context,org.apac
  he.camel.model,javax.annotation,javax.enterprise.inject,javax.inject,or
  g.apache.deltaspike.core.util.metadata.builder,javax.enterprise.event,o
  rg.apache.deltaspike.core.api.provider,org.apache.camel.component.mock"
- ;version="2.13.0",org.apache.camel.cdi.component.properties;uses:="org.
+ ;version="2.13.1",org.apache.camel.cdi.component.properties;uses:="org.
  apache.camel.component.properties,javax.inject,org.apache.deltaspike.co
- re.api.config";version="2.13.0"
+ re.api.config";version="2.13.1"
 Ignore-Package: org.apache.deltaspike.cdise.api
 Implementation-Title: Apache Camel
-Implementation-Version: 2.13.0
+Implementation-Version: 2.13.1
 Import-Package: javax.annotation,javax.enterprise.context;version="[1.0,
  2)",javax.enterprise.context.spi;version="[1.0,2)",javax.enterprise.eve
  nt;version="[1.0,2)",javax.enterprise.inject;version="[1.0,2)",javax.en
@@ -45,11 +45,11 @@ Import-Package: javax.annotation,javax.enterprise.context;version="[1.0,
  loadbalancer;version="[2.13,3)",org.apache.camel.spi;version="[2.13,3)"
  ,org.apache.camel.util;version="[2.13,3)",org.apache.camel.view;version
  ="[2.13,3)",org.apache.deltaspike.core.api.config;resolution:=optional;
- version="[0.5,1)",org.apache.deltaspike.core.api.literal;resolution:=op
- tional;version="[0.5,1)",org.apache.deltaspike.core.api.provider;resolu
- tion:=optional;version="[0.5,1)",org.apache.deltaspike.core.util.metada
- ta.builder;version="[0.5,1)",org.slf4j;version="[1.6,2)"
-Karaf-Info: Camel;camel-cdi=2.13.0
+ version="[0.7,1)",org.apache.deltaspike.core.api.literal;resolution:=op
+ tional;version="[0.7,1)",org.apache.deltaspike.core.api.provider;resolu
+ tion:=optional;version="[0.7,1)",org.apache.deltaspike.core.util.metada
+ ta.builder;version="[0.7,1)",org.slf4j;version="[1.6,2)"
+Karaf-Info: Camel;camel-cdi=2.13.1
 Provide-Capability: org.ops4j.pax.cdi.extension; extension=camel-cdi-ext
  ension
 Tool: Bnd-1.50.0

@@ -23,13 +23,48 @@
   -->
 
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+		http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd"
 	default-activation="eager">
+	<cm:property-placeholder persistent-id="${symbol_dollar}{project.groupId}.features"
+		id="dbProperties" placeholder-prefix="${symbol_dollar}[" placeholder-suffix="]" >
+		<cm:default-properties>
+			<cm:property name="database.port" value="${symbol_dollar}{database.port}" />
+			</cm:default-properties>
+		</cm:property-placeholder>
 	<!-- TODO DataSource Derby declaration and service export, change it (or not)!-->
-	<bean id="dataSource" class="org.apache.derby.jdbc.EmbeddedXADataSource">
+		<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+		<property name="dataSource" ref="dataSource" />
+		<property name="changeLog" value="classpath:db/db.changelog.xml" />
+		<property name="defaultSchema" value="APP" />
+	</bean>
+	<bean id="derbyServerIP" class="java.net.InetAddress"
+		factory-method="getByName">
+		<argument value="localhost"></argument>
+	</bean>
+	<bean id="derbyServer" class="org.apache.derby.drda.NetworkServerControl"
+		destroy-method="shutdown">
+		<argument ref="derbyServerIP" />
+		<argument value="${symbol_dollar}[database.port]" />
+	</bean>
+	<bean id="pw" class="java.io.PrintWriter">
+		<argument value="derbyServer.log" />
+	</bean>
+	<bean id="derbyServerStarter" class="net.osgiliath.database.starter.DatabaseStarter"
+		depends-on="derbyServer" init-method="init">
+		<property name="control" ref="derbyServer"></property>
+		<property name="writer" ref="pw"></property>
+	</bean>
+	<bean id="dataSource" class="org.apache.derby.jdbc.ClientXADataSource"
+		depends-on="derbyServerStarter">
+		<property name="user" value="APP"></property>
+		<property name="password" value="APP"></property>
 		<property name="databaseName" value="${symbol_dollar}{project.parent.artifactId}.database" />
-		<property name="createDatabase" value="create" />
+		<property name="createDatabase" value="create"></property>
+		<property name="serverName" value="localhost"></property>
+		<property name="portNumber" value="${symbol_dollar}[database.port]"></property>
 	</bean>
 	<service ref="dataSource" interface="javax.sql.DataSource">
 		<service-properties>

@@ -20,13 +20,17 @@ package net.osgiliath.hello.model.jpa.model;
  * #L%
  */
 
+import java.sql.Timestamp;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import lombok.Data;
 /**
@@ -46,4 +50,8 @@ public abstract class AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long entityId;
+    
+    @Version
+    private Long version;
+   
 }

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1394989983138
-Build-Jdk: 1.7.0_09
+Bnd-LastModified: 1398866807556
+Build-Jdk: 1.7.0_51
 Built-By: gpetracek
 Bundle-Description: Apache DeltaSpike Parent for container projects
 Bundle-DocURL: http://www.apache.org/
@@ -10,7 +10,7 @@ Bundle-Name: deltaspike-data-module-impl
 Bundle-SymbolicName: org.apache.deltaspike.modules.deltaspike-data-modul
  e-impl
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 0.6.0
+Bundle-Version: 0.7.0
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.apache.deltaspike.data.impl.meta;uses:="org.apache.d
  eltaspike.data.api,javax.inject,javax.enterprise.util,javax.enterprise.
@@ -21,39 +21,39 @@ Export-Package: org.apache.deltaspike.data.impl.meta;uses:="org.apache.d
  ilder.part,org.apache.deltaspike.data.impl.builder,org.apache.deltaspik
  e.data.impl.handler,org.apache.deltaspike.data.api.mapping,org.apache.d
  eltaspike.data.impl.builder.result,org.apache.deltaspike.data.impl.util
- .bean";version="0.6",org.apache.deltaspike.data.impl.param;uses:="javax
+ .bean";version="0.7",org.apache.deltaspike.data.impl.param;uses:="javax
  .persistence,org.apache.deltaspike.data.api.mapping,org.apache.deltaspi
- ke.data.api";version="0.6",org.apache.deltaspike.data.impl.builder.part
+ ke.data.api";version="0.7",org.apache.deltaspike.data.impl.builder.part
  ;uses:="org.apache.deltaspike.data.impl.meta,org.apache.deltaspike.data
  .impl.builder,org.apache.deltaspike.data.impl.property.query,org.apache
  .deltaspike.data.impl.property,org.apache.deltaspike.data.impl.util";ve
- rsion="0.6",org.apache.deltaspike.data.impl.criteria.selection.numeric;
+ rsion="0.7",org.apache.deltaspike.data.impl.criteria.selection.numeric;
  uses:="org.apache.deltaspike.data.impl.criteria.selection,javax.persist
- ence.criteria,javax.persistence.metamodel";version="0.6",org.apache.del
+ ence.criteria,javax.persistence.metamodel";version="0.7",org.apache.del
  taspike.data.impl.criteria.predicate;uses:="javax.persistence.criteria,
  javax.persistence.metamodel,org.apache.deltaspike.data.api.criteria";ve
- rsion="0.6",org.apache.deltaspike.data.impl.criteria.selection.strings;
+ rsion="0.7",org.apache.deltaspike.data.impl.criteria.selection.strings;
  uses:="org.apache.deltaspike.data.impl.criteria.selection,javax.persist
- ence.criteria,javax.persistence.metamodel";version="0.6",org.apache.del
+ ence.criteria,javax.persistence.metamodel";version="0.7",org.apache.del
  taspike.data.impl.meta.unit;uses:="org.w3c.dom,javax.xml.parsers,org.xm
  l.sax,org.apache.deltaspike.data.impl.util,org.apache.deltaspike.data.i
  mpl.meta,org.apache.deltaspike.data.impl.property.query,org.apache.delt
- aspike.data.impl.property";version="0.6",org.apache.deltaspike.data.imp
+ aspike.data.impl.property";version="0.7",org.apache.deltaspike.data.imp
  l.criteria.processor;uses:="org.apache.deltaspike.data.impl.builder,jav
- ax.persistence.criteria,javax.persistence.metamodel";version="0.6",org.
+ ax.persistence.criteria,javax.persistence.metamodel";version="0.7",org.
  apache.deltaspike.data.impl.util.bean;uses:="javax.enterprise.inject.sp
  i,javax.enterprise.context.spi,org.apache.deltaspike.core.api.provider"
- ;version="0.6",org.apache.deltaspike.data.impl.meta.extractor;uses:="or
+ ;version="0.7",org.apache.deltaspike.data.impl.meta.extractor;uses:="or
  g.apache.deltaspike.data.api,org.apache.deltaspike.data.impl.meta,org.a
  pache.deltaspike.data.impl.meta.verifier,org.apache.deltaspike.data.imp
- l.util";version="0.6",org.apache.deltaspike.data.impl.tx;uses:="javax.i
+ l.util";version="0.7",org.apache.deltaspike.data.impl.tx;uses:="javax.i
  nterceptor,org.apache.deltaspike.data.impl.handler,javax.enterprise.con
  text,javax.enterprise.inject,javax.persistence,org.apache.deltaspike.jp
  a.impl.entitymanager,org.apache.deltaspike.data.impl.builder,org.apache
  .deltaspike.jpa.spi.transaction,org.apache.deltaspike.jpa.spi.entityman
  ager,org.apache.deltaspike.data.impl.meta,javax.inject,org.apache.delta
- spike.data.impl.util";version="0.6",org.apache.deltaspike.data.impl.uti
- l.jpa;uses:="javax.persistence";version="0.6",org.apache.deltaspike.dat
+ spike.data.impl.util";version="0.7",org.apache.deltaspike.data.impl.uti
+ l.jpa;uses:="javax.persistence";version="0.7",org.apache.deltaspike.dat
  a.impl.builder;uses:="org.apache.deltaspike.data.api,org.apache.deltasp
  ike.data.impl.meta,org.apache.deltaspike.data.impl.param,org.apache.del
  taspike.data.impl.util.jpa,org.apache.deltaspike.data.impl.handler,org.
@@ -62,14 +62,14 @@ Export-Package: org.apache.deltaspike.data.impl.meta;uses:="org.apache.d
  ax.enterprise.context,org.apache.deltaspike.core.api.provider,javax.inj
  ect,org.apache.deltaspike.data.impl.util.bean,org.apache.deltaspike.dat
  a.impl.builder.part,org.apache.deltaspike.data.api.mapping,org.apache.d
- eltaspike.data.impl.builder.result";version="0.6",org.apache.deltaspike
+ eltaspike.data.impl.builder.result";version="0.7",org.apache.deltaspike
  .data.impl.criteria.selection;uses:="javax.persistence.criteria,javax.p
  ersistence.metamodel,org.apache.deltaspike.data.api.criteria";version="
- 0.6",org.apache.deltaspike.data.impl.criteria;uses:="org.apache.deltasp
+ 0.7",org.apache.deltaspike.data.impl.criteria;uses:="org.apache.deltasp
  ike.data.api.criteria,org.apache.deltaspike.data.impl.builder,org.apach
  e.deltaspike.data.impl.criteria.processor,org.apache.deltaspike.data.im
  pl.criteria.predicate,javax.persistence.criteria,javax.persistence,java
- x.persistence.metamodel";version="0.6",org.apache.deltaspike.data.impl.
+ x.persistence.metamodel";version="0.7",org.apache.deltaspike.data.impl.
  handler;uses:="org.apache.deltaspike.data.spi,javax.inject,javax.persis
  tence,javax.enterprise.context,javax.enterprise.inject,org.apache.delta
  spike.data.api,org.apache.deltaspike.data.impl.meta,org.apache.deltaspi
@@ -84,38 +84,39 @@ Export-Package: org.apache.deltaspike.data.impl.meta;uses:="org.apache.d
  pike.core.api.provider,org.apache.deltaspike.data.impl.builder,org.apac
  he.deltaspike.data.impl.property.query,org.apache.deltaspike.data.impl.
  util,org.apache.deltaspike.data.impl.property,org.apache.deltaspike.cor
- e.api.lifecycle";version="0.6",org.apache.deltaspike.data.impl.property
- .query;uses:="org.apache.deltaspike.data.impl.property";version="0.6",o
- rg.apache.deltaspike.data.impl.criteria.selection.temporal;uses:="org.a
- pache.deltaspike.data.api.criteria,javax.persistence.criteria";version=
- "0.6",org.apache.deltaspike.data.impl.util;uses:="org.apache.deltaspike
- .data.impl.meta.verifier,org.apache.deltaspike.data.impl.meta.unit,org.
- apache.deltaspike.data.impl.property.query,javax.persistence,org.apache
- .deltaspike.data.impl.property";version="0.6",org.apache.deltaspike.dat
- a.impl.property;version="0.6",org.apache.deltaspike.data.impl.meta.veri
- fier;uses:="org.apache.deltaspike.data.impl.meta.unit,javax.persistence
- ";version="0.6",org.apache.deltaspike.data.impl.builder.result;uses:="o
- rg.apache.deltaspike.data.api,org.apache.deltaspike.data.impl.builder.p
- ostprocessor,javax.persistence.metamodel,org.apache.deltaspike.data.imp
- l.builder,org.apache.deltaspike.data.impl.handler,javax.persistence";ve
- rsion="0.6",org.apache.deltaspike.data.impl.audit;uses:="javax.enterpri
- se.inject.spi,org.apache.deltaspike.core.api.provider,javax.persistence
- ,javax.enterprise.context.spi,org.apache.deltaspike.data.impl.property,
- org.apache.deltaspike.core.util.metadata,org.apache.deltaspike.data.imp
- l.property.query,org.apache.deltaspike.data.api.audit,javax.inject";ver
- sion="0.6",org.apache.deltaspike.data.impl.builder.postprocessor;uses:=
- "org.apache.deltaspike.data.impl.param,org.apache.deltaspike.data.impl.
- util.jpa,org.apache.deltaspike.data.impl.handler,org.apache.deltaspike.
- data.impl.util,javax.persistence,org.apache.deltaspike.data.impl.builde
- r,javax.persistence.metamodel";version="0.6",org.apache.deltaspike.data
- .impl;uses:="org.apache.deltaspike.data.api,org.apache.deltaspike.data.
- impl.meta,org.apache.deltaspike.core.util,org.apache.deltaspike.data.im
- pl.meta.unit,javax.enterprise.inject.spi,javax.enterprise.event,org.apa
- che.deltaspike.core.spi.activation";version="0.6"
+ e.util,org.apache.deltaspike.core.api.lifecycle";version="0.7",org.apac
+ he.deltaspike.data.impl.property.query;uses:="org.apache.deltaspike.dat
+ a.impl.property";version="0.7",org.apache.deltaspike.data.impl.criteria
+ .selection.temporal;uses:="org.apache.deltaspike.data.api.criteria,java
+ x.persistence.criteria";version="0.7",org.apache.deltaspike.data.impl.u
+ til;uses:="org.apache.deltaspike.data.impl.meta.verifier,org.apache.del
+ taspike.data.impl.meta.unit,org.apache.deltaspike.data.impl.property.qu
+ ery,javax.persistence,org.apache.deltaspike.data.impl.property";version
+ ="0.7",org.apache.deltaspike.data.impl.property;version="0.7",org.apach
+ e.deltaspike.data.impl.meta.verifier;uses:="org.apache.deltaspike.data.
+ impl.meta.unit,javax.persistence";version="0.7",org.apache.deltaspike.d
+ ata.impl.builder.result;uses:="org.apache.deltaspike.data.api,org.apach
+ e.deltaspike.data.impl.builder.postprocessor,javax.persistence.metamode
+ l,org.apache.deltaspike.data.impl.builder,org.apache.deltaspike.data.im
+ pl.handler,javax.persistence";version="0.7",org.apache.deltaspike.data.
+ impl.audit;uses:="javax.enterprise.inject.spi,org.apache.deltaspike.cor
+ e.api.provider,javax.persistence,javax.enterprise.context.spi,org.apach
+ e.deltaspike.data.impl.property,org.apache.deltaspike.core.util.metadat
+ a,org.apache.deltaspike.data.impl.property.query,org.apache.deltaspike.
+ data.api.audit,javax.inject";version="0.7",org.apache.deltaspike.data.i
+ mpl.builder.postprocessor;uses:="org.apache.deltaspike.data.impl.util,o
+ rg.apache.deltaspike.data.impl.param,org.apache.deltaspike.data.impl.ut
+ il.jpa,org.apache.deltaspike.data.impl.handler,javax.persistence,org.ap
+ ache.deltaspike.data.impl.builder,javax.persistence.metamodel";version=
+ "0.7",org.apache.deltaspike.data.impl;uses:="org.apache.deltaspike.data
+ .api,org.apache.deltaspike.data.impl.meta,org.apache.deltaspike.core.ut
+ il,org.apache.deltaspike.data.impl.meta.unit,javax.enterprise.inject.sp
+ i,javax.enterprise.event,org.apache.deltaspike.core.spi.activation";ver
+ sion="0.7"
 Implementation-Title: Apache DeltaSpike Data-Module Impl
 Implementation-Vendor: The Apache Software Foundation
 Implementation-Vendor-Id: org.apache.deltaspike.modules
-Implementation-Version: 0.6
+Implementation-Version: 0.7
 Import-Package: javax.enterprise.context;version="[1.0,2)",javax.enterpr
  ise.context.spi;version="[1.0,2)",javax.enterprise.event;version="[1.0,
  2)",javax.enterprise.inject;version="[1.0,2)",javax.enterprise.inject.s
@@ -123,21 +124,21 @@ Import-Package: javax.enterprise.context;version="[1.0,2)",javax.enterpr
  ct;version="[1.0,2)",javax.interceptor;version="[1.1,2)",javax.persiste
  nce;version="[1.1,2)",javax.persistence.criteria;version="[1.1,2)",java
  x.persistence.metamodel;version="[1.1,2)",javax.xml.parsers,org.apache.
- deltaspike.core.api.lifecycle;version="[0.6,1)",org.apache.deltaspike.c
- ore.api.literal;version="[0.6,1)",org.apache.deltaspike.core.api.provid
- er;version="[0.6,1)",org.apache.deltaspike.core.spi.activation;version=
- "[0.6,1)",org.apache.deltaspike.core.util;version="[0.6,1)",org.apache.
- deltaspike.core.util.metadata;version="[0.6,1)",org.apache.deltaspike.d
- ata.api;version="[0.6,1)",org.apache.deltaspike.data.api.audit;version=
- "[0.6,1)",org.apache.deltaspike.data.api.criteria;version="[0.6,1)",org
- .apache.deltaspike.data.api.mapping;version="[0.6,1)",org.apache.deltas
- pike.data.spi;version="[0.6,1)",org.apache.deltaspike.jpa.impl.entityma
- nager;version="[0.6,1)",org.apache.deltaspike.jpa.spi.entitymanager;ver
- sion="[0.6,1)",org.apache.deltaspike.jpa.spi.transaction;version="[0.6,
+ deltaspike.core.api.lifecycle;version="[0.7,1)",org.apache.deltaspike.c
+ ore.api.literal;version="[0.7,1)",org.apache.deltaspike.core.api.provid
+ er;version="[0.7,1)",org.apache.deltaspike.core.spi.activation;version=
+ "[0.7,1)",org.apache.deltaspike.core.util;version="[0.7,1)",org.apache.
+ deltaspike.core.util.metadata;version="[0.7,1)",org.apache.deltaspike.d
+ ata.api;version="[0.7,1)",org.apache.deltaspike.data.api.audit;version=
+ "[0.7,1)",org.apache.deltaspike.data.api.criteria;version="[0.7,1)",org
+ .apache.deltaspike.data.api.mapping;version="[0.7,1)",org.apache.deltas
+ pike.data.spi;version="[0.7,1)",org.apache.deltaspike.jpa.impl.entityma
+ nager;version="[0.7,1)",org.apache.deltaspike.jpa.spi.entitymanager;ver
+ sion="[0.7,1)",org.apache.deltaspike.jpa.spi.transaction;version="[0.7,
  1)",org.w3c.dom,org.xml.sax
-Karaf-Info: DeltaSpike;deltaspike-data-module-impl=0.6
+Karaf-Info: DeltaSpike;deltaspike-data-module-impl=0.7
 Pax-ManagedBeans: META-INF/beans.xml
 Specification-Title: Apache DeltaSpike Data-Module Impl
 Specification-Vendor: The Apache Software Foundation
-Specification-Version: 0.6
+Specification-Version: 0.7
 Tool: Bnd-1.50.0

@@ -71,12 +71,12 @@
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.camel.cdi.configadmin</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
   			<artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
   			<version>${project.version}</version>
 		</dependency>
@@ -167,6 +167,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf-transport</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-http</artifactId>
 		</dependency>
 		<dependency>
@@ -246,6 +250,12 @@
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>enterprise</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.features</groupId>
+			<artifactId>spring</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>

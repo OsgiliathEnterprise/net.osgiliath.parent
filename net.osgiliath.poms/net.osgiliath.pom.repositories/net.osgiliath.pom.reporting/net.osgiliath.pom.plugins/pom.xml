@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -23,6 +24,11 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+					<artifactId>inmemdb-maven-plugin</artifactId>
+					<version>${inmemdb-maven-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<artifactId>eclipselink-staticweave-maven-plugin</artifactId>
 					<groupId>au.com.alderaan</groupId>
@@ -344,6 +350,24 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<!-- Set timestamp in a variable so it can be used for generated files 
+						by liquibase in different goals -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>buildnumber-maven-plugin</artifactId>
+					<version>${buildnumber-maven-plugin.version}</version>
+					<configuration>
+						<timestampFormat>yyyyMMdd_HHmmss</timestampFormat>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>validate</phase>
+							<goals>
+								<goal>create-timestamp</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>cobertura-maven-plugin</artifactId>
 					<version>${cobertura-maven-plugin.version}</version>
@@ -375,6 +399,23 @@
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+
+										<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+										<artifactId>inmemdb-maven-plugin</artifactId>
+										<versionRange>
+											[1.4.3,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
+											<goal>stop</goal>
+										</goals>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</pluginExecutionFilter>
+								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
@@ -488,6 +529,7 @@
 										</versionRange>
 										<goals>
 											<goal>enhance</goal>
+											<goal>sql</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -779,6 +821,25 @@
 										<ignore />
 									</action>
 								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.openjpa
+										</groupId>
+										<artifactId>
+											openjpa-maven-plugin
+										</artifactId>
+										<versionRange>
+											[2.3.0,)
+										</versionRange>
+										<goals>
+											<goal>sql</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -884,6 +945,11 @@
 							</configuration>
 						</execution>
 					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.liquibase</groupId>
+					<artifactId>liquibase-maven-plugin</artifactId>
+					<version>${liquibase.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.ops4j</groupId>
@@ -995,10 +1061,291 @@
 				<tools-jar.location>${java.home}/../lib/tools.jar</tools-jar.location>
 			</properties>
 		</profile>
+		<profile>
+			<id>db-diff</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.openjpa</groupId>
+							<artifactId>openjpa-maven-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>gen-sql</id>
+									<goals>
+										<goal>sql</goal>
+									</goals>
+									<phase>process-classes</phase>
+									<configuration>
+										<sqlAction>build</sqlAction>
+										<sqlFile>${project.build.directory}/${project.artifactId}.sql</sqlFile>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
+							<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+							<artifactId>inmemdb-maven-plugin</artifactId>
+							<configuration>
+								<monitorPort>11527</monitorPort>
+								<monitorKey>mmemory</monitorKey>
+								<type>derby</type>
+								<database>${project.parent.artifactId}.database</database>
+								<username>${jdbc.username}</username>
+								<password>${jdbc.password}</password>
+								<monitorRetryInterval>2000</monitorRetryInterval>
+							</configuration>
+							<executions>
+								<execution>
+									<id>start-inmemdb</id>
+									<phase>generate-test-sources</phase>
+									<goals>
+										<goal>run</goal>
+									</goals>
+									<configuration>
+										<daemon>true</daemon>
+										<sources>
+											<script>
+												<sourceFile>${project.build.directory}/${project.artifactId}.sql</sourceFile>
+											</script>
+										</sources>
+									</configuration>
+								</execution>
+								<execution>
+									<id>stop-inmemdb</id>
+									<phase>prepare-package</phase>
+									<goals>
+										<goal>stop</goal>
+									</goals>
+								</execution>
+							</executions>
+							<dependencies>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.clientArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.networkArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.serverArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>org.hsqldb</groupId>
+									<artifactId>hsqldb</artifactId>
+									<version>2.3.2</version>
+								</dependency>
+							</dependencies>
+						</plugin>
+
+						<plugin>
+							<groupId>org.liquibase</groupId>
+							<artifactId>liquibase-maven-plugin</artifactId>
+							<configuration>
+								<propertyFile>${project.build.directory}/classes/liquibase-diff.properties</propertyFile>
+								<changeLogFile>../${project.parent.artifactId}.database/src/main/resources/db.changelog.xml</changeLogFile>
+								<diffChangeLogFile>../${project.parent.artifactId}.database/src/main/resources/db/db-${timestamp}.changelog.xml</diffChangeLogFile>
+								<logging>info</logging>
+							</configuration>
+							<executions>
+								<execution>
+									<id>generate-db-diff</id>
+									<phase>process-test-resources</phase>
+									<goals>
+										<goal>diff</goal>
+									</goals>
+								</execution>
+							</executions>
+							<dependencies>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.clientArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.networkArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.serverArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.prod.groupId}</groupId>
+									<artifactId>${jdbc.prod.clientArtifactId}</artifactId>
+									<version>${jdbc.prod.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.prod.groupId}</groupId>
+									<artifactId>${jdbc.prod.networkArtifactId}</artifactId>
+									<version>${jdbc.prod.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.prod.groupId}</groupId>
+									<artifactId>${jdbc.prod.serverArtifactId}</artifactId>
+									<version>${jdbc.prod.version}</version>
+								</dependency>
+							</dependencies>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<!-- ============================================================================================ -->
+		<!-- Generate database data changelog for liquibase (run previously mvn 
+			-Pprod test-compile if you want to generate changelog for production data) -->
+		<!-- ============================================================================================ -->
+		<profile>
+			<id>db-data</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.openjpa</groupId>
+							<artifactId>openjpa-maven-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>gen-sql</id>
+									<goals>
+										<goal>sql</goal>
+									</goals>
+									<phase>process-classes</phase>
+									<configuration>
+										<sqlAction>build</sqlAction>
+										<sqlFile>${project.build.directory}/${project.artifactId}.sql</sqlFile>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
+							<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+							<artifactId>inmemdb-maven-plugin</artifactId>
+							<configuration>
+								<monitorPort>11527</monitorPort>
+								<monitorKey>mmemory</monitorKey>
+								<type>derby</type>
+								<database>${project.parent.artifactId}.database</database>
+								<username>${jdbc.username}</username>
+								<password>${jdbc.password}</password>
+								<monitorRetryInterval>2000</monitorRetryInterval>
+							</configuration>
+							<executions>
+								<execution>
+									<id>start-inmemdb</id>
+									<phase>generate-test-sources</phase>
+									<goals>
+										<goal>run</goal>
+									</goals>
+									<configuration>
+										<daemon>true</daemon>
+										<sources>
+											<script>
+												<sourceFile>${project.build.directory}/${project.artifactId}.sql</sourceFile>
+											</script>
+										</sources>
+									</configuration>
+								</execution>
+								<execution>
+									<id>stop-inmemdb</id>
+									<phase>prepare-package</phase>
+									<goals>
+										<goal>stop</goal>
+									</goals>
+								</execution>
+							</executions>
+							<dependencies>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.clientArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.networkArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.groupId}</groupId>
+									<artifactId>${jdbc.serverArtifactId}</artifactId>
+									<version>${jdbc.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>org.hsqldb</groupId>
+									<artifactId>hsqldb</artifactId>
+									<version>2.3.2</version>
+								</dependency>
+							</dependencies>
+						</plugin>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>exec-maven-plugin</artifactId>
+							<executions>
+								<execution>
+									<phase>generate-test-resources</phase>
+									<goals>
+										<goal>java</goal>
+									</goals>
+									<configuration>
+										<mainClass>liquibase.integration.commandline.Main</mainClass>
+										<includePluginDependencies>true</includePluginDependencies>
+										<arguments>
+											<argument>--driver=${jdbc.prod.driverClassName}</argument>
+											<argument>--changeLogFile=../${project.parent.artifactId}.database/src/main/resources/db/db-data-${timestamp}.changelog.xml</argument>
+											<argument>--url=${jdbc.prod.url}</argument>
+											<argument>--username=${jdbc.prod.username}</argument>
+											<argument>--password=${jdbc.prod.password}</argument>
+											<argument>--diffTypes=data</argument>
+											<argument>--logLevel=info</argument>
+											<argument>--defaultSchemaName=${jdbc.prod.username}</argument>
+											<argument>generateChangeLog</argument>
+										</arguments>
+									</configuration>
+								</execution>
+							</executions>
+							<dependencies>
+								<dependency>
+									<groupId>${jdbc.prod.groupId}</groupId>
+									<artifactId>${jdbc.prod.clientArtifactId}</artifactId>
+									<version>${jdbc.prod.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.prod.groupId}</groupId>
+									<artifactId>${jdbc.prod.networkArtifactId}</artifactId>
+									<version>${jdbc.prod.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>${jdbc.prod.groupId}</groupId>
+									<artifactId>${jdbc.prod.serverArtifactId}</artifactId>
+									<version>${jdbc.prod.version}</version>
+								</dependency>
+								<dependency>
+									<groupId>org.liquibase</groupId>
+									<artifactId>liquibase-maven-plugin</artifactId>
+									<version>${liquibase.version}</version>
+								</dependency>
+							</dependencies>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+			<properties>
+				<!-- avoid generating db schema + inserting db-unit -->
+				<!-- <skipTests>true</skipTests> -->
+			</properties>
+		</profile>
+
 	</profiles>
 	<properties>
 		<apache-rat-plugin.version>0.10</apache-rat-plugin.version>
 		<build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
+		<buildnumber-maven-plugin.version>1.3</buildnumber-maven-plugin.version>
 		<cobertura-maven-plugin.version>2.5.2</cobertura-maven-plugin.version>
 		<com.googlecode.jstd-maven-plugin.version>1.3.5.1</com.googlecode.jstd-maven-plugin.version>
 		<com.googlecode.maven-download-plugin.version>1.0.0</com.googlecode.maven-download-plugin.version>
@@ -1008,24 +1355,27 @@
 		<eclipselink.version>2.4.2</eclipselink.version>
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<features-maven-plugin.version>2.2.5</features-maven-plugin.version>
+		<inmemdb-maven-plugin.version>1.4.3</inmemdb-maven-plugin.version>
 		<jacoco.plugin.version>0.7.0.201403182114</jacoco.plugin.version>
 		<karaf.version>3.0.1</karaf.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+		<liquibase.version>3.1.0</liquibase.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
+		<maven-clean-plugin.version>2.5</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
 		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
 		<maven-failsafe-plugin.version>2.17</maven-failsafe-plugin.version>
-		<maven-install-plugin.version>2.4</maven-install-plugin.version>
+		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<maven-processor-plugin.version>2.2.4</maven-processor-plugin.version>
 		<maven-jar-plugin.version>2.3.2</maven-jar-plugin.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-war-plugin.version>2.3</maven-war-plugin.version>
 		<org.eclipse.virgo.bundlor.maven.version>1.1.2.RELEASE</org.eclipse.virgo.bundlor.maven.version>
-		<org.projectlombok.lombok.plugin.version>1.12.4.0</org.projectlombok.lombok.plugin.version>
+		<org.projectlombok.lombok.plugin.version>1.12.6.0</org.projectlombok.lombok.plugin.version>
 		<org.projectlombok-pg.version>0.11.3</org.projectlombok-pg.version>
-		<org.projectlombok.version>1.12.4</org.projectlombok.version>
+		<org.projectlombok.version>1.12.6</org.projectlombok.version>
 		<org.springframework.data.commons.core.version>1.4.1.RELEASE</org.springframework.data.commons.core.version>
 		<maven-pax-plugin.version>1.5</maven-pax-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
