@@ -411,10 +411,13 @@
 											<goal>run</goal>
 											<goal>stop</goal>
 										</goals>
+											</pluginExecutionFilter>
+									<action>
 										<execute>
 											<runOnIncremental>false</runOnIncremental>
 										</execute>
-									</pluginExecutionFilter>
+										</action>
+								
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
