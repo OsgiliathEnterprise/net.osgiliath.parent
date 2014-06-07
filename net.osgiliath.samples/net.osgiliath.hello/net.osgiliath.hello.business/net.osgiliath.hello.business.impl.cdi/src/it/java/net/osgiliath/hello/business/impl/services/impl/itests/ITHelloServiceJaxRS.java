@@ -26,8 +26,14 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
+import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
@@ -35,7 +41,6 @@ import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
-import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,9 +52,9 @@ import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * TODO example of an integration test
@@ -59,12 +64,14 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactory {
-    private static Logger LOG = LoggerFactory
-	    .getLogger(ITHelloServiceJaxRS.class);
+@Slf4j
+public class ITHelloServiceJaxRS extends
+	AbstractPaxExamKarafConfigurationFactory {
     @Inject
     @Filter(timeout = 400000)
     private BootFinished bootFinished;
+    @Inject
+    private BundleContext bundleContext;
     // JMS template
     @Inject
     @Filter(value = "(component-type=jms)")
@@ -76,51 +83,60 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactor
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader("Export-Package",
+	builder.setHeader(Constants.EXPORT_PACKAGE,
 		"net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
-	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 	return builder;
     }
 
     @Test
     public void testSayHello() throws Exception {
-	LOG.trace("************ start testSayHello **********************");
-	WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-	helloServiceClient.path("/hello");
-	helloServiceClient.type(MediaType.APPLICATION_XML);
-	// helloServiceClient.query("helloObject",
-	// HelloObject.builder().helloMessage("John").build());
-	helloServiceClient.post(HelloEntity.builder().helloMessage("John")
-		.build());
-	helloServiceClient.accept(MediaType.APPLICATION_XML);
-	Hellos hellos = helloServiceClient.get(Hellos.class);
+	log.trace("************ start testSayHello **********************");
+	Client client = ClientBuilder.newClient();
+	WebTarget target = client.target(helloServiceBaseUrl);
+	target = target.path("hello");
+	Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+	builder.post(Entity.xml(HelloEntity.builder().helloMessage("John")
+		.build()));
+	Invocation.Builder respbuilder = target
+		.request(MediaType.APPLICATION_XML);
+	Hellos hellos = respbuilder.get(Hellos.class);
 	assertEquals(1, hellos.getHelloCollection().size());
-	helloServiceClient.delete();
-	LOG.trace("************ end testSayHello **********************");
+	builder.delete();
+	client.close();
+
+	log.trace("************ end testSayHello **********************");
     }
 
     @Test
     public void testSayHelloValidationError() throws Exception {
-	LOG.trace("************ start testSayHelloValidationError **********************");
-	WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-	helloServiceClient.path("/hello");
-	helloServiceClient.type(MediaType.APPLICATION_XML);
-	helloServiceClient
-		.post(HelloEntity.builder().helloMessage("J").build());
-	helloServiceClient.accept(MediaType.APPLICATION_XML);
-	LOG.trace("************ end testSayHelloValidationError **********************");
+	log.trace("************ start testSayHelloValidationError **********************");
+	log.debug("************Listing **********************");
+	for (Bundle b : bundleContext.getBundles()) {
+	    log.debug("bundle: " + b.getSymbolicName() + ", state: "
+		    + b.getState());
+
+	}
+	log.debug("*********  End list ****************");
+	Client client = ClientBuilder.newClient();
+	WebTarget target = client.target(helloServiceBaseUrl);
+	target = target.path("hello");
+	Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+	builder.post(Entity
+		.xml(HelloEntity.builder().helloMessage("J").build()));
+	log.trace("************ end testSayHelloValidationError **********************");
 
     }
 
     @Test
     public void testSayHelloJMS() {
-	LOG.info("************ start testSayHelloJMS **********************");
-	LOG.debug("Component: " + jmsComponent);
-	LOG.trace("Camel context: " + jmsComponent.getCamelContext());
+	log.info("************ start testSayHelloJMS **********************");
+	log.debug("Component: " + jmsComponent);
+	log.trace("Camel context: " + jmsComponent.getCamelContext());
 	ProducerTemplate template = jmsComponent.getCamelContext()
 		.createProducerTemplate();
-	LOG.trace("Producer template: " + template);
+	log.trace("Producer template: " + template);
 	template.sendBody("jms:queue:helloServiceQueueIn", HelloEntity
 		.builder().helloMessage("Doe").build());
 	ConsumerTemplate consumer = jmsComponent.getCamelContext()
@@ -128,12 +144,13 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactor
 	Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
 		Hellos.class);
 	assertTrue(hellos.getHelloCollection().size() > 0);
-	WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-	helloServiceClient.path("/hello");
-	helloServiceClient.delete();
-	LOG.info("************ end testSayHelloJMS **********************");
-	//
-	//
+	Client client = ClientBuilder.newClient();
+	WebTarget target = client.target(helloServiceBaseUrl);
+	target = target.path("hello");
+	Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+	builder.delete();
+	client.close();
+	log.info("************ end testSayHelloJMS **********************");
     }
 
     @Override

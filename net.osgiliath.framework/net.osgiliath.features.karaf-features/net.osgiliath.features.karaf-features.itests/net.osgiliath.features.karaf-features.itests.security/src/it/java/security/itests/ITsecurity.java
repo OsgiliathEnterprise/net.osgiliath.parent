@@ -70,8 +70,8 @@ public class ITsecurity extends AbstractPaxExamKarafConfigurationFactory {
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader("Export-Package", "security.itests");
-	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.EXPORT_PACKAGE, "security.itests");
+	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 	return builder;
     }

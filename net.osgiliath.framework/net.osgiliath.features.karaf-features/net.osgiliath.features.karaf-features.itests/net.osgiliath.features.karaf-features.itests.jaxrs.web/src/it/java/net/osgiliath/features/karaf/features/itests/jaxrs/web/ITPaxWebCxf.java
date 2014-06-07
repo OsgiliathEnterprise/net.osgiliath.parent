@@ -25,13 +25,18 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 
-import org.apache.cxf.jaxrs.client.WebClient;
+
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,29 +69,38 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfigurationFactory {
     @Filter(timeout = 400000)
     private BootFinished bootFinished;
     // exported REST adress
-    private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+    private static String helloServiceBaseUrl = "http://localhost:8181/helloService";
 
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader("Export-Package",
+	builder.setHeader(Constants.EXPORT_PACKAGE,
 		"net.osgiliath.features.karaf.features.itests.jaxrs.cdi");
-	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+	
 	return builder;
     }
 
     @Test
     public void testSayHello() throws Exception {
 	LOG.trace("************ start testSayHello **********************");
-	WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-	helloServiceClient.path("/hello");
-	helloServiceClient.type(MediaType.APPLICATION_XML);
-	helloServiceClient.post(HelloObject.builder().helloMessage("John")
-		.build());
-	helloServiceClient.accept(MediaType.APPLICATION_XML);
-	Hellos hellos = helloServiceClient.get(Hellos.class);
+	Client client = ClientBuilder.newClient();
+
+	WebTarget target = client.target(helloServiceBaseUrl);
+	target = target.path("hello");
+	Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+	HelloObject entity = HelloObject.builder().helloMessage("John").build();
+
+	builder.post(Entity.xml(entity));
+	Invocation.Builder respbuilder = target
+		.request(MediaType.APPLICATION_XML);
+
+	Hellos hellos = respbuilder.get(Hellos.class);
+
+	respbuilder.delete();
+	client.close();
 	assertEquals(1, hellos.getHelloCollection().size());
 	LOG.trace("************ end testSayHello **********************");
 

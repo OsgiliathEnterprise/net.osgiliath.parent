@@ -68,8 +68,8 @@ public class ITjPA extends AbstractPaxExamKarafConfigurationFactory {
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader("Export-Package", "net.osgiliath.jpa.itests");
-	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.jpa.itests");
+	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 	return builder;
     }

@@ -32,6 +32,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.jaxrs.HelloEntity;
+import net.osgiliath.jaxrs.Hellos;
 
 //JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the template.mf cxf package export)
 /**
@@ -55,7 +56,7 @@ public interface HelloRepository {
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    List<HelloEntity> findAll();
+    Hellos findAll();
     /**
      * Deletes all entities
      */

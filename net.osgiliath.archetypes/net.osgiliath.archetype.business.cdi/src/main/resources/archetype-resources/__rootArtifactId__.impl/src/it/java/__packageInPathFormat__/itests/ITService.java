@@ -32,8 +32,8 @@ public class ITService extends AbstractPaxExamKarafConfigurationFactory {
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader("Export-Package", "${package}.itests");
-        builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.EXPORT_PACKAGE, "${package}.itests");
+        builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
         return builder;
     }

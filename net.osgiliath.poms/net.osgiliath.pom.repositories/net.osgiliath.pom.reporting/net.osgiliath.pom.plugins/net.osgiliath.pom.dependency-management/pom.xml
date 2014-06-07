@@ -322,11 +322,40 @@
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-cxf</artifactId>
 				<version>${camel-version}</version>
+				<exclusions>
+				<exclusion>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-rs-security-auth</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-bindings-soap</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-jaxws</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-features-clustering</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-cxf-transport</artifactId>
 				<version>${camel-version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-bindings-soap</artifactId>
+					</exclusion>
+					
+					<exclusion>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-databinding-jaxb</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
@@ -402,11 +431,7 @@
 				<classifier>features</classifier>
 				<version>${karaf.feature.cxf.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-api</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
-			</dependency>
+
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-bindings-xml</artifactId>
@@ -414,7 +439,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-rt-core</artifactId>
+				<artifactId>cxf-core</artifactId>
 				<version>${karaf.feature.cxf.version}</version>
 			</dependency>
 			<dependency>
@@ -1675,7 +1700,7 @@
 		<jettison.version>1.3.5</jettison.version>
 		<joda-time.version>2.3</joda-time.version>
 		<junit.version>4.11</junit.version>
-		<karaf.feature.cxf.version>2.7.11</karaf.feature.cxf.version>
+		<karaf.feature.cxf.version>3.0.0</karaf.feature.cxf.version>
 		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
 		<karaf.feature.jndi.version>1.0.0</karaf.feature.jndi.version>
 		<karaf.feature.jpa.version>1.0.1</karaf.feature.jpa.version>

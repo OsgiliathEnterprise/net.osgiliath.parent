@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.List;
 
 import net.osgiliath.jaxrs.HelloEntity;
+import net.osgiliath.jaxrs.Hellos;
 import net.osgiliath.jaxrs.repository.HelloRepository;
 
 /**
@@ -65,8 +66,8 @@ public class HelloJaxRSRepository implements HelloRepository {
      * Finds all entities
      */
     @Override
-    public final List<HelloEntity> findAll() {
-	return this.entities;
+    public final Hellos findAll() {
+	return Hellos.builder().hellos(this.entities).build();
     }
 
     /**

@@ -23,15 +23,20 @@ package net.osgiliath.features.karaf.features.itests.jaxrs.cdi;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import javax.inject.Inject;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 
-import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,16 +45,17 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * 
- * @author charliemordant
- * CDI REST test
+ * @author charliemordant CDI REST test
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
@@ -68,26 +74,33 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfigurationFactory {
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader("Export-Package",
+	builder.setHeader(Constants.EXPORT_PACKAGE,
 		"net.osgiliath.hello.business.impl.services.impl.itests");
-	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+	
 	return builder;
     }
 
     @Test
     public void testSayHello() throws Exception {
 	LOG.trace("************ start testSayHello **********************");
+	Client client = ClientBuilder.newClient();
 
-	WebClient helloServiceClient = WebClient.create(helloServiceBaseUrl);
-	helloServiceClient.path("/hello");
-	helloServiceClient.type(MediaType.APPLICATION_XML);
-	helloServiceClient.post(HelloObject.builder().helloMessage("John")
-		.build());
-	helloServiceClient.accept(MediaType.APPLICATION_XML);
-	Hellos hellos = helloServiceClient.get(Hellos.class);
+	WebTarget target = client.target(helloServiceBaseUrl);
+	target = target.path("hello");
+	Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+	HelloObject entity = HelloObject.builder().helloMessage("John").build();
+
+	builder.post(Entity.xml(entity));
+	Invocation.Builder respbuilder = target
+		.request(MediaType.APPLICATION_XML);
+
+	Hellos hellos = respbuilder.get(Hellos.class);
+
+	respbuilder.delete();
+	client.close();
 	assertEquals(1, hellos.getHelloCollection().size());
-	// helloServiceClient.delete();
 	LOG.trace("************ end testSayHello **********************");
 
     }
@@ -104,13 +117,19 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfigurationFactory {
 
     static {
 	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+//	 paxRunnerVmOption = DEBUG_VM_OPTION;
 
     }
 
     @Configuration
     public Option[] config() {
 	return createConfig();
+    }
+
+    @Override
+    protected Option loggingLevel() {
+	// TODO Auto-generated method stub
+	return logLevel(LogLevel.INFO);
     }
 
 }

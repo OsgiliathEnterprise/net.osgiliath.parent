@@ -71,8 +71,8 @@ public class ITjSR303 extends AbstractPaxExamKarafConfigurationFactory {
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader("Export-Package", "net.osgiliath.validation.itests");
-	builder.setHeader("Bundle-ManifestVersion", "2");
+	builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.validation.itests");
+	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 	return builder;
     }

@@ -411,13 +411,13 @@
 											<goal>run</goal>
 											<goal>stop</goal>
 										</goals>
-											</pluginExecutionFilter>
+									</pluginExecutionFilter>
 									<action>
 										<execute>
 											<runOnIncremental>false</runOnIncremental>
 										</execute>
-										</action>
-								
+									</action>
+
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
@@ -489,6 +489,23 @@
 										</versionRange>
 										<goals>
 											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.felix</groupId>
+										<artifactId>maven-bundle-plugin</artifactId>
+										<versionRange>
+											[2.3.7,)
+										</versionRange>
+										<goals>
+											<goal>manifest</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -602,6 +619,25 @@
 										<execute>
 											<runOnIncremental>true</runOnIncremental>
 										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											buildnumber-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.3,)
+										</versionRange>
+										<goals>
+											<goal>create-timestamp</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -1016,21 +1052,23 @@
 				</file>
 			</activation>
 			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-						<dependencies>
-							<dependency>
-								<groupId>com.sun</groupId>
-								<artifactId>tools</artifactId>
-								<version>${maven.compiler.source}</version>
-								<scope>system</scope>
-								<systemPath>${java.home}/lib/tools.jar</systemPath>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-maven-plugin</artifactId>
+							<dependencies>
+								<dependency>
+									<groupId>com.sun</groupId>
+									<artifactId>tools</artifactId>
+									<version>${maven.compiler.source}</version>
+									<scope>system</scope>
+									<systemPath>${java.home}/lib/tools.jar</systemPath>
+								</dependency>
+							</dependencies>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 			</build>
 			<properties>
 				<tools-jar.location>${java.home}/lib/tools.jar</tools-jar.location>
@@ -1044,21 +1082,23 @@
 				</file>
 			</activation>
 			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-						<dependencies>
-							<dependency>
-								<groupId>com.sun</groupId>
-								<artifactId>tools</artifactId>
-								<version>${maven.compiler.source}</version>
-								<scope>system</scope>
-								<systemPath>${java.home}/../lib/tools.jar</systemPath>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-maven-plugin</artifactId>
+							<dependencies>
+								<dependency>
+									<groupId>com.sun</groupId>
+									<artifactId>tools</artifactId>
+									<version>${maven.compiler.source}</version>
+									<scope>system</scope>
+									<systemPath>${java.home}/../lib/tools.jar</systemPath>
+								</dependency>
+							</dependencies>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 			</build>
 			<properties>
 				<tools-jar.location>${java.home}/../lib/tools.jar</tools-jar.location>
