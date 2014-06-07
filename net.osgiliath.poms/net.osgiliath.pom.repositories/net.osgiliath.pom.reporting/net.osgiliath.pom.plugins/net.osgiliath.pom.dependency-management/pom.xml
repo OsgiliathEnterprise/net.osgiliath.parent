@@ -66,8 +66,6 @@
 				<artifactId>guava</artifactId>
 				<version>${com.google.guava.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>com.sun.xml</groupId> <artifactId>com.springsource.com.sun.xml.ws</artifactId> 
-				<version>${com.springsource.com.sun.xml.ws.version}</version> </dependency> -->
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
@@ -98,8 +96,6 @@
 				<artifactId>commons-pool</artifactId>
 				<version>${commons-pool.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>javax.annotation</groupId> <artifactId>com.springsource.javax.annotation</artifactId> 
-				<version>${com.springsource.javax.annotation.version}</version> </dependency> -->
 			<dependency>
 				<groupId>javax.el</groupId>
 				<artifactId>javax.el-api</artifactId>
@@ -125,8 +121,6 @@
 				<artifactId>javax.json-api</artifactId>
 				<version>${javax.json-api.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>javax.transaction</groupId> <artifactId>com.springsource.javax.transaction</artifactId> 
-				<version>${com.springsource.javax.transaction.version}</version> </dependency> -->
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
@@ -172,11 +166,6 @@
 				<artifactId>scannotation</artifactId>
 				<version>${scannotation.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>net.sourceforge.cglib</groupId> <artifactId>com.springsource.net.sf.cglib</artifactId> 
-				<version>${com.springsource.net.sf.cglib.version}</version> </dependency> 
-				<dependency> <groupId>org.aopalliance</groupId> <artifactId>com.springsource.org.aopalliance</artifactId> 
-				<version>${com.springsource.org.aopalliance.version}</version> </dependency> -->
-
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-blueprint</artifactId>
@@ -232,7 +221,6 @@
 				<artifactId>activemq-ra</artifactId>
 				<version>${org.apache.activemq.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-stomp</artifactId>
@@ -323,7 +311,7 @@
 				<artifactId>camel-cxf</artifactId>
 				<version>${camel-version}</version>
 				<exclusions>
-				<exclusion>
+					<exclusion>
 						<groupId>org.apache.cxf</groupId>
 						<artifactId>cxf-rt-rs-security-auth</artifactId>
 					</exclusion>
@@ -350,7 +338,6 @@
 						<groupId>org.apache.cxf</groupId>
 						<artifactId>cxf-rt-bindings-soap</artifactId>
 					</exclusion>
-					
 					<exclusion>
 						<groupId>org.apache.cxf</groupId>
 						<artifactId>cxf-rt-databinding-jaxb</artifactId>
@@ -431,7 +418,6 @@
 				<classifier>features</classifier>
 				<version>${karaf.feature.cxf.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-bindings-xml</artifactId>
@@ -541,7 +527,6 @@
 				<artifactId>deltaspike-security-module-api</artifactId>
 				<version>${org.apache.deltaspike.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-security-module-impl</artifactId>
@@ -643,7 +628,6 @@
 				<artifactId>geronimo-servlet_2.5_spec</artifactId>
 				<version>${geronimo-servlet_2.5_spec.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.karaf</groupId>
 				<artifactId>apache-karaf</artifactId>
@@ -756,7 +740,6 @@
 				<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
 				<version>${org.apache.servicemix.bundles.aspectj.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.commons-beanutils</artifactId>
@@ -962,7 +945,6 @@
 				<artifactId>org.apache.servicemix.specs.jsr250-1.0</artifactId>
 				<version>${org.apache.servicemix.specs.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.jsr311-api-1.1</artifactId>
@@ -1013,13 +995,6 @@
 				<artifactId>xbean-spring</artifactId>
 				<version>${xbean.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.apache.xmlcommons</groupId> <artifactId>com.springsource.org.apache.xmlcommons</artifactId> 
-				<version>${com.springsource.org.apache.xmlcommons.version}</version> </dependency> 
-				<dependency> <groupId>org.aspectj</groupId> <artifactId>com.springsource.org.aspectj.runtime</artifactId> 
-				<version>${com.springsource.org.aspectj.runtime.version}</version> </dependency> 
-				<dependency> <groupId>org.aspectj</groupId> <artifactId>com.springsource.org.aspectj.weaver</artifactId> 
-				<version>${com.springsource.org.aspectj.runtime.version}</version> </dependency> -->
-
 			<dependency>
 				<groupId>org.codehaus.jettison</groupId>
 				<artifactId>jettison</artifactId>
@@ -1091,7 +1066,6 @@
 				<groupId>org.eclipse.persistence</groupId>
 				<artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
 				<version>${eclipselink.version}</version>
-				<type>jar</type>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.persistence</groupId>
@@ -1154,7 +1128,6 @@
 				<artifactId>jboss-logging</artifactId>
 				<version>${org.jboss.logging.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.jboss.weld</groupId>
 				<artifactId>weld-osgi-bundle</artifactId>
@@ -1177,8 +1150,6 @@
 				<artifactId>json</artifactId>
 				<version>${org.json.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.junit</groupId> <artifactId>com.springsource.org.junit</artifactId> 
-				<version>${com.springsource.org.junit.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.kubek2k</groupId>
 				<artifactId>springockito</artifactId>
@@ -1249,7 +1220,6 @@
 				<artifactId>pax-cdi-web</artifactId>
 				<version>${pax-cdi.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-weld</artifactId>
@@ -1454,7 +1424,6 @@
 				<artifactId>org.springframework.aop</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>org.springframework.beans</artifactId>
@@ -1645,14 +1614,11 @@
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.xmlpull</groupId> <artifactId>com.springsource.org.xmlpull</artifactId> 
-				<version>${com.springsource.org.xmlpull.version}</version> </dependency> -->
 			<dependency>
 				<groupId>xml-apis</groupId>
 				<artifactId>xml-apis</artifactId>
 				<version>${xml-apis.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>xom</groupId>
 				<artifactId>xom</artifactId>
