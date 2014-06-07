@@ -30,6 +30,7 @@ limitations under the License.
 		<!--<bundle>mvn:org.apache.deltaspike.cdictrl/deltaspike-cdictrl-weld/${org.apache.deltaspike.version}</bundle>-->
 		<bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.version}</bundle>
 		<bundle>mvn:org.apache.deltaspike.core/deltaspike-core-impl/${org.apache.deltaspike.version}</bundle>
+		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
 		<!--<feature version="${org.jboss.weld.version}">weld</feature>
 		<feature version="${pax-cdi.version}">pax-cdi-web-weld</feature>-->
 		<!--<feature version="[2.3,3.5)">scr</feature>
