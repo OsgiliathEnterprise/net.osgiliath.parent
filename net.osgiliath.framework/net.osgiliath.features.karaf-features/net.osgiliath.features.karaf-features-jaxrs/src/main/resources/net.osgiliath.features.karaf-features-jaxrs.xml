@@ -23,6 +23,7 @@ limitations under the License.
 	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${karaf.feature.cxf.version}/xml/features</repository>
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-cdi/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-functional/${project.version}/xml/features</repository>
 	<feature name="osgiliath-jaxrs" version="${project.version}" resolver="(obr)">
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxrs</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxb</feature>

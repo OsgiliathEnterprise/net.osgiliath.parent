@@ -58,7 +58,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
      * Registering instance
      */
     @Override
-    public final void persistHello(final HelloObject helloObject) {
+    public void persistHello(final HelloObject helloObject) {
 	this.objects.add(helloObject);
 
     }

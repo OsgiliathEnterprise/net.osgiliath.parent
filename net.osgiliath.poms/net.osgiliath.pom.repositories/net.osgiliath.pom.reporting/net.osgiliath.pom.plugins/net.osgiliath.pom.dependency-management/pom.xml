@@ -54,12 +54,12 @@
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
-				<version>${com.fasterxml.jackson.core.version}</version>
+				<version>${com.fasterxml.jackson.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.dataformat</groupId>
 				<artifactId>jackson-dataformat-smile</artifactId>
-				<version>${com.fasterxml.jackson.core.version}</version>
+				<version>${com.fasterxml.jackson.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.guava</groupId>
@@ -1665,7 +1665,7 @@
 		<cdi-api.version>1.2</cdi-api.version>
 		<com.atomikos.version>3.9.3</com.atomikos.version>
 		<com.google.guava.version>17.0</com.google.guava.version>
-		<com.fasterxml.jackson.core.version>2.3.2</com.fasterxml.jackson.core.version><!-- 
+		<com.fasterxml.jackson.version>2.3.2</com.fasterxml.jackson.version><!-- 
 			Do not upgrade cause of camel-json -->
 		<com.fasterxml.classmate.version>1.0.0</com.fasterxml.classmate.version>
 		<com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version>

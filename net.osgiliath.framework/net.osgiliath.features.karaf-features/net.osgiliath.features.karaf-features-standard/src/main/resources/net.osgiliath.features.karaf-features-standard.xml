@@ -37,8 +37,8 @@ limitations under the License.
     <feature>http</feature>
     <bundle dependency='true'>mvn:com.google.guava/guava/${com.google.guava.version}</bundle>
     <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.protobuf-java/${org.apache.servicemix.bundles.protobuf-java.version}</bundle>
-    <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core.version}</bundle>
-    <bundle dependency='true'>mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-smile/${com.fasterxml.jackson.core.version}</bundle>
+    <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.version}</bundle>
+    <bundle dependency='true'>mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-smile/${com.fasterxml.jackson.version}</bundle>
     <bundle dependency='true'>mvn:joda-time/joda-time/${joda-time.version}</bundle>
     <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jakarta-regexp/${org.apache.servicemix.bundles.jakarta-regexp.version}</bundle>
     <bundle dependency='true'>mvn:org.mvel/mvel2/${org.mvel2.version}</bundle>
