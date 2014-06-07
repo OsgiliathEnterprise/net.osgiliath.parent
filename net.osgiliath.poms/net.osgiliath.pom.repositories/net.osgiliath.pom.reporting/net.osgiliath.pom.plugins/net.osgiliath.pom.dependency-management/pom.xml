@@ -57,8 +57,28 @@
 				<version>${com.fasterxml.jackson.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.fasterxml.jackson.dataformat</groupId>
 				<artifactId>jackson-dataformat-smile</artifactId>
+				<version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.jaxrs</groupId>
+				<artifactId>jackson-jaxrs-base</artifactId>
+				<version>${com.fasterxml.jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.jaxrs</groupId>
+				<artifactId>jackson-jaxrs-json-provider</artifactId>
 				<version>${com.fasterxml.jackson.version}</version>
 			</dependency>
 			<dependency>
@@ -762,6 +782,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.elasticsearch</artifactId>
+				<version>${org.apache.servicemix.bundles.elasticsearch.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.ezmorph</artifactId>
 				<version>${org.apache.servicemix.bundles.ezmorph}</version>
 			</dependency>
@@ -792,6 +817,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.json4s</artifactId>
+				<version>${org.apache.servicemix.bundles.json4s.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.json-lib</artifactId>
 				<version>${org.apache.servicemix.bundles.json-lib.version}</version>
 			</dependency>
@@ -807,11 +837,6 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.elasticsearch</artifactId>
-				<version>${org.apache.servicemix.bundles.elasticsearch.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.oro</artifactId>
 				<version>${org.apache.servicemix.bundles.oro.version}</version>
 			</dependency>
@@ -819,6 +844,11 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.protobuf-java</artifactId>
 				<version>${org.apache.servicemix.bundles.protobuf-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.reflections</artifactId>
+				<version>${org.apache.servicemix.bundles.reflections.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -914,6 +944,21 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.velocity</artifactId>
 				<version>${org.apache.servicemix.bundles.velocity.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.swagger-annotations</artifactId>
+				<version>${org.apache.servicemix.bundles.swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
+				<version>${org.apache.servicemix.bundles.swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.swagger-jaxrs</artifactId>
+				<version>${org.apache.servicemix.bundles.swagger.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1410,6 +1455,11 @@
 				<version>${org.projectlombok.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
 				<version>${org.seleniumhq.selenium.version}</version>
@@ -1709,13 +1759,16 @@
 		<org.apache.servicemix.bundles.jaxb-impl.version>2.2.6_1</org.apache.servicemix.bundles.jaxb-impl.version>
 		<org.apache.servicemix.bundles.jdom.version>2.0.2_1</org.apache.servicemix.bundles.jdom.version>
 		<org.apache.servicemix.bundles.joda-time.version>2.3_1</org.apache.servicemix.bundles.joda-time.version>
+		<org.apache.servicemix.bundles.json4s.version>3.2.8_1</org.apache.servicemix.bundles.json4s.version>
 		<org.apache.servicemix.bundles.json-lib.version>2.4_1</org.apache.servicemix.bundles.json-lib.version>
 		<org.apache.servicemix.bundles.kxml2.version>2.3.0_3</org.apache.servicemix.bundles.kxml2.version>
 		<org.apache.servicemix.bundles.lucene.version>4.7.0_1</org.apache.servicemix.bundles.lucene.version>
 		<org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles.oro.version>
 		<org.apache.servicemix.bundles.protobuf-java.version>2.4.1_1</org.apache.servicemix.bundles.protobuf-java.version>
+		<org.apache.servicemix.bundles.reflections.version>0.9.8_1</org.apache.servicemix.bundles.reflections.version>
 		<org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles.serp.version>
 		<org.apache.servicemix.bundles.spring.version>4.0.2.RELEASE_1</org.apache.servicemix.bundles.spring.version>
+		<org.apache.servicemix.bundles.swagger.version>1.3.4_1</org.apache.servicemix.bundles.swagger.version>
 		<org.apache.servicemix.bundles.velocity.version>1.7_6</org.apache.servicemix.bundles.velocity.version>
 		<org.apache.servicemix.bundles.woodstox.version>3.2.9_3</org.apache.servicemix.bundles.woodstox.version>
 		<org.apache.servicemix.bundles.xpp3.version>1.1.4c_7</org.apache.servicemix.bundles.xpp3.version>
@@ -1755,6 +1808,7 @@
 		<pax.tinybundle.version>2.0.0</pax.tinybundle.version>
 		<pax-web-features.version>3.1.0</pax-web-features.version>
 		<pax-jetty.version>8.1.14.v20131031</pax-jetty.version>
+		<scala.version>2.10.4</scala.version>
 		<scannotation.version>1.0.2_1</scannotation.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<sonar-jacoco-listeners.version>1.3</sonar-jacoco-listeners.version>
