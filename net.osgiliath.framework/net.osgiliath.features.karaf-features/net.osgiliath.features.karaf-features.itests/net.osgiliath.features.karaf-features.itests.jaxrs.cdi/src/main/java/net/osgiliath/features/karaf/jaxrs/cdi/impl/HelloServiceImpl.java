@@ -24,6 +24,8 @@ import helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import net.osgiliath.features.karaf.jaxrs.cdi.HelloServiceJaxRS;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
@@ -43,6 +45,7 @@ import com.google.common.collect.Lists;
  *         only noticeable thing is the CXFEndpoint annotation
  */
 @Eager
+@ApplicationScoped
 @CXFEndpoint(url = "/helloService", providersClasses = {
 	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
 public class HelloServiceImpl implements HelloServiceJaxRS {
