@@ -106,12 +106,13 @@ public class EndpointPublishingExtension implements Extension {
 		if (annotatedType.getAnnotation(CXFEndpoint.class) == null) {
 			return;
 		}
-		final List<Class> interfaces = ClassUtils
-				.getAllInterfaces(annotatedType.getJavaClass());
+		final List<Class> interfaces = new ArrayList<Class>(ClassUtils
+				.getAllInterfaces(annotatedType.getJavaClass()));
+		interfaces.addAll(ClassUtils.getAllSuperclasses(annotatedType.getJavaClass()));
 		if (interfaces.isEmpty()) {
 			process.addDefinitionError(new IllegalArgumentException(
 					String.format(
-							"JaxRS service %s must implement at least an interface",
+							"JaxRS service %s must implement at least an interface/class",
 							annotatedType.getJavaClass().getName())));
 
 		}

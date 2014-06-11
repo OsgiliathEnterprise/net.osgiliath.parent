@@ -42,6 +42,8 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
+import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 /**
  * Sample of a business service with JaxRS and CDI
@@ -52,7 +54,7 @@ import com.google.common.collect.Lists;
 @Slf4j
 @OsgiServiceProvider
 @CXFEndpoint(url = "/helloService", providersClasses = {
-	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
+	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class, ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceJaxRS implements
 	net.osgiliath.hello.business.impl.HelloServiceJaxRS {
     /**

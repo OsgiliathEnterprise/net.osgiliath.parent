@@ -38,6 +38,8 @@ import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
+import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 /**
  * 
@@ -47,7 +49,7 @@ import com.google.common.collect.Lists;
 @Eager
 @ApplicationScoped
 @CXFEndpoint(url = "/helloService", providersClasses = {
-	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
+	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class, ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceImpl implements HelloServiceJaxRS {
     /**
      * Instances elements
