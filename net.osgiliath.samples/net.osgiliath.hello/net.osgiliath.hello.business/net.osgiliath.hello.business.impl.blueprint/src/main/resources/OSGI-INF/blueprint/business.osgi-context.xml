@@ -68,6 +68,14 @@
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
 	</bean>
+	<!-- Swagger API listing resource -->
+	<bean id="swaggerResourceJSON"
+		class="com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON" />
+	<!-- Swagger writers -->
+	<bean id="resourceWriter"
+		class="com.wordnik.swagger.jaxrs.listing.ResourceListingProvider" />
+	<bean id="apiWriter"
+		class="com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider" />
 	<!-- REST service object to smtg converters -->
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
 	<bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider" />
@@ -75,14 +83,30 @@
 	<jaxrs:server id="helloServiceCXF" address="/helloService">
 		<jaxrs:serviceBeans>
 			<ref component-id="helloServiceJaxRs" />
+			<ref component-id="swaggerResourceJSON" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref component-id="jaxbProvider" />
 			<!-- <ref component-id="jsonProvider" /> -->
 			<bean id="validationException"
 				class="helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
+			<ref component-id="resourceWriter" />
+			<ref component-id="apiWriter" />
 		</jaxrs:providers>
 	</jaxrs:server>
+	<bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">
+		<property name="resourcePackage" value="net.osgiliath.hello.business.impl" />
+		<property name="version" value="${project.version}" />
+		<property name="basePath" value="$[jaxrs.server.protocol]://$[jaxrs.server.uri]:$[jaxrs.server.port]/cxf/helloService" />
+		<property name="title" value="${project.name}" />
+		<property name="description" value="${project.description}" />
+		<property name="contact" value="masterdev@wondermail.org" />
+		<property name="license" value="Apache Licence 2.0" />
+		<property name="licenseUrl"
+			value="http://www.apache.org/licenses/LICENSE-2.0.html" />
+		<property name="scan" value="true" />
+	</bean>
+	
 	<cxf:bus>
 		<cxf:features>
 			<cxf:logging />

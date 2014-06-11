@@ -1002,7 +1002,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
-				<artifactId>org.apache.servicemix.specs.jsr339-api-m10</artifactId>
+				<artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
 				<version>${org.apache.servicemix.specs.version}</version>
 			</dependency>
 			<dependency>
