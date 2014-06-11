@@ -13,9 +13,9 @@
 		the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath</groupId>
-		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-		<version>0.0.4</version>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}</artifactId>
+		<version>${version}</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
 	<packaging>war</packaging>
@@ -137,7 +137,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<version>${project.version}</version>
+			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.helpers.exam</artifactId>
 			<scope>test</scope>
 		</dependency>

@@ -792,6 +792,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.jackson-module-scala</artifactId>
+				<version>${org.apache.servicemix.bundles.jackson-module-scala.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.jakarta-regexp</artifactId>
 				<version>${org.apache.servicemix.bundles.jakarta-regexp.version}</version>
 			</dependency>
@@ -1044,6 +1049,11 @@
 				<groupId>org.codehaus.jettison</groupId>
 				<artifactId>jettison</artifactId>
 				<version>${jettison.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-component-annotations</artifactId>
+				<version>${org.codehaus.plexus.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.codehaus.sonar-plugins.java</groupId>
@@ -1754,6 +1764,7 @@
 		<org.apache.servicemix.bundles.dom4j.version>1.6.1_5</org.apache.servicemix.bundles.dom4j.version>
 		<org.apache.servicemix.bundles.elasticsearch.version>1.1.0_1</org.apache.servicemix.bundles.elasticsearch.version>
 		<org.apache.servicemix.bundles.ezmorph>1.0.6_1</org.apache.servicemix.bundles.ezmorph>
+		<org.apache.servicemix.bundles.jackson-module-scala.version>2.3.0_1</org.apache.servicemix.bundles.jackson-module-scala.version>
 		<org.apache.servicemix.bundles.jakarta-regexp.version>1.4_1</org.apache.servicemix.bundles.jakarta-regexp.version>
 		<org.apache.servicemix.bundles.jasypt.version>1.9.2_1</org.apache.servicemix.bundles.jasypt.version>
 		<org.apache.servicemix.bundles.jaxb-impl.version>2.2.6_1</org.apache.servicemix.bundles.jaxb-impl.version>

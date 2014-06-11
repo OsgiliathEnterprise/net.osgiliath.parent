@@ -219,6 +219,11 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${maven-shade-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
 				</plugin>
@@ -393,32 +398,24 @@
 					<version>${wagon-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-component-metadata</artifactId>
+					<version>${org.codehaus.plexus.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>generate-metadata</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
 					<version>${lifecycle-mapping.version}</version>
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-
-										<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
-										<artifactId>inmemdb-maven-plugin</artifactId>
-										<versionRange>
-											[1.4.3,)
-										</versionRange>
-										<goals>
-											<goal>run</goal>
-											<goal>stop</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute>
-											<runOnIncremental>false</runOnIncremental>
-										</execute>
-									</action>
-
-								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
@@ -436,6 +433,24 @@
 									</pluginExecutionFilter>
 									<action>
 										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.btmatthews.maven.plugins.inmemdb</groupId>
+										<artifactId>inmemdb-maven-plugin</artifactId>
+										<versionRange>
+											[1.4.3,)
+										</versionRange>
+										<goals>
+											<goal>run</goal>
+											<goal>stop</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -478,6 +493,23 @@
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
+										<groupId>org.apache.felix</groupId>
+										<artifactId>maven-bundle-plugin</artifactId>
+										<versionRange>
+											[2.3.7,)
+										</versionRange>
+										<goals>
+											<goal>manifest</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
 										<groupId>
 											org.apache.maven.plugins
 										</groupId>
@@ -489,23 +521,6 @@
 										</versionRange>
 										<goals>
 											<goal>run</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute>
-											<runOnIncremental>true</runOnIncremental>
-										</execute>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.felix</groupId>
-										<artifactId>maven-bundle-plugin</artifactId>
-										<versionRange>
-											[2.3.7,)
-										</versionRange>
-										<goals>
-											<goal>manifest</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -528,12 +543,32 @@
 										<goals>
 											<goal>copy</goal>
 											<goal>unpack</goal>
+											<goal>copy-dependencies</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
 										<execute>
-											<runOnIncremental>true</runOnIncremental>
+											<runOnIncremental>false</runOnIncremental>
 										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-eclipse-plugin
+										</artifactId>
+										<versionRange>
+											[2.9,)
+										</versionRange>
+										<goals>
+											<goal>eclipse</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -598,6 +633,44 @@
 										<execute>
 											<runOnIncremental>false</runOnIncremental>
 										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.gmaven
+										</groupId>
+										<artifactId>
+											groovy-maven-plugin
+										</artifactId>
+										<versionRange>
+											[2.0,)
+										</versionRange>
+										<goals>
+											<goal>execute</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.groovy.maven
+										</groupId>
+										<artifactId>
+											gmaven-plugin
+										</artifactId>
+										<versionRange>
+											[2.0,)
+										</versionRange>
+										<goals>
+											<goal>execute</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -678,6 +751,7 @@
 										</versionRange>
 										<goals>
 											<goal>exec</goal>
+											<goal>java</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -754,6 +828,21 @@
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
+										<groupId>org.codehaus.plexus</groupId>
+										<artifactId>plexus-component-metadata</artifactId>
+										<versionRange>
+											[1.5.5,)
+										</versionRange>
+										<goals>
+											<goal>generate-metadata</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
 										<groupId>org.jacoco</groupId>
 										<artifactId>
 											jacoco-maven-plugin
@@ -790,63 +879,6 @@
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.groovy.maven
-										</groupId>
-										<artifactId>
-											gmaven-plugin
-										</artifactId>
-										<versionRange>
-											[2.0,)
-										</versionRange>
-										<goals>
-											<goal>execute</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.gmaven
-										</groupId>
-										<artifactId>
-											groovy-maven-plugin
-										</artifactId>
-										<versionRange>
-											[2.0,)
-										</versionRange>
-										<goals>
-											<goal>execute</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-eclipse-plugin
-										</artifactId>
-										<versionRange>
-											[2.9,)
-										</versionRange>
-										<goals>
-											<goal>eclipse</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
 										<groupId>org.projectlombok</groupId>
 										<artifactId>
 											lombok-maven-plugin
@@ -858,25 +890,6 @@
 									</pluginExecutionFilter>
 									<action>
 										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.openjpa
-										</groupId>
-										<artifactId>
-											openjpa-maven-plugin
-										</artifactId>
-										<versionRange>
-											[2.3.0,)
-										</versionRange>
-										<goals>
-											<goal>sql</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -1413,8 +1426,10 @@
 		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<maven-processor-plugin.version>2.2.4</maven-processor-plugin.version>
 		<maven-jar-plugin.version>2.3.2</maven-jar-plugin.version>
+		<maven-shade-plugin.version>2.3</maven-shade-plugin.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-war-plugin.version>2.3</maven-war-plugin.version>
+		<org.codehaus.plexus.version>1.5.5</org.codehaus.plexus.version>
 		<org.eclipse.virgo.bundlor.maven.version>1.1.2.RELEASE</org.eclipse.virgo.bundlor.maven.version>
 		<org.projectlombok.lombok.plugin.version>1.12.6.0</org.projectlombok.lombok.plugin.version>
 		<org.projectlombok-pg.version>0.11.3</org.projectlombok-pg.version>

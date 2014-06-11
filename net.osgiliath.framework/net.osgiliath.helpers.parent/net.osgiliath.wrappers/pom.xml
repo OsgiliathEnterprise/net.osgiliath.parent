@@ -23,5 +23,7 @@
 		<module>net.osgiliath.wrapper.fragment-ds-data</module>
 		<module>net.osgiliath.wrapper.hibernate.validator.cdi.osgi</module>
 		<module>net.osgiliath.wrapper.derby</module>
+		<module>net.osgiliath.wrapper.swagger-jaxrs</module>
+		<module>net.osgiliath.wrapper.jackson-module-scala</module>
 	</modules>
 </project>
