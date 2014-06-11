@@ -28,6 +28,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
@@ -38,6 +41,7 @@ import net.osgiliath.hello.model.jpa.model.HelloEntity;
  * REST service declaration
  */
 @Path("/hello")
+@Api(value="hello", description="The hello resource access")
 public interface HelloServiceJaxRS extends HelloService {
     /**
      * saves an entity
@@ -50,6 +54,7 @@ public interface HelloServiceJaxRS extends HelloService {
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
+    @ApiOperation(value = "Find all hellos", notes = "More notes about this method", response = Hellos.class)
     Hellos getHellos();
     /**
      * deletes all entities

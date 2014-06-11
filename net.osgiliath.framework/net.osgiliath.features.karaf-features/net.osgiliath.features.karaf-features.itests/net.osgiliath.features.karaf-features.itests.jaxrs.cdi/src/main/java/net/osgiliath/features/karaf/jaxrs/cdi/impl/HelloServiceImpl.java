@@ -24,14 +24,16 @@ import helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import net.osgiliath.features.karaf.jaxrs.cdi.HelloServiceJaxRS;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
+import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.cxf.jaxrs.provider.json.JSONProvider;
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -42,7 +44,8 @@ import com.google.common.collect.Lists;
  * @author charliemordant REST Service implementation for testing purpose (the
  *         only noticeable thing is the CXFEndpoint annotation
  */
-@OsgiServiceProvider
+@Eager
+@ApplicationScoped
 @CXFEndpoint(url = "/helloService", providersClasses = {
 	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class })
 public class HelloServiceImpl implements HelloServiceJaxRS {
@@ -55,7 +58,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
      * Registering instance
      */
     @Override
-    public final void persistHello(final HelloObject helloObject) {
+    public void persistHello(final HelloObject helloObject) {
 	this.objects.add(helloObject);
 
     }

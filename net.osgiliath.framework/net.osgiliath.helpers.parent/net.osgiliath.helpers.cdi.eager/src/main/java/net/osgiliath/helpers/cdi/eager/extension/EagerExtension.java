@@ -22,7 +22,6 @@ package net.osgiliath.helpers.cdi.eager.extension;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;

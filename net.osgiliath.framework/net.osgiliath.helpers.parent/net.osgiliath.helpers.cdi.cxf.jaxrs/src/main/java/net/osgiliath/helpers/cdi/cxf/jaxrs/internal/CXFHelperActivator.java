@@ -71,7 +71,7 @@ public class CXFHelperActivator implements BundleActivator {
 	this.exceptionTracker.open(true);
 	this.interceptorsTracker = new ServiceTracker(context, Interceptor.class,
 		new InterceptorsServiceTracker(context));
-	interceptorsTracker.open(true);
+	this.interceptorsTracker.open(true);
 	MessageBodyReaderProvidersServiceTracker
 		.handleInitialReferences(context);
 	MessageBodyWriterProvidersServiceTracker

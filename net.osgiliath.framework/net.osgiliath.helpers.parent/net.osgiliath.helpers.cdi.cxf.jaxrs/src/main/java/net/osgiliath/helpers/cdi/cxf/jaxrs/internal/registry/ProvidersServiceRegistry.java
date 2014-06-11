@@ -43,28 +43,28 @@ public class ProvidersServiceRegistry {
     /**
      * Message body writers
      */
-    private Collection<MessageBodyWriter<Object>> writers = Sets.newHashSet();
+    private Collection<MessageBodyWriter<Object>> oSGIInjectedWriters = Sets.newHashSet();
     /**
      * Message body readers
      */
-    private Collection<MessageBodyReader<Object>> readers = Sets.newHashSet();
+    private Collection<MessageBodyReader<Object>> oSGIInjectedReaders = Sets.newHashSet();
     /**
      * Exception mappers
      */
-    private Collection<ExceptionMapper<? extends Exception>> exceptionMappers = Sets
+    private Collection<ExceptionMapper<? extends Exception>> oSGIInjectedExceptionMappers = Sets
 	    .newHashSet();
     /**
      * Internally declared writers
      */
     @Inject
     @Any
-    private Instance<MessageBodyWriter<Object>> internalWriters;
+    private Instance<MessageBodyWriter<Object>> cdiInjectedWriters;
     /**
      * bundle declared readers
      */
     @Inject
     @Any
-    private Instance<MessageBodyReader<Object>> internalReaders;
+    private Instance<MessageBodyReader<Object>> cdiInjectedReaders;
     /**
      * singleton instance
      */
@@ -85,23 +85,23 @@ public class ProvidersServiceRegistry {
      */
     public Collection<MessageBodyWriter<Object>> getWriters() {
 
-	return this.internalWriters == null ? this.writers : Sets.newHashSet(Iterables
-		.concat(this.writers, this.internalWriters));
+	return this.cdiInjectedWriters == null ? this.oSGIInjectedWriters : Sets.newHashSet(Iterables
+		.concat(this.oSGIInjectedWriters, this.cdiInjectedWriters));
     }
     /**
      * 
      * @return all exception mappers
      */
     public Collection<ExceptionMapper<? extends Exception>> getExceptionMappers() {
-	return this.exceptionMappers;
+	return this.oSGIInjectedExceptionMappers;
     }
     /**
      * 
      * @return all body readers
      */
     public Collection<MessageBodyReader<Object>> getReaders() {
-	return this.internalReaders == null ? this.readers : Sets.newHashSet(Iterables
-		.concat(this.readers, this.internalReaders));
+	return this.cdiInjectedReaders == null ? this.oSGIInjectedReaders : Sets.newHashSet(Iterables
+		.concat(this.oSGIInjectedReaders, this.cdiInjectedReaders));
     }
     /**
      * 
