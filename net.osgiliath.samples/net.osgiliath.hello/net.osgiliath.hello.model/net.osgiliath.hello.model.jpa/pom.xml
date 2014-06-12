@@ -56,6 +56,10 @@
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
 			</plugin>
 			<plugin>

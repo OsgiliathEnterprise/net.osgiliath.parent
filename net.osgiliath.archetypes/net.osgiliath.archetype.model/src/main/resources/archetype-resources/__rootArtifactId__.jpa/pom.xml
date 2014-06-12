@@ -26,7 +26,7 @@
 			</resource>
 		</resources>
 		<plugins>
-		<plugin>
+			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>
 			</plugin>
@@ -51,6 +51,10 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -111,7 +115,7 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-		<profiles>
+	<profiles>
 		<!-- ================= Database Profiles ================= -->
 
 		<!-- ============================================================================================ -->

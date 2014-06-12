@@ -18,19 +18,23 @@
 		<version>${version}</version>
 	</parent>
 	<artifactId>${artifactId}</artifactId>
-		<build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
@@ -49,14 +53,14 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
@@ -69,6 +73,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<!-- TODO your model/routes dependencies -->
-		
+
 	</dependencies>
 </project>
