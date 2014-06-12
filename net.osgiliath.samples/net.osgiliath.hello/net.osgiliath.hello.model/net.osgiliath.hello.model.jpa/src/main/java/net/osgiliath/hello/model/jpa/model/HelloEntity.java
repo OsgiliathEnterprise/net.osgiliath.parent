@@ -29,6 +29,9 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -53,6 +56,7 @@ import lombok.experimental.Builder;
 @XmlRootElement
 // xml marshalling
 @EqualsAndHashCode(callSuper = true)
+@ApiModel( value = "Hello Entity", description = "Hello resource representation" )
 public class HelloEntity extends AbstractEntity implements Serializable {
     /**
      * Serial
@@ -69,5 +73,6 @@ public class HelloEntity extends AbstractEntity implements Serializable {
     // size validation
     @Pattern(regexp = "[a-zA-Z0-9]+", message = "must not contain special characters")
     // pattern validation
+    @ApiModelProperty( value = "The thing to greet", required = true )
     private String helloMessage;
 }

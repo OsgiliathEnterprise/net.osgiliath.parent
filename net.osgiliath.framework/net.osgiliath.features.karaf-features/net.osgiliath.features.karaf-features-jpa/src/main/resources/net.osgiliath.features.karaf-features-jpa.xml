@@ -45,7 +45,7 @@ limitations under the License.
 		<bundle >mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-impl/${org.apache.deltaspike.version}</bundle>
 		<bundle start-level="30" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-jta_1.1_spec.version}</bundle>
 		<bundle start-level="30" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version}</bundle>
-		<!--<bundle>mvn:org.javassist/javassist/${org.javassist.version}</bundle>-->
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${org.apache.servicemix.bundles.swagger.version}</bundle>
 		<bundle >mvn:org.apache.xbean/xbean-reflect/${xbean.version}</bundle>
 		<!-- TODO add deltaspike wrappers-->
 		<bundle >mvn:org.ops4j.pax.jdbc/pax-jdbc/${pax.jdbc.version}</bundle>

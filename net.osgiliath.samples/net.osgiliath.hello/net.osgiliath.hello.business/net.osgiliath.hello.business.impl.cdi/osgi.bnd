@@ -15,6 +15,7 @@ Import-Package: helpers.cxf.exception.handling.jaxrs.mapper,\
  org.apache.camel.builder.xml,\
  org.apache.camel.support,\
  org.apache.camel.cdi.internal,\
+ org.apache.camel.cdi.component.properties,\
  org.apache.cxf.jaxrs.impl.tl,\
  org.apache.cxf.jaxrs.provider,\
  org.apache.cxf.jaxrs.provider.json,\

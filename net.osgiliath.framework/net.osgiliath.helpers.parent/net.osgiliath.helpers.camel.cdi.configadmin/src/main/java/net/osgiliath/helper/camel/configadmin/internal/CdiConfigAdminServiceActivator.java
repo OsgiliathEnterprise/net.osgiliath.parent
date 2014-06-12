@@ -20,6 +20,8 @@ package net.osgiliath.helper.camel.configadmin.internal;
  * #L%
  */
 
+import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.cm.ConfigurationAdmin;
