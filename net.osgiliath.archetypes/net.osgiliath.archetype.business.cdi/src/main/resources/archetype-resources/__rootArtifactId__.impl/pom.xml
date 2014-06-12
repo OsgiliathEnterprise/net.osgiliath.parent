@@ -109,7 +109,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<version>${project.version}</version>
+			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.helpers.exam</artifactId>
 			<scope>test</scope>
 		</dependency>

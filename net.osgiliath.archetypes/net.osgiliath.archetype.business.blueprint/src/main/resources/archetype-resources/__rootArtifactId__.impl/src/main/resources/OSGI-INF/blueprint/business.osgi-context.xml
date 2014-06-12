@@ -62,18 +62,42 @@
  -->
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
 	<bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.json.JSONProvider" />
+		<!-- Swagger API listing resource -->
+	<bean id="swaggerResourceJSON"
+		class="com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON" />
+	<!-- Swagger writers -->
+	<bean id="resourceWriter"
+		class="com.wordnik.swagger.jaxrs.listing.ResourceListingProvider" />
+	<bean id="apiWriter"
+		class="com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider" />
+	
 	<!-- TODO modify this REST web service declaration -->
-	<!-- <jaxrs:server id="helloServiceCXF" address="/helloService">
+	 <jaxrs:server id="helloServiceCXF" address="/${symbol_dollar}{artifactId}Service">
 		<jaxrs:serviceBeans>
-			<ref component-id="helloServiceJaxRs" />
+			<!--<ref component-id="helloServiceJaxRs" />-->
+			<ref component-id="swaggerResourceJSON" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref component-id="jaxbProvider" />
 			<ref component-id="jsonProvider" />
+			<ref component-id="resourceWriter" />
+			<ref component-id="apiWriter" />
 			<bean id="validationException"
 				class="helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
 		</jaxrs:providers>
-	</jaxrs:server> -->
+	</jaxrs:server> 
+	<bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">
+		<property name="resourcePackage" value="${symbol_dollar}{artifactId}" />
+		<property name="version" value="${symbol_dollar}{project.version}" />
+		<property name="basePath" value="${symbol_dollar}[jaxrs.server.protocol]://${symbol_dollar}[jaxrs.server.uri]:${symbol_dollar}[jaxrs.server.port]/cxf/${symbol_dollar}{artifactId}Service" />
+		<property name="title" value="${symbol_dollar}{project.name}" />
+		<property name="description" value="${symbol_dollar}{project.description}" />
+		<property name="contact" value="masterdev@wondermail.org" />
+		<property name="license" value="Apache Licence 2.0" />
+		<property name="licenseUrl"
+			value="http://www.apache.org/licenses/LICENSE-2.0.html" />
+		<property name="scan" value="true" />
+	</bean>
 	<cxf:bus>
 		<cxf:features>
 			<cxf:logging />
