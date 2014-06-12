@@ -23,6 +23,8 @@ package net.osgiliath.helper.camel.configadmin.internal;
 import java.io.IOException;
 import java.util.Properties;
 
+import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+
 import org.apache.camel.component.properties.DefaultPropertiesParser;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.osgi.framework.InvalidSyntaxException;

@@ -1,4 +1,4 @@
-package net.osgiliath.helper.camel.configadmin.internal;
+package net.osgiliath.helper.camel.configadmin;
 
 /*
  * #%L
@@ -26,6 +26,7 @@ import java.util.Dictionary;
 import java.util.HashSet;
 
 import lombok.extern.slf4j.Slf4j;
+import net.osgiliath.helper.camel.configadmin.internal.CdiConfigAdminServiceActivator;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
