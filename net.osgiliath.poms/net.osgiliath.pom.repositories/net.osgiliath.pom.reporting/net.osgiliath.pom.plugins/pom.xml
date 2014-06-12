@@ -384,6 +384,40 @@
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxb2-maven-plugin</artifactId>
+					<version>${jaxb2-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>schemagen</id>
+							<goals>
+								<goal>schemagen</goal>
+							</goals>
+							<phase>generate-resources</phase>
+						</execution>
+					</executions>
+					<configuration>
+						<verbose>true</verbose>
+						<transformSchemas>
+							<transformSchema>
+								<uri>http://${project.groupId}/${project.artifactId}/${project.version}</uri>
+								<toPrefix>${project.artifactId}</toPrefix>
+								<toFile>${project.artifactId}</toFile>
+							</transformSchema>
+						</transformSchemas>
+						<includes>
+							<include>**/model/**/*.java</include>
+						</includes>
+						<excludes>
+							<exclude>**/Abstract*.java</exclude>
+							<exclude>**/*Repository.java</exclude>
+							<exclude>**/*Service.java</exclude>
+							<exclude>**/*_.java</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>selenium-maven-plugin</artifactId>
 					<version>${selenium-maven-plugin.version}</version>
 				</plugin>
@@ -1413,6 +1447,7 @@
 		<features-maven-plugin.version>2.2.5</features-maven-plugin.version>
 		<inmemdb-maven-plugin.version>1.4.3</inmemdb-maven-plugin.version>
 		<jacoco.plugin.version>0.7.0.201403182114</jacoco.plugin.version>
+		<jaxb2-maven-plugin.version>1.6</jaxb2-maven-plugin.version>
 		<karaf.version>3.0.1</karaf.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<liquibase.version>3.1.0</liquibase.version>
