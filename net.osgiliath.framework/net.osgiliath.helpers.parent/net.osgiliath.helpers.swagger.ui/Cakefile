@@ -1,0 +1,139 @@
+fs          = require 'fs'
+path        = require 'path'
+{exec}      = require 'child_process'
+less        = require 'less'
+
+sourceFiles  = [
+  'SwaggerUi'
+  'view/HeaderView'
+  'view/MainView'
+  'view/ResourceView'
+  'view/OperationView'
+  'view/StatusCodeView'
+  'view/ParameterView'
+  'view/SignatureView'
+  'view/ContentTypeView'
+  'view/ResponseContentTypeView'
+  'view/ParameterContentTypeView'
+]
+
+
+task 'clean', 'Removes distribution', ->
+  console.log 'Clearing dist...'
+  exec 'rm -rf target'
+
+task 'dist', 'Build a distribution', ->
+  console.log "Build distribution in ./target"
+  fs.mkdirSync('target') if not path.existsSync('target')
+  fs.mkdirSync('target/net.osgiliath.helpers.swagger.ui') if not path.existsSync('target/net.osgiliath.helpers.swagger.ui')
+  fs.mkdirSync('target/net.osgiliath.helpers.swagger.ui/lib') if not path.existsSync('target/net.osgiliath.helpers.swagger.ui/lib')
+
+  appContents = new Array remaining = sourceFiles.length
+  for file, index in sourceFiles then do (file, index) ->
+    console.log "   : Reading src/main/javascript/coffeescript/#{file}.coffee"
+    fs.readFile "src/main/javascript/coffeescript/#{file}.coffee", 'utf8', (err, fileContents) ->
+      throw err if err
+      appContents[index] = fileContents
+      precompileTemplates() if --remaining is 0
+
+  precompileTemplates= ->
+    console.log '   : Precompiling templates...'
+    templateFiles  = fs.readdirSync('src/main/javascript/template')
+    templateContents = new Array remaining = templateFiles.length
+    for file, index in templateFiles then do (file, index) ->
+      console.log "   : Compiling src/main/javascript/template/#{file}"
+      exec "handlebars src/main/javascript/template/#{file} -f target/net.osgiliath.helpers.swagger.ui/_#{file}.js", (err, stdout, stderr) ->
+        throw err if err
+        fs.readFile 'target/net.osgiliath.helpers.swagger.ui/_' + file + '.js', 'utf8', (err, fileContents) ->
+          throw err if err
+          templateContents[index] = fileContents
+          fs.unlink 'target/net.osgiliath.helpers.swagger.ui/_' + file + '.js'
+          if --remaining is 0
+            templateContents.push '\n\n'
+            fs.writeFile 'target/net.osgiliath.helpers.swagger.ui/_swagger-ui-templates.js', templateContents.join('\n\n'), 'utf8', (err) ->
+              throw err if err
+              build()
+
+
+  build = ->
+    console.log '   : Collecting Coffeescript source...'
+
+    appContents.push '\n\n'
+    fs.writeFile 'target/net.osgiliath.helpers.swagger.ui/_swagger-ui.coffee', appContents.join('\n\n'), 'utf8', (err) ->
+      throw err if err
+      console.log '   : Compiling...'
+      exec 'coffee --compile target/net.osgiliath.helpers.swagger.ui/_swagger-ui.coffee', (err, stdout, stderr) ->
+        throw err if err
+        fs.unlink 'target/net.osgiliath.helpers.swagger.ui/_swagger-ui.coffee'
+        console.log '   : Combining with javascript...'
+
+        fs.readFile 'package.json', 'utf8', (err, fileContents) ->
+          obj = JSON.parse(fileContents)
+          exec 'echo "// swagger-ui.js" > target/net.osgiliath.helpers.swagger.ui/swagger-ui.js'
+          exec 'echo "// version ' + obj.version + '" >> target/net.osgiliath.helpers.swagger.ui/swagger-ui.js'
+          exec 'cat src/main/javascript/javascript/doc.js target/net.osgiliath.helpers.swagger.ui/_swagger-ui-templates.js target/net.osgiliath.helpers.swagger.ui/_swagger-ui.js >> target/net.osgiliath.helpers.swagger.ui/swagger-ui.js', (err, stdout, stderr) ->
+            throw err if err
+            fs.unlink 'target/net.osgiliath.helpers.swagger.ui/_swagger-ui.js'
+            fs.unlink 'target/net.osgiliath.helpers.swagger.ui/_swagger-ui-templates.js'
+            console.log '   : Minifying all...'
+            exec 'java -jar "./bin/yuicompressor-2.4.7.jar" --type js -o ' + 'target/net.osgiliath.helpers.swagger.ui/swagger-ui.min.js ' + 'target/net.osgiliath.helpers.swagger.ui/swagger-ui.js', (err, stdout, stderr) ->
+              throw err if err
+              lessc()
+
+  lessc = ->
+    # Someone who knows CoffeeScript should make this more Coffee-licious
+    console.log '   : Compiling LESS...'
+
+    less.render fs.readFileSync("src/main/javascript/less/screen.less", 'utf8'), (err, css) ->
+      fs.writeFileSync("src/main/javascript/html/css/screen.css", css)
+    less.render fs.readFileSync("src/main/javascript/less/reset.less", 'utf8'), (err, css) ->
+      fs.writeFileSync("src/main/javascript/html/css/reset.css", css)
+    pack()
+
+  pack = ->
+    console.log '   : Packaging...'
+    exec 'cp -r lib target/net.osgiliath.helpers.swagger.ui'
+    console.log '   : Copied swagger-ui libs'
+    exec 'cp -r node_modules/swagger-client/lib/swagger.js target/net.osgiliath.helpers.swagger.ui/lib'
+    console.log '   : Copied swagger dependencies'
+    exec 'cp -r src/main/javascript/html/* target/net.osgiliath.helpers.swagger.ui'
+    console.log '   : Copied html dependencies'
+    console.log '   !'
+
+task 'spec', "Run the test suite", ->
+  exec "open spec.html", (err, stdout, stderr) ->
+    throw err if err
+
+task 'watch', 'Watch source files for changes and autocompile', ->
+  # Function which watches all files in the passed directory
+  watchFiles = (dir) ->
+    files = fs.readdirSync(dir)
+    for file, index in files then do (file, index) ->
+      console.log "   : " + dir + "/#{file}"
+      fs.watchFile dir + "/#{file}", (curr, prev) ->
+        if +curr.mtime isnt +prev.mtime
+          invoke 'dist'
+
+  notify "Watching source files for changes..."
+
+  # Watch specific source files
+  for file, index in sourceFiles then do (file, index) ->
+    console.log "   : " + "src/main/javascript/coffeescript/#{file}.coffee"
+    fs.watchFile "src/main/javascript/coffeescript/#{file}.coffee", (curr, prev) ->
+      if +curr.mtime isnt +prev.mtime
+        invoke 'dist'
+
+  # watch all files in these folders
+  watchFiles("src/main/javascript/template")
+  watchFiles("src/main/javascript/javascript")
+  watchFiles("src/main/javascript/html")
+  watchFiles("src/main/javascript/less")
+  watchFiles("src/test/javascript")
+
+notify = (message) ->
+  return unless message?
+  console.log message
+#  options =
+#    title: 'CoffeeScript'
+#    image: 'bin/CoffeeScript.png'
+#  try require('growl') message, options

@@ -229,8 +229,6 @@
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.gogo.runtime</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-annotation_1.1_spec</artifactId> 
-			</dependency> -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
@@ -305,8 +303,6 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.json-lib</artifactId>
@@ -331,18 +327,10 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xpp3</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>org.apache.servicemix.specs</groupId> <artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId> 
-			</dependency> -->
-		<!-- <dependency> <groupId>org.apache.servicemix.specs</groupId> <artifactId>org.apache.servicemix.specs.jaxb-api-2.2</artifactId> 
-			</dependency> -->
-
 		<dependency>
 			<groupId>org.apache.servicemix.specs</groupId>
 			<artifactId>org.apache.servicemix.specs.stax-api-1.0</artifactId>
 		</dependency>
-
-
-
 		<dependency>
 			<groupId>org.codehaus.woodstox</groupId>
 			<artifactId>wstx-asl</artifactId>
@@ -353,7 +341,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-websocket</artifactId>
@@ -362,8 +349,6 @@
 			<groupId>org.fusesource.commonman</groupId>
 			<artifactId>commons-management</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>org.xmlpull</groupId> <artifactId>com.springsource.org.xmlpull</artifactId> 
-			</dependency> -->
 		<dependency>
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-blueprint</artifactId>
@@ -376,7 +361,6 @@
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-spring</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.codehaus.woodstox</groupId>
 			<artifactId>stax2-api</artifactId>

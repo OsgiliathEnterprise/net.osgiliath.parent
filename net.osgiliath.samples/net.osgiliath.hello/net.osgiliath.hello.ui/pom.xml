@@ -91,8 +91,6 @@
 					<archive>
 						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
 					</archive>
-					<!-- <webResources> <resource> <directory>yo/dist</directory> <includes> 
-						<include>**/*.*</include> </includes> </resource> </webResources> -->
 				</configuration>
 			</plugin>
 			<plugin>

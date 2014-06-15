@@ -57,6 +57,9 @@
 		<module>net.osgiliath.features.karaf-features-functional</module>
 		<module>net.osgiliath.features.karaf-features-routes</module>
 		<module>net.osgiliath.features.karaf-features.itests</module>
+		<module>
+			net.osgiliath.features.karaf-features-monitoring
+		</module>
 	</modules>
 
 	<licenses>
