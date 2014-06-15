@@ -174,7 +174,4 @@
 		<!-- TODO add your business dependencies here -->
 
 	</dependencies>
-	<properties>
-  		<osgiliath.framework.maven.version>0.0.5</osgiliath.framework.maven.version>
-  	</properties>
 </project>

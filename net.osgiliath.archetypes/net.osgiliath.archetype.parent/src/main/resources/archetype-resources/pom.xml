@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>net.osgiliath</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.6</version>
 	</parent>
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
@@ -44,7 +44,7 @@
 		<!-- TODO change your organization, all your Manifests will be signed with 
 			this -->
 		<manifest.organization>Osgiliath</manifest.organization>
-  		<osgiliath.framework.maven.version>0.0.4</osgiliath.framework.maven.version>
+  		<osgiliath.framework.maven.version>0.0.6</osgiliath.framework.maven.version>
 	</properties>
 <scm>
 		<connection><!-- your scm urls here --></connection>

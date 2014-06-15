@@ -18,7 +18,4 @@
   </parent>
   <artifactId>${artifactId}</artifactId>
   <packaging>pom</packaging>
- <properties>
-  	<osgiliath.framework.maven.version>0.0.5</osgiliath.framework.maven.version>
-  </properties>
 </project>

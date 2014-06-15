@@ -1,4 +1,4 @@
-# Swagger UI
+# Swagger UI customized for Osgiliath framework, below the official Swagger UI readme)
 
 
 Swagger UI is part of Swagger project.  The Swagger project allows you to produce, visualize and consume your OWN RESTful services.  No proxy or 3rd party services required.  Do it your own way.
