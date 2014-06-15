@@ -132,7 +132,9 @@
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>exec-maven-plugin</artifactId>
-
+							<configuration>
+								<skip>${skipExec}</skip>
+							</configuration>
 							<executions>
 								<execution>
 									<id>npm-install</id>
@@ -146,7 +148,6 @@
 										<arguments>
 											<argument>install</argument>
 										</arguments>
-										<skip>${skipExec}</skip>
 									</configuration>
 								</execution>
 								<execution>
