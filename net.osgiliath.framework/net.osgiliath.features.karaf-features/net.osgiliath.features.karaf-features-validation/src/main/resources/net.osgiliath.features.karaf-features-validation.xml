@@ -43,7 +43,6 @@ limitations under the License.
 	<feature name='osgiliath-validation' version='${project.version}'>
 		<feature version='${karaf.feature.spring.version}'>spring</feature>
 		<feature version='${project.version}'>osgiliath-validation-common</feature>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.hibernate.validator.cdi.osgi/${project.version}</bundle>
 	</feature>
 	<feature name='osgiliath-validation-cdi' version='${project.version}'>
 		<!--<feature version='${karaf.feature.spring.version}'>spring</feature>-->
