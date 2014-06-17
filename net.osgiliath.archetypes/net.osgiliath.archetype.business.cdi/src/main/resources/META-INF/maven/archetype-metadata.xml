@@ -9,6 +9,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 				<include>LICENSE.txt</include>
 				<include>NOTICE.txt</include>
 				<include>readme.md</include>
+				<include>.gitignore</include>
 			</includes>
 		</fileSet>
 	</fileSets>
