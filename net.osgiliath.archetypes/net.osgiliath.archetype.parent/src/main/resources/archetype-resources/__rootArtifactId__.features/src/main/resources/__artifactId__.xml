@@ -23,17 +23,17 @@ ${symbol_pound}L%
 -->
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${symbol_dollar}{project.artifactId}-${symbol_dollar}{project.version}">
-	<!-- TODO add your features here-->
+	<!-- TODO add your features here, check the mapping with your bundles-->
 	<repository>mvn:org.apache.karaf.features/standard/${symbol_dollar}{karaf.version}/xml/features</repository>
 	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
-	<feature name="${symbol_dollar}{project.artifactId}.model" version="${symbol_dollar}{project.version}">
+	<feature name="${symbol_dollar}{project.parent.artifactId}.model" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-derby</feature>
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-model</feature>
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-security</feature>
 		<!--<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.model.database/${symbol_dollar}{project.version}/jar</bundle>
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.model.jpa/${symbol_dollar}{project.version}/jar</bundle>-->
 	</feature>
-	<feature name="${symbol_dollar}{project.artifactId}.business.itests" version="${symbol_dollar}{project.version}">
+	<feature name="${symbol_dollar}{project.parent.artifactId}.business.itests" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business-cdi</feature>
 		<feature version='${symbol_dollar}{project.version}'>${project.parent.artifactId}.model</feature>
 		<!--TODO your itests dependencies here
@@ -42,36 +42,36 @@ ${symbol_pound}L%
 		<bundle>file:${symbol_dollar}{parent.project.basedir}/${symbol_dollar}{project.parent.artifactId}.business/${symbol_dollar}{project.parent.artifactId}.business.impl/target${symbol_dollar}{project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
 		-->
 	</feature>
-	<feature name="${symbol_dollar}{project.artifactId}.ui" version="${symbol_dollar}{project.version}">
+	<feature name="${symbol_dollar}{project.parent.artifactId}.ui" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
 		<feature version='${symbol_dollar}{karaf.version}'>war</feature>
 		<!--<configfile finalname="/etc/${symbol_dollar}{project.artifactId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/cfg/camel</configfile>
-		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.groupId}.routes/${symbol_dollar}{project.version}/jar
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/jar
 		</bundle>
-		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.groupId}.ui/${symbol_dollar}{project.version}/war
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.ui/${symbol_dollar}{project.version}/war
 		</bundle>-->
 	</feature>
-	<!--<feature name="${project.groupId}.full.itests" version="${project.version}">
-		<feature version='${project.version}'>${project.groupId}.business.blueprint</feature>
-		<feature version='${project.version}'>${project.groupId}.route.blueprint</feature>
+	<!--<feature name="${symbol_dollar}{project.parent.artifactId}.full.itests" version="${project.version}">
+		<feature version='${project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
+		<feature version='${project.version}'>${symbol_dollar}{project.parent.artifactId}.route</feature>
 		<feature version='${karaf.version}'>war</feature>
-		<bundle>file:${project.parent.basedir}/${project.groupId}.ui/target/${project.groupId}.ui.war</bundle>
+		<bundle>file:${project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.ui/target/${symbol_dollar}{project.parent.artifactId}.ui.war</bundle>
 	</feature>-->
 	<!--<feature name="${symbol_dollar}{project.groupId}.route" version="${project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-full-cdi</feature>
 		<configfile finalname="/etc/${symbol_dollar}{project.groupId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/camel</configfile>
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
-		<feature version='${project.version}'>${symbol_dollar}{project.groupId}.business.cdi</feature>
-		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.groupId}.routes.cdi/${symbol_dollar}{project.version}/jar</bundle>
+		<feature version='${project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/jar</bundle>
 	</feature>-->
-	<feature name="${symbol_dollar}{project.artifactId}.business" version="${symbol_dollar}{project.version}">
+	<feature name="${symbol_dollar}{project.parent.artifactId}.business" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business-cdi</feature>
 		<feature version='${symbol_dollar}{project.version}'>${project.parent.artifactId}.model</feature>
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.impl/${symbol_dollar}{project.version}/jar</bundle>
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.full" version="${symbol_dollar}{project.version}">
-		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.artifactId}.business</feature>
-		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.artifactId}.ui</feature>
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.ui</feature>
 	</feature>
 </features>

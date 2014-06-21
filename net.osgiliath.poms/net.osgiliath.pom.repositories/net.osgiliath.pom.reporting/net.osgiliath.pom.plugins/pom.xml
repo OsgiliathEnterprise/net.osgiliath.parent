@@ -183,6 +183,7 @@
 									<global-settings>${org.apache.maven.global-settings}</global-settings>
 									<module.groupId>${project.groupId}</module.groupId>
 									<module.parent.artifactId>${project.parent.artifactId}</module.parent.artifactId>
+									<module.artifactId>${project.artifactId}</module.artifactId>
 								</systemPropertyVariables>
 							</configuration>
 						</execution>

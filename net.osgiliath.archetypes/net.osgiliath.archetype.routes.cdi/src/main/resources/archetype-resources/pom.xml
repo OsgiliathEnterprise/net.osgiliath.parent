@@ -156,8 +156,8 @@
 		</dependency>
 
 		
-		<!-- TODO add your business dependencies here -->
-		<dependency>
+		<!-- TODO add your business/Model dependencies here -->
+		<!-- <dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${project.groupId}.business.spi</artifactId>
 			<version>${project.version}</version>
@@ -166,6 +166,6 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${project.groupId}.model.jpa</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 </project>

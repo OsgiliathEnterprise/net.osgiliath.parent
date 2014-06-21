@@ -19,7 +19,7 @@
 	</parent>
 	<artifactId>${artifactId}</artifactId>
 	<properties><!-- TODO point to your parent pom / target -->
-		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+		<sonar.jacoco.itReportPath>../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
 	<build>
 		<resources>
@@ -157,8 +157,8 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- TODO your model & databases module here -->
-		<dependency>
+		<!-- TODO your model, databases, other spi dependent, routes... modules here -->
+		<!-- <dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
 			<artifactId>${project.groupId}.model.database</artifactId>
@@ -166,13 +166,14 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
-			<artifactId>${project.parent.artifactId}.spi</artifactId>
-		</dependency>
+			<artifactId>${project.groupId}.model.jpa</artifactId>
+		</dependency> -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
-			<artifactId>${project.groupId}.model.jpa</artifactId>
+			<artifactId>${project.parent.artifactId}.spi</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>

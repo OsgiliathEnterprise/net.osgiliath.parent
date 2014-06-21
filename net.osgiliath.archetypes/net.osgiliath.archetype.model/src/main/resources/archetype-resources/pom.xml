@@ -18,4 +18,40 @@
   </parent>
   <artifactId>${artifactId}</artifactId>
   <packaging>pom</packaging>
+  <profiles>
+		<profile>
+			<id>dev-db</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.groupId>org.apache.derby</jdbc.groupId>
+				<jdbc.clientArtifactId>derbyclient</jdbc.clientArtifactId>
+				<jdbc.networkArtifactId>derbynet</jdbc.networkArtifactId>
+				<jdbc.serverArtifactId>derby</jdbc.serverArtifactId>
+				<jdbc.version>${derby.version}</jdbc.version>
+				<jdbc.driverClassName>org.apache.derby.jdbc.ClientDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:derby://localhost:1527/memory:${project.parent.artifactId}.database</jdbc.url>
+				<jdbc.username>APP</jdbc.username>
+				<jdbc.password>sa</jdbc.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod-db</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.prod.groupId>org.apache.derby</jdbc.prod.groupId>
+				<jdbc.prod.clientArtifactId>derbyclient</jdbc.prod.clientArtifactId>
+				<jdbc.prod.networkArtifactId>derbynet</jdbc.prod.networkArtifactId>
+				<jdbc.prod.serverArtifactId>derby</jdbc.prod.serverArtifactId>
+				<jdbc.prod.version>${derby.version}</jdbc.prod.version>
+				<jdbc.prod.driverClassName>org.apache.derby.jdbc.ClientDriver</jdbc.prod.driverClassName>
+				<jdbc.prod.url>jdbc:derby://localhost:${database.port}/${project.parent.artifactId}.database</jdbc.prod.url>
+				<jdbc.prod.username>APP</jdbc.prod.username>
+				<jdbc.prod.password>sa</jdbc.prod.password>
+			</properties>
+		</profile>
+	</profiles>
 </project>

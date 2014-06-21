@@ -5,7 +5,7 @@
  * Apache License V2, all rights reserved to charlie mordant
  */
 'use strict';
-angular.module('commonapp', []).service('stompservice', function(){
+angular.module('${artifactId}', []).service('stompservice', function(){
 	this.protocol = 'ws';
 	this.host = '127.0.0.1';
 	this.port = '61614';

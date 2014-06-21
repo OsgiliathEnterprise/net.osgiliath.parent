@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 @ExamReactorStrategy(PerClass.class)
 public class ITWebUI {
 	private static Logger LOG = LoggerFactory.getLogger(ITWebUI.class);
-	
+	private static final String ARTIFACTID = "module.artifactId";
 	@Test
 	public void testMyUI()  {
 		@Test
@@ -29,9 +29,9 @@ public class ITWebUI {
 			(new WebDriverWait(driver, 200))
 					.until(new ExpectedCondition<Boolean>() {
 						public Boolean apply(WebDriver d) {
-							driver.get("http://localhost:8181/${package}");
+							driver.get("http://localhost:8181/" + System.getProperty(ARTIFACTID));
 							boolean ret = d.getTitle().toLowerCase()
-									.startsWith("${package}");
+									.startsWith(System.getProperty(ARTIFACTID));
 							if (!ret) {
 								driver.navigate().refresh();
 							}
