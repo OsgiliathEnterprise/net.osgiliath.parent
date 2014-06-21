@@ -2,13 +2,14 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 package ${package}.itests;
-
+import javax.inject.Inject;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;

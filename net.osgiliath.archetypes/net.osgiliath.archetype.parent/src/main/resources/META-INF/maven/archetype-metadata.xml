@@ -11,6 +11,7 @@
         <include>README.txt</include>
         <include>readme.md</include>
         <include>.travis.yml</include>
+        <include>.gitignore</include>
       </includes>
     </fileSet>
   </fileSets>
