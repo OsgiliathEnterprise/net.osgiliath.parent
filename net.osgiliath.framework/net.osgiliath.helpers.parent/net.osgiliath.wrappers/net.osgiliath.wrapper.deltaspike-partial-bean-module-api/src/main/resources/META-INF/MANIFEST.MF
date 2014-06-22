@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
 Implementation-Vendor: The Apache Software Foundation
 Implementation-Title: Apache DeltaSpike Partial-Bean-Module API
-Implementation-Version: 0.7
+Implementation-Version: 1.0.0
 Implementation-Vendor-Id: org.apache.deltaspike.modules
 Built-By: gpetracek
 Build-Jdk: 1.7.0_51
 Specification-Vendor: The Apache Software Foundation
 Specification-Title: Apache DeltaSpike Partial-Bean-Module API
 Created-By: Apache Maven 3.0.5
-Specification-Version: 0.7
+Specification-Version: 1.0.0
 Archiver-Version: Plexus Archiver
 

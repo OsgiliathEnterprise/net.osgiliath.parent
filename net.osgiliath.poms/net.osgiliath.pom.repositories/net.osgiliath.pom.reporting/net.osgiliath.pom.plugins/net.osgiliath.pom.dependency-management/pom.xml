@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -314,6 +315,21 @@
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-cdi</artifactId>
 				<version>${camel-version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.camel.deltaspike.core</groupId>
+						<artifactId>deltaspike-core-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.camel.deltaspike.core</groupId>
+						<artifactId>deltaspike-core-impl</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.camel.deltaspike.cdictrl</groupId>
+						<artifactId>deltaspike-cdictrl-api</artifactId>
+					</exclusion>
+
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
@@ -496,6 +512,11 @@
 			<dependency>
 				<groupId>org.apache.deltaspike.cdictrl</groupId>
 				<artifactId>deltaspike-cdictrl-weld</artifactId>
+				<version>${org.apache.deltaspike.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.deltaspike.cdictrl</groupId>
+				<artifactId>deltaspike-cdictrl-api</artifactId>
 				<version>${org.apache.deltaspike.version}</version>
 			</dependency>
 			<dependency>
@@ -1743,7 +1764,7 @@
 		<org.apache.aries.proxy.api.version>0.3.0</org.apache.aries.proxy.api.version>
 		<org.apache.aries.transaction.blueprint.version>1.0.0</org.apache.aries.transaction.blueprint.version>
 		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
-		<org.apache.deltaspike.version>0.7</org.apache.deltaspike.version>
+		<org.apache.deltaspike.version>1.0.0</org.apache.deltaspike.version>
 		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>
 		<org.apache.felix.framework.version>4.4.0</org.apache.felix.framework.version>
 		<org.apache.felix.fileinstall.version>3.4.0</org.apache.felix.fileinstall.version>
