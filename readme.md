@@ -33,7 +33,7 @@ The entire Osgiliath EF uses these Maven configuration to configure dependency v
 
 # Where to start?
 
-You can first take a look at the documentation: https://blog.osgiliath.net/?page_id=224.
+You can first take a look at the documentation: http://osgiliathenterprise.github.io/net.osgiliath.parent/.
 Then, you can directly use the archectypes as they're published in Maven central (mvn archetype:generate ...).
 Or look at the examples or even the features integration tests to see how to code something.
 Readme.md will describe what's doing a module all along your way through this repo, so don't hesitate to crawl into!
