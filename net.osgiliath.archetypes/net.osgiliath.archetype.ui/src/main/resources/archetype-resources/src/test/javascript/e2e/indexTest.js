@@ -1,5 +1,5 @@
 'use strict';
-describe("E2E: Testing ${artifactId}Ctrl - check launched page", function() {
+describe("E2E: Testing myCtrl - check launched page", function() {
 
 	beforeEach(function() {
 		browser().navigateTo('/');

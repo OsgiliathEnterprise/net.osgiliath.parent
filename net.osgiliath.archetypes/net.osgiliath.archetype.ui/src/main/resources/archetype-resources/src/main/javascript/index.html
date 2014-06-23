@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-<body ng-app="${artifactId}">
+<body ng-app="myApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -64,8 +64,8 @@
 	<!-- TODO your javascript files on the next section (take care of the order) -->
 	<!-- build:js({.tmp,src/main/javascript}) scripts/scripts.js -->
 	<script type="text/javascript" src="scripts/services/stompservice.js"></script>
-	<script type="text/javascript" src="scripts/directives/${artifactId}.js"></script>
-	<script type="text/javascript" src="scripts/controllers/${artifactId}.js"></script>
+	<script type="text/javascript" src="scripts/directives/mydirective.js"></script>
+	<script type="text/javascript" src="scripts/controllers/myCtrl.js"></script>
 	<!-- endbuild -->
 
 </body>

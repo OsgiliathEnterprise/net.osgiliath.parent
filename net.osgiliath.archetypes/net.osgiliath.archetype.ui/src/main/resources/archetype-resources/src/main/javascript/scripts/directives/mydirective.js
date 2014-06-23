@@ -1,12 +1,12 @@
 'use strict';
-angular.module('${artifactId}', [ 'ui.bootstrap', 'commonapp', 'ngRoute' ]).directive('${artifactId}window',
+angular.module('myApp', [ 'ui.bootstrap', 'commonapp', 'ngRoute' ]).directive('mywindow',
 		function() {
-			console.log('loaded ${artifactId} module');
+			console.log('loaded myApp module');
 			return {
 				restrict : 'E',
 				scope : {},
-				controller : '${artifactId}Ctrl',
-				templateUrl : 'views/templates/${artifactId}.html',
+				controller : 'myCtrl',
+				templateUrl : 'views/templates/mydirective.html',
 				replace : true
 			};
 		}).config(function ($routeProvider) {
