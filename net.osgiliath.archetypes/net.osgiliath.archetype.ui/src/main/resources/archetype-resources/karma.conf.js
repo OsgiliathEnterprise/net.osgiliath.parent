@@ -14,8 +14,8 @@ var unit = function(config) {
 	config.frameworks = [ "jasmine" ];
 	config.files = shared.sharedfiles.concat([
 			unit.mainfolder + 'scripts/services/stompservice.js',
-			unit.mainfolder + 'scripts/directives/${artifactId}.js',
-			unit.mainfolder + 'scripts/controllers/${artifactId}.js',
+			unit.mainfolder + 'scripts/directives/mydirective.js',
+			unit.mainfolder + 'scripts/controllers/myCtrl.js',
 			unit.bowercomponent + 'angular-mocks/angular-mocks.js',
 			/* 'test/mock/*.js', */unit.testfolder + '/spec/**/*.js' ]);
 	config.urlRoot = '/__unit/';
