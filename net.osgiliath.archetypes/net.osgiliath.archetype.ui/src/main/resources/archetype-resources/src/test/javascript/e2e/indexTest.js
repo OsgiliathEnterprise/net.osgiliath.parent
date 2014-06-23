@@ -6,6 +6,6 @@ describe("E2E: Testing myCtrl - check launched page", function() {
 	});
 
 	it('Navigate to the main page and check if label is present', function() {
-		expect(element('#dummyforetwoetest').html()).toContain('');
+		expect(element('#dummyforendtoendtest').html()).toContain('');
 	});
 });
