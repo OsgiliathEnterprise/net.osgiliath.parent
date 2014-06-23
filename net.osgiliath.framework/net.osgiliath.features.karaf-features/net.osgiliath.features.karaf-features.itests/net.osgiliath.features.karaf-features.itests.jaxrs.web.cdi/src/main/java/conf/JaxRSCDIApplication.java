@@ -34,24 +34,23 @@ import net.osgiliath.features.karaf.jaxrs.web.HelloServiceJaxRS;
  * @author charliemordant
  * Web CDI REST application registering
  */
-@ApplicationPath("/helloService")
+@ApplicationPath("helloService")
 public class JaxRSCDIApplication extends Application {
-    /**
-     * Injection of the service
-     */
-    @Inject
-    @Default
-    private HelloServiceJaxRS helloServiceJaxRS;
-
-    /**
-     * Returns service implems
-     */
-    @Override
-    public Set<Object> getSingletons() {
-	final Set<Object> ret = new HashSet<Object>();
-	ret.add(this.helloServiceJaxRS);
-	return ret;
-
-    }
+//    /**
+//     * Injection of the service
+//     */
+//    @Inject
+//    private HelloServiceJaxRS helloServiceJaxRS;
+//
+//    /**
+//     * Returns service implems
+//     */
+//    @Override
+//    public Set<Object> getSingletons() {
+//	final Set<Object> ret = new HashSet<Object>();
+//	ret.add(this.helloServiceJaxRS);
+//	return ret;
+//
+//    }
 
 }

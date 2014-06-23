@@ -25,5 +25,6 @@
 		<module>net.osgiliath.wrapper.derby</module>
 		<module>net.osgiliath.wrapper.swagger-jaxrs</module>
 		<module>net.osgiliath.wrapper.jackson-module-scala</module>
+		<module>net.osgiliath.wrappers.cxf-integration-cdi</module>
 	</modules>
 </project>

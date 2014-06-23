@@ -20,7 +20,7 @@ package net.osgiliath.features.karaf.jaxrs.cdi;
  * #L%
  */
 
-import javax.enterprise.inject.Default;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -35,7 +35,6 @@ import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
  * 
  * @author charliemordant REST service definition
  */
-@Default
 @Path("/hello")
 public interface HelloServiceJaxRS  {
     /**

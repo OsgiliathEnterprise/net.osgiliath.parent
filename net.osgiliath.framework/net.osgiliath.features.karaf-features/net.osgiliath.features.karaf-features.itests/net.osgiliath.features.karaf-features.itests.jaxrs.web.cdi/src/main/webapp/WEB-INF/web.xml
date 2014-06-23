@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   #%L
-  net.osgiliath.features.karaf-features.itests.cdi
+  net.osgiliath.hello.business.impl
   %%
-  Copyright (C) 2013 Osgiliath corp
+  Copyright (C) 2013 - 2014 Osgiliath
   %%
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -18,12 +18,10 @@
   limitations under the License.
   #L%
   -->
-<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xmlns:weld="http://jboss.org/schema/weld/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-                           http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd
-                           http://jboss.org/schema/weld/beans http://jboss.org/schema/weld/beans_1_1.xsd"
-       version="1.1" bean-discovery-mode="annotated">
-       
-</beans>
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+        metadata-complete="false">
+        <display-name>WAR business module</display-name>
+</web-app>

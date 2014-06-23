@@ -23,11 +23,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Default;
 
 import net.osgiliath.features.karaf.jaxrs.web.HelloServiceJaxRS;
 import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
+import net.osgiliath.helpers.cdi.eager.Eager;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -37,8 +37,8 @@ import com.google.common.collect.Lists;
  * 
  * @author charliemordant Service implementation
  */
+@Eager
 @ApplicationScoped
-@Default
 public class HelloServiceImpl implements HelloServiceJaxRS {
     /**
      * Instances registry

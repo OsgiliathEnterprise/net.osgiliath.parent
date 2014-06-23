@@ -54,7 +54,7 @@ limitations under the License.
 		<feature version='${karaf.version}'>war</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
-		<feature version='${project.version}'>osgiliath-jaxrs</feature>
+		<feature version='${project.version}'>osgiliath-jaxrs-cdi</feature>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jaxrs.web.cdi/target/net.osgiliath.features.karaf-features.itests.jaxrs.web.cdi-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-jpa' version='${project.version}'>

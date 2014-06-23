@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Title: Apache CXF CDI Integration
+Implementation-Vendor-Id: org.apache
+Built-By: dkulp
+Build-Jdk: 1.6.0_65
+Specification-Vendor: The Apache Software Foundation
+Specification-Title: Apache CXF CDI Integration
+Created-By: Apache Maven 3.1.1
+Archiver-Version: Plexus Archiver
+
