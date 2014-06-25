@@ -1,5 +1,0 @@
-eclipse.preferences.version=1
-extraProperties=sonar.jacoco.reportPath\=/Users/charliemordant/git/net.osgiliath.parent/net.osgiliath.framework/net.osgiliath.helpers.parent/net.osgiliath.wrappers/net.osgiliath.wrappers.cxf-integration-cdi/target/jacoco-ut.exec\r\nsonar.jacoco.itReportPath\=../../target/jacoco-it.exec\r\nsonar.java.coveragePlugin\=jacoco\r\nsonar.junit.reportsPath\=/Users/charliemordant/git/net.osgiliath.parent/net.osgiliath.framework/net.osgiliath.helpers.parent/net.osgiliath.wrappers/net.osgiliath.wrappers.cxf-integration-cdi/target/surefire-reports\r\nsonar.scm.url\=scm\:git\:https\://github.com/OsgiliathEnterprise/net.osgiliath.parent.git/master\r\nsonar.dynamicAnalysis\=reuseReports
-projectKey=net.osgiliath.wrappers\:net.osgiliath.wrappers.cxf-integration-cdi
-serverUrl=http\://localhost\:9000
-version=2
