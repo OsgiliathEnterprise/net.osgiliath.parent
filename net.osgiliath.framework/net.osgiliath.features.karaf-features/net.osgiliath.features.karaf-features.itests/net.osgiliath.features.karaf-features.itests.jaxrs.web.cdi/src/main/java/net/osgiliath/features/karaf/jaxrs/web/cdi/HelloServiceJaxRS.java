@@ -1,4 +1,4 @@
-package conf;
+package net.osgiliath.features.karaf.jaxrs.web.cdi;
 
 /*
  * #%L
@@ -20,37 +20,34 @@ package conf;
  * #L%
  */
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
-import javax.enterprise.inject.Default;
-import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-
-import net.osgiliath.features.karaf.jaxrs.web.cdi.HelloServiceJaxRS;
+import net.osgiliath.features.karaf.jaxrs.web.cdi.model.HelloObject;
+import net.osgiliath.features.karaf.jaxrs.web.cdi.model.Hellos;
 /**
  * 
  * @author charliemordant
- * Web CDI REST application registering
+ * REST service export
  */
-@ApplicationPath("helloService")
-public class JaxRSCDIApplication extends Application {
+@Path("/hello")
+public interface HelloServiceJaxRS {
     /**
-     * Injection of the service
+     * register instance
+     * @param helloObject instance
      */
-    @Inject
-    private HelloServiceJaxRS helloServiceJaxRS;
-
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    void persistHello(HelloObject helloObject);
     /**
-     * Returns service implems
+     * get all
+     * @return registered instances
      */
-    @Override
-    public Set<Object> getSingletons() {
-	final Set<Object> ret = new HashSet<Object>();
-	ret.add(this.helloServiceJaxRS);
-	return ret;
-
-    }
-
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    Hellos getHellos();
 }

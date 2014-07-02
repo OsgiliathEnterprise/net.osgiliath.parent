@@ -2,7 +2,7 @@ package conf;
 
 /*
  * #%L
- * net.osgiliath.features.karaf-features.itests.jaxrs.web
+ * net.osgiliath.features.karaf-features.itests.messaging.cdi
  * %%
  * Copyright (C) 2013 - 2014 Osgiliath corp
  * %%
@@ -20,37 +20,42 @@ package conf;
  * #L%
  */
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.enterprise.inject.Default;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import javax.inject.Named;
 
-import net.osgiliath.features.karaf.jaxrs.web.cdi.HelloServiceJaxRS;
+import lombok.extern.slf4j.Slf4j;
+import net.osgiliath.helpers.cdi.eager.Eager;
+
+import org.apache.camel.Component;
+import org.ops4j.pax.cdi.api.OsgiService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * 
  * @author charliemordant
- * Web CDI REST application registering
+ * Messaging components imports
  */
-@ApplicationPath("helloService")
-public class JaxRSCDIApplication extends Application {
+@Eager
+@ApplicationScoped
+@Slf4j
+public class HelloComponents {
+    
     /**
-     * Injection of the service
+     * OSGI import
      */
     @Inject
-    private HelloServiceJaxRS helloServiceJaxRS;
-
+    @OsgiService(filter = "(component-type=jms)", dynamic = true)
+    private Component jms;
     /**
-     * Returns service implems
+     * 
+     * @return Messaging component
      */
-    @Override
-    public Set<Object> getSingletons() {
-	final Set<Object> ret = new HashSet<Object>();
-	ret.add(this.helloServiceJaxRS);
-	return ret;
-
+    @Produces
+    @Named("jms")
+    public Component getJms() {
+	log.info("Inject jms route");
+	return jms;
     }
-
 }

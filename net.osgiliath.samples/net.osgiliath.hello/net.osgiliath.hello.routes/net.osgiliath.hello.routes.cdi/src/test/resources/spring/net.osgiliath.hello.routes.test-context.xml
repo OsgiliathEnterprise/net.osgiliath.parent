@@ -26,7 +26,7 @@
 
 	<bean id="json-jackson" class="org.apache.camel.component.jackson.JacksonDataFormat"></bean>
 	<bean id="xmljson" class="org.apache.camel.dataformat.xmljson.XmlJsonDataFormat"></bean>
-	<bean id="xstream" class="utils.XStreamDataFormatWithGoodClassLoader"></bean>
+	<bean id="xstream" class="utils.CDIXStreamDataFormatWithGoodClassLoader"></bean>
 	<camelContext id="camelCtx" xmlns="http://camel.apache.org/schema/spring">
 		<propertyPlaceholder id="properties"
 			location="cfg/net.osgiliath.hello.routes.test.cfg" />
@@ -36,12 +36,12 @@
 		<routeBuilder ref="helloRoute"></routeBuilder>
 		<!-- TODO your route reference here -->
 	</camelContext>
-	<bean id="mockedEndpointRoute" class="mocks.routes.HelloRouteEndpointsMock"></bean>
+	<bean id="mockedEndpointRoute" class="mocks.routes.HelloCDIRouteEndpointsMock"></bean>
 
-	<bean id="helloRoute" class="net.osgiliath.hello.routes.HelloRoute">
+	<bean id="helloRoute" class="net.osgiliath.hello.routes.cdi.HelloRoute">
 		<property name="thrownExceptionMessageToInBodyProcessor" ref="thrownExceptionMessageToInBodyProcessor"></property>
 	</bean>
-	<bean id="helloService" class="mocks.HelloServiceMock" />
+	<bean id="helloService" class="mocks.HelloCDIServiceMock" />
 <!-- CXF helper to convert JSR303 validation message to rest message body -->
 	<bean id="thrownExceptionMessageToInBodyProcessor"
 		class="helpers.cxf.exception.handling.camel.processor.ThrownExceptionMessageToInBodyProcessor" />
