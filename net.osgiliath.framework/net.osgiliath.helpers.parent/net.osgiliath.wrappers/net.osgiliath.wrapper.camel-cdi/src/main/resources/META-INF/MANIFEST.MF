@@ -6,20 +6,20 @@ Export-Package: org.apache.camel.cdi;uses:="org.apache.camel.util,java
  ew,org.apache.camel.model.loadbalancer,org.apache.camel.model.datafor
  mat,org.apache.camel.model.config,org.apache.camel.main,org.apache.ca
  mel.model,org.apache.camel.model.language,javax.xml.bind,javax.enterp
- rise.util";version="2.13.1",org.apache.camel.cdi.internal;uses:="org.
+ rise.util";version="2.13.2",org.apache.camel.cdi.internal;uses:="org.
  apache.camel.impl,org.apache.camel.cdi,org.apache.camel,javax.enterpr
  ise.inject.spi,javax.enterprise.util,javax.enterprise.context.spi,org
  .apache.camel.util,org.apache.deltaspike.core.api.literal,javax.enter
  prise.context,org.apache.camel.model,javax.annotation,javax.enterpris
  e.inject,javax.inject,org.apache.deltaspike.core.util.metadata.builde
  r,javax.enterprise.event,org.apache.deltaspike.core.api.provider,org.
- apache.camel.component.mock";version="2.13.1",org.apache.camel.cdi.co
+ apache.camel.component.mock";version="2.13.2",org.apache.camel.cdi.co
  mponent.properties;uses:="org.apache.camel.component.properties,javax
- .inject,org.apache.deltaspike.core.api.config";version="2.13.1"
+ .inject,org.apache.deltaspike.core.api.config";version="2.13.2"
 Ignore-Package: org.apache.deltaspike.cdise.api
 Implementation-Title: Apache Camel
-Bundle-ClassPath: ., camel-cdi-2.13.1.jar
-Implementation-Version: 2.13.1
+Bundle-ClassPath: ., camel-cdi-2.13.2.jar
+Implementation-Version: 2.13.2
 Built-By: ubuntu
 Tool: Bnd-1.50.0
 Bundle-Name: camel-cdi
@@ -28,8 +28,8 @@ Bundle-Vendor: The Apache Software Foundation
 Provide-Capability: org.ops4j.pax.cdi.extension; extension=camel-cdi-e
  xtension
 Build-Jdk: 1.7.0_55
-Bundle-Version: 2.13.1
-Bnd-LastModified: 1399466432356
+Bundle-Version: 2.13.2
+Bnd-LastModified: 1404188798809
 Bundle-ManifestVersion: 2
 Bundle-Description: Camel CDI
 Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
@@ -54,5 +54,5 @@ Import-Package: javax.annotation,javax.enterprise.context;version="[1.
  7,1.0.0]",org.slf4j;version="[1.6,2)"
 Bundle-DocURL: http://www.apache.org/
 Bundle-SymbolicName: org.apache.camel.camel-cdi
-Karaf-Info: Camel;camel-cdi=2.13.1
+Karaf-Info: Camel;camel-cdi=2.13.2
 
