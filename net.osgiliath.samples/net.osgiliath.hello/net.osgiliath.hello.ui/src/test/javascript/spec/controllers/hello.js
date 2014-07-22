@@ -1,5 +1,5 @@
 'use strict';
-describe('Controller: HelloCtrl', function () {
+describe('Controller: HelloController', function () {
 
   // load the controller's module
   beforeEach(module('hello'));
@@ -14,7 +14,7 @@ describe('Controller: HelloCtrl', function () {
 	          }
 	      };
     scope = $rootScope.$new();
-    HelloCtrl = $controller('HelloCtrl', {
+    HelloCtrl = $controller('HelloController', {
       $scope: scope,
       stompservice: mockedService
     });

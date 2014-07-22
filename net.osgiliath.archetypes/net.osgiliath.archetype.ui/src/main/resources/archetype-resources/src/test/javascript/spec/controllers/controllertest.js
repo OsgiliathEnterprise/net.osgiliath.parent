@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: myCtrl', function () {
+describe('Controller: myController', function () {
 
   // load the controller's module
   beforeEach(module('myApp'));
@@ -11,7 +11,7 @@ describe('Controller: myCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    myCtrl = $controller('myCtrl', {
+    myCtrl = $controller('myController', {
       $scope: scope,
       stompservice: mockedService
     });

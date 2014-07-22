@@ -20,7 +20,7 @@
  * #L%
  */
 'use strict';
-describe("E2E: Testing UserCtrl - check launched page", function() {
+describe("E2E: Testing UserController - check launched page", function() {
 
 	beforeEach(function() {
 		browser().navigateTo('/');

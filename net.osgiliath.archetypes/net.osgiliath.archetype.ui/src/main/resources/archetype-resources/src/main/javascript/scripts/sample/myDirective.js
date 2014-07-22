@@ -1,12 +1,12 @@
 'use strict';
-angular.module('hello', [ 'ui.bootstrap', 'commonapp', 'ngRoute' ]).directive('hellowindow',
+angular.module('myApp', [ 'ui.bootstrap', 'commonapp', 'ngRoute' ]).directive('mywindow',
 		function() {
-			console.log('loaded hello module');
+			console.log('loaded myApp module');
 			return {
 				restrict : 'E',
 				scope : {},
-				controller : 'HelloCtrl',
-				templateUrl : 'views/templates/hello.html',
+				controller : 'myCtrl',
+				templateUrl : 'views/sample/mydirective.html',
 				replace : true
 			};
 		}).config(function ($routeProvider) {

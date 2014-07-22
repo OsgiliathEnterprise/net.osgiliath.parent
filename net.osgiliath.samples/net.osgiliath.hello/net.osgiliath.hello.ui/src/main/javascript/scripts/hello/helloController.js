@@ -1,6 +1,5 @@
 'use strict';
-angular.module('hello').controller(
-		'HelloCtrl',
+angular.module('hello').controller('HelloController',
 		function($scope, stompservice) {
 			$scope.helloMessage = '';
 			$scope.helloMessages = [];

@@ -15,8 +15,8 @@ var e2e = function(config) {
 
 	config.files = shared.sharedfiles.concat([
 			e2e.mainfolder + 'scripts/services/stompservice.js',
-			e2e.mainfolder + 'scripts/directives/hello.js',
-			e2e.mainfolder + 'scripts/controllers/hello.js', 
+			e2e.mainfolder + 'scripts/hello/helloDirective.js',
+			e2e.mainfolder + 'scripts/hello/helloController.js', 
 			e2e.testfolder + 'e2e/indexTest.js' ]);
 	config.proxies = {
 		'/' : 'http://localhost:9001/'

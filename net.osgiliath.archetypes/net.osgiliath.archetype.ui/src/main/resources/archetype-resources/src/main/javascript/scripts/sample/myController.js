@@ -1,6 +1,6 @@
 'use strict';
 angular.module('myApp').controller(
-		'myCtrl',
+		'myController',
 		function($scope, stompservice) {
 			
 		});
