@@ -61,6 +61,7 @@
 	</bean>
 	<!-- Camel context -->
 	<camel:camelContext id="camelCtx">
+	
 	</camel:camelContext>
 	<!-- JMS aware service -->
 	<bean id="helloServiceJMS"

@@ -12,10 +12,16 @@
 	name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+	<repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
 	<feature name="osgiliath-swagger-ui" version="${project.version}"
 		resolver="(obr)">
 		<feature version='${karaf.version}'>war</feature>
 		<feature version='${project.version}'>osgiliath-jaxrs</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.ui/${project.version}/war</bundle>
 	</feature>
+	<feature name="osgiliath-hawtio" version="${project.version}" resolver="(obr)">
+		<feature version="${hawtio.version}">hawtio-core</feature>
+		<bundle>mvn:org.jolokia/jolokia-osgi/${jolokia.version}</bundle>
+	</feature>
+		
 </features>

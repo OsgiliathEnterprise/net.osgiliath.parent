@@ -117,6 +117,13 @@
 				<version>${commons-pool.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>io.hawt</groupId>
+				<artifactId>hawtio-karaf</artifactId>
+				<version>${hawtio.version}</version>
+				<type>xml</type>
+				<classifier>features</classifier>
+			</dependency>
+			<dependency>
 				<groupId>javax.el</groupId>
 				<artifactId>javax.el-api</artifactId>
 				<version>${javax.el-api.version}</version>
@@ -1226,6 +1233,11 @@
 				<version>${org.jcloud.karaf.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.jolokia</groupId>
+				<artifactId>jolokia-osgi</artifactId>
+				<version>${jolokia.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.json</groupId>
 				<artifactId>json</artifactId>
 				<version>${org.json.version}</version>
@@ -1742,6 +1754,7 @@
 		<geronimo-jta_1.1_spec.version>1.1.1</geronimo-jta_1.1_spec.version>
 		<geronimo-servlet_2.5_spec.version>1.2</geronimo-servlet_2.5_spec.version>
 		<geronimo-servlet_3.0_spec.version>1.0</geronimo-servlet_3.0_spec.version>
+		<hawtio.version>1.4.11</hawtio.version>
 		<javax.el-api.version>3.0.0</javax.el-api.version>
 		<javax.interceptor-api.version>1.2</javax.interceptor-api.version>
 		<javax.jms.api.version>1.1-rev-1</javax.jms.api.version>
@@ -1750,6 +1763,7 @@
 		<jdbc-stdext.version>2.0</jdbc-stdext.version>
 		<jettison.version>1.3.5</jettison.version>
 		<joda-time.version>2.3</joda-time.version>
+		<jolokia.version>1.2.2</jolokia.version>
 		<junit.version>4.11</junit.version>
 		<karaf.feature.cxf.version>3.0.0</karaf.feature.cxf.version>
 		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
