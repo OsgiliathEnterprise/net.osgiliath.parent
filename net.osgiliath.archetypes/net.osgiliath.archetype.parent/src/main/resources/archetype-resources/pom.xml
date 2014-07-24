@@ -40,6 +40,32 @@
 			</plugin>
 		</plugins>
 	</build>
+	 <reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>1024m</maxmemory>
+				</configuration>
+				<reportSets>
+
+					<reportSet>
+						<id>${artifactId}-jdoc</id>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
+						<reports>
+							<report>javadoc-no-fork</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 	<properties>
 		<!-- TODO change your organization, all your Manifests will be signed with 
 			this -->

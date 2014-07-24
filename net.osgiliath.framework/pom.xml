@@ -13,4 +13,31 @@
   <module>net.osgiliath.features.karaf-features</module>
   <module>net.osgiliath.helpers.parent</module>
   </modules>
+  <reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>1024m</maxmemory>
+				</configuration>
+				<reportSets>
+
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

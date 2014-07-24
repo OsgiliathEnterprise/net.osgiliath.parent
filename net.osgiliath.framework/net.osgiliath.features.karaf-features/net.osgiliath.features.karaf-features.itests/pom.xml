@@ -60,4 +60,5 @@
   		net.osgiliath.features.karaf-features.itests.jpa.cdi.data
   	</module>
 	</modules>
+	
 </project>
