@@ -30,7 +30,7 @@
 		<sourceDirectory>src/main/javascript</sourceDirectory>
 		<testSourceDirectory>src/test/javascript</testSourceDirectory>
 		<plugins>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
@@ -140,21 +140,23 @@
 					<groupId>xml-apis</groupId>
 					<artifactId>xml-apis</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>com.google.guava</groupId><!-- Due to Selenium -->
+					<artifactId>guava</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- test deps: all the servers deps that makes your UI running-->
-		<!-- <dependency>
-			<groupId>${project.groupId}</groupId>
-			<version>${project.version}</version>
-			<artifactId>${project.groupId}.routes</artifactId>
-			<scope>test</scope>
-		</dependency>
+		<!-- test deps: all the servers deps that makes your UI running -->
+		<!-- <dependency> <groupId>${project.groupId}</groupId> <version>${project.version}</version> 
+			<artifactId>${project.groupId}.routes</artifactId> <scope>test</scope> </dependency> 
+			<dependency> <groupId>${project.groupId}</groupId> <version>${project.version}</version> 
+			<artifactId>${project.groupId}.business.impl</artifactId> <scope>test</scope> 
+			</dependency> -->
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<version>${project.version}</version>
-			<artifactId>${project.groupId}.business.impl</artifactId>
-			<scope>test</scope>
-		</dependency> -->
+			<groupId>com.google.guava</groupId><!-- Due to Selenium -->
+			<artifactId>guava</artifactId>
+			<version>15.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam</artifactId>

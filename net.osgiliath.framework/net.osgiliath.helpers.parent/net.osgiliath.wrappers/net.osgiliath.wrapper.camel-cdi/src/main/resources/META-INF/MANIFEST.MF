@@ -47,11 +47,11 @@ Import-Package: javax.annotation,javax.enterprise.context;version="[1.
  rg.apache.camel.model.loadbalancer;version="[2.13,3)",org.apache.came
  l.spi;version="[2.13,3)",org.apache.camel.util;version="[2.13,3)",org
  .apache.camel.view;version="[2.13,3)",org.apache.deltaspike.core.api.
- config;resolution:=optional;version="[0.7,1.0.0]",org.apache.deltaspi
- ke.core.api.literal;resolution:=optional;version="[0.7,1.0.0]",org.ap
+ config;resolution:=optional;version="[0.7,1.0.1]",org.apache.deltaspi
+ ke.core.api.literal;resolution:=optional;version="[0.7,1.0.1]",org.ap
  ache.deltaspike.core.api.provider;resolution:=optional;version="[0.7,
- 1.0.0]",org.apache.deltaspike.core.util.metadata.builder;version="[0.
- 7,1.0.0]",org.slf4j;version="[1.6,2)"
+ 1.0.1]",org.apache.deltaspike.core.util.metadata.builder;version="[0.
+ 7,1.0.1]",org.slf4j;version="[1.6,2)"
 Bundle-DocURL: http://www.apache.org/
 Bundle-SymbolicName: org.apache.camel.camel-cdi
 Karaf-Info: Camel;camel-cdi=2.13.2

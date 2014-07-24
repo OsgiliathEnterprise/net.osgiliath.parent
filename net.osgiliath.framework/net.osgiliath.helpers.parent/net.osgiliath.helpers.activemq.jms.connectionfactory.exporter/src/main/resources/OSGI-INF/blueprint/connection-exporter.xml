@@ -29,7 +29,7 @@ http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.
 		interface="org.springframework.transaction.PlatformTransactionManager" />
 	<!-- access through JTATransactionManager -->
 	<reference id="osgiJtaTransactionManager" interface="javax.transaction.TransactionManager" />
-	<amq:broker brokerName="brokerB1" shutdownOnMasterFailure="true">
+	<amq:broker brokerName="brokerB1" shutdownOnMasterFailure="true" useJmx="true">
 		<amq:destinationPolicy>
 			<amq:policyMap>
 				<amq:policyEntries>
