@@ -1464,7 +1464,7 @@
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
-		<sonar-maven-plugin.version>2.2</sonar-maven-plugin.version>
+		<sonar-maven-plugin.version>2.4</sonar-maven-plugin.version>
 		<virgo.user.repository>${virgo.path}/repository/usr</virgo.user.repository>
 		<virgo.pickup.repository>${virgo.path}/pickup</virgo.pickup.repository>
 		<virgo-maven-plugin.version>1.0.1-SNAPSHOT</virgo-maven-plugin.version>
