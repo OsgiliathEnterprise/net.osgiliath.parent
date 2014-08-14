@@ -79,7 +79,7 @@ module.exports = function (grunt) {
           port: 9001,
           base: [
             '.tmp',
-            'test',
+            'src/test/javascript',
             '<%= yeoman.app %>'
           ]
         }
@@ -345,17 +345,20 @@ module.exports = function (grunt) {
 
     // Test settings
     karma: {
-      e2e : {
-        configFile : 'karma-e2e.conf.js',
-        singleRun : true
-      },
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+    shell: {
+      options: {
+        stdout: true
+      },
+      npm_install: {
+        command: 'npm install'
+      }
     }
   });
-
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
@@ -407,4 +410,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  grunt.registerTask('install', ['shell:npm_install']);
+  
 };
