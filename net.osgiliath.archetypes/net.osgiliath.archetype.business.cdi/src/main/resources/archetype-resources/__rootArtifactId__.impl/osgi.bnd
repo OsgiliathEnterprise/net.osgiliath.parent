@@ -11,6 +11,9 @@ Import-Package: helpers.cxf.exception.handling.jaxrs.mapper,\
  javax.servlet.*;version="[2,4)",\
  javax.transaction,\
  javax.validation,\
+ net.osgiliath.helpers.cdi.eager,\
+ net.osgiliath.helper.camel.configadmin,\
+ net.osgiliath.helpers.cdi.cxf.jaxrs,\
  org.apache.camel,\
  org.apache.camel.builder.xml,\
  org.apache.camel.support,\

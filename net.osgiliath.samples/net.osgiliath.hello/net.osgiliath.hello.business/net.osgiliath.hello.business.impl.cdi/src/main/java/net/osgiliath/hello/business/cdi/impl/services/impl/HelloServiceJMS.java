@@ -62,7 +62,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 
     @Override
     public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
-	log.error("****************** Save on JMS Service **********************");
+	log.info("****************** Save on JMS Service **********************");
 	log.info("persisting new message with jms: "
 		+ helloObject_p.getHelloMessage());
 	helloObjectRepository.save(helloObject_p);
