@@ -23,13 +23,19 @@ package helpers.cxf.exception.handling.camel.processor;
  * #L%
  */
 
+import helpers.cxf.exception.handling.ExceptionMappingConstants;
+
 import java.io.StringReader;
+import java.util.Map.Entry;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.component.cxf.CxfOperationException;
+import org.apache.camel.component.http.HttpOperationFailedException;
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Camel processor which copy the message of an exception to the message body
@@ -37,8 +43,12 @@ import org.jdom2.input.SAXBuilder;
  * @author Charlie
  * 
  */
-public class ThrownExceptionMessageToInBodyProcessor implements Processor {
 
+public class ThrownExceptionMessageToInBodyProcessor implements Processor {
+	/**
+	 * The Logger
+	 */
+	private static Logger LOG = LoggerFactory.getLogger(ThrownExceptionMessageToInBodyProcessor.class);
     /*
      * (non-Javadoc)
      * 
@@ -46,11 +56,13 @@ public class ThrownExceptionMessageToInBodyProcessor implements Processor {
      */
     @Override
     public void process(Exchange exchange) throws Exception {
-	CxfOperationException c = exchange.getProperty(
-		Exchange.EXCEPTION_CAUGHT, CxfOperationException.class);
+    HttpOperationFailedException c = exchange.getProperty(
+		Exchange.EXCEPTION_CAUGHT, HttpOperationFailedException.class);
 	SAXBuilder sxb = new SAXBuilder();
-	if (c != null && c.getResponseBody() != null) {
-	    Document doc = sxb.build(new StringReader(c.getResponseBody()));
+	if (c != null && c.getResponseHeaders().get(ExceptionMappingConstants.EXCEPTION_BODY_HEADER) != null) {
+		String body =  c.getResponseHeaders().get(ExceptionMappingConstants.EXCEPTION_BODY_HEADER);
+		LOG.info("Catched error in route: " + body);
+	    Document doc = sxb.build(new StringReader(body));
 	    exchange.getIn().setBody(
 		    doc.getRootElement().getChild("message").getText());
 	}

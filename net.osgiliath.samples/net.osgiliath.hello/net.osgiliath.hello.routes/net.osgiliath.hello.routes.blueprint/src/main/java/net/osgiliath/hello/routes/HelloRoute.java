@@ -107,7 +107,7 @@ public class HelloRoute extends RouteBuilder {
 		.to("direct:updateTopic")
 		.doCatch(Exception.class)
 		.log(LoggingLevel.WARN,
-			"Exception: " + exceptionMessage().toString())
+			"Validation exception encountered")
 		.to("direct:helloValidationError").end();
 
 	from("direct:updateTopic")
@@ -131,7 +131,8 @@ public class HelloRoute extends RouteBuilder {
 					.replaceAll("\"", "'")
 					.replaceAll("\n", ""));
 		    }
-		}).setBody(simple("{\"error\": \"${body}\"}"))
+		})
+		.setBody(simple("{\"error\": \"${body}\"}"))
 		.log("Subscription error: ${body}")
 		.to("{{hello.MessagingErrors}}");
 

@@ -115,7 +115,7 @@ public class HelloRoute extends RouteBuilder {
 		.to("direct:updateTopic")
 		.doCatch(Exception.class)
 		.log(LoggingLevel.WARN,
-			"Exception: " + exceptionMessage().toString())
+			"Exception while persisting message")
 		.to("direct:helloValidationError").end();
 
 	from("direct:updateTopic")

@@ -20,6 +20,9 @@ package helpers.cxf.exception.handling.jaxrs.mapper;
  * #L%
  */
 
+import helpers.cxf.exception.handling.ExceptionMappingConstants;
+
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
@@ -27,6 +30,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * CXF exception Mapper
@@ -35,7 +40,12 @@ import org.jdom2.output.XMLOutputter;
  * 
  */
 public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
-    /**
+	/**
+	 * The Logger
+	 */
+	private static Logger LOG = LoggerFactory.getLogger(ExceptionXmlMapper.class);
+    
+	/**
      * Map the catched Exception to the response body (xml format)
      */
     @Override
@@ -46,8 +56,9 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
 	populateXML(arg0, root);
 	String res = new XMLOutputter(Format.getPrettyFormat())
 		.outputString(doc);
-	return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-		.entity(res).build();
+	LOG.info("CXF exception thrown: " + res);
+	return Response.status(Response.Status.FORBIDDEN).type(MediaType.APPLICATION_XML).header(ExceptionMappingConstants.EXCEPTION_BODY_HEADER, res)
+		.build();
 
     }
 
