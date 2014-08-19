@@ -12,6 +12,7 @@ Import-Package: helpers.cxf.exception.handling.jaxrs.mapper,\
  javax.transaction,\
  javax.validation,\
  net.osgiliath.helpers.cdi.eager,\
+ net.osgiliath.helpers.cdi.eager.extension,\
  net.osgiliath.helper.camel.configadmin,\
  net.osgiliath.helpers.cdi.cxf.jaxrs,\
  org.apache.camel,\
