@@ -1802,7 +1802,7 @@
 		<org.apache.aries.proxy.api.version>0.3.0</org.apache.aries.proxy.api.version>
 		<org.apache.aries.transaction.blueprint.version>1.0.0</org.apache.aries.transaction.blueprint.version>
 		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
-		<org.apache.deltaspike.version>1.0.1</org.apache.deltaspike.version>
+		<org.apache.deltaspike.version>1.0.2</org.apache.deltaspike.version>
 		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>
 		<org.apache.felix.framework.version>4.4.0</org.apache.felix.framework.version>
 		<org.apache.felix.fileinstall.version>3.4.0</org.apache.felix.fileinstall.version>
@@ -1870,7 +1870,7 @@
 		<osgiliath.framework.maven.version>0.0.5</osgiliath.framework.maven.version>
 		<ow2-jdbc-service-1.0-spec.version>1.0.13</ow2-jdbc-service-1.0-spec.version>
 		<ops4j.base.version>1.4.0</ops4j.base.version>
-		<pax-cdi.version>0.7.0</pax-cdi.version>
+		<pax-cdi.version>0.8.0</pax-cdi.version>
 		<pax.jdbc.version>0.3.0</pax.jdbc.version>
 		<pax-jpa.version>0.2.0</pax-jpa.version>
 		<pax.swissbox.version>1.7.0</pax.swissbox.version>
