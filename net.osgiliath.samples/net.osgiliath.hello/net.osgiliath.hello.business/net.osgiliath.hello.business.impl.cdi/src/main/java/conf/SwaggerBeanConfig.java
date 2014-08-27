@@ -22,54 +22,58 @@ package conf;
 
 import java.io.IOException;
 
-import javax.annotation.PreDestroy;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.inject.Named;
+
+import lombok.extern.slf4j.Slf4j;
+import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.service.cm.ConfigurationAdmin;
-import org.osgi.util.tracker.ServiceTracker;
-
-import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
-import net.osgiliath.helpers.cdi.eager.Eager;
 
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
 
-
 @Eager
+@ApplicationScoped
+@Slf4j
 public class SwaggerBeanConfig {
-    private ServiceTracker tracker;
-    @Produces
-    public BeanConfig getConfig() {
-	BeanConfig beanConfig = new BeanConfig();
-	beanConfig.setResourcePackage("net.osgiliath.hello.business.impl");
-	beanConfig.setVersion("0.0.6");
-	BundleContext context = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-	
-	String protocol;
-	try {
-	    protocol = ConfigAdminTracker.getInstance(context).getProperty("jaxrs.server.protocol");
-	
-	String uri = ConfigAdminTracker.getInstance(context).getProperty("jaxrs.server.uri");
-	String port = ConfigAdminTracker.getInstance(context).getProperty("jaxrs.server.port");
-	
-	beanConfig.setBasePath(protocol + "://" + uri + ":" + port + "/cxf/helloService");
-	} catch (IOException | InvalidSyntaxException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
+
+	@Produces
+	@Named("swagger-hello-biz")
+	public BeanConfig getConfig() {
+		BeanConfig beanConfig = new BeanConfig();
+		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
+		beanConfig.setVersion("0.0.6");
+		BundleContext context = FrameworkUtil.getBundle(this.getClass())
+				.getBundleContext();
+
+		String protocol;
+		try {
+			protocol = ConfigAdminTracker.getInstance(context).getProperty(
+					"jaxrs.server.protocol");
+
+			String uri = ConfigAdminTracker.getInstance(context).getProperty(
+					"jaxrs.server.uri");
+			String port = ConfigAdminTracker.getInstance(context).getProperty(
+					"jaxrs.server.port");
+
+			beanConfig.setBasePath(protocol + "://" + uri + ":" + port
+					+ "/cxf/helloService");
+		} catch (IOException | InvalidSyntaxException e) {
+			log.error("Error configuring Swagger bean", e);
+		}
+		log.info("Swagger bean configuration started");
+		beanConfig.setTitle("Business module");
+		beanConfig.setDescription("This is a business module");
+		beanConfig.setContact("masterdev@wondermail.org");
+		beanConfig.setLicense("Apache Licence 2.0");
+		beanConfig
+				.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
+		beanConfig.setScan(true);
+		return beanConfig;
 	}
-	beanConfig.setTitle("Business module");
-	beanConfig.setDescription("This is a business module");
-	beanConfig.setContact("masterdev@wondermail.org");
-	beanConfig.setLicense("Apache Licence 2.0");
-	beanConfig.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
-	beanConfig.setScan(true);
-	return beanConfig;
-    }
-    @PreDestroy
-    public void closeTracker() {
-	tracker.close();
-    }
 
 }

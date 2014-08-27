@@ -20,10 +20,26 @@ package net.osgiliath.helpers.swagger.cdi;
  * #L%
  */
 
-import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
+import org.apache.cxf.jaxrs.provider.json.JSONProvider;
+
+import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
+import net.osgiliath.helpers.cdi.eager.Eager;
+
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
-@CXFEndpoint(url = "/RESTServices")
+import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
+
+@Eager
+@CXFEndpoint(url = "/RESTServices", providersClasses={JSONProvider.class, JAXBElementProvider.class, ResourceListingProvider.class, ApiDeclarationProvider.class})
+@Path("/api-docs")
+@Api("/api-docs")
+@Produces(value={MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class SwaggerApiListingResourceJSON extends ApiListingResourceJSON{
 
 }

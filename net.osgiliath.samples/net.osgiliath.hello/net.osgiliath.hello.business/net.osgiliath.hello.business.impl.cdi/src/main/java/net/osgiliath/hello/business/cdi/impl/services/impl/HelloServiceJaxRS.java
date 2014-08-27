@@ -33,11 +33,11 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
+import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 import org.ops4j.pax.cdi.api.OsgiService;
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -52,7 +52,7 @@ import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
  * 
  */
 @Slf4j
-@OsgiServiceProvider
+@Eager
 @CXFEndpoint(url = "/helloService", providersClasses = {
 	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class, ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceJaxRS implements

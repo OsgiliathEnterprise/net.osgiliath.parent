@@ -20,8 +20,6 @@ package net.osgiliath.helpers.swagger.cdi;
  * #L%
  */
 
-
-
 import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -36,36 +34,36 @@ import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 public class SwaggerCdiActivator implements BundleActivator {
-    @Override
-    public void start(BundleContext context) throws Exception {
-	ResourceListingProvider resourceListingProvider = new ResourceListingProvider();
-	Dictionary<String, String> filter = new Hashtable<String, String>();
-	filter.put("mapper.type", "resourceListingProvider");
-	context.registerService(MessageBodyWriter.class,
-		resourceListingProvider, filter);
-	ApiDeclarationProvider apiDeclarationProvider = new ApiDeclarationProvider();
-	Dictionary<String, String> filter2 = new Hashtable<String, String>();
-	filter.put("mapper.type", "apiDeclarationProvider");
-	context.registerService(MessageBodyWriter.class,
-		apiDeclarationProvider, filter2);
+	@Override
+	public void start(BundleContext context) throws Exception {
+		ResourceListingProvider resourceListingProvider = new ResourceListingProvider();
+		Dictionary<String, String> filter = new Hashtable<String, String>();
+		filter.put("mapper.type", "resourceListingProvider");
+		context.registerService(MessageBodyWriter.class,
+				resourceListingProvider, filter);
+		ApiDeclarationProvider apiDeclarationProvider = new ApiDeclarationProvider();
+		Dictionary<String, String> filter2 = new Hashtable<String, String>();
+		filter.put("mapper.type", "apiDeclarationProvider");
+		context.registerService(MessageBodyWriter.class,
+				apiDeclarationProvider, filter2);
 
-    }
+	}
 
-    @Override
-    public void stop(BundleContext context) throws Exception {
-	Collection<ServiceReference<ResourceListingProvider>> references = context
-		.getServiceReferences(ResourceListingProvider.class,
-			"(mapper.type=resourceListingProvider)");
-	for (ServiceReference<ResourceListingProvider> reference : references) {
-	    context.ungetService(reference);
+	@Override
+	public void stop(BundleContext context) throws Exception {
+		Collection<ServiceReference<ResourceListingProvider>> references = context
+				.getServiceReferences(ResourceListingProvider.class,
+						"(mapper.type=resourceListingProvider)");
+		for (ServiceReference<ResourceListingProvider> reference : references) {
+			context.ungetService(reference);
+		}
+
+		Collection<ServiceReference<ApiDeclarationProvider>> references2 = context
+				.getServiceReferences(ApiDeclarationProvider.class,
+						"(mapper.type=apiDeclarationProvider)");
+		for (ServiceReference<ApiDeclarationProvider> reference : references2) {
+			context.ungetService(reference);
+		}
 	}
-	
-	Collection<ServiceReference<ApiDeclarationProvider>> references2 = context
-		.getServiceReferences(ApiDeclarationProvider.class,
-			"(mapper.type=apiDeclarationProvider)");
-	for (ServiceReference<ApiDeclarationProvider> reference : references2) {
-	    context.ungetService(reference);
-	}
-    }
 
 }
