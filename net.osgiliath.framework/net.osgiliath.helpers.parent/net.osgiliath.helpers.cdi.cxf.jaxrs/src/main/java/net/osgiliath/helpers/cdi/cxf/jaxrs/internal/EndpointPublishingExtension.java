@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.annotation.PreDestroy;
@@ -172,29 +173,43 @@ public class EndpointPublishingExtension implements Extension {
 	private <X> void registerRSService(
 			@Observes AfterDeploymentValidation event, BeanManager manager)
 			throws ClassNotFoundException {
-
+		Map<String, JAXRSServerFactoryBean> factories = Maps.newHashMap();
 		for (ProcessBean processBean : beansToProcess) {
 			final CXFEndpoint endpointAnnotation = processBean.getAnnotated()
 					.getAnnotation(CXFEndpoint.class);
 			final JAXRSServerFactoryBean factory = getFactory(endpointAnnotation
 					.factoryId());
-			final Bean<X> bean = processBean.getBean();
-			LOG.info("Creating CXF Endpoint for "
-					+ bean.getBeanClass().getName());
-			final Object instance = manager.getReference(bean,
-					bean.getBeanClass(), manager.createCreationalContext(bean));
-
-			LOG.info("instance: " + bean + ", managed: ");
-			final String serviceURL = endpointAnnotation.url();
-			LOG.info("publishing instance: " + instance + ", url: "
-					+ serviceURL);
+			
+			
+			
 			addProviders(factory, endpointAnnotation.providersClasses());
 			addInterceptors(factory, endpointAnnotation);
-
+			final String serviceURL = endpointAnnotation.url();
+			
 			factory.setAddress(serviceURL);
-			factory.setServiceBean(instance);
+			factories.put(serviceURL, factory);
+		}
+		for (Entry<String, JAXRSServerFactoryBean> facts : factories.entrySet()) {
+			List<Object> instancesToPut = Lists.newArrayList();
+			for (ProcessBean processBean : beansToProcess) {
+				final CXFEndpoint endpointAnnotation = processBean.getAnnotated()
+						.getAnnotation(CXFEndpoint.class);
+				final String serviceURL = endpointAnnotation.url();
+				if (serviceURL.equals(facts.getKey())) {
+					final Bean<X> bean = processBean.getBean();
+					final Object instance = manager.getReference(bean,
+							bean.getBeanClass(), manager.createCreationalContext(bean));
+					instancesToPut.add(instance);
+					LOG.info("instance: " + bean + ", managed: ");
+					LOG.info("Creating CXF Endpoint for "
+							+ bean.getBeanClass().getName());
+				}
+			}
+			JAXRSServerFactoryBean factory = facts.getValue();
+			factory.setServiceBeans(instancesToPut);
 			this.servers.add(factory.create());
 		}
+		
 	}
 
 	/**

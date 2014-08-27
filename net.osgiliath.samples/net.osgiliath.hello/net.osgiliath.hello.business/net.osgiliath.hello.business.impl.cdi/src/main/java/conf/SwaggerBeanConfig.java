@@ -23,26 +23,38 @@ package conf;
 import java.io.IOException;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
 import javax.inject.Named;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.Produces;
 
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
+import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 
+import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
+import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
+import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
+import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 @Eager
 @ApplicationScoped
 @Slf4j
-public class SwaggerBeanConfig {
+@CXFEndpoint(url = "/helloService", providersClasses={JSONProvider.class, JAXBElementProvider.class, ResourceListingProvider.class, ApiDeclarationProvider.class})
+@Path("/api-docs")
+@Api("/api-docs")
+@Produces(value={MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+public class SwaggerBeanConfig extends ApiListingResourceJSON{
 
 	@Produces
-	@Named("swagger-hello-biz")
 	public BeanConfig getConfig() {
 		BeanConfig beanConfig = new BeanConfig();
 		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
