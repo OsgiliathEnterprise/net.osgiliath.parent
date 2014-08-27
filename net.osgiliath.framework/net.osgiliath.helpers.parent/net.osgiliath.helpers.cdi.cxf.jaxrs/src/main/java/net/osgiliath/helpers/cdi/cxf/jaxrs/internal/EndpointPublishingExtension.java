@@ -202,7 +202,7 @@ public class EndpointPublishingExtension implements Extension {
 					instancesToPut.add(instance);
 					LOG.info("instance: " + bean + ", managed: ");
 					LOG.info("Creating CXF Endpoint for "
-							+ bean.getBeanClass().getName());
+							+ bean.getBeanClass().getName() + " " + "on service address: " + serviceURL);
 				}
 			}
 			JAXRSServerFactoryBean factory = facts.getValue();
