@@ -22,11 +22,9 @@ package conf;
 
 import java.io.IOException;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
@@ -46,15 +44,15 @@ import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 @Eager
-@ApplicationScoped
 @Slf4j
 @CXFEndpoint(url = "/helloService", providersClasses={JSONProvider.class, JAXBElementProvider.class, ResourceListingProvider.class, ApiDeclarationProvider.class})
 @Path("/api-docs")
 @Api("/api-docs")
-@Produces(value={MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Produces(value={MediaType.APPLICATION_JSON})
 public class SwaggerBeanConfig extends ApiListingResourceJSON{
-
-	@Produces
+//	@GET
+//	@Produces(value={MediaType.APPLICATION_JSON})
+	@javax.enterprise.inject.Produces
 	public BeanConfig getConfig() {
 		BeanConfig beanConfig = new BeanConfig();
 		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");

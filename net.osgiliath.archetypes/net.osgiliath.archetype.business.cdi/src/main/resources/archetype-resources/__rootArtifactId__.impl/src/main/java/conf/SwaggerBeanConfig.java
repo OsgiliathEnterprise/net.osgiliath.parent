@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 package conf;
 
 /*
@@ -22,54 +25,68 @@ package conf;
 
 import java.io.IOException;
 
-import javax.annotation.PreDestroy;
-import javax.enterprise.inject.Produces;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
+import lombok.extern.slf4j.Slf4j;
+import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
+import net.osgiliath.helpers.cdi.eager.Eager;
+
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
+import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.service.cm.ConfigurationAdmin;
-import org.osgi.util.tracker.ServiceTracker;
 
-import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
-import net.osgiliath.helpers.cdi.eager.Eager;
-
+import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
-
+import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
+import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
+import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 @Eager
-public class SwaggerBeanConfig {
-    private ServiceTracker tracker;
-    @Produces
-    public BeanConfig getConfig() {
-	BeanConfig beanConfig = new BeanConfig();
-	beanConfig.setResourcePackage("net.osgiliath.hello.business.impl");
-	beanConfig.setVersion("0.0.6");
-	BundleContext context = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-	
-	String protocol;
-	try {
-	    protocol = ConfigAdminTracker.getInstance(context).getProperty("jaxrs.server.protocol");
-	
-	String uri = ConfigAdminTracker.getInstance(context).getProperty("jaxrs.server.uri");
-	String port = ConfigAdminTracker.getInstance(context).getProperty("jaxrs.server.port");
-	
-	beanConfig.setBasePath(protocol + "://" + uri + ":" + port + "/cxf/helloService");
-	} catch (IOException | InvalidSyntaxException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
+@Slf4j
+@CXFEndpoint(url = "/helloService", providersClasses={JSONProvider.class, JAXBElementProvider.class, ResourceListingProvider.class, ApiDeclarationProvider.class})
+@Path("/api-docs")
+@Api("/api-docs")
+@Produces(value={MediaType.APPLICATION_JSON})
+public class SwaggerBeanConfig extends ApiListingResourceJSON{
+//	@GET
+//	@Produces(value={MediaType.APPLICATION_JSON})
+	@javax.enterprise.inject.Produces
+	public BeanConfig getConfig() {
+		BeanConfig beanConfig = new BeanConfig();
+		beanConfig.setResourcePackage("${package}");
+		beanConfig.setVersion("${version}");
+		BundleContext context = FrameworkUtil.getBundle(this.getClass())
+				.getBundleContext();
+
+		String protocol;
+		try {
+			protocol = ConfigAdminTracker.getInstance(context).getProperty(
+					"jaxrs.server.protocol");
+
+			String uri = ConfigAdminTracker.getInstance(context).getProperty(
+					"jaxrs.server.uri");
+			String port = ConfigAdminTracker.getInstance(context).getProperty(
+					"jaxrs.server.port");
+
+			beanConfig.setBasePath(protocol + "://" + uri + ":" + port
+					+ "/cxf/helloService");
+		} catch (IOException | InvalidSyntaxException e) {
+			log.error("Error configuring Swagger bean", e);
+		}
+		log.info("Swagger bean configuration started");
+		beanConfig.setTitle("Business module");
+		beanConfig.setDescription("This is a business module");
+		beanConfig.setContact("masterdev@wondermail.org");
+		beanConfig.setLicense("Apache Licence 2.0");
+		beanConfig
+				.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
+		beanConfig.setScan(true);
+		return beanConfig;
 	}
-	beanConfig.setTitle("Business module");
-	beanConfig.setDescription("This is a business module");
-	beanConfig.setContact("masterdev@wondermail.org");
-	beanConfig.setLicense("Apache Licence 2.0");
-	beanConfig.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
-	beanConfig.setScan(true);
-	return beanConfig;
-    }
-    @PreDestroy
-    public void closeTracker() {
-	tracker.close();
-    }
 
 }
