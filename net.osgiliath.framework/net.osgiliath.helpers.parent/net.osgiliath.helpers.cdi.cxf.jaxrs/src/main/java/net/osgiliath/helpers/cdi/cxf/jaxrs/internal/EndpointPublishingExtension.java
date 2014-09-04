@@ -46,14 +46,17 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Application;
 
 import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
 
 import org.apache.commons.lang.ClassUtils;
 import org.apache.cxf.Bus;
+import org.apache.cxf.binding.BindingFactoryManager;
 import org.apache.cxf.bus.CXFBusFactory;
 import org.apache.cxf.endpoint.Server;
+import org.apache.cxf.jaxrs.JAXRSBindingFactory;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.message.Message;
 import org.slf4j.Logger;
@@ -206,6 +209,11 @@ public class EndpointPublishingExtension implements Extension {
 				}
 			}
 			JAXRSServerFactoryBean factory = facts.getValue();
+			
+			Application ba = new Application();
+	            
+	            
+			factory.setApplication(ba);
 			factory.setServiceBeans(instancesToPut);
 			this.servers.add(factory.create());
 		}
@@ -357,18 +365,24 @@ public class EndpointPublishingExtension implements Extension {
 	 * @return a factory
 	 */
 	private JAXRSServerFactoryBean getFactory(String factoryId) {
+		
 		JAXRSServerFactoryBean factory = factoriesMap.get(factoryId);
 		if (factory == null) {
 			factory = new JAXRSServerFactoryBean();
+			Bus bus = CXFBusFactory.getDefaultBus();
+			if (bus == null) {
+				LOG.info("Creating a new Bus");
+				bus = CXFBusFactory.newInstance().createBus();
+			} else {
+				LOG.info("registering on existing bus");
+			}
+			factory.setBus(bus);
+			BindingFactoryManager manager = factory.getBus().getExtension(BindingFactoryManager.class);
+			JAXRSBindingFactory bindingFactory = new JAXRSBindingFactory();
+			bindingFactory.setBus(factory.getBus());
+			manager.registerBindingFactory(JAXRSBindingFactory.JAXRS_BINDING_ID, bindingFactory);
 		}
-		Bus bus = CXFBusFactory.getDefaultBus();
-		if (bus == null) {
-			LOG.info("Creating a new Bus");
-			bus = CXFBusFactory.newInstance().createBus();
-		} else {
-			LOG.info("registering on existing bus");
-		}
-		factory.setBus(bus);
+		
 		return factory;
 	}
 

@@ -21,6 +21,8 @@ package conf;
  */
 
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 import javax.enterprise.inject.Produces;
 
@@ -31,6 +33,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 
+import com.wordnik.swagger.config.ConfigFactory;
+import com.wordnik.swagger.config.ScannerFactory;
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
 
 @Slf4j
@@ -38,9 +42,9 @@ import com.wordnik.swagger.jaxrs.config.BeanConfig;
 public class SwaggerBeanConfig {
 	@Produces
 	public BeanConfig getConfig() {
+		 
 		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
-		beanConfig.setVersion("0.0.6");
+		
 		BundleContext context = FrameworkUtil.getBundle(this.getClass())
 				.getBundleContext();
 
@@ -56,17 +60,16 @@ public class SwaggerBeanConfig {
 
 			beanConfig.setBasePath(protocol + "://" + uri + ":" + port
 					+ "/cxf/helloService");
+			
 		} catch (IOException | InvalidSyntaxException e) {
 			log.error("Error configuring Swagger bean", e);
 		}
+		
 		log.info("Swagger bean configuration started");
-		beanConfig.setTitle("Business module");
-		beanConfig.setDescription("This is a business module");
-		beanConfig.setContact("masterdev@wondermail.org");
-		beanConfig.setLicense("Apache Licence 2.0");
-		beanConfig
-				.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
+
 		beanConfig.setScan(true);
+		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
+		
 		return beanConfig;
 	}
 

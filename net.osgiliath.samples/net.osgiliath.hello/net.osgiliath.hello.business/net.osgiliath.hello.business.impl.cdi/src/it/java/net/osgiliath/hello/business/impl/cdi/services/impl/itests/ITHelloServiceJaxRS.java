@@ -164,7 +164,7 @@ public class ITHelloServiceJaxRS extends
 
     static {
 	// uncomment to enable debugging of this test class
-//	 paxRunnerVmOption = DEBUG_VM_OPTION;
+	// paxRunnerVmOption = DEBUG_VM_OPTION;
 
     }
 

@@ -90,5 +90,7 @@ public class CXFHelperActivator implements BundleActivator {
 	this.exceptionTracker.close();
 	this.interceptorsTracker.close();
     }
+    
+   
 
 }

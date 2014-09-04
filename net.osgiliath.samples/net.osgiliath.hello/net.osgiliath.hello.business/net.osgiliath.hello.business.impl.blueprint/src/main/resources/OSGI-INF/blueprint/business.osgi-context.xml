@@ -101,10 +101,6 @@
 		<property name="basePath" value="$[jaxrs.server.protocol]://$[jaxrs.server.uri]:$[jaxrs.server.port]/cxf/helloService" />
 		<property name="title" value="${project.name}" />
 		<property name="description" value="${project.description}" />
-		<property name="contact" value="masterdev@wondermail.org" />
-		<property name="license" value="Apache Licence 2.0" />
-		<property name="licenseUrl"
-			value="http://www.apache.org/licenses/LICENSE-2.0.html" />
 		<property name="scan" value="true" />
 	</bean>
 	
