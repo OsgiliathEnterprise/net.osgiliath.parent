@@ -30,11 +30,13 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
 				<version>${logback.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-core</artifactId>
 				<version>${logback.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.atomikos</groupId>
@@ -538,6 +540,7 @@
 				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-bean-validation-module-impl</artifactId>
 				<version>${org.apache.deltaspike.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.deltaspike.cdictrl</groupId>
@@ -569,6 +572,7 @@
 				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-data-module-impl</artifactId>
 				<version>${org.apache.deltaspike.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.deltaspike.modules</groupId>
@@ -1109,6 +1113,7 @@
 				<groupId>org.codehaus.sonar-plugins.java</groupId>
 				<artifactId>sonar-jacoco-listeners</artifactId>
 				<version>${sonar-jacoco-listeners.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.codehaus.woodstox</groupId>
@@ -1227,11 +1232,13 @@
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
 				<version>${org.javassist.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.logging</groupId>
 				<artifactId>jboss-logging</artifactId>
 				<version>${org.jboss.logging.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.weld</groupId>
@@ -1254,6 +1261,7 @@
 				<groupId>org.jolokia</groupId>
 				<artifactId>jolokia-osgi</artifactId>
 				<version>${jolokia.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.json</groupId>
@@ -1264,6 +1272,7 @@
 				<groupId>org.kubek2k</groupId>
 				<artifactId>springockito</artifactId>
 				<version>${springockito.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.liquibase</groupId>
@@ -1274,6 +1283,7 @@
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
 				<version>${mockito.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mod4j.org.eclipse.core</groupId>
@@ -1733,6 +1743,7 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>xml-apis</groupId>
