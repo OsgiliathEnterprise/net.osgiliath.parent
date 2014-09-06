@@ -49,6 +49,7 @@ In order to contribute: Clone the repo, install Java, Maven, Npm, Grunt, Bower, 
 Then, add a property mavenSettings.location property pointing to your settings file in this settings file (in an active pofile).
 Finally run mvn clean install on the root...
 On Mac, add a java.home property in your Maven settings.xml pointing to your JDK installation (mandatory for lombok).
+If you use Eclipse, also install the latest Scala IDE in order to compile (http://download.scala-ide.org/sdk/lithium/e44/scala211/dev/site)
 We'll accept most of contributions in a very short time so don't be shy!
 
 # Releasing

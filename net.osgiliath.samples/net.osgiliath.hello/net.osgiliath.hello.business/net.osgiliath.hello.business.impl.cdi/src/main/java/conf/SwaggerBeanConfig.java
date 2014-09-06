@@ -21,31 +21,22 @@ package conf;
  */
 
 import java.io.IOException;
-
 import javax.enterprise.inject.Produces;
-
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
 import net.osgiliath.helpers.swagger.cdi.CXFBeanJaxrsScanner;
-
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
-
-import com.wordnik.swagger.config.ScannerFactory;
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
 
 @Slf4j
-
 public class SwaggerBeanConfig {
 	@Produces
 	public BeanConfig getConfig() {
-		 
-		
+		BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass().getClassLoader());
 		BundleContext context = FrameworkUtil.getBundle(this.getClass())
 				.getBundleContext();
-		BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass().getClassLoader());
-		
 		String protocol;
 		try {
 			protocol = ConfigAdminTracker.getInstance(context).getProperty(
@@ -62,13 +53,9 @@ public class SwaggerBeanConfig {
 		} catch (IOException | InvalidSyntaxException e) {
 			log.error("Error configuring Swagger bean", e);
 		}
-		
 		log.info("Swagger bean configuration started");
 		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
 		beanConfig.setScan(true);
-		//ScannerFactory.setScanner(new CXFBeanJaxrsScanner());
-		
-		
 		return beanConfig;
 	}
 

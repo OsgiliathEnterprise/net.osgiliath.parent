@@ -22,13 +22,13 @@ package conf;
  * limitations under the License.
  * #L%
  */
-
 import java.io.IOException;
 
 import javax.enterprise.inject.Produces;
 
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+import net.osgiliath.helpers.swagger.cdi.CXFBeanJaxrsScanner;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
@@ -41,12 +41,9 @@ public class SwaggerBeanConfig {
 
 	@Produces
 	public BeanConfig getConfig() {
-		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setResourcePackage("${package}");
-		beanConfig.setVersion("${version}");
+		BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass().getClassLoader());
 		BundleContext context = FrameworkUtil.getBundle(this.getClass())
 				.getBundleContext();
-
 		String protocol;
 		try {
 			protocol = ConfigAdminTracker.getInstance(context).getProperty(
@@ -59,16 +56,13 @@ public class SwaggerBeanConfig {
 
 			beanConfig.setBasePath(protocol + "://" + uri + ":" + port
 					+ "/cxf/helloService");
+			
 		} catch (IOException | InvalidSyntaxException e) {
 			log.error("Error configuring Swagger bean", e);
 		}
 		log.info("Swagger bean configuration started");
-		beanConfig.setTitle("Business module");
-		beanConfig.setDescription("This is a business module");
-		beanConfig.setContact("masterdev@wondermail.org");
-		beanConfig.setLicense("Apache Licence 2.0");
-		beanConfig
-				.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
+		beanConfig.setResourcePackage("${package}");
+		beanConfig.setVersion("${version}");
 		beanConfig.setScan(true);
 		return beanConfig;
 	}
