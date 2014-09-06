@@ -41,11 +41,11 @@ public class SwaggerBeanConfig {
 	@Produces
 	public BeanConfig getConfig() {
 		 
-		BeanConfig beanConfig = new BeanConfig();
 		
 		BundleContext context = FrameworkUtil.getBundle(this.getClass())
 				.getBundleContext();
-		ScannerFactory.setScanner(new CXFBeanJaxrsScanner());
+		BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass().getClassLoader());
+		
 		String protocol;
 		try {
 			protocol = ConfigAdminTracker.getInstance(context).getProperty(
@@ -64,9 +64,10 @@ public class SwaggerBeanConfig {
 		}
 		
 		log.info("Swagger bean configuration started");
-
-		beanConfig.setScan(true);
 		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
+		beanConfig.setScan(true);
+		//ScannerFactory.setScanner(new CXFBeanJaxrsScanner());
+		
 		
 		return beanConfig;
 	}

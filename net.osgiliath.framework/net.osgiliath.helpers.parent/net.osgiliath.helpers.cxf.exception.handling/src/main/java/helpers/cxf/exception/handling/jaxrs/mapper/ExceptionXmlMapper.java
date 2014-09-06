@@ -56,7 +56,7 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
 	populateXML(arg0, root);
 	String res = new XMLOutputter(Format.getPrettyFormat())
 		.outputString(doc);
-	LOG.info("CXF exception thrown: " + res);
+	LOG.info("CXF exception thrown: " + res, arg0);
 	return Response.status(Response.Status.FORBIDDEN).type(MediaType.APPLICATION_XML).header(ExceptionMappingConstants.EXCEPTION_BODY_HEADER, res)
 		.build();
 

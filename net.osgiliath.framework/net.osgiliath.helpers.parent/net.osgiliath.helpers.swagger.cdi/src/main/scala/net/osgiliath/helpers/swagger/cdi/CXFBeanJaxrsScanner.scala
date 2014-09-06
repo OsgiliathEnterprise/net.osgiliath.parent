@@ -20,24 +20,43 @@ package net.osgiliath.helpers.swagger.cdi;
  * #L%
  */
 
-import java.util.ArrayList;
-import java.util.Collection;
+import scala.collection.JavaConverters._
+import net.osgiliath.helpers.cdi.cxf.jaxrs.CDICXFFacade
+import scala.collection.immutable.List
+import com.google.common.base.Function
+import com.google.common.collect.Collections2
+import com.wordnik.swagger.config.Scanner
+import com.wordnik.swagger.jaxrs.config.BeanConfig
+import javax.ws.rs.core.Application
+import javax.servlet.ServletConfig
+import org.reflections.util.ConfigurationBuilder
+import org.reflections.util.ClasspathHelper
+import org.reflections.scanners.TypeAnnotationsScanner
+import org.reflections.scanners.SubTypesScanner
+import org.reflections.Reflections
+import com.wordnik.swagger.annotations.Api
+import com.wordnik.swagger.core.SwaggerContext
+import com.wordnik.swagger.reader.ClassReader
+import com.wordnik.swagger.reader.ClassReaders
+import org.slf4j.LoggerFactory
+import com.wordnik.swagger.jaxrs.reader.DefaultJaxrsApiReader
 
-import net.osgiliath.helpers.cdi.cxf.jaxrs.CDICXFFacade;
-import scala.collection.immutable.List;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
-import com.wordnik.swagger.config.Scanner;
-
-class CXFBeanJaxrsScanner extends Scanner {
+class CXFBeanJaxrsScanner (classLoader : ClassLoader) extends BeanConfig {
+  ClassReaders.reader = Some(new DefaultJaxrsApiReader)
+  
+  
+  private val LOGGER = LoggerFactory.getLogger(classOf[CXFBeanJaxrsScanner])
+  
   def transform(x: Object): Class[_] = {
     x.getClass();
   }
-  override def classes(): List[Class[_]] = {
-    val providers = CDICXFFacade.getProviders();
-    List(providers).map(x => transform(x));
+  override def classesFromContext(app: Application, sc: ServletConfig): List[Class[_]] = {
+     val config = new ConfigurationBuilder().setUrls(ClasspathHelper.forPackage(resourcePackage,classLoader)).setScanners(
+      new TypeAnnotationsScanner(), new SubTypesScanner())
+      config.addClassLoader(classLoader);
+    new Reflections(config).getTypesAnnotatedWith(classOf[Api]).asScala.toList
 
   }
+  
 
 }
