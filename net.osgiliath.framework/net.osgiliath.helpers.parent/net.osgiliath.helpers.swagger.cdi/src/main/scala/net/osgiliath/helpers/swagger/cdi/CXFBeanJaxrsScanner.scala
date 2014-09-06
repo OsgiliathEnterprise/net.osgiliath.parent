@@ -42,14 +42,7 @@ import org.slf4j.LoggerFactory
 import com.wordnik.swagger.jaxrs.reader.DefaultJaxrsApiReader
 
 class CXFBeanJaxrsScanner (classLoader : ClassLoader) extends BeanConfig {
-  ClassReaders.reader = Some(new DefaultJaxrsApiReader)
   
-  
-  private val LOGGER = LoggerFactory.getLogger(classOf[CXFBeanJaxrsScanner])
-  
-  def transform(x: Object): Class[_] = {
-    x.getClass();
-  }
   override def classesFromContext(app: Application, sc: ServletConfig): List[Class[_]] = {
      val config = new ConfigurationBuilder().setUrls(ClasspathHelper.forPackage(resourcePackage,classLoader)).setScanners(
       new TypeAnnotationsScanner(), new SubTypesScanner())
