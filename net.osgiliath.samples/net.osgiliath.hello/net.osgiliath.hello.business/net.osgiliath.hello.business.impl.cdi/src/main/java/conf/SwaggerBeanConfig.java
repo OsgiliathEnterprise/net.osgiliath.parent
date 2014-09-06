@@ -21,19 +21,17 @@ package conf;
  */
 
 import java.io.IOException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 import javax.enterprise.inject.Produces;
 
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+import net.osgiliath.helpers.swagger.cdi.CXFBeanJaxrsScanner;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 
-import com.wordnik.swagger.config.ConfigFactory;
 import com.wordnik.swagger.config.ScannerFactory;
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
 
@@ -47,7 +45,7 @@ public class SwaggerBeanConfig {
 		
 		BundleContext context = FrameworkUtil.getBundle(this.getClass())
 				.getBundleContext();
-
+		ScannerFactory.setScanner(new CXFBeanJaxrsScanner());
 		String protocol;
 		try {
 			protocol = ConfigAdminTracker.getInstance(context).getProperty(

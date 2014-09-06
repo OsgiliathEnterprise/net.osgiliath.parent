@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.wrappers</groupId>
 		<artifactId>net.osgiliath.wrappers</artifactId>
 		<version>0.0.7-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.wrapper.jackson-module-scala</artifactId>
+	<artifactId>net.osgiliath.wrapper.swagger-core</artifactId>
 	<build>
 		<plugins>
 			<plugin>
@@ -45,7 +46,7 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>org.apache.servicemix.bundles</groupId>
-									<artifactId>org.apache.servicemix.bundles.jackson-module-scala</artifactId>
+									<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
 								</artifactItem>
@@ -62,7 +63,7 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>org.apache.servicemix.bundles</groupId>
-									<artifactId>org.apache.servicemix.bundles.jackson-module-scala</artifactId>
+									<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
 									<includes>META-INF/MANIFEST.MF</includes>
 									<overWrite>true</overWrite><!-- TODO set to true -->
 									<outputDirectory>${project.build.resources[0].directory}/</outputDirectory>
@@ -86,9 +87,9 @@
 				<configuration>
 					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
-						<argument>overrides=com.google.common.cache=[13.0.0,${com.google.guava.version}];com.google.common.collect=[13.0.0,${com.google.guava.version}];scala=[2,3);scala.collection=[2,3);scala.collection.convert=[2,3);scala.collection.generic=[2,3);scala.collection.immutable=[2,3);scala.collection.mutable=[2,3);scala.math=[2,3);scala.reflect=[2,3);scala.reflect.internal=[2,3);scala.reflect.internal.pickling=[2,3);scala.runtime=[2,3);scala.util.matching=[2,3)</argument>
+						<argument>overrides=scala=[2,3);scala.xml=[1.0.0,2.0.0);scala.collection=[2,3);scala.collection.convert=[2,3);scala.collection.generic=[2,3);scala.collection.immutable=[2,3);scala.collection.mutable=[2,3);scala.math=[2,3);scala.reflect=[2,3);scala.runtime=[2,3);scala.util.matching=[2,3)</argument>
 						<argument>basedir=${project.basedir}</argument>
-						<argument>bundleClasspath=org.apache.servicemix.bundles.jackson-module-scala-${org.apache.servicemix.bundles.jackson-module-scala.version}</argument>
+						<argument>bundleClasspath=org.apache.servicemix.bundles.swagger-core-${org.apache.servicemix.bundles.swagger.version}</argument>
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
@@ -101,7 +102,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.jackson-module-scala</artifactId>
+			<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>

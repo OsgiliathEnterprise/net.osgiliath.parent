@@ -81,6 +81,11 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.swagger-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
 			<artifactId>net.osgiliath.wrapper.swagger-jaxrs</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -130,7 +135,6 @@
 			<artifactId>net.osgiliath.wrappers.cxf-integration-cdi</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-management</artifactId>
@@ -178,6 +182,10 @@
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang.modules</groupId>
+			<artifactId>scala-xml_2.11</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

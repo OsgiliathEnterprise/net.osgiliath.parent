@@ -1,0 +1,62 @@
+Manifest-Version: 1.0
+Export-Package: com.wordnik.swagger.core.filter;uses:="scala.collectio
+ n.immutable,com.wordnik.swagger.model,scala.runtime,scala,scala.colle
+ ction,scala.collection.generic,scala.util.matching,com.wordnik.swagge
+ r.converter,com.wordnik.swagger.core,scala.collection.convert,scala.c
+ ollection.mutable,org.slf4j,scala.reflect";version="1.3.4",com.wordni
+ k.swagger.model;uses:="scala.collection.immutable,scala.runtime,scala
+ ,scala.collection,scala.reflect,scala.collection.mutable,scala.collec
+ tion.convert,org.json4s,scala.math,scala.collection.generic,scala.uti
+ l.matching,com.wordnik.swagger.core,com.wordnik.swagger.core.util";ve
+ rsion="1.3.4",com.wordnik.swagger.converter;uses:="com.wordnik.swagge
+ r.annotations,scala.runtime,scala,scala.collection.immutable,scala.co
+ llection.mutable,javax.xml.bind.annotation,com.wordnik.swagger.core,s
+ cala.reflect,scala.collection,com.wordnik.swagger.model,scala.collect
+ ion.generic,org.slf4j,scala.util.matching,com.wordnik.swagger.core.ut
+ il,com.fasterxml.jackson.annotation,sun.reflect.generics.reflectiveOb
+ jects,org.json4s,org.json4s.jackson";version="1.3.4",com.wordnik.swag
+ ger.config;uses:="scala.collection.immutable,com.wordnik.swagger.core
+ ,scala,scala.reflect,com.wordnik.swagger.core.filter,com.wordnik.swag
+ ger.model,scala.collection,scala.collection.mutable,scala.collection.
+ generic";version="1.3.4",com.wordnik.swagger.core;uses:="scala.reflec
+ t,scala.collection.immutable,scala.collection,scala.collection.mutabl
+ e,scala,scala.collection.generic,org.slf4j,scala.runtime";version="1.
+ 3.4",com.wordnik.swagger.core.util;uses:="scala.xml,com.wordnik.swagg
+ er.model,org.json4s,scala.reflect,org.json4s.jackson,com.fasterxml.ja
+ ckson.databind,com.fasterxml.jackson.annotation,scala.collection.immu
+ table,scala.runtime,scala,scala.collection,scala.collection.mutable,o
+ rg.slf4j,scala.collection.generic,com.wordnik.swagger.converter,scala
+ .util.matching,com.wordnik.swagger.core,javax.xml.bind.annotation,com
+ .fasterxml.jackson.module.scala,scala.collection.convert,sun.reflect.
+ generics.reflectiveObjects";version="1.3.4",com.wordnik.swagger.reade
+ r;uses:="com.wordnik.swagger.model,scala.reflect,com.wordnik.swagger.
+ config,scala,scala.collection.immutable,scala.collection.mutable";ver
+ sion="1.3.4"
+Bundle-ClassPath: ., org.apache.servicemix.bundles.swagger-core-1.3.4_
+ 1.jar
+Built-By: jbonofre
+Tool: Bnd-1.50.0
+Bundle-Name: Apache ServiceMix :: Bundles :: swagger-core_2.10
+Created-By: Apache Maven Bundle Plugin
+Bundle-Vendor: The Apache Software Foundation
+Build-Jdk: 1.7.0_51
+Bundle-Version: 1.3.4.1
+Bnd-LastModified: 1396699178859
+Bundle-ManifestVersion: 2
+Bundle-Description: This OSGi bundle wraps swagger-core_2.10 1.3.4 jar
+  file.
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Import-Package: com.fasterxml.jackson.annotation;version="[2.1,3)",com
+ .fasterxml.jackson.databind;version="[2.1,3)",com.fasterxml.jackson.m
+ odule.scala,com.wordnik.swagger.annotations,javax.xml.bind.annotation
+ ,org.json4s,org.json4s.jackson,org.slf4j;version="[1.6,2)",scala;vers
+ ion="[2,3)",scala.collection;version="[2,3)",scala.collection.convert
+ ;version="[2,3)",scala.collection.generic;version="[2,3)",scala.colle
+ ction.immutable;version="[2,3)",scala.collection.mutable;version="[2,
+ 3)",scala.math;version="[2,3)",scala.reflect;version="[2,3)",scala.ru
+ ntime;version="[2,3)",scala.util.matching;version="[2,3)",scala.xml;v
+ ersion="[1.0.0,2.0.0)",sun.reflect.generics.reflectiveObjects;resolut
+ ion:=optional
+Bundle-DocURL: http://www.apache.org/
+Bundle-SymbolicName: org.apache.servicemix.bundles.swagger-core
+

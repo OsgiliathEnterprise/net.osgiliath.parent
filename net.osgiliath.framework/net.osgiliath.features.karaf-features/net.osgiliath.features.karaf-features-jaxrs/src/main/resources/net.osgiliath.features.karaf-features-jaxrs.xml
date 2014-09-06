@@ -46,10 +46,11 @@ limitations under the License.
 	</feature>
 	<feature name="osgiliath-swagger" version="${project.version}" >
  	 	 <bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
+ 	 	 <bundle>mvn:org.scala-lang.modules/scala-xml_2.11/${scala-xml_2.11.version}</bundle>
  	 	 <bundle>mvn:org.javassist/javassist/${org.javassist.version}</bundle>
- 	 	<feature version="${project.version}">osgiliath-functional</feature>
+ 	 	 <feature version="${project.version}">osgiliath-functional</feature>
  	 	 <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${org.apache.servicemix.bundles.swagger.version}</bundle>
- 	 	 <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-core/${org.apache.servicemix.bundles.swagger.version}</bundle>
+ 	 	 <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-core/${project.version}</bundle>
  	 	 <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-jaxrs/${project.version}</bundle>
  	 	 <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${org.apache.servicemix.bundles.reflections.version}</bundle>
  	 	 <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/${org.apache.servicemix.bundles.json4s.version}</bundle>

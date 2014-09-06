@@ -116,24 +116,24 @@
 				<artifactId>commons-pool</artifactId>
 				<version>${commons-pool.version}</version>
 			</dependency>
-			 <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-jvm-deps</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-jvm-deps</artifactId>
+				<version>${cucumber.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-java</artifactId>
+				<version>${cucumber.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-junit</artifactId>
+				<version>${cucumber.version}</version>
+				<scope>test</scope>
+			</dependency>
 			<dependency>
 				<groupId>io.hawt</groupId>
 				<artifactId>hawtio-karaf</artifactId>
@@ -1525,6 +1525,11 @@
 				<version>${scala.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.scala-lang.modules</groupId>
+				<artifactId>scala-xml_2.11</artifactId>
+				<version>${scala-xml_2.11.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
 				<version>${org.seleniumhq.selenium.version}</version>
@@ -1877,7 +1882,8 @@
 		<pax.tinybundle.version>2.0.0</pax.tinybundle.version>
 		<pax-web-features.version>3.1.0</pax-web-features.version>
 		<pax-jetty.version>8.1.14.v20131031</pax-jetty.version>
-		<scala.version>2.10.4</scala.version>
+		<scala.version>2.11.2</scala.version>
+		<scala-xml_2.11.version>1.0.2</scala-xml_2.11.version>
 		<scannotation.version>1.0.2_1</scannotation.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<sonar-jacoco-listeners.version>1.3</sonar-jacoco-listeners.version>

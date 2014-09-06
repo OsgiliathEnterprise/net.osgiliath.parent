@@ -30,7 +30,6 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import com.wordnik.swagger.config.ScannerFactory;
 import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
@@ -47,7 +46,7 @@ public class SwaggerCdiActivator implements BundleActivator {
 		filter.put("mapper.type", "apiDeclarationProvider");
 		context.registerService(MessageBodyWriter.class,
 				apiDeclarationProvider, filter2);
-		ScannerFactory.setScanner(new CXFBeanJaxrsScanner());
+		
 
 	}
 
