@@ -179,14 +179,6 @@
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-aether</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.scala-lang.modules</groupId>
-			<artifactId>scala-xml_2.11</artifactId>
-		</dependency>
 	</dependencies>
 	<build>
 		<resources>
