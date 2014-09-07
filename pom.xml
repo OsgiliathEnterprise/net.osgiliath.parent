@@ -70,11 +70,16 @@
 			<url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 
-		<repository>
+		<!-- <repository>
 			<id>sonatype-nexus-staging</id>
 			<name>Nexus Release Repository</name>
 			<url>https://oss.sonatype.org/</url>
-		</repository>
+		</repository> -->
+		<repository>
+<id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id>
+<name>tcharl-maven-Osgiliath-Enterprise-Framework</name>
+<url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url>
+</repository>
 		<site>
 			<id>Osgiliath</id>
 			<name>Osgiliath</name>

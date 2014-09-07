@@ -8,14 +8,14 @@ angular.module('hello').controller('HelloController',
 			$scope.sendHello = function() {
 				$scope.errors = '';
 				if (!$scope.registered) {
-					stompservice.subscribe("/topic/MessagingEndPoint", function(
+					stompservice.subscribe('/topic/MessagingEndPoint', function(
 							message) {
 						if (!stompservice.heartBeatFilter(message)) {
 							var body = message.body;
 							console.log('helloMessage received: ' + body);
 							var json = JSON.parse(body);
 							var hellos = json.collection;
-							if (hellos != undefined) {
+							if (hellos !== undefined) {
 								$scope.helloMessages = [];
 								console.log('hellos: ' + hellos);
 								for ( var i in hellos) {
@@ -25,7 +25,7 @@ angular.module('hello').controller('HelloController',
 							}
 						}
 					});
-					stompservice.subscribe("/queue/MessagingErrors", function(
+					stompservice.subscribe('/queue/MessagingErrors', function(
 							message) {
 						if (!stompservice.heartBeatFilter(message)) {
 							var body = message.body;
@@ -38,8 +38,8 @@ angular.module('hello').controller('HelloController',
 						$scope.registered = true;
 					});
 				}
-				stompservice.send("/queue/MessagingEntryPoint", {
-					"httpRequestType" : "POST"
+				stompservice.send('/queue/MessagingEntryPoint', {
+					'httpRequestType' : 'POST'
 				}, '{"helloMessage": "' + $scope.helloMessage + '"}');
 			};
 		});

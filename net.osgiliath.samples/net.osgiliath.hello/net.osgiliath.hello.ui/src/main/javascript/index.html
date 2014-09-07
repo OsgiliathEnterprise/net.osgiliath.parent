@@ -12,7 +12,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.css" />
+    <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.min.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
@@ -27,7 +27,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container-fluid" ng-view=""></div>
+    <div class="container-fluid" ng-view></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -50,7 +50,6 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/ng-grid/build/ng-grid.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -64,6 +63,7 @@
 	<!-- TODO your javascript files on the next section (take care of the order) -->
 	<!-- build:js({.tmp,src/main/javascript}) scripts/scripts.js -->
 	<script type="text/javascript" src="scripts/services/stompservice.js"></script>
+	<script type="text/javascript" src="scripts/main/mainRoute.js"></script>
 	<script type="text/javascript" src="scripts/hello/helloDirective.js"></script>
 	<script type="text/javascript" src="scripts/hello/helloController.js"></script>
 	<!-- endbuild -->

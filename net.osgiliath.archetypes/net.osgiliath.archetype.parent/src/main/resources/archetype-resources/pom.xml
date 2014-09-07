@@ -15,11 +15,11 @@
 	<parent>
 		<groupId>net.osgiliath</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-		<version>0.0.6</version>
+		<version>${project.version}</version>
 	</parent>
-	<groupId>${groupId}</groupId>
-	<artifactId>${artifactId}</artifactId>
-	<version>${version}</version>
+	<groupId>\${groupId}</groupId>
+	<artifactId>\${artifactId}</artifactId>
+	<version>\${version}</version>
 	<packaging>pom</packaging>
 	<organization>
 		<name>YOUR_ORGANIZATION_HERE</name>
@@ -45,7 +45,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${maven-javadoc-plugin.version}</version>
+				<version>\${maven-javadoc-plugin.version}</version>
 
 				<configuration>
 					<minmemory>128m</minmemory>
@@ -54,7 +54,7 @@
 				<reportSets>
 
 					<reportSet>
-						<id>${artifactId}-jdoc</id>
+						<id>javadoc-reporting-for-project</id>
 						<configuration>
 							<!-- Specific configuration for the aggregate report -->
 						</configuration>
@@ -70,7 +70,7 @@
 		<!-- TODO change your organization, all your Manifests will be signed with 
 			this -->
 		<manifest.organization>Osgiliath</manifest.organization>
-  		<osgiliath.framework.maven.version>0.0.6</osgiliath.framework.maven.version>
+  		<osgiliath.framework.maven.version>${project.version}</osgiliath.framework.maven.version>
 	</properties>
 <scm>
 		<connection><!-- your scm urls here --></connection>
