@@ -9,11 +9,11 @@ This is the superpom of all Osgiliath pom projects, it's composed of multiple ma
 Just reference one of these poms at a parent pom of your project. i.e.:
 ```xml
 	<parent>
-<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-<groupId>net.osgiliath</groupId>
-<version>[Osgiliath_Version_To_Set]</version>
-<relativePath>..</relativePath>
-</parent>
+		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
+		<groupId>net.osgiliath</groupId>
+		<version>[Osgiliath_Version_To_Set]</version>
+		<relativePath>..</relativePath>
+	</parent>
 ```
 
 ## Prerequisite
