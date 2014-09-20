@@ -24,6 +24,7 @@ import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import javax.inject.Inject;
 import javax.ws.rs.client.Client;
@@ -46,6 +47,7 @@ import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
@@ -140,6 +142,8 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactor
 	ret = OptionUtils.combine(ret, mavenBundle("net.osgiliath.framework", "net.osgiliath.helpers.exam").versionAsInProject());
 	return ret;
     }
+
+	
 
 
 }

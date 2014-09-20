@@ -28,8 +28,8 @@ module.exports = function (grunt) {
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js',  '<%= yeoman.app %>/styles/*.scss'],
+        tasks: ['newer:jshint:all','compass:server'],
         options: {
           livereload: true
         }
@@ -354,12 +354,11 @@ module.exports = function (grunt) {
       options: {
         stdout: true
       },
-      npm_install: {
+      npminstall: {
         command: 'npm install'
       }
     }
   });
-
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);

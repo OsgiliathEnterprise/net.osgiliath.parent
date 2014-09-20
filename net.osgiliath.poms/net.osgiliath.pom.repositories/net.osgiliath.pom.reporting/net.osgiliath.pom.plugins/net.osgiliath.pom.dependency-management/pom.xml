@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -241,6 +242,12 @@
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-karaf</artifactId>
 				<version>${org.apache.activemq.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.eclipse.jetty.orbit</groupId>
+						<artifactId>javax.annotation</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
@@ -1655,6 +1662,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${org.springframework.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-tx</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
@@ -1757,7 +1770,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<properties>
-		<camel-version>2.13.2</camel-version>
+		<camel-version>2.14.0</camel-version>
 		<cdi-api.version>1.2</cdi-api.version>
 		<com.atomikos.version>3.9.3</com.atomikos.version>
 		<com.google.guava.version>17.0</com.google.guava.version>
@@ -1799,7 +1812,7 @@
 		<joda-time.version>2.3</joda-time.version>
 		<jolokia.version>1.2.2</jolokia.version>
 		<junit.version>4.11</junit.version>
-		<karaf.feature.cxf.version>3.0.0</karaf.feature.cxf.version>
+		<karaf.feature.cxf.version>3.0.1</karaf.feature.cxf.version>
 		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
 		<karaf.feature.jndi.version>1.0.0</karaf.feature.jndi.version>
 		<karaf.feature.jpa.version>1.0.1</karaf.feature.jpa.version>
@@ -1875,7 +1888,7 @@
 		<org.osgi.version>4.3.1</org.osgi.version>
 		<org.osgi-core.version>5.0.0</org.osgi-core.version>
 		<org.osgi.foundation.version>1.2.0</org.osgi.foundation.version>
-		<org.seleniumhq.selenium.version>2.42.2</org.seleniumhq.selenium.version>
+		<org.seleniumhq.selenium.version>2.43.1</org.seleniumhq.selenium.version>
 		<org.springframework.data.commons.version>1.6.4.RELEASE</org.springframework.data.commons.version>
 		<org.springframework.data.jpa.version>1.4.4.RELEASE</org.springframework.data.jpa.version>
 		<org.springframework.osgi.version>1.2.1</org.springframework.osgi.version>

@@ -15,7 +15,6 @@
 	</feature>
 	<feature name='osgiliath-scala' version='${project.version}'>
 		<bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
-		<bundle>mvn:org.scala-lang.modules/scala-xml_2.11/${scala-xml_2.11.version}
-		</bundle>
+		<bundle>mvn:org.scala-lang.modules/scala-xml_2.11/${scala-xml_2.11.version}</bundle>
 	</feature>
 </features>

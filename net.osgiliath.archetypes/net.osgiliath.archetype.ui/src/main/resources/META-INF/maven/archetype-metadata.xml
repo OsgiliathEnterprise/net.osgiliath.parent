@@ -29,6 +29,7 @@
         <include>**/*.html</include>
         <include>**/*.txt</include>
         <include>**/*.css</include>
+        <include>**/*.scss</include>
       </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">

@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- <parent> <groupId>org.sonatype.oss</groupId> <artifactId>oss-parent</artifactId> 
 		<version>9</version> </parent> -->
 	<modelVersion>4.0.0</modelVersion>
@@ -42,6 +43,15 @@
 			</roles>
 		</developer>
 	</developers>
+	<mailingLists>
+		<mailingList>
+			<name>Osgiliath Enterprise framework developer discussion list</name>
+			<subscribe>osgiliath-enterprise-framework+subscribe@googlegroups.com</subscribe>
+			<unsubscribe>osgiliath-enterprise-framework+unsubscribe@googlegroups.com</unsubscribe>
+			<post>osgiliath-enterprise-framework@googlegroups.com</post>
+			<archive>https://groups.google.com/forum/#!forum/osgiliath-enterprise-framework</archive>
+		</mailingList>
+	</mailingLists>
 	<modules>
 		<module>net.osgiliath.poms</module>
 		<module>net.osgiliath.archetypes</module>
@@ -70,16 +80,13 @@
 			<url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 
-		<!-- <repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Nexus Release Repository</name>
-			<url>https://oss.sonatype.org/</url>
-		</repository> -->
+		<!-- <repository> <id>sonatype-nexus-staging</id> <name>Nexus Release Repository</name> 
+			<url>https://oss.sonatype.org/</url> </repository> -->
 		<repository>
-<id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id>
-<name>tcharl-maven-Osgiliath-Enterprise-Framework</name>
-<url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url>
-</repository>
+			<id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id>
+			<name>tcharl-maven-Osgiliath-Enterprise-Framework</name>
+			<url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url>
+		</repository>
 		<site>
 			<id>Osgiliath</id>
 			<name>Osgiliath</name>
@@ -87,6 +94,7 @@
 		</site>
 	</distributionManagement>
 	<build>
+		<defaultGoal>install</defaultGoal>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -96,7 +104,7 @@
 					<configuration>
 						<mavenExecutorId>forked-path</mavenExecutorId>
 						<useReleaseProfile>false</useReleaseProfile>
-						<arguments>-Psonatype-oss-release</arguments>
+						<arguments>-Prelease</arguments>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -152,6 +160,23 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-provider-gitexe</artifactId>
+						<version>${maven-scm-provider-gitexe.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<localCheckout>true</localCheckout>
+					<pushChanges>true</pushChanges>
+					<useReleaseProfile>false</useReleaseProfile>
+					<preparationGoals>clean install</preparationGoals>
+					<goals>deploy</goals>
+					<!-- The profile we want to use when doing the release -->
+					<arguments>-Prelease</arguments>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -175,9 +200,37 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.rat</groupId>
+				<artifactId>apache-rat-plugin</artifactId>
+				<version>${apache-rat-plugin.version}</version>
+				<configuration>
+					<excludeSubProjects>false</excludeSubProjects>
+					<excludes combine.children="append">
+						<exclude>**/README</exclude>
+						<exclude>**/README.txt</exclude>
+						<exclude>**/readme.md</exclude>
+						<exclude>**/README.md</exclude>
+						<exclude>**/resources/**/*.xsd</exclude>
+						<exclude>**/node_modules/**/*</exclude>
+						<exclude>**/bower_components/**/*</exclude>
+						<exclude>**/test/resources/**/*</exclude>
+						<exclude>**/.gitignore</exclude>
+						<exclude>**/.git/**/*</exclude>
+						<exclude>**/target/**/*</exclude>
+						<exclude>**/eclipse-classes/**/*</exclude>
+						<exclude>**/.*</exclude>
+						<exclude>**/.settings/**/*</exclude>
+						<exclude>**/*.iml</exclude>
+						<exclude>**/.idea/**/*</exclude>
+						<exclude>**/OSGI-INF/bundle.info</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<properties>
+		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
 		<github.global.server>github</github.global.server>
 		<license-maven-plugin.version>1.5</license-maven-plugin.version>
@@ -196,10 +249,11 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
 		<sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
+		<maven-scm-provider-gitexe.version>1.9.1</maven-scm-provider-gitexe.version>
 	</properties>
 	<profiles>
 		<profile>
-			<id>sonatype-oss-release</id>
+			<id>release</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -249,7 +303,7 @@
 				<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
 				<nexus-staging-maven-plugin.version>1.5.1</nexus-staging-maven-plugin.version>
 				<maven-gpg-plugin.version>1.1</maven-gpg-plugin.version>
-				<failsafe.skiptests>true</failsafe.skiptests>
+				<!-- <failsafe.skiptests>true</failsafe.skiptests> -->
 				<!-- <skipExec>true</skipExec> -->
 			</properties>
 		</profile>

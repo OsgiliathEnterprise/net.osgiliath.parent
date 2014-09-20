@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
 		work for additional information regarding copyright ownership. The ASF licenses 
@@ -37,8 +38,8 @@
 				<artifactId>lombok-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -106,6 +107,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-routes</artifactId>
@@ -142,6 +148,12 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-test-spring</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-test</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -159,18 +171,12 @@
 			</exclusions>
 		</dependency>
 
-		
+
 		<!-- TODO add your business/JPA dependencies here -->
-		<!-- <dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>${project.groupId}.business.spi</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>${project.groupId}.model.jpa</artifactId>
-			<version>${project.version}</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>${project.groupId}</groupId> <artifactId>${project.groupId}.business.spi</artifactId> 
+			<version>${project.version}</version> </dependency> <dependency> <groupId>${project.groupId}</groupId> 
+			<artifactId>${project.groupId}.model.jpa</artifactId> <version>${project.version}</version> 
+			</dependency> -->
 		<!-- TODO add your business dependencies here -->
 
 	</dependencies>
