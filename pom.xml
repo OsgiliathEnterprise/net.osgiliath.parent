@@ -98,6 +98,39 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>com.github.github</groupId>
+					<artifactId>downloads-maven-plugin</artifactId>
+					<version>${com.github.downloads-maven-plugin.version}</version>
+					<configuration>
+						<description>${project.version} release of ${project.name}</description>
+						<override>true</override>
+						<includeAttached>true</includeAttached>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>enforce-maven</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<requireMavenVersion>
+										<version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
+										<message>Maven 2.1.0 and 2.2.0 produce incorrect GPG
+											signatures
+											and checksums respectively.</message>
+									</requireMavenVersion>
+								</rules>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>${maven-release-plugin.version}</version>
@@ -105,6 +138,33 @@
 						<mavenExecutorId>forked-path</mavenExecutorId>
 						<useReleaseProfile>false</useReleaseProfile>
 						<arguments>-Prelease</arguments>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.rat</groupId>
+					<artifactId>apache-rat-plugin</artifactId>
+					<version>${apache-rat-plugin.version}</version>
+					<configuration>
+						<excludeSubProjects>false</excludeSubProjects>
+						<excludes combine.children="append">
+							<exclude>**/README</exclude>
+							<exclude>**/README.txt</exclude>
+							<exclude>**/readme.md</exclude>
+							<exclude>**/README.md</exclude>
+							<exclude>**/resources/**/*.xsd</exclude>
+							<exclude>**/node_modules/**/*</exclude>
+							<exclude>**/bower_components/**/*</exclude>
+							<exclude>**/test/resources/**/*</exclude>
+							<exclude>**/.gitignore</exclude>
+							<exclude>**/.git/**/*</exclude>
+							<exclude>**/target/**/*</exclude>
+							<exclude>**/eclipse-classes/**/*</exclude>
+							<exclude>**/.*</exclude>
+							<exclude>**/.settings/**/*</exclude>
+							<exclude>**/*.iml</exclude>
+							<exclude>**/.idea/**/*</exclude>
+							<exclude>**/OSGI-INF/bundle.info</exclude>
+						</excludes>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -134,28 +194,26 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${nexus-staging-maven-plugin.version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>sonatype-nexus-staging</serverId>
+						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>downloads-maven-plugin</artifactId>
-				<version>${com.github.downloads-maven-plugin.version}</version>
-				<configuration>
-					<description>${project.version} release of ${project.name}</description>
-					<override>true</override>
-					<includeAttached>true</includeAttached>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>${nexus-staging-maven-plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>sonatype-nexus-staging</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -181,51 +239,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>${maven-enforcer-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>enforce-maven</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
-									<message>Maven 2.1.0 and 2.2.0 produce incorrect GPG signatures
-										and checksums respectively.</message>
-								</requireMavenVersion>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.rat</groupId>
 				<artifactId>apache-rat-plugin</artifactId>
 				<version>${apache-rat-plugin.version}</version>
-				<configuration>
-					<excludeSubProjects>false</excludeSubProjects>
-					<excludes combine.children="append">
-						<exclude>**/README</exclude>
-						<exclude>**/README.txt</exclude>
-						<exclude>**/readme.md</exclude>
-						<exclude>**/README.md</exclude>
-						<exclude>**/resources/**/*.xsd</exclude>
-						<exclude>**/node_modules/**/*</exclude>
-						<exclude>**/bower_components/**/*</exclude>
-						<exclude>**/test/resources/**/*</exclude>
-						<exclude>**/.gitignore</exclude>
-						<exclude>**/.git/**/*</exclude>
-						<exclude>**/target/**/*</exclude>
-						<exclude>**/eclipse-classes/**/*</exclude>
-						<exclude>**/.*</exclude>
-						<exclude>**/.settings/**/*</exclude>
-						<exclude>**/*.iml</exclude>
-						<exclude>**/.idea/**/*</exclude>
-						<exclude>**/OSGI-INF/bundle.info</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -299,9 +317,7 @@
 				</plugins>
 			</build>
 			<properties>
-				<maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
 				<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
-				<nexus-staging-maven-plugin.version>1.5.1</nexus-staging-maven-plugin.version>
 				<maven-gpg-plugin.version>1.1</maven-gpg-plugin.version>
 				<!-- <failsafe.skiptests>true</failsafe.skiptests> -->
 				<!-- <skipExec>true</skipExec> -->
