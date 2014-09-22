@@ -282,7 +282,7 @@
 									<phase>test</phase>
 									<configuration>
 										<executable>grunt</executable>
-										<workingDirectory />
+										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
 											<argument>test</argument>
 										</arguments>
@@ -296,7 +296,7 @@
 									<phase>compile</phase>
 									<configuration>
 										<executable>grunt</executable>
-										<workingDirectory />
+										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
 											<argument>build</argument>
 										</arguments>
@@ -362,7 +362,7 @@
 									<phase>test</phase>
 									<configuration>
 										<executable>grunt.cmd</executable>
-										<workingDirectory />
+										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
 											<argument>test</argument>
 										</arguments>
@@ -376,7 +376,7 @@
 									<phase>compile</phase>
 									<configuration>
 										<executable>grunt.cmd</executable>
-										<workingDirectory />
+										<workingDirectory>${project.basedir}</workingDirectory>
 										<arguments>
 											<argument>build</argument>
 										</arguments>
