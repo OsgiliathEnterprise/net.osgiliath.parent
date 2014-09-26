@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1408278055122
+Bnd-LastModified: 1411321741782
 Build-Jdk: 1.7.0_51
 Built-By: gpetracek
 Bundle-Description: Apache DeltaSpike Parent for container projects
@@ -10,18 +10,18 @@ Bundle-Name: deltaspike-partial-bean-module-impl
 Bundle-SymbolicName: org.apache.deltaspike.modules.deltaspike-partial-be
  an-module-impl
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.2
+Bundle-Version: 1.0.3
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.apache.deltaspike.partialbean.impl;uses:="org.apache
  .deltaspike.core.util.metadata.builder,org.apache.deltaspike.core.util,
  org.apache.deltaspike.core.util.bean,javax.enterprise.inject.spi,javax.
  enterprise.event,org.apache.deltaspike.partialbean.api,org.apache.delta
  spike.core.spi.activation,javax.enterprise.context,org.apache.deltaspik
- e.core.api.provider,javax.enterprise.context.spi";version="1.0.2"
+ e.core.api.provider,javax.enterprise.context.spi";version="1.0.3"
 Implementation-Title: Apache DeltaSpike Partial-Bean-Module Impl
 Implementation-Vendor: The Apache Software Foundation
 Implementation-Vendor-Id: org.apache.deltaspike.modules
-Implementation-Version: 1.0.2
+Implementation-Version: 1.0.3
 Import-Package: javax.enterprise.context;version="[1.0,2)",javax.enterpr
  ise.context.spi;version="[1.0,2)",javax.enterprise.event;version="[1.0,
  2)",javax.enterprise.inject.spi;version="[1.0,2)",org.apache.deltaspike
@@ -30,9 +30,9 @@ Import-Package: javax.enterprise.context;version="[1.0,2)",javax.enterpr
  ,2)",org.apache.deltaspike.core.util.bean;version="[1.0,2)",org.apache.
  deltaspike.core.util.metadata.builder;version="[1.0,2)",org.apache.delt
  aspike.partialbean.api;version="[1.0,2)"
-Karaf-Info: DeltaSpike;deltaspike-partial-bean-module-impl=1.0.2
+Karaf-Info: DeltaSpike;deltaspike-partial-bean-module-impl=1.0.3
 Pax-ManagedBeans: META-INF/beans.xml
 Specification-Title: Apache DeltaSpike Partial-Bean-Module Impl
 Specification-Vendor: The Apache Software Foundation
-Specification-Version: 1.0.2
+Specification-Version: 1.0.3
 Tool: Bnd-1.50.0

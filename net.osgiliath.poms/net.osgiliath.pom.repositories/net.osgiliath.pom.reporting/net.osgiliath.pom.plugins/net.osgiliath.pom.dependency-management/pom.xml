@@ -1830,7 +1830,7 @@
 		<org.apache.aries.proxy.api.version>0.3.0</org.apache.aries.proxy.api.version>
 		<org.apache.aries.transaction.blueprint.version>1.0.0</org.apache.aries.transaction.blueprint.version>
 		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
-		<org.apache.deltaspike.version>1.0.2</org.apache.deltaspike.version>
+		<org.apache.deltaspike.version>1.0.3</org.apache.deltaspike.version>
 		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>
 		<org.apache.felix.framework.version>4.4.0</org.apache.felix.framework.version>
 		<org.apache.felix.fileinstall.version>3.4.0</org.apache.felix.fileinstall.version>

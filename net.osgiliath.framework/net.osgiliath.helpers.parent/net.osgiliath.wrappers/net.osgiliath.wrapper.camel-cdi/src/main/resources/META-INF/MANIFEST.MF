@@ -48,10 +48,10 @@ Import-Package: javax.annotation,javax.enterprise.context;version="[1.
  del.loadbalancer;version="[2.14,3)",org.apache.camel.spi;version="[2.
  14,3)",org.apache.camel.util;version="[2.14,3)",org.apache.camel.view
  ;version="[2.14,3)",org.apache.deltaspike.core.api.config;resolution:
- =optional;version="[0.7,1.0.2]",org.apache.deltaspike.core.api.litera
- l;resolution:=optional;version="[0.7,1.0.2]",org.apache.deltaspike.co
- re.api.provider;resolution:=optional;version="[0.7,1.0.2]",org.apache
- .deltaspike.core.util.metadata.builder;version="[0.7,1.0.2]",org.slf4
+ =optional;version="[0.7,1.0.3]",org.apache.deltaspike.core.api.litera
+ l;resolution:=optional;version="[0.7,1.0.3]",org.apache.deltaspike.co
+ re.api.provider;resolution:=optional;version="[0.7,1.0.3]",org.apache
+ .deltaspike.core.util.metadata.builder;version="[0.7,1.0.3]",org.slf4
  j;version="[1.6,2)"
 Bundle-DocURL: http://www.apache.org/
 Bundle-SymbolicName: org.apache.camel.camel-cdi
