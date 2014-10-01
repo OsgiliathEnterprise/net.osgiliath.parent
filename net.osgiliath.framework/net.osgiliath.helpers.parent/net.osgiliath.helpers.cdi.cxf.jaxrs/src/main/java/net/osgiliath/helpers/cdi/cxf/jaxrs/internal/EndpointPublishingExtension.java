@@ -47,6 +47,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Application;
+import javax.ws.rs.ext.RuntimeDelegate;
 
 import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
@@ -88,6 +89,7 @@ public class EndpointPublishingExtension implements Extension {
 	 */
 	private Map<String, JAXRSServerFactoryBean> factoriesMap = Maps
 			.newHashMap();
+	
 
 	/**
 	 * CDI process bean registration phase
@@ -210,10 +212,6 @@ public class EndpointPublishingExtension implements Extension {
 			}
 			JAXRSServerFactoryBean factory = facts.getValue();
 			
-			Application ba = new Application();
-	            
-	            
-			factory.setApplication(ba);
 			factory.setServiceBeans(instancesToPut);
 			this.servers.add(factory.create());
 		}
@@ -368,7 +366,7 @@ public class EndpointPublishingExtension implements Extension {
 		
 		JAXRSServerFactoryBean factory = factoriesMap.get(factoryId);
 		if (factory == null) {
-			factory = new JAXRSServerFactoryBean();
+			factory = RuntimeDelegate.getInstance().createEndpoint(CXFHelperActivator.getPlugin().getJaxRSApplication(), JAXRSServerFactoryBean.class);
 			Bus bus = CXFBusFactory.getDefaultBus();
 			if (bus == null) {
 				LOG.info("Creating a new Bus");

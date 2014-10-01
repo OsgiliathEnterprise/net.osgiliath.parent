@@ -81,4 +81,9 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
 		})));
     }
 
+	@Override
+	public void deleteHellos() {
+		this.objects.clear();
+	}
+
 }

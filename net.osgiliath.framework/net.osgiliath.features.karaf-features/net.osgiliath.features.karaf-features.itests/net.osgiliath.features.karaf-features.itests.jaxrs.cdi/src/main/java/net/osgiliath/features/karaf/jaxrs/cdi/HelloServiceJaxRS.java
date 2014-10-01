@@ -22,6 +22,7 @@ package net.osgiliath.features.karaf.jaxrs.cdi;
 
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -55,4 +56,6 @@ public interface HelloServiceJaxRS  {
     @GET
     @Produces(MediaType.APPLICATION_XML)
     Hellos getHellos();
+    @DELETE
+    void deleteHellos();
 }

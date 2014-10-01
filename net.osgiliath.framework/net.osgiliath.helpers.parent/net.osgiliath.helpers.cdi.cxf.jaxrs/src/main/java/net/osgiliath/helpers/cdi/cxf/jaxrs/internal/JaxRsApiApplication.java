@@ -1,4 +1,4 @@
-package net.osgiliath.helpers.cdi.cxf.jaxrs;
+package net.osgiliath.helpers.cdi.cxf.jaxrs.internal;
 
 /*
  * #%L
@@ -20,14 +20,9 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs;
  * #L%
  */
 
-import java.util.Collection;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+@ApplicationPath( "cxf" )
+public class JaxRsApiApplication extends Application {
 
-import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
-
-public class CDICXFFacade {
-	 public static Collection<Object> getProviders() {
-	    	
-	    	return ProvidersServiceRegistry.getInstance().getProviders();
-	    }
-	 
 }
