@@ -1,3 +1,4 @@
+#License APLV2
 Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
 Provide-Capability = org.ops4j.pax.cdi.extension; extension="eager"
 Import-Package: *
