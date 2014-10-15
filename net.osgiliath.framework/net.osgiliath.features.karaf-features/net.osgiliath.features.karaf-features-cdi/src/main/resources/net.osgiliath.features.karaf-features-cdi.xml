@@ -27,36 +27,8 @@ limitations under the License.
 	<feature name='osgiliath-cdi' version='${project.version}'>
 		<feature version="${pax-cdi.version}">pax-cdi-1.1-web-weld</feature>
 		<feature version="${pax-cdi.version}">pax-cdi-1.1-weld</feature>
-		<!--<bundle>mvn:org.apache.deltaspike.cdictrl/deltaspike-cdictrl-weld/${org.apache.deltaspike.version}</bundle>-->
 		<bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.version}</bundle>
 		<bundle>mvn:org.apache.deltaspike.core/deltaspike-core-impl/${org.apache.deltaspike.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
-		<!--<feature version="${org.jboss.weld.version}">weld</feature>
-		<feature version="${pax-cdi.version}">pax-cdi-web-weld</feature>-->
-		<!--<feature version="[2.3,3.5)">scr</feature>
-		<bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor-api.version}</bundle>
-		<bundle dependency="true">mvn:javax.enterprise/cdi-api/${cdi-api.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${geronimo-atinject_1.0_spec.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-el_2.2_spec/${geronimo-el_2.2_spec.version}</bundle>
-		<bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-tracker/${pax.swissbox.version}</bundle>
-		<bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/${pax.swissbox.version}</bundle>
-		<bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/${pax.swissbox.version}</bundle>
-		<bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/${pax.swissbox.version}</bundle>
-		<bundle dependency="true">mvn:org.ops4j.base/ops4j-base-spi/${ops4j.base.version}</bundle>
-		<bundle dependency="true">mvn:org.ops4j.base/ops4j-base-lang/${ops4j.base.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.xbean/xbean-bundleutils/${xbean.version}</bundle>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-api/${pax-cdi.version}</bundle>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-spi/${pax-cdi.version}</bundle>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extension/${pax-cdi.version}</bundle>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extender/${pax-cdi.version}</bundle>
-		<bundle dependency="true">mvn:org.jboss.weld/weld-osgi-bundle/${org.jboss.weld.version}</bundle>
-		<bundle>mvn:org.jboss.logging/jboss-logging/${org.jboss.logging.version}</bundle>
-		<bundle>mvn:com.google.guava/guava/${com.google.guava.version}</bundle>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-weld/${pax-cdi.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
-		<feature version="[${pax-web-features.version},3.5)">pax-war</feature>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web/${pax-cdi.version}</bundle>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web-weld/${pax-cdi.version}</bundle>-->
-
 	</feature>
 </features>
