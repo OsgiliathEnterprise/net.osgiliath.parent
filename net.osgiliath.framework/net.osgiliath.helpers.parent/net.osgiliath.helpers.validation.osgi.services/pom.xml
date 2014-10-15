@@ -63,10 +63,7 @@
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-el_2.2_spec</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.xbean</groupId>
-			<artifactId>xbean-bundleutils</artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>

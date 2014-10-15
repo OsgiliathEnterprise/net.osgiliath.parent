@@ -1,12 +1,3 @@
-Import-Package: *,\
- helpers.cxf.exception.handling.camel.processor,\
- org.apache.camel.component.properties,\
- org.springframework.transaction,\
- javax.transaction,\
- org.apache.camel.spring.spi,\
- org.apache.camel,\
- org.apache.camel.component.http,\
- org.apache.camel.component.jackson,\
- org.apache.camel.dataformat.xmljson
+Import-Package: *
 DynamicImport-Package: *
 Require-TldBundle: org.springframework.web.servlet

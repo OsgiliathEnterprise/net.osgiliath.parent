@@ -85,7 +85,7 @@ limitations under the License.
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles.ant.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles.serp.version}</bundle>
 		<feature version='${karaf.version}'>jms</feature>
-		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm4-shaded/${xbean.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm4-shaded/${xbean-asm4-shaded.version}</bundle>
 		<bundle start-level="29">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
 	</feature>
 

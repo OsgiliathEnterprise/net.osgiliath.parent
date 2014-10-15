@@ -48,8 +48,9 @@
 			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-		</dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <scope>provided</scope>
+            </dependency>
 	</dependencies>
 </project>
