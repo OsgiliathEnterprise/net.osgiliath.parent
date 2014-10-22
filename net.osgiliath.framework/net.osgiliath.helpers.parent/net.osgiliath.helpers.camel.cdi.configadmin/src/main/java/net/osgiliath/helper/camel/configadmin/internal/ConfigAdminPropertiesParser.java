@@ -25,40 +25,38 @@ import java.util.Properties;
 
 import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
 
+import org.apache.camel.cdi.component.properties.CdiPropertiesParser;
 import org.apache.camel.component.properties.DefaultPropertiesParser;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.osgi.framework.InvalidSyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * 
- * @author charliemordant
- * Camel property parser for config admin
+ * @author charliemordant Camel property parser for config admin
  */
-public class ConfigAdminPropertiesParser extends DefaultPropertiesParser {
-    /**
-     * Logger
-     */
-    private static final Logger LOG = LoggerFactory
-	    .getLogger(ConfigAdminPropertiesParser.class);
-    /**
-     * Camel config override to resolve config admin properties
-     */
-    @Override
-    public String parseProperty(String key, String value, Properties properties) {
-	String answer = null;
-	try {
-	    answer = ConfigAdminTracker.getInstance(null).getProperty(key);
-	} catch (IOException | InvalidSyntaxException e) {
-	    LOG.error("Exception while parsing config admin properties", e);
+public class ConfigAdminPropertiesParser extends CdiPropertiesParser {
+	/**
+	 * Logger
+	 */
+	private static final Logger LOG = LoggerFactory
+			.getLogger(ConfigAdminPropertiesParser.class);
+
+	/**
+	 * Camel config override to resolve config admin properties
+	 */
+	@Override
+	public String parseProperty(String key, String value, Properties properties) {
+		String answer = null;
+		try {
+			answer = ConfigAdminTracker.getInstance(null).getProperty(key);
+		} catch (IOException | InvalidSyntaxException e) {
+			LOG.error("Exception while parsing config admin properties", e);
+		}
+		if (answer != null) {
+			return answer;
+		}
+		return super.parseProperty(key, value, properties);
 	}
-	if (answer != null) {
-	    return answer;
-	}
-	answer = ConfigResolver.getPropertyValue(key);
-	if (answer != null) {
-	    return answer;
-	}
-	return super.parseProperty(key, value, properties);
-    }
 }

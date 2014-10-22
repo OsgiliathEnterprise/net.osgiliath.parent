@@ -62,5 +62,6 @@
 		<module>net.osgiliath.helpers.derby</module>
 		<module>net.osgiliath.helpers.manifest.transformer</module>
 		<module>net.osgiliath.helpers.swagger.ui</module>
+		<module>net.osgiliath.helpers.camel</module>
 	</modules>
 </project>

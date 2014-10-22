@@ -1,15 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
-		contributor license agreements. See the NOTICE file distributed with this 
-		work for additional information regarding copyright ownership. The ASF licenses 
-		this file to You under the Apache License, Version 2.0 (the "License"); you 
-		may not use this file except in compliance with the License. You may obtain 
-		a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless 
-		required by applicable law or agreed to in writing, software distributed 
-		under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-		OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-		the specific language governing permissions and limitations under the License. -->
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding 
+		copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may 
+		obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed 
+		on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the 
+		License. -->
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
@@ -19,39 +14,170 @@
 	<name>Osgiliath security features</name>
 	<description>Security (i.e. spring security) feature for Osgiliath</description>
 	<dependencies>
+		<!-- org.apache.karaf.features_spring_spring -->
 		<dependency>
-			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>enterprise</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
+			<groupId>org.apache.karaf.deployer</groupId>
+			<artifactId>org.apache.karaf.deployer.spring</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>spring</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		 <!-- <dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
-			<version>${project.version}</version>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency> -->
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>standard</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-web -->
+		<dependency>
+			<groupId>org.apache.karaf.http</groupId>
+			<artifactId>org.apache.karaf.http.command</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-web -->
+		<dependency>
+			<groupId>org.apache.karaf.http</groupId>
+			<artifactId>org.apache.karaf.http.core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-web -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-web</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-web -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-webmvc</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 		<dependency>
 			<groupId>org.apache.servicemix.specs</groupId>
 			<artifactId>org.apache.servicemix.specs.jsr250-1.0</artifactId>
 		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
 		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-aether</artifactId>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-bundleutils</artifactId>
 		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-finder</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-reflect</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.base</groupId>
+			<artifactId>ops4j-base-lang</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.pax.swissbox</groupId>
+			<artifactId>pax-swissbox-core</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-api</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-web -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-features</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-jetty</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-runtime</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-spi</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-all</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-context</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-core</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-jdbc</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -86,36 +212,11 @@
 				</exclusion>
 				<exclusion>
 					<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
+					<artifactId>spring-jdbc</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>spring-aop</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-context</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-beans</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-core</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -130,7 +231,7 @@
 				</exclusion>
 				<exclusion>
 					<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
+					<artifactId>spring-jdbc</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -147,8 +248,8 @@
 		</resources>
 		<plugins>
 			<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

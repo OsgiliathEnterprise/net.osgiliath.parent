@@ -9,29 +9,527 @@
 	<name>Osgiliath routes features</name>
 	<description>Some more routing features for Osgiliath framework</description>
 	<dependencies>
+		<!-- org.apache.camel.karaf_apache-camel_camel-jackson -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-http -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson != 2.5 -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.helpers.camel</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-blueprint -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-blueprint</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-core -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-cxf -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-cxf -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf-transport</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-elasticsearch</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-http -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-jackson -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-jaxb -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jaxb</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-cxf -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-xmljson</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 		<dependency>
 			<groupId>org.apache.camel.karaf</groupId>
 			<artifactId>apache-camel</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-core -->
 		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-aether</artifactId>
+			<groupId>org.apache.camel.karaf</groupId>
+			<artifactId>camel-karaf-commands</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-core</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-wsdl -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-bindings-soap</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-wsdl -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-bindings-xml</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-wsdl -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-databinding-jaxb</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxrs -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxws -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-wsdl -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-simple</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-management</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxrs -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxrs -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-extension-providers</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxrs -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-extension-search</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxrs -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-service-description</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-http -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxws -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-wsdl -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-wsdl</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
+		<dependency>
+			<groupId>org.apache.cxf.karaf</groupId>
+			<artifactId>cxf-karaf-commands</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>org.apache.cxf.karaf</groupId>
+			<artifactId>apache-cxf</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-spring -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jta_1.1_spec</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-osgi-registry</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-http -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-servlet_3.0_spec</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-dm -->
+		<dependency>
+			<groupId>org.apache.karaf.bundle</groupId>
+			<artifactId>org.apache.karaf.bundle.springstate</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-dm -->
+		<dependency>
+			<groupId>org.apache.karaf.deployer</groupId>
+			<artifactId>org.apache.karaf.deployer.spring</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-spring -->
+		<dependency>
+			<groupId>org.apache.karaf.features</groupId>
+			<artifactId>spring</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-http -->
+		<dependency>
+			<groupId>org.apache.karaf.features</groupId>
+			<artifactId>standard</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_http -->
+		<dependency>
+			<groupId>org.apache.karaf.http</groupId>
+			<artifactId>org.apache.karaf.http.command</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_http -->
+		<dependency>
+			<groupId>org.apache.karaf.http</groupId>
+			<artifactId>org.apache.karaf.http.core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-dm -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-beanutils</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-http -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.ezmorph</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.fastinfoset</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api -->
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jaxb-impl</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jaxb-xjc</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
+			<version>1.1_4</version>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.json-lib</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.oro</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-tx -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-tx</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-wsdl -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.wsdl4j</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.xmlresolver</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jaxb-api-2.2</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jaxws-api-2.2</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.saaj-api-1.3</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.stax-api-1.0</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
+		<dependency>
+			<groupId>org.apache.ws.xmlschema</groupId>
+			<artifactId>xmlschema-core</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-bundleutils</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-finder</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-reflect</artifactId>
+		</dependency>
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxrs -->
+		<dependency>
+		<groupId>org.codehaus.jettison</groupId>
+		<artifactId>jettison</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api -->
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>stax2-api</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api -->
+		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.base</groupId>
+			<artifactId>ops4j-base-lang</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.pax.swissbox</groupId>
+			<artifactId>pax-swissbox-core</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-api</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-extender-whiteboard</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_http-whiteboard -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-features</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-jetty</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-jsp</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-runtime</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-spi</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features -->
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-all</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-dm -->
+		<dependency>
+			<groupId>org.springframework.osgi</groupId>
+			<artifactId>spring-osgi-annotation</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-dm -->
+		<dependency>
+			<groupId>org.springframework.osgi</groupId>
+			<artifactId>spring-osgi-core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-dm -->
+		<dependency>
+			<groupId>org.springframework.osgi</groupId>
+			<artifactId>spring-osgi-extender</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-dm -->
+		<dependency>
+			<groupId>org.springframework.osgi</groupId>
+			<artifactId>spring-osgi-io</artifactId>
+		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_camel-xmljson -->
+		<dependency>
+			<groupId>xom</groupId>
+			<artifactId>xom</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

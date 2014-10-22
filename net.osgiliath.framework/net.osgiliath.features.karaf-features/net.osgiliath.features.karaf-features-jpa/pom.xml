@@ -20,18 +20,49 @@
 	<name>Osgiliath JPA features</name>
 	<description>Persistence support (database access) for Osgiliath framework</description>
 	<dependencies>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-smile</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jdbc -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<!-- org.apache.karaf.features_enterprise_jdbc -->
 		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>net.osgiliath.framework</groupId>
+			<artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-cdi</artifactId>
@@ -39,262 +70,257 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-derby</artifactId>
-			<version>${project.version}</version>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.deltaspike-data-module-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.deltaspike-data-module-impl</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.deltaspike-partial-bean-module-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.deltaspike-partial-bean-module-impl</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.fragment-ds-data</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.aries</groupId>
-			<artifactId>org.apache.aries.util</artifactId>
-		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
 			<groupId>org.apache.aries.jndi</groupId>
 			<artifactId>org.apache.aries.jndi.api</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
 			<groupId>org.apache.aries.jndi</groupId>
 			<artifactId>org.apache.aries.jndi.core</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
 			<groupId>org.apache.aries.jndi</groupId>
 			<artifactId>org.apache.aries.jndi.legacy.support</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
 			<groupId>org.apache.aries.jndi</groupId>
 			<artifactId>org.apache.aries.jndi.rmi</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
 			<groupId>org.apache.aries.jndi</groupId>
 			<artifactId>org.apache.aries.jndi.url</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jpa -->
 		<dependency>
 			<groupId>org.apache.aries.jpa</groupId>
 			<artifactId>org.apache.aries.jpa.api</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jpa -->
 		<dependency>
 			<groupId>org.apache.aries.jpa</groupId>
 			<artifactId>org.apache.aries.jpa.blueprint.aries</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jpa -->
 		<dependency>
 			<groupId>org.apache.aries.jpa</groupId>
 			<artifactId>org.apache.aries.jpa.container</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jpa -->
 		<dependency>
 			<groupId>org.apache.aries.jpa</groupId>
 			<artifactId>org.apache.aries.jpa.container.context</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_transaction -->
 		<dependency>
 			<groupId>org.apache.aries.transaction</groupId>
 			<artifactId>org.apache.aries.transaction.blueprint</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_transaction -->
 		<dependency>
 			<groupId>org.apache.aries.transaction</groupId>
 			<artifactId>org.apache.aries.transaction.manager</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.core</groupId>
-			<artifactId>deltaspike-core-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.core</groupId>
-			<artifactId>deltaspike-core-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-jpa-module-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-jpa-module-impl</artifactId>
-		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-annotation_1.1_spec</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-el_2.2_spec</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jms_1.1_spec</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<!-- org.apache.karaf.features_enterprise_jpa -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jpa_2.0_spec</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<!-- org.apache.karaf.features_enterprise_jpa -->
+		<!-- org.apache.karaf.features_enterprise_transaction -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jta_1.1_spec</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-servlet_3.0_spec</artifactId>
 		</dependency>
-
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.karaf.deployer</groupId>
+			<artifactId>org.apache.karaf.deployer.spring</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>enterprise</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>standard</artifactId>
+			<artifactId>spring</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
+		</dependency>		
+		<!-- org.apache.karaf.features_enterprise_jdbc -->
+		<dependency>
+			<groupId>org.apache.karaf.jdbc</groupId>
+			<artifactId>org.apache.karaf.jdbc.command</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jdbc -->
+		<dependency>
+			<groupId>org.apache.karaf.jdbc</groupId>
+			<artifactId>org.apache.karaf.jdbc.core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
 			<groupId>org.apache.karaf.jndi</groupId>
 			<artifactId>org.apache.karaf.jndi.command</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
 			<groupId>org.apache.karaf.jndi</groupId>
 			<artifactId>org.apache.karaf.jndi.core</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.openjpa</groupId>
 			<artifactId>openjpa</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.ant</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
+			<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.commons-dbcp</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.elasticsearch</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jakarta-regexp</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.lucene</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.protobuf-java</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.serp</artifactId>
 		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-jdbc -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-jdbc</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-jdbc -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-orm</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_spring_spring-jdbc -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.spring-tx</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.swagger-annotations</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-asm4-shaded</artifactId>
-			<version>${xbean-asm4-shaded.version}</version>
 		</dependency>
+		<!-- org.apache.karaf.features_enterprise_jndi -->
 		<dependency>
-			<groupId>org.eclipse.birt.runtime</groupId>
-			<artifactId>com.ibm.icu</artifactId>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-naming</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>org.eclipse.persistence.asm</artifactId>
+			<groupId>org.mvel</groupId>
+			<artifactId>mvel2</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>org.eclipse.persistence.antlr</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>org.eclipse.persistence.core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>org.eclipse.persistence.jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.cdi.fragment</groupId>
-			<artifactId>pax-cdi-fragment-ds-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.jdbc</groupId>
-			<artifactId>pax-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.jpa</groupId>
-			<artifactId>pax-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-aether</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ow2.spec.osgi</groupId>
-			<artifactId>ow2-jdbc-service-1.0-spec</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-tx</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-expression</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-jdbc</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.springframework</groupId>
-					<artifactId>spring-orm</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 	<build>
@@ -336,7 +362,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<properties>
-	<xbean-asm4-shaded.version>3.16</xbean-asm4-shaded.version>
-	</properties>
 </project>

@@ -5,7 +5,7 @@
 		<artifactId>net.osgiliath.wrappers</artifactId>
 		<version>0.0.8-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.wrappers.cxf-integration-cdi</artifactId>
+	<artifactId>net.osgiliath.wrapper.cxf-integration-cdi</artifactId>
 	<name>Wrapper for CXF integration cdi</name>
 	<description>OSGI manifest wrapper for CDI cxf</description>
 	<build>

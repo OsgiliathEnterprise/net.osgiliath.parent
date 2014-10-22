@@ -1,8 +1,17 @@
 Export-Package: *
 Import-Package: !com.ibm.db2.jcc,\
  !com.ibm.jvm,\
+ !com.sun.management,\
  !org.apache.derby.iapi.services.sanity,\
  !org.apache.derby.shared.common.sanity,\
+ !org.apache.log4j.jmx,\
+ !org.apache.log,\
+ !org.jboss.netty.bootstrap,\
+ !org.jboss.netty.buffer,\
+ !org.jboss.netty.channel,\
+ !org.jboss.netty.channel.group,\
+ !org.jboss.netty.channel.socket.nio,\
+ !org.slf4j.impl,\
  *
 XX-Previous: org.apache.derby.iapi.services.property,\
  !org.apache.derby.shared.common.reference,\

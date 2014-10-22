@@ -11,7 +11,7 @@
 	<name>OSGI wrappers</name>
 	<description>OSGI Manifests wrappers for Osgiliath</description>
 	<modules>
-		<module>net.osgiliath.wrapper.camel-cdi</module>
+		<!-- <module>net.osgiliath.wrapper.camel-cdi</module> -->
 		<module>net.osgiliath.wrapper.deltaspike-data-module-api</module>
 		<module>net.osgiliath.wrapper.deltaspike-data-module-impl</module>
 		<module>net.osgiliath.wrapper.deltaspike-partial-bean-module-api</module>
@@ -21,7 +21,8 @@
 		<module>net.osgiliath.wrapper.derby</module>
 		<module>net.osgiliath.wrapper.swagger-jaxrs</module>
 		<module>net.osgiliath.wrapper.jackson-module-scala</module>
-		<module>net.osgiliath.wrappers.cxf-integration-cdi</module>
+		<module>net.osgiliath.wrapper.cxf-integration-cdi</module>
 		<module>net.osgiliath.wrapper.swagger-core</module>
+		<module>net.osgiliath.wrapper.camel-spring</module>
 	</modules>
 </project>

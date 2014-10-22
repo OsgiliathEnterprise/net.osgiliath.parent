@@ -1,7 +1,7 @@
 /**
  * 
  */
-package helpers.cxf.exception.handling.camel.processor;
+package net.osgiliath.helpers.camel;
 
 /*
  * #%L
@@ -64,7 +64,7 @@ public class ThrownExceptionMessageToInBodyProcessor implements Processor {
 		LOG.info("Catched error in route: " + body);
 	    Document doc = sxb.build(new StringReader(body));
 	    exchange.getIn().setBody(
-		    doc.getRootElement().getChild("message").getText());
+		    doc.getRootElement().getChild(ExceptionMappingConstants.EXCEPTION_MESSAGE).getText());
 	}
     }
 

@@ -46,36 +46,277 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-war -->
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<version>${project.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
-			<classifier>features</classifier>
-			<type>xml</type>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>bndlib</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<version>${project.version}</version>
-			<artifactId>net.osgiliath.helpers.swagger.ui</artifactId>
-			<scope>provided</scope>
-			<type>war</type>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 		<dependency>
-			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>standard</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-base</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 		<dependency>
 			<groupId>io.hawt</groupId>
 			<artifactId>hawtio-karaf</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
+		<!-- io.hawt_hawtio-karaf -->
+		<dependency>
+			<groupId>io.hawt</groupId>
+			<artifactId>hawtio-json-schema-mbean</artifactId>
+		</dependency>
+		<!-- io.hawt_hawtio-karaf -->
+		<dependency>
+			<groupId>io.hawt</groupId>
+			<artifactId>hawtio-osgi-jmx</artifactId>
+		</dependency>
+		<!-- io.hawt_hawtio-karaf -->
+		<dependency>
+			<groupId>io.hawt</groupId>
+			<artifactId>hawtio-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>net.osgiliath.framework</groupId>
+			<artifactId>net.osgiliath.helpers.swagger.cdi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>net.osgiliath.framework</groupId>
+			<artifactId>net.osgiliath.helpers.swagger.ui</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.jackson-module-scala</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.swagger-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.swagger-jaxrs</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>org.apache.karaf.features</groupId>
+			<artifactId>standard</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_war -->
+		<dependency>
+			<groupId>org.apache.karaf.http</groupId>
+			<artifactId>org.apache.karaf.http.command</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_war -->
+		<dependency>
+			<groupId>org.apache.karaf.http</groupId>
+			<artifactId>org.apache.karaf.http.core</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_war -->
+		<dependency>
+			<groupId>org.apache.karaf.web</groupId>
+			<artifactId>org.apache.karaf.web.command</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_war -->
+		<dependency>
+			<groupId>org.apache.karaf.web</groupId>
+			<artifactId>org.apache.karaf.web.core</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.json4s</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.reflections</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.swagger-annotations</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-bundleutils</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-finder</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-reflect</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 		<dependency>
 			<groupId>org.jolokia</groupId>
 			<artifactId>jolokia-osgi</artifactId>
 		</dependency>
-
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.base</groupId>
+			<artifactId>ops4j-base-lang</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.base</groupId>
+			<artifactId>ops4j-base-monitors</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.base</groupId>
+			<artifactId>ops4j-base-net</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.base</groupId>
+			<artifactId>ops4j-base-util-property</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-war -->
+		<dependency>
+			<groupId>org.ops4j.pax.swissbox</groupId>
+			<artifactId>pax-swissbox-bnd</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.pax.swissbox</groupId>
+			<artifactId>pax-swissbox-core</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-war -->
+		<dependency>
+			<groupId>org.ops4j.pax.swissbox</groupId>
+			<artifactId>pax-swissbox-property</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-war -->
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-commons</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-war -->
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-war</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-api</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-war -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-deployer</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_pax-war -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-extender-war</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http-whiteboard -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-extender-whiteboard</artifactId>
+		</dependency>
+		<!-- org.apache.karaf.features_standard_war -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-features</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-jetty</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http-whiteboard -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-jsp</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-runtime</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-spi</artifactId>
+		</dependency>
+		<!-- org.ops4j.pax.web_pax-web-features_http -->
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-all</artifactId>
+		</dependency>
 	</dependencies>
 </project>

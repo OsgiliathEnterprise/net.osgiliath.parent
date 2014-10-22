@@ -20,10 +20,10 @@ package net.osgiliath.helper.camel.configadmin;
  * #L%
  */
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Specializes;
 
 import net.osgiliath.helper.camel.configadmin.internal.ConfigAdminPropertiesParser;
+import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.camel.cdi.component.properties.CdiPropertiesComponent;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
@@ -36,7 +36,7 @@ import org.ops4j.pax.cdi.api.Property;
  */
 @OsgiServiceProvider
 @Properties(value = { @Property(name = "component-type", value = "configAdminProperties") })
-@ApplicationScoped
+@Eager
 @Specializes
 public class ConfigAdminPropertiesComponent extends CdiPropertiesComponent {
     /**

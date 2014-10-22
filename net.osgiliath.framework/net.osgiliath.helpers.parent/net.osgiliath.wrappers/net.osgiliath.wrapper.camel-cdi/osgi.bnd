@@ -1,4 +1,5 @@
 Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
- org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)"
+ org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)"
 Provide-Capability: org.ops4j.pax.cdi.extension;extension="osgiliath-camel-cdi-extension"
 Require-Bundle: org.apache.deltaspike.core.deltaspike-core-api
