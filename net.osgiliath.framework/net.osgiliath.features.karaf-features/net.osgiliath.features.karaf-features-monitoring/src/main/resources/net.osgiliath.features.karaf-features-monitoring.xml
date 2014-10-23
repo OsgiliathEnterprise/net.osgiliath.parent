@@ -33,9 +33,7 @@
  	 	 <bundle>mvn:org.javassist/javassist/${org.javassist.version}</bundle>
  	 	 <feature version="${project.version}">osgiliath-functional</feature>
  	 	 <feature version="${project.version}">osgiliath-scala</feature>
- 	 	 <feature version="${project.version}"> osgiliath-swagger-model</feature>
- 	 	 <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${org.apache.servicemix.bundles.reflections.version}</bundle>
- 	 	 <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json4s/${org.apache.servicemix.bundles.json4s.version}</bundle>
+ 	 	 <feature version="${project.version}"> osgiliath-swagger-jaxrs</feature>
  	 </feature>
 	<feature name="osgiliath-hawtio" version="${project.version}" resolver="(obr)">
 		<feature version="${hawtio.version}">hawtio-core</feature>

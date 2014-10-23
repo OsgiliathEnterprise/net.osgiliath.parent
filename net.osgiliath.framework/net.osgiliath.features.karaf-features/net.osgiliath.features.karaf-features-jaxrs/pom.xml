@@ -14,7 +14,36 @@
 	<name>Osgiliath JaxRS features</name>
 	<description>REST features for Osgiliath framework</description>
 	<dependencies>
-		
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-base</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs_osgiliath-cdi -->
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -59,7 +88,12 @@
 			<artifactId>net.osgiliath.helpers.cdi.cxf.jaxrs</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs_osgiliath-cdi -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.helpers.swagger.cdi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
@@ -172,10 +206,10 @@
 		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs_osgiliath-jaxrs -->
 		<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.jackson-module-scala</artifactId>
-				<version>${org.apache.servicemix.bundles.jackson-module-scala.version}</version>
-			</dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jackson-module-scala</artifactId>
+			<version>${org.apache.servicemix.bundles.jackson-module-scala.version}</version>
+		</dependency>
 		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
 		<!-- org.apache.cxf.karaf_apache-cxf_cxf-jaxb -->
 		<dependency>
@@ -199,7 +233,11 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
 		</dependency>
-		
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs_osgiliath-swagger -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.reflections</artifactId>
+		</dependency>
 		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>

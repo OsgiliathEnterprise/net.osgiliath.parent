@@ -50,7 +50,7 @@
 		<module>
   		net.osgiliath.features.karaf-features.itests.jaxrs.cdi
   	</module>
-		<module>
+	<!-- 	<module>
   		net.osgiliath.features.karaf-features.itests.jpa.cdi
   	</module>
 		<module>
@@ -58,7 +58,7 @@
   	</module>
 		<module>
   		net.osgiliath.features.karaf-features.itests.jpa.cdi.data
-  	</module>
+  	</module> -->
 	</modules>
 	
 </project>

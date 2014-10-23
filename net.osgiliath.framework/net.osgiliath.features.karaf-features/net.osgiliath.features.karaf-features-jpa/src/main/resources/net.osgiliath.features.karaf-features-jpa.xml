@@ -55,7 +55,7 @@ limitations under the License.
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles.aspectj.version}</bundle>
 		<bundle >mvn:org.springframework.data/spring-data-commons/${org.springframework.data.commons.version}</bundle>
 		<bundle >mvn:org.springframework.data/spring-data-jpa/${org.springframework.data.jpa.version}</bundle>
-		<feature version='${project.version}'>osgiliath-swagger-model</feature>
+		<feature version='${project.version}'>osgiliath-swagger-annotations</feature>
 	</feature>
 	<feature name='osgiliath-jpa-cdi' version='${project.version}' resolver="(obr)">
 		<feature version='${project.version}'>osgiliath-cdi</feature>
@@ -66,7 +66,7 @@ limitations under the License.
 		<feature version='${karaf.feature.spring4.version}'>spring-jdbc</feature>
 		<feature version='${karaf.feature.spring4.version}'>spring-orm</feature>
 		<feature version='${karaf.feature.spring4.version}'>spring-tx</feature>
-		<feature version='${project.version}'>osgiliath-swagger-model</feature>
+		<feature version='${project.version}'>osgiliath-swagger-annotations</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
 		<!-- <bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.fragment-ds-data/${project.version}</bundle>
 		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-api/${project.version}</bundle>

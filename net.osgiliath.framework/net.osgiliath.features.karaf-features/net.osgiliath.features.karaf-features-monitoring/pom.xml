@@ -189,11 +189,6 @@
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.reflections</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.swagger-annotations</artifactId>
 		</dependency>
 		<!-- org.ops4j.pax.web_pax-web-features_http -->

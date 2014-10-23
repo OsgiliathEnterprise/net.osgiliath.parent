@@ -106,6 +106,7 @@
 	<feature name="osgiliath-messaging-cdi" version="${project.version}">
 		<feature version='${project.version}'>osgiliath-messaging</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
+		<feature version="${camel-version}">camel-core</feature>
 		<bundle>mvn:org.apache.camel/camel-cdi/${camel-version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.cdi.configadmin/${project.version}</bundle>

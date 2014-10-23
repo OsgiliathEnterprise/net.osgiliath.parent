@@ -25,5 +25,7 @@
                            http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd
                            http://jboss.org/schema/weld/beans http://jboss.org/schema/weld/beans_1_1.xsd"
        version="1.1" bean-discovery-mode="annotated">
-       
+      <alternatives>
+      <class>net.osgiliath.helper.camel.configadmin.ConfigAdminPropertiesComponent</class>
+   </alternatives> 
 </beans>

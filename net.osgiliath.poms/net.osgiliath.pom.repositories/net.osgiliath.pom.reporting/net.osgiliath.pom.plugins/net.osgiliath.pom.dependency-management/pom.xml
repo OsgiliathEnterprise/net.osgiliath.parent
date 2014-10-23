@@ -1323,7 +1323,7 @@
 				<artifactId>org.apache.servicemix.bundles.protobuf-java</artifactId>
 				<version>${org.apache.servicemix.bundles.protobuf-java.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.reflections</artifactId>
@@ -1475,12 +1475,24 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
 				<version>${org.apache.servicemix.bundles.swagger.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.ws.rs</groupId>
+						<artifactId>jsr311-api</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.swagger-jaxrs</artifactId>
 				<version>${org.apache.servicemix.bundles.swagger.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.ws.rs</groupId>
+						<artifactId>jsr311-api</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>

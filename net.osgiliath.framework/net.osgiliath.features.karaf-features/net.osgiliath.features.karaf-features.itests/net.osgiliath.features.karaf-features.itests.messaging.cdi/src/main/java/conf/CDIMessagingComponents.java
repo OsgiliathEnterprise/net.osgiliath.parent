@@ -47,7 +47,9 @@ public class CDIMessagingComponents {
     @Inject
     @OsgiService(filter = "(component-type=jms)", dynamic = true)
     private Component jms;
-    /**
+  
+
+	/**
      * Producer
      * @return the jms component
      */
@@ -57,4 +59,5 @@ public class CDIMessagingComponents {
 	LOG.info("Inject jms route");
 	return jms;
     }
+    
 }

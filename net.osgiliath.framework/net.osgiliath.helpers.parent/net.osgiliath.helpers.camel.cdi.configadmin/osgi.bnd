@@ -5,6 +5,7 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)"
 Bundle-Activator: net.osgiliath.helper.camel.configadmin.internal.CdiConfigAdminServiceActivator
 Import-Package: org.apache.deltaspike.core.api.common,\
+ org.apache.camel.cdi.component.properties,\
  org.apache.camel.component.properties,\
  org.apache.camel.support,\
  org.apache.deltaspike.core.api.config,\
