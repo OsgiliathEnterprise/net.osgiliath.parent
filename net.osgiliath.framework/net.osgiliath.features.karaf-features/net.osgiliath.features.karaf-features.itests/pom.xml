@@ -20,7 +20,7 @@
 		<module>
   		net.osgiliath.features.karaf-features.itests.validation
   	</module>
-  	<module>
+		<module>
   		net.osgiliath.features.karaf-features.itests.validation.cdi
   	</module>
 		<module>
@@ -50,15 +50,8 @@
 		<module>
   		net.osgiliath.features.karaf-features.itests.jaxrs.cdi
   	</module>
-	<!-- 	<module>
-  		net.osgiliath.features.karaf-features.itests.jpa.cdi
-  	</module>
-		<module>
-  		net.osgiliath.features.karaf-features.itests.jpa.cdi.model
-  	</module>
-		<module>
-  		net.osgiliath.features.karaf-features.itests.jpa.cdi.data
-  	</module> -->
+		<!-- <module> net.osgiliath.features.karaf-features.itests.jpa.cdi </module> <module> net.osgiliath.features.karaf-features.itests.jpa.cdi.model </module> <module> net.osgiliath.features.karaf-features.itests.jpa.cdi.data 
+			</module> -->
 	</modules>
-	
+
 </project>

@@ -113,14 +113,40 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-routes</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
+			<exclusions>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
@@ -170,9 +196,82 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.groupId}.business.spi</artifactId>
+			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.groupId}.model.jpa</artifactId>
+			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-jdbc</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.apache.servicemix.bundles.spring-orm</artifactId>
+					<groupId>org.apache.servicemix.bundles</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+		</dependency>
 
-
-		<!-- TODO add your business/JPA dependencies here -->
+		<!-- TODO add your business/JPA dependencies here as the sample above does: excludes the spring dependencies to makes your tests passing -->
 		<!-- <dependency> <groupId>${project.groupId}</groupId> <artifactId>${project.groupId}.business.spi</artifactId> 
 			<version>${project.version}</version> </dependency> <dependency> <groupId>${project.groupId}</groupId> 
 			<artifactId>${project.groupId}.model.jpa</artifactId> <version>${project.version}</version> 

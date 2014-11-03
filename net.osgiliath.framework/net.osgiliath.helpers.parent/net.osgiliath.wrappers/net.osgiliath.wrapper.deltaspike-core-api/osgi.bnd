@@ -1,0 +1,2 @@
+Require-Capability: osgi.serviceloader;filter:="(osgi.serviceloader=org.apache.deltaspike.core.spi.config.ConfigSourceProvider)";cardinality:=multiple,\
+ osgi.extender;filter:="(osgi.extender=osgi.serviceloader.processor)"

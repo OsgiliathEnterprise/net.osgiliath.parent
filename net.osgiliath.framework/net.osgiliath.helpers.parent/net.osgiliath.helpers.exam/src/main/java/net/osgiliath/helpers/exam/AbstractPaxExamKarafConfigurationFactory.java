@@ -39,8 +39,6 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 @Slf4j
 public abstract class AbstractPaxExamKarafConfigurationFactory {
     protected static final String COVERAGE_COMMAND = "coverage.command";

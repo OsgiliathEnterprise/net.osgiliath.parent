@@ -23,7 +23,6 @@ limitations under the License.
 	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
 	<feature name='osgiliath-derby' version='${project.version}'>
 		<feature version='${karaf.feature.spring4.version}'>spring</feature>
-		<bundle >mvn:commons-logging/commons-logging/${common-logging_common-logging.version}</bundle>
 		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.derby/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.liquibase/liquibase-osgi/${org.liquibase.liquibase.version}</bundle>
 		<bundle dependency="true" >mvn:org.apache.neethi/neethi/${org.apache.neethi_neethi.version}</bundle>

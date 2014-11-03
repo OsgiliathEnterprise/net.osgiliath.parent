@@ -14,6 +14,7 @@
 	<name>Osgiliath security features</name>
 	<description>Security (i.e. spring security) feature for Osgiliath</description>
 	<dependencies>
+	
 		<!-- org.apache.karaf.features_spring_spring -->
 		<dependency>
 			<groupId>org.apache.karaf.deployer</groupId>
@@ -77,6 +78,11 @@
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.spring-ldap</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<!-- org.apache.karaf.features_spring_spring-web -->
 		<dependency>
@@ -150,6 +156,41 @@
 			<groupId>org.ow2.asm</groupId>
 			<artifactId>asm-all</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-infrastructure</artifactId>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-aspects</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-context</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-core</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-jdbc</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -181,6 +222,45 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-jdbc</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-context</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-core</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-jdbc</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>

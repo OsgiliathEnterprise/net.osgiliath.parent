@@ -44,6 +44,11 @@
 			<groupId>javax.annotation</groupId>
 			<artifactId>javax.annotation-api</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+				<groupId>javax.json</groupId>
+				<artifactId>javax.json-api</artifactId>
+			</dependency>
 		<!-- org.apache.cxf.karaf_apache-cxf_cxf-specs -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -72,12 +77,22 @@
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
+		</dependency><!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.helpers.camel.activemq</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.camel</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-camel</artifactId>
 		</dependency>
 		<!-- org.apache.camel.karaf_apache-camel_camel-blueprint -->
 		<dependency>
@@ -89,6 +104,12 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
 		</dependency>
+		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
+		<dependency>
+			<groupId>org.apache.camel.karaf</groupId>
+			<artifactId>camel-karaf-commands</artifactId>
+		</dependency>
+		
 		<!-- org.apache.camel.karaf_apache-camel_camel-cxf -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -119,6 +140,12 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jaxb</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+		</dependency>
+		
 		<!-- org.apache.camel.karaf_apache-camel_camel-cxf -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -129,6 +156,7 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-xmljson</artifactId>
 		</dependency>
+		
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 		<dependency>
 			<groupId>org.apache.camel.karaf</groupId>

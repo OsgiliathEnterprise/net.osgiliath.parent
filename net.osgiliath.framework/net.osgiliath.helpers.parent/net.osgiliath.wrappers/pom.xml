@@ -24,5 +24,7 @@
 		<module>net.osgiliath.wrapper.cxf-integration-cdi</module>
 		<module>net.osgiliath.wrapper.swagger-core</module>
 		<module>net.osgiliath.wrapper.camel-spring</module>
+		<module>net.osgiliath.wrapper.deltaspike-core-api</module>
+		<module>net.osgiliath.wrapper.spring-ldap</module>
 	</modules>
 </project>

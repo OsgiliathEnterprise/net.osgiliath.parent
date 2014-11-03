@@ -21,6 +21,13 @@
 	<feature name="osgiliath-swagger-annotations" version="${project.version}" resolver="(obr)">
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${org.apache.servicemix.bundles.swagger.version}</bundle>
 	</feature>
+	
+	<feature name="osgiliath-weaving" version="${project.version}" resolver="(obr)" start-level="30">
+		<bundle>mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries.util.version}</bundle>
+		<bundle>mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/${org.apache.aries.spifly.version}</bundle>
+		<!-- <bundle>mvn:org.apache.aries.spifly/org.apache.aries.spifly.core-internal/${org.apache.aries.spifly.version}</bundle>
+		<bundle>mvn:org.apache.aries.spifly/org.apache.aries.spifly.weaver-internal/${org.apache.aries.spifly.version}</bundle> -->
+	</feature>
 	<!--<feature name="spring" version="${org.springframework.version}" description="Spring 3.2.x support" resolver="(obr)"> <details>Spring Support</details> <bundle start-level="30" 
 		dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${org.apache.servicemix.bundles.aopalliance.version}</bundle> <bundle start-level="30">mvn:org.springframework/org.springframework.core/${org.springframework.version}</bundle> 
 		<bundle start-level="30">mvn:org.springframework/org.springframework.expression/${org.springframework.version}</bundle> <bundle start-level="30">mvn:org.springframework/org.springframework.beans/${org.springframework.version}</bundle> 

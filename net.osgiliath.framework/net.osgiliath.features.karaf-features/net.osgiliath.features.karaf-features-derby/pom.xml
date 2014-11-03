@@ -25,11 +25,6 @@
 			<groupId>ant</groupId>
 			<artifactId>ant</artifactId>
 		</dependency>
-		<!-- org.springframework_spring -->
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-		</dependency>
 		<!-- org.liquibase_liquibase-core -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

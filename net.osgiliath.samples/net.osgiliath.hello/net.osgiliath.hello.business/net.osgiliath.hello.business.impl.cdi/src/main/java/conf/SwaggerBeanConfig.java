@@ -21,13 +21,17 @@ package conf;
  */
 
 import java.io.IOException;
+
 import javax.enterprise.inject.Produces;
+
 import lombok.extern.slf4j.Slf4j;
-import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+import net.osgiliath.helpers.deltaspike.configadmin.internal.ConfigAdminTracker;
 import net.osgiliath.helpers.swagger.cdi.CXFBeanJaxrsScanner;
+
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
+
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
 
 @Slf4j

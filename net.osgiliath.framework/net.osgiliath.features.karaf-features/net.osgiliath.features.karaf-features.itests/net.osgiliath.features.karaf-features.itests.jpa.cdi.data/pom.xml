@@ -46,15 +46,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin> TODO see later
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<configuration>
-                
-					<skipITs>true</skipITs>
-				</configuration>
-			
-			</plugin> -->
+			<!-- <plugin> TODO see later <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId> <configuration> <skipITs>true</skipITs> </configuration> </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -115,6 +107,14 @@
 			<version>${project.version}</version>
 			<artifactId>net.osgiliath.helpers.exam</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-jpa-module-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-data-module-api</artifactId>
 		</dependency>
 		<!-- Karaf Test Framework Version -->
 		<dependency>

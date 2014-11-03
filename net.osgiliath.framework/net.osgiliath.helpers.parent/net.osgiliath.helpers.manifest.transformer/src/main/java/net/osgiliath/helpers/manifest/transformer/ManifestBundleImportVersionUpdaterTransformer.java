@@ -113,11 +113,19 @@ public class ManifestBundleImportVersionUpdaterTransformer {
                             foundMatch = Boolean.TRUE;
                             System.out.println("Replacement matched: "
                                     + symbolicName + "," + specialization);
+                            Pattern versionDeclarationPattern = Pattern.compile(";\\s*version\\s*=\\s*\"");
+                            Matcher versionDeclarationMatcher = versionDeclarationPattern.matcher(specialization);
+                            if (!versionDeclarationMatcher.find()) {
+                            	specialization = specialization + ";version=\""
+                                        + entriesVersionUpdates.get(key)
+                                        + "\"";
+                            } else {
                             specialization = specialization.replaceAll(
                                     ";\\s*version\\s*=\\s*\".*?\"",
                                     ";version=\""
                                             + entriesVersionUpdates.get(key)
                                             + "\"");
+                            }
                             updatedImports.append(specialization);
                         }
                     }

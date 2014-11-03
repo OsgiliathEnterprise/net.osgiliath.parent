@@ -23,6 +23,7 @@ package net.osgiliath.messaging.cdi.repository.impl.itests;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import javax.inject.Inject;
 
@@ -41,6 +42,7 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
@@ -130,5 +132,11 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfigurationFactory 
     public Option[] config() {
 	return createConfig();
     }
+
+	@Override
+	protected Option loggingLevel() {
+		
+		return logLevel(LogLevel.INFO);
+	}
 
 }

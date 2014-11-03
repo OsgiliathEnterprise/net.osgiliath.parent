@@ -13,14 +13,13 @@
 	xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.1.0"
 	xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs" xmlns:cxf="http://cxf.apache.org/blueprint/core"
 	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd
 	http://aries.apache.org/xmlns/transactions/v1.1.0 http://aries.apache.org/schemas/transaction/transactionv11.xsd
 	http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 	http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
-	http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
-	 http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+	http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
 
 	<cm:property-placeholder persistent-id="cxfconfig"
 		id="cxfconfig" placeholder-prefix="$[" placeholder-suffix="]" />
@@ -49,6 +48,14 @@
 	<reference id="jmsXA" interface="org.apache.camel.Component"
 		filter="(component-type=jmsXA)">
 	</reference>
+	<reference id="jmsTemplate" interface="org.springframework.jms.core.JmsOperations"
+		availability="mandatory" filter="(component-type=jms)">
+	</reference>
+	<reference id="jmsXATemplate" interface="org.springframework.jms.core.JmsOperations"
+		availability="mandatory" filter="(component-type=jmsXA)">
+	</reference>
+	
+	
 	<!-- JSR 303 validator -->
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
@@ -59,15 +66,13 @@
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
 	</bean>
-	<!-- Camel context -->
-	<camel:camelContext id="camelCtx">
 	
-	</camel:camelContext>
 	<!-- JMS aware service -->
 	<bean id="helloServiceJMS"
 		class="net.osgiliath.hello.business.impl.services.impl.HelloServiceJMS">
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
+		<property name="template" ref="jmsXATemplate"></property>
 	</bean>
 	<!-- Swagger API listing resource -->
 	<bean id="swaggerResourceJSON"

@@ -56,12 +56,14 @@
 		<module>net.osgiliath.helpers.cdi.cxf.jaxrs</module>
 		<module>net.osgiliath.helpers.cdi.eager</module>
 		<module>net.osgiliath.wrappers</module>
-		<module>net.osgiliath.helpers.camel.cdi.configadmin</module>
+		<module>net.osgiliath.helpers.deltaspike.configadmin</module>
 		<module>net.osgiliath.helpers.swagger.cdi</module>
 		<module>net.osgiliath.helpers.exam</module>
 		<module>net.osgiliath.helpers.derby</module>
 		<module>net.osgiliath.helpers.manifest.transformer</module>
 		<module>net.osgiliath.helpers.swagger.ui</module>
 		<module>net.osgiliath.helpers.camel</module>
+		<module>net.osgiliath.helpers.activemq.broker</module>
+		<module>net.osgiliath.helpers.camel.activemq</module>
 	</modules>
 </project>

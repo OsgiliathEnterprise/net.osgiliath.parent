@@ -48,7 +48,7 @@
 	<bean id="xmljson" class="org.apache.camel.dataformat.xmljson.XmlJsonDataFormat"></bean>
 
 	<bean id="thrownExceptionMessageToInBodyProcessor"
-		class="helpers.cxf.exception.handling.camel.processor.ThrownExceptionMessageToInBodyProcessor" />
+		class="net.osgiliath.helpers.camel.ThrownExceptionMessageToInBodyProcessor" />
 	<bean id="xstream" class="utils.XStreamDataFormatWithGoodClassLoader"></bean>
 
 	<camelContext id="camelCtx"

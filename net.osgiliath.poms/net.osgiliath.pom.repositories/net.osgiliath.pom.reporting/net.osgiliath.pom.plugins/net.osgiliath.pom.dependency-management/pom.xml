@@ -156,7 +156,6 @@
 				<artifactId>commons-lang</artifactId>
 				<version>${commons-lang.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>commons-logging</groupId>
 				<artifactId>commons-logging</artifactId>
@@ -256,6 +255,7 @@
 				<artifactId>jms-api</artifactId>
 				<version>${javax.jms.api.version}</version>
 			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>javax.json</groupId>
 				<artifactId>javax.json-api</artifactId>
@@ -386,6 +386,7 @@
 				<version>${org.apache.aries.blueprint.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.aries</groupId>
 				<artifactId>org.apache.aries.util</artifactId>
@@ -395,31 +396,31 @@
 			<dependency>
 				<groupId>org.apache.aries.jndi</groupId>
 				<artifactId>org.apache.aries.jndi.api</artifactId>
-				<version>${karaf.feature.jndi.version}</version>
+				<version>${org.apache.aries.jndi.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.aries.jndi</groupId>
 				<artifactId>org.apache.aries.jndi.core</artifactId>
-				<version>${karaf.feature.jndi.version}</version>
+				<version>${org.apache.aries.jndi.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.aries.jndi</groupId>
 				<artifactId>org.apache.aries.jndi.legacy.support</artifactId>
-				<version>${karaf.feature.jndi.version}</version>
+				<version>${org.apache.aries.jndi.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.aries.jndi</groupId>
 				<artifactId>org.apache.aries.jndi.rmi</artifactId>
-				<version>${karaf.feature.jndi.version}</version>
+				<version>${org.apache.aries.jndi.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.aries.jndi</groupId>
 				<artifactId>org.apache.aries.jndi.url</artifactId>
-				<version>${karaf.feature.jndi.version}</version>
+				<version>${org.apache.aries.jndi.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
@@ -445,6 +446,24 @@
 				<artifactId>org.apache.aries.jpa.container.context</artifactId>
 				<version>${karaf.feature.jpa.version}</version>
 			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
+			<dependency>
+				<groupId>org.apache.aries.spifly</groupId>
+				<artifactId>org.apache.aries.spifly.core-internal</artifactId>
+				<version>${org.apache.aries.spifly.version}</version>
+			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
+			<dependency>
+				<groupId>org.apache.aries.spifly</groupId>
+				<artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
+				<version>${org.apache.aries.spifly.version}</version>
+			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
+			<dependency>
+				<groupId>org.apache.aries.spifly</groupId>
+				<artifactId>org.apache.aries.spifly.weaver-internal</artifactId>
+				<version>${org.apache.aries.spifly.version}</version>
+			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
@@ -461,6 +480,7 @@
 				<artifactId>org.apache.aries.transaction.manager</artifactId>
 				<version>${karaf.feature.transaction.version}</version>
 			</dependency>
+
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
@@ -802,7 +822,6 @@
 				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-jpa-module-api</artifactId>
 				<version>${org.apache.deltaspike.version}</version>
-				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.deltaspike.modules</groupId>
@@ -1423,6 +1442,12 @@
 				<artifactId>org.apache.servicemix.bundles.spring-jms</artifactId>
 				<version>${karaf.feature.spring4.version}</version>
 			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-ldap</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap}</version>
+			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1675,6 +1700,14 @@
 					<exclusion>
 						<groupId>log4j</groupId>
 						<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jmxtools</artifactId>
+						<groupId>com.sun.jdmk</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>jmxri</artifactId>
+						<groupId>com.sun.jmx</groupId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -2484,6 +2517,18 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+			<dependency>
+				<groupId>org.springframework.batch</groupId>
+				<artifactId>spring-batch-core</artifactId>
+				<version>${org.springframework.batch.version}</version>
+			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+			<dependency>
+				<groupId>org.springframework.batch</groupId>
+				<artifactId>spring-batch-infrastructure</artifactId>
+				<version>${org.springframework.batch.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-commons</artifactId>
@@ -2548,6 +2593,12 @@
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-aspects</artifactId>
+				<version>${org.springframework.security.version}</version>
+			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-config</artifactId>
 				<version>${org.springframework.security.version}</version>
 			</dependency>
@@ -2555,6 +2606,12 @@
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-core</artifactId>
+				<version>${org.springframework.security.version}</version>
+			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-ldap</artifactId>
 				<version>${org.springframework.security.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
@@ -2643,22 +2700,24 @@
 		<junit.version>4.9</junit.version>
 		<karaf.feature.cxf.version>3.0.1</karaf.feature.cxf.version>
 		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
-		<karaf.feature.jndi.version>1.0.0</karaf.feature.jndi.version>
+		<karaf.feature.jndi.version>3.0.2</karaf.feature.jndi.version>
 		<karaf.feature.jpa.version>1.0.1</karaf.feature.jpa.version>
 		<karaf.feature.spring3.version>3.2.11.RELEASE_1</karaf.feature.spring3.version>
 		<karaf.feature.spring4.version>4.0.7.RELEASE_1</karaf.feature.spring4.version>
 		<karaf.feature.spring-dm.version>1.2.1</karaf.feature.spring-dm.version>
 		<karaf.feature.transaction.version>1.1.0</karaf.feature.transaction.version>
-		<org.liquibase.liquibase.version>3.1.1</org.liquibase.liquibase.version>
+		<org.liquibase.liquibase.version>3.2.2</org.liquibase.liquibase.version>
 		<logback.version>1.1.2</logback.version>
 		<mockito.version>1.8.4</mockito.version>
 		<openwebbeans.version>1.2.4</openwebbeans.version>
 		<org.apache.activemq_activeio-core.version>3.1.4</org.apache.activemq_activeio-core.version>
 		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
 		<org.apache.aries.blueprint.version>1.1.0</org.apache.aries.blueprint.version>
+		<org.apache.aries.jndi.version>1.0.0</org.apache.aries.jndi.version>
 		<org.apache.aries.jpa.api.version>1.0.0</org.apache.aries.jpa.api.version>
 		<org.apache.aries.proxy.api.version>1.0.1</org.apache.aries.proxy.api.version>
 		<org.apache.aries.proxy.service.version>1.0.3</org.apache.aries.proxy.service.version>
+		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
 		<org.apache.aries.transaction.blueprint.version>1.0.1</org.apache.aries.transaction.blueprint.version>
 		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
 		<org.apache.cxf.karaf_cxf-karaf-commands.version>3.0.1</org.apache.cxf.karaf_cxf-karaf-commands.version>
@@ -2678,7 +2737,7 @@
 		<org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version>1.1</org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version>
 		<org.apache.karaf.features_enterprise_connector.version>3.1.1</org.apache.karaf.features_enterprise_connector.version>
 		<org.apache.karaf.jdbc_org.apache.karaf.jdbc.version>${karaf.version}</org.apache.karaf.jdbc_org.apache.karaf.jdbc.version>
-		<org.apache.karaf.jndi_org.apache.karaf.jndi.api.version>1.0.0</org.apache.karaf.jndi_org.apache.karaf.jndi.api.version>
+		<org.apache.karaf.jndi_org.apache.karaf.jndi.api.version>3.0.1</org.apache.karaf.jndi_org.apache.karaf.jndi.api.version>
 		<org.apache.neethi_neethi.version>3.0.3</org.apache.neethi_neethi.version>
 		<org.apache.openjpa.version>2.3.0</org.apache.openjpa.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>3.1_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>
@@ -2748,8 +2807,10 @@
 		<org.osgi-core.version>5.0.0</org.osgi-core.version>
 		<org.osgi.foundation.version>1.2.0</org.osgi.foundation.version>
 		<org.seleniumhq.selenium.version>2.43.1</org.seleniumhq.selenium.version>
+		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
 		<org.springframework.data.commons.version>1.9.0.RELEASE</org.springframework.data.commons.version>
 		<org.springframework.data.jpa.version>1.7.0.RELEASE</org.springframework.data.jpa.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap>1.3.2.RELEASE_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap>
 		<org.springframework.osgi.version>1.2.1</org.springframework.osgi.version>
 		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
@@ -2782,20 +2843,5 @@
 		<xom.version>1.2.5</xom.version>
 		<xml-apis.version>1.4.01</xml-apis.version>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.zookeeper</groupId>
-			<artifactId>zookeeper</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>jmxtools</artifactId>
-					<groupId>com.sun.jdmk</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jmxri</artifactId>
-					<groupId>com.sun.jmx</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
+
 </project>

@@ -58,13 +58,13 @@
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.helpers.activemq.jms.connectionfactory.exporter</artifactId>
+			<artifactId>net.osgiliath.helpers.activemq.broker</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.camel.cdi.configadmin</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.helpers.activemq.jms.connectionfactory.exporter</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
@@ -83,11 +83,7 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-blueprint</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-camel</artifactId>
-		</dependency>
+		
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
@@ -113,28 +109,6 @@
 		<dependency>
 			<groupId>org.apache.aries.transaction</groupId>
 			<artifactId>org.apache.aries.transaction.manager</artifactId>
-		</dependency>
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-jms</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<dependency>
-			<groupId>org.apache.camel.karaf</groupId>
-			<artifactId>apache-camel</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
-		<dependency>
-			<groupId>org.apache.camel.karaf</groupId>
-			<artifactId>camel-karaf-commands</artifactId>
 		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>

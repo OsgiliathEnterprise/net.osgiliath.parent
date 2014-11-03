@@ -22,13 +22,19 @@ package net.osgiliath.messaging;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Builder;
 /**
  * 
  * @author charliemordant
  * sample entity
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class HelloEntity implements Serializable {
     /**
 	 * serial

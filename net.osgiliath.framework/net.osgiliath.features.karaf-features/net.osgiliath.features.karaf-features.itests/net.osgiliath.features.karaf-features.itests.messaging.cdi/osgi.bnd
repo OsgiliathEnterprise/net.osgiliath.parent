@@ -1,15 +1,12 @@
 Require-Capability: osgi.extender; filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)",\
- org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)",\
- org.ops4j.pax.cdi.extension;filter:="(extension=eager)"
+ org.ops4j.pax.cdi.extension;filter:="(extension=eager)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)" 
 Import-Package: javax.validation,\
- net.osgiliath.helper.camel.configadmin,\
  org.springframework.transaction,\
  javax.transaction,\
- org.apache.camel,\
  javax.annotation;version="0",\
  org.apache.camel.support,\
  org.apache.camel.cdi.internal,\
- org.apache.camel.cdi.component.properties,\
  *

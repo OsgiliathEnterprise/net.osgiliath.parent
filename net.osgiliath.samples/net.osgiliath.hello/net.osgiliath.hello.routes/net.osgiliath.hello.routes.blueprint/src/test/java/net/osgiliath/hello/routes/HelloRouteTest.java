@@ -59,9 +59,6 @@ public class HelloRouteTest {
     @DirtiesContext
     @Test
     public void helloRouteMustHaveBeenCalled() throws InterruptedException {
-	// JsonObject model = Json.createObjectBuilder().add("helloObject",
-	// Json.createObjectBuilder().add("helloMessage",
-	// "toto").build()).build();
 	JsonObject model = Json.createObjectBuilder()
 		.add("helloMessage", "toto").build();
 	Map headers = new HashMap();

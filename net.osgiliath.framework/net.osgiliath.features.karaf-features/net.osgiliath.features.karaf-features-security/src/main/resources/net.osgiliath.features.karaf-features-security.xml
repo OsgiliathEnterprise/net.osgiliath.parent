@@ -23,11 +23,16 @@ limitations under the License.
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
 	<feature name='osgiliath-security' version='${project.version}'>
-		<feature version='${karaf.feature.spring3.version}'>spring</feature>
+		<feature version='${karaf.feature.spring3.version}'>spring-jdbc</feature>
 		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr250-1.0/${org.apache.servicemix.specs.version}</bundle>
+		<bundle>mvn:org.springframework.security/spring-security-aspects/${org.springframework.security.version}</bundle>
 		<bundle>mvn:org.springframework.security/spring-security-core/${org.springframework.security.version}</bundle>
 		<feature version='${karaf.feature.spring3.version}'>spring-web</feature>
 		<bundle>mvn:org.springframework.security/spring-security-config/${org.springframework.security.version}</bundle>
+		<bundle>mvn:org.springframework.batch/spring-batch-core/${org.springframework.batch.version}</bundle>
+		<bundle>mvn:org.springframework.batch/spring-batch-infrastructure/${org.springframework.batch.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-ldap/${project.version}</bundle>
+		<bundle>mvn:org.springframework.security/spring-security-ldap/${org.springframework.security.version}</bundle>
 		<feature version='${karaf.version}'>http</feature>
 		<bundle>mvn:org.springframework.security/spring-security-web/${org.springframework.security.version}</bundle>
 	</feature>

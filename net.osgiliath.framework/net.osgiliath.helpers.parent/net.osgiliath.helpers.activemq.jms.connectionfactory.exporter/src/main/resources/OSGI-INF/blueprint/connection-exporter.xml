@@ -1,180 +1,106 @@
-<!-- #%L net.osgiliath.helpers.activemq.jms.connectionfactory.exporter %% 
-	Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 
-	2.0 (the "License"); you may not use this file except in compliance with 
-	the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
-	Unless required by applicable law or agreed to in writing, software distributed 
-	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-	the specific language governing permissions and limitations under the License. 
-	#L% -->
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-	xmlns:amq="http://activemq.apache.org/schema/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- #%L net.osgiliath.helpers.activemq.jms.connectionfactory.exporter %% Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file 
+	except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations 
+	under the License. #L% -->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
-http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
-	<cm:property-placeholder persistent-id="amqconfig"
-		id="amqconfig" placeholder-prefix="$[" placeholder-suffix="]">
+		http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+	<cm:property-placeholder persistent-id="amqconfig" id="amqconfig" placeholder-prefix="$[" placeholder-suffix="]">
 		<cm:default-properties>
 			<cm:property name="jmsTransportConnector.uri" value="tcp://localhost:61616" />
 			<cm:property name="jmsXATransportConnector.uri" value="tcp://localhost:61626" />
 			<cm:property name="stompTransportConnector.uri" value="stomp://localhost:61612" />
 			<cm:property name="stompXATransportConnector.uri" value="stomp://localhost:61623" />
-			<cm:property name="webSocketTransportConnector.uri"
-				value="ws://localhost:61614" />
-			<cm:property name="webSocketXATransportConnector.uri"
-				value="ws://localhost:61624" />
+			<cm:property name="broker-name" value="amq-broker" />
+			<cm:property name="webSocketTransportConnector.uri" value="ws://localhost:61614" />
+			<cm:property name="webSocketXATransportConnector.uri" value="ws://localhost:61624" />
 		</cm:default-properties>
 	</cm:property-placeholder>
-	<reference id="osgiPlatformTransactionManager"
-		interface="org.springframework.transaction.PlatformTransactionManager" />
 	<!-- access through JTATransactionManager -->
 	<reference id="osgiJtaTransactionManager" interface="javax.transaction.TransactionManager" />
-	<amq:broker brokerName="brokerB1" shutdownOnMasterFailure="true" useJmx="true">
-		<amq:destinationPolicy>
-			<amq:policyMap>
-				<amq:policyEntries>
-					<amq:policyEntry queue=">" producerFlowControl="true"
-						memoryLimit="5mb">
-						<amq:deadLetterStrategy>
-							<amq:individualDeadLetterStrategy
-								queuePrefix="DLQ." useQueueForQueueMessages="true" />
-						</amq:deadLetterStrategy>
-					</amq:policyEntry>
-				</amq:policyEntries>
-			</amq:policyMap>
-		</amq:destinationPolicy>
-		<amq:managementContext>
-			<amq:managementContext createConnector="true" />
-		</amq:managementContext>
-		<amq:persistenceAdapter>
-			<amq:kahaDB directory="activeMQ/kahadb-jms"
-				enableJournalDiskSyncs="false" indexWriteBatchSize="10000"
-				indexCacheSize="1000" />
-		</amq:persistenceAdapter>
-		<amq:plugins>
-			<amq:loggingBrokerPlugin />
-		</amq:plugins>
-		<amq:systemUsage>
-			<amq:systemUsage>
-				<amq:memoryUsage>
-					<amq:memoryUsage limit="420 mb" />
-				</amq:memoryUsage>
-				<amq:storeUsage>
-					<amq:storeUsage limit="1 gb" />
-				</amq:storeUsage>
-				<amq:tempUsage>
-					<amq:tempUsage limit="250 mb" />
-				</amq:tempUsage>
-			</amq:systemUsage>
-		</amq:systemUsage>
-		<amq:transportConnectors>
-			<!-- stomp (from/to web) -->
-			<amq:transportConnector name="stomp"
-				uri="$[stompTransportConnector.uri]" />
-			<amq:transportConnector name="stompXA"
-				uri="$[stompXATransportConnector.uri]" />
-			<!-- websocket (stomp underlay) -->
-			<amq:transportConnector name="websocket"
-				uri="$[webSocketTransportConnector.uri]" />
-			<amq:transportConnector name="websocketXA"
-				uri="$[webSocketXATransportConnector.uri]" />
-			<!-- jms -->
-			<amq:transportConnector name="jms"
-				uri="$[jmsTransportConnector.uri]" />
-			<amq:transportConnector name="jmsXA"
-				uri="$[jmsXATransportConnector.uri]" />
-		</amq:transportConnectors>
-	</amq:broker>
-	<!-- <amq:connectionFactory id="jmsFactory" brokerURL="$[jmsTransportConnector.uri]" 
-		beanName="jmsFactory" /> -->
-	<!-- <amq:xaConnectionFactory id="jmsXAFactory" brokerURL="$[jmsXATransportConnector.uri]" 
-		beanName="jmsXAFactory" /> -->
-	<!-- <amq:connectionFactory id="webSocketFactory" brokerURL="$[webSocketTransportConnector.uri]" 
-		beanName="webSocketFactory" /> -->
-	<!-- <amq:xaConnectionFactory id="webSocketXAFactory"
-		brokerURL="$[webSocketXATransportConnector.uri]" beanName="webSocketXAFactory" /> -->
-	<!-- <amq:connectionFactory id="stompConnectionFactory"
-		brokerURL="$[stompTransportConnector.uri]" beanName="stompConnectionFactory" />
-	<amq:xaConnectionFactory id="stompXAConnectionFactory"
-		brokerURL="$[stompXATransportConnector.uri]" beanName="stompXAConnectionFactory" /> -->
-
-
-
+	<reference id="osgiPlatformTransactionManager" interface="org.springframework.transaction.PlatformTransactionManager" />
 	<!-- jms confactory -->
 	<bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="$[jmsTransportConnector.uri]" />
 	</bean>
-	<bean id="cachedJmsConnectionFactory"
-		class="org.springframework.jms.connection.CachingConnectionFactory">
-		<property name="targetConnectionFactory" ref="jmsFactory" />
-		<property name="sessionCacheSize" value="3" />
-	</bean>
-	<bean id="jmsXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
-		<property name="brokerURL" value="$[jmsXATransportConnector.uri]" />
+	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+		<property name="maxConnections" value="8" />
+		<property name="connectionFactory" ref="jmsFactory" />
 	</bean>
 
+	<bean id="jmsXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
+		<property name="brokerURL" value="$[jmsXATransportConnector.uri]" />
+		<property name="redeliveryPolicy">
+			<bean class="org.apache.activemq.RedeliveryPolicy">
+				<property name="maximumRedeliveries" value="0" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="jmsXaPoolConnectionFactory" class="org.apache.activemq.pool.JcaPooledConnectionFactory">
+		<property name="maxConnections" value="8" />
+		<property name="connectionFactory" ref="jmsXAFactory" />
+		<property name="transactionManager" ref="osgiJtaTransactionManager" />
+		<property name="name" value="activemq.${broker-name}" />
+	</bean>
 	<bean id="stompConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="$[stompTransportConnector.uri]" />
 	</bean>
 	<bean id="stompXAConnectionFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
 		<property name="brokerURL" value="$[stompXATransportConnector.uri]" />
 	</bean>
-
 	<bean id="webSocketFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="$[webSocketTransportConnector.uri]" />
 	</bean>
 	<bean id="webSocketXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
 		<property name="brokerURL" value="$[webSocketXATransportConnector.uri]" />
 	</bean>
-	
 	<!-- jms connection factory to export -->
-	<service ref="cachedJmsConnectionFactory" interface="javax.jms.ConnectionFactory">
+	<service ref="pooledConnectionFactory" interface="javax.jms.ConnectionFactory">
 		<service-properties>
 			<entry key="component-type" value="jms" />
 		</service-properties>
 	</service>
 
 	<!-- to remove: normally you don't have to use websocket as a transport -->
-	<!-- <service ref="cachedWebSocketConnectionFactory" interface="javax.jms.ConnectionFactory"> 
-		<service-properties> <entry key="component-type" value="websocket" /> </service-properties> 
-		</service> -->
+	<!-- <service ref="cachedWebSocketConnectionFactory" interface="javax.jms.ConnectionFactory"> <service-properties> <entry key="component-type" value="websocket" /> </service-properties> </service> -->
 
 	<!-- JMS XA factory export -->
-	<service ref="jmsXAFactory" interface="javax.jms.XAConnectionFactory">
+	<service ref="jmsXaPoolConnectionFactory" interface="javax.jms.ConnectionFactory">
 		<service-properties>
 			<entry key="component-type" value="jmsXA" />
 		</service-properties>
 	</service>
 
-	<!-- Camel JMS component -->
-	<bean id="camel-jms-component" class="org.apache.activemq.camel.component.ActiveMQComponent">
-		<property name="connectionFactory" ref="cachedJmsConnectionFactory"></property>
-		<property name="transacted" value="false" />
-		<property name="concurrentConsumers" value="5" />
-		<property name="maxConcurrentConsumers" value="100" />
-		<property name="cacheLevelName" value="CACHE_CONSUMER" />
-	</bean>
-	<!-- Camel JMS XA component -->
-	<bean id="camel-jms-xa-component" class="org.apache.activemq.camel.component.ActiveMQComponent">
-		<property name="connectionFactory" ref="jmsXAFactory"></property>
-		<property name="transacted" value="true" />
-		<property name="transactionManager" ref="osgiPlatformTransactionManager"></property>
-		<property name="concurrentConsumers" value="5" />
-		<property name="maxConcurrentConsumers" value="100" />
-		<property name="cacheLevelName" value="CACHE_NONE" />
-	</bean>
 
-
-	<!-- OSGI service for camel jms component -->
-	<service ref="camel-jms-component" interface="org.apache.camel.Component">
+	<bean id="jmsXAProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<argument ref="jmsXaPoolConnectionFactory"></argument>
+		<property name="receiveTimeout" value="2000"></property>
+		<property name="sessionTransacted" value="true"></property>
+		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE"></property>
+		<property name="deliveryPersistent" value="false" />
+		<property name="deliveryMode" value="1" />
+	</bean>
+	<bean id="jmsProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<argument ref="pooledConnectionFactory"></argument>
+		<property name="receiveTimeout" value="2000"></property>
+		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE"></property>
+		<property name="deliveryPersistent" value="false" />
+		<property name="deliveryMode" value="1" />
+	</bean>
+	<!-- jms connection factory to export -->
+	<service ref="jmsXAProducerTemplate" interface="org.springframework.jms.core.JmsOperations">
 		<service-properties>
 			<entry key="component-type" value="jms" />
 		</service-properties>
 	</service>
-	<!-- OSGI service for camel JMS XA component -->
-	<service ref="camel-jms-xa-component" interface="org.apache.camel.Component">
+
+
+	<!-- JMS XA factory export -->
+	<service ref="jmsProducerTemplate" interface="org.springframework.jms.core.JmsOperations">
 		<service-properties>
 			<entry key="component-type" value="jmsXA" />
 		</service-properties>
 	</service>
+
 </blueprint>
