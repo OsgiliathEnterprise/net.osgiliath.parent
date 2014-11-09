@@ -17,6 +17,11 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
 		<!-- org.apache.karaf.features_spring_spring -->
 		<dependency>
 			<groupId>org.apache.karaf.deployer</groupId>

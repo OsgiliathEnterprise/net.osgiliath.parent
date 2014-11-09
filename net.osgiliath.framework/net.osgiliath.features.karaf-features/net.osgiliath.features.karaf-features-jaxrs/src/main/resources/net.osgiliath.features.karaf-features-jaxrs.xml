@@ -27,7 +27,7 @@
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.cxf.jaxrs/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.cxf-integration-cdi/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.cxf-integration-cdi/${project.version}</bundle>
 		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
 	</feature>
 	<feature name="osgiliath-swagger-rest" version="${project.version}" resolver="(obr)">

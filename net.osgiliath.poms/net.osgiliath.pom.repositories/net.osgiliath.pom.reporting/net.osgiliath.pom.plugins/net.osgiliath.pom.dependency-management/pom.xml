@@ -151,6 +151,7 @@
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
@@ -169,6 +170,7 @@
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+            <!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>commons-pool</groupId>
 				<artifactId>commons-pool</artifactId>
