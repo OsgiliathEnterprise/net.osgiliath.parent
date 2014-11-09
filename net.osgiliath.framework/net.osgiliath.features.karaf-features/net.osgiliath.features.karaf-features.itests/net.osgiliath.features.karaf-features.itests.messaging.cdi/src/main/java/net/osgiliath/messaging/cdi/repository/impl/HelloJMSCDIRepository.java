@@ -40,66 +40,67 @@ import org.apache.camel.cdi.Uri;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  * 
- * @author charliemordant
- * JMS Service implementation
+ * @author charliemordant JMS Service implementation
  */
 @ApplicationScoped
 @Eager
 @ContextName
 public class HelloJMSCDIRepository implements HelloCDIRepository {
-    /**
-     * Logger
-     */
-    private static final Logger LOG = LoggerFactory.getLogger(HelloJMSCDIRepository.class);
-    /**
-     * entities registry
-     */
-    private List<HelloEntity> entities = new ArrayList<HelloEntity>();
-    /**
-     * message producer for integrtaion test
-     */
-    @Inject
-    @Uri("jms:queue:helloServiceQueueOut")
-    private ProducerTemplate producer;
-    /**
-     * message producer for internal consuming
-     */
-    @Inject
-    @Uri("jms:queue:helloServiceQueueIn2")
-    private ProducerTemplate internalProducer;
-    /**
-     * Producer for the route
-     */
-    @Inject
-    @Uri("jms:queue:helloServiceQueueIn")
-    private ProducerTemplate routeProducer;
-    /**
-     * Saves entities
-     */
-    public <S extends HelloEntity> void directSave(@Body S entity) {
-	internalProducer.sendBody(entity);
-	routeProducer.sendBody(entity);
+	/**
+	 * Logger
+	 */
+	private static final Logger LOG = LoggerFactory
+			.getLogger(HelloJMSCDIRepository.class);
+	/**
+	 * entities registry
+	 */
+	private List<HelloEntity> entities = new ArrayList<HelloEntity>();
+	/**
+	 * message producer for integrtaion test
+	 */
+	@Inject
+	@Uri("jms:queue:helloServiceQueueOut")
+	private ProducerTemplate producer;
+	/**
+	 * message producer for internal consuming
+	 */
+	@Inject
+	@Uri("jms:queue:helloServiceQueueIn2")
+	private ProducerTemplate internalProducer;
+	/**
+	 * Producer for the route
+	 */
+	@Inject
+	@Uri("jms:queue:helloServiceQueueIn")
+	private ProducerTemplate routeProducer;
 
-    }
-    /**
-     * Internal consumer (not working for now)
-     * @param entity to consume
-     */
-    @Consume(uri = "jms:queue:helloServiceQueueIn2")
-    public <S extends HelloEntity> void save(@Body S entity) {
-	LOG.info("receiving message on internally (via @Consumer");
-	this.entities.add(entity);
-	final Hellos hellos = new Hellos();
-	final Collection<HelloEntity> retEntities = new ArrayList<>();
-	retEntities.add(entity);
-	hellos.setEntities(retEntities);
-	LOG.info("Sending hellos: " + hellos);
-	this.producer.sendBody(hellos);
-    }
+	/**
+	 * Saves entities
+	 */
+	public <S extends HelloEntity> void directSave(@Body S entity) {
+		internalProducer.sendBody(entity);
+		routeProducer.sendBody(entity);
 
-   
+	}
+
+	/**
+	 * Internal consumer (not working for now)
+	 * 
+	 * @param entity
+	 *            to consume
+	 */
+	@Consume(uri = "jms:queue:helloServiceQueueIn2")
+	public <S extends HelloEntity> void save(@Body S entity) {
+		LOG.info("receiving message on internally (via @Consumer");
+		this.entities.add(entity);
+		final Hellos hellos = new Hellos();
+		final Collection<HelloEntity> retEntities = new ArrayList<>();
+		retEntities.add(entity);
+		hellos.setEntities(retEntities);
+		LOG.info("Sending hellos: " + hellos);
+		this.producer.sendBody(hellos);
+	}
 
 }

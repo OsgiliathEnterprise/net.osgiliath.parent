@@ -7,9 +7,9 @@
 	KIND, either express or implied. See the License for the specific language 
 	governing permissions and limitations under the License. #L% -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mockito="http://www.mockito.org/spring/mockito"
-	
 	xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/beans/spring-context.xsd
@@ -17,7 +17,6 @@
        http://www.mockito.org/spring/mockito https://bitbucket.org/kubek2k/springockito/raw/tip/springockito/src/main/resources/spring/mockito.xsd">
 	<!-- TODO Route unit test sample -->
 	<mockito:spy beanName="helloService" />
-
 	<bean id="propertyResolver"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location"
@@ -44,6 +43,6 @@
 	<bean id="helloService" class="mocks.HelloCDIServiceMock" />
 <!-- CXF helper to convert JSR303 validation message to rest message body -->
 	<bean id="thrownExceptionMessageToInBodyProcessor"
-		class="helpers.cxf.exception.handling.camel.processor.ThrownExceptionMessageToInBodyProcessor" />
+		class="net.osgiliath.helpers.camel.ThrownExceptionMessageToInBodyProcessor" />
 
 </beans>

@@ -30,6 +30,7 @@ import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
 
+import org.apache.deltaspike.core.api.common.DeltaSpike;
 import org.apache.deltaspike.core.spi.config.ConfigSource;
 import org.apache.deltaspike.core.spi.config.ConfigSourceProvider;
 import org.osgi.framework.BundleContext;
@@ -38,6 +39,7 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
+import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 import com.google.common.collect.Lists;
@@ -56,6 +58,10 @@ public class ConfigAdminTracker implements
 	 * Properties
 	 */
 	private Collection<ConfigurationAdmin> admins = new HashSet<>();
+	Collection<ConfigurationAdmin> getAdmins() {
+		return admins;
+	}
+
 	/**
 	 * Singleton of the tracker
 	 */
@@ -64,6 +70,7 @@ public class ConfigAdminTracker implements
 	 * Bundle context
 	 */
 	private BundleContext context;
+	private ServiceTracker tracker;
 
 	/**
 	 * 
@@ -76,16 +83,36 @@ public class ConfigAdminTracker implements
 			instance = new ConfigAdminTracker();
 			if (context == null) {
 				instance.context = FrameworkUtil.getBundle(
-						CdiConfigAdminServiceActivator.class)
+						DeltaSpike.class)
 						.getBundleContext();
 			} else {
 				instance.context = context;
 			}
+			instance.tracker = new ServiceTracker(instance.context,
+					ConfigurationAdmin.class,
+					ConfigAdminTracker.getInstance(instance.context));
+			instance.parseInitialContribution(instance.context);
+			instance.tracker.open();
 
 		}
 		return instance;
 	}
-
+	public static synchronized void stop() {
+		instance.tracker.close();
+	}
+	private void parseInitialContribution(BundleContext bundleContext) {
+		try {
+			final ServiceReference<?>[] admins =  (ServiceReference<?>[]) context
+					.getAllServiceReferences(ConfigurationAdmin.class.getName(), null);
+			for ( ServiceReference<?> adminRef : admins ) {
+				
+				ConfigAdminTracker.getInstance(bundleContext).getAdmins().add((ConfigurationAdmin) context
+						.getService(adminRef));
+			}
+		} catch (InvalidSyntaxException e) {
+			log.error("Error getting servicereferences of config admin", e);
+		}
+	}
 	/**
 	 * Adds config
 	 */
@@ -93,7 +120,7 @@ public class ConfigAdminTracker implements
 	public final Object addingService(final ServiceReference reference) {
 		final ConfigurationAdmin admin = (ConfigurationAdmin) context
 				.getService(reference);
-		this.admins.add(admin);
+		getInstance(null).admins.add(admin);
 		return admin;
 	}
 
@@ -115,7 +142,7 @@ public class ConfigAdminTracker implements
 	public final void removedService(
 			ServiceReference<ConfigurationAdmin> reference, final Object service) {
 		final ConfigurationAdmin admin = context.getService(reference);
-		this.admins.remove(admin);
+		getInstance(null).admins.remove(admin);
 
 	}
 
@@ -133,7 +160,7 @@ public class ConfigAdminTracker implements
 	public String getProperty(String key) throws IOException,
 			InvalidSyntaxException {
 		log.info("Retreiving property key: " + key);
-		for (ConfigurationAdmin admin : this.admins) {
+		for (ConfigurationAdmin admin : getInstance(null).admins) {
 			final Configuration[] configurations = admin
 					.listConfigurations(null);
 			if (configurations != null) {
@@ -156,7 +183,7 @@ public class ConfigAdminTracker implements
 	public Map<String, String> getProperties() {
 		Map<String, String> ret = Maps.newHashMap();
 		try {
-			for (ConfigurationAdmin admin : this.admins) {
+			for (ConfigurationAdmin admin : getInstance(null).admins) {
 				final Configuration[] configurations = admin
 						.listConfigurations(null);
 				if (configurations != null) {
@@ -185,7 +212,7 @@ public class ConfigAdminTracker implements
 	@Override
 	public List<ConfigSource> getConfigSources() {
 		List<ConfigSource> ret = Lists.newArrayList();
-		for (ConfigurationAdmin admin : this.admins) {
+		for (ConfigurationAdmin admin : getInstance(null).admins) {
 			Configuration[] configurations;
 			try {
 				configurations = admin

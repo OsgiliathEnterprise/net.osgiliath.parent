@@ -50,10 +50,6 @@
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<executions>
@@ -162,11 +158,6 @@
 			<classifier>features</classifier>
 		</dependency>
 
-		<dependency><!-- TODO your model & databases module here -->
-			<groupId>${project.groupId}</groupId>
-			<version>${project.version}</version>
-			<artifactId>${project.parent.artifactId}.spi</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
@@ -176,6 +167,11 @@
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
 			<artifactId>${project.groupId}.model.database</artifactId>
+		</dependency>
+		<dependency><!-- TODO your model & databases module here -->
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
+			<artifactId>${project.parent.artifactId}.spi</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- #%L karaf-features-messaging %% Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance 
-	with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed 
-	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions 
-	and limitations under the License. #L% -->
+<!-- #%L karaf-features-messaging %% Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
+	You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
+	"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. #L% -->
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
@@ -21,20 +20,19 @@
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${geronimo-j2ee-management_1.1_spec.version}</bundle>
 		<bundle dependency="true">mvn:org.jvnet.jaxb2_commons/jaxb2-basics-runtime/${org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version}</bundle>
-		<bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${org.apache.servicemix.bundles.jaxb-impl.version}</bundle>
-		<bundle dependency="false">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-		<bundle dependency="false">mvn:commons-net/commons-net/${common-net_common-net.version}</bundle>
-		<bundle dependency='true'>wrap:mvn:org.apache.zookeeper/zookeeper/${org.apache.zookeeper_zookeeper.version}$Import-Package=*;resolution:=optional&amp;Export-Package=org.apache.zookeeper*;-noimport:=true&amp;overwrite=merge
-		</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${org.apache.servicemix.bundles.jaxb-impl.version}</bundle>
+		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
+		<bundle dependency="true">mvn:commons-net/commons-net/${common-net_common-net.version}</bundle>
+		<bundle dependency='true'>wrap:mvn:org.apache.zookeeper/zookeeper/${org.apache.zookeeper_zookeeper.version}$Import-Package=*;resolution:=optional&amp;Export-Package=org.apache.zookeeper*;-noimport:=true&amp;overwrite=merge</bundle>
 		<!-- uber osgi bundle means client is not that lean, todo: introduce client osgi bundle -->
-		<bundle dependency="false">mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
-		<bundle>mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq.version}</bundle>
 	</feature>
 
 	<!-- All bundles needed by the broker -->
 	<feature name="osgiliath-activemq" description="ActiveMQ broker libraries" version="${org.apache.activemq.version}" resolver="(obr)" start-level="50">
 		<feature>jetty</feature>
-		 <feature version="${org.apache.geronimo.components_geronimo-connector.version}">connector</feature>
+		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">connector</feature>
 		<feature version="${org.apache.activemq.version}">osgiliath-activemq-client</feature>
 		<bundle>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
@@ -65,41 +63,34 @@
 		<bundle dependency='true'>mvn:org.apache.xbean/xbean-blueprint/${xbean.version}</bundle>
 		<bundle>mvn:org.apache.activemq/activemq-blueprint/${org.apache.activemq.version}</bundle>
 	</feature>
-
-
 	<feature name="osgiliath-messaging" version="${project.version}">
 		<bundle>mvn:javax.validation/validation-api/${validation-api.version}</bundle>
 		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jms</feature>
 		<feature version='${org.apache.activemq.version}'>osgiliath-activemq-blueprint</feature>
 		<feature version='${karaf.feature.spring3.version}'>spring-tx</feature>
-		<bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
+		<bundle dependency='true'>mvn:commons-io/commons-io/${commons-io.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.activemq.jms.connectionfactory.exporter/${project.version}</bundle>
-		<bundle>mvn:org.apache.activemq/activemq-camel/${org.apache.activemq.version}</bundle>
 		<bundle>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq.version}</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/${org.apache.servicemix.bundles.oro.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/${org.apache.servicemix.bundles.oro.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles.jdom.version}</bundle>
-		<bundle>mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
 		<feature version='${project.version}'>osgiliath-messaging-spring</feature>
 	</feature>
 	<feature name="osgiliath-messaging-spring" version="${project.version}">
-	<feature version="${karaf.feature.spring3.version}">spring-jms</feature>
+		<feature version="${karaf.feature.spring3.version}">spring-jms</feature>
 	</feature>
 	<feature name="osgiliath-messaging-websocket" version="${project.version}">
 		<feature version='${project.version}'>osgiliath-messaging</feature>
 		<feature>jetty</feature>
-		<bundle>mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
 		<bundle>mvn:org.eclipse.jetty/jetty-websocket/${pax-jetty.version}</bundle>
 	</feature>
-	
-
 	<feature name="osgiliath-messaging-cdi" version="${project.version}">
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${project.version}'>osgiliath-messaging</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
-
-		<!-- <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.camel-cdi/${project.version}</bundle> -->
 	</feature>
 
 

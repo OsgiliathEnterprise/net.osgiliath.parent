@@ -2,7 +2,7 @@ var shared = function(config) {
 	 
 	config.set({
 		plugins : [ 'karma-coverage', 'karma-ng-scenario',
-				 'karma-phantomjs-launcher', /*'karma-firefox-launcher' , 'karma-chrome-launcher' , */'karma-jasmine'],
+				 'karma-phantomjs-launcher'/*, 'karma-firefox-launcher' , 'karma-chrome-launcher' , */'karma-jasmine'],
 		basePath : '',
 		autoWatch : true,
 		reporters : [ 'coverage' ],

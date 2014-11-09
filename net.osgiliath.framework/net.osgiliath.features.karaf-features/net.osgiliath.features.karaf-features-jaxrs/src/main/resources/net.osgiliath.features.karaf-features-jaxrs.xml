@@ -11,7 +11,7 @@
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
 
 
-	<feature name="osgiliath-jaxrs" version="${project.version}" resolver="(obr)">
+	<feature name="osgiliath-rest" version="${project.version}" resolver="(obr)">
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxrs</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxb</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-databinding-jaxb</feature>
@@ -19,30 +19,27 @@
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles.jdom.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cxf.exception.handling/${project.version}</bundle>
 		<configfile finalname="/etc/cxfconfig.cfg">mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/cfg/cxf</configfile>
-		<feature version='${project.version}'>osgiliath-swagger-jaxrs</feature>
+		<feature version='${project.version}'>osgiliath-swagger-rest</feature>
 	</feature>
 
-	<feature name="osgiliath-jaxrs-cdi" version="${project.version}" resolver="(obr)">
-		<feature version='${project.version}'>osgiliath-jaxrs</feature>
+	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)">
+		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.cxf.jaxrs/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.cxf-integration-cdi/${project.version}</bundle>
 		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
-		<bundle>mvn:org.apache.camel/camel-cdi/${camel-version}</bundle>
-		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.cdi.configadmin/${project.version}</bundle>
-		<feature version="${camel-version}">camel-core</feature>
 	</feature>
-	<feature name="osgiliath-swagger-jaxrs" version="${project.version}" resolver="(obr)">
+	<feature name="osgiliath-swagger-rest" version="${project.version}" resolver="(obr)">
 		<feature version='${project.version}'>osgiliath-swagger-annotations</feature>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-core/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-jaxrs/${project.version}</bundle>
-		<bundle>mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.version}</bundle>
-		<bundle>mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${com.fasterxml.jackson.version}</bundle>
-		<bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.version}</bundle>
-		<bundle>mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.version}</bundle>
-		<bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${com.fasterxml.jackson.version}</bundle>
-		<bundle>mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${com.fasterxml.jackson.version}</bundle>
+		<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.version}</bundle>
+		<bundle dependency="true">mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${com.fasterxml.jackson.version}</bundle>
+		<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.version}</bundle>
+		<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.version}</bundle>
+		<bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${com.fasterxml.jackson.version}</bundle>
+		<bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${com.fasterxml.jackson.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${org.apache.servicemix.bundles.swagger.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jackson-module-scala/${org.apache.servicemix.bundles.jackson-module-scala.version}</bundle>
 		<feature version='${project.version}'>osgiliath-scala</feature>

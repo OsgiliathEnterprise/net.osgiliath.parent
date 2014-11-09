@@ -25,34 +25,30 @@ import javax.inject.Inject;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
 import net.osgiliath.helpers.cdi.eager.Eager;
-
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.cxf.jaxrs.provider.json.JSONProvider;
-
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
 import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
-
 @Eager
-@CXFEndpoint(url = "/helloService", providersClasses={JSONProvider.class, JAXBElementProvider.class, ResourceListingProvider.class, ApiDeclarationProvider.class})
+@CXFEndpoint(url = "/helloService", providersClasses = { JSONProvider.class,
+		JAXBElementProvider.class, ResourceListingProvider.class,
+		ApiDeclarationProvider.class })
 @Path("/api-docs")
 @Api("/api-docs")
-@Produces(value={MediaType.APPLICATION_JSON})
-public class SwaggerAPIAccessService extends ApiListingResourceJSON{
+@Produces(value = { MediaType.APPLICATION_JSON })
+public class SwaggerAPIAccessService extends ApiListingResourceJSON {
 	@Inject
 	private BeanConfig config;
-	
 
 	@PostConstruct
 	private void injectConfig() {
 		config.toString();
 	}
-	
 
 }

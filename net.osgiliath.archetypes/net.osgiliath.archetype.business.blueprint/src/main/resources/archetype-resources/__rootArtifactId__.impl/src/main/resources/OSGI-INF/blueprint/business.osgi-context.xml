@@ -16,14 +16,13 @@
 	xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.1.0"
 	xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs" xmlns:cxf="http://cxf.apache.org/blueprint/core"
 	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd
 	http://aries.apache.org/xmlns/transactions/v1.1.0 http://aries.apache.org/schemas/transaction/transactionv11.xsd
 	http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 	http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
-	http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
-	 http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+	http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
 
 	<cm:property-placeholder persistent-id="cxfconfig"
 		id="cxfconfig" placeholder-prefix="${symbol_dollar}[" placeholder-suffix="]" />
@@ -36,12 +35,15 @@
 	<reference id="jTATransactionManager" interface="javax.transaction.TransactionManager"></reference>
 	<reference id="validatorFactory" interface="javax.validation.ValidatorFactory"
 		availability="mandatory" />
-	<reference id="jms" interface="org.apache.camel.Component"
+	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.JmsTemplateContainerListenerFactory" />
+	
+	<reference id="jmsTemplate" interface="org.springframework.jms.core.JmsOperations"
 		availability="mandatory" filter="(component-type=jms)">
 	</reference>
-	<reference id="jmsXA" interface="org.apache.camel.Component"
-		filter="(component-type=jmsXA)">
+	<reference id="jmsXATemplate" interface="org.springframework.jms.core.JmsOperations"
+		availability="mandatory" filter="(component-type=jmsXA)">
 	</reference>
+
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
 		factory-ref="validatorFactory" factory-method="getValidator" />
@@ -50,14 +52,15 @@
 		class="${package}.services.impl.HelloServiceJaxRS">
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 	</bean> -->
-	<!-- TODO remove declaration if you don't use JMS -->
-	<camel:camelContext id="camelCtx">
-	</camel:camelContext>
-	<!-- TODO remove this declaration -->
 	<!-- <bean id="helloServiceJMS"
 		class="${package}.impl.services.impl.HelloServiceJMS">
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
+	</bean>
+		<bean id="jmsListenerContainer" factory-ref="jmsTemplateContainerListenerFactory" factory-method="create" destroy-method="shutdownGracefully">
+		<argument value="true"></argument>
+		<argument value="helloServiceQueueIn"></argument>
+		<argument ref="helloServiceJMS"></argument>
 	</bean>
  -->
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />

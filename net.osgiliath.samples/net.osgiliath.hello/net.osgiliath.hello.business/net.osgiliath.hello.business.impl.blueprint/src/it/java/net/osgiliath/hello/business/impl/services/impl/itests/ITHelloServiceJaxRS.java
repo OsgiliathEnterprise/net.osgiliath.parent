@@ -67,6 +67,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jms.core.JmsOperations;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
@@ -92,7 +93,7 @@ public class ITHelloServiceJaxRS extends
 	// JMS template
 	@Inject
 	@Filter(value = "(component-type=jmsXA)")
-	private JmsTemplate template;
+	private JmsOperations template;
 	// exported REST adress
 	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
@@ -100,6 +101,7 @@ public class ITHelloServiceJaxRS extends
 	@ProbeBuilder
 	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 		builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+		builder.addTest(HelloEntityMessageCreator.class);
 		builder.setHeader(Constants.EXPORT_PACKAGE,
 				"net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
 		builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
@@ -153,20 +155,11 @@ public class ITHelloServiceJaxRS extends
 	@Test
 	public void testSayHelloJMS() throws JMSException {
 		log.debug("sending message");
-		template.send("helloServiceQueueIn", new MessageCreator(){
-
-			@Override
-			public Message createMessage(Session session) throws JMSException {
-				
-				return session.createObjectMessage(HelloEntity
-						.builder().helloMessage("Doe").build());
-			}});
+		template.send("helloServiceQueueIn", new HelloEntityMessageCreator());
 		log.debug("creating message consumer");
 		Message rcv = template.receive("helloServiceQueueOut");
 		Hellos hellos = (Hellos) ((ObjectMessage)rcv).getObject();
-		
 		assertEquals(1, hellos.getHelloCollection().size());
-	
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(helloServiceBaseUrl);
 		target = target.path("hello");

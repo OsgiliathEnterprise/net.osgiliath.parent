@@ -27,6 +27,8 @@ limitations under the License.
 		<bundle dependency="true">mvn:org.liquibase/liquibase-osgi/${org.liquibase.liquibase.version}</bundle>
 		<bundle dependency="true" >mvn:org.apache.neethi/neethi/${org.apache.neethi_neethi.version}</bundle>
 		<bundle dependency="true" >mvn:net.osgiliath.framework/net.osgiliath.helpers.derby/${project.version}</bundle>
-		<bundle>mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
+		<bundle dependency="true">mvn:commons-logging/commons-logging/${common-logging_common-logging.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.junit/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version}</bundle>
 	</feature>
 </features>

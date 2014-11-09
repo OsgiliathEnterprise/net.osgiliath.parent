@@ -48,24 +48,33 @@ public class ThrownExceptionMessageToInBodyProcessor implements Processor {
 	/**
 	 * The Logger
 	 */
-	private static Logger LOG = LoggerFactory.getLogger(ThrownExceptionMessageToInBodyProcessor.class);
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.apache.camel.Processor#process(org.apache.camel.Exchange)
-     */
-    @Override
-    public void process(Exchange exchange) throws Exception {
-    HttpOperationFailedException c = exchange.getProperty(
-		Exchange.EXCEPTION_CAUGHT, HttpOperationFailedException.class);
-	SAXBuilder sxb = new SAXBuilder();
-	if (c != null && c.getResponseHeaders().get(ExceptionMappingConstants.EXCEPTION_BODY_HEADER) != null) {
-		String body =  c.getResponseHeaders().get(ExceptionMappingConstants.EXCEPTION_BODY_HEADER);
-		LOG.info("Catched error in route: " + body);
-	    Document doc = sxb.build(new StringReader(body));
-	    exchange.getIn().setBody(
-		    doc.getRootElement().getChild(ExceptionMappingConstants.EXCEPTION_MESSAGE).getText());
+	private static Logger LOG = LoggerFactory
+			.getLogger(ThrownExceptionMessageToInBodyProcessor.class);
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.apache.camel.Processor#process(org.apache.camel.Exchange)
+	 */
+	@Override
+	public void process(Exchange exchange) throws Exception {
+		HttpOperationFailedException c = exchange.getProperty(
+				Exchange.EXCEPTION_CAUGHT, HttpOperationFailedException.class);
+		SAXBuilder sxb = new SAXBuilder();
+		if (c != null
+				&& c.getResponseHeaders().get(
+						ExceptionMappingConstants.EXCEPTION_BODY_HEADER) != null) {
+			String body = c.getResponseHeaders().get(
+					ExceptionMappingConstants.EXCEPTION_BODY_HEADER);
+			LOG.info("Catched error in route: " + body);
+			Document doc = sxb.build(new StringReader(body));
+			exchange.getIn()
+					.setBody(
+							doc.getRootElement()
+									.getChild(
+											ExceptionMappingConstants.EXCEPTION_MESSAGE)
+									.getText());
+		}
 	}
-    }
 
 }

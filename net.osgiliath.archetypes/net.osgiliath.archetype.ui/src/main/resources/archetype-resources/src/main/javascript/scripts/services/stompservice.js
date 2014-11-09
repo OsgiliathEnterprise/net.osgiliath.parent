@@ -14,13 +14,13 @@ angular.module('myApp', []).service('stompservice', function(){
 	this.url = this.protocol + '://' + this.host + ':' + this.port ;
 	this.stompClient = Stomp.client(this.url, 'v11.stomp');
 	this.stompClient.heartbeat.outgoing = 3000;
-	this.stompClient.heartbeat.incoming = 3000; 
+	this.stompClient.heartbeat.incoming = 3000;
 	this.stompClient.connect(this.user, this.password, function() {
 		console.info('client connected!');
 		
 	}, function(error) {
 	    // display the error's message header:
-	    alert(error.message);
+	    console.error(error.message);
 	  } );
 	
 	console.info('connectStomp instanciated: client: ' + JSON.stringify(this.stompClient));

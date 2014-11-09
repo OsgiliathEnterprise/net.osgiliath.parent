@@ -2,18 +2,16 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=validation)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=jaxrs-cdi)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)",\
- org.ops4j.pax.cdi.extension;filter:="(extension=camel-configadmin-extension)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=eager)"
 Require-Bundle: org.hibernate.validator
 Import-Package: helpers.cxf.exception.handling.jaxrs.mapper,\
  javax.annotation;version=0,\
- javax.servlet.*;version="[2,4)",\
  javax.transaction,\
  javax.validation,\
  net.osgiliath.helpers.cdi.eager,\
  net.osgiliath.helpers.cdi.eager.extension,\
- net.osgiliath.helper.camel.configadmin,\
  net.osgiliath.helpers.cdi.cxf.jaxrs,\
  org.apache.camel,\
  org.apache.camel.builder.xml,\

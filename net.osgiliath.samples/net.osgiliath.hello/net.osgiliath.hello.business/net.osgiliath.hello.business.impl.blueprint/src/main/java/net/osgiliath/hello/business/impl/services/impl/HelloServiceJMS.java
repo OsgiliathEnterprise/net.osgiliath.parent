@@ -25,12 +25,14 @@ import java.util.Set;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
+import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.validation.ConstraintViolation;
 import javax.validation.ValidationException;
 import javax.validation.Validator;
 
+import org.springframework.jms.core.JmsOperations;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
@@ -52,7 +54,7 @@ import com.google.common.collect.Lists;
  * 
  */
 @Slf4j
-public class HelloServiceJMS implements HelloService {
+public class HelloServiceJMS implements HelloService, MessageListener {
 	/**
 	 * Database persistence repository
 	 */
@@ -67,7 +69,7 @@ public class HelloServiceJMS implements HelloService {
 	 * JMS producer
 	 */
 	@Setter
-	private JmsTemplate template;
+	private JmsOperations template;
 
 	/**
 	 * JMS consumer
@@ -77,16 +79,12 @@ public class HelloServiceJMS implements HelloService {
 	@Override
 	public void persistHello(HelloEntity hello) {
 
-		Message msg = template.receive("helloServiceQueueIn");
-		HelloEntity helloObject_p;
-		try {
-			helloObject_p = (HelloEntity) ((ObjectMessage) msg).getObject();
-
+		
 			this.log.error("****************** Save on JMS Service **********************");
 			this.log.info("persisting new message with jms: "
-					+ helloObject_p.getHelloMessage());
+					+ hello.getHelloMessage());
 			final Set<ConstraintViolation<HelloEntity>> validationResults = validator
-					.validate(helloObject_p);
+					.validate(hello);
 			final StringBuilder errors = new StringBuilder("");
 
 			if (!validationResults.isEmpty()) {
@@ -98,19 +96,21 @@ public class HelloServiceJMS implements HelloService {
 							.append(violation.getMessage().replaceAll("\"", ""))
 							.append(";").append(System.lineSeparator());
 				}
-				throw new ValidationException(errors.toString());
+				this.template.send("helloServiceQueueOut", new MessageCreator() {
+					public Message createMessage(final Session session)
+							throws JMSException {
+						return session.createTextMessage(errors.toString());
+					}
+				});
 			}
-			this.helloObjectRepository.save(helloObject_p);
+			this.helloObjectRepository.save(hello);
 			this.template.send("helloServiceQueueOut", new MessageCreator() {
 				public Message createMessage(final Session session)
 						throws JMSException {
 					return session.createObjectMessage(getHellos());
 				}
 			});
-		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 	/**
@@ -138,8 +138,8 @@ public class HelloServiceJMS implements HelloService {
 	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
 		@Override
-		public String apply(HelloEntity arg0) {
-			return arg0.getHelloMessage();
+		public String apply(HelloEntity entity) {
+			return entity.getHelloMessage();
 		}
 	};
 
@@ -150,5 +150,17 @@ public class HelloServiceJMS implements HelloService {
 	public void deleteAll() {
 		this.helloObjectRepository.deleteAll();
 
+	}
+
+	@Override
+	public void onMessage(Message message) {
+		try {
+			HelloEntity helloObject_p = (HelloEntity) ((ObjectMessage) message).getObject();
+			persistHello(helloObject_p);
+		} catch (JMSException e) {
+			log.error("error receiving JMS message", e);
+		}
+
+		
 	}
 }

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,13 +19,14 @@ import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.camel.Component;
+import org.apache.camel.ConsumerTemplate;
+import org.apache.camel.ProducerTemplate;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
+@Slf4j
 public class ITService extends AbstractPaxExamKarafConfigurationFactory {
-	private static Logger LOG = LoggerFactory.getLogger(ITService.class);
 	@Inject
 	@Filter(timeout = 400000)
 	private BootFinished bootFinished;

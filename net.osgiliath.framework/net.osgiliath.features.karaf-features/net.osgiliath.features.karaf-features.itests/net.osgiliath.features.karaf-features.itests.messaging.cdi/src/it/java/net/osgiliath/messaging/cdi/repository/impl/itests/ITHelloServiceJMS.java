@@ -70,10 +70,10 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfigurationFactory 
     @Inject
     @Filter(timeout = 40000)
     private BootFinished bootFinished;
-
     @Inject
     @Filter(value = "(component-type=jms)")
     private Component jmsComponent;
+   
 
     // probe
     @ProbeBuilder

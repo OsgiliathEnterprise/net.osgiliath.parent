@@ -118,12 +118,6 @@
 		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.deltaspike-core-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-		<dependency>
 			<groupId>org.apache.deltaspike.core</groupId>
 			<artifactId>deltaspike-core-api</artifactId>
 		</dependency>

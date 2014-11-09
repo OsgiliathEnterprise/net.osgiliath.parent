@@ -31,12 +31,13 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
 //TODO Mock service
+
 public class HelloCDIServiceMock implements HelloService {
     private List mockedMessageStrings = Lists.newArrayList();
 
     @Override
     public void persistHello(HelloEntity helloMessage_p) {
-	mockedMessageStrings.add(helloMessage_p);
+    	mockedMessageStrings.add(helloMessage_p);
     }
 
     @Override

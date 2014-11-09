@@ -54,7 +54,6 @@
 	<camelContext id="camelCtx"
 		xmlns="http://camel.apache.org/schema/blueprint">
 		<contextScan />
-		<jmxAgent id="agent" disabled="true" />
 		<!-- <routeBuilder ref="helloRoute"></routeBuilder> -->
 	</camelContext>
 	<!--

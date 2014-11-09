@@ -15,25 +15,18 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
 	<repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
-	<feature name="osgiliath-swagger-ui" version="${project.version}"
-		resolver="(obr)">
+	<feature name="osgiliath-swagger-ui" version="${project.version}" resolver="(obr)">
 		<feature version='${karaf.version}'>war</feature>
-		<feature version='${project.version}'>osgiliath-jaxrs</feature>
+		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-swagger</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.ui/${project.version}/war</bundle>
 	</feature>
-	<feature name="osgiliath-swagger-ui-cdi" version="${project.version}"
-		resolver="(obr)">
-		<feature version='${karaf.version}'>war</feature>
-		<feature version='${project.version}'>osgiliath-jaxrs-cdi</feature>
-		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.ui/${project.version}/war</bundle>
-	</feature>
+	
 	<feature name="osgiliath-swagger" version="${project.version}" >
  	 	 <bundle>mvn:org.javassist/javassist/${org.javassist.version}</bundle>
  	 	 <feature version="${project.version}">osgiliath-functional</feature>
  	 	 <feature version="${project.version}">osgiliath-scala</feature>
- 	 	 <feature version="${project.version}"> osgiliath-swagger-jaxrs</feature>
+ 	 	 <feature version="${project.version}">osgiliath-swagger-rest</feature>
  	 </feature>
 	<feature name="osgiliath-hawtio" version="${project.version}" resolver="(obr)">
 		<feature version="${hawtio.version}">hawtio-core</feature>

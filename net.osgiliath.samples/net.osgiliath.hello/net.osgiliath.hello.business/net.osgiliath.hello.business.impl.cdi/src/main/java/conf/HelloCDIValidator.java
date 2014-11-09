@@ -31,14 +31,14 @@ import net.osgiliath.validator.osgi.ValidatorHelper;
  * @author charliemordant CDI validator producer
  */
 public class HelloCDIValidator {
-    /**
-     * 
-     * @return the CDI injected validator
-     */
-    @Produces
-    @org.hibernate.validator.cdi.HibernateValidator
-    @Default
-    public Validator createValidator() {
-	return ValidatorHelper.getValidator();
-    }
+	/**
+	 * 
+	 * @return the CDI injected validator
+	 */
+	@Produces
+	@org.hibernate.validator.cdi.HibernateValidator
+	@Default
+	public Validator createValidator() {
+		return ValidatorHelper.getValidator();
+	}
 }

@@ -28,7 +28,6 @@
 		<argument value="1527" />
 	</bean>
 	<bean id="pw" class="java.io.PrintWriter">
-
 		<argument value="derbyServer.log" />
 	</bean>
 	<bean id="derbyServerStarter" class="net.osgiliath.database.starter.DatabaseStarter"

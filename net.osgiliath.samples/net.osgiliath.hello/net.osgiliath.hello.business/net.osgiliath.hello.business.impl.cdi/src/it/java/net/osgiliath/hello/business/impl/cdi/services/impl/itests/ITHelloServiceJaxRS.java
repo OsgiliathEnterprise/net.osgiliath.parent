@@ -37,7 +37,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
-
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;

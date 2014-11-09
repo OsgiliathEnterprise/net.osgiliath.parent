@@ -30,7 +30,16 @@
 		<sourceDirectory>src/main/javascript</sourceDirectory>
 		<testSourceDirectory>src/test/javascript</testSourceDirectory>
 		<plugins>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<sourceFileExcludes>
+						<exclude>**/*</exclude>
+					</sourceFileExcludes>
+				</configuration>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
@@ -147,11 +156,6 @@
 			</exclusions>
 		</dependency>
 		<!-- test deps: all the servers deps that makes your UI running -->
-		<!-- <dependency> <groupId>${project.groupId}</groupId> <version>${project.version}</version> 
-			<artifactId>${project.groupId}.routes</artifactId> <scope>test</scope> </dependency> 
-			<dependency> <groupId>${project.groupId}</groupId> <version>${project.version}</version> 
-			<artifactId>${project.groupId}.business.impl</artifactId> <scope>test</scope> 
-			</dependency> -->
 		<dependency>
 			<groupId>com.google.guava</groupId><!-- Due to Selenium -->
 			<artifactId>guava</artifactId>
@@ -176,6 +180,19 @@
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-aether</artifactId>
 		</dependency>
+		<!-- your business dependencies here <dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
+			<artifactId>${project.groupId}.routes.blueprint</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
+			<artifactId>${project.groupId}.business.impl.blueprint</artifactId>
+			<scope>test</scope>
+		</dependency> -->
+		
 		<!-- Karaf Test Framework Version -->
 		<dependency>
 			<groupId>org.apache.karaf</groupId>
@@ -304,6 +321,9 @@
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>exec-maven-plugin</artifactId>
+							<configuration>
+								<skip>${skipExec}</skip>
+							</configuration>
 							<executions>
 								<execution>
 									<id>bower-install</id>

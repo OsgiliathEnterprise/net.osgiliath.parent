@@ -20,12 +20,12 @@ package conf;
  * #L%
  */
 
-import helpers.cxf.exception.handling.camel.processor.ThrownExceptionMessageToInBodyProcessor;
-
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import lombok.extern.slf4j.Slf4j;
+import net.osgiliath.helpers.camel.ThrownExceptionMessageToInBodyProcessor;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.camel.Component;
@@ -35,11 +35,9 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.ops4j.pax.cdi.api.OsgiService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+@Slf4j
 @Eager
 public class Components {
-	private Logger LOG = LoggerFactory.getLogger(Components.class);
 
 	@Inject
 	@OsgiService(filter = "(component-type=jms)", dynamic = true)

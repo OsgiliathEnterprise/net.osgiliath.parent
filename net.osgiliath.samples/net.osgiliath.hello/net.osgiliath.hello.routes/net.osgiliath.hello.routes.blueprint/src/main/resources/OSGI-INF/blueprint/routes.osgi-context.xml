@@ -27,7 +27,9 @@
 
 	<reference id="transactionManager"
 		interface="org.springframework.transaction.PlatformTransactionManager"></reference>
+		
 	<reference id="jTATransactionManager" interface="javax.transaction.TransactionManager"></reference>
+	
 	<bean id="required" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
@@ -39,14 +41,14 @@
 	<reference id="jmsXA" interface="org.apache.camel.Component"
 		filter="(component-type=jmsXA)">
 	</reference>
-	<bean id="http" class="org.apache.camel.component.http.HttpComponent"></bean>
-
-	<bean id="json-jackson" class="org.apache.camel.component.jackson.JacksonDataFormat"></bean>
-	<bean id="xmljson" class="org.apache.camel.dataformat.xmljson.XmlJsonDataFormat"></bean>
+	
+	<bean id="http" class="org.apache.camel.component.http.HttpComponent"/>
+	<bean id="json-jackson" class="org.apache.camel.component.jackson.JacksonDataFormat"/>
+	<bean id="xmljson" class="org.apache.camel.dataformat.xmljson.XmlJsonDataFormat"/>
 
 	<bean id="thrownExceptionMessageToInBodyProcessor"
 		class="net.osgiliath.helpers.camel.ThrownExceptionMessageToInBodyProcessor" />
-	<bean id="xstream" class="utils.XStreamDataFormatWithGoodClassLoader"></bean>
+	<bean id="xstream" class="utils.XStreamDataFormatWithGoodClassLoader"/>
 
 	<camelContext id="camelCtx"
 		xmlns="http://camel.apache.org/schema/blueprint">
@@ -58,7 +60,4 @@
 		<property name="thrownExceptionMessageToInBodyProcessor" ref="thrownExceptionMessageToInBodyProcessor"></property>
 		<property name="xmljson" ref="xmljson"></property>
 	</bean>
-
-
-
 </blueprint>

@@ -19,7 +19,7 @@ angular.module('commonapp', []).service('stompservice', function(){
 		console.info('client connected!');
 	}, function(error) {
 	    // display the error's message header:
-		console.erro(error.message);
+		console.error(error.message);
 	} );
 	
 	console.info('connectStomp instanciated: client: ' + JSON.stringify(this.stompClient));

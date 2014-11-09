@@ -25,15 +25,21 @@ import java.io.PrintWriter;
 import lombok.Setter;
 import lombok.extern.slf4j.*;
 import org.apache.derby.drda.NetworkServerControl;
+
 @Slf4j
 public class DatabaseStarter {
-    @Setter
-    private NetworkServerControl control;
-    @Setter
-    private PrintWriter writer;
+	@Setter
+	private NetworkServerControl control;
+	@Setter
+	private PrintWriter writer;
 
-    public void init() throws Exception {
-	log.info("Starting Derby datasource");
-	control.start(writer);
-    }
+	public void init() throws Exception {
+		log.info("Starting Derby datasource");
+		control.start(writer);
+	}
+	
+	public void destroy() throws Exception {
+		log.info("Stopping Derby datasource");
+		control.shutdown();
+	}
 }

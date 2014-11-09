@@ -409,6 +409,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
-  grunt.registerTask('install', ['shell:npm_install']);
+  grunt.registerTask('install', ['shell:npminstall']);
   
 };

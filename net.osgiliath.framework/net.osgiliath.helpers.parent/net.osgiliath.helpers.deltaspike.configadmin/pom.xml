@@ -56,9 +56,8 @@
 			<artifactId>camel-cdi</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.deltaspike-core-api</artifactId>
-			<version>${project.version}</version>
+			<groupId>org.apache.deltaspike.core</groupId>
+			<artifactId>deltaspike-core-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>

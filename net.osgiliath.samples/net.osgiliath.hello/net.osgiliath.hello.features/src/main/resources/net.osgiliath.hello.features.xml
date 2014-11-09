@@ -84,4 +84,12 @@
 		<feature version='${project.version}'>${project.groupId}.route.blueprint</feature>
 		<feature version='${project.version}'>${project.groupId}.ui</feature>
 	</feature>
+	
+	<!-- Management and dev features: uncomment the one(s) you want -->
+	<!-- <feature name="${project.groupId}-management" version="${project.version}">
+		<feature version="${project.version}">osgiliath-hawtio</feature>
+	</feature>
+	<feature name="${project.groupId}-development" version="${project.version}">
+		<feature version='${project.version}'>osgiliath-swagger-rest</feature>
+	</feature> -->
 </features>

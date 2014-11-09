@@ -29,13 +29,12 @@ import net.osgiliath.helpers.cdi.eager.Eager;
 
 import org.apache.camel.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 @Eager
 @ApplicationScoped
+@Slf4j
 public class Components {
-	private Logger LOG = LoggerFactory.getLogger(Components.class);
-
+	
 	@Inject
 	@OsgiService(filter = "(component-type=jms)", dynamic = true)
 	private Component jms;
@@ -43,7 +42,7 @@ public class Components {
 	@Produces
 	@Named("jms")
 	public Component getJms() {
-		LOG.info("Inject jms route");
+		log.info("Inject jms route");
 		return jms;
 	}
 }

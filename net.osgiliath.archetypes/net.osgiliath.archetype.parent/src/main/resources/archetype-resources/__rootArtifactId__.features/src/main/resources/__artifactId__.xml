@@ -33,7 +33,7 @@ ${symbol_pound}L%
 		<!--<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.model.database/${symbol_dollar}{project.version}/jar</bundle>
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.model.jpa/${symbol_dollar}{project.version}/jar</bundle>-->
 	</feature>
-	<feature name="${symbol_dollar}{project.parent.artifactId}.business.itests" version="${symbol_dollar}{project.version}">
+	<feature name="${symbol_dollar}{project.parent.artifactId}.business.itests" version="${symbol_dollar}{project.version}"><!-- if using blueprint instead of cdi, import osgiliath-business instead of o-business-cdi -->
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business-cdi</feature>
 		<feature version='${symbol_dollar}{project.version}'>${project.parent.artifactId}.model</feature>
 		<!--TODO your itests dependencies here
@@ -43,35 +43,38 @@ ${symbol_pound}L%
 		-->
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.ui" version="${symbol_dollar}{project.version}">
-		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
 		<feature version='${symbol_dollar}{karaf.version}'>war</feature>
-		<!--<configfile finalname="/etc/${symbol_dollar}{project.artifactId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/cfg/camel</configfile>
-		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/jar
-		</bundle>
-		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.ui/${symbol_dollar}{project.version}/war
-		</bundle>-->
-	</feature>
-	<!--<feature name="${symbol_dollar}{project.parent.artifactId}.full.itests" version="${project.version}">
-		<feature version='${project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
-		<feature version='${project.version}'>${symbol_dollar}{project.parent.artifactId}.route</feature>
-		<feature version='${karaf.version}'>war</feature>
-		<bundle>file:${project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.ui/target/${symbol_dollar}{project.parent.artifactId}.ui.war</bundle>
-	</feature>-->
-	<!--<feature name="${symbol_dollar}{project.groupId}.route" version="${project.version}">
-		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-full-cdi</feature>
-		<configfile finalname="/etc/${symbol_dollar}{project.groupId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/camel</configfile>
-		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
-		<feature version='${project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
-		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/jar</bundle>
-	</feature>-->
-	<feature name="${symbol_dollar}{project.parent.artifactId}.business" version="${symbol_dollar}{project.version}">
-		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business-cdi</feature>
-		<feature version='${symbol_dollar}{project.version}'>${project.parent.artifactId}.model</feature>
-		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
-		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.impl/${symbol_dollar}{project.version}/jar</bundle>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.ui/${symbol_dollar}{project.version}/war</bundle>
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.full" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
-		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.ui</feature>
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.route</feature>
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.ui</feature>	
 	</feature>
+	<!--<feature name="${symbol_dollar}{project.parent.artifactId}.full.itests" version="${symbol_dollar}{project.version}">
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.route</feature>
+		<feature version='${symbol_dollar}{karaf.version}'>war</feature>
+		<bundle>file:${symbol_dollar}{project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.ui/target/${symbol_dollar}{project.parent.artifactId}.ui.war</bundle>
+	</feature>-->
+	<!--<feature name="${symbol_dollar}{project.groupId}.route" version="${symbol_dollar}{project.version}"><!-- if you use blueprint instead of cdi, replace o-full-cdi by osgiliath-full-->
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-full-cdi</feature>
+		<configfile finalname="/etc/${symbol_dollar}{project.groupId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/camel</configfile>
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.routes/${symbol_dollar}{project.version}/jar</bundle>
+	</feature>-->
+	<feature name="${symbol_dollar}{project.parent.artifactId}.business" version="${symbol_dollar}{project.version}"><!-- if using blueprint instead of cdi, import osgiliath-business instead of o-business-cdi -->
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-business-cdi</feature>
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.model</feature>
+		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
+		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.impl/${symbol_dollar}{project.version}/jar</bundle>
+	</feature>
+	<!-- Management and dev features: uncomment the one(s) you want -->
+	<!-- <feature name="${symbol_dollar}{project.groupId}-management" version="${symbol_dollar}{project.version}">
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-hawtio</feature>
+	</feature>
+	<feature name="${symbol_dollar}{project.groupId}-development" version="${symbol_dollar}{project.version}">
+		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-swagger-rest</feature>
+	</feature> -->
 </features>

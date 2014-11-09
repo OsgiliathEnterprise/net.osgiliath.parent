@@ -35,19 +35,8 @@
 	<!-- JSR 303 validator -->
 	<reference id="validatorFactory" interface="javax.validation.ValidatorFactory"
 		availability="mandatory" />
-	<!-- spring transaction manager -->
-	<reference id="transactionManager"
-		interface="org.springframework.transaction.PlatformTransactionManager"></reference>
-	<!-- JTA transaction manager -->
-	<reference id="jTATransactionManager" interface="javax.transaction.TransactionManager"></reference>
-	<!-- JMS component -->
-	<reference id="jms" interface="org.apache.camel.Component"
-		availability="mandatory" filter="(component-type=jms)">
-	</reference>
-	<!-- JMS transactional component -->
-	<reference id="jmsXA" interface="org.apache.camel.Component"
-		filter="(component-type=jmsXA)">
-	</reference>
+	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.JmsTemplateContainerListenerFactory" />
+	
 	<reference id="jmsTemplate" interface="org.springframework.jms.core.JmsOperations"
 		availability="mandatory" filter="(component-type=jms)">
 	</reference>
@@ -66,7 +55,11 @@
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
 	</bean>
-	
+	<bean id="jmsListenerContainer" factory-ref="jmsTemplateContainerListenerFactory" factory-method="create" destroy-method="shutdownGracefully">
+		<argument value="true"></argument>
+		<argument value="helloServiceQueueIn"></argument>
+		<argument ref="helloServiceJMS"></argument>
+	</bean>
 	<!-- JMS aware service -->
 	<bean id="helloServiceJMS"
 		class="net.osgiliath.hello.business.impl.services.impl.HelloServiceJMS">

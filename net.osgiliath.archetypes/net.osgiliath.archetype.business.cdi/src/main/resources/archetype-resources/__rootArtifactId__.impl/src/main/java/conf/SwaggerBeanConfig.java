@@ -27,7 +27,7 @@ import java.io.IOException;
 import javax.enterprise.inject.Produces;
 
 import lombok.extern.slf4j.Slf4j;
-import net.osgiliath.helper.camel.configadmin.ConfigAdminTracker;
+import net.osgiliath.helpers.deltaspike.configadmin.ConfigAdminAccessor;
 import net.osgiliath.helpers.swagger.cdi.CXFBeanJaxrsScanner;
 
 import org.osgi.framework.BundleContext;
@@ -46,12 +46,12 @@ public class SwaggerBeanConfig {
 				.getBundleContext();
 		String protocol;
 		try {
-			protocol = ConfigAdminTracker.getInstance(context).getProperty(
+			protocol = ConfigAdminAccessor.getProperty(context,
 					"jaxrs.server.protocol");
 
-			String uri = ConfigAdminTracker.getInstance(context).getProperty(
+			String uri = ConfigAdminAccessor.getProperty(context,
 					"jaxrs.server.uri");
-			String port = ConfigAdminTracker.getInstance(context).getProperty(
+			String port = ConfigAdminAccessor.getProperty(context,
 					"jaxrs.server.port");
 
 			beanConfig.setBasePath(protocol + "://" + uri + ":" + port
