@@ -1,6 +1,7 @@
 #Osgiliath Enterprise framework
 
 [![Build Status](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent.svg?branch=master)](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent)
+[![Codeship Status](https://codeship.io/projects/642d0130-f74b-0131-9906-6abae1c59881/status?branch=master)
 
 ## Purpose
 
