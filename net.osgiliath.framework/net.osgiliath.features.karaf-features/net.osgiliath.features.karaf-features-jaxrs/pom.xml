@@ -94,6 +94,12 @@
 			<artifactId>net.osgiliath.helpers.swagger.cdi</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs_osgiliath-cdi -->
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.cxf-integration-cdi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- org.apache.cxf.karaf_apache-cxf_cxf-core -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
