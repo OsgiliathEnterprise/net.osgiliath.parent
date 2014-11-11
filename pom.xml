@@ -1,7 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!-- <parent> <groupId>org.sonatype.oss</groupId> <artifactId>oss-parent</artifactId> 
-		<version>9</version> </parent> -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- <parent> <groupId>org.sonatype.oss</groupId> <artifactId>oss-parent</artifactId> <version>9</version> </parent> -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.osgiliath</groupId>
 	<artifactId>net.osgiliath.parent</artifactId>
@@ -58,16 +56,9 @@
 		<module>net.osgiliath.framework</module>
 		<module>net.osgiliath.samples</module>
 	</modules>
-	<!-- <distributionManagement> Distribution des artefacts compilés Rajoutez 
-		ceci dans votre fichier ~.m2/settings.xml <servers> <server> <id>releases</id> 
-		<username>username</username> <password>password</password> </server> <server> 
-		<id>snapshots</id> <username>username</username> <password>password</password> 
-		</server> </servers> <repository> <id>releases</id> <name>Nexus Releases 
-		public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/releases</url> 
-		</repository> <snapshotRepository> <id>snapshots</id> <name>Nexus Snapshots 
-		public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url> 
-		</snapshotRepository> <site> <id>Osgiliath</id> <name>Osgiliath</name> <url>http://blog.osgiliath.net/</url> 
-		</site> </distributionManagement> -->
+	<!-- <distributionManagement> Distribution des artefacts compilés Rajoutez ceci dans votre fichier ~.m2/settings.xml <servers> <server> <id>releases</id> <username>username</username> <password>password</password> </server> <server> <id>snapshots</id> 
+		<username>username</username> <password>password</password> </server> </servers> <repository> <id>releases</id> <name>Nexus Releases public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/releases</url> </repository> <snapshotRepository> 
+		<id>snapshots</id> <name>Nexus Snapshots public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url> </snapshotRepository> <site> <id>Osgiliath</id> <name>Osgiliath</name> <url>http://blog.osgiliath.net/</url> </site> </distributionManagement> -->
 	<scm>
 		<connection>scm:git:git://github.com/OsgiliathEnterprise/net.osgiliath.parent.git</connection>
 		<developerConnection>scm:git:git://github.com/OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
@@ -80,14 +71,13 @@
 			<url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 
-		<repository> <id>sonatype-nexus-staging</id> <name>Nexus Release Repository</name> 
-			<url>https://oss.sonatype.org/</url> </repository> 
-		<!-- <repository>
-			<id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id>
-			<name>tcharl-maven-Osgiliath-Enterprise-Framework</name>
-			<url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url>
-		</repository> -->
-		
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/</url>
+		</repository>
+		<!-- <repository> <id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id> <name>tcharl-maven-Osgiliath-Enterprise-Framework</name> <url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url> </repository> -->
+
 		<site>
 			<id>Osgiliath</id>
 			<name>Osgiliath</name>
@@ -107,6 +97,22 @@
 						<override>true</override>
 						<includeAttached>true</includeAttached>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>com.github.github</groupId>
+					<artifactId>site-maven-plugin</artifactId>
+					<version>${com.github.github_site-maven-plugin.version}</version>
+					<configuration>
+						<message>Creating site for ${project.version}</message>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>site</goal>
+							</goals>
+							<phase>site</phase>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -160,7 +166,7 @@
 							<exclude>**/.git/**/*</exclude>
 							<exclude>**/target/**/*</exclude>
 							<exclude>**/eclipse-classes/**/*</exclude>
-						    <exclude>**/.*</exclude>
+							<exclude>**/.*</exclude>
 							<exclude>**/.settings/**/*</exclude>
 							<exclude>**/*.iml</exclude>
 							<exclude>**/.idea/**/*</exclude>
@@ -248,11 +254,18 @@
 				<groupId>org.apache.rat</groupId>
 				<artifactId>apache-rat-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<skipDeploy>true</skipDeploy>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<properties>
 		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
+		<com.github.github_site-maven-plugin.version>0.9</com.github.github_site-maven-plugin.version>
 		<github.global.server>github</github.global.server>
 		<license-maven-plugin.version>1.7</license-maven-plugin.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
