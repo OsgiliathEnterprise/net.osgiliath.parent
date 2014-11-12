@@ -9,7 +9,7 @@
 		<maven>2.2.1</maven>
 	</prerequisites>
 	<name>Pom Osgiliath framework</name>
-	<url>http://osgiliathenterprise.github.io/net.osgiliath.parent/osgiliath-enterprise-framework/</url>
+	<url>http://osgiliathenterprise.github.io/projects.documentations/products/osgiliath-enterprise-framework/</url>
 	<description>
 	This is the parent pom for the entire Osgiliath framework.
 	It contains dependencies definitions, features and helpers, archetypes, as well as a reference sample
@@ -196,7 +196,7 @@
 					<artifactId>license-maven-plugin</artifactId>
 					<version>${license-maven-plugin.version}</version>
 					<configuration>
-						<licenseName>apache_v2</licenseName>
+						<licenseName>${project.license}</licenseName>
 						<excludes>
 							<exclude>**/*persistence.xml</exclude>
 						</excludes>
@@ -294,6 +294,7 @@
 		<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.license>apache_v2</project.license>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>

@@ -40,7 +40,7 @@
 						</goals>
 						<phase>process-sources</phase>
 						<configuration>
-							<licenseName>gpl_v3</licenseName>
+							<licenseName>${project.license}</licenseName>
 							<includes>
 								<include>scripts.*</include>
 							</includes>

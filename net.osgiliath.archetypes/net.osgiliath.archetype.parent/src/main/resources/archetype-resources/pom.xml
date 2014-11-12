@@ -71,8 +71,9 @@
 			this -->
 		<manifest.organization>Osgiliath</manifest.organization>
   		<osgiliath.framework.maven.version>${project.version}</osgiliath.framework.maven.version>
+  		<project.license>apache_v2</project.license><!-- please read the documentation of license-maven-plugin and choose a license that fits-->
 	</properties>
-<scm>
+	<scm>
 		<connection><!-- your scm urls here --></connection>
 		<developerConnection><!-- your scm urls here --></developerConnection>
 		<url><!-- your scm urls here --></url>

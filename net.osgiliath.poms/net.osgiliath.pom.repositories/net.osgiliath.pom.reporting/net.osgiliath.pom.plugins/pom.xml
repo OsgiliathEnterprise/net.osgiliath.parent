@@ -328,11 +328,6 @@
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>cobertura-maven-plugin</artifactId>
-					<version>${cobertura-maven-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${exec-maven-plugin.version}</version>
 				</plugin>
@@ -454,25 +449,6 @@
 										</versionRange>
 										<goals>
 											<goal>wget</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											com.springsource.bundlor
-										</groupId>
-										<artifactId>
-											com.springsource.bundlor.maven
-										</artifactId>
-										<versionRange>
-											[1.0.0.RELEASE,)
-										</versionRange>
-										<goals>
-											<goal>bundlor</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
