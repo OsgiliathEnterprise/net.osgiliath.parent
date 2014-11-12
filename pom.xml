@@ -19,8 +19,8 @@
 		<url>https://build.osgiliath.net</url>
 	</ciManagement>
 	<issueManagement>
-		<system>Bugzilla</system>
-		<url>http://issues.osgiliath.net/</url>
+		<system>Redmine</system>
+		<url>https://issues.osgiliath.net/</url>
 	</issueManagement>
 	<inceptionYear>2013</inceptionYear>
 	<licenses>
@@ -60,32 +60,49 @@
 		<username>username</username> <password>password</password> </server> </servers> <repository> <id>releases</id> <name>Nexus Releases public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/releases</url> </repository> <snapshotRepository> 
 		<id>snapshots</id> <name>Nexus Snapshots public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url> </snapshotRepository> <site> <id>Osgiliath</id> <name>Osgiliath</name> <url>http://blog.osgiliath.net/</url> </site> </distributionManagement> -->
 	<scm>
-		<connection>scm:git:git://github.com/OsgiliathEnterprise/net.osgiliath.parent.git</connection>
-		<developerConnection>scm:git:git://github.com/OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
-		<url>git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
+		<connection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</connection>
+		<developerConnection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
+		<url>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</url>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Osgiliath Snapshots public</name>
-			<url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
+			<url>https://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 
 		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Nexus Release Repository</name>
+			<id>releases</id>
+			<name>Sonatype OSS Nexus Release Repository</name>
 			<url>https://oss.sonatype.org/</url>
 		</repository>
 		<!-- <repository> <id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id> <name>tcharl-maven-Osgiliath-Enterprise-Framework</name> <url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url> </repository> -->
 
 		<site>
-			<id>Osgiliath</id>
-			<name>Osgiliath</name>
-			<url>http://build.osgiliath.net/job/OsgiliathEF%20Site/site/</url>
+			<id>github-pages</id>
+			<name>Github GH Pages</name>
+			<url>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
 		</site>
 	</distributionManagement>
 	<build>
 		<defaultGoal>install</defaultGoal>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-scm</artifactId>
+				<version>2.7</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-manager-plexus</artifactId>
+				<version>1.9.2</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-provider-gitexe</artifactId>
+				<version>1.9.2</version>
+			</extension>
+		</extensions>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -271,18 +288,15 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
-		<maven-gpg-plugin.version>1.1</maven-gpg-plugin.version>
-		<maven-javadoc-plugin.version>2.9.2-SNAPSHOT</maven-javadoc-plugin.version>
+		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
+		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
 		<maven-release-plugin.version>2.1</maven-release-plugin.version>
 		<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
-		<nexus-staging-maven-plugin.version>1.5.1</nexus-staging-maven-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<repositoryName>superpom</repositoryName>
-		<sonar.scm.url>scm:git:https://github.com/OsgiliathEnterprise/net.osgiliath.parent.git/master</sonar.scm.url>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
-		<sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
 		<maven-scm-provider-gitexe.version>1.9.1</maven-scm-provider-gitexe.version>
 	</properties>
 	<profiles>
@@ -333,8 +347,6 @@
 				</plugins>
 			</build>
 			<properties>
-				<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
-				<maven-gpg-plugin.version>1.1</maven-gpg-plugin.version>
 				<!-- <failsafe.skiptests>true</failsafe.skiptests> -->
 				<!-- <skipExec>true</skipExec> -->
 			</properties>
