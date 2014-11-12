@@ -90,17 +90,17 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-scm</artifactId>
-				<version>2.7</version>
+				<version>${org.apache.maven.wagon_wagon-scm.version}</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.scm</groupId>
 				<artifactId>maven-scm-manager-plexus</artifactId>
-				<version>1.9.2</version>
+				<version>${maven-scm.version}</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.scm</groupId>
 				<artifactId>maven-scm-provider-gitexe</artifactId>
-				<version>1.9.2</version>
+				<version>${maven-scm.version}</version>
 			</extension>
 		</extensions>
 		<pluginManagement>
@@ -160,8 +160,8 @@
 					<version>${maven-release-plugin.version}</version>
 					<configuration>
 						<mavenExecutorId>forked-path</mavenExecutorId>
+						<releaseProfiles>release</releaseProfiles>
 						<useReleaseProfile>false</useReleaseProfile>
-						<arguments>-Prelease</arguments>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -249,7 +249,7 @@
 					<dependency>
 						<groupId>org.apache.maven.scm</groupId>
 						<artifactId>maven-scm-provider-gitexe</artifactId>
-						<version>${maven-scm-provider-gitexe.version}</version>
+						<version>${maven-scm.version}</version>
 					</dependency>
 				</dependencies>
 				<configuration>
@@ -290,15 +290,16 @@
 		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
 		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
-		<maven-release-plugin.version>2.1</maven-release-plugin.version>
-		<maven-source-plugin.version>2.1.2</maven-source-plugin.version>
+		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
+		<org.apache.maven.wagon_wagon-scm.version>2.7</org.apache.maven.wagon_wagon-scm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.license>apache_v2</project.license>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
-		<maven-scm-provider-gitexe.version>1.9.1</maven-scm-provider-gitexe.version>
+		<maven-scm.version>1.9.1</maven-scm.version>
 	</properties>
 	<profiles>
 		<profile>

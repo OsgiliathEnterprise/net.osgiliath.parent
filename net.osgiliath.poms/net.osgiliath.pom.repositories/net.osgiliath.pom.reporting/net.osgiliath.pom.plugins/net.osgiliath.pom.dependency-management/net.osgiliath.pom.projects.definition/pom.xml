@@ -22,18 +22,17 @@
 	<description>Project definition for an Osgiliath project</description>
 	<organization>
 		<name>Osgiliath corp</name>
-		<url>http://blog.osgiliath.net</url>
+		<url>http://osgiliathenterprise.github.io/projects.documentations/</url>
 	</organization>
 	<issueManagement>
 		<system>Bugzilla</system>
-		<url>http://issues.osgiliath.net/</url>
+		<url>https://issues.osgiliath.net/</url>
 	</issueManagement>
 	<ciManagement>
 		<system>Hudson</system>
-		<url>http://build.osgiliath.net/</url>
+		<url>https://build.osgiliath.net/</url>
 	</ciManagement>
 	<properties>
 		<sonar.scm.enabled>true</sonar.scm.enabled>
-		<github.global.server>github</github.global.server>
 	</properties>
 </project>
