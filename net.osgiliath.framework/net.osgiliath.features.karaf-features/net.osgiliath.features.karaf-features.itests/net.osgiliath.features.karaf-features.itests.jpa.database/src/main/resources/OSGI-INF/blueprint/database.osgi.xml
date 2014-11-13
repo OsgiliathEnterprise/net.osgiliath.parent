@@ -47,6 +47,10 @@
 	<service ref="dataSource" interface="javax.sql.DataSource">
 		<service-properties>
 			<entry key="osgi.jndi.service.name" value="jdbc/myDB" />
+<entry key="aries.xa.username" value="sa"/>
+<entry key="aries.xa.password" value="sa"/>
+<entry key="aries.xa.transaction" value="none"/>
+<entry key="aries.xa.name" value="jpatestdatabase"/>
 		</service-properties>
 	</service>
 
@@ -54,6 +58,9 @@
 	<service ref="dataSource" interface="javax.sql.XADataSource">
 		<service-properties>
 			<entry key="osgi.jndi.service.name" value="jdbc/myXADB" />
+<entry key="aries.xa.username" value="sa"/>
+<entry key="aries.xa.password" value="sa"/>
+<entry key="aries.xa.name" value="jpatestdatabase"/>
 		</service-properties>
 	</service>
 </blueprint>
