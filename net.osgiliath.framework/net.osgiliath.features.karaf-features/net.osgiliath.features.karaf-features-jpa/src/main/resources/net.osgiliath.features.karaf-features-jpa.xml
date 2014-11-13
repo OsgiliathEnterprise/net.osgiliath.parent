@@ -47,6 +47,7 @@ limitations under the License.
 		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jndi</feature>
 		<feature version='${karaf.version}'>jdbc</feature>
+<bundle>mvn:org.apache.aries.transaction/org.apache.aries.transaction.jdbc/${org.apache.aries.transaction.jdbc.version}</bundle>
 		<feature version='${karaf.feature.jpa.version}'>jpa</feature>
 		<feature version='${project.version}'>osgiliath-openjpa</feature>
 		<bundle >mvn:org.apache.xbean/xbean-reflect/${xbean.version}</bundle>
