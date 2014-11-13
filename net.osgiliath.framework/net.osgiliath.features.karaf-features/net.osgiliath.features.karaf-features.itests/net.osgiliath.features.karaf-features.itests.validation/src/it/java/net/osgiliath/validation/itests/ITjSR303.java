@@ -27,7 +27,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
 
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
 
@@ -57,7 +57,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITjSR303 extends AbstractPaxExamKarafConfigurationFactory {
+public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
     private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
 
     @Inject
@@ -70,7 +70,7 @@ public class ITjSR303 extends AbstractPaxExamKarafConfigurationFactory {
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfiguration.class);
 	builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.validation.itests");
 	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");

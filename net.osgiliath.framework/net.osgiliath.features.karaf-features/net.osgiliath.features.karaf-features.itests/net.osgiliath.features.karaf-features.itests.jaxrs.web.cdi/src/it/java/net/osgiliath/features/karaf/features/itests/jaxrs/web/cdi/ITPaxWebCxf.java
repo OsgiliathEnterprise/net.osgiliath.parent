@@ -34,7 +34,7 @@ import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.Hellos;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITPaxWebCxf extends AbstractPaxExamKarafConfigurationFactory {
+public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
     private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 
     // Exported service via blueprint.xml
@@ -70,7 +70,7 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfigurationFactory {
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfiguration.class);
 	builder.setHeader(Constants.EXPORT_PACKAGE,
 		"net.osgiliath.hello.business.impl.services.impl.itests");
 	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");

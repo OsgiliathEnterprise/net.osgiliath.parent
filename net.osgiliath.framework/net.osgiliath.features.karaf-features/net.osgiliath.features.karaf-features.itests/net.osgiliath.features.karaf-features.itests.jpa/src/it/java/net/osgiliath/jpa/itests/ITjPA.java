@@ -29,7 +29,7 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.jpa.model.HelloEntity;
 import net.osgiliath.jpa.repository.HelloRepository;
 
@@ -56,7 +56,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITjPA extends AbstractPaxExamKarafConfigurationFactory {
+public class ITjPA extends AbstractPaxExamKarafConfiguration {
     private static Logger LOG = LoggerFactory.getLogger(ITjPA.class);
 
     // Exported service via blueprint.xml
@@ -67,7 +67,7 @@ public class ITjPA extends AbstractPaxExamKarafConfigurationFactory {
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfiguration.class);
 	builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.jpa.itests");
 	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
 	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");

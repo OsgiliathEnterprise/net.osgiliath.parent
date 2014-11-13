@@ -44,7 +44,7 @@ import javax.ws.rs.core.MediaType;
 import jline.internal.Log;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 
 import org.apache.activemq.command.ActiveMQDestination;
 import org.apache.activemq.command.ActiveMQQueue;
@@ -80,7 +80,7 @@ import org.springframework.jms.core.MessageCreator;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJaxRS extends
-		AbstractPaxExamKarafConfigurationFactory {
+		AbstractPaxExamKarafConfiguration {
 	protected static final Logger log = LoggerFactory
 			.getLogger(ITHelloServiceJaxRS.class);
 	@Inject
@@ -100,7 +100,7 @@ public class ITHelloServiceJaxRS extends
 	// probe
 	@ProbeBuilder
 	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+		builder.addTest(AbstractPaxExamKarafConfiguration.class);
 		builder.addTest(HelloEntityMessageCreator.class);
 		builder.setHeader(Constants.EXPORT_PACKAGE,
 				"net.osgiliath.hello.business.impl.services.impl.services.impl.itests");

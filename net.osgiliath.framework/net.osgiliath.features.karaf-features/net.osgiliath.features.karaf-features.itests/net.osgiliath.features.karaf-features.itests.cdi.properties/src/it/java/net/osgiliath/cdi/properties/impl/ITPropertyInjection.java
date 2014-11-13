@@ -27,7 +27,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import javax.inject.Inject;
 
 import net.osgiliath.cdi.properties.api.IPropertyProvider;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPropertyInjection extends
-		AbstractPaxExamKarafConfigurationFactory {
+		AbstractPaxExamKarafConfiguration {
 	private static Logger LOG = LoggerFactory
 			.getLogger(ITPropertyInjection.class);
 	// Exported service via blueprint.xml
@@ -57,7 +57,7 @@ public class ITPropertyInjection extends
 	@ProbeBuilder
 	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
 		builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-		builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+		builder.addTest(AbstractPaxExamKarafConfiguration.class);
 		builder.setHeader(Constants.EXPORT_PACKAGE,
 				"net.osgiliath.cdi.properties.impl");
 		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");

@@ -34,7 +34,7 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.jaxrs.HelloEntity;
 import net.osgiliath.jaxrs.Hellos;
 
@@ -68,7 +68,7 @@ import org.slf4j.LoggerFactory;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactory {
+public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
    
 
     @Inject
@@ -85,7 +85,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfigurationFactor
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfiguration.class);
 	builder.setHeader(Constants.EXPORT_PACKAGE,
 		"net.osgiliath.helpers.exam, net.osgiliath.jaxrs.repository.impl.itests");
 	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");

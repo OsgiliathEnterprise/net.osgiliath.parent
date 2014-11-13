@@ -40,12 +40,28 @@ import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
 @Slf4j
-public abstract class AbstractPaxExamKarafConfigurationFactory {
+public abstract class AbstractPaxExamKarafConfiguration {
+	/**
+	 * according Java property to set is jcoverage.command 
+	 */
     protected static final String COVERAGE_COMMAND = "coverage.command";
+    /**
+	 * according Java property to set is org.apache.maven.user-settings
+	 */
     protected static final String USER_SETTINGS_REFERENCE = "user-settings";
+    /**
+	 * according Java property to set is org.apache.maven.global-settings
+	 */
     protected static final String GLOBAL_SETTINGS_REFERENCE = "global-settings";
+    /**
+   	 * according Java property to set is project.groupId
+   	 */
     protected static final String MODULE_GROUP_ID = "module.groupId";
+    /**
+   	 * according Java property to set is project.parent.artifactId
+   	 */
     protected static final String MODULE_PARENT_ARTIFACT_ID = "module.parent.artifactId";
+    protected static final String MAVEN_REPOS_URLS = "maven.repos.urls";
 
     @SuppressWarnings("UnusedDeclaration")
     protected static final String DEBUG_VM_OPTION = "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=31313";
@@ -66,7 +82,7 @@ public abstract class AbstractPaxExamKarafConfigurationFactory {
 					"org.apache.karaf", "apache-karaf"))
 			.unpackDirectory(new File("target/exam/unpack/")),
 		keepRuntimeFolder(), cleanCaches(), junitBundles(),
-		addCodeCoverageOption(), addMavenSettingsOptions(),
+		addCodeCoverageOption(), addMavenSettingsOptions(), mavenReposURLOptions(),
 		loggingLevel(), addExtraOptions(), featureToTest());
 	Option[] baseAndJVM = OptionUtils.combine(base, addJVMOptions());
 	final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions
@@ -74,7 +90,17 @@ public abstract class AbstractPaxExamKarafConfigurationFactory {
 	return OptionUtils.combine(baseAndJVM, vmOption);
     }
 
-    private Option addMavenSettingsOptions() {
+    private Option mavenReposURLOptions() {
+    	if (System.getProperty(MAVEN_REPOS_URLS) != null) {
+    	    log.info("replacing repositories urls by: " + System.getProperty(MAVEN_REPOS_URLS));
+    	    return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
+    			    "org.ops4j.pax.url.mvn.repositories",
+    			    System.getProperty(MAVEN_REPOS_URLS));
+    	}
+    	return new DefaultCompositeOption();
+	}
+
+	private Option addMavenSettingsOptions() {
 	if (System.getProperty(USER_SETTINGS_REFERENCE) != null) {
 	    log.info("adding user reference settings "
 		    + System.getProperty(USER_SETTINGS_REFERENCE));

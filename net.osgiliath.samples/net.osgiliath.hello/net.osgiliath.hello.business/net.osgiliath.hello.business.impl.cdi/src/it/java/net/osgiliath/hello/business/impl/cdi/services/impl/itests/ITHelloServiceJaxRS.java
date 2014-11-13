@@ -36,7 +36,7 @@ import javax.ws.rs.core.MediaType;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
@@ -65,7 +65,7 @@ import org.osgi.framework.Constants;
 @ExamReactorStrategy(PerClass.class)
 @Slf4j
 public class ITHelloServiceJaxRS extends
-	AbstractPaxExamKarafConfigurationFactory {
+	AbstractPaxExamKarafConfiguration {
     @Inject
     @Filter(timeout = 400000)
     private BootFinished bootFinished;
@@ -81,7 +81,7 @@ public class ITHelloServiceJaxRS extends
     // probe
     @ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfiguration.class);
 	builder.setHeader(Constants.EXPORT_PACKAGE,
 		"net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
 	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");

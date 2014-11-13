@@ -29,7 +29,7 @@ import javax.jms.Destination;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
 
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.messaging.Hellos;
 import net.osgiliath.messaging.repository.HelloRepository;
 
@@ -60,7 +60,7 @@ import org.springframework.jms.core.JmsOperations;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJMS extends AbstractPaxExamKarafConfigurationFactory {
+public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
 	private static Logger LOG = LoggerFactory
 			.getLogger(ITHelloServiceJMS.class);
 
@@ -80,7 +80,7 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfigurationFactory 
 	// probe
 	@ProbeBuilder
 	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+		builder.addTest(AbstractPaxExamKarafConfiguration.class);
 		builder.addTest(HelloEntityMessageCreator.class);
 		builder.setHeader(Constants.EXPORT_PACKAGE,
 				"net.osgiliath.messaging.repository.impl.itests");
