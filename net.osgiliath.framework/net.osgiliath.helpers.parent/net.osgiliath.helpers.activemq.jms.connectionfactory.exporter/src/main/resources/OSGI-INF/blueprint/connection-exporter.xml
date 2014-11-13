@@ -96,7 +96,7 @@
           init-method="recoverResource"> 
         <property name="transactionManager" ref="osgiJtaTransactionManager" />
         <property name="connectionFactory" ref="jmsXaPoolConnectionFactory" />
-        <property name="resourceName" value="activemq.default" /> 11
+        <property name="resourceName" value="activemq.default" />
     </bean>   
 	
 	<bean id="jmsTemplateContainerListenerFactory" class="net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.XACapableJmsTemplateContainerListenerFactory">
