@@ -124,6 +124,7 @@
 <dependency>
 			<groupId>org.apache.aries.transaction</groupId>
 				<artifactId>org.apache.aries.transaction.jdbc</artifactId>
+</dependency>
 		<!-- org.apache.karaf.features_enterprise_transaction -->
 		<dependency>
 			<groupId>org.apache.aries.transaction</groupId>
