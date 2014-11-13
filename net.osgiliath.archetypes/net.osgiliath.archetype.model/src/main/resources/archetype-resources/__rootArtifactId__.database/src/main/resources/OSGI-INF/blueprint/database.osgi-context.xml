@@ -68,13 +68,19 @@
 	</bean>
 	<service ref="dataSource" interface="javax.sql.DataSource">
 		<service-properties>
-			<entry key="osgi.jndi.service.name" value="jdbc/${symbol_dollar}{project.parent.artifactId}.database" />
+			<entry key="osgi.jndi.service.name" value="jdbc/${symbol_dollar}{project.parent.artifactId}.database" /><entry key="aries.xa.username" value="APP"/>
+<entry key="aries.xa.password" value="APP"/>
+<entry key="aries.xa.transaction" value="none"/>
+<entry key="aries.xa.name" value="${symbol_dollar}{project.parent.artifactId}.database"/>
 		</service-properties>
 	</service>
 	<!-- Expose DataSource as JNDI reference -->
 	<service ref="dataSource" interface="javax.sql.XADataSource">
 		<service-properties>
 			<entry key="osgi.jndi.service.name" value="jdbc/${symbol_dollar}{project.parent.artifactId}.database.xa" />
+<entry key="aries.xa.username" value="APP"/>
+<entry key="aries.xa.password" value="APP"/>
+<entry key="aries.xa.name" value="${symbol_dollar}{project.parent.artifactId}.database.xa"/>
 		</service-properties>
 	</service>
 </blueprint>

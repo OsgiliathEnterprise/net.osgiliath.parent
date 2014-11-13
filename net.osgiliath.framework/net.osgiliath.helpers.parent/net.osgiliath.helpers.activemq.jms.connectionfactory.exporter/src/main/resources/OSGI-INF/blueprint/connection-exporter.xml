@@ -76,7 +76,6 @@
 	<bean id="jmsXAProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<argument ref="jmsXaPoolConnectionFactory"></argument>
 		<property name="receiveTimeout" value="2000"></property>
-		<property name="sessionTransacted" value="true"></property>
 		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE"></property>
 		<property name="deliveryPersistent" value="false" />
 		<property name="deliveryMode" value="1" />
@@ -88,21 +87,26 @@
 		<property name="deliveryPersistent" value="false" />
 		<property name="deliveryMode" value="1" />
 	</bean>
-	<bean id="jmsSpringConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
-		<argument ref="pooledConnectionFactory"></argument>
-	</bean>
-	<bean id="jmsSpringXAConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
-		<argument ref="jmsXaPoolConnectionFactory"></argument>
-	</bean>
+ <!--
+        ActiveMQ XA Resource Manager
+    -->
+    <bean id="resourceManager"
+          class="org.apache.activemq.pool.ActiveMQResourceManager"
+          init-method="recoverResource"> 
+        <property name="transactionManager" ref="osgiJtaTransactionManager" />
+        <property name="connectionFactory" ref="jmsXaPoolConnectionFactory" />
+        <property name="resourceName" value="activemq.default" />
+    </bean>   
+	
 	<bean id="jmsTemplateContainerListenerFactory" class="net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.XACapableJmsTemplateContainerListenerFactory">
-		<property name="nonXAFactory" ref="jmsSpringConnectionFactory"></property>
-		<property name="XAFactory" ref="jmsSpringXAConnectionFactory"></property>
+		<property name="nonXAFactory" ref="pooledConnectionFactory"></property>
+		<property name="XAFactory" ref="jmsXaPoolConnectionFactory"></property>
 		<property name="txManager" ref="osgiPlatformTransactionManager"></property>
 	</bean>
 	<!-- jms connection factory to export -->
 	<service ref="jmsXAProducerTemplate" interface="org.springframework.jms.core.JmsOperations">
 		<service-properties>
-			<entry key="component-type" value="jms" />
+			<entry key="component-type" value="jmsXA" />
 		</service-properties>
 	</service>
 	
@@ -117,7 +121,7 @@
 	<!-- JMS XA factory export -->
 	<service ref="jmsProducerTemplate" interface="org.springframework.jms.core.JmsOperations">
 		<service-properties>
-			<entry key="component-type" value="jmsXA" />
+			<entry key="component-type" value="jms" />
 		</service-properties>
 
 	</service>

@@ -86,8 +86,6 @@ public class XACapableJmsTemplateContainerListenerFactory implements JmsTemplate
 		container.setTransactionManager(txManager);
 		container.setConnectionFactory(xAFactory);
 		container.setTransactionTimeout(2000);
-		container.setSessionTransacted(true);
-
 	}
 
 }

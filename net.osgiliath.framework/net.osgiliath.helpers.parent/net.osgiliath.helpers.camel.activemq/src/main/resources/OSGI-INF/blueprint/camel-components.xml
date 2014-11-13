@@ -25,7 +25,7 @@
 	<!-- Camel JMS XA component -->
 	<bean id="camel-jms-xa-component" class="org.apache.activemq.camel.component.ActiveMQComponent">
 		<property name="connectionFactory" ref="jmsXaPoolConnectionFactory"></property>
-		<property name="transacted" value="true" />
+		<property name="transacted" value="false" />
 		<property name="transactionManager" ref="osgiPlatformTransactionManager"></property>
 		<property name="concurrentConsumers" value="5" />
 		<property name="maxConcurrentConsumers" value="100" />
