@@ -96,7 +96,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
 							.append(violation.getMessage().replaceAll("\"", ""))
 							.append(";").append(System.lineSeparator());
 				}
-				this.template.send("helloServiceQueueOut", new MessageCreator() {
+				this.template.send("helloServiceQueueErrors", new MessageCreator() {
 					public Message createMessage(final Session session)
 							throws JMSException {
 						return session.createTextMessage(errors.toString());
