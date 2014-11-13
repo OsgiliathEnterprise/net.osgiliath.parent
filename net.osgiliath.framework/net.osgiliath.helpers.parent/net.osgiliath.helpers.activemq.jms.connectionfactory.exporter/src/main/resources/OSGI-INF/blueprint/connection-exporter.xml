@@ -88,15 +88,20 @@
 		<property name="deliveryPersistent" value="false" />
 		<property name="deliveryMode" value="1" />
 	</bean>
-	<bean id="jmsSpringConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
-		<argument ref="pooledConnectionFactory"></argument>
-	</bean>
-	<bean id="jmsSpringXAConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
-		<argument ref="jmsXaPoolConnectionFactory"></argument>
-	</bean>
+ <!--
+        ActiveMQ XA Resource Manager
+    -->
+    <bean id="resourceManager"
+          class="org.apache.activemq.pool.ActiveMQResourceManager"
+          init-method="recoverResource"> 
+        <property name="transactionManager" ref="osgiJtaTransactionManager" />
+        <property name="connectionFactory" ref="jmsXaPoolConnectionFactory" />
+        <property name="resourceName" value="activemq.default" /> 11
+    </bean>   
+	
 	<bean id="jmsTemplateContainerListenerFactory" class="net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.XACapableJmsTemplateContainerListenerFactory">
-		<property name="nonXAFactory" ref="jmsSpringConnectionFactory"></property>
-		<property name="XAFactory" ref="jmsSpringXAConnectionFactory"></property>
+		<property name="nonXAFactory" ref="pooledConnectionFactory"></property>
+		<property name="XAFactory" ref="jmsXaPoolConnectionFactory"></property>
 		<property name="txManager" ref="osgiPlatformTransactionManager"></property>
 	</bean>
 	<!-- jms connection factory to export -->
