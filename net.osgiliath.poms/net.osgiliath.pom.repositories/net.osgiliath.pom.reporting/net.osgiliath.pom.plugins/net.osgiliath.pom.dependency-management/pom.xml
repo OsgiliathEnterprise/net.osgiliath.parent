@@ -474,6 +474,13 @@
 				<artifactId>org.apache.aries.transaction.blueprint</artifactId>
 				<version>${org.apache.aries.transaction.blueprint.version}</version>
 			</dependency>
+<dependency>
+				<groupId>org.apache.aries.transaction</groupId>
+				<artifactId>org.apache.aries.transaction.jdbc</artifactId>
+				<version>${org.apache.aries.transaction.jdbc.version}</version>
+			</dependency>
+
+
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
@@ -2733,6 +2740,7 @@
 		<org.apache.aries.proxy.service.version>1.0.3</org.apache.aries.proxy.service.version>
 		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
 		<org.apache.aries.transaction.blueprint.version>1.0.1</org.apache.aries.transaction.blueprint.version>
+<org.apache.aries.transaction.jdbc.version>2.1.0</org.apache.aries.transaction.jdbc.version>
 		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
 		<org.apache.cxf.karaf_cxf-karaf-commands.version>3.0.1</org.apache.cxf.karaf_cxf-karaf-commands.version>
 		<org.apache.deltaspike.version>1.0.3</org.apache.deltaspike.version>
