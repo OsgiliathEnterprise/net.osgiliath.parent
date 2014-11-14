@@ -44,9 +44,9 @@ public abstract class AbstractPaxExamKarafConfiguration {
 	/**
 	 * according Java property to set is jcoverage.command 
 	 */
-    protected static final String COVERAGE_COMMAND = "coverage.command";
+    protected static final String COVERAGE_COMMAND = "jcoverage.command";
     /**
-	 * according Java property to set is maven.settings
+	 * according Java property to set is maven.user.settings
 	 */
     protected static final String CONFIGURED_MAVEN_USER_SETTINGS = "maven.user.settings";
     /**
@@ -60,13 +60,17 @@ public abstract class AbstractPaxExamKarafConfiguration {
     /**
    	 * according Java property to set is project.groupId
    	 */
-    protected static final String MODULE_GROUP_ID = "module.groupId";
+    protected static final String MODULE_GROUP_ID = "project.groupId";
     /**
    	 * according Java property to set is project.parent.artifactId
    	 */
-    protected static final String MODULE_PARENT_ARTIFACT_ID = "module.parent.artifactId";
+    protected static final String MODULE_PARENT_ARTIFACT_ID = "project.parent.artifactId";
     /**
-     * According property is maven.repos
+   	 * according Java property to set is project.artifactId
+   	 */
+    protected static final String MODULE_ARTIFACT_ID = "project.artifactId";
+    /**
+     * According property is maven.repos.urls
      */
     protected static final String MAVEN_REPOS_URLS = "maven.repos.urls";
 
