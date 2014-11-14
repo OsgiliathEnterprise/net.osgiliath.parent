@@ -85,7 +85,7 @@
 		<feature version='${project.version}'>osgiliath-messaging</feature>
 		<feature>jetty</feature>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
-		<bundle>mvn:org.eclipse.jetty/jetty-websocket/${pax-jetty.version}</bundle>
+		<bundle>mvn:org.eclipse.jetty/jetty-websocket/${org.eclipse.jetty.aggregate_jetty-all-server.version}</bundle>
 	</feature>
 	<feature name="osgiliath-messaging-cdi" version="${project.version}">
 		<feature version='${project.version}'>osgiliath-cdi</feature>

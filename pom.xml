@@ -105,32 +105,9 @@
 		</extensions>
 		<pluginManagement>
 			<plugins>
-				<!-- <plugin>
-					<groupId>com.github.github</groupId>
-					<artifactId>downloads-maven-plugin</artifactId>
-					<version>${com.github.downloads-maven-plugin.version}</version>
-					<configuration>
-						<description>${project.version} release of ${project.name}</description>
-						<override>true</override>
-						<includeAttached>true</includeAttached>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>com.github.github</groupId>
-					<artifactId>site-maven-plugin</artifactId>
-					<version>${com.github.github_site-maven-plugin.version}</version>
-					<configuration>
-						<message>Creating site for ${project.version}</message>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>site</goal>
-							</goals>
-							<phase>site</phase>
-						</execution>
-					</executions>
-				</plugin> -->
+				<!-- <plugin> <groupId>com.github.github</groupId> <artifactId>downloads-maven-plugin</artifactId> <version>${com.github.downloads-maven-plugin.version}</version> <configuration> <description>${project.version} release of ${project.name}</description> 
+					<override>true</override> <includeAttached>true</includeAttached> </configuration> </plugin> <plugin> <groupId>com.github.github</groupId> <artifactId>site-maven-plugin</artifactId> <version>${com.github.github_site-maven-plugin.version}</version> <configuration> 
+					<message>Creating site for ${project.version}</message> </configuration> <executions> <execution> <goals> <goal>site</goal> </goals> <phase>site</phase> </execution> </executions> </plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
@@ -163,6 +140,11 @@
 						<releaseProfiles>release</releaseProfiles>
 						<useReleaseProfile>false</useReleaseProfile>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-publish-plugin</artifactId>
+					<version>${org.apache.maven.plugins_maven-scm-publish-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -241,14 +223,7 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<!-- <plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>downloads-maven-plugin</artifactId>
-			</plugin> -->
+			<!-- <plugin> <groupId>com.github.github</groupId> <artifactId>site-maven-plugin</artifactId> </plugin> <plugin> <groupId>com.github.github</groupId> <artifactId>downloads-maven-plugin</artifactId> </plugin> -->
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -288,7 +263,7 @@
 					<dependency><!-- add support for ssh/scp -->
 						<groupId>org.apache.maven.wagon</groupId>
 						<artifactId>wagon-ssh</artifactId>
-						<version>2.7</version>
+						<version>${org.apache.maven.wagon_wagon-scm.version}</version>
 					</dependency>
 				</dependencies>
 				<executions>
@@ -307,7 +282,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-scm-publish-plugin</artifactId>
-				<version>1.1</version>
 				<executions>
 					<execution>
 						<id>scm-publish</id>
@@ -334,6 +308,7 @@
 		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
+		<org.apache.maven.plugins_maven-scm-publish-plugin.version>1.1</org.apache.maven.plugins_maven-scm-publish-plugin.version>
 		<org.apache.maven.wagon_wagon-scm.version>2.7</org.apache.maven.wagon_wagon-scm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.license>apache_v2</project.license>
