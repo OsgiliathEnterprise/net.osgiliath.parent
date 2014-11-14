@@ -121,6 +121,9 @@
 					<version>${com.github.github_site-maven-plugin.version}</version>
 					<configuration>
 						<message>Creating site for ${project.version}</message>
+						<noJekyll>true</noJekyll>  
+						<repositoryName>net.osgiliath.parent</repositoryName>
+						<repositoryOwner>OsgiliathEnterprise</repositoryOwner>
 					</configuration>
 					<executions>
 						<execution>
