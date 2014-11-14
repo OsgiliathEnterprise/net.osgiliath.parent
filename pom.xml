@@ -81,7 +81,7 @@
 		<site>
 			<id>github-pages</id>
 			<name>Github GH Pages</name>
-			<url>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
+			<url>scm:git:ssh://git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
 		</site>
 	</distributionManagement>
 	<build>
@@ -236,6 +236,10 @@
 		<plugins>
 			<plugin>
 				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
 				<artifactId>downloads-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
@@ -259,7 +263,7 @@
 					<preparationGoals>clean install</preparationGoals>
 					<goals>deploy</goals>
 					<!-- The profile we want to use when doing the release -->
-					<arguments>-Prelease</arguments>
+					<releaseProfiles>release</releaseProfiles>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
 			</plugin>
