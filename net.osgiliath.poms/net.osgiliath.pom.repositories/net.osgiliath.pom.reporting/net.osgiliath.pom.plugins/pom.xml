@@ -138,8 +138,10 @@
 								<systemPropertyVariables>
 									<reportFormat>xml</reportFormat>
 									<coverage.command>${jcoverage.command}</coverage.command>
-									<user-settings>${org.apache.maven.user-settings}</user-settings>
-									<global-settings>${org.apache.maven.global-settings}</global-settings>
+									<maven.user.settings>${maven.settings}</maven.user.settings>
+									<maven.repos.urls>${maven.repos}</maven.repos.urls>
+									<maven.user.settings.default>${org.apache.maven.user-settings}</maven.user.settings.default>
+									<maven.global.settings.default>${org.apache.maven.global-settings}</maven.global.settings.default>
 									<module.groupId>${project.groupId}</module.groupId>
 									<module.parent.artifactId>${project.parent.artifactId}</module.parent.artifactId>
 									<module.artifactId>${project.artifactId}</module.artifactId>

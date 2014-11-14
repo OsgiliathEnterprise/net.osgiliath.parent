@@ -46,13 +46,17 @@ public abstract class AbstractPaxExamKarafConfiguration {
 	 */
     protected static final String COVERAGE_COMMAND = "coverage.command";
     /**
+	 * according Java property to set is maven.settings
+	 */
+    protected static final String CONFIGURED_MAVEN_USER_SETTINGS = "maven.user.settings";
+    /**
 	 * according Java property to set is org.apache.maven.user-settings
 	 */
-    protected static final String USER_SETTINGS_REFERENCE = "user-settings";
+    protected static final String DEFAULT_MAVEN_USER_SETTINGS = "maven.user.settings.default";
     /**
 	 * according Java property to set is org.apache.maven.global-settings
 	 */
-    protected static final String GLOBAL_SETTINGS_REFERENCE = "global-settings";
+    protected static final String DEFAULT_MAVEN_GLOBAL_SETTINGS = "maven.global.settings.default";
     /**
    	 * according Java property to set is project.groupId
    	 */
@@ -61,6 +65,9 @@ public abstract class AbstractPaxExamKarafConfiguration {
    	 * according Java property to set is project.parent.artifactId
    	 */
     protected static final String MODULE_PARENT_ARTIFACT_ID = "module.parent.artifactId";
+    /**
+     * According property is maven.repos
+     */
     protected static final String MAVEN_REPOS_URLS = "maven.repos.urls";
 
     @SuppressWarnings("UnusedDeclaration")
@@ -101,19 +108,25 @@ public abstract class AbstractPaxExamKarafConfiguration {
 	}
 
 	private Option addMavenSettingsOptions() {
-	if (System.getProperty(USER_SETTINGS_REFERENCE) != null) {
+		if (System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS) != null) {
+		    log.info("adding user reference settings "
+			    + System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS));
+		    return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
+			    "org.ops4j.pax.url.mvn.settings",
+			    System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
+		} else if (System.getProperty(DEFAULT_MAVEN_USER_SETTINGS) != null) {
 	    log.info("adding user reference settings "
-		    + System.getProperty(USER_SETTINGS_REFERENCE));
+		    + System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
 	    return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 		    "org.ops4j.pax.url.mvn.settings",
-		    System.getProperty(USER_SETTINGS_REFERENCE));
+		    System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
 	}
-	if (System.getProperty(GLOBAL_SETTINGS_REFERENCE) != null) {
+	if (System.getProperty(DEFAULT_MAVEN_GLOBAL_SETTINGS) != null) {
 	    log.info("adding global reference settings "
-		    + System.getProperty(GLOBAL_SETTINGS_REFERENCE));
+		    + System.getProperty(DEFAULT_MAVEN_GLOBAL_SETTINGS));
 	    return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 		    "org.ops4j.pax.url.mvn.settings",
-		    System.getProperty(GLOBAL_SETTINGS_REFERENCE));
+		    System.getProperty(DEFAULT_MAVEN_GLOBAL_SETTINGS));
 	}
 	return new DefaultCompositeOption();
 
