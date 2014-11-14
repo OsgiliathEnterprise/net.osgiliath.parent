@@ -330,7 +330,7 @@
 	<properties>
 		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
-		<com.github.github_site-maven-plugin.version>0.9</com.github.github_site-maven-plugin.version>
+		<com.github.github_site-maven-plugin.version>0.10</com.github.github_site-maven-plugin.version>
 		<github.global.server>github</github.global.server>
 		<license-maven-plugin.version>1.7</license-maven-plugin.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
