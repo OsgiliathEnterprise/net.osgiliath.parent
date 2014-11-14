@@ -2781,7 +2781,7 @@
 		<org.apache.servicemix.bundles.joda-time.version>2.3_1</org.apache.servicemix.bundles.joda-time.version>
 		<org.apache.servicemix.bundles.json4s.version>3.2.8_1</org.apache.servicemix.bundles.json4s.version>
 		<org.apache.servicemix.bundles.json-lib.version>2.4_1</org.apache.servicemix.bundles.json-lib.version>
-		<org.apache.servicemix.bundles.kxml2.version>2.3.0_3</org.apache.servicemix.bundles.kxml2.version>
+		<org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles.kxml2.version>
 		<org.apache.servicemix.bundles.lucene.version>4.7.0_1</org.apache.servicemix.bundles.lucene.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>1.8.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.fastinfoset.version>1.2.13_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.fastinfoset.version>
