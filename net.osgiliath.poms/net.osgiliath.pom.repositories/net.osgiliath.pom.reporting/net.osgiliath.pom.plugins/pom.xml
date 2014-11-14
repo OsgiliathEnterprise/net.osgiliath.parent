@@ -1017,6 +1017,19 @@
 							<jvmArg>-Xms64m</jvmArg>
 							<jvmArg>-Xmx1024m</jvmArg>
 						</jvmArgs>
+						<args>
+							<arg>-target:jvm-1.6</arg>
+							<arg>-deprecation</arg>
+							<arg>-unchecked</arg>
+							<arg>-uniqid</arg>
+							<arg>-no-specialization</arg>
+							<arg>-encoding</arg>
+							<arg>UTF-8</arg>                                <!-- HERE -->
+							<arg>-feature</arg>
+							<!-- prints a message when a method is generated that uses Reflection -->
+							<arg>-Xlog-reflective-calls</arg>
+							<arg>-Ywarn-adapted-args</arg>
+						</args>
 					</configuration>
 				</plugin>
 			</plugins>
