@@ -334,7 +334,7 @@
 								<goals>
 									<goal>run</goal>
 								</goals>
-								<phase>site-deploy</phase>
+								<phase>post-site</phase>
 							</execution>
 						</executions>
 					</plugin>
