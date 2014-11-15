@@ -115,26 +115,7 @@
 						<includeAttached>true</includeAttached>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>com.github.github</groupId>
-					<artifactId>site-maven-plugin</artifactId>
-					<version>${com.github.github_site-maven-plugin.version}</version>
-					<configuration>
-						<message>Creating site for ${project.version}</message>
-						<noJekyll>true</noJekyll>
-						<repositoryName>net.osgiliath.parent</repositoryName>
-						<repositoryOwner>OsgiliathEnterprise</repositoryOwner>
-						<path>${project.distributionManagement.site.url}</path>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>site</goal>
-							</goals>
-							<phase>site-deploy</phase>
-						</execution>
-					</executions>
-				</plugin>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
@@ -250,7 +231,7 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			
+
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>downloads-maven-plugin</artifactId>
@@ -348,11 +329,35 @@
 								</copy>
 							</target>
 						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<phase>site-deploy</phase>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-			</plugin>
+						<groupId>com.github.github</groupId>
+						<artifactId>site-maven-plugin</artifactId>
+						<version>${com.github.github_site-maven-plugin.version}</version>
+						<configuration>
+							<message>Creating site for ${project.version}</message>
+							<noJekyll>true</noJekyll>
+							<repositoryName>net.osgiliath.parent</repositoryName>
+							<repositoryOwner>OsgiliathEnterprise</repositoryOwner>
+							<path>${project.distributionManagement.site.url}</path>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>site</goal>
+								</goals>
+								<phase>site-deploy</phase>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
