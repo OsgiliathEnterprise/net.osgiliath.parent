@@ -332,7 +332,7 @@
 			<id>site_github</id>
 			<activation>
 				<file>
-					<exists>${project.basedir}/_parent_</exists>
+					<exists>_parent_</exists>
 				</file>
 			</activation>
 			<build>
