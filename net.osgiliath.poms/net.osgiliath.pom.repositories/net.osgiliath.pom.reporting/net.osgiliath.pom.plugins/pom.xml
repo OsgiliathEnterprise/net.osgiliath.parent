@@ -116,6 +116,7 @@
 					<configuration>
 						<source>${maven.compiler.source}</source>
 						<target>${maven.compiler.target}</target>
+						<encoding>${encoding}</encoding>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -1013,9 +1014,11 @@
 						</execution>
 					</executions>
 					<configuration>
+					<encoding>${encoding}</encoding>
 						<jvmArgs>
 							<jvmArg>-Xms64m</jvmArg>
 							<jvmArg>-Xmx1024m</jvmArg>
+							<jvmArg>-Dfile.encoding=${encoding}</jvmArg>
 						</jvmArgs>
 						<args>
 							<arg>-target:jvm-1.6</arg>
@@ -1024,7 +1027,7 @@
 							<arg>-uniqid</arg>
 							<arg>-no-specialization</arg>
 							<arg>-encoding</arg>
-							<arg>UTF-8</arg>                                <!-- HERE -->
+							<arg>${encoding}</arg>
 							<arg>-feature</arg>
 							<!-- prints a message when a method is generated that uses Reflection -->
 							<arg>-Xlog-reflective-calls</arg>
