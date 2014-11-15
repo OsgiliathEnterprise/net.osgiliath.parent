@@ -348,6 +348,7 @@
 							<repositoryName>net.osgiliath.parent</repositoryName>
 							<repositoryOwner>OsgiliathEnterprise</repositoryOwner>
 							<path>${project.distributionManagement.site.url}</path>
+							<merge>true</merge>
 						</configuration>
 						<executions>
 							<execution>
