@@ -81,7 +81,7 @@
 		<site>
 			<id>github-pages</id>
 			<name>Github GH Pages</name>
-			<url>site/${project.version}</url>
+			<url>file:${site.deploy.dir}</url>
 		</site>
 	</distributionManagement>
 	<build>
@@ -124,7 +124,7 @@
 						<noJekyll>true</noJekyll>
 						<repositoryName>net.osgiliath.parent</repositoryName>
 						<repositoryOwner>OsgiliathEnterprise</repositoryOwner>
-						 <path>${project.distributionManagement.site.url}</path>
+						<path>${project.distributionManagement.site.url}</path>
 					</configuration>
 					<executions>
 						<execution>
@@ -250,10 +250,7 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-			</plugin>
+			
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>downloads-maven-plugin</artifactId>
@@ -296,23 +293,8 @@
 				<configuration>
 					<skipDeploy>false</skipDeploy><!-- MSITE-652: configuration won't be necessary with m-site-p 3.2 -->
 				</configuration>
-			<!-- 	<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.wagon</groupId>
-						<artifactId>wagon-ssh</artifactId>
-						<version>${org.apache.maven.wagon_wagon-scm.version}</version>
-					</dependency>
-				</dependencies>
-				<executions>
-					<execution>
-						<id>stage-for-scm-publish</id>
-						<phase>post-site</phase>
-						<goals>
-							<goal>stage</goal>
-						</goals>
-
-					</execution>
-				</executions>  -->
+				<!-- <dependencies> <dependency> <groupId>org.apache.maven.wagon</groupId> <artifactId>wagon-ssh</artifactId> <version>${org.apache.maven.wagon_wagon-scm.version}</version> </dependency> </dependencies> <executions> <execution> <id>stage-for-scm-publish</id> 
+					<phase>post-site</phase> <goals> <goal>stage</goal> </goals> </execution> </executions> -->
 			</plugin>
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-scm-publish-plugin</artifactId> <executions> <execution> <id>scm-publish</id> <phase>site-deploy</phase> <goals> <goal>publish-scm</goal> </goals> </execution> </executions> 
 				</plugin> -->
@@ -324,6 +306,7 @@
 		<com.github.github_site-maven-plugin.version>0.10</com.github.github_site-maven-plugin.version>
 		<github.global.server>github</github.global.server>
 		<license-maven-plugin.version>1.7</license-maven-plugin.version>
+		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
@@ -342,8 +325,37 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
 		<maven-scm.version>1.9.1</maven-scm.version>
+		<site.deploy.dir>/tmp/deploy</site.deploy.dir>
 	</properties>
 	<profiles>
+		<profile>
+			<id>site_github</id>
+			<activation>
+				<file>
+					<exists>${project.basedir}/_parent_</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>${maven-antrun-plugin.version}</version>
+						<configuration>
+							<target>
+								<delete dir="${project.build.directory}/site" />
+								<copy todir="${project.build.directory}/site">
+									<fileset dir="${site.deploy.dir}" />
+								</copy>
+							</target>
+						</configuration>
+					</plugin>
+					<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+			</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>release</id>
 			<build>

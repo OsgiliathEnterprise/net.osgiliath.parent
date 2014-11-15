@@ -1421,7 +1421,7 @@
 		<karaf.version>3.0.2</karaf.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<liquibase.version>3.1.0</liquibase.version>
-		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		
 		<maven-bundle-plugin.version>2.5.3</maven-bundle-plugin.version>
 		<maven-clean-plugin.version>2.5</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
