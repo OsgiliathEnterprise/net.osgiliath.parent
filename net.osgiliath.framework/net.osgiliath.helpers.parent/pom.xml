@@ -17,7 +17,6 @@
 		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
 	<name>Osgiliath Helper</name>
-	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<description>
 	These are helpers for some of the osgiliath framework modules
 	</description>
