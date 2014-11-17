@@ -117,7 +117,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
 			    + System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS));
 		    return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
 			    "org.ops4j.pax.url.mvn.settings",
-			    System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
+			    System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS));
 		} else if (System.getProperty(DEFAULT_MAVEN_USER_SETTINGS) != null) {
 	    log.info("adding user reference settings "
 		    + System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
