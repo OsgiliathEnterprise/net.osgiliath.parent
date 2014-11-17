@@ -2662,7 +2662,7 @@
 		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
 		<karaf.feature.jndi.version>3.0.2</karaf.feature.jndi.version>
 		<karaf.feature.jpa.version>1.0.1</karaf.feature.jpa.version>
-		<karaf.feature.spring3.version>3.2.11.RELEASE_1</karaf.feature.spring3.version>
+		<karaf.feature.spring3.version>${org.springframework.version}_1</karaf.feature.spring3.version>
 		<karaf.feature.spring4.version>4.0.7.RELEASE_1</karaf.feature.spring4.version>
 		<karaf.feature.spring-dm.version>1.2.1</karaf.feature.spring-dm.version>
 		<karaf.feature.transaction.version>1.1.0</karaf.feature.transaction.version>
@@ -2774,7 +2774,7 @@
 		<org.springframework.data.commons.version>1.9.0.RELEASE</org.springframework.data.commons.version>
 		<org.springframework.data.jpa.version>1.7.0.RELEASE</org.springframework.data.jpa.version>
 		<org.springframework.osgi.version>1.2.1</org.springframework.osgi.version>
-		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+		<org.springframework.version>3.2.11.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 		<org.springframework.spring.version>2.0.6</org.springframework.spring.version>
 		<org.springframework.hateoas.version>0.8.0.RELEASE</org.springframework.hateoas.version>
