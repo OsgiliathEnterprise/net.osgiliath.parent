@@ -1,5 +1,0 @@
-eclipse.preferences.version=1
-extraProperties=sonar.java.coveragePlugin\=jacoco\r\nsonar.jacoco.itReportPath\=../../../../target/jacoco-it.exec\r\nsonar.jacoco.reportPath\=/Users/charliemordant/Documents/workspaces/osgiliathef/net.osgiliath.parent/net.osgiliath.framework/net.osgiliath.features.karaf-features/net.osgiliath.features.karaf-features.itests/net.osgiliath.features.karaf-features.itests.cdi.properties/target/jacoco-ut.exec\r\nsonar.scm.url\=scm\:git\:https\://github.com/OsgiliathEnterprise/net.osgiliath.parent.git/master\r\nsonar.junit.reportsPath\=/Users/charliemordant/Documents/workspaces/osgiliathef/net.osgiliath.parent/net.osgiliath.framework/net.osgiliath.features.karaf-features/net.osgiliath.features.karaf-features.itests/net.osgiliath.features.karaf-features.itests.cdi.properties/target/surefire-reports\r\nsonar.dynamicAnalysis\=reuseReports
-projectKey=net.osgiliath.framework\:net.osgiliath.features.karaf-features.itests.cdi.properties
-serverUrl=http\://localhost\:9000
-version=2
