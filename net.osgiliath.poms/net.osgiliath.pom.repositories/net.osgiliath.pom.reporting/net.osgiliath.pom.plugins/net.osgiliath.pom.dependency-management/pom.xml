@@ -2774,7 +2774,7 @@
 		<org.springframework.data.commons.version>1.9.0.RELEASE</org.springframework.data.commons.version>
 		<org.springframework.data.jpa.version>1.7.0.RELEASE</org.springframework.data.jpa.version>
 		<org.springframework.osgi.version>1.2.1</org.springframework.osgi.version>
-		<org.springframework.version>3.2.11.RELEASE</org.springframework.version>
+		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 		<org.springframework.spring.version>2.0.6</org.springframework.spring.version>
 		<org.springframework.hateoas.version>0.8.0.RELEASE</org.springframework.hateoas.version>
