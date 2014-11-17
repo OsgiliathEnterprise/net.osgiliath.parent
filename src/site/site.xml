@@ -25,7 +25,7 @@
 			<item name="Osgiliath documentation" href="http://osgiliathenterprise.github.io/projects.documentations/documentations/osgiliath-enterprise-framework/" />
 		</links>
 
-		<menu name="User guide">
+		<menu name="User guide" inherit="top">
 			<item href="README.html" name="README" />
 		</menu>
 		<menu ref="reports" inherit="top" />
