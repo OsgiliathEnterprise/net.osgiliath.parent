@@ -115,7 +115,11 @@
 						<includeAttached>true</includeAttached>
 					</configuration>
 				</plugin>
-
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
@@ -160,6 +164,21 @@
 					<configuration>
 						<skipDeploy>true</skipDeploy>
 					</configuration>
+					<executions>
+						<execution>
+							<id>attach-descriptor</id>
+							<goals>
+								<goal>attach-descriptor</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.doxia</groupId>
+							<artifactId>doxia-module-markdown</artifactId>
+							<version>${doxia-module-markdown.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.rat</groupId>
@@ -232,10 +251,7 @@
 		</pluginManagement>
 		<plugins>
 
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>downloads-maven-plugin</artifactId>
-			</plugin>
+
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -285,6 +301,7 @@
 		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
 		<com.github.github_site-maven-plugin.version>0.10</com.github.github_site-maven-plugin.version>
+		<doxia-module-markdown.version>1.6</doxia-module-markdown.version>
 		<github.global.server>github</github.global.server>
 		<license-maven-plugin.version>1.7</license-maven-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
@@ -310,6 +327,38 @@
 	</properties>
 	<profiles>
 		<profile>
+			<id>add_readme_md</id>
+			<activation>
+				<file>
+					<exists>readme.md</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+                <execution>
+                    <id>copy-readme-dir</id>
+                    <phase>process-resources</phase>
+                    <configuration>
+                        <tasks>
+                            <mkdir dir="src/site/markdown"/>
+                             <copy file="readme.md" tofile="src/site/markdown/readme.md"/>
+                        </tasks>
+                    </configuration>
+                    <goals>
+                        <goal>run</goal>
+                    </goals>
+                </execution>
+            </executions>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+		<profile>
 			<id>site_github</id>
 			<activation>
 				<file>
@@ -319,16 +368,8 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>${maven-antrun-plugin.version}</version>
-						<configuration>
-							<target>
-								<delete dir="${project.build.directory}/site" />
-								<copy todir="${project.build.directory}/site">
-									<fileset dir="${site.deploy.dir}" />
-								</copy>
-							</target>
-						</configuration>
 						<executions>
 							<execution>
 								<goals>
@@ -337,6 +378,14 @@
 								<phase>post-site</phase>
 							</execution>
 						</executions>
+						<configuration>
+							<target>
+								<delete dir="${project.build.directory}/site" />
+								<copy todir="${project.build.directory}/site">
+									<fileset dir="${site.deploy.dir}" />
+								</copy>
+							</target>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>com.github.github</groupId>
