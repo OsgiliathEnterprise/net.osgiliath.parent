@@ -23,7 +23,6 @@
 	<packaging>maven-archetype</packaging>
 	<name>Osgiliath UI archetype</name>
 	<description>Must be behind an Osgiliath parent archetype, user inteface programming for Osgiliath</description>
-	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<build>
 		<extensions>
 			<extension>

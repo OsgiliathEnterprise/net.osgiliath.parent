@@ -25,9 +25,6 @@
 
 	<name>Osgiliath model archetype</name>
 	<description>Must be behind an Osgiliath parent archetype, database persistence of your model</description>
-
-	<url>https://blog.osgiliath.net/?page_id=224</url>
-
 	<build>
 		<extensions>
 			<extension>

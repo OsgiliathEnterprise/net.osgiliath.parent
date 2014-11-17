@@ -23,7 +23,6 @@
 	<packaging>maven-archetype</packaging>
 	<name>Osgiliath route archetype with blueprint</name>
 	<description>Must be behind an Osgiliath parent archetype, routing support between modules</description>
-	<url>https://blog.osgiliath.net/?page_id=224</url>
 	<build>
 		<extensions>
 			<extension>

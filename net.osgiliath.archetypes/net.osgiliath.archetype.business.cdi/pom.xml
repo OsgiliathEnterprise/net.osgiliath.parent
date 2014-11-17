@@ -24,9 +24,6 @@
 
 	<name>Osgiliath business archetype with CDI</name>
 	<description>Must be behind an Osgiliath parent archetype, business processing of data</description>
-	<url>https://blog.osgiliath.net/?page_id=224</url>
-
-
 	<build>
 		<extensions>
 			<extension>
