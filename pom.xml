@@ -178,8 +178,8 @@
 					<artifactId>maven-site-plugin</artifactId>
 					<configuration>
 						<skipDeploy>true</skipDeploy>
-						<inputEncoding>${encoding}</inputEncoding>
-                        <outputEncoding>${encoding}</outputEncoding>
+ <inputEncoding>${encoding}</inputEncoding>
+                                        <outputEncoding>${encoding}</outputEncoding>
 					</configuration>
 					<executions>
 						<execution>
