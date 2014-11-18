@@ -405,16 +405,20 @@
 								<script>
 								<![CDATA[
 								import java.io.File
-								import static java.nio.file.StandardCopyOption.*
+								import java.nio.file.StandardCopyOption
+								import java.nio.file.Files
 								String siteXmlPath = "src/site/site.xml"
 								String readme_file = "readme.md"
-								String currentPath = ${project.basedir}
-								if (new File(currentPath + readme.md).exists() && !(new File(currentPath + siteXmlPath).exists())) {	
-									while (!(new File(currentPath + siteXmlPath).exists() && new File(currentPath + pom.xml).exists()) {
-										currentPath = currentPath + ../
-										if (new File(currentPath + siteXmlPath).exists()) {
-											Files.copy(new File(currentPath + siteXmlPath).toPath, new File(${project.basedir} + siteXmlPath).toPath, StandardCopyOption.REPLACE_EXISTING)
+								String currentPath = "${project.basedir}"
+								if (new File(currentPath + "/" + readme_file).exists() && !(new File(currentPath + "/" + siteXmlPath).exists())) {	
+									while (!(new File(currentPath + "/" + siteXmlPath).exists())) {
+										currentPath = currentPath + "/.."
+										if (new File(currentPath + "/" + siteXmlPath).exists()) {
+											Files.copy(new File(currentPath + "/" + siteXmlPath).toPath(), new File("${project.basedir}/" + siteXmlPath).toPath(), StandardCopyOption.REPLACE_EXISTING)
+										} else if (!(new File(currentPath + "/pom.xml").exists())) {
+											break;
 										}
+										
 									}
 								}
             ]]>
