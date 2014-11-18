@@ -178,6 +178,11 @@
 							<artifactId>doxia-module-markdown</artifactId>
 							<version>${doxia-module-markdown.version}</version>
 						</dependency>
+<configuration>
+                                        <inputEncoding>${encoding}</inputEncoding>
+                                        <outputEncoding>${encoding}</outputEncoding>
+                                </configuration>
+
 					</dependencies>
 				</plugin>
 				<plugin>
