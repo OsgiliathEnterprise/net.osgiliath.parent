@@ -26,7 +26,7 @@
 		</links>
 
 		<menu name="Documentation">
-			<item href="readme.html" name="full description" />
+			<item href="readme.html" name="readme" />
 		</menu>
 		<menu ref="reports" inherit="top" />
 	</body>
