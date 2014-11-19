@@ -13,18 +13,16 @@ Karaf features
 ### Building/using
 
 Add to the settings.xml of your maven if you're behind a proxy:
-```
+``` xml
 <settings>
-  [...]
   <profiles>
     <profile>
       <id>osgiliath-exec</id>
       <properties>
-        <mavenSettings.location>/usr/share/maven/conf/settings.xml</mavenSettings.location>
+        <maven.user.settings.default>/usr/share/maven/conf/settings.xml</maven.user.settings.default>
       </properties>
     </profile>
   </profiles>
-
   <activeProfiles>
     <activeProfile>osgiliath-exec</activeProfile>
   </activeProfiles>
