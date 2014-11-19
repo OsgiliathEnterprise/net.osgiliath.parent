@@ -6,6 +6,7 @@
 		<version>0.0.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.derby</artifactId>
+	<name>Wrapper for apache derby database</name>
 	<build>
 		<plugins>
 			<plugin>

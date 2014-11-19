@@ -6,6 +6,7 @@
 		<version>0.0.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-monitoring</artifactId>
+	<name>Monitoring and development feature</name>
 	<build>
 		<resources>
 			<resource>

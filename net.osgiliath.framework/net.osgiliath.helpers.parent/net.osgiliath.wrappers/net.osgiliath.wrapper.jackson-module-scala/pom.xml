@@ -6,6 +6,7 @@
 		<version>0.0.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.jackson-module-scala</artifactId>
+	<name>Wrapper for Jackson scala</name>
 	<build>
 		<plugins>
 			<plugin>

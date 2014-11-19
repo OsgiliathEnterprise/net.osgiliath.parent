@@ -6,6 +6,7 @@
 		<version>0.0.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.cdi.properties</artifactId>
+	<name>Property usage via Config resolver class</name>
 	<description>CDI Property injection with deltaspike integration tests</description>
 	<build>
 		<resources>

@@ -6,6 +6,7 @@
 		<version>0.0.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.swagger-jaxrs</artifactId>
+	<name>Wrapper for swagger JaxRS module</name>
 	<build>
 		<plugins>
 			<plugin>
