@@ -366,6 +366,7 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
+					<include>**/*.cfg</include>
 				</includes>
 			</resource>
 		</resources>
