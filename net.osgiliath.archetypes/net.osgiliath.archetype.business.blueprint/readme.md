@@ -13,22 +13,22 @@ Karaf features
 ### Building/using
 
 Add to the settings.xml of your maven if you're behind a proxy:
-```xml
-&lt;settings&gt;
+```
+<settings>
   [...]
-  &lt;profiles&gt;
-    &lt;profile&gt;
-      &lt;id&gt;osgiliath-exec&lt;/id&gt;
-      &lt;properties&gt;
-        &lt;mavenSettings.location&gt;/usr/share/maven/conf/settings.xml&lt;/mavenSettings.location&gt;
-      &lt;/properties&gt;
-    &lt;/profile&gt;
-  &lt;/profiles&gt;
+  <profiles>
+    <profile>
+      <id>osgiliath-exec</id>
+      <properties>
+        <mavenSettings.location>/usr/share/maven/conf/settings.xml</mavenSettings.location>
+      </properties>
+    </profile>
+  </profiles>
 
-  &lt;activeProfiles&gt;
-    &lt;activeProfile&gt;osgiliath-exec&lt;/activeProfile&gt;
-  &lt;/activeProfiles&gt;
-&lt;/settings&gt;
+  <activeProfiles>
+    <activeProfile>osgiliath-exec</activeProfile>
+  </activeProfiles>
+</settings>
 ```
 If you're on a Mac, you've also to add a java.home property pointing on your jdk 1.7 installation root.
 
