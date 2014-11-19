@@ -21,6 +21,6 @@ And don't forget to add the feature you want to use on your app features.xml
 
 You can now have access to monitoring features for Osgiliath (Swagger UI to query your REST services and Hawtio).
 
-If you've annotated your bean with Swagger annotations and configured the Blueprint/CDI swagger bean (see hello blueprint sample to have an overview), you will be able to query your service going to <your service url>/api-docs/
+If you've annotated your bean with Swagger annotations and configured the Blueprint/CDI swagger bean (see hello blueprint sample to have an overview), you will be able to query your service going to service_url/api-docs/
 
 Everytime, you'll be able to monitor your OSGI beans, Camel routes, MBeans... with the hawtio web console going to <server url>/hawtio/  
