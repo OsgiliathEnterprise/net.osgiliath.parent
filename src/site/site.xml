@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
-<project name="Maven" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+<project name="Osgiliath Enterprise framework" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+
 	<bannerLeft>
-		<name>Osgiliath enterprise framework</name>
+		<name>Github</name>
 		<href>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</href>
 	</bannerLeft>
 
@@ -14,8 +15,31 @@
 	<custom>
 		<fluidoSkin>
 			<sideBarEnabled>true</sideBarEnabled>
+			<topBarEnabled>true</topBarEnabled>
+			<topBarIcon>
+				<name>Maven Fluido Skin</name>
+				<alt>Maven Fluido Skin</alt>
+				<src>/images/osgiliath.png</src>
+				<href>/index.html</href>
+			</topBarIcon>
+			<googleSearch>
+				<sitesearch />
+			</googleSearch>
+			<sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+			<gitHub>
+				<projectId>OsgiliathEnterprise/net.osgiliath.parent</projectId>
+				<ribbonOrientation>right</ribbonOrientation>
+				<ribbonColor>green</ribbonColor>
+			</gitHub>
 			<googlePlusOne />
+			<twitter>
+				<user>Tcharl</user>
+				<showUser>true</showUser>
+				<showFollowers>true</showFollowers>
+			</twitter>
+			<facebookLike />
 		</fluidoSkin>
+		<custom.fluidoSkin.googleSearch.sitesearch>http://osgiliathenterprise.github.io/net.osgiliath.parent/</custom.fluidoSkin.googleSearch.sitesearch>
 	</custom>
 
 
@@ -25,7 +49,7 @@
 			<item name="Osgiliath documentation" href="http://osgiliathenterprise.github.io/projects.documentations/documentations/osgiliath-enterprise-framework/" />
 		</links>
 
-		<menu name="Documentation">
+		<menu name="Documentation" inherit="top" inheritAsRef="true">
 			<item href="readme.html" name="readme" />
 		</menu>
 		<menu ref="reports" inherit="top" />

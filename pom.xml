@@ -56,6 +56,40 @@
 		<module>net.osgiliath.framework</module>
 		<module>net.osgiliath.samples</module>
 	</modules>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>1024m</maxmemory>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<id>aggregated</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<id>aggregate</id>
+						<reports>
+							<report>aggregate</report>
+							<report>test-aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>-->
+		</plugins>
+	</reporting>
 	<!-- <distributionManagement> Distribution des artefacts compilés Rajoutez ceci dans votre fichier ~.m2/settings.xml <servers> <server> <id>releases</id> <username>username</username> <password>password</password> </server> <server> <id>snapshots</id> 
 		<username>username</username> <password>password</password> </server> </servers> <repository> <id>releases</id> <name>Nexus Releases public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/releases</url> </repository> <snapshotRepository> 
 		<id>snapshots</id> <name>Nexus Snapshots public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url> </snapshotRepository> <site> <id>Osgiliath</id> <name>Osgiliath</name> <url>http://blog.osgiliath.net/</url> </site> </distributionManagement> -->
@@ -157,6 +191,11 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${maven-javadoc-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jxr-plugin</artifactId>
+					<version>${maven-jxr-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -336,6 +375,7 @@
 		<com.github.github_site-maven-plugin.version>0.10</com.github.github_site-maven-plugin.version>
 		<doxia-module-markdown.version>1.6</doxia-module-markdown.version>
 		<github.global.server>github</github.global.server>
+		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
 		<license-maven-plugin.version>1.7</license-maven-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -380,7 +420,7 @@
 								<configuration>
 									<tasks>
 										<mkdir dir="src/site/markdown" />
-										<copy file="readme.md" tofile="src/site/markdown/readme.md" />
+										<copy file="readme.md" tofile="src/site/markdown/readme.md" overwrite="true" />
 									</tasks>
 								</configuration>
 								<goals>
@@ -389,43 +429,11 @@
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>org.codehaus.gmavenplus</groupId>
-						<artifactId>gmavenplus-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>execute</goal>
-								</goals>
-								<phase>generate-resources</phase>
-							</execution>
-						</executions>
-						<configuration>
-							<scripts>
-								<script>
-								<![CDATA[
-								import java.io.File
-								import java.nio.file.StandardCopyOption
-								import java.nio.file.Files
-								String siteXmlPath = "src/site/site.xml"
-								String readme_file = "readme.md"
-								String currentPath = "${project.basedir}"
-								if (new File(currentPath + "/" + readme_file).exists() && !(new File(currentPath + "/" + siteXmlPath).exists())) {	
-									while (!(new File(currentPath + "/" + siteXmlPath).exists())) {
-										currentPath = currentPath + "/.."
-										if (new File(currentPath + "/" + siteXmlPath).exists()) {
-											Files.copy(new File(currentPath + "/" + siteXmlPath).toPath(), new File("${project.basedir}/" + siteXmlPath).toPath(), StandardCopyOption.REPLACE_EXISTING)
-										} else if (!(new File(currentPath + "/pom.xml").exists())) {
-											break;
-										}
-										
-									}
-								}
-            ]]>
-								</script>
-							</scripts>
-						</configuration>
-					</plugin>
+					<!-- <plugin> <groupId>org.codehaus.gmavenplus</groupId> <artifactId>gmavenplus-plugin</artifactId> <executions> <execution> <goals> <goal>execute</goal> </goals> <phase>generate-resources</phase> </execution> </executions> <configuration> <scripts> 
+						<script> <![CDATA[ import java.io.File import java.nio.file.StandardCopyOption import java.nio.file.Files String siteXmlPath = "src/site/site.xml" String readme_file = "readme.md" String currentPath = "${project.basedir}" if (new File(currentPath + "/" 
+						+ readme_file).exists() && !(new File(currentPath + "/" + siteXmlPath).exists())) { while (!(new File(currentPath + "/" + siteXmlPath).exists())) { currentPath = currentPath + "/.." if (new File(currentPath + "/" + siteXmlPath).exists()) { Files.copy(new 
+						File(currentPath + "/" + siteXmlPath).toPath(), new File("${project.basedir}/" + siteXmlPath).toPath(), StandardCopyOption.REPLACE_EXISTING) } else if (!(new File(currentPath + "/pom.xml").exists())) { break; } } } ]]> </script> </scripts> </configuration> 
+						</plugin> -->
 				</plugins>
 			</build>
 
