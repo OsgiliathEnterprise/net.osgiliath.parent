@@ -81,6 +81,7 @@
 				<reportSets>
 					<reportSet>
 						<id>aggregate</id>
+						<inherited>false</inherited>
 						<reports>
 							<report>aggregate</report>
 							<report>test-aggregate</report>

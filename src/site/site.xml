@@ -19,8 +19,8 @@
 			<topBarIcon>
 				<name>Maven Fluido Skin</name>
 				<alt>Maven Fluido Skin</alt>
-				<src>/images/osgiliath.png</src>
-				<href>/index.html</href>
+				<src>http://osgiliathenterprise.github.io/net.osgiliath.parent/images/osgiliath.png</src>
+				<href>http://osgiliathenterprise.github.io/net.osgiliath.parent/index.html</href>
 			</topBarIcon>
 			<googleSearch>
 				<sitesearch />
@@ -49,9 +49,9 @@
 			<item name="Osgiliath documentation" href="http://osgiliathenterprise.github.io/projects.documentations/documentations/osgiliath-enterprise-framework/" />
 		</links>
 
-		<menu name="Documentation" inherit="top" inheritAsRef="true">
+		<menu name="Documentation" inherit="bottom" >
 			<item href="readme.html" name="readme" />
 		</menu>
-		<menu ref="reports" inherit="top" />
+		<menu ref="reports" inherit="bottom" />
 	</body>
 </project>
