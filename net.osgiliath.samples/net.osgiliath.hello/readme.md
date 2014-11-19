@@ -22,6 +22,7 @@ Development:
 Starting from the archetype, you have a simple helloworld made with this project, don't forget to remove every reference once you've understood the stack
 
 Follow the different TODO keywords, starting from this module order:
+
     <project>.database
     <project>.model.jpa
     <project>.business.spi
