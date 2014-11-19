@@ -13,10 +13,10 @@ Run mvn clean install on the root project!
 IDE recommandation:
 
 * Eclipse 4.3 with the following plugins:
-* * Lombok installation: mandatory for IDE compilation
-* * M2e (compilation)
-* * Spring-IDE (for blueprint file editing)
-* * BND
+* Lombok installation: mandatory for IDE compilation
+* M2e (compilation)
+* Spring-IDE (for blueprint file editing)
+* BND
 
 Development:
 Starting from the archetype, you have a simple helloworld made with this project, don't forget to remove every reference once you've understood the stack
