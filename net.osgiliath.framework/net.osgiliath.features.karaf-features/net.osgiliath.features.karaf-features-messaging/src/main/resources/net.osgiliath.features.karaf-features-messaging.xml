@@ -27,6 +27,7 @@
 		<!-- uber osgi bundle means client is not that lean, todo: introduce client osgi bundle -->
 		<bundle dependency="true">mvn:org.apache.xbean/xbean-spring/${xbean.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq.version}</bundle>
+		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.features.karaf-features-messaging/${project.version}/cfg/activemq</configfile>
 	</feature>
 
 	<!-- All bundles needed by the broker -->

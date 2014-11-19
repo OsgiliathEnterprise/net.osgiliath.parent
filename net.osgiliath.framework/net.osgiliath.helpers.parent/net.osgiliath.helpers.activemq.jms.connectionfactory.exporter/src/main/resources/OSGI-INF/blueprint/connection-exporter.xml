@@ -15,6 +15,7 @@
 			<cm:property name="broker-name" value="amq-broker" />
 			<cm:property name="webSocketTransportConnector.uri" value="ws://localhost:61614" />
 			<cm:property name="webSocketXATransportConnector.uri" value="ws://localhost:61624" />
+			<cm:property name="producer.receivetimeout" value="2000" />
 		</cm:default-properties>
 	</cm:property-placeholder>
 	<!-- access through JTATransactionManager -->
@@ -75,14 +76,14 @@
 
 	<bean id="jmsXAProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<argument ref="jmsXaPoolConnectionFactory"></argument>
-		<property name="receiveTimeout" value="2000"></property>
+		<property name="receiveTimeout" value="$[producer.receivetimeout]"></property>
 		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE"></property>
 		<property name="deliveryPersistent" value="false" />
 		<property name="deliveryMode" value="1" />
 	</bean>
 	<bean id="jmsProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<argument ref="pooledConnectionFactory"></argument>
-		<property name="receiveTimeout" value="2000"></property>
+		<property name="receiveTimeout" value="$[producer.receivetimeout]"></property>
 		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE"></property>
 		<property name="deliveryPersistent" value="false" />
 		<property name="deliveryMode" value="1" />

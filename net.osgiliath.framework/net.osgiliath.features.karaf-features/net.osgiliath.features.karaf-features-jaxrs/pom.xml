@@ -438,7 +438,7 @@
 									<classifier>features</classifier>
 								</artifact>
 								<artifact>
-									<file>${project.build.directory}/classes/cxfconfig.cfg</file>
+									<file>${project.build.directory}/classes/${project.artifactId}.cfg</file>
 									<type>cfg</type>
 									<classifier>cxf</classifier>
 								</artifact>
