@@ -49,7 +49,7 @@
 			<item name="Osgiliath documentation" href="http://osgiliathenterprise.github.io/projects.documentations/documentations/osgiliath-enterprise-framework/" />
 		</links>
 
-		<menu name="Documentation" inherit="bottom" >
+		<menu name="Documentation" >
 			<item href="readme.html" name="readme" />
 		</menu>
 		<menu ref="reports" inherit="bottom" />
