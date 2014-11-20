@@ -75,20 +75,8 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			<!-- <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<id>aggregate</id>
-						<inherited>false</inherited>
-						<reports>
-							<report>aggregate</report>
-							<report>test-aggregate</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>-->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId> <reportSets> <reportSet> <id>aggregate</id> <inherited>false</inherited> <reports> <report>aggregate</report> <report>test-aggregate</report> </reports> 
+				</reportSet> </reportSets> </plugin> -->
 		</plugins>
 	</reporting>
 	<!-- <distributionManagement> Distribution des artefacts compilés Rajoutez ceci dans votre fichier ~.m2/settings.xml <servers> <server> <id>releases</id> <username>username</username> <password>password</password> </server> <server> <id>snapshots</id> 
@@ -300,6 +288,11 @@
 					</executions>
 				</plugin>
 				<plugin>
+						<groupId>org.kohsuke</groupId>
+						<artifactId>pgp-maven-plugin</artifactId>
+						<version>${org.kohsuke_pgp-maven-plugin.version}</version>
+						</plugin>
+				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
 					<version>${nexus-staging-maven-plugin.version}</version>
@@ -377,6 +370,7 @@
 		<org.apache.maven.plugins_maven-scm-publish-plugin.version>1.1</org.apache.maven.plugins_maven-scm-publish-plugin.version>
 		<org.apache.maven.wagon_wagon-scm.version>2.7</org.apache.maven.wagon_wagon-scm.version>
 		<org.codehaus.groovy_groovy-all.version>2.3.7</org.codehaus.groovy_groovy-all.version>
+		<org.kohsuke_pgp-maven-plugin.version>1.1</org.kohsuke_pgp-maven-plugin.version>
 		<encoding>UTF-8</encoding>
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
@@ -416,7 +410,7 @@
 							</execution>
 						</executions>
 					</plugin>
-					
+
 				</plugins>
 			</build>
 
@@ -501,8 +495,8 @@
 						</executions>
 					</plugin>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
+						<groupId>org.kohsuke</groupId>
+						<artifactId>pgp-maven-plugin</artifactId>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
