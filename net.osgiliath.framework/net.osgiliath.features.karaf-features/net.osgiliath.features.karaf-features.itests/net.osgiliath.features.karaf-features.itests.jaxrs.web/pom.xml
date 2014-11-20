@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features.itests</artifactId>
-		<version>0.0.8-SNAPSHOT</version>
+		<version>0.0.10-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.jaxrs.web</artifactId>
 	<packaging>jar</packaging>
