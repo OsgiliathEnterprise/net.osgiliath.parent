@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.wrappers</groupId>
 		<artifactId>net.osgiliath.wrappers</artifactId>
-		<version>0.0.10-SNAPSHOT</version>
+		<version>0.0.10</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.deltaspike-data-module-impl</artifactId>
 	<name>Wrapper for Deltaspike data impl</name>

@@ -3,7 +3,7 @@
   <parent>
     <groupId>net.osgiliath.framework</groupId>
     <artifactId>net.osgiliath.features.karaf-features.itests</artifactId>
-    <version>0.0.10-SNAPSHOT</version>
+    <version>0.0.10</version>
   </parent>
   <artifactId>net.osgiliath.features.karaf-features.itests.validation.cdi</artifactId>
   <name>Osgiliath integration tests CDI Validation</name>
