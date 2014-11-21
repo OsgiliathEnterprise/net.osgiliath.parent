@@ -86,8 +86,8 @@
 		<connection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</connection>
 		<developerConnection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
 		<url>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>
@@ -105,7 +105,7 @@
 		<site>
 			<id>github-pages</id>
 			<name>Github GH Pages</name>
-			<url>file:${site.deploy.dir}</url>
+			<url>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
 		</site>
 	</distributionManagement>
 	<build>
@@ -201,10 +201,14 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-scm-publish-plugin</artifactId>
 					<version>${org.apache.maven.plugins_maven-scm-publish-plugin.version}</version>
+					<configuration>
+						<scmBranch>gh-pages</scmBranch>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
+					<version>${org.apache.maven.plugins_maven-site-plugin.version}</version>
 					<configuration>
 						<skipDeploy>true</skipDeploy>
 						<inputEncoding>${encoding}</inputEncoding>
@@ -289,10 +293,10 @@
 					</executions>
 				</plugin>
 				<plugin>
-						<groupId>org.kohsuke</groupId>
-						<artifactId>pgp-maven-plugin</artifactId>
-						<version>${org.kohsuke_pgp-maven-plugin.version}</version>
-						</plugin>
+					<groupId>org.kohsuke</groupId>
+					<artifactId>pgp-maven-plugin</artifactId>
+					<version>${org.kohsuke_pgp-maven-plugin.version}</version>
+				</plugin>
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -342,19 +346,27 @@
 			<plugin>
 				<artifactId>maven-site-plugin</artifactId>
 				<configuration>
-					<skipDeploy>false</skipDeploy><!-- MSITE-652: configuration won't be necessary with m-site-p 3.2 -->
+					<skipDeploy>false</skipDeploy>
 				</configuration>
-				<!-- <dependencies> <dependency> <groupId>org.apache.maven.wagon</groupId> <artifactId>wagon-ssh</artifactId> <version>${org.apache.maven.wagon_wagon-scm.version}</version> </dependency> </dependencies> <executions> <execution> <id>stage-for-scm-publish</id> 
-					<phase>post-site</phase> <goals> <goal>stage</goal> </goals> </execution> </executions> -->
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-scm-publish-plugin</artifactId> <executions> <execution> <id>scm-publish</id> <phase>site-deploy</phase> <goals> <goal>publish-scm</goal> </goals> </execution> </executions> 
-				</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>scm-publish</id>
+						<phase>site-deploy</phase>
+						<goals>
+							<goal>publish-scm</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<properties>
 		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
-		<com.github.github_site-maven-plugin.version>0.10</com.github.github_site-maven-plugin.version>
 		<doxia-module-markdown.version>1.6</doxia-module-markdown.version>
 		<github.global.server>github</github.global.server>
 		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
@@ -369,6 +381,7 @@
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
 		<org.apache.maven.plugins_maven-scm-publish-plugin.version>1.1</org.apache.maven.plugins_maven-scm-publish-plugin.version>
+		<org.apache.maven.plugins_maven-site-plugin.version>3.4</org.apache.maven.plugins_maven-site-plugin.version>
 		<org.apache.maven.wagon_wagon-scm.version>2.7</org.apache.maven.wagon_wagon-scm.version>
 		<org.codehaus.groovy_groovy-all.version>2.3.7</org.codehaus.groovy_groovy-all.version>
 		<org.kohsuke_pgp-maven-plugin.version>1.1</org.kohsuke_pgp-maven-plugin.version>
@@ -408,59 +421,6 @@
 								<goals>
 									<goal>run</goal>
 								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-				</plugins>
-			</build>
-
-		</profile>
-		<profile>
-			<id>site_github</id>
-			<activation>
-				<file>
-					<exists>_parent_</exists>
-				</file>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<phase>post-site</phase>
-							</execution>
-						</executions>
-						<configuration>
-							<target>
-								<delete dir="${project.build.directory}/site" />
-								<copy todir="${project.build.directory}/site">
-									<fileset dir="${site.deploy.dir}" />
-								</copy>
-							</target>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>com.github.github</groupId>
-						<artifactId>site-maven-plugin</artifactId>
-						<configuration>
-							<message>Creating site for ${project.version}</message>
-							<noJekyll>true</noJekyll>
-							<repositoryName>net.osgiliath.parent</repositoryName>
-							<repositoryOwner>OsgiliathEnterprise</repositoryOwner>
-							<path>${project.distributionManagement.site.url}</path>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>site</goal>
-								</goals>
-								<phase>site-deploy</phase>
 							</execution>
 						</executions>
 					</plugin>
@@ -510,10 +470,6 @@
 					</plugin>
 				</plugins>
 			</build>
-			<properties>
-				<!-- <failsafe.skiptests>true</failsafe.skiptests> -->
-				<!-- <skipExec>true</skipExec> -->
-			</properties>
 		</profile>
 	</profiles>
 </project>
