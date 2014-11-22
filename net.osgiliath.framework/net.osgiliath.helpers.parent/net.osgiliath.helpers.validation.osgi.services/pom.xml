@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers.parent</artifactId>
-		<version>0.0.13-SNAPSHOT</version>
+		<version>0.0.13</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.validation.osgi.services</artifactId>
 	<name>Helper for JSR303 (bean validation) with OSGI</name>
