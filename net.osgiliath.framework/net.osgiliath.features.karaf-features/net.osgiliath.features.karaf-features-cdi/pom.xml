@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
-		<version>0.0.12</version>
+		<version>0.0.13-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-cdi</artifactId>
 	<name>Osgiliath CDI features</name>

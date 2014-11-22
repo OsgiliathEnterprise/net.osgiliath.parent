@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath</groupId>
 		<artifactId>net.osgiliath.parent</artifactId>
-		<version>0.0.12</version>
+		<version>0.0.13-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.archetypes</artifactId>
 	<packaging>pom</packaging>
