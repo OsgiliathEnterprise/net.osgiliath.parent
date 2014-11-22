@@ -411,7 +411,7 @@
 						<executions>
 							<execution>
 								<id>copy-readme-dir</id>
-								<phase>generate-resources</phase>
+								<phase>pre-site</phase>
 								<configuration>
 									<tasks>
 										<mkdir dir="src/site/markdown" />
