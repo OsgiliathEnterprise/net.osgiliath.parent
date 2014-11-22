@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>net.osgiliath.pom.plugins</artifactId>
 		<groupId>net.osgiliath</groupId>
-		<version>0.0.12-SNAPSHOT</version>
+		<version>0.0.12</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>net.osgiliath.pom.dependency-management</artifactId>
