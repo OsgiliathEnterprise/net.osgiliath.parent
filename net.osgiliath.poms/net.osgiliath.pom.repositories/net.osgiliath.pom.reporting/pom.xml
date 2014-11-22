@@ -1,14 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
-		contributor license agreements. See the NOTICE file distributed with this 
-		work for additional information regarding copyright ownership. The ASF licenses 
-		this file to You under the Apache License, Version 2.0 (the "License"); you 
-		may not use this file except in compliance with the License. You may obtain 
-		a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless 
-		required by applicable law or agreed to in writing, software distributed 
-		under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-		OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-		the specific language governing permissions and limitations under the License. -->
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the 
+		Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, 
+		software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>net.osgiliath.pom.repositories</artifactId>
@@ -26,22 +19,15 @@
 	</modules>
 	<reporting>
 		<plugins>
-			<!-- not working in the build pipeline <plugin> <groupId>org.apache.maven.plugins</groupId> 
-				<artifactId>maven-changelog-plugin</artifactId> <version>${maven-changelog-plugin.version}</version> 
-				</plugin> -->
+			<!-- not working in the build pipeline <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-changelog-plugin</artifactId> <version>${maven-changelog-plugin.version}</version> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>${maven-checkstyle-plugin.version}</version>
 			</plugin>
-			<!-- see later for advanced reporting <plugin> <groupId>org.apache.maven.plugins</groupId> 
-				<artifactId>maven-doap-plugin</artifactId> <version>${maven-doap-plugin.version}</version> 
-				</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId> 
-				<version>${maven-jxr-plugin.version}</version> <reportSets> <reportSet> <id>aggregate</id> 
-				<inherited>false</inherited> <reports> <report>aggregate</report> </reports> 
-				</reportSet> </reportSets> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
-				<artifactId>maven-linkcheck-plugin</artifactId> <version>${maven-linkcheck-plugin.version}</version> 
-				</plugin> -->
+			<!-- see later for advanced reporting <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-doap-plugin</artifactId> <version>${maven-doap-plugin.version}</version> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId> 
+				<version>${maven-jxr-plugin.version}</version> <reportSets> <reportSet> <id>aggregate</id> <inherited>false</inherited> <reports> <report>aggregate</report> </reports> </reportSet> </reportSets> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-linkcheck-plugin</artifactId> <version>${maven-linkcheck-plugin.version}</version> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -61,7 +47,11 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${maven-jxr-plugin.version}</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -71,15 +61,14 @@
 					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${maven-pmd-plugin.version}</version>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-project-info-reports-plugin</artifactId> 
-				<version>${maven-project-info-reports-plugin.version}</version> <configuration> 
-				<dependencyLocationsEnabled>false</dependencyLocationsEnabled> </configuration> 
-				</plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-project-info-reports-plugin</artifactId> <version>${maven-project-info-reports-plugin.version}</version> <configuration> <dependencyLocationsEnabled>false</dependencyLocationsEnabled> 
+				</configuration> </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
@@ -105,7 +94,6 @@
 		<maven-changelog-plugin.version>2.2</maven-changelog-plugin.version>
 		<maven-checkstyle-plugin.version>2.12.1</maven-checkstyle-plugin.version>
 		<maven-doap-plugin.version>1.1</maven-doap-plugin.version>
-		
 		<maven-linkcheck-plugin.version>1.1</maven-linkcheck-plugin.version>
 		<findbugs-maven-plugin.version>2.5.3</findbugs-maven-plugin.version>
 		<maven-pmd-plugin.version>3.1</maven-pmd-plugin.version>

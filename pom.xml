@@ -75,8 +75,20 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jxr-plugin</artifactId> <reportSets> <reportSet> <id>aggregate</id> <inherited>false</inherited> <reports> <report>aggregate</report> <report>test-aggregate</report> </reports> 
-				</reportSet> </reportSets> </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<id>jxr-aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+							<report>test-aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
 		</plugins>
 	</reporting>
 	<!-- <distributionManagement> Distribution des artefacts compilés Rajoutez ceci dans votre fichier ~.m2/settings.xml <servers> <server> <id>releases</id> <username>username</username> <password>password</password> </server> <server> <id>snapshots</id> 
@@ -94,14 +106,12 @@
 			<name>Osgiliath Snapshots public</name>
 			<url>https://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
-
 		<repository>
 			<id>releases</id>
 			<name>Sonatype OSS Nexus Release Repository</name>
 			<url>https://oss.sonatype.org/</url>
 		</repository>
 		<!-- <repository> <id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id> <name>tcharl-maven-Osgiliath-Enterprise-Framework</name> <url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url> </repository> -->
-
 		<site>
 			<id>github-pages</id>
 			<name>Github GH Pages</name>
@@ -335,10 +345,8 @@
 				<artifactId>apache-rat-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<configuration>
-					<skipDeploy>false</skipDeploy>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -346,7 +354,6 @@
 				<executions>
 					<execution>
 						<id>scm-publish</id>
-						<phase>site-deploy</phase>
 						<goals>
 							<goal>publish-scm</goal>
 						</goals>
