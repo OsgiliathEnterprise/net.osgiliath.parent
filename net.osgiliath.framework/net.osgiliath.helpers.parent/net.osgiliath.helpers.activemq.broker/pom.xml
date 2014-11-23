@@ -6,6 +6,8 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.activemq.broker</artifactId>
+	<name>Osgiliath broker</name>
+	<description>Default activeMQ broker configuration (local) for an Osgiliath project</description>
 	<build>
 		<plugins>
 			<plugin>

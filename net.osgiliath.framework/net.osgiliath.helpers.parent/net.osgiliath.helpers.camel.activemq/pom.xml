@@ -6,6 +6,8 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.camel.activemq</artifactId>
+	<name>Camel components for activeMQ</name>
+	<description>Camel components instanciation from JMS Connection factories</description>
 	<build>
 		<plugins>
 			<plugin>

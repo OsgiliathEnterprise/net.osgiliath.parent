@@ -6,6 +6,8 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.swagger.cdi</artifactId>
+	<name>Swagger CDI wrapper</name>
+	<description>Wrapper for swagger cdi</description>
 	<build>
 		<plugins>
 			<plugin>

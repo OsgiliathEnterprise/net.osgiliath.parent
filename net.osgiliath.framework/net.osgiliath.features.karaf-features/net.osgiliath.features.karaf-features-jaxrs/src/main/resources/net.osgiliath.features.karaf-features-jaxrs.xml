@@ -26,10 +26,13 @@
 	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)">
 		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
+		<feature version='${project.version}'>osgiliath-swagger-rest-cdi</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.cxf.jaxrs/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.cxf-integration-cdi/${project.version}</bundle>
 		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
+	</feature>
+	<feature name="osgiliath-swagger-rest-cdi" version="${project.version}" resolver="(obr)">
+		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
 	</feature>
 	<feature name="osgiliath-swagger-rest" version="${project.version}" resolver="(obr)">
 		<feature version='${project.version}'>osgiliath-swagger-annotations</feature>

@@ -6,6 +6,8 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.spring-ldap</artifactId>
+	<name>Spring-ldap wrapper</name>
+	<description>Spring ldap manifest updates</description>
 	<build>
 		<plugins>
 			<plugin>

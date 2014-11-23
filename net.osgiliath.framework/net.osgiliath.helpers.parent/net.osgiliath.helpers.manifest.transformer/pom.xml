@@ -6,6 +6,8 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+	<name>Manifest updater</name>
+	<description>Exec-maven plugin extension to modify jar manifest on compilation</description>
 	<build>
 		<plugins>
 			<plugin>

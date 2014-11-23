@@ -26,11 +26,9 @@ package net.osgiliath.helpers.camel;
 import helpers.cxf.exception.handling.ExceptionMappingConstants;
 
 import java.io.StringReader;
-import java.util.Map.Entry;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.component.cxf.CxfOperationException;
 import org.apache.camel.component.http.HttpOperationFailedException;
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
