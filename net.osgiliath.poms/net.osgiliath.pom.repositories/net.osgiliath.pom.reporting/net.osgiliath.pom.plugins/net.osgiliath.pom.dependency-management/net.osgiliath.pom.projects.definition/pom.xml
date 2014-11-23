@@ -12,7 +12,7 @@
 	<artifactId>net.osgiliath.pom.projects.definition</artifactId>
 	<packaging>pom</packaging>
 	<name>Pom project definition</name>
-	<description>Project definition for an Osgiliath project</description>
+	<description>Project definition for an Osgiliath Community project</description>
 	<organization>
 		<name>Osgiliath corp</name>
 		<url>http://osgiliathenterprise.github.io/projects.documentations/</url>

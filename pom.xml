@@ -111,7 +111,6 @@
 			<name>Sonatype OSS Nexus Release Repository</name>
 			<url>https://oss.sonatype.org/</url>
 		</repository>
-		<!-- <repository> <id>bintray-tcharl-maven-Osgiliath-Enterprise-Framework</id> <name>tcharl-maven-Osgiliath-Enterprise-Framework</name> <url>https://api.bintray.com/maven/tcharl/maven/Osgiliath-Enterprise-Framework</url> </repository> -->
 		<site>
 			<id>github-pages</id>
 			<name>Github GH Pages</name>

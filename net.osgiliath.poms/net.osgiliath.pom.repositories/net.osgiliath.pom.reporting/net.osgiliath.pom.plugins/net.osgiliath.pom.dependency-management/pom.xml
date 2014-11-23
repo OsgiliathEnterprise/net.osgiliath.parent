@@ -2611,6 +2611,7 @@
 		<cdi-api.version>1.2</cdi-api.version>
 		<com.atomikos.version>3.9.3</com.atomikos.version>
 		<com.google.guava.version>13.0</com.google.guava.version>
+		<com.google.guava.selenium.version>15.0</com.google.guava.selenium.version>
 		<com.fasterxml.jackson.version>2.4.1</com.fasterxml.jackson.version><!-- Do not upgrade cause of camel-json -->
 		<com.fasterxml.classmate.version>1.0.0</com.fasterxml.classmate.version>
 		<com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version>
@@ -2629,7 +2630,6 @@
 		<cucumber.deps.version>1.0.3</cucumber.deps.version>
 		<derby.version>10.10.2.0</derby.version>
 		<easymock.version>3.1</easymock.version>
-		<exam.version>4.3.0</exam.version>
 		<geronimo-annotation_1.1_spec.version>1.0.1</geronimo-annotation_1.1_spec.version>
 		<geronimo-atinject_1.0_spec.version>1.0</geronimo-atinject_1.0_spec.version>
 		<geronimo-el_2.2_spec.version>1.0.3</geronimo-el_2.2_spec.version>

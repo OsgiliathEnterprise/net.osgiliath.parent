@@ -6,6 +6,8 @@
 		<version>0.0.14-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.derby</artifactId>
+	<name>Derby wrapper</name>
+	<description>Derby jars wrapping</description>
 	<build>
 		<plugins>
 			<plugin>

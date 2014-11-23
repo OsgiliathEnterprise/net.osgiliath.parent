@@ -17,9 +17,9 @@
 			<sideBarEnabled>true</sideBarEnabled>
 			<topBarEnabled>true</topBarEnabled>
 			<topBarIcon>
-				<name>Maven Fluido Skin</name>
-				<alt>Maven Fluido Skin</alt>
-				<src>http://osgiliathenterprise.github.io/net.osgiliath.parent/images/osgiliath.png</src>
+				<name>Osgiliath logo</name>
+				<alt>Osgiliath logo</alt>
+				<src>/images/osgiliath.png</src>
 				<href>http://osgiliathenterprise.github.io/net.osgiliath.parent/index.html</href>
 			</topBarIcon>
 			<googleSearch>

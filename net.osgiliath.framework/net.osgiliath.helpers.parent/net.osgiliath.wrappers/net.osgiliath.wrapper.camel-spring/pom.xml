@@ -6,12 +6,13 @@
     <version>0.0.14-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.wrapper.camel-spring</artifactId>
+  <name>Camel-spring wrapper</name>
+  <description>Spring 4 manifest update for camel-spring</description>
   	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4</version>
 				<executions>
 					<execution>
 						<id>assembly:package</id>
