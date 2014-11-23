@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>net.osgiliath.pom.repositories</artifactId>
 		<groupId>net.osgiliath</groupId>
-		<version>0.0.14-SNAPSHOT</version>
+		<version>0.1.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>net.osgiliath.pom.reporting</artifactId>
