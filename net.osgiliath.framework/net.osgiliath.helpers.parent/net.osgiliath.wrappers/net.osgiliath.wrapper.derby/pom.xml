@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.wrappers</groupId>
 		<artifactId>net.osgiliath.wrappers</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.derby</artifactId>
 	<build>

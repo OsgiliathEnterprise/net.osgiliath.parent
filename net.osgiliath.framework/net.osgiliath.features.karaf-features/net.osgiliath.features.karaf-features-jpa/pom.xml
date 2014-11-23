@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
 	<name>Osgiliath JPA features</name>
