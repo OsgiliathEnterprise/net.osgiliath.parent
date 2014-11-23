@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
-		<version>0.0.14-SNAPSHOT</version>
+		<version>0.1.0</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-monitoring</artifactId>
 	<name>Monitoring and development feature</name>
