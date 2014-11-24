@@ -90,6 +90,7 @@ public class CXFHelperActivator implements BundleActivator {
 	}
 
 	public JaxRsApiApplication getJaxRSApplication() {
+		
 		return jaxRSApplication;
 	}
 

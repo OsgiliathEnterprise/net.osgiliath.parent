@@ -365,7 +365,7 @@ public class EndpointPublishingExtension implements Extension {
 	private JAXRSServerFactoryBean getFactory(String factoryId) {
 		
 		JAXRSServerFactoryBean factory = factoriesMap.get(factoryId);
-		if (factory == null) {
+		if (factory == null && CXFHelperActivator.getPlugin() != null && CXFHelperActivator.getPlugin().getJaxRSApplication() != null) {
 			factory = RuntimeDelegate.getInstance().createEndpoint(CXFHelperActivator.getPlugin().getJaxRSApplication(), JAXRSServerFactoryBean.class);
 			Bus bus = CXFBusFactory.getDefaultBus();
 			if (bus == null) {
