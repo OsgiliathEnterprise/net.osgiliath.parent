@@ -1,0 +1,7 @@
+Import-Package: javax.jms,\
+ javax.transaction,\
+ org.springframework.jms.connection,\
+ org.springframework.jms.core,\
+ org.springframework.transaction,\
+ *
+Export-Package: *
