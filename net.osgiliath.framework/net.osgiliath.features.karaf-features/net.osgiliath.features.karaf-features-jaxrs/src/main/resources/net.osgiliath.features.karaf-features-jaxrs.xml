@@ -11,7 +11,7 @@
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
 
 
-	<feature name="osgiliath-rest" version="${project.version}" resolver="(obr)">
+	<feature name="osgiliath-rest" version="${project.version}" resolver="(obr)" start-level="50">
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxrs</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxb</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-databinding-jaxb</feature>
@@ -23,18 +23,18 @@
 		<feature version='${project.version}'>osgiliath-swagger-rest</feature>
 	</feature>
 
-	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)">
+	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)" start-level="50">
 		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
-		<bundle dependency="true">mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
+		<bundle start-level="40">mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.cxf.jaxrs/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.cxf-integration-cdi/${project.version}</bundle>
 		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
 	</feature>
-	<feature name="osgiliath-swagger-rest" version="${project.version}" resolver="(obr)">
+	<feature name="osgiliath-swagger-rest" version="${project.version}" resolver="(obr)" start-level="50">
 		<feature version='${project.version}'>osgiliath-swagger-annotations</feature>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-core/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-jaxrs/${project.version}</bundle>
+		<bundle start-level="40">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-core/${project.version}</bundle>
+		<bundle start-level="40">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-jaxrs/${project.version}</bundle>
 		<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.version}</bundle>
 		<bundle dependency="true">mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${com.fasterxml.jackson.version}</bundle>
 		<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.version}</bundle>
