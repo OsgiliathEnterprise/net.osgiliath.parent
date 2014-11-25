@@ -83,7 +83,7 @@ limitations under the License.
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa.cdi.data/target/net.osgiliath.features.karaf-features.itests.jpa.cdi.data-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-messaging' version='${project.version}'>
-		<feature version='${project.version}'>osgiliath-messaging</feature>
+		<feature version='${project.version}'>osgiliath-messaging-spring</feature>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.messaging/target/net.osgiliath.features.karaf-features.itests.messaging-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-messaging-cdi' version='${project.version}'>

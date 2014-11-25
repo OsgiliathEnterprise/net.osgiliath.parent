@@ -177,6 +177,19 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<groupId>org.codehaus.gmavenplus</groupId>
+					<artifactId>gmavenplus-plugin</artifactId>
+					<version>${org.codehaus.gmavenplus_gmavenplus-plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.groovy</groupId>
+							<artifactId>groovy-all</artifactId>
+							<version>${org.codehaus.groovy_groovy-all.version}</version>
+							<scope>runtime</scope>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>${maven-gpg-plugin.version}</version>
@@ -380,6 +393,7 @@
 		<org.apache.maven.plugins_maven-scm-publish-plugin.version>1.1</org.apache.maven.plugins_maven-scm-publish-plugin.version>
 		<org.apache.maven.plugins_maven-site-plugin.version>3.4</org.apache.maven.plugins_maven-site-plugin.version>
 		<org.apache.maven.wagon_wagon-scm.version>2.7</org.apache.maven.wagon_wagon-scm.version>
+		<org.codehaus.gmavenplus_gmavenplus-plugin.version>1.2</org.codehaus.gmavenplus_gmavenplus-plugin.version>
 		<org.codehaus.groovy_groovy-all.version>2.3.7</org.codehaus.groovy_groovy-all.version>
 		<org.kohsuke_pgp-maven-plugin.version>1.1</org.kohsuke_pgp-maven-plugin.version>
 		<encoding>UTF-8</encoding>
@@ -420,6 +434,42 @@
 								</goals>
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.gmavenplus</groupId>
+						<artifactId>gmavenplus-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<phase>pre-site</phase>
+							</execution>
+						</executions>
+						<configuration>
+							<scripts>
+								<script> <![CDATA[ 
+								import java.io.File
+								import java.nio.file.StandardCopyOption
+								import java.nio.file.Files
+								String siteXmlPath = "src/site/site.xml"
+								String readme_file = "readme.md"
+								String currentPath = "${project.basedir}"
+								if (new File(currentPath + "/" + readme_file).exists() && !(new File(currentPath + "/" + siteXmlPath).exists())) { 
+									while (!(new File(currentPath + "/" + siteXmlPath).exists())) {
+										currentPath = currentPath + "/.." 
+										if (new File(currentPath + "/" + siteXmlPath).exists()) { 
+											Files.copy(new File(currentPath + "/" + siteXmlPath).toPath(), new File("${project.basedir}/" + siteXmlPath).toPath(), StandardCopyOption.REPLACE_EXISTING)
+											File newlyCreatedFile = new File("${project.basedir}/" + siteXmlPath)
+											BufferedWriter newFileWriter = Files.newBufferedWriter(newlyCreatedFile.toPath(), Charset.defaultCharset(), StandardOpenOption.APPEND)
+											newFileWriter.append("<!-- @generated -->")
+											newFileWriter.close() 
+										} else if (!(new File(currentPath + "/pom.xml").exists())) { break; } 
+									} 
+								} ]]>
+								</script>
+							</scripts>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>

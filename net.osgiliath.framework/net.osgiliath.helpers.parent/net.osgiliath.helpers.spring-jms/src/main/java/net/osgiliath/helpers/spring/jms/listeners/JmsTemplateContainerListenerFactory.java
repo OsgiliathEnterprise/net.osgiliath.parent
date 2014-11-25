@@ -1,4 +1,4 @@
-package net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners;
+package net.osgiliath.helpers.spring.jms.listeners;
 
 /*
  * #%L

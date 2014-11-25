@@ -13,7 +13,7 @@
 	http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
 	http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
 
-	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.JmsTemplateContainerListenerFactory" />
+	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helpers.spring.jms.listeners.JmsTemplateContainerListenerFactory" />
 	<service ref="helloServiceJMS" interface="net.osgiliath.messaging.repository.HelloRepository" />
 	<!-- TODO your OSGI service references here (if you don't use annotations via MANIFEST) -->
 	<reference id="transactionManager" interface="org.springframework.transaction.PlatformTransactionManager" />

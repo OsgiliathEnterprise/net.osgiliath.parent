@@ -25,7 +25,6 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
-import javax.jms.Destination;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
 

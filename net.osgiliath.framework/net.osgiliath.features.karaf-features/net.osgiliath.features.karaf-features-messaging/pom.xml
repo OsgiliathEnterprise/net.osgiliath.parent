@@ -75,6 +75,13 @@
 		</dependency>
 		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.helpers.spring-jms</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activeio-core</artifactId>
 		</dependency>

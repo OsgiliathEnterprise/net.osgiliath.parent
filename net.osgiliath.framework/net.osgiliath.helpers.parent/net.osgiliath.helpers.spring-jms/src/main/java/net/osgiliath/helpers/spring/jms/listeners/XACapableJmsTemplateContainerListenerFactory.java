@@ -1,4 +1,4 @@
-package net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners;
+package net.osgiliath.helpers.spring.jms.listeners;
 
 /*
  * #%L
@@ -27,8 +27,6 @@ import javax.jms.Session;
 import lombok.Setter;
 
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
-import org.springframework.jms.listener.adapter.MessageListenerAdapter;
-import org.springframework.jms.support.converter.MarshallingMessageConverter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 
@@ -42,7 +40,7 @@ public class XACapableJmsTemplateContainerListenerFactory implements JmsTemplate
 	
 	
 	/* (non-Javadoc)
-	 * @see net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.IJmsTemplateContainerListenerFactory#create(boolean, java.lang.String, javax.jms.MessageListener)
+	 * @see net.osgiliath.helpers.spring.jms.listeners.IJmsTemplateContainerListenerFactory#create(boolean, java.lang.String, javax.jms.MessageListener)
 	 */
 	@Override
 	public DefaultMessageListenerContainer create(boolean transacted,
@@ -52,7 +50,7 @@ public class XACapableJmsTemplateContainerListenerFactory implements JmsTemplate
 	}
 
 	/* (non-Javadoc)
-	 * @see net.osgiliath.helpers.activemq.jms.connectionfactory.exporter.listeners.IJmsTemplateContainerListenerFactory#create(boolean, java.lang.String, javax.jms.MessageListener, boolean)
+	 * @see net.osgiliath.helpers.spring.jms.listeners.IJmsTemplateContainerListenerFactory#create(boolean, java.lang.String, javax.jms.MessageListener, boolean)
 	 */
 	@Override
 	public DefaultMessageListenerContainer create(boolean transacted,
