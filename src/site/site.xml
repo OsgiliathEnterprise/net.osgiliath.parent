@@ -19,7 +19,7 @@
 			<topBarIcon>
 				<name>Osgiliath logo</name>
 				<alt>Osgiliath logo</alt>
-				<src>/images/osgiliath.png</src>
+				<src>http://osgiliathenterprise.github.io/net.osgiliath.parent/images/osgiliath.png</src>
 				<href>http://osgiliathenterprise.github.io/net.osgiliath.parent/index.html</href>
 			</topBarIcon>
 			<googleSearch>
