@@ -1231,6 +1231,13 @@
 				<artifactId>org.apache.servicemix.bundles.json-lib</artifactId>
 				<version>${org.apache.servicemix.bundles.json-lib.version}</version>
 			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.junit</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version}</version>
+			</dependency>
+
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -2441,6 +2448,7 @@
 		<org.apache.servicemix.bundles.lucene.version>4.7.0_1</org.apache.servicemix.bundles.lucene.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>1.8.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.fastinfoset.version>1.2.13_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.fastinfoset.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>4.9_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>1.2_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>
 		<org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles.oro.version>
 		<org.apache.servicemix.bundles.protobuf-java.version>2.4.1_1</org.apache.servicemix.bundles.protobuf-java.version>
