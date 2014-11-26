@@ -42,16 +42,6 @@
 				<version>${logback.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			<dependency>
-				<groupId>com.atomikos</groupId>
-				<artifactId>transactions-jta</artifactId>
-				<version>${com.atomikos.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.atomikos</groupId>
-				<artifactId>transactions-osgi</artifactId>
-				<version>${com.atomikos.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>com.fasterxml</groupId>
@@ -174,24 +164,6 @@
 				<artifactId>commons-pool</artifactId>
 				<version>${commons-pool.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>info.cukes</groupId>
-				<artifactId>cucumber-jvm-deps</artifactId>
-				<version>${cucumber.deps.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>info.cukes</groupId>
-				<artifactId>cucumber-java</artifactId>
-				<version>${cucumber.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>info.cukes</groupId>
-				<artifactId>cucumber-junit</artifactId>
-				<version>${cucumber.version}</version>
-				<scope>test</scope>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>io.hawt</groupId>
@@ -284,11 +256,6 @@
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
 				<version>${validation-api.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>jdbc</groupId>
-				<artifactId>jdbc-stdext</artifactId>
-				<version>${jdbc-stdext.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
@@ -893,28 +860,8 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.felix</groupId>
-				<artifactId>org.osgi.foundation</artifactId>
-				<version>${org.osgi.foundation.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.scr</artifactId>
-				<version>${org.apache.felix.scr.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.gogo.command</artifactId>
-				<version>${org.apache.felix.gogo.command.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.gogo.runtime</artifactId>
 				<version>${org.apache.felix.gogo.runtime.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.geronimo.bundles</groupId>
-				<artifactId>scannotation</artifactId>
-				<version>${scannotation.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
@@ -950,11 +897,6 @@
 				<artifactId>geronimo-el_2.2_spec</artifactId>
 				<version>${geronimo-el_2.2_spec.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-interceptor_1.1_spec</artifactId>
-				<version>${geronimo-interceptor_1.1_spec.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
@@ -980,11 +922,6 @@
 				<artifactId>geronimo-jaspic_1.0_spec</artifactId>
 				<version>${geronimo-jaspic_1.0_spec.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-jcdi_1.0_spec</artifactId>
-				<version>${geronimo-jcdi_1.0_spec.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
@@ -997,11 +934,6 @@
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-jpa_2.0_spec</artifactId>
 				<version>${org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-jsp_2.2_spec</artifactId>
-				<version>${geronimo-jsp_2.2_spec.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
@@ -1019,11 +951,6 @@
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-osgi-registry</artifactId>
 				<version>${org.apache.geronimo.specs.geronimo-osgi-registry.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-servlet_2.5_spec</artifactId>
-				<version>${geronimo-servlet_2.5_spec.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
@@ -1176,21 +1103,6 @@
 				<artifactId>openjpa</artifactId>
 				<version>${openjpa.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.openwebbeans</groupId>
-				<artifactId>openwebbeans-spi</artifactId>
-				<version>${openwebbeans.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.openwebbeans</groupId>
-				<artifactId>openwebbeans-impl</artifactId>
-				<version>${openwebbeans.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.openwebbeans</groupId>
-				<artifactId>openwebbeans-web</artifactId>
-				<version>${openwebbeans.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1307,11 +1219,6 @@
 				<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
 				<version>${org.apache.servicemix.bundles.jdom.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.joda-time</artifactId>
-				<version>${org.apache.servicemix.bundles.joda-time.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1324,11 +1231,13 @@
 				<artifactId>org.apache.servicemix.bundles.json-lib</artifactId>
 				<version>${org.apache.servicemix.bundles.json-lib.version}</version>
 			</dependency>
+			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.junit</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version}</version>
 			</dependency>
+
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1375,11 +1284,6 @@
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-aspects</artifactId>
 				<version>${karaf.feature.spring4.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
@@ -1437,11 +1341,6 @@
 				<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
 				<version>${karaf.feature.spring4.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-instrument</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1497,16 +1396,6 @@
 				<artifactId>org.apache.servicemix.bundles.spring-webmvc</artifactId>
 				<version>${karaf.feature.spring4.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-webmvc-portlet</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-websocket</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1542,11 +1431,6 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.velocity</artifactId>
 				<version>${org.apache.servicemix.bundles.velocity.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.woodstox</artifactId>
-				<version>${org.apache.servicemix.bundles.woodstox.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
@@ -1604,11 +1488,6 @@
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.jsr250-1.0</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.specs</groupId>
-				<artifactId>org.apache.servicemix.specs.jsr311-api-1.1</artifactId>
 				<version>${org.apache.servicemix.specs.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
@@ -1755,12 +1634,6 @@
 				<artifactId>plexus-component-annotations</artifactId>
 				<version>${org.codehaus.plexus.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.codehaus.sonar-plugins.java</groupId>
-				<artifactId>sonar-jacoco-listeners</artifactId>
-				<version>${sonar-jacoco-listeners.version}</version>
-				<scope>runtime</scope>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
@@ -1778,28 +1651,6 @@
 				<artifactId>woodstox-core-asl</artifactId>
 				<version>${org.codehaus.woodstox.woodstox-core-asl.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.codehaus.woodstox</groupId>
-				<artifactId>wstx-asl</artifactId>
-				<version>${wstx-asl.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>stax</groupId>
-						<artifactId>stax-api</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.easymock</groupId>
-				<artifactId>easymock</artifactId>
-				<version>${easymock.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.birt.runtime</groupId>
-				<artifactId>com.ibm.icu</artifactId>
-				<version>${com.ibm.icu.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
@@ -1812,66 +1663,6 @@
 				<groupId>org.eclipse.jetty.aggregate</groupId>
 				<artifactId>jetty-all-server</artifactId>
 				<version>${org.eclipse.jetty.aggregate_jetty-all-server.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>eclipselink</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>org.eclipse.persistence.antlr</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>org.eclipse.persistence.asm</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>org.eclipse.persistence.core</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>org.eclipse.persistence.jpa</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>org.eclipse.persistence.osgi</artifactId>
-				<version>${eclipselink.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.rap</groupId>
-				<artifactId>org.eclipse.rap.jface</artifactId>
-				<version>${org.eclipse.rap.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.rap</groupId>
-				<artifactId>org.eclipse.rap.rwt</artifactId>
-				<version>${org.eclipse.rap.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.rap</groupId>
-				<artifactId>org.eclipse.rap.rwt.osgi</artifactId>
-				<version>${org.eclipse.rap.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.fusesource.commonman</groupId>
-				<artifactId>commons-management</artifactId>
-				<version>${commons-management.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.glassfish</groupId>
-				<artifactId>javax.annotation</artifactId>
-				<version>${org.glassfish.javax.annotation.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
@@ -1961,21 +1752,14 @@
 				<version>${org.jboss.weld.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.jboss.weld.servlet</groupId>
-				<artifactId>weld-servlet-core</artifactId>
-				<version>${org.jboss.weld.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.jboss.weld</groupId>
 				<artifactId>weld-spi</artifactId>
 				<version>${org.jboss.weld.weld-api.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.jclouds.karaf</groupId>
-				<artifactId>jclouds-karaf</artifactId>
-				<type>xml</type>
-				<classifier>features</classifier>
-				<version>${org.jcloud.karaf.version}</version>
+				<groupId>org.jboss.weld.servlet</groupId>
+				<artifactId>weld-servlet-core</artifactId>
+				<version>${org.jboss.weld.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
@@ -2018,16 +1802,6 @@
 				<artifactId>mockito-all</artifactId>
 				<version>${mockito.version}</version>
 				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.mod4j.org.eclipse.core</groupId>
-				<artifactId>databinding</artifactId>
-				<version>${org.mod4j.org.eclipse.core.binding.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mod4j.org.eclipse.jface</groupId>
-				<artifactId>databinding</artifactId>
-				<version>${org.mod4j.org.eclipse.jface.binding.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
@@ -2341,11 +2115,6 @@
 				<artifactId>org.osgi.core</artifactId>
 				<version>${org.osgi.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.osgi</groupId>
-				<artifactId>org.osgi.enterprise</artifactId>
-				<version>${org.osgi.enterprise.version}</version>
-			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
@@ -2355,11 +2124,6 @@
 				<groupId>org.ow2.asm</groupId>
 				<artifactId>asm-all</artifactId>
 				<version>${org.ow2.asm.asm-all.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ow2.spec.osgi</groupId>
-				<artifactId>ow2-jdbc-service-1.0-spec</artifactId>
-				<version>${ow2-jdbc-service-1.0-spec.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -2417,22 +2181,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-aspects</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
 			<dependency>
@@ -2496,29 +2250,8 @@
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-commons-core</artifactId>
-				<version>${org.springframework.data.commons.core.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-jpa</artifactId>
 				<version>${org.springframework.data.jpa.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.hateoas</groupId>
-				<artifactId>spring-hateoas</artifactId>
-				<version>${org.springframework.hateoas.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.integration</groupId>
-				<artifactId>spring-integration-core</artifactId>
-				<version>${spring-integration.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.integration</groupId>
-				<artifactId>spring-integration-jms</artifactId>
-				<version>${spring-integration.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
@@ -2609,7 +2342,6 @@
 		<biz.aQute.bnd_bndlib.version>2.2.0</biz.aQute.bnd_bndlib.version>
 		<camel-version>2.14.0</camel-version>
 		<cdi-api.version>1.2</cdi-api.version>
-		<com.atomikos.version>3.9.3</com.atomikos.version>
 		<com.google.guava.version>13.0</com.google.guava.version>
 		<com.google.guava.selenium.version>15.0</com.google.guava.selenium.version>
 		<com.fasterxml.jackson.version>2.4.1</com.fasterxml.jackson.version><!-- Do not upgrade cause of camel-json -->
@@ -2623,24 +2355,19 @@
 		<commons-io.version>2.4</commons-io.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<common-logging_common-logging.version>1.1.3</common-logging_common-logging.version>
-		<commons-management.version>1.0</commons-management.version>
 		<common-net_common-net.version>3.3</common-net_common-net.version>
 		<commons-pool.version>1.6</commons-pool.version>
 		<cucumber.version>1.1.8</cucumber.version>
-		<cucumber.deps.version>1.0.3</cucumber.deps.version>
 		<derby.version>10.10.2.0</derby.version>
 		<easymock.version>3.1</easymock.version>
 		<geronimo-annotation_1.1_spec.version>1.0.1</geronimo-annotation_1.1_spec.version>
 		<geronimo-atinject_1.0_spec.version>1.0</geronimo-atinject_1.0_spec.version>
 		<geronimo-el_2.2_spec.version>1.0.3</geronimo-el_2.2_spec.version>
-		<geronimo-interceptor_1.1_spec.version>1.0</geronimo-interceptor_1.1_spec.version>
 		<geronimo-j2ee-management_1.1_spec.version>1.0.1</geronimo-j2ee-management_1.1_spec.version>
 		<geronimo-jaspic_1.0_spec.version>1.1</geronimo-jaspic_1.0_spec.version>
 		<geronimo-jcdi_1.0_spec.version>1.0</geronimo-jcdi_1.0_spec.version>
 		<geronimo-jms_1.1_spec.version>1.1.1</geronimo-jms_1.1_spec.version>
-		<geronimo-jsp_2.2_spec.version>1.2</geronimo-jsp_2.2_spec.version>
 		<geronimo-jta_1.1_spec.version>1.1.1</geronimo-jta_1.1_spec.version>
-		<geronimo-servlet_2.5_spec.version>1.2</geronimo-servlet_2.5_spec.version>
 		<geronimo-servlet_3.0_spec.version>1.0</geronimo-servlet_3.0_spec.version>
 		<hawtio.version>1.4.20</hawtio.version>
 		<javax.annotation.javax.annotation-api.version>1.2</javax.annotation.javax.annotation-api.version>
@@ -2653,7 +2380,6 @@
 		<javax.persistence.version>2.0.4.v201112161009</javax.persistence.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
 		<javax.servlet.servlet-api.version>2.4</javax.servlet.servlet-api.version>
-		<jdbc-stdext.version>2.0</jdbc-stdext.version>
 		<jettison.version>1.3.5</jettison.version>
 		<joda-time.version>2.3</joda-time.version>
 		<jolokia.version>1.2.2</jolokia.version>
@@ -2669,7 +2395,6 @@
 		<org.liquibase.liquibase.version>3.2.2</org.liquibase.liquibase.version>
 		<logback.version>1.1.2</logback.version>
 		<mockito.version>1.8.4</mockito.version>
-		<openwebbeans.version>1.2.4</openwebbeans.version>
 		<org.apache.activemq_activeio-core.version>3.1.4</org.apache.activemq_activeio-core.version>
 		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
 		<org.apache.aries.blueprint.version>1.1.0</org.apache.aries.blueprint.version>
@@ -2686,8 +2411,6 @@
 		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>
 		<org.apache.felix.framework.version>4.2.1</org.apache.felix.framework.version>
 		<org.apache.felix.fileinstall.version>3.4.2</org.apache.felix.fileinstall.version>
-		<org.apache.felix.scr.version>1.8.2</org.apache.felix.scr.version>
-		<org.apache.felix.gogo.command.version>0.12.0</org.apache.felix.gogo.command.version>
 		<org.apache.felix.gogo.runtime.version>0.12.1</org.apache.felix.gogo.runtime.version>
 		<org.apache.geronimo.components_geronimo-connector.version>3.1.1</org.apache.geronimo.components_geronimo-connector.version>
 		<org.apache.geronimo.specs_geronimo-activation_1.1_spec.version>1.1</org.apache.geronimo.specs_geronimo-activation_1.1_spec.version>
@@ -2719,7 +2442,6 @@
 		<org.apache.servicemix.bundles.jasypt.version>1.9.2_1</org.apache.servicemix.bundles.jasypt.version>
 		<org.apache.servicemix.bundles.jaxb-impl.version>2.2.1.1_2</org.apache.servicemix.bundles.jaxb-impl.version>
 		<org.apache.servicemix.bundles.jdom.version>2.0.2_1</org.apache.servicemix.bundles.jdom.version>
-		<org.apache.servicemix.bundles.joda-time.version>2.3_1</org.apache.servicemix.bundles.joda-time.version>
 		<org.apache.servicemix.bundles.json4s.version>3.2.8_1</org.apache.servicemix.bundles.json4s.version>
 		<org.apache.servicemix.bundles.json-lib.version>2.4_1</org.apache.servicemix.bundles.json-lib.version>
 		<org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles.kxml2.version>
@@ -2734,7 +2456,6 @@
 		<org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles.serp.version>
 		<org.apache.servicemix.bundles.swagger.version>1.3.4_1</org.apache.servicemix.bundles.swagger.version>
 		<org.apache.servicemix.bundles.velocity.version>1.7_6</org.apache.servicemix.bundles.velocity.version>
-		<org.apache.servicemix.bundles.woodstox.version>3.2.9_3</org.apache.servicemix.bundles.woodstox.version>
 		<org.apache.servicemix.bundles.xpp3.version>1.1.4c_7</org.apache.servicemix.bundles.xpp3.version>
 		<org.apache.servicemix.bundles.xstream.version>1.4.7_1</org.apache.servicemix.bundles.xstream.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.scripting-api-1.0.version>1.9.0</org.apache.servicemix.specs_org.apache.servicemix.specs.scripting-api-1.0.version>
@@ -2745,8 +2466,6 @@
 		<org.codehaus.jackson_jackson-core-asl.version>1.9.12</org.codehaus.jackson_jackson-core-asl.version>
 		<org.codehaus.woodstox.woodstox-core-asl.version>4.4.0</org.codehaus.woodstox.woodstox-core-asl.version>
 		<org.eclipse.jetty.aggregate_jetty-all-server.version>8.1.15.v20140411</org.eclipse.jetty.aggregate_jetty-all-server.version>
-		<org.eclipse.rap.version>1.5.0</org.eclipse.rap.version>
-		<org.glassfish.javax.annotation.version>3.1.1</org.glassfish.javax.annotation.version>
 		<org.glassfish.javax.json.version>1.0.4</org.glassfish.javax.json.version>
 		<org.hibernate.validator.version>5.0.3.Final</org.hibernate.validator.version>
 		<org.jacoco.agent.version>0.7.0.201403182114</org.jacoco.agent.version>
@@ -2758,17 +2477,13 @@
 		<org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec>1.0.0.Alpha1</org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec>
 		<org.jboss.weld.weld-api.version>2.2.SP3</org.jboss.weld.weld-api.version>
 		<org.jboss.weld.version>2.2.4.Final</org.jboss.weld.version>
-		<org.jcloud.karaf.version>1.4.0</org.jcloud.karaf.version>
 		<org.json.version>20140107</org.json.version>
 		<org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>0.6.4</org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>
 		<org.mvel2.version>2.1.9.Final</org.mvel2.version>
 		<org.mod4j.org.eclipse.jface.binding.version>1.3.0</org.mod4j.org.eclipse.jface.binding.version>
-		<org.mod4j.org.eclipse.core.binding.version>1.2.0</org.mod4j.org.eclipse.core.binding.version>
 		<org.ops4j.pax.web_pax-web-features.version>3.1.2</org.ops4j.pax.web_pax-web-features.version>
-		<org.osgi.enterprise.version>5.0.0</org.osgi.enterprise.version>
 		<org.osgi.version>5.0.0</org.osgi.version>
 		<org.osgi-core.version>5.0.0</org.osgi-core.version>
-		<org.osgi.foundation.version>1.2.0</org.osgi.foundation.version>
 		<org.seleniumhq.selenium.version>2.43.1</org.seleniumhq.selenium.version>
 		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
 		<org.springframework.data.commons.version>1.9.0.RELEASE</org.springframework.data.commons.version>
@@ -2777,10 +2492,8 @@
 		<org.springframework.version>3.2.11.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 		<org.springframework.spring.version>2.0.6</org.springframework.spring.version>
-		<org.springframework.hateoas.version>0.8.0.RELEASE</org.springframework.hateoas.version>
 		<org.ow2.asm.asm-all.version>5.0.2</org.ow2.asm.asm-all.version>
 		<org.yaml.snakeyaml.version>1.13</org.yaml.snakeyaml.version>
-		<ow2-jdbc-service-1.0-spec.version>1.0.13</ow2-jdbc-service-1.0-spec.version>
 		<ops4j.base.version>1.4.0</ops4j.base.version>
 		<pax-cdi.version>0.8.0</pax-cdi.version>
 		<pax.jdbc.version>0.3.0</pax.jdbc.version>
@@ -2791,16 +2504,12 @@
 		<pax-jetty.version>8.1.15.v20140411</pax-jetty.version>
 		<scala.version>2.10.4</scala.version>
 		<scala-xml_2.11.version>1.0.2</scala-xml_2.11.version>
-		<scannotation.version>1.0.2_1</scannotation.version>
 		<slf4j.version>1.7.7</slf4j.version>
-		<sonar-jacoco-listeners.version>1.3</sonar-jacoco-listeners.version>
-		<spring-integration.version>2.1.3.RELEASE</spring-integration.version>
 		<springockito.version>1.0.9</springockito.version>
 		<stax_stax-api.version>1.0.1</stax_stax-api.version>
 		<stax2-api.version>3.1.4</stax2-api.version>
 		<url.version>2.2.0</url.version>
 		<validation-api.version>1.1.0.Final</validation-api.version>
-		<wstx-asl.version>4.0.6</wstx-asl.version>
 		<xbean.version>3.18</xbean.version>
 		<xom.version>1.2.5</xom.version>
 		<xml-apis.version>1.4.01</xml-apis.version>
