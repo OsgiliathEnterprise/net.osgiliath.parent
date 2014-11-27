@@ -1373,7 +1373,7 @@
 		<inmemdb-maven-plugin.version>1.4.3</inmemdb-maven-plugin.version>
 		<inmemdb-maven-plugin.monitorRetryInterval>2000</inmemdb-maven-plugin.monitorRetryInterval>
 		<inmemdb-maven-plugin.monitor-port>11527</inmemdb-maven-plugin.monitor-port>
-		<jacoco.plugin.version>0.7.0.201403182114</jacoco.plugin.version>
+		<jacoco.plugin.version>0.7.2.201409121644</jacoco.plugin.version>
 		<jaxb2-maven-plugin.version>1.6</jaxb2-maven-plugin.version>
 		<karaf.version>3.0.2</karaf.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
