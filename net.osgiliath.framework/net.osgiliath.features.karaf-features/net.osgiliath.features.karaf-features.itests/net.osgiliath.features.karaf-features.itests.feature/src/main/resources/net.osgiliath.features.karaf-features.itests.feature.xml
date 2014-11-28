@@ -65,7 +65,7 @@ limitations under the License.
 	<feature name='osgiliath-itests-jpa' version='${project.version}'>
 		<feature version='${project.version}'>osgiliath-derby</feature>
 		<feature version='${project.version}'>osgiliath-jpa</feature>
-		<bundle>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features.itests.jpa.database/${project.version}</bundle>
+		<configfile finalname="/etc/org.ops4j.datasource-myDB.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/db</configfile>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa/target/net.osgiliath.features.karaf-features.itests.jpa-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-jpa-cdi' version='${project.version}'>

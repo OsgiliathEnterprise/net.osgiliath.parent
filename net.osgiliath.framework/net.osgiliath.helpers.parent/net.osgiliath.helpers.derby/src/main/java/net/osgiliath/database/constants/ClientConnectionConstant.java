@@ -1,8 +1,8 @@
-package net.osgiliath.database.starter;
+package net.osgiliath.database.constants;
 
 /*
  * #%L
- * Osgiliath integration tests JPA database
+ * Wrapper for apache derby database
  * %%
  * Copyright (C) 2013 - 2014 Osgiliath
  * %%
@@ -20,26 +20,8 @@ package net.osgiliath.database.starter;
  * #L%
  */
 
-import java.io.PrintWriter;
-
-import lombok.Setter;
-import lombok.extern.slf4j.*;
-import org.apache.derby.drda.NetworkServerControl;
-
-@Slf4j
-public class DatabaseStarter {
-	@Setter
-	private NetworkServerControl control;
-	@Setter
-	private PrintWriter writer;
-
-	public void init() throws Exception {
-		log.info("Starting Derby datasource");
-		control.start(writer);
-	}
-	
-	public void destroy() throws Exception {
-		log.info("Stopping Derby datasource");
-		control.shutdown();
-	}
+public class ClientConnectionConstant {
+public static final String AUTO_START_SERVER = "serverAutoStart";
+public static final String CREATE_DATABASE = "createDatabase";
+public static final Object LOG_FILE = "derbyServerLog";
 }

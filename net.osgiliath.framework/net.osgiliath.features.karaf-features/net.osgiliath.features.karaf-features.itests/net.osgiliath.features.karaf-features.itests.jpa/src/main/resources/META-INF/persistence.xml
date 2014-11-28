@@ -5,8 +5,8 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 	<persistence-unit name="myTestPu" transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<!-- TODO exported by database module -->
-		<jta-data-source>osgi:service/jdbc/myXADB</jta-data-source>
-		<non-jta-data-source>osgi:service/jdbc/myDB</non-jta-data-source>
+		<jta-data-source>osgi:service/javax.sql.DataSource/(&amp;(osgi.jndi.service.name=myDB)(aries.managed=true))</jta-data-source>
+		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=myDB)</non-jta-data-source>
 		<class>net.osgiliath.jpa.model.HelloEntity</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<validation-mode>NONE</validation-mode>

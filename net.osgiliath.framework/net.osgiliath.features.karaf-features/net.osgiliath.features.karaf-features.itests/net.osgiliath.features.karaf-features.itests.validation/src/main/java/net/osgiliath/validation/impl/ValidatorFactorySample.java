@@ -26,6 +26,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import org.elasticsearch.common.collect.Sets;
+
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.validation.HelloObject;
@@ -47,7 +49,7 @@ public class ValidatorFactorySample implements IValidatorFactorySample {
 	final Set<ConstraintViolation<HelloObject>> validationResults = validator
 		.validate(object);
 	if (!validationResults.isEmpty()) {
-	    throw new ConstraintViolationException(validationResults);
+	    throw new ConstraintViolationException(Sets.<ConstraintViolation<?>> newHashSet(validationResults));
 	}
 	if (object != null) {
 	    // Exception must have be thrown

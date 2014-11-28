@@ -27,9 +27,6 @@
   		net.osgiliath.features.karaf-features.itests.jpa
   	</module>
 		<module>
-  		net.osgiliath.features.karaf-features.itests.jpa.database
-  	</module>
-		<module>
   		net.osgiliath.features.karaf-features.itests.jaxrs
   	</module>
 		<module>
