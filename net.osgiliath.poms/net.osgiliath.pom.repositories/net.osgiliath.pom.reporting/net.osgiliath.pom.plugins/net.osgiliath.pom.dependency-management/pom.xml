@@ -1940,6 +1940,28 @@
 				<version>${pax.jdbc.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.ops4j.pax.jdbc</groupId>
+				<artifactId>pax-jdbc-features</artifactId>
+				<version>${pax.jdbc.version}</version>
+				<type>xml</type>
+				<classifier>features</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.jdbc</groupId>
+				<artifactId>pax-jdbc-config</artifactId>
+				<version>${pax.jdbc.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.jdbc</groupId>
+				<artifactId>pax-jdbc-derby</artifactId>
+				<version>${pax.jdbc.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.jdbc</groupId>
+				<artifactId>pax-jdbc-pool-aries</artifactId>
+				<version>${pax.jdbc.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.ops4j.pax.jpa</groupId>
 				<artifactId>pax-jpa</artifactId>
 				<version>${pax-jpa.version}</version>
@@ -2113,6 +2135,11 @@
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
+				<version>${org.osgi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.enterprise</artifactId>
 				<version>${org.osgi.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
@@ -2496,7 +2523,7 @@
 		<org.yaml.snakeyaml.version>1.13</org.yaml.snakeyaml.version>
 		<ops4j.base.version>1.4.0</ops4j.base.version>
 		<pax-cdi.version>0.8.0</pax-cdi.version>
-		<pax.jdbc.version>0.3.0</pax.jdbc.version>
+		<pax.jdbc.version>0.4.0</pax.jdbc.version>
 		<pax-jpa.version>0.2.0</pax-jpa.version>
 		<pax.swissbox.version>1.7.1</pax.swissbox.version>
 		<pax.tinybundle.version>2.0.0</pax.tinybundle.version>

@@ -6,7 +6,8 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.derby</artifactId>
-	<name>Wrapper for apache derby database</name>
+	<name>Helpers for Apache Derby database</name>
+	<description>A datasource factory that is necessary for Pax-JDBC</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -32,6 +33,15 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.enterprise</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>

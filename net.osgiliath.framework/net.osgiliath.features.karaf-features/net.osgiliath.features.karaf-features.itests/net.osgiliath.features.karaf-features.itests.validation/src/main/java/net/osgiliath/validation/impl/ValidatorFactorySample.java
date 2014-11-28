@@ -20,11 +20,15 @@ package net.osgiliath.validation.impl;
  * #L%
  */
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
+
+
+
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +51,7 @@ public class ValidatorFactorySample implements IValidatorFactorySample {
 	final Set<ConstraintViolation<HelloObject>> validationResults = validator
 		.validate(object);
 	if (!validationResults.isEmpty()) {
-	    throw new ConstraintViolationException(validationResults);
+	    throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>> (validationResults));
 	}
 	if (object != null) {
 	    // Exception must have be thrown

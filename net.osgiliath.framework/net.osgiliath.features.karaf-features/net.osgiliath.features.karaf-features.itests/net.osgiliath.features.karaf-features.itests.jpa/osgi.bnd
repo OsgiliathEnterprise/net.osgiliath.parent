@@ -2,6 +2,7 @@ Meta-Persistence: META-INF/persistence.xml
 JPA-PersistenceUnits: myTestPu
 Import-Package: org.apache.openjpa.enhance;resolution:=optional,\
  org.apache.openjpa.util;resolution:=optional,\
+ org.apache.derby.jdbc,\
  org.springframework.data.domain,\
  org.springframework.data.jpa.domain,\
  !net.osgiliath.jpa.*,\
