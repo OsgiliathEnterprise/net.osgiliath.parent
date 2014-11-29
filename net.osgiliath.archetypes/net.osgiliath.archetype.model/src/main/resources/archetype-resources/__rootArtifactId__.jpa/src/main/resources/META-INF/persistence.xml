@@ -27,7 +27,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 	<persistence-unit name="${symbol_dollar}{project.artifactId}Pu" transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-		<!-- TODO exported by the feature *.database -->
+		<!-- TODO exported by the feature *.database, choose one or the other, depending on your context, set transaction-type to RESOURCE_LOCAL if you choose the Non-JTA one -->
 		<jta-data-source>osgi:service/javax.sql.DataSource/(&amp;(osgi.jndi.service.name=${symbol_dollar}{project.parent.artifactId}.database)(aries.managed=true))</jta-data-source>
 		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${symbol_dollar}{project.parent.artifactId}.database)</non-jta-data-source>
 		<!--<class>net.osgiliath.hello.model.jpa.model.HelloObject</class>-->
