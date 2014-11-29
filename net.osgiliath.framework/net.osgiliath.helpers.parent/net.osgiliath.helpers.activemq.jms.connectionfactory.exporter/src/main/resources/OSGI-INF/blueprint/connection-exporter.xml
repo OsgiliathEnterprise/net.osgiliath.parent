@@ -1,36 +1,35 @@
-<!-- #%L net.osgiliath.helpers.activemq.jms.connectionfactory.exporter %% Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file 
-	except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed 
-	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations 
-	under the License. #L% -->
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" xmlns:amq="http://activemq.apache.org/schema/core"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- #%L net.osgiliath.helpers.activemq.jms.connectionfactory.exporter %% Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain 
+	a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either 
+	express or implied. See the License for the specific language governing permissions and limitations under the License. #L% -->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" xmlns:amq="http://activemq.apache.org/schema/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 		http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
 	<cm:property-placeholder persistent-id="net.osgiliath.features.karaf-features-messaging" id="net.osgiliath.features.karaf-features-messaging" placeholder-prefix="$[" placeholder-suffix="]">
 		<cm:default-properties>
-			<cm:property name="jmsTransportConnector.uri" value="tcp://localhost:61616" />
-			<cm:property name="jmsXATransportConnector.uri" value="tcp://localhost:61626" />
-			<cm:property name="stompTransportConnector.uri" value="stomp://localhost:61612" />
-			<cm:property name="stompXATransportConnector.uri" value="stomp://localhost:61623" />
-			<cm:property name="broker-name" value="amq-broker" />
-			<cm:property name="webSocketTransportConnector.uri" value="ws://localhost:61614" />
-			<cm:property name="webSocketXATransportConnector.uri" value="ws://localhost:61624" />
+			<cm:property name="async.broker.name" value="amq-broker" />
+			<cm:property name="async.transport.uri.jms" value="tcp://localhost:61616" />
+			<cm:property name="async.transport.uri.jms.xa" value="tcp://localhost:61626" />
+			<cm:property name="async.transport.uri.stomp" value="stomp://localhost:61612" />
+			<cm:property name="async.transport.uri.stomp.xa" value="stomp://localhost:61623" />
+			<cm:property name="async.transport.uri.websocket" value="ws://localhost:61614" />
+			<cm:property name="async.transport.uri.websocket.xa" value="ws://localhost:61624" />
+			<cm:property name="async.connections.pool" value="8" />
 		</cm:default-properties>
 	</cm:property-placeholder>
 	<!-- access through JTATransactionManager -->
 	<reference id="osgiJtaTransactionManager" interface="javax.transaction.TransactionManager" />
-	
+
 	<!-- jms confactory -->
 	<bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="$[jmsTransportConnector.uri]" />
+		<property name="brokerURL" value="$[async.transport.uri.jms]" />
 	</bean>
 	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
-		<property name="maxConnections" value="8" />
+		<property name="maxConnections" value="$[async.connections.pool]" />
 		<property name="connectionFactory" ref="jmsFactory" />
 	</bean>
 
 	<bean id="jmsXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
-		<property name="brokerURL" value="$[jmsXATransportConnector.uri]" />
+		<property name="brokerURL" value="$[async.transport.uri.jms.xa]" />
 		<property name="redeliveryPolicy">
 			<bean class="org.apache.activemq.RedeliveryPolicy">
 				<property name="maximumRedeliveries" value="0" />
@@ -38,22 +37,22 @@
 		</property>
 	</bean>
 	<bean id="jmsXaPoolConnectionFactory" class="org.apache.activemq.pool.JcaPooledConnectionFactory">
-		<property name="maxConnections" value="8" />
+		<property name="maxConnections" value="$[async.connections.pool]" />
 		<property name="connectionFactory" ref="jmsXAFactory" />
 		<property name="transactionManager" ref="osgiJtaTransactionManager" />
-		<property name="name" value="activemq.${broker-name}" />
+		<property name="name" value="activemq.$[async.broker.name]" />
 	</bean>
 	<bean id="stompConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="$[stompTransportConnector.uri]" />
+		<property name="brokerURL" value="$[async.transport.uri.stomp]" />
 	</bean>
 	<bean id="stompXAConnectionFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
-		<property name="brokerURL" value="$[stompXATransportConnector.uri]" />
+		<property name="brokerURL" value="$[async.transport.uri.stomp.xa]" />
 	</bean>
 	<bean id="webSocketFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="$[webSocketTransportConnector.uri]" />
+		<property name="brokerURL" value="$[async.transport.uri.websocket]" />
 	</bean>
 	<bean id="webSocketXAFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
-		<property name="brokerURL" value="$[webSocketXATransportConnector.uri]" />
+		<property name="brokerURL" value="$[async.transport.uri.websocket.xa]" />
 	</bean>
 	<!-- jms connection factory to export -->
 	<service ref="pooledConnectionFactory" interface="javax.jms.ConnectionFactory">
@@ -62,9 +61,7 @@
 		</service-properties>
 	</service>
 
-	<!-- to remove: normally you don't have to use websocket as a transport -->
-	<!-- <service ref="cachedWebSocketConnectionFactory" interface="javax.jms.ConnectionFactory"> <service-properties> <entry key="component-type" value="websocket" /> </service-properties> </service> -->
-
+	
 	<!-- JMS XA factory export -->
 	<service ref="jmsXaPoolConnectionFactory" interface="javax.jms.ConnectionFactory">
 		<service-properties>
@@ -73,18 +70,14 @@
 	</service>
 
 
-	
- <!--
-        ActiveMQ XA Resource Manager
-    -->
-    <bean id="resourceManager"
-          class="org.apache.activemq.pool.ActiveMQResourceManager"
-          init-method="recoverResource"> 
-        <property name="transactionManager" ref="osgiJtaTransactionManager" />
-        <property name="connectionFactory" ref="jmsXaPoolConnectionFactory" />
-        <property name="resourceName" value="activemq.default" />
-    </bean>   
-	
-	
+
+	<!-- ActiveMQ XA Resource Manager -->
+	<bean id="resourceManager" class="org.apache.activemq.pool.ActiveMQResourceManager" init-method="recoverResource">
+		<property name="transactionManager" ref="osgiJtaTransactionManager" />
+		<property name="connectionFactory" ref="jmsXaPoolConnectionFactory" />
+		<property name="resourceName" value="activemq.default" />
+	</bean>
+
+
 
 </blueprint>

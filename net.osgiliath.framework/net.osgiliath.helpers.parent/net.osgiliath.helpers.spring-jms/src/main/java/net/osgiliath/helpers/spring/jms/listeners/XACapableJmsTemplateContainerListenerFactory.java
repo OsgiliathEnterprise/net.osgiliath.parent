@@ -37,6 +37,10 @@ public class XACapableJmsTemplateContainerListenerFactory implements JmsTemplate
 	private ConnectionFactory nonXAFactory;
 	@Setter
 	private ConnectionFactory xAFactory;
+	@Setter
+	private int concurrentConsumers;
+	@Setter
+	private int receiveTimeout;
 	
 	
 	/* (non-Javadoc)
@@ -58,17 +62,17 @@ public class XACapableJmsTemplateContainerListenerFactory implements JmsTemplate
 			boolean isPubSub) {
 		ManageableDefaultJmsContainerListener container = new ManageableDefaultJmsContainerListener();
 		container.setCacheLevel(DefaultMessageListenerContainer.CACHE_AUTO);
-		container.setConcurrentConsumers(5);
+		container.setConcurrentConsumers(concurrentConsumers);
 		container.setDestinationName(destinationName);
 		container.setMessageListener(messageListener);
-		container.setReceiveTimeout(2000);
-		container.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
+		container.setReceiveTimeout(receiveTimeout);
 		container.setPubSubDomain(isPubSub);
 		
 		if (transacted) {
 			addTransactedInfos(container);
 		} else {
 			addNonTransactedInfo(container);
+			container.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 		}
 		container.initialize();
 		container.start();
@@ -83,7 +87,7 @@ public class XACapableJmsTemplateContainerListenerFactory implements JmsTemplate
 	private void addTransactedInfos(DefaultMessageListenerContainer container) {
 		container.setTransactionManager(txManager);
 		container.setConnectionFactory(xAFactory);
-		container.setTransactionTimeout(2000);
+		container.setTransactionTimeout(receiveTimeout);
 	}
 
 }
