@@ -79,7 +79,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
 		String createDatabase = (String) props
 				.remove(ClientConnectionConstant.CREATE_DATABASE);
 		ds.setCreateDatabase(createDatabase);
-
+		
 		String serverName = (String) props
 				.remove(DataSourceFactory.JDBC_SERVER_NAME);
 		ds.setServerName(serverName);
@@ -131,6 +131,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
 			Properties props) throws SQLException {
 		ClientConnectionPoolDataSource40 ds = new ClientConnectionPoolDataSource40();
 		setProperties(ds, props);
+		
 		return ds;
 	}
 
@@ -139,6 +140,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
 			throws SQLException {
 		ClientXADataSource40 ds = new ClientXADataSource40();
 		setProperties(ds, props);
+		ds.setConnectionAttributes("autoCommit=false");
 		return ds;
 	}
 
