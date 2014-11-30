@@ -9,7 +9,6 @@
 	<cm:property-placeholder persistent-id="net.osgiliath.features.karaf-features-messaging" id="net.osgiliath.features.karaf-features-messaging" placeholder-prefix="$[" placeholder-suffix="]">
 		<cm:default-properties>
 			<cm:property name="async.broker.name" value="amq-broker" />
-			<cm:property name="async.broker.db.path" value="activeMQ/kahadb-jms" />
 			<cm:property name="async.transport.uri.jms" value="tcp://localhost:61616" />
 			<cm:property name="async.transport.uri.jms.xa" value="tcp://localhost:61626" />
 			<cm:property name="async.transport.uri.stomp" value="stomp://localhost:61612" />
@@ -34,7 +33,7 @@
 			<amq:managementContext createConnector="true" />
 		</amq:managementContext>
 		<amq:persistenceAdapter>
-			<amq:kahaDB directory="$[async.broker.path.db]" enableJournalDiskSyncs="false" indexWriteBatchSize="10000" indexCacheSize="1000" />
+			<amq:kahaDB directory="activeMQ/kahadb-jms" enableJournalDiskSyncs="false" indexWriteBatchSize="10000" indexCacheSize="1000" />
 		</amq:persistenceAdapter>
 		<amq:plugins>
 			<amq:loggingBrokerPlugin />

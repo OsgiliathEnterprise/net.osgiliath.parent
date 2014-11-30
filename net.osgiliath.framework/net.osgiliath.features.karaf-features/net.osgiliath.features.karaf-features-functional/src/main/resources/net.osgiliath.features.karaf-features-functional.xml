@@ -9,10 +9,10 @@
 	governing permissions and limitations under the License. #L% -->
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
-	<feature name='osgiliath-functional' version='${project.version}'>
+	<feature name='osgiliath-functional' version='${project.version}' start-level="60" description="Java functional libs (i.e. Guava)">
 		<bundle>mvn:com.google.guava/guava/${com.google.guava.version}</bundle>
 	</feature>
-	<feature name='osgiliath-scala' version='${project.version}'>
+	<feature name='osgiliath-scala' version='${project.version}' start-level="60" description="Scala support in Osgiliath">
 		<bundle dependency='true'>mvn:org.scala-lang/scala-library/${scala.version}</bundle>
 		<!-- FIXME while updating scala version<bundle>mvn:org.scala-lang.modules/scala-xml_2.11/${scala-xml_2.11.version}</bundle>  -->
 	</feature>

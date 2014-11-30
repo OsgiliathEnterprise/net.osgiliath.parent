@@ -24,7 +24,7 @@ limitations under the License.
 	<repository>mvn:${project.groupId}/${project.parent.artifactId}-functional/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
-	<feature name='osgiliath-validation-common' version='${project.version}'>
+	<feature name='osgiliath-validation-common' version='${project.version}' start-level="50" description="Validation common libraries (JSR303)">
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${org.apache.karaf.features_enterprise_connector.version}'>connector</feature>
 		<bundle >mvn:${project.groupId}/net.osgiliath.helpers.validation.osgi.services/${project.version}</bundle>
@@ -39,11 +39,11 @@ limitations under the License.
 		<!--
 		<bundle >wrap:mvn:org.hibernate/hibernate-validator-cdi/${org.hibernate.validator.version}$Bundle-SymbolicName=org.hibernate.validator.cdi</bundle>-->
 	</feature>
-	<feature name='osgiliath-validation' version='${project.version}'>
+	<feature name='osgiliath-validation' version='${project.version}' start-level="50" description="Validation with Spring">
 		<feature version='${karaf.feature.spring4.version}'>spring</feature>
 		<feature version='${project.version}'>osgiliath-validation-common</feature>
 	</feature>
-	<feature name='osgiliath-validation-cdi' version='${project.version}'>
+	<feature name='osgiliath-validation-cdi' version='${project.version}' description="Validation with CDI">
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${project.version}'>osgiliath-validation-common</feature>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.hibernate.validator.cdi.osgi/${project.version}</bundle>

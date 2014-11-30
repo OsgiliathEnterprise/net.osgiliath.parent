@@ -14,44 +14,47 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-routes/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-security/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-validation/${project.version}/xml/features</repository>
-	<feature name="osgiliath-model" version="${project.version}">
+	<feature name="osgiliath-model" version="${project.version}" description="Database persistence and validation">
 		<feature version='${project.version}'>osgiliath-derby</feature>
 		<feature version='${project.version}'>osgiliath-jpa</feature>
 		<feature version='${project.version}'>osgiliath-validation</feature>
+		<feature version='${project.version}'>osgiliath-swagger-annotations</feature>
 	</feature>
-	<feature name="osgiliath-business" version="${project.version}">
+	<feature name="osgiliath-business" version="${project.version}" description="Java messaging service, REST web services, and security Blueprint way">
 		<feature version='${project.version}'>osgiliath-security</feature>
 		<feature version='${project.version}'>osgiliath-validation</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-messaging-spring</feature>
 		<feature version='${project.version}'>osgiliath-swagger</feature>
+		<feature version='${org.apache.activemq.version}'>osgiliath-activemq-broker</feature>
 	</feature>
-	<feature name="osgiliath-business-cdi" version="${project.version}">
+	<feature name="osgiliath-business-cdi" version="${project.version}" description="Java messaging service, REST web services, and security CDI way">
 		<feature version='${project.version}'>osgiliath-security</feature>
 		<feature version='${project.version}'>osgiliath-validation-cdi</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${project.version}'>osgiliath-rest-cdi</feature>
 		<feature version='${project.version}'>osgiliath-camel-messaging</feature>
 		<feature version='${project.version}'>osgiliath-camel-cdi-configadmin</feature>
-		<feature version='${project.version}'>osgiliath-swagger</feature>
+		<feature version='${project.version}'>osgiliath-swagger-cdi</feature>
+		<feature version='${org.apache.activemq.version}'>osgiliath-activemq-broker</feature>
 	</feature>
 
-	<feature name="osgiliath-full" version="${project.version}">
+	<feature name="osgiliath-full" version="${project.version}" description="All Osgiliath needed for a full Osgiliath Blueprint project">
 		<feature version='${project.version}'>osgiliath-model</feature>
 		<feature version='${project.version}'>osgiliath-business</feature>
 		<feature version='${project.version}'>osgiliath-routes</feature>
 	</feature>
-	<feature name="osgiliath-management" version="${project.version}">
-		<feature version="${project.version}">osgiliath-hawtio</feature>
-	</feature>
-	<feature name="osgiliath-development" version="${project.version}">
-		<feature version='${project.version}'>osgiliath-swagger-ui</feature>
-	</feature>
-	<feature name="osgiliath-full-cdi" version="${project.version}">
+	<feature name="osgiliath-full-cdi" version="${project.version}" description="All Osgiliath needed for a full Osgiliath CDI project">
 		<feature version='${project.version}'>osgiliath-model</feature>
 		<feature version='${project.version}'>osgiliath-business-cdi</feature>
 		<feature version='${project.version}'>osgiliath-routes-cdi</feature>
 	</feature>
-
+	<feature name="osgiliath-management" version="${project.version}" description="Management feature for Osgiliath (accessible on /hawtio)">
+		<feature version="${project.version}">osgiliath-hawtio</feature>
+	</feature>
+	<feature name="osgiliath-development" version="${project.version}" description="Dev features (REST service querying) feature for Osgiliath (accessible on /[svc]/api-docs)">
+		<feature version='${project.version}'>osgiliath-swagger-ui</feature>
+	</feature>
+	
 </features>
