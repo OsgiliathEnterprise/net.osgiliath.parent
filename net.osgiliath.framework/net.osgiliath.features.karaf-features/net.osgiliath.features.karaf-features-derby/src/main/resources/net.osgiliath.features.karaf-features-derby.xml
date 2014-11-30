@@ -23,7 +23,7 @@ limitations under the License.
 	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.ops4j.pax.jdbc/pax-jdbc-features/${pax.jdbc.version}/xml/features</repository>
-	<feature name='osgiliath-derby' version='${project.version}' resolver="(obr)" start-level='40'>
+	<feature name='osgiliath-derby' version='${project.version}' resolver="(obr)" start-level="35" description="Derby database simplified creation via property and Liquibase (database versioning) support">
 		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jndi</feature>
 		<feature version='${pax.jdbc.version}'>pax-jdbc-config</feature>

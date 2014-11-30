@@ -7,7 +7,7 @@
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-functional/${project.version}/xml/features</repository>
-	<feature name='osgiliath-camel-xstream' version='${camel-version}' resolver='(obr)' start-level='50'>
+	<feature name='osgiliath-camel-xstream' version='${camel-version}' resolver='(obr)' start-level='60' description="XStream transformation for camel">
 		<feature version='${camel-version}'>osgiliath-camel-core</feature>
 		<bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${org.apache.servicemix.bundles.xpp3.version}</bundle>
 		<bundle dependency='true'>mvn:joda-time/joda-time/${joda-time.version}</bundle>
@@ -18,11 +18,11 @@
 		<bundle>mvn:org.apache.camel/camel-xstream/${camel-version}</bundle>
 		<bundle>mvn:org.codehaus.jettison/jettison/${jettison.version}</bundle>
 	</feature>
-	<feature name="osgiliath-swagger-annotations" version="${project.version}" resolver="(obr)">
+	<feature name="osgiliath-swagger-annotations" version="${project.version}" resolver="(obr)" start-level="30" description="Swagger annotations">
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${org.apache.servicemix.bundles.swagger.version}</bundle>
 	</feature>
 	
-	<feature name="osgiliath-weaving" version="${project.version}" resolver="(obr)" start-level="30">
+	<feature name="osgiliath-weaving" version="${project.version}" resolver="(obr)" start-level="30" description="ServiceLoader OSGI hook">
 		<bundle>mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries.util.version}</bundle>
 		<bundle>mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/${org.apache.aries.spifly.version}</bundle>
 		<!-- <bundle>mvn:org.apache.aries.spifly/org.apache.aries.spifly.core-internal/${org.apache.aries.spifly.version}</bundle>

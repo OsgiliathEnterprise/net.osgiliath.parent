@@ -11,7 +11,7 @@
 	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
 
 
-	<feature name="osgiliath-rest" version="${project.version}" resolver="(obr)" start-level="50">
+	<feature name="osgiliath-rest" version="${project.version}" resolver="(obr)" start-level="50" description="RESTful web services support">
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxrs</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-jaxb</feature>
 		<feature version='${karaf.feature.cxf.version}'>cxf-databinding-jaxb</feature>
@@ -20,18 +20,21 @@
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles.jdom.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cxf.exception.handling/${project.version}</bundle>
 		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/cfg/cxf</configfile>
-		<feature version='${project.version}'>osgiliath-swagger-rest</feature>
 	</feature>
 
-	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)" start-level="50">
+	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)" description="RESTful web services support for CDI">
 		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
-		<bundle start-level="40">mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.cxf.jaxrs/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.cxf-integration-cdi/${project.version}</bundle>
 		<bundle>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
 	</feature>
-	<feature name="osgiliath-swagger-rest" version="${project.version}" resolver="(obr)" start-level="50">
+	<feature name="osgiliath-swagger-rest-cdi" version="${project.version}" resolver="(obr)" description="Swagger (REST API description) support for CDI">
+		<bundle start-level="40">mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.cdi/${project.version}</bundle>
+		<feature version='${project.version}'>osgiliath-cdi</feature>
+		<feature version='${project.version}'>osgiliath-swagger-rest</feature>
+	</feature>
+	<feature name="osgiliath-swagger-rest" version="${project.version}" resolver="(obr)" start-level="50" description="Swagger (REST API description) support">
 		<feature version='${project.version}'>osgiliath-swagger-annotations</feature>
 		<bundle start-level="40">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-core/${project.version}</bundle>
 		<bundle start-level="40">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.swagger-jaxrs/${project.version}</bundle>
