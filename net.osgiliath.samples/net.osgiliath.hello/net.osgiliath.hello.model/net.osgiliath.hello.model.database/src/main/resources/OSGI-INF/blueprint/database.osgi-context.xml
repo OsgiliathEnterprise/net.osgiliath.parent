@@ -7,7 +7,7 @@
 	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd"
 	default-activation="eager">
-	<reference id="dataSource" interface="javax.sql.Datasource" filter="(dataSourceName=${project.artifactId})"/><!-- the name of the property in your feature *.database.cfg -->
+	<reference id="dataSource" interface="javax.sql.DataSource" filter="(osgi.jndi.service.name=${project.artifactId})"/><!-- the name of the property in your feature *.database.cfg -->
 	
 
 	<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
