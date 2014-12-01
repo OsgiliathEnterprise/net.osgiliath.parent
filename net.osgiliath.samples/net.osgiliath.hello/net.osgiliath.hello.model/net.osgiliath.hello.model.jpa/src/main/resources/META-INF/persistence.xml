@@ -34,8 +34,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 		<properties>
 			<property name="openjpa.Log" value="slf4j"/>
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true,SchemaAction=refresh)"/>
-			<property name="openjpa.jdbc.DBDictionary" value="derby(supportsMultipleNontransactionalResultSets=false)"/>
-			<property name="openjpa.ConnectionFactoryProperties" value="autoCommit=false"/> 
+			<property name="openjpa.jdbc.DBDictionary" value="derby(SupportsMultipleNontransactionalResultSets=false)"/>
 		</properties>
 	</persistence-unit>
 </persistence>
