@@ -25,7 +25,7 @@ limitations under the License.
 	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
-	<feature name="osgiliath-openjpa" version="${project.version}" resolver="(obr)" start-level='40' description="OpenJPA (persistence implementation) engine">
+	<feature name="osgiliath-openjpa" version="${project.version}" resolver="(obr)" start-level='30' description="OpenJPA (persistence implementation) engine">
 		<details>Enable Apache OpenJPA as persistence engine.</details>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/${geronimo-annotation_1.1_spec.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version}</bundle>
@@ -40,7 +40,7 @@ limitations under the License.
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles.serp.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${geronimo-jms_1.1_spec.version}</bundle>	
 		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm4-shaded/${org.apache.xbean_xbean-asm4-shaded.version}</bundle>
-		<bundle start-level="36">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
+		<bundle start-level="29">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa.version}</bundle>
 	</feature>
 	<feature name='osgiliath-jpa' version='${project.version}' resolver="(obr)" start-level="41" description="Java persistence API stack" >
 		<bundle >mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo-servlet_3.0_spec.version}</bundle>
