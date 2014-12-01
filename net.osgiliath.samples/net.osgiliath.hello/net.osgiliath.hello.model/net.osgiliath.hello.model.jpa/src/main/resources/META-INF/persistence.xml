@@ -26,7 +26,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<!-- TODO exported by database module -->
 		<jta-data-source>osgi:service/javax.sql.DataSource/(&amp;(osgi.jndi.service.name=${project.parent.artifactId}.database)(aries.managed=true))</jta-data-source>
-		<!--  <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${project.parent.artifactId}.database)</non-jta-data-source> -->
+		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${project.parent.artifactId}.database)</non-jta-data-source>
 		<class>net.osgiliath.hello.model.jpa.model.AbstractEntity</class>
 		<class>net.osgiliath.hello.model.jpa.model.HelloEntity</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
