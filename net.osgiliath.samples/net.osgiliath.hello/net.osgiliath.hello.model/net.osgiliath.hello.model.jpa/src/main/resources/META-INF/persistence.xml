@@ -35,7 +35,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 			<property name="openjpa.Log" value="slf4j"/>
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true,SchemaAction=refresh)"/>
 			<property name="openjpa.jdbc.DBDictionary" value="derby"/>
-<property name="openjpa.TransactionMode" value="managed"/>
+			<property name="openjpa.TransactionMode" value="managed"/>
 		</properties>
 	</persistence-unit>
 </persistence>

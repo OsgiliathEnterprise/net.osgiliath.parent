@@ -140,7 +140,6 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
 			throws SQLException {
 		ClientXADataSource40 ds = new ClientXADataSource40();
 		setProperties(ds, props);
-		ds.setConnectionAttributes("autoCommit=false");
 		return ds;
 	}
 
