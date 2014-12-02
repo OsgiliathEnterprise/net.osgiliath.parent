@@ -26,8 +26,12 @@ ${symbol_pound}L%
 	<!-- TODO add your features here, check the mapping with your bundles-->
 	<repository>mvn:org.apache.karaf.features/standard/${symbol_dollar}{karaf.version}/xml/features</repository>
 	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
-	<feature name="${symbol_dollar}{project.parent.artifactId}.model" version="${symbol_dollar}{project.version}">
+	<feature name="${symbol_dollar}{project.parent.artifactId}.model.db" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-derby</feature>
+		<configfile finalname="/etc/org.ops4j.datasource-${symbol_dollar}{project.parent.artifactId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/database</configfile>
+	</feature>
+	<feature name="${symbol_dollar}{project.parent.artifactId}.model" version="${symbol_dollar}{project.version}">
+		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.model.db</feature>
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-model</feature>
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-security</feature>
 		<!--<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.model.database/${symbol_dollar}{project.version}/jar</bundle>
