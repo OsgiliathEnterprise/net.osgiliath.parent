@@ -22,6 +22,13 @@ package net.osgiliath.messaging.repository.impl.itests;
 
 import java.util.Collection;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,7 +53,16 @@ public class ITHelloWebUITest {
 	 * . A correct {@link AbstractUtilisateur} Name
 	 */
 	private static final String CORRECT_NAME = "CorrectName";
-
+	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+	@After
+	public void cleanMessages() {
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(helloServiceBaseUrl);
+		target = target.path("hello");
+		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+		builder.delete();
+		client.close();
+	}
 	@Test
 	public void testSayHello() throws Exception {
 		final WebDriver driver;

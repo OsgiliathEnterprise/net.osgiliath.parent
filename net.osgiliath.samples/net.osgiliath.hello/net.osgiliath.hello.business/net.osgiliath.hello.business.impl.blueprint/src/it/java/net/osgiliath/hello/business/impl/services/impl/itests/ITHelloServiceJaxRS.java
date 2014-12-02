@@ -52,6 +52,7 @@ import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
 import org.apache.karaf.features.BootFinished;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -97,6 +98,7 @@ public class ITHelloServiceJaxRS extends
 	// exported REST adress
 	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
+	
 	// probe
 	@ProbeBuilder
 	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
@@ -110,6 +112,15 @@ public class ITHelloServiceJaxRS extends
 		return builder;
 	}
 
+	@After
+	public void cleanMessages() {
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(helloServiceBaseUrl);
+		target = target.path("hello");
+		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+		builder.delete();
+		client.close();
+	}
 	@Test
 	public void testSayHello() throws Exception {
 		log.debug("************Listing **********************");
@@ -129,7 +140,6 @@ public class ITHelloServiceJaxRS extends
 				.request(MediaType.APPLICATION_XML);
 		Hellos hellos = respbuilder.get(Hellos.class);
 		assertEquals(1, hellos.getHelloCollection().size());
-		builder.delete();
 		client.close();
 	}
 
@@ -164,7 +174,6 @@ public class ITHelloServiceJaxRS extends
 		WebTarget target = client.target(helloServiceBaseUrl);
 		target = target.path("hello");
 		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.delete();
 		client.close();
 
 	}
