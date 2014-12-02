@@ -53,6 +53,7 @@ import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
 import org.apache.karaf.features.BootFinished;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -112,7 +113,7 @@ public class ITHelloServiceJaxRS extends
 		return builder;
 	}
 
-	@After
+	@Before
 	public void cleanMessages() {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(helloServiceBaseUrl);

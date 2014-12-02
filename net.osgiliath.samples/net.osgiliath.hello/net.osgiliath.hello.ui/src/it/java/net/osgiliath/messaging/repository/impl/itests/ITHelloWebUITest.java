@@ -53,16 +53,6 @@ public class ITHelloWebUITest {
 	 * . A correct {@link AbstractUtilisateur} Name
 	 */
 	private static final String CORRECT_NAME = "CorrectName";
-	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
-	@After
-	public void cleanMessages() {
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.delete();
-		client.close();
-	}
 	@Test
 	public void testSayHello() throws Exception {
 		final WebDriver driver;
