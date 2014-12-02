@@ -614,11 +614,21 @@
 				<artifactId>camel-karaf-commands</artifactId>
 				<version>${camel-version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-dbcp2</artifactId>
+				<version>${org.apache.commons_commons-dbcp2.version}</version>
+			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-jexl</artifactId>
 				<version>${commons-jexl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>${org.apache.commons_commons-pool2.version}</version>
 			</dependency>
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
@@ -2433,6 +2443,8 @@
 		<org.apache.aries.transaction.blueprint.version>1.0.1</org.apache.aries.transaction.blueprint.version>
 		<org.apache.aries.transaction.jdbc.version>2.1.0</org.apache.aries.transaction.jdbc.version>
 		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
+		<org.apache.commons_commons-dbcp2.version>2.0.1</org.apache.commons_commons-dbcp2.version>
+		<org.apache.commons_commons-pool2.version>2.2</org.apache.commons_commons-pool2.version>
 		<org.apache.cxf.karaf_cxf-karaf-commands.version>3.0.1</org.apache.cxf.karaf_cxf-karaf-commands.version>
 		<org.apache.deltaspike.version>1.0.3</org.apache.deltaspike.version>
 		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>

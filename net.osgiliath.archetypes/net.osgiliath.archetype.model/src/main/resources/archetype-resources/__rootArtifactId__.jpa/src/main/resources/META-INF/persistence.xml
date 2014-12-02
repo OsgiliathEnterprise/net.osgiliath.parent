@@ -28,7 +28,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 	<persistence-unit name="${symbol_dollar}{project.artifactId}Pu" transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<!-- TODO exported by the feature *.database, remove transactionMode property and set transaction-type to RESOURCE_LOCAL if you don't use transactions -->
-		<jta-data-source>osgi:service/javax.sql.DataSource/(&amp;(osgi.jndi.service.name=${symbol_dollar}{project.parent.artifactId}.database)(aries.managed=true))</jta-data-source>
+		<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${symbol_dollar}{project.parent.artifactId}.database)</jta-data-source>
 		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${symbol_dollar}{project.parent.artifactId}.database)</non-jta-data-source>
 		<!--<class>net.osgiliath.hello.model.jpa.model.HelloObject</class>-->
 		<class>${package}.model.AbstractEntity</class>

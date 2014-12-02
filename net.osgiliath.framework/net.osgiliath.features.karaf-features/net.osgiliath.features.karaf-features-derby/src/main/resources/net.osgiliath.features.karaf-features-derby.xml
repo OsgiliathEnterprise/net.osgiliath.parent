@@ -27,7 +27,7 @@ limitations under the License.
 		<feature version='${karaf.feature.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jndi</feature>
 		<feature version='${pax.jdbc.version}'>pax-jdbc-config</feature>
-		<feature version='${pax.jdbc.version}'>pax-jdbc-pool-aries</feature>
+		<feature version='${pax.jdbc.version}'>pax-jdbc-pool-dbcp2</feature>
 		<feature version='${karaf.feature.spring4.version}'>spring</feature>
 		<bundle >mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.derby/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.liquibase/liquibase-osgi/${org.liquibase.liquibase.version}</bundle>
