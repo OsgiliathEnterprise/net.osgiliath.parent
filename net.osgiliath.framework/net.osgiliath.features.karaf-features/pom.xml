@@ -11,7 +11,7 @@
 		the specific language governing permissions and limitations under the License. -->
 	<parent>
 		<groupId>net.osgiliath</groupId>
-		<version>0.1.1</version>
+		<version>0.1.2-SNAPSHOT</version>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
