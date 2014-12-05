@@ -16,9 +16,6 @@
 		<version>0.1.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.business.impl.blueprint</artifactId>
-	<properties>
-		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-	</properties>
 	<name>Blueprint configured business module</name>
 	<description>Send HelloMessages via REST or Messaging</description>
 	<build>

@@ -9,9 +9,6 @@
 	<packaging>pom</packaging>
 	<name>Osgiliath integration tests</name>
 	<description>Integrations tests for the entire Osgiliath framework</description>
-	<properties>
-		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-	</properties>
 	<modules>
 		<module>
   		net.osgiliath.features.karaf-features.itests.feature

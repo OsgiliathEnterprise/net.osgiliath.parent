@@ -17,9 +17,6 @@
 	</parent>
 	<artifactId>net.osgiliath.hello.business.impl.cdi</artifactId>
 	<packaging>jar</packaging>
-	<properties>
-		<sonar.jacoco.itReportPath>../../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-	</properties>
 	<name>CDI configured business module</name>
 	<description>Send HelloMessages via REST or Messaging</description>
 	<build>
