@@ -74,7 +74,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 
 	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
 	if (helloObjects.isEmpty()) {
-	    throw new UnsupportedOperationException(
+		throw new UnsupportedOperationException(
 		    "You could not call this method when the list is empty");
 	}
 	return Hellos

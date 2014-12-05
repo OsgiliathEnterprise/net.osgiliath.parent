@@ -117,6 +117,226 @@
 			<url>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
 		</site>
 	</distributionManagement>
+
+	<properties>
+		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
+		<parentPropertiesFile>build.properties</parentPropertiesFile>
+		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
+		<doxia-module-markdown.version>1.6</doxia-module-markdown.version>
+		<github.global.server>github</github.global.server>
+		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+		<license-maven-plugin.version>1.7</license-maven-plugin.version>
+		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
+		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
+		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
+		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+		<maven-source-plugin.version>2.4</maven-source-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
+		<org.apache.maven.plugins_maven-scm-publish-plugin.version>1.1</org.apache.maven.plugins_maven-scm-publish-plugin.version>
+		<org.apache.maven.plugins_maven-site-plugin.version>3.4</org.apache.maven.plugins_maven-site-plugin.version>
+		<org.apache.maven.wagon_wagon-scm.version>2.7</org.apache.maven.wagon_wagon-scm.version>
+		<org.codehaus.gmavenplus_gmavenplus-plugin.version>1.2</org.codehaus.gmavenplus_gmavenplus-plugin.version>
+		<org.codehaus.groovy_groovy-all.version>2.3.7</org.codehaus.groovy_groovy-all.version>
+		<org.codehaus.mojo_properties-maven-plugin.version>1.0-alpha-2</org.codehaus.mojo_properties-maven-plugin.version>
+		<org.kohsuke_pgp-maven-plugin.version>1.1</org.kohsuke_pgp-maven-plugin.version>
+		<encoding>UTF-8</encoding>
+		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+		<project.license>apache_v2</project.license>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPath>${parent.path}/target/jacoco-ut.exec</sonar.jacoco.reportPath>
+		<sonar.jacoco.itReportPath>${parent.path}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+		<maven-scm.version>1.9.1</maven-scm.version>
+		<site.deploy.dir>/tmp/deploy</site.deploy.dir>
+	</properties>
+	<profiles>
+		<profile>
+			<id>fill-parent-path-property</id>
+			<activation>
+				<file>
+					<exists>${parentPropertiesFile}</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.gmavenplus</groupId>
+						<artifactId>gmavenplus-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>fill-parent-property-file</id>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<phase>validate</phase>
+								<configuration>
+									<properties>
+										<property>
+											<name>parentPropertiesFile</name>
+											<value>${parentPropertiesFile}</value>
+										</property>
+									</properties>
+									<scripts>
+										<script> 
+									<![CDATA[ 
+										import java.io.*;
+										String filename = parentPropertiesFile
+										File propertyFile = new File(filename)
+										if (propertyFile.exists()) {
+										try{
+											FileWriter fstream = new FileWriter(propertyFile.getAbsolutePath())
+											BufferedWriter out = new BufferedWriter(fstream)
+											String parentPath = propertyFile.getAbsolutePath().substring(0, propertyFile.getAbsolutePath().lastIndexOf(File.separator))
+											if (File.separator != "/") {
+												parentPath = parentPath.replace(File.separator,File.separator+File.separator+File.separator)
+											}
+											out.write("parent.path = " + parentPath)
+											out.close()
+										}catch (Exception e){
+											e.printStackTrace()
+										}
+									}
+								]]>
+										</script>
+									</scripts>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>readme-md-to-site</id>
+			<activation>
+				<file>
+					<exists>readme.md</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-readme-dir</id>
+								<phase>pre-site</phase>
+								<configuration>
+									<tasks>
+										<mkdir dir="src/site/markdown" />
+										<copy file="readme.md" tofile="src/site/markdown/readme.md" overwrite="true" />
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.gmavenplus</groupId>
+						<artifactId>gmavenplus-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-site-xml</id>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<phase>pre-site</phase>
+								<configuration>
+									<scripts>
+										<script> <![CDATA[ 
+								import java.io.BufferedWriter
+								import java.io.File
+								import java.nio.charset.Charset
+								import java.nio.file.StandardCopyOption
+								import java.nio.file.Files
+								import java.nio.file.StandardOpenOption
+								String siteXmlPath = "src/site/site.xml"
+								String readme_file = "readme.md"
+								String currentPath = "${project.basedir}"
+								if (new File(currentPath + "/" + readme_file).exists() && !(new File(currentPath + "/" + siteXmlPath).exists())) { 
+									while (!(new File(currentPath + "/" + siteXmlPath).exists())) {
+										currentPath = currentPath + "/.." 
+										if (new File(currentPath + "/" + siteXmlPath).exists()) { 
+											Files.copy(new File(currentPath + "/" + siteXmlPath).toPath(), new File("${project.basedir}/" + siteXmlPath).toPath(), StandardCopyOption.REPLACE_EXISTING)
+											File newlyCreatedFile = new File("${project.basedir}/" + siteXmlPath)
+											BufferedWriter newFileWriter = Files.newBufferedWriter(newlyCreatedFile.toPath(), Charset.defaultCharset(), StandardOpenOption.APPEND)
+											newFileWriter.append("<!-- @generated -->")
+											newFileWriter.close() 
+										} else if (!(new File(currentPath + "/pom.xml").exists())) { break; } 
+									} 
+								} ]]>
+										</script>
+									</scripts>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.kohsuke</groupId>
+						<artifactId>pgp-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>nexus-pro</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<extensions>
@@ -310,6 +530,11 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>${org.codehaus.mojo_properties-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
 					<groupId>org.kohsuke</groupId>
 					<artifactId>pgp-maven-plugin</artifactId>
 					<version>${org.kohsuke_pgp-maven-plugin.version}</version>
@@ -372,165 +597,58 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
-	</build>
-	<properties>
-		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
-		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
-		<doxia-module-markdown.version>1.6</doxia-module-markdown.version>
-		<github.global.server>github</github.global.server>
-		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
-		<license-maven-plugin.version>1.7</license-maven-plugin.version>
-		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
-		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
-		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
-		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
-		<maven-source-plugin.version>2.4</maven-source-plugin.version>
-		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
-		<org.apache.maven.plugins_maven-scm-publish-plugin.version>1.1</org.apache.maven.plugins_maven-scm-publish-plugin.version>
-		<org.apache.maven.plugins_maven-site-plugin.version>3.4</org.apache.maven.plugins_maven-site-plugin.version>
-		<org.apache.maven.wagon_wagon-scm.version>2.7</org.apache.maven.wagon_wagon-scm.version>
-		<org.codehaus.gmavenplus_gmavenplus-plugin.version>1.2</org.codehaus.gmavenplus_gmavenplus-plugin.version>
-		<org.codehaus.groovy_groovy-all.version>2.3.7</org.codehaus.groovy_groovy-all.version>
-		<org.kohsuke_pgp-maven-plugin.version>1.1</org.kohsuke_pgp-maven-plugin.version>
-		<encoding>UTF-8</encoding>
-		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
-		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-		<project.license>apache_v2</project.license>
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
-		<maven-scm.version>1.9.1</maven-scm.version>
-		<site.deploy.dir>/tmp/deploy</site.deploy.dir>
-	</properties>
-	<profiles>
-		<profile>
-			<id>readme-md-to-site</id>
-			<activation>
-				<file>
-					<exists>readme.md</exists>
-				</file>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>copy-readme-dir</id>
-								<phase>pre-site</phase>
-								<configuration>
-									<tasks>
-										<mkdir dir="src/site/markdown" />
-										<copy file="readme.md" tofile="src/site/markdown/readme.md" overwrite="true" />
-									</tasks>
-								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.gmavenplus</groupId>
-						<artifactId>gmavenplus-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>execute</goal>
-								</goals>
-								<phase>pre-site</phase>
-							</execution>
-						</executions>
+			<plugin>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>find-parent-property-file</id>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<phase>initialize</phase>
 						<configuration>
+							<properties>
+								<property>
+									<name>parentPropertiesFile</name>
+									<value>${parentPropertiesFile}</value>
+								</property>
+							</properties>
 							<scripts>
 								<script> <![CDATA[ 
-								import java.io.BufferedWriter
-								import java.io.File
-								import java.nio.charset.Charset
-								import java.nio.file.StandardCopyOption
-								import java.nio.file.Files
-								import java.nio.file.StandardOpenOption
-								String siteXmlPath = "src/site/site.xml"
-								String readme_file = "readme.md"
-								String currentPath = "${project.basedir}"
-								if (new File(currentPath + "/" + readme_file).exists() && !(new File(currentPath + "/" + siteXmlPath).exists())) { 
-									while (!(new File(currentPath + "/" + siteXmlPath).exists())) {
-										currentPath = currentPath + "/.." 
-										if (new File(currentPath + "/" + siteXmlPath).exists()) { 
-											Files.copy(new File(currentPath + "/" + siteXmlPath).toPath(), new File("${project.basedir}/" + siteXmlPath).toPath(), StandardCopyOption.REPLACE_EXISTING)
-											File newlyCreatedFile = new File("${project.basedir}/" + siteXmlPath)
-											BufferedWriter newFileWriter = Files.newBufferedWriter(newlyCreatedFile.toPath(), Charset.defaultCharset(), StandardOpenOption.APPEND)
-											newFileWriter.append("<!-- @generated -->")
-											newFileWriter.close() 
-										} else if (!(new File(currentPath + "/pom.xml").exists())) { break; } 
-									} 
-								} ]]>
+									import java.io.*;
+									String filename = parentPropertiesFile
+									File file = new File((String)filename)
+									String ret = "../"
+									while (!file.exists()) {
+										file = new File(ret + filename)
+										ret+= "../"
+									}
+									project.properties['property-maven-plugin-file-path'] = file.getAbsolutePath()
+								]]>
 								</script>
 							</scripts>
 						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.kohsuke</groupId>
-						<artifactId>pgp-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>nexus-pro</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${property-maven-plugin-file-path}</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -692,6 +692,9 @@
 											<goal>
 												set-system-properties
 											</goal>
+											<goal>
+												read-project-properties
+											</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -892,9 +895,6 @@
 								<skip>${jacoco-coverage-skip}</skip>
 								<propertyName>jcoverage.command</propertyName>
 								<destFile>${sonar.jacoco.itReportPath}</destFile>
-								<includes>
-									<include>${project.artifactId}.*</include>
-								</includes>
 								<excludes>
 									<exclude>*.itests.*</exclude>
 									<exclude>*.mock.*</exclude>
@@ -1401,13 +1401,8 @@
 		<org.springframework.data.commons.core.version>1.4.1.RELEASE</org.springframework.data.commons.core.version>
 		<maven-pax-plugin.version>1.5</maven-pax-plugin.version>
 		<selenium-maven-plugin.version>2.3</selenium-maven-plugin.version>
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
 		<sonar-maven-plugin.version>2.4</sonar-maven-plugin.version>
 		<openjpa.version>2.3.0</openjpa.version>
-		<sonar.jacoco.reportPath>${project.build.directory}/jacoco-ut.exec</sonar.jacoco.reportPath>
-		<sonar.jacoco.itReportPath>../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<project.root.build.directory>${session.executionRootDirectory}/target</project.root.build.directory>
 		<wagon-maven-plugin.version>1.0-beta-5</wagon-maven-plugin.version>
 		<xerces.version>2.4.0</xerces.version>
