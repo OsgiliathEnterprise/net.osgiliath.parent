@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.wrappers</groupId>
 		<artifactId>net.osgiliath.wrappers</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>0.1.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.deltaspike-partial-bean-module-impl</artifactId>
 	<name>Wrapper for Deltaspike partialbean impl</name>
