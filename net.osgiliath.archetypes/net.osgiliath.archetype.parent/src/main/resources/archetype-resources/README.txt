@@ -43,6 +43,6 @@ navigate to the base folder and run mvn clean install
 
 Deployement:
 
-Prerequisite: Karaf 3.0.1
+Prerequisite: Karaf 3.0.2
 
 Usage: run 'feature:repo-add mvn:<project.parent.groupId>/<project.parent.artifactId>/<version>/xml/feature', then 'feature:install <project.parent.artifactId>.full'

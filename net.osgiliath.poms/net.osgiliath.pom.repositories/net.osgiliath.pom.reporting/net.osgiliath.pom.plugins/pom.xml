@@ -690,9 +690,6 @@
 										</versionRange>
 										<goals>
 											<goal>
-												set-system-properties
-											</goal>
-											<goal>
 												read-project-properties
 											</goal>
 										</goals>
