@@ -36,82 +36,82 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
  * @author charliemordant Message body reader OSGI service tracker
  */
 public class MessageBodyReaderProvidersServiceTracker implements
-	ServiceTrackerCustomizer<MessageBodyReader, Object> {
-    /**
-     * Bundle context
-     */
-    private final BundleContext context;
+    ServiceTrackerCustomizer<MessageBodyReader, Object> {
+  /**
+   * Bundle context
+   */
+  private final BundleContext context;
 
-    /**
-     * Ctor
-     * 
-     * @param context
-     *            bundle context
-     */
-    public MessageBodyReaderProvidersServiceTracker(BundleContext context) {
-	this.context = context;
-    }
+  /**
+   * Ctor
+   * 
+   * @param context
+   *          bundle context
+   */
+  public MessageBodyReaderProvidersServiceTracker(BundleContext context) {
+    this.context = context;
+  }
 
-    /**
-     * Service tracker added service
-     */
-    @Override
-    // callback method if MyClass service object is registered
-    public Object addingService(final ServiceReference reference) {
-	final Object serviceObject = this.context.getService(reference);
+  /**
+   * Service tracker added service
+   */
+  @Override
+  // callback method if MyClass service object is registered
+  public Object addingService(final ServiceReference reference) {
+    final Object serviceObject = this.context.getService(reference);
 
-	if (serviceObject instanceof MessageBodyReader<?>) {
-	    ProvidersServiceRegistry.getInstance().getReaders()
-		    .add((MessageBodyReader) serviceObject);
-
-	}
-
-	return serviceObject;
+    if (serviceObject instanceof MessageBodyReader<?>) {
+      ProvidersServiceRegistry.getInstance().getReaders()
+          .add((MessageBodyReader) serviceObject);
 
     }
 
-    /**
-     * remove service
-     */
-    @Override
-    // callback if necessary class is deregistred
-    public void removedService(final ServiceReference reference,
-	    final Object service) {
-	final Object serviceObject = this.context.getService(reference);
+    return serviceObject;
 
-	if (serviceObject instanceof MessageBodyReader<?>) {
-	    ProvidersServiceRegistry.getInstance().getReaders()
-		    .remove((MessageBodyReader) serviceObject);
+  }
 
-	}
+  /**
+   * remove service
+   */
+  @Override
+  // callback if necessary class is deregistred
+  public void removedService(final ServiceReference reference,
+      final Object service) {
+    final Object serviceObject = this.context.getService(reference);
+
+    if (serviceObject instanceof MessageBodyReader<?>) {
+      ProvidersServiceRegistry.getInstance().getReaders()
+          .remove((MessageBodyReader) serviceObject);
+
     }
+  }
 
-    /**
-     * Initial call to tracker
-     * 
-     * @param context
-     *            bundle context
-     * @throws InvalidSyntaxException
-     *             parsing error
-     */
-    public static void handleInitialReferences(final BundleContext context)
-	    throws InvalidSyntaxException {
-	Collection<ServiceReference<MessageBodyReader>> refs = context
-		.getServiceReferences(MessageBodyReader.class, null);
-	for (ServiceReference<MessageBodyReader> reference : refs) {
-	    MessageBodyReader svc = context.getService(reference);
-	    svc.toString();
-	    ProvidersServiceRegistry.getInstance().getReaders().add(svc);
-	}
+  /**
+   * Initial call to tracker
+   * 
+   * @param context
+   *          bundle context
+   * @throws InvalidSyntaxException
+   *           parsing error
+   */
+  public static void handleInitialReferences(final BundleContext context)
+      throws InvalidSyntaxException {
+    Collection<ServiceReference<MessageBodyReader>> refs = context
+        .getServiceReferences(MessageBodyReader.class, null);
+    for (ServiceReference<MessageBodyReader> reference : refs) {
+      MessageBodyReader svc = context.getService(reference);
+      svc.toString();
+      ProvidersServiceRegistry.getInstance().getReaders().add(svc);
     }
+  }
 
-    /**
-     * Modification of a service
-     */
-    @Override
-    public void modifiedService(final ServiceReference reference,
-	    final Object service) {
-	this.removedService(reference, service);
-	this.addingService(reference);
-    }
+  /**
+   * Modification of a service
+   */
+  @Override
+  public void modifiedService(final ServiceReference reference,
+      final Object service) {
+    this.removedService(reference, service);
+    this.addingService(reference);
+  }
 }

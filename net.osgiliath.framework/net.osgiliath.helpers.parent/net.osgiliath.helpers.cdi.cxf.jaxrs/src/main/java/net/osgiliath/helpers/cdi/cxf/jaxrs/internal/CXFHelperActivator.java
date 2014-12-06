@@ -39,74 +39,69 @@ import org.osgi.util.tracker.ServiceTracker;
  * @author charliemordant CXF CDI extension OSGI activator
  */
 public class CXFHelperActivator implements BundleActivator {
-	/**
-	 * Message body reader service tracker
-	 */
-	private ServiceTracker readerTracker;
-	/**
-	 * Message body writer service tracker
-	 */
-	private ServiceTracker writerTracker;
-	/**
-	 * Exception mapper service tracker
-	 */
-	private ServiceTracker exceptionTracker;
-	/**
-	 * Interceptors service tracker
-	 */
-	private ServiceTracker interceptorsTracker;
-	private JaxRsApiApplication jaxRSApplication;
-	private static CXFHelperActivator plugin;
+  /**
+   * Message body reader service tracker
+   */
+  private ServiceTracker readerTracker;
+  /**
+   * Message body writer service tracker
+   */
+  private ServiceTracker writerTracker;
+  /**
+   * Exception mapper service tracker
+   */
+  private ServiceTracker exceptionTracker;
+  /**
+   * Interceptors service tracker
+   */
+  private ServiceTracker interceptorsTracker;
+  private JaxRsApiApplication jaxRSApplication;
+  private static CXFHelperActivator plugin;
 
-	/**
-	 * Start method
-	 */
-	@Override
-	public void start(BundleContext context) throws Exception {
-		this.readerTracker = new ServiceTracker<>(context,
-				MessageBodyReader.class,
-				new MessageBodyReaderProvidersServiceTracker(context));
-		this.readerTracker.open(true);
-		this.writerTracker = new ServiceTracker(context,
-				MessageBodyWriter.class,
-				new MessageBodyWriterProvidersServiceTracker(context));
-		this.writerTracker.open(true);
-		this.exceptionTracker = new ServiceTracker(context,
-				ExceptionMapper.class,
-				new ExceptionMapperProvidersServiceTracker(context));
-		this.exceptionTracker.open(true);
-		this.interceptorsTracker = new ServiceTracker(context,
-				Interceptor.class, new InterceptorsServiceTracker(context));
-		this.interceptorsTracker.open(true);
-		MessageBodyReaderProvidersServiceTracker
-				.handleInitialReferences(context);
-		MessageBodyWriterProvidersServiceTracker
-				.handleInitialReferences(context);
-		ExceptionMapperProvidersServiceTracker.handleInitialReferences(context);
-		InterceptorsServiceTracker.handleInitialReferences(context);
-		this.jaxRSApplication = new JaxRsApiApplication();
-		plugin = this;
+  /**
+   * Start method
+   */
+  @Override
+  public void start(BundleContext context) throws Exception {
+    this.readerTracker = new ServiceTracker<>(context, MessageBodyReader.class,
+        new MessageBodyReaderProvidersServiceTracker(context));
+    this.readerTracker.open(true);
+    this.writerTracker = new ServiceTracker(context, MessageBodyWriter.class,
+        new MessageBodyWriterProvidersServiceTracker(context));
+    this.writerTracker.open(true);
+    this.exceptionTracker = new ServiceTracker(context, ExceptionMapper.class,
+        new ExceptionMapperProvidersServiceTracker(context));
+    this.exceptionTracker.open(true);
+    this.interceptorsTracker = new ServiceTracker(context, Interceptor.class,
+        new InterceptorsServiceTracker(context));
+    this.interceptorsTracker.open(true);
+    MessageBodyReaderProvidersServiceTracker.handleInitialReferences(context);
+    MessageBodyWriterProvidersServiceTracker.handleInitialReferences(context);
+    ExceptionMapperProvidersServiceTracker.handleInitialReferences(context);
+    InterceptorsServiceTracker.handleInitialReferences(context);
+    this.jaxRSApplication = new JaxRsApiApplication();
+    plugin = this;
 
-	}
+  }
 
-	public JaxRsApiApplication getJaxRSApplication() {
-		
-		return jaxRSApplication;
-	}
+  public JaxRsApiApplication getJaxRSApplication() {
 
-	public static CXFHelperActivator getPlugin() {
-		return plugin;
-	}
+    return jaxRSApplication;
+  }
 
-	/**
-	 * Activator close
-	 */
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		this.readerTracker.close();
-		this.writerTracker.close();
-		this.exceptionTracker.close();
-		this.interceptorsTracker.close();
-	}
+  public static CXFHelperActivator getPlugin() {
+    return plugin;
+  }
+
+  /**
+   * Activator close
+   */
+  @Override
+  public void stop(BundleContext context) throws Exception {
+    this.readerTracker.close();
+    this.writerTracker.close();
+    this.exceptionTracker.close();
+    this.interceptorsTracker.close();
+  }
 
 }

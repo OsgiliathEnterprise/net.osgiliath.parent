@@ -33,24 +33,24 @@ import org.osgi.framework.ServiceReference;
  */
 
 public class CxfExceptionHandlerActivator implements BundleActivator {
-    @Override
-    public void start(BundleContext context) throws Exception {
-	ExceptionXmlMapper exceptionXmlMapperService = new ExceptionXmlMapper();
-	Dictionary<String, String> filter = new Hashtable<String, String>();
-	filter.put("mapper.type", "xmlExceptionInBodyResponse");
-	context.registerService(ExceptionMapper.class,
-		exceptionXmlMapperService, filter);
+  @Override
+  public void start(BundleContext context) throws Exception {
+    ExceptionXmlMapper exceptionXmlMapperService = new ExceptionXmlMapper();
+    Dictionary<String, String> filter = new Hashtable<String, String>();
+    filter.put("mapper.type", "xmlExceptionInBodyResponse");
+    context.registerService(ExceptionMapper.class, exceptionXmlMapperService,
+        filter);
 
-    }
+  }
 
-    @Override
-    public void stop(BundleContext context) throws Exception {
-	Collection<ServiceReference<ExceptionMapper>> references = context
-		.getServiceReferences(ExceptionMapper.class,
-			"(mapper.type=xmlExceptionInBodyResponse)");
-	for (ServiceReference<ExceptionMapper> reference : references) {
-	    context.ungetService(reference);
-	}
+  @Override
+  public void stop(BundleContext context) throws Exception {
+    Collection<ServiceReference<ExceptionMapper>> references = context
+        .getServiceReferences(ExceptionMapper.class,
+            "(mapper.type=xmlExceptionInBodyResponse)");
+    for (ServiceReference<ExceptionMapper> reference : references) {
+      context.ungetService(reference);
     }
+  }
 
 }

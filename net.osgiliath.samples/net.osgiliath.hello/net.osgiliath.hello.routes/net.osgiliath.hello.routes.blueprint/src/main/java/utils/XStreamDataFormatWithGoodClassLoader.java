@@ -26,17 +26,17 @@ import com.thoughtworks.xstream.XStream;
 
 /**
  * 
- * @author charliemordant
- * Mandatory for xstream camel processing (xstream is not able to recognize its classloader
+ * @author charliemordant Mandatory for xstream camel processing (xstream is not
+ *         able to recognize its classloader
  */
 public class XStreamDataFormatWithGoodClassLoader extends XStreamDataFormat {
-    /**
-     * sets the right classloader for xstream
-     */
-    public XStreamDataFormatWithGoodClassLoader() {
-	super();
-	final XStream xStream = new XStream();
-	xStream.setClassLoader(this.getClass().getClassLoader());
-	this.setXstream(xStream);
-    }
+  /**
+   * sets the right classloader for xstream
+   */
+  public XStreamDataFormatWithGoodClassLoader() {
+    super();
+    final XStream xStream = new XStream();
+    xStream.setClassLoader(this.getClass().getClassLoader());
+    this.setXstream(xStream);
+  }
 }

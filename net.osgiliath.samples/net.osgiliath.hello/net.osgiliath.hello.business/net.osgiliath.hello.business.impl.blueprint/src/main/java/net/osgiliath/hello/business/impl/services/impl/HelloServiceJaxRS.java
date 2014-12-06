@@ -45,73 +45,78 @@ import com.google.common.collect.Lists;
  */
 @Slf4j
 public class HelloServiceJaxRS implements
-	net.osgiliath.hello.business.impl.HelloServiceJaxRS {
-    /**
-     * Repository to persist data
-     */
-    @Setter
-    private HelloObjectRepository helloObjectRepository;
-    /**
-     * JSR 303 validator
-     */
-    // JSR 303 validator
-    @Setter
-    private Validator validator;
-    /**
-     * Saves the object or throw an exception if the Object is not valid
-     */
-    @Override
-    public final void persistHello(final HelloEntity helloObject_p) {
-	this.log.info("persisting new message with jaxrs: "
-		+ helloObject_p.getHelloMessage());
-	final Set<ConstraintViolation<HelloEntity>> validationResults = validator
-		.validate(helloObject_p);
-	final StringBuilder errors = new StringBuilder("");
-	if (!validationResults.isEmpty()) {
-	    for (ConstraintViolation<HelloEntity> violation : validationResults) {
-		this.log.info("subscription error, validating user:"
-			+ violation.getMessage());
-		errors.append(violation.getPropertyPath()).append(": ")
-		.append(violation.getMessage().replaceAll("\"", "")).append(";");
-	    }
-	    throw new ValidationException(errors.toString());
-	}
-	this.helloObjectRepository.save(helloObject_p);
+    net.osgiliath.hello.business.impl.HelloServiceJaxRS {
+  /**
+   * Repository to persist data
+   */
+  @Setter
+  private HelloObjectRepository helloObjectRepository;
+  /**
+   * JSR 303 validator
+   */
+  // JSR 303 validator
+  @Setter
+  private Validator validator;
 
+  /**
+   * Saves the object or throw an exception if the Object is not valid
+   */
+  @Override
+  public final void persistHello(final HelloEntity helloObject_p) {
+    this.log.info("persisting new message with jaxrs: "
+        + helloObject_p.getHelloMessage());
+    final Set<ConstraintViolation<HelloEntity>> validationResults = validator
+        .validate(helloObject_p);
+    final StringBuilder errors = new StringBuilder("");
+    if (!validationResults.isEmpty()) {
+      for (ConstraintViolation<HelloEntity> violation : validationResults) {
+        this.log.info("subscription error, validating user:"
+            + violation.getMessage());
+        errors.append(violation.getPropertyPath()).append(": ")
+            .append(violation.getMessage().replaceAll("\"", "")).append(";");
+      }
+      throw new ValidationException(errors.toString());
     }
-    /**
-     * get all hellos
-     */
-    @Override
-    public Hellos getHellos() {
-	final Collection<HelloEntity> helloObjects = this.helloObjectRepository.findAll();
-	if (helloObjects.isEmpty()) {
-	    throw new UnsupportedOperationException(
-		    "You should not call this method when there is no Hello yet !");
-	}
-	return Hellos
-		.builder()
-		.helloCollection(
-			Lists.newArrayList(Iterables.transform(helloObjects,
-				this.helloObjectToStringFunction))).build();
-    }
-    /**
-     * Function that transforms helloEntity to String
-     */
-    // Guava function waiting for Java 8
-    private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+    this.helloObjectRepository.save(helloObject_p);
 
-	@Override
-	public String apply(HelloEntity arg0) {
-	    return arg0.getHelloMessage();
-	}
-    };
-    /**
-     * Deletes all entities
-     */
-    @Override
-    public void deleteAll() {
-	this.helloObjectRepository.deleteAll();
+  }
+
+  /**
+   * get all hellos
+   */
+  @Override
+  public Hellos getHellos() {
+    final Collection<HelloEntity> helloObjects = this.helloObjectRepository
+        .findAll();
+    if (helloObjects.isEmpty()) {
+      throw new UnsupportedOperationException(
+          "You should not call this method when there is no Hello yet !");
     }
+    return Hellos
+        .builder()
+        .helloCollection(
+            Lists.newArrayList(Iterables.transform(helloObjects,
+                this.helloObjectToStringFunction))).build();
+  }
+
+  /**
+   * Function that transforms helloEntity to String
+   */
+  // Guava function waiting for Java 8
+  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+
+    @Override
+    public String apply(HelloEntity arg0) {
+      return arg0.getHelloMessage();
+    }
+  };
+
+  /**
+   * Deletes all entities
+   */
+  @Override
+  public void deleteAll() {
+    this.helloObjectRepository.deleteAll();
+  }
 
 }

@@ -37,18 +37,18 @@ import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 @Eager
 @CXFEndpoint(url = "/helloService", providersClasses = { JSONProvider.class,
-		JAXBElementProvider.class, ResourceListingProvider.class,
-		ApiDeclarationProvider.class })
+    JAXBElementProvider.class, ResourceListingProvider.class,
+    ApiDeclarationProvider.class })
 @Path("/api-docs")
 @Api("/api-docs")
 @Produces(value = { MediaType.APPLICATION_JSON })
 public class SwaggerAPIAccessService extends ApiListingResourceJSON {
-	@Inject
-	private BeanConfig config;
+  @Inject
+  private BeanConfig config;
 
-	@PostConstruct
-	private void injectConfig() {
-		config.toString();
-	}
+  @PostConstruct
+  private void injectConfig() {
+    config.toString();
+  }
 
 }

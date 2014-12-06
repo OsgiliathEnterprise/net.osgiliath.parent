@@ -20,7 +20,6 @@ package net.osgiliath.helpers.manifest.transformer;
  * #L%
  */
 
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -40,170 +39,169 @@ import org.codehaus.plexus.util.IOUtil;
 import org.osgi.framework.Constants;
 
 public class ManifestBundleImportVersionUpdaterTransformer {
-    // Configuration
-    private Map<String, String> entriesVersionUpdates = new HashMap<String, String>();
+  // Configuration
+  private transient Map<String, String> entriesVersionUpdates = new HashMap<String, String>();
 
-    // Fields
-    private boolean manifestDiscovered;
-    private Manifest manifest;
+  // Fields
+  private transient boolean manifestDiscovered;
+  private transient Manifest manifest;
 
-    private static ManifestBundleImportVersionUpdaterTransformer instance;
+  private static ManifestBundleImportVersionUpdaterTransformer instance;
 
-    private static ManifestBundleImportVersionUpdaterTransformer getInstance() {
-        if (instance == null) {
-            instance = new ManifestBundleImportVersionUpdaterTransformer();
-        }
-        return instance;
+  private static ManifestBundleImportVersionUpdaterTransformer getInstance() {
+    if (ManifestBundleImportVersionUpdaterTransformer.instance == null) {
+      ManifestBundleImportVersionUpdaterTransformer.instance = new ManifestBundleImportVersionUpdaterTransformer();
+    }
+    return ManifestBundleImportVersionUpdaterTransformer.instance;
+  }
+
+  public boolean canTransformResource(String resource) {
+    if (JarFile.MANIFEST_NAME.equalsIgnoreCase(resource)) {
+      return true;
     }
 
-    public boolean canTransformResource(String resource) {
-        if (JarFile.MANIFEST_NAME.equalsIgnoreCase(resource)) {
-            return true;
-        }
+    return false;
+  }
 
-        return false;
+  public void processResource(InputStream is) throws IOException {
+    // We just want to take the first manifest we come across as that's our
+    // project's manifest. This is the behavior
+    // now which is situational at best. Right now there is no context
+    // passed in with the processing so we cannot
+    // tell what artifact is being processed.
+    if (!this.manifestDiscovered) {
+      this.manifest = new Manifest(is);
+      this.manifestDiscovered = true;
+      IOUtil.close(is);
+    }
+  }
+
+  public void updateManifestImportsWithOverrides() throws IOException {
+    // If we didn't find a manifest, then let's create one.
+    if (this.manifest == null) {
+      System.out.println("New Manifest");
+      this.manifest = new Manifest();
     }
 
-    public void processResource(InputStream is) throws IOException {
-        // We just want to take the first manifest we come across as that's our
-        // project's manifest. This is the behavior
-        // now which is situational at best. Right now there is no context
-        // passed in with the processing so we cannot
-        // tell what artifact is being processed.
-        if (!manifestDiscovered) {
-            manifest = new Manifest(is);
-            manifestDiscovered = true;
-            IOUtil.close(is);
-        }
-    }
+    Attributes attributes = manifest.getMainAttributes();
+    StringBuilder updatedImports = new StringBuilder();
 
-    // public boolean hasTransformedResource() {
-    // return true;
-    // }
-
-    public void updateManifestImportsWithOverrides() throws IOException {
-        // If we didn't find a manifest, then let's create one.
-        if (manifest == null) {
-            System.out.println("New Manifest");
-            manifest = new Manifest();
-        }
-
-        Attributes attributes = manifest.getMainAttributes();
-        StringBuilder updatedImports = new StringBuilder();
-
-        if (entriesVersionUpdates != null) {
-            String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
-            StringBuilder regexp = new StringBuilder();
-            regexp.append("([a-zA-Z0-9\\.]+?)");//symbolicname
-            regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9]*\")*?)*?)");//specialization
-            regexp.append("(,(?!\\s*[\\.\\]\\)0-9]*\")|$)");//iterator
-            Pattern pattern = Pattern
-                    .compile(regexp.toString());// ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
-            Matcher matcher = pattern.matcher(imports);
-            while (matcher.find()) {
-                String symbolicName = matcher.group(1);
-                Boolean foundMatch = Boolean.FALSE;
-                updatedImports.append(symbolicName);
-                for (Iterator i = entriesVersionUpdates.keySet().iterator(); i
-                        .hasNext();) {
-                    String key = (String) i.next();
-                    if (key.equals(symbolicName)) {
-                        String specialization = matcher.group(2);
-                        if (specialization != null) {
-                            foundMatch = Boolean.TRUE;
-                            System.out.println("Replacement matched: "
-                                    + symbolicName + "," + specialization);
-                            Pattern versionDeclarationPattern = Pattern.compile(";\\s*version\\s*=\\s*\"");
-                            Matcher versionDeclarationMatcher = versionDeclarationPattern.matcher(specialization);
-                            if (!versionDeclarationMatcher.find()) {
-                            	specialization = specialization + ";version=\""
-                                        + entriesVersionUpdates.get(key)
-                                        + "\"";
-                            } else {
-                            specialization = specialization.replaceAll(
-                                    ";\\s*version\\s*=\\s*\".*?\"",
-                                    ";version=\""
-                                            + entriesVersionUpdates.get(key)
-                                            + "\"");
-                            }
-                            updatedImports.append(specialization);
-                        }
-                    }
-                }
-                if (!foundMatch) {
-                    String specialization = matcher.group(2);
-                    updatedImports.append(specialization);
-
-                }
-                updatedImports.append(",");
-
+    if (this.entriesVersionUpdates != null) {
+      String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
+      StringBuilder regexp = new StringBuilder();
+      regexp.append("([a-zA-Z0-9\\.]+?)");// symbolicname
+      regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9]*\")*?)*?)");// specialization
+      regexp.append("(,(?!\\s*[\\.\\]\\)0-9]*\")|$)");// iterator
+      Pattern pattern = Pattern.compile(regexp.toString());// ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
+      Matcher matcher = pattern.matcher(imports);
+      while (matcher.find()) {
+        String symbolicName = matcher.group(1);
+        Boolean foundMatch = Boolean.FALSE;
+        updatedImports.append(symbolicName);
+        for (Iterator<String> i = this.entriesVersionUpdates.keySet()
+            .iterator(); i.hasNext();) {
+          String key = i.next();
+          if (key.equals(symbolicName)) {
+            String specialization = matcher.group(2);
+            if (specialization != null) {
+              foundMatch = Boolean.TRUE;
+              System.out.println("Replacement matched: " + symbolicName + ","
+                  + specialization);
+              Pattern versionDeclarationPattern = Pattern
+                  .compile(";\\s*version\\s*=\\s*\"");
+              Matcher versionDeclarationMatcher = versionDeclarationPattern
+                  .matcher(specialization);
+              if (versionDeclarationMatcher.find()) {
+                specialization = specialization.replaceAll(
+                    ";\\s*version\\s*=\\s*\".*?\"", ";version=\""
+                        + this.entriesVersionUpdates.get(key) + "\"");
+              } else {
+                specialization = specialization + ";version=\""
+                    + this.entriesVersionUpdates.get(key) + "\"";
+              }
+              updatedImports.append(specialization);
             }
+          }
+        }
+        if (!foundMatch) {
+          String specialization = matcher.group(2);
+          updatedImports.append(specialization);
 
         }
-        attributes.put(
-                new Attributes.Name(Constants.IMPORT_PACKAGE),
-                updatedImports.toString().substring(0,
-                        updatedImports.toString().length() - 1));
+        updatedImports.append(",");
+
+      }
 
     }
+    attributes.put(
+        new Attributes.Name(Constants.IMPORT_PACKAGE),
+        updatedImports.toString().substring(0,
+            updatedImports.toString().length() - 1));
 
-    public static void main(String[] args) throws IOException {
-        String[] overrides = null;
-        String basedir = null;
-        String bundleClasspath = null;
-        for (String arg : args) {
-            if (arg.startsWith("overrides=")) {
-                overrides = arg.replaceFirst("overrides=", "").split(";");
-            } else if (arg.startsWith("basedir=")) {
-                basedir = arg.replaceFirst("basedir=", "");
-            } else if (arg.startsWith("bundleClasspath=")) {
-                bundleClasspath = arg.replaceFirst("bundleClasspath=", "");
-            }
-            System.out.println("Argument: " + arg);
+  }
 
-        }
-        InputStream is;
+  public static void main(String[] args) throws IOException {
+    String[] overrides = null;
+    String basedir = null;
+    String bundleClasspath = null;
+    for (String arg : args) {
+      if (arg.startsWith("overrides=")) {
+        overrides = arg.replaceFirst("overrides=", "").split(";");
+      } else if (arg.startsWith("basedir=")) {
+        basedir = arg.replaceFirst("basedir=", "");
+      } else if (arg.startsWith("bundleClasspath=")) {
+        bundleClasspath = arg.replaceFirst("bundleClasspath=", "");
+      }
+      System.out.println("Argument: " + arg);
 
-        try {
-            is = new FileInputStream(basedir
-                    + "/src/main/resources/META-INF/MANIFEST.MF");
-            getInstance().processResource(is);
-            is.close();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        getInstance().createOverrideMap(overrides);
-        getInstance().updateManifestImportsWithOverrides();
-        getInstance().addBundleClassPath(bundleClasspath);
-        getInstance().writeManifest(basedir);
     }
+    InputStream is = null;
+    try {
+      is = new FileInputStream(basedir
+          + "/src/main/resources/META-INF/MANIFEST.MF");
+      getInstance().processResource(is);
 
-    private void writeManifest(String basedir) throws IOException {
-        OutputStream os;
-        try {
-            os = new FileOutputStream(basedir
-                    + "/src/main/resources/META-INF/MANIFEST.MF");
-            manifest.write(os);
-            os.close();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } finally {
+      if (null != is) {
+        is.close();
+      }
     }
+    getInstance().createOverrideMap(overrides);
+    getInstance().updateManifestImportsWithOverrides();
+    getInstance().addBundleClassPath(bundleClasspath);
+    getInstance().writeManifest(basedir);
+  }
 
-    private void addBundleClassPath(String bundleClasspath) {
-        Attributes attributes = manifest.getMainAttributes();
-        attributes.put(new Attributes.Name(Constants.BUNDLE_CLASSPATH), "., "
-                + bundleClasspath + ".jar");
-    }
+  private void writeManifest(String basedir) throws IOException {
+    OutputStream os = null;
+    try {
+      os = new FileOutputStream(basedir
+          + "/src/main/resources/META-INF/MANIFEST.MF");
+      this.manifest.write(os);
 
-    private void createOverrideMap(String[] overrides) {
-        for (String override : overrides) {
-            String[] mapEntry = override.split("=");
-            if (mapEntry.length == 2) {
-                entriesVersionUpdates.put(mapEntry[0], mapEntry[1]);
-            }
-        }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } finally {
+      if (null != os) {
+        os.close();
+      }
     }
+  }
+
+  private void addBundleClassPath(String bundleClasspath) {
+    Attributes attributes = manifest.getMainAttributes();
+    attributes.put(new Attributes.Name(Constants.BUNDLE_CLASSPATH), "., "
+        + bundleClasspath + ".jar");
+  }
+
+  private void createOverrideMap(String[] overrides) {
+    for (String override : overrides) {
+      String[] mapEntry = override.split("=");
+      if (mapEntry.length == 2) {
+        this.entriesVersionUpdates.put(mapEntry[0], mapEntry[1]);
+      }
+    }
+  }
 }

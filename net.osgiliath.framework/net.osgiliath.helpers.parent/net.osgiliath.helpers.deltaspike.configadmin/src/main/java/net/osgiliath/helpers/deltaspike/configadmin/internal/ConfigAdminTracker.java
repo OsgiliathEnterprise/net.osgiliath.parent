@@ -52,229 +52,227 @@ import com.google.common.collect.Maps;
  */
 @Slf4j
 public class ConfigAdminTracker implements
-		ServiceTrackerCustomizer<ConfigurationAdmin, Object>, ConfigSourceProvider {
+    ServiceTrackerCustomizer<ConfigurationAdmin, Object>, ConfigSourceProvider {
 
-	/**
-	 * Properties
-	 */
-	private Collection<ConfigurationAdmin> admins = new HashSet<>();
-	Collection<ConfigurationAdmin> getAdmins() {
-		return admins;
-	}
+  /**
+   * Properties
+   */
+  private Collection<ConfigurationAdmin> admins = new HashSet<>();
 
-	/**
-	 * Singleton of the tracker
-	 */
-	private static ConfigAdminTracker instance = null;
-	/**
-	 * Bundle context
-	 */
-	private BundleContext context;
-	private ServiceTracker tracker;
+  Collection<ConfigurationAdmin> getAdmins() {
+    return admins;
+  }
 
-	/**
-	 * 
-	 * @return the singleton instance
-	 */
-	public static synchronized ConfigAdminTracker getInstance(
-			BundleContext context) {
-		if (instance == null) {
+  /**
+   * Singleton of the tracker
+   */
+  private static ConfigAdminTracker instance = null;
+  /**
+   * Bundle context
+   */
+  private BundleContext context;
+  private ServiceTracker tracker;
 
-			instance = new ConfigAdminTracker();
-			if (context == null) {
-				instance.context = FrameworkUtil.getBundle(
-						DeltaSpike.class)
-						.getBundleContext();
-			} else {
-				instance.context = context;
-			}
-			instance.tracker = new ServiceTracker(instance.context,
-					ConfigurationAdmin.class,
-					ConfigAdminTracker.getInstance(instance.context));
-			instance.parseInitialContribution(instance.context);
-			instance.tracker.open();
+  /**
+   * 
+   * @return the singleton instance
+   */
+  public static synchronized ConfigAdminTracker getInstance(
+      BundleContext context) {
+    if (instance == null) {
 
-		}
-		return instance;
-	}
-	public static synchronized void stop() {
-		instance.tracker.close();
-	}
-	private void parseInitialContribution(BundleContext bundleContext) {
-		try {
-			final ServiceReference<?>[] admins =  (ServiceReference<?>[]) context
-					.getAllServiceReferences(ConfigurationAdmin.class.getName(), null);
-			for ( ServiceReference<?> adminRef : admins ) {
-				
-				ConfigAdminTracker.getInstance(bundleContext).getAdmins().add((ConfigurationAdmin) context
-						.getService(adminRef));
-			}
-		} catch (InvalidSyntaxException e) {
-			log.error("Error getting servicereferences of config admin", e);
-		}
-	}
-	/**
-	 * Adds config
-	 */
-	@Override
-	public final Object addingService(final ServiceReference reference) {
-		final ConfigurationAdmin admin = (ConfigurationAdmin) context
-				.getService(reference);
-		getInstance(null).admins.add(admin);
-		return admin;
-	}
+      instance = new ConfigAdminTracker();
+      if (context == null) {
+        instance.context = FrameworkUtil.getBundle(DeltaSpike.class)
+            .getBundleContext();
+      } else {
+        instance.context = context;
+      }
+      instance.tracker = new ServiceTracker(instance.context,
+          ConfigurationAdmin.class,
+          ConfigAdminTracker.getInstance(instance.context));
+      instance.parseInitialContribution(instance.context);
+      instance.tracker.open();
 
-	/**
-	 * Modified a config
-	 */
-	@Override
-	public final void modifiedService(
-			final ServiceReference<ConfigurationAdmin> reference, Object service) {
-		removedService(reference, service);
-		addingService(reference);
+    }
+    return instance;
+  }
 
-	}
+  public static synchronized void stop() {
+    instance.tracker.close();
+  }
 
-	/**
-	 * removed config
-	 */
-	@Override
-	public final void removedService(
-			ServiceReference<ConfigurationAdmin> reference, final Object service) {
-		final ConfigurationAdmin admin = context.getService(reference);
-		getInstance(null).admins.remove(admin);
+  private void parseInitialContribution(BundleContext bundleContext) {
+    try {
+      final ServiceReference<?>[] admins = (ServiceReference<?>[]) context
+          .getAllServiceReferences(ConfigurationAdmin.class.getName(), null);
+      for (ServiceReference<?> adminRef : admins) {
 
-	}
+        ConfigAdminTracker.getInstance(bundleContext).getAdmins()
+            .add((ConfigurationAdmin) context.getService(adminRef));
+      }
+    } catch (InvalidSyntaxException e) {
+      log.error("Error getting servicereferences of config admin", e);
+    }
+  }
 
-	/**
-	 * Get the property with the according key
-	 * 
-	 * @param key
-	 *            the propertuy key
-	 * @return the corresponding property
-	 * @throws IOException
-	 *             read error
-	 * @throws InvalidSyntaxException
-	 *             wrong key
-	 */
-	public String getProperty(String key) throws IOException,
-			InvalidSyntaxException {
-		log.info("Retreiving property key: " + key);
-		for (ConfigurationAdmin admin : getInstance(null).admins) {
-			final Configuration[] configurations = admin
-					.listConfigurations(null);
-			if (configurations != null) {
-				for (final Configuration configuration : configurations) {
-					log.debug("parsing configuration: "
-							+ configuration.getPid());
-					final Dictionary<String, Object> dictionary = configuration
-							.getProperties();
-					final Object valObject = dictionary.get(key);
-					if (valObject != null && valObject instanceof String) {
-						log.trace("got value: " + valObject);
-						return (String) valObject;
-					}
-				}
-			}
-		}
-		return null;
-	}
+  /**
+   * Adds config
+   */
+  @Override
+  public final Object addingService(final ServiceReference reference) {
+    final ConfigurationAdmin admin = (ConfigurationAdmin) context
+        .getService(reference);
+    getInstance(null).admins.add(admin);
+    return admin;
+  }
 
-	public Map<String, String> getProperties() {
-		Map<String, String> ret = Maps.newHashMap();
-		try {
-			for (ConfigurationAdmin admin : getInstance(null).admins) {
-				final Configuration[] configurations = admin
-						.listConfigurations(null);
-				if (configurations != null) {
-					for (final Configuration configuration : configurations) {
-						log.debug("parsing configuration: "
-								+ configuration.getPid());
-						final Dictionary<String, Object> dictionary = configuration
-								.getProperties();
-						Enumeration<String> keys = dictionary.keys();
-						while (keys.hasMoreElements()) {
-							String key = keys.nextElement();
-							Object val = dictionary.get(key);
-							if (val instanceof String) {
-								ret.put(key, (String) val);
-							}
-						}
-					}
-				}
-			}
-		} catch (Exception e) {
-			log.error("Error retreiving configadmin property", e);
-		}
-		return ret;
-	}
+  /**
+   * Modified a config
+   */
+  @Override
+  public final void modifiedService(
+      final ServiceReference<ConfigurationAdmin> reference, Object service) {
+    removedService(reference, service);
+    addingService(reference);
 
-	@Override
-	public List<ConfigSource> getConfigSources() {
-		List<ConfigSource> ret = Lists.newArrayList();
-		for (ConfigurationAdmin admin : getInstance(null).admins) {
-			Configuration[] configurations;
-			try {
-				configurations = admin
-						.listConfigurations(null);
-				if (configurations != null) {
-					for (final Configuration configuration : configurations) {
-						ret.add(new ConfigSource() {
-							
-							@Override
-							public boolean isScannable() {
-								
-								return true;
-							}
-							
-							@Override
-							public String getPropertyValue(String key) {
-								final Dictionary<String, Object> dictionary = configuration
-										.getProperties();
-								final Object valObject = dictionary.get(key);
-								if (valObject != null && valObject instanceof String) {
-									log.trace("got value: " + valObject);
-									return (String) valObject;
-								}
-								return null;
-							}
-							
-							@Override
-							public Map<String, String> getProperties() {
-								Map<String, String> ret = Maps.newHashMap();
-								final Dictionary<String, Object> dictionary = configuration
-										.getProperties();
-								Enumeration<String> keys = dictionary.keys();
-								while (keys.hasMoreElements()) {
-									String key = keys.nextElement();
-									Object val = dictionary.get(key);
-									if (val instanceof String) {
-										ret.put(key, (String) val);
-									}
-								}
-								return ret;
-							}
-							
-							@Override
-							public int getOrdinal() {
-								
-								return 0;
-							}
-							
-							@Override
-							public String getConfigName() {
-								// TODO Auto-generated method stub
-								return configuration.getPid();
-							}
-						});
-					}
-				}
-			} catch (IOException | InvalidSyntaxException e) {
-				log.error("Error retreiving configadmin property", e);
-			}
-			
-		}
-		return ret;
-	}
+  }
+
+  /**
+   * removed config
+   */
+  @Override
+  public final void removedService(
+      ServiceReference<ConfigurationAdmin> reference, final Object service) {
+    final ConfigurationAdmin admin = context.getService(reference);
+    getInstance(null).admins.remove(admin);
+
+  }
+
+  /**
+   * Get the property with the according key
+   * 
+   * @param key
+   *          the propertuy key
+   * @return the corresponding property
+   * @throws IOException
+   *           read error
+   * @throws InvalidSyntaxException
+   *           wrong key
+   */
+  public String getProperty(String key) throws IOException,
+      InvalidSyntaxException {
+    log.info("Retreiving property key: " + key);
+    for (ConfigurationAdmin admin : getInstance(null).admins) {
+      final Configuration[] configurations = admin.listConfigurations(null);
+      if (configurations != null) {
+        for (final Configuration configuration : configurations) {
+          log.debug("parsing configuration: " + configuration.getPid());
+          final Dictionary<String, Object> dictionary = configuration
+              .getProperties();
+          final Object valObject = dictionary.get(key);
+          if (valObject != null && valObject instanceof String) {
+            log.trace("got value: " + valObject);
+            return (String) valObject;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  public Map<String, String> getProperties() {
+    Map<String, String> ret = Maps.newHashMap();
+    try {
+      for (ConfigurationAdmin admin : getInstance(null).admins) {
+        final Configuration[] configurations = admin.listConfigurations(null);
+        if (configurations != null) {
+          for (final Configuration configuration : configurations) {
+            log.debug("parsing configuration: " + configuration.getPid());
+            final Dictionary<String, Object> dictionary = configuration
+                .getProperties();
+            Enumeration<String> keys = dictionary.keys();
+            while (keys.hasMoreElements()) {
+              String key = keys.nextElement();
+              Object val = dictionary.get(key);
+              if (val instanceof String) {
+                ret.put(key, (String) val);
+              }
+            }
+          }
+        }
+      }
+    } catch (Exception e) {
+      log.error("Error retreiving configadmin property", e);
+    }
+    return ret;
+  }
+
+  @Override
+  public List<ConfigSource> getConfigSources() {
+    List<ConfigSource> ret = Lists.newArrayList();
+    for (ConfigurationAdmin admin : getInstance(null).admins) {
+      Configuration[] configurations;
+      try {
+        configurations = admin.listConfigurations(null);
+        if (configurations != null) {
+          for (final Configuration configuration : configurations) {
+            ret.add(new ConfigSource() {
+
+              @Override
+              public boolean isScannable() {
+
+                return true;
+              }
+
+              @Override
+              public String getPropertyValue(String key) {
+                final Dictionary<String, Object> dictionary = configuration
+                    .getProperties();
+                final Object valObject = dictionary.get(key);
+                if (valObject != null && valObject instanceof String) {
+                  log.trace("got value: " + valObject);
+                  return (String) valObject;
+                }
+                return null;
+              }
+
+              @Override
+              public Map<String, String> getProperties() {
+                Map<String, String> ret = Maps.newHashMap();
+                final Dictionary<String, Object> dictionary = configuration
+                    .getProperties();
+                Enumeration<String> keys = dictionary.keys();
+                while (keys.hasMoreElements()) {
+                  String key = keys.nextElement();
+                  Object val = dictionary.get(key);
+                  if (val instanceof String) {
+                    ret.put(key, (String) val);
+                  }
+                }
+                return ret;
+              }
+
+              @Override
+              public int getOrdinal() {
+
+                return 0;
+              }
+
+              @Override
+              public String getConfigName() {
+                // TODO Auto-generated method stub
+                return configuration.getPid();
+              }
+            });
+          }
+        }
+      } catch (IOException | InvalidSyntaxException e) {
+        log.error("Error retreiving configadmin property", e);
+      }
+
+    }
+    return ret;
+  }
 
 }

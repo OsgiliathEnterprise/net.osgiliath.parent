@@ -31,79 +31,84 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
-
 /**
  * 
- * @author charliemordant 
- * Message body writer OSGI service tracker
+ * @author charliemordant Message body writer OSGI service tracker
  */
 public class MessageBodyWriterProvidersServiceTracker implements
-	ServiceTrackerCustomizer {
-    /**
-     * bundle context
-     */
-    private final BundleContext context;
-    /**
-     * Ctor
-     * @param context the bundle context
-     */
-    public MessageBodyWriterProvidersServiceTracker(BundleContext context) {
-	this.context = context;
-    }
-    /**
-     * Service tracker added service
-     */
-    // callback method if MyClass service object is registered
-    public Object addingService(final ServiceReference reference) {
-	final Object serviceObject = this.context.getService(reference);
-	if (serviceObject instanceof MessageBodyWriter<?>) {
-	    ProvidersServiceRegistry.getInstance().getWriters()
-		    .add((MessageBodyWriter) serviceObject);
+    ServiceTrackerCustomizer {
+  /**
+   * bundle context
+   */
+  private final BundleContext context;
 
-	}
+  /**
+   * Ctor
+   * 
+   * @param context
+   *          the bundle context
+   */
+  public MessageBodyWriterProvidersServiceTracker(BundleContext context) {
+    this.context = context;
+  }
 
-	return serviceObject;
-	// return service object
-    }
-
-    /**
-     * remove service
-     */
-    // callback if necessary class is deregistred
-    public void removedService(final ServiceReference reference, final Object service) {
-	final Object serviceObject = this.context.getService(reference);
-	if (serviceObject instanceof MessageBodyWriter<?>) {
-	    ProvidersServiceRegistry.getInstance().getWriters()
-		    .remove((MessageBodyWriter) serviceObject);
-
-	}
+  /**
+   * Service tracker added service
+   */
+  // callback method if MyClass service object is registered
+  public Object addingService(final ServiceReference reference) {
+    final Object serviceObject = this.context.getService(reference);
+    if (serviceObject instanceof MessageBodyWriter<?>) {
+      ProvidersServiceRegistry.getInstance().getWriters()
+          .add((MessageBodyWriter) serviceObject);
 
     }
-    /**
-     * Initial call to tracker
-     * 
-     * @param context
-     *            bundle context
-     * @throws InvalidSyntaxException
-     *             parsing error
-     */
-    public static void handleInitialReferences(final BundleContext context)
-	    throws InvalidSyntaxException {
-	final Collection<ServiceReference<MessageBodyWriter>> refs = context
-		.getServiceReferences(MessageBodyWriter.class, null);
-	for (ServiceReference<MessageBodyWriter> reference : refs) {
-	    final MessageBodyWriter svc = context.getService(reference);
-	    svc.toString();
-	    ProvidersServiceRegistry.getInstance().getWriters().add(svc);
-	}
-    }
-    /**
-     * Modification of a service
-     */
-    @Override
-    public void modifiedService(ServiceReference reference, Object service) {
-	this.removedService(reference, service);
-	this.addingService(reference);
+
+    return serviceObject;
+    // return service object
+  }
+
+  /**
+   * remove service
+   */
+  // callback if necessary class is deregistred
+  public void removedService(final ServiceReference reference,
+      final Object service) {
+    final Object serviceObject = this.context.getService(reference);
+    if (serviceObject instanceof MessageBodyWriter<?>) {
+      ProvidersServiceRegistry.getInstance().getWriters()
+          .remove((MessageBodyWriter) serviceObject);
 
     }
+
+  }
+
+  /**
+   * Initial call to tracker
+   * 
+   * @param context
+   *          bundle context
+   * @throws InvalidSyntaxException
+   *           parsing error
+   */
+  public static void handleInitialReferences(final BundleContext context)
+      throws InvalidSyntaxException {
+    final Collection<ServiceReference<MessageBodyWriter>> refs = context
+        .getServiceReferences(MessageBodyWriter.class, null);
+    for (ServiceReference<MessageBodyWriter> reference : refs) {
+      final MessageBodyWriter svc = context.getService(reference);
+      svc.toString();
+      ProvidersServiceRegistry.getInstance().getWriters().add(svc);
+    }
+  }
+
+  /**
+   * Modification of a service
+   */
+  @Override
+  public void modifiedService(ServiceReference reference, Object service) {
+    this.removedService(reference, service);
+    this.addingService(reference);
+
+  }
 }

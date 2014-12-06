@@ -25,9 +25,9 @@ import java.util.Collection;
 import net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry.ProvidersServiceRegistry;
 
 public class CDICXFFacade {
-	 public static Collection<Object> getProviders() {
-	    	
-	    	return ProvidersServiceRegistry.getInstance().getProviders();
-	    }
-	 
+  public static Collection<Object> getProviders() {
+
+    return ProvidersServiceRegistry.getInstance().getProviders();
+  }
+
 }

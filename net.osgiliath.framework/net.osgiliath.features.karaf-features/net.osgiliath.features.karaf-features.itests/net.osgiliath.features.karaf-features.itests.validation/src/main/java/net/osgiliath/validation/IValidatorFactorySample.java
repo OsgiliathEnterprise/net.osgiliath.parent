@@ -1,6 +1,5 @@
 package net.osgiliath.validation;
 
-
 /*
  * #%L
  * net.osgiliath.features.karaf-features.itests.validation
@@ -22,13 +21,13 @@ package net.osgiliath.validation;
  */
 /**
  * 
- * @author charliemordant
- * Validation service interface
+ * @author charliemordant Validation service interface
  */
 public interface IValidatorFactorySample {
-    /**
-     * must throw exception
-     * @param object
-     */
-    void nullMessageValidation(HelloObject object);
+  /**
+   * must throw exception
+   * 
+   * @param object
+   */
+  void nullMessageValidation(HelloObject object);
 }

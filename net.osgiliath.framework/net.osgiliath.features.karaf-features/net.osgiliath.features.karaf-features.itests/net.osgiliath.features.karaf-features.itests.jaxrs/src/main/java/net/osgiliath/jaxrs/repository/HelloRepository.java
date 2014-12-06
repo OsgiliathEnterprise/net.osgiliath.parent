@@ -41,25 +41,28 @@ import net.osgiliath.jaxrs.Hellos;
  */
 @Path("/hello")
 public interface HelloRepository {
-    /**
-     * find entities corrsponding to message
-     */
-    Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
-    /**
-     * Save an entity
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_XML)
-    <S extends HelloEntity> S save(S entity);
-    /**
-     * Finds all entities
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    Hellos findAll();
-    /**
-     * Deletes all entities
-     */
-    @DELETE
-    void deleteAll();
+  /**
+   * find entities corrsponding to message
+   */
+  Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
+
+  /**
+   * Save an entity
+   */
+  @POST
+  @Consumes(MediaType.APPLICATION_XML)
+  <S extends HelloEntity> S save(S entity);
+
+  /**
+   * Finds all entities
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_XML)
+  Hellos findAll();
+
+  /**
+   * Deletes all entities
+   */
+  @DELETE
+  void deleteAll();
 }

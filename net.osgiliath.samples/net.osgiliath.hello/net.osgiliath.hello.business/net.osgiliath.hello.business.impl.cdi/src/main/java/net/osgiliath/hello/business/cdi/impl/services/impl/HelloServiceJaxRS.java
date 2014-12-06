@@ -54,61 +54,65 @@ import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 @Slf4j
 @Eager
 @CXFEndpoint(url = "/helloService", providersClasses = {
-	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class, ResourceListingProvider.class, ApiDeclarationProvider.class })
+    JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class,
+    ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceJaxRS implements
-	net.osgiliath.hello.business.cdi.impl.HelloServiceJaxRS {
-    /**
-     * JPA persistence repository
-     */
-    @Inject
-    @OsgiService
-    private HelloObjectRepository helloObjectRepository;
+    net.osgiliath.hello.business.cdi.impl.HelloServiceJaxRS {
+  /**
+   * JPA persistence repository
+   */
+  @Inject
+  @OsgiService
+  private HelloObjectRepository helloObjectRepository;
 
-   
-    /**
-     * persistence module
-     */
-    @Override
-    public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
-	log.info("persisting new message with jaxrs: "
-		+ helloObject_p.getHelloMessage());
-	this.helloObjectRepository.save(helloObject_p);
+  /**
+   * persistence module
+   */
+  @Override
+  public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
+    log.info("persisting new message with jaxrs: "
+        + helloObject_p.getHelloMessage());
+    this.helloObjectRepository.save(helloObject_p);
 
-    }
-    /**
-     * Gets hello entities
-     */
-    @Override
-    public Hellos getHellos() {
-	final Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
-	if (helloObjects.isEmpty()) {
-	    throw new UnsupportedOperationException(
-		    "You could not call this method when there are no helloObjects");
-	}
-	return Hellos
-		.builder()
-		.helloCollection(
-			Lists.newArrayList(Iterables.transform(helloObjects,
-				helloObjectToStringFunction))).build();
-    }
-    /**
-     * converts entities to Strings
-     */
-    // Guava function waiting for Java 8
-    private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  }
 
-	@Override
-	public String apply(HelloEntity arg0) {
-	    return arg0.getHelloMessage();
-	}
-    };
-    /**
-     * deletes all entities
-     */
-    @Override
-    public void deleteAll() {
-	log.info("deleting all datas");
-	this.helloObjectRepository.deleteAll();
+  /**
+   * Gets hello entities
+   */
+  @Override
+  public Hellos getHellos() {
+    final Collection<HelloEntity> helloObjects = helloObjectRepository
+        .findAll();
+    if (helloObjects.isEmpty()) {
+      throw new UnsupportedOperationException(
+          "You could not call this method when there are no helloObjects");
     }
+    return Hellos
+        .builder()
+        .helloCollection(
+            Lists.newArrayList(Iterables.transform(helloObjects,
+                helloObjectToStringFunction))).build();
+  }
+
+  /**
+   * converts entities to Strings
+   */
+  // Guava function waiting for Java 8
+  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+
+    @Override
+    public String apply(HelloEntity arg0) {
+      return arg0.getHelloMessage();
+    }
+  };
+
+  /**
+   * deletes all entities
+   */
+  @Override
+  public void deleteAll() {
+    log.info("deleting all datas");
+    this.helloObjectRepository.deleteAll();
+  }
 
 }

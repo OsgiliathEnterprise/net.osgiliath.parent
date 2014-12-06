@@ -21,13 +21,13 @@ package net.osgiliath.cdi;
  */
 /**
  * 
- * @author charliemordant
- * Interface for CDI consuming
+ * @author charliemordant Interface for CDI consuming
  */
 public interface IConsumer {
-    /**
-     * Hello method
-     * @return the hello String
-     */
-    String getHello();
+  /**
+   * Hello method
+   * 
+   * @return the hello String
+   */
+  String getHello();
 }

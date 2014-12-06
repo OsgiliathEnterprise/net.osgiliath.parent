@@ -30,12 +30,11 @@ import org.springframework.jms.core.MessageCreator;
 
 public class HelloEntityMessageCreator implements MessageCreator {
 
-	@Override
-	public Message createMessage(Session session) throws JMSException {
-		HelloEntity entity = HelloEntity.builder().helloMessage("Charlie").build();
-		
+  @Override
+  public Message createMessage(Session session) throws JMSException {
+    HelloEntity entity = HelloEntity.builder().helloMessage("Charlie").build();
 
-		return session.createObjectMessage(entity);
-	}
+    return session.createObjectMessage(entity);
+  }
 
 }

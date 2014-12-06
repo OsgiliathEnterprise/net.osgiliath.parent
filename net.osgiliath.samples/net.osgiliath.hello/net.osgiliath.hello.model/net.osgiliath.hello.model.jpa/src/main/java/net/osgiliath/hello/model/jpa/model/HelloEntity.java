@@ -40,8 +40,8 @@ import lombok.experimental.Builder;
 
 /**
  * 
- * @author charliemordant
- * Sample of a model bean exportable by web service (xml), persistable and validatable supporting builder pattern
+ * @author charliemordant Sample of a model bean exportable by web service
+ *         (xml), persistable and validatable supporting builder pattern
  */
 @Data
 // equals, hashcode, getters and setters
@@ -56,23 +56,23 @@ import lombok.experimental.Builder;
 @XmlRootElement
 // xml marshalling
 @EqualsAndHashCode(callSuper = true)
-@ApiModel( value = "Hello Entity", description = "Hello resource representation" )
+@ApiModel(value = "Hello Entity", description = "Hello resource representation")
 public class HelloEntity extends AbstractEntity implements Serializable {
-    /**
-     * Serial
-     */
-    private static final transient long serialVersionUID = 6233801298404301547L;
-    /**
-     * Message
-     */
-    @XmlElement
-    // XML node
-    @NotNull(message = "message must not be null")
-    // Validation for null object
-    @Size(min = 2, max = 12, message = "message size must be between 2 and 12")
-    // size validation
-    @Pattern(regexp = "[a-zA-Z0-9]+", message = "must not contain special characters")
-    // pattern validation
-    @ApiModelProperty( value = "The thing to greet", required = true )
-    private String helloMessage;
+  /**
+   * Serial
+   */
+  private static final transient long serialVersionUID = 6233801298404301547L;
+  /**
+   * Message
+   */
+  @XmlElement
+  // XML node
+  @NotNull(message = "message must not be null")
+  // Validation for null object
+  @Size(min = 2, max = 12, message = "message size must be between 2 and 12")
+  // size validation
+  @Pattern(regexp = "[a-zA-Z0-9]+", message = "must not contain special characters")
+  // pattern validation
+  @ApiModelProperty(value = "The thing to greet", required = true)
+  private String helloMessage;
 }

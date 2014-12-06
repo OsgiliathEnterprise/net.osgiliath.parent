@@ -35,46 +35,47 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
+
 /**
  * 
- * @author charliemordant
- * Activator for JSR303 provider services
+ * @author charliemordant Activator for JSR303 provider services
  */
 public class JSR303Activator implements BundleActivator {
-    /**
-     * Validation providers tracker
-     */
-    private ServiceTracker tracker;
-    /**
-     * Start method
-     */
-    @Override
-    public void start(BundleContext context) throws Exception {
+  /**
+   * Validation providers tracker
+   */
+  private ServiceTracker tracker;
 
-	this.tracker = new ServiceTracker(context, ValidationProvider.class,
-		new OsgiServiceValidationProviderTracker(context));
+  /**
+   * Start method
+   */
+  @Override
+  public void start(BundleContext context) throws Exception {
 
-	this.tracker.open();
-	OsgiServiceValidationProviderTracker.handleInitialReferences(context);
-	
+    this.tracker = new ServiceTracker(context, ValidationProvider.class,
+        new OsgiServiceValidationProviderTracker(context));
 
-	// now that we've done configuring the ValidatorFactory, let's build it
+    this.tracker.open();
+    OsgiServiceValidationProviderTracker.handleInitialReferences(context);
 
-	context.registerService(ValidatorFactory.class.getName(),
-		ValidatorFactorySingleton.getValidatorFactory(), null);
+    // now that we've done configuring the ValidatorFactory, let's build it
 
-    }
-    /**
-     * Stop validation providers bundle
-     */
-    @Override
-    public void stop(BundleContext context) throws Exception {
-	final ServiceReference<ValidatorFactory> reference = context
-		.getServiceReference(ValidatorFactory.class);
-	context.ungetService(reference);
-	//
-	this.tracker.close();
+    context.registerService(ValidatorFactory.class.getName(),
+        ValidatorFactorySingleton.getValidatorFactory(), null);
 
-    }
+  }
+
+  /**
+   * Stop validation providers bundle
+   */
+  @Override
+  public void stop(BundleContext context) throws Exception {
+    final ServiceReference<ValidatorFactory> reference = context
+        .getServiceReference(ValidatorFactory.class);
+    context.ungetService(reference);
+    //
+    this.tracker.close();
+
+  }
 
 }

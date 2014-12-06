@@ -38,73 +38,69 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Data
 @SuppressWarnings("serial")
 public class MUser implements UserDetails, Serializable {
-    /**
-     * His Pseudo
-     */
-    private String pseudo;
-    /**
-     * His pwd
-     */
-    private String password;
-    /**
-     * His rights
-     */
-    private Collection<MAuthority> mAuthorities = new HashSet<MAuthority>();
+  /**
+   * His Pseudo
+   */
+  private String pseudo;
+  /**
+   * His pwd
+   */
+  private String password;
+  /**
+   * His rights
+   */
+  private Collection<MAuthority> mAuthorities = new HashSet<MAuthority>();
 
-   
-    /**
-     * Returns a List of Authorities
-     */
-    @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-	final Collection<GrantedAuthority> ret = new HashSet<GrantedAuthority>();
-	for (MAuthority authority : this.mAuthorities) {
-	    ret.add(authority);
-	}
-	return ret;
+  /**
+   * Returns a List of Authorities
+   */
+  @Override
+  public Collection<GrantedAuthority> getAuthorities() {
+    final Collection<GrantedAuthority> ret = new HashSet<GrantedAuthority>();
+    for (MAuthority authority : this.mAuthorities) {
+      ret.add(authority);
     }
+    return ret;
+  }
 
-    /**
-     * Spring rm management
-     */
-    @Override
-    public String getUsername() {
-	return this.pseudo;
-    }
+  /**
+   * Spring rm management
+   */
+  @Override
+  public String getUsername() {
+    return this.pseudo;
+  }
 
-    /**
-     * account expired
-     */
-    @Override
-    public boolean isAccountNonExpired() {
-	return true;
-    }
+  /**
+   * account expired
+   */
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
 
-    /**
-     * Account locked
-     */
-    @Override
-    public boolean isAccountNonLocked() {
-	return true;
-    }
+  /**
+   * Account locked
+   */
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
 
-    /**
-     * Rights expired
-     */
-    @Override
-    public boolean isCredentialsNonExpired() {
-	return true;
-    }
+  /**
+   * Rights expired
+   */
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
 
-    /**
-     * Account enabled
-     */
-    @Override
-    public boolean isEnabled() {
-	return true;
-    }
-
-
-
+  /**
+   * Account enabled
+   */
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 
 }

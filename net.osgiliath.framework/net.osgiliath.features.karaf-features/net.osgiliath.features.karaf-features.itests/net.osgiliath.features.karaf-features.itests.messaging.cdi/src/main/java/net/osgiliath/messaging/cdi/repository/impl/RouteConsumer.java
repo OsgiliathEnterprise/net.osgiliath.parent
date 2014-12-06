@@ -38,28 +38,28 @@ import org.apache.camel.cdi.ContextName;
  */
 @ContextName
 public class RouteConsumer extends RouteBuilder {
-    /**
-     * message consuming route
-     */
-    @Override
-    public void configure() throws Exception {
-	from("{{messaging.routequeuein}}")
-		.log(LoggingLevel.INFO, "received JMS message on the queue")
-		.process(new Processor() {
+  /**
+   * message consuming route
+   */
+  @Override
+  public void configure() throws Exception {
+    from("{{messaging.routequeuein}}")
+        .log(LoggingLevel.INFO, "received JMS message on the queue")
+        .process(new Processor() {
 
-		    @Override
-		    public void process(Exchange exchange) throws Exception {
-			final Hellos hellos = new Hellos();
-			final HelloEntity entity = exchange.getIn().getBody(
-				HelloEntity.class);
-			final Collection<HelloEntity> entities = new ArrayList<>();
-			entities.add(entity);
-			hellos.setEntities(entities);
-			exchange.getOut().setBody(hellos);
+          @Override
+          public void process(Exchange exchange) throws Exception {
+            final Hellos hellos = new Hellos();
+            final HelloEntity entity = exchange.getIn().getBody(
+                HelloEntity.class);
+            final Collection<HelloEntity> entities = new ArrayList<>();
+            entities.add(entity);
+            hellos.setEntities(entities);
+            exchange.getOut().setBody(hellos);
 
-		    }
-		}).to("jms:queue:helloServiceQueueOut");
+          }
+        }).to("jms:queue:helloServiceQueueOut");
 
-    }
+  }
 
 }

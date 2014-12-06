@@ -36,18 +36,18 @@ import org.springframework.security.core.GrantedAuthority;
 @SuppressWarnings("serial")
 public class MAuthority implements GrantedAuthority, Serializable {
 
-    /**
-     * The Authority
-     */
-    @Setter
-    private AUTHORITY authority;
+  /**
+   * The Authority
+   */
+  @Setter
+  private AUTHORITY authority;
 
-    /**
-     * returns authority String representation
-     */
-    @Override
-    public String getAuthority() {
-	return this.authority.getAuth();
-    }
+  /**
+   * returns authority String representation
+   */
+  @Override
+  public String getAuthority() {
+    return this.authority.getAuth();
+  }
 
 }

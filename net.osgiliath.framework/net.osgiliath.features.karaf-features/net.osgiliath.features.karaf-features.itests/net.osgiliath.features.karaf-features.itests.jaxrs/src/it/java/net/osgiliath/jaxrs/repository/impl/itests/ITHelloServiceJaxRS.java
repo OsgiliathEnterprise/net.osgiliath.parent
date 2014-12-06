@@ -57,8 +57,6 @@ import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
 /**
  * REST integration tests
  * 
@@ -69,81 +67,79 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
-   
 
-    @Inject
-    private BundleContext bundleContext;
-    @Inject
-    @Filter(timeout = 60000)
-    private BootFinished bootFinished;
-    protected static final Logger log = LoggerFactory.getLogger(ITHelloServiceJaxRS.class);
-    
-    
-    // exported REST adress
-    private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  @Inject
+  private BundleContext bundleContext;
+  @Inject
+  @Filter(timeout = 60000)
+  private BootFinished bootFinished;
+  protected static final Logger log = LoggerFactory
+      .getLogger(ITHelloServiceJaxRS.class);
 
-    // probe
-    @ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfiguration.class);
-	builder.setHeader(Constants.EXPORT_PACKAGE,
-		"net.osgiliath.helpers.exam, net.osgiliath.jaxrs.repository.impl.itests");
-	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-	return builder;
-    }
+  // exported REST adress
+  private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
-    @Test
-    public void testSayHello() throws Exception {
-	log.trace("************Listing **********************");
-	for (Bundle b : bundleContext.getBundles()) {
-	    log.debug("bundle: " + b.getSymbolicName() + ", state: "
-		    + b.getState());
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder
+        .setHeader(Constants.EXPORT_PACKAGE,
+            "net.osgiliath.helpers.exam, net.osgiliath.jaxrs.repository.impl.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
 
-	}
-	log.trace("************end Listing **********************");
-	Client client = ClientBuilder.newClient();
-	
-	WebTarget target = client.target(helloServiceBaseUrl);
-	target = target.path("hello");
-	Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-	HelloEntity entity =  HelloEntity.builder().helloMessage("Charlie").build();
-	 
-	builder.post(Entity.xml(entity));
-	Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
-	
-	Hellos hellos = respbuilder.get(Hellos.class);
-	
-	assertEquals(1, hellos.getHellos().size());
-	respbuilder.delete();
-	client.close();
-	
-    }
-
-    @Override
-    protected Option featureToTest() {
-	return features(
-		maven().artifactId(
-			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId("net.osgiliath.framework").type("xml")
-			.classifier("features").versionAsInProject(),
-		"osgiliath-itests-jaxrs");
-    }
-
-    static {
-	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+  @Test
+  public void testSayHello() throws Exception {
+    log.trace("************Listing **********************");
+    for (Bundle b : bundleContext.getBundles()) {
+      log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
     }
+    log.trace("************end Listing **********************");
+    Client client = ClientBuilder.newClient();
 
-    @Configuration
-    public Option[] config() {
-	Option[] ret = createConfig();
-	ret = OptionUtils.combine(ret, mavenBundle("net.osgiliath.framework", "net.osgiliath.helpers.exam").versionAsInProject());
-	return ret;
-    }
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    HelloEntity entity = HelloEntity.builder().helloMessage("Charlie").build();
 
-	
+    builder.post(Entity.xml(entity));
+    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
 
+    Hellos hellos = respbuilder.get(Hellos.class);
+
+    assertEquals(1, hellos.getHellos().size());
+    respbuilder.delete();
+    client.close();
+
+  }
+
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId("net.osgiliath.framework").type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-jaxrs");
+  }
+
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
+
+  }
+
+  @Configuration
+  public Option[] config() {
+    Option[] ret = createConfig();
+    ret = OptionUtils.combine(ret,
+        mavenBundle("net.osgiliath.framework", "net.osgiliath.helpers.exam")
+            .versionAsInProject());
+    return ret;
+  }
 
 }

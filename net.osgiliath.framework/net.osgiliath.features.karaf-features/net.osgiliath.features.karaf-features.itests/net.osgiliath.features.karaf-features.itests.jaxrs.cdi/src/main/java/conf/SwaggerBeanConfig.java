@@ -36,31 +36,32 @@ import com.wordnik.swagger.jaxrs.config.BeanConfig;
 
 @Slf4j
 public class SwaggerBeanConfig {
-	@Produces
-	public BeanConfig getConfig() {
-		BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass().getClassLoader());
-		BundleContext context = FrameworkUtil.getBundle(this.getClass())
-				.getBundleContext();
-		String protocol;
-		try {
-			protocol = ConfigAdminTracker.getInstance(context).getProperty(
-					"jaxrs.server.protocol");
+  @Produces
+  public BeanConfig getConfig() {
+    BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass()
+        .getClassLoader());
+    BundleContext context = FrameworkUtil.getBundle(this.getClass())
+        .getBundleContext();
+    String protocol;
+    try {
+      protocol = ConfigAdminTracker.getInstance(context).getProperty(
+          "jaxrs.server.protocol");
 
-			String uri = ConfigAdminTracker.getInstance(context).getProperty(
-					"jaxrs.server.uri");
-			String port = ConfigAdminTracker.getInstance(context).getProperty(
-					"jaxrs.server.port");
+      String uri = ConfigAdminTracker.getInstance(context).getProperty(
+          "jaxrs.server.uri");
+      String port = ConfigAdminTracker.getInstance(context).getProperty(
+          "jaxrs.server.port");
 
-			beanConfig.setBasePath(protocol + "://" + uri + ":" + port
-					+ "/cxf/helloService");
-			
-		} catch (IOException | InvalidSyntaxException e) {
-			log.error("Error configuring Swagger bean", e);
-		}
-		log.info("Swagger bean configuration started");
-		beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
-		beanConfig.setScan(true);
-		return beanConfig;
-	}
+      beanConfig.setBasePath(protocol + "://" + uri + ":" + port
+          + "/cxf/helloService");
+
+    } catch (IOException | InvalidSyntaxException e) {
+      log.error("Error configuring Swagger bean", e);
+    }
+    log.info("Swagger bean configuration started");
+    beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
+    beanConfig.setScan(true);
+    return beanConfig;
+  }
 
 }

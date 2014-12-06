@@ -22,10 +22,11 @@ package net.osgiliath.helpers.spring.jms.listeners;
 
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
-public class ManageableDefaultJmsContainerListener extends DefaultMessageListenerContainer{
-	public void shutdownGracefully() {
-		this.stop();
-		this.destroy();
-	}
+public class ManageableDefaultJmsContainerListener extends
+    DefaultMessageListenerContainer {
+  public void shutdownGracefully() {
+    this.stop();
+    this.destroy();
+  }
 
 }

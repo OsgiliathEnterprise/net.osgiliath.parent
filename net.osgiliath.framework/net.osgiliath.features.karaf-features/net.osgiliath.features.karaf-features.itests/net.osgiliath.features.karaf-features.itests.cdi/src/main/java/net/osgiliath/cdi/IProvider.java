@@ -21,13 +21,13 @@ package net.osgiliath.cdi;
  */
 /**
  * 
- * @author charliemordant
- * CDI provider definition
+ * @author charliemordant CDI provider definition
  */
 public interface IProvider {
-    /**
-     * Message provider
-     * @return a message
-     */
-    String getMessage();
+  /**
+   * Message provider
+   * 
+   * @return a message
+   */
+  String getMessage();
 }

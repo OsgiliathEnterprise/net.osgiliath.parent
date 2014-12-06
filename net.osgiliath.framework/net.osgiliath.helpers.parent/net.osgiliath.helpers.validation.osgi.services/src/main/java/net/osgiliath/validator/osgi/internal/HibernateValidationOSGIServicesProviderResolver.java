@@ -35,39 +35,44 @@ import com.google.common.collect.Lists;
  * 
  */
 public class HibernateValidationOSGIServicesProviderResolver implements
-	ValidationProviderResolver {
-    /**
-     * Singleton instance
-     */
-    private static ValidationProviderResolver instance = null;
-    /**
-     * Validation providers
-     */
-    private List<ValidationProvider<?>> providers = Lists.newArrayList();
-    /**
-     * private CTor
-     */
-    private HibernateValidationOSGIServicesProviderResolver() {
-	super();
+    ValidationProviderResolver {
+  /**
+   * Singleton instance
+   */
+  private static ValidationProviderResolver instance = null;
+  /**
+   * Validation providers
+   */
+  private List<ValidationProvider<?>> providers = Lists.newArrayList();
 
+  /**
+   * private CTor
+   */
+  private HibernateValidationOSGIServicesProviderResolver() {
+    super();
+
+  }
+
+  /**
+   * Singleton
+   * 
+   * @return the Singleton instance
+   */
+  public static ValidationProviderResolver getInstance() {
+    if (instance == null) {
+      instance = new HibernateValidationOSGIServicesProviderResolver();
+      ((HibernateValidationOSGIServicesProviderResolver) instance).providers
+          .add(new HibernateValidator());
     }
-    /**
-     * Singleton
-     * @return the Singleton instance
-     */
-    public static ValidationProviderResolver getInstance() {
-	if (instance == null) {
-	    instance = new HibernateValidationOSGIServicesProviderResolver();
-	    ((HibernateValidationOSGIServicesProviderResolver)instance).providers.add(new HibernateValidator());
-	}
-	return instance;
-    }
-    /**
-     * gets providers
-     */
-    @Override
-    public List<ValidationProvider<?>> getValidationProviders() {
-	return providers;
-    }
+    return instance;
+  }
+
+  /**
+   * gets providers
+   */
+  @Override
+  public List<ValidationProvider<?>> getValidationProviders() {
+    return providers;
+  }
 
 }

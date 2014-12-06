@@ -27,36 +27,35 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
-
-
-
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
+
 /**
  * 
- * @author charliemordant
- * Validation test
+ * @author charliemordant Validation test
  */
 @Slf4j
 public class ValidatorFactorySample implements IValidatorFactorySample {
-    @Setter
-    private Validator validator;
-    /**
-     * Validation of a null message
-     */
-    public void nullMessageValidation(HelloObject object) {
+  @Setter
+  private Validator validator;
 
-	final Set<ConstraintViolation<HelloObject>> validationResults = validator
-		.validate(object);
-	if (!validationResults.isEmpty()) {
-	    throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>> (validationResults));
-	}
-	if (object != null) {
-	    // Exception must have be thrown
-	    System.out.println(object.toString());
-	}
-	
+  /**
+   * Validation of a null message
+   */
+  public void nullMessageValidation(HelloObject object) {
+
+    final Set<ConstraintViolation<HelloObject>> validationResults = validator
+        .validate(object);
+    if (!validationResults.isEmpty()) {
+      throw new ConstraintViolationException(
+          new HashSet<ConstraintViolation<?>>(validationResults));
     }
+    if (object != null) {
+      // Exception must have be thrown
+      System.out.println(object.toString());
+    }
+
+  }
 }

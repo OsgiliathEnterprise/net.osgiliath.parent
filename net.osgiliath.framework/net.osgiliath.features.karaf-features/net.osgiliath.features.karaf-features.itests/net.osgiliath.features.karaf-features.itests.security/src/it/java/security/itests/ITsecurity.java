@@ -57,58 +57,57 @@ import security.SecurityService;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITsecurity extends AbstractPaxExamKarafConfiguration {
-    private static Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
+  private static Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
 
-    @Inject
-    private BundleContext bundleContext;
-    // Exported service via blueprint.xml
-    @Inject
-    @Filter(timeout = 40000)
-    private SecurityService securityService;
+  @Inject
+  private BundleContext bundleContext;
+  // Exported service via blueprint.xml
+  @Inject
+  @Filter(timeout = 40000)
+  private SecurityService securityService;
 
-    // probe
-    @ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfiguration.class);
-	builder.setHeader(Constants.EXPORT_PACKAGE, "security.itests");
-	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-	return builder;
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE, "security.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
+
+  @Test
+  public void testAuthenticate() throws Exception {
+    LOG.trace("************Listing **********************");
+    for (Bundle b : bundleContext.getBundles()) {
+      LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
     }
+    MUser user = new MUser();
+    user.setPseudo("toto");
+    user.setPassword("myPassword");
+    securityService.onSubscription(user);
+    assertTrue(securityService.authenticate("toto", "myPassword"));
 
-    @Test
-    public void testAuthenticate() throws Exception {
-	LOG.trace("************Listing **********************");
-	for (Bundle b : bundleContext.getBundles()) {
-	    LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
-		    + b.getState());
-	}
-	MUser user = new MUser();
-	user.setPseudo("toto");
-	user.setPassword("myPassword");
-	securityService.onSubscription(user);
-	assertTrue(securityService.authenticate("toto", "myPassword"));
+  }
 
-    }
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId("net.osgiliath.framework").type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-security");
+  }
 
-    @Override
-    protected Option featureToTest() {
-	return features(
-		maven().artifactId(
-			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId("net.osgiliath.framework").type("xml")
-			.classifier("features").versionAsInProject(),
-		"osgiliath-itests-security");
-    }
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-    static {
-	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+  }
 
-    }
-
-    @Configuration
-    public Option[] config() {
-	return createConfig();
-    }
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 }

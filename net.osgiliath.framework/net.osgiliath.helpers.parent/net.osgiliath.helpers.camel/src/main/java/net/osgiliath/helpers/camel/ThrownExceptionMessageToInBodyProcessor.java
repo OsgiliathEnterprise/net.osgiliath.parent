@@ -1,6 +1,3 @@
-/**
- * 
- */
 package net.osgiliath.helpers.camel;
 
 /*
@@ -43,36 +40,33 @@ import org.slf4j.LoggerFactory;
  */
 
 public class ThrownExceptionMessageToInBodyProcessor implements Processor {
-	/**
-	 * The Logger
-	 */
-	private static Logger LOG = LoggerFactory
-			.getLogger(ThrownExceptionMessageToInBodyProcessor.class);
+  /**
+   * The Logger.
+   */
+  private static Logger LOG = LoggerFactory
+      .getLogger(ThrownExceptionMessageToInBodyProcessor.class);
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.apache.camel.Processor#process(org.apache.camel.Exchange)
-	 */
-	@Override
-	public void process(Exchange exchange) throws Exception {
-		final HttpOperationFailedException exception = exchange.getProperty(
-				Exchange.EXCEPTION_CAUGHT, HttpOperationFailedException.class);
-		if (null != exception
-				&& null != exception.getResponseHeaders().get(
-						ExceptionMappingConstants.EXCEPTION_BODY_HEADER)) {
-			final String body = exception.getResponseHeaders().get(
-					ExceptionMappingConstants.EXCEPTION_BODY_HEADER);
-			LOG.info("Catched error in route: " + body);
-			final SAXBuilder sxb = new SAXBuilder();
-			final Document doc = sxb.build(new StringReader(body));
-			exchange.getIn()
-					.setBody(
-							doc.getRootElement()
-									.getChild(
-											ExceptionMappingConstants.EXCEPTION_MESSAGE)
-									.getText());
-		}
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.apache.camel.Processor#process(org.apache.camel.Exchange)
+   */
+  @Override
+  public void process(Exchange exchange) throws Exception {
+    final HttpOperationFailedException exception = exchange.getProperty(
+        Exchange.EXCEPTION_CAUGHT, HttpOperationFailedException.class);
+    if (null != exception
+        && null != exception.getResponseHeaders().get(
+            ExceptionMappingConstants.EXCEPTION_BODY_HEADER)) {
+      final String body = exception.getResponseHeaders().get(
+          ExceptionMappingConstants.EXCEPTION_BODY_HEADER);
+      LOG.info("Catched error in route: " + body);
+      final SAXBuilder sxb = new SAXBuilder();
+      final Document doc = sxb.build(new StringReader(body));
+      exchange.getIn().setBody(
+          doc.getRootElement()
+              .getChild(ExceptionMappingConstants.EXCEPTION_MESSAGE).getText());
+    }
+  }
 
 }

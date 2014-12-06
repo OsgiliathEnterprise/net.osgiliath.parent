@@ -81,122 +81,117 @@ import org.springframework.jms.core.MessageCreator;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITHelloServiceJaxRS extends
-		AbstractPaxExamKarafConfiguration {
-	protected static final Logger log = LoggerFactory
-			.getLogger(ITHelloServiceJaxRS.class);
-	@Inject
-	private BundleContext bundleContext;
-	// Exported service via blueprint.xml
-	@Inject
-	@Filter(timeout = 40000)
-	private BootFinished bootFinished;
+public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
+  protected static final Logger log = LoggerFactory
+      .getLogger(ITHelloServiceJaxRS.class);
+  @Inject
+  private BundleContext bundleContext;
+  // Exported service via blueprint.xml
+  @Inject
+  @Filter(timeout = 40000)
+  private BootFinished bootFinished;
 
-	// JMS template
-	@Inject
-	@Filter(value = "(component-type=jmsXA)")
-	private JmsOperations template;
-	// exported REST adress
-	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  // JMS template
+  @Inject
+  @Filter(value = "(component-type=jmsXA)")
+  private JmsOperations template;
+  // exported REST adress
+  private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
-	
-	// probe
-	@ProbeBuilder
-	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(AbstractPaxExamKarafConfiguration.class);
-		builder.addTest(HelloEntityMessageCreator.class);
-		builder.setHeader(Constants.EXPORT_PACKAGE,
-				"net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
-		builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.addTest(HelloEntityMessageCreator.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 
-		return builder;
-	}
+    return builder;
+  }
 
-	@Before
-	public void cleanMessages() {
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.delete();
-		client.close();
-	}
-	@Test
-	public void testSayHello() throws Exception {
-		log.debug("************Listing **********************");
-		for (Bundle b : bundleContext.getBundles()) {
-			log.debug("bundle: " + b.getSymbolicName() + ", state: "
-					+ b.getState());
+  @Before
+  public void cleanMessages() {
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    builder.delete();
+    client.close();
+  }
 
-		}
-		log.debug("*********  End list ****************");
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.post(Entity.xml(HelloEntity.builder().helloMessage("John")
-				.build()));
-		Invocation.Builder respbuilder = target
-				.request(MediaType.APPLICATION_XML);
-		Hellos hellos = respbuilder.get(Hellos.class);
-		assertEquals(1, hellos.getHelloCollection().size());
-		client.close();
-	}
+  @Test
+  public void testSayHello() throws Exception {
+    log.debug("************Listing **********************");
+    for (Bundle b : bundleContext.getBundles()) {
+      log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
-	@Test
-	public void testSayHelloValidationError() throws Exception {
-		log.debug("************Listing **********************");
-		for (Bundle b : bundleContext.getBundles()) {
-			log.debug("bundle: " + b.getSymbolicName() + ", state: "
-					+ b.getState());
+    }
+    log.debug("*********  End list ****************");
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    builder
+        .post(Entity.xml(HelloEntity.builder().helloMessage("John").build()));
+    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
+    Hellos hellos = respbuilder.get(Hellos.class);
+    assertEquals(1, hellos.getHelloCollection().size());
+    client.close();
+  }
 
-		}
-		log.debug("*********  End list ****************");
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.post(Entity
-				.xml(HelloEntity.builder().helloMessage("J").build()));
-		client.close();
+  @Test
+  public void testSayHelloValidationError() throws Exception {
+    log.debug("************Listing **********************");
+    for (Bundle b : bundleContext.getBundles()) {
+      log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
-	}
+    }
+    log.debug("*********  End list ****************");
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    builder.post(Entity.xml(HelloEntity.builder().helloMessage("J").build()));
+    client.close();
 
-	@Test
-	public void testSayHelloJMS() throws JMSException {
-		log.debug("sending message");
-		template.send("helloServiceQueueIn", new HelloEntityMessageCreator());
-		log.debug("creating message consumer");
-		Message rcv = template.receive("helloServiceQueueOut");
-		Hellos hellos = (Hellos) ((ObjectMessage)rcv).getObject();
-		assertEquals(1, hellos.getHelloCollection().size());
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		client.close();
+  }
 
-	}
+  @Test
+  public void testSayHelloJMS() throws JMSException {
+    log.debug("sending message");
+    template.send("helloServiceQueueIn", new HelloEntityMessageCreator());
+    log.debug("creating message consumer");
+    Message rcv = template.receive("helloServiceQueueOut");
+    Hellos hellos = (Hellos) ((ObjectMessage) rcv).getObject();
+    assertEquals(1, hellos.getHelloCollection().size());
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    client.close();
 
-	@Override
-	protected Option featureToTest() {
-		return features(maven().groupId(System.getProperty(MODULE_GROUP_ID))
-				.artifactId(System.getProperty(MODULE_GROUP_ID) + ".features")
-				.type("xml").classifier("features").versionAsInProject(),
-				System.getProperty(MODULE_PARENT_ARTIFACT_ID)
-						+ ".itests.blueprint");
-	}
+  }
 
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven().groupId(System.getProperty(MODULE_GROUP_ID))
+            .artifactId(System.getProperty(MODULE_GROUP_ID) + ".features")
+            .type("xml").classifier("features").versionAsInProject(),
+        System.getProperty(MODULE_PARENT_ARTIFACT_ID) + ".itests.blueprint");
+  }
 
-	}
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+  }
+
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
 }

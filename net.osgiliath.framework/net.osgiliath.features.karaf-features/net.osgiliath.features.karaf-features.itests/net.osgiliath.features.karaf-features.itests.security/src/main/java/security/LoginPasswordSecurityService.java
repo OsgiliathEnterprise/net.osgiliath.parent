@@ -37,77 +37,77 @@ import org.springframework.security.core.context.SecurityContextHolder;
  */
 @Slf4j
 public class LoginPasswordSecurityService implements SecurityService {
-      /**
-     * The {@link AuthenticationManager}
-     */
-    private AuthenticationManager authenticationManager;
+  /**
+   * The {@link AuthenticationManager}
+   */
+  private AuthenticationManager authenticationManager;
 
-    /**
-     * The {@link PasswordEncoder}
-     */
-    private PasswordEncoder passwordEncoder;
-    /**
-     * The {@link SaltSource}
-     */
-    private SaltSource saltSource;
+  /**
+   * The {@link PasswordEncoder}
+   */
+  private PasswordEncoder passwordEncoder;
+  /**
+   * The {@link SaltSource}
+   */
+  private SaltSource saltSource;
 
-    public AuthenticationManager getAuthenticationManager() {
-	return authenticationManager;
+  public AuthenticationManager getAuthenticationManager() {
+    return authenticationManager;
+  }
+
+  public void setAuthenticationManager(
+      AuthenticationManager authenticationManager) {
+    this.authenticationManager = authenticationManager;
+  }
+
+  public PasswordEncoder getPasswordEncoder() {
+    return passwordEncoder;
+  }
+
+  public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+    this.passwordEncoder = passwordEncoder;
+  }
+
+  public SaltSource getSaltSource() {
+    return saltSource;
+  }
+
+  public void setSaltSource(SaltSource saltSource) {
+    this.saltSource = saltSource;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+
+  public boolean authenticate(String username, String password) {
+
+    Authentication aut = new UsernamePasswordAuthenticationToken(username,
+        password);
+    try {
+      aut = this.authenticationManager.authenticate(aut);
+      SecurityContextHolder.getContext().setAuthentication(aut);
+    } catch (Exception e) {
+      log.error("error while authenticating", e);
+      return false;
     }
+    return aut.isAuthenticated();
+  }
 
-    public void setAuthenticationManager(
-	    AuthenticationManager authenticationManager) {
-	this.authenticationManager = authenticationManager;
-    }
+  /**
+   * {@inheritDoc}
+   */
 
-    public PasswordEncoder getPasswordEncoder() {
-	return passwordEncoder;
-    }
+  public final MUser onSubscription(final MUser subscriptionMessageIn) {
+    final MAuthority auth = new MAuthority();
+    auth.setAuthority(AUTHORITY.MEMBER);
+    subscriptionMessageIn.getAuthorities().add(auth);
+    final String password = subscriptionMessageIn.getPassword();
+    final String saltedPassword = this.passwordEncoder.encodePassword(password,
+        this.saltSource.getSalt(subscriptionMessageIn));
+    subscriptionMessageIn.setPassword(saltedPassword);
+    RepositoryUserDetailsService.getUsers().add(subscriptionMessageIn);
+    return subscriptionMessageIn;
 
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-	this.passwordEncoder = passwordEncoder;
-    }
-
-    public SaltSource getSaltSource() {
-	return saltSource;
-    }
-
-    public void setSaltSource(SaltSource saltSource) {
-	this.saltSource = saltSource;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-
-    public boolean authenticate(String username, String password) {
-
-	Authentication aut = new UsernamePasswordAuthenticationToken(username,
-		password);
-	try {
-	    aut = this.authenticationManager.authenticate(aut);
-	    SecurityContextHolder.getContext().setAuthentication(aut);
-	} catch (Exception e) {
-	    log.error("error while authenticating", e);
-	    return false;
-	}
-	return aut.isAuthenticated();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-
-    public final MUser onSubscription(final MUser subscriptionMessageIn) {
-	final MAuthority auth = new MAuthority();
-	auth.setAuthority(AUTHORITY.MEMBER);
-	subscriptionMessageIn.getAuthorities().add(auth);
-	final String password = subscriptionMessageIn.getPassword();
-	final String saltedPassword = this.passwordEncoder.encodePassword(
-		password, this.saltSource.getSalt(subscriptionMessageIn));
-	subscriptionMessageIn.setPassword(saltedPassword);
-	RepositoryUserDetailsService.getUsers().add(subscriptionMessageIn);
-	return subscriptionMessageIn;
-
-    }
+  }
 }

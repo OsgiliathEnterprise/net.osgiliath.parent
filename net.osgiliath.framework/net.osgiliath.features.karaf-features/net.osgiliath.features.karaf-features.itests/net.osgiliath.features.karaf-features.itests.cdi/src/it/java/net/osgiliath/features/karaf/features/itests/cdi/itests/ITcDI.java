@@ -53,48 +53,48 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITcDI extends AbstractPaxExamKarafConfiguration {
-    private static Logger LOG = LoggerFactory.getLogger(ITcDI.class);
-    // Exported service via blueprint.xml
-    @Inject
-    @Filter(timeout = 40000)
-    private IConsumer consumer;
+  private static Logger LOG = LoggerFactory.getLogger(ITcDI.class);
+  // Exported service via blueprint.xml
+  @Inject
+  @Filter(timeout = 40000)
+  private IConsumer consumer;
 
-    // probe
-    @ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-	builder.addTest(AbstractPaxExamKarafConfiguration.class);
-	builder.setHeader(Constants.EXPORT_PACKAGE,
-		"net.osgiliath.features.karaf.features.itests.cdi.itests");
-	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-	return builder;
-    }
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.features.karaf.features.itests.cdi.itests");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
 
-    @Test
-    public void testSayHello() throws Exception {
-	LOG.info("consumer should be injected");
-	assertEquals(consumer.getHello(), "hello");
-    }
+  @Test
+  public void testSayHello() throws Exception {
+    LOG.info("consumer should be injected");
+    assertEquals(consumer.getHello(), "hello");
+  }
 
-    @Override
-    protected Option featureToTest() {
-	return features(
-		maven().artifactId(
-			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId(System.getProperty(MODULE_GROUP_ID)).type("xml")
-			.classifier("features").versionAsInProject(),
-		"osgiliath-itests-cdi");
-    }
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId(System.getProperty(MODULE_GROUP_ID)).type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-cdi");
+  }
 
-    static {
-	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-    }
+  }
 
-    @Configuration
-    public Option[] config() {
-	return createConfig();
-    }
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
 }

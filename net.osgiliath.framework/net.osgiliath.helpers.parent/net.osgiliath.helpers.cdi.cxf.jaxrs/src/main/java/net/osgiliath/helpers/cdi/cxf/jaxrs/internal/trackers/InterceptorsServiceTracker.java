@@ -35,78 +35,78 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
  * @author charliemordant Interceptors OSGI service trackers
  */
 public final class InterceptorsServiceTracker implements
-		ServiceTrackerCustomizer {
-	/**
-	 * The bundle context
-	 */
-	private final BundleContext context;
+    ServiceTrackerCustomizer {
+  /**
+   * The bundle context
+   */
+  private final BundleContext context;
 
-	/**
-	 * Ctor
-	 * 
-	 * @param context
-	 *            the bundle context
-	 */
-	public InterceptorsServiceTracker(BundleContext context) {
-		this.context = context;
-	}
+  /**
+   * Ctor
+   * 
+   * @param context
+   *          the bundle context
+   */
+  public InterceptorsServiceTracker(BundleContext context) {
+    this.context = context;
+  }
 
-	/**
-	 * Service tracker added service
-	 */
-	// callback method if MyClass service object is registered
-	public final Object addingService(final ServiceReference reference) {
-		final Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof Interceptor) {
-			InterceptorsServiceRegistry.INSTANCE.getInterceptors().add(
-					(Interceptor) serviceObject);
+  /**
+   * Service tracker added service
+   */
+  // callback method if MyClass service object is registered
+  public final Object addingService(final ServiceReference reference) {
+    final Object serviceObject = this.context.getService(reference);
+    if (serviceObject instanceof Interceptor) {
+      InterceptorsServiceRegistry.INSTANCE.getInterceptors().add(
+          (Interceptor) serviceObject);
 
-		}
+    }
 
-		return reference;
-	}
+    return reference;
+  }
 
-	/**
-	 * remove service
-	 */
-	// callback if necessary class is deregistred
-	public final void removedService(final ServiceReference reference,
-			final Object service) {
-		final Object serviceObject = this.context.getService(reference);
-		if (serviceObject instanceof Interceptor) {
-			InterceptorsServiceRegistry.INSTANCE.getInterceptors().remove(
-					(Interceptor) serviceObject);
+  /**
+   * remove service
+   */
+  // callback if necessary class is deregistred
+  public final void removedService(final ServiceReference reference,
+      final Object service) {
+    final Object serviceObject = this.context.getService(reference);
+    if (serviceObject instanceof Interceptor) {
+      InterceptorsServiceRegistry.INSTANCE.getInterceptors().remove(
+          (Interceptor) serviceObject);
 
-		}
-	}
+    }
+  }
 
-	/**
-	 * Initial call to tracker
-	 * 
-	 * @param context
-	 *            bundle context
-	 * @throws InvalidSyntaxException
-	 *             parsing error
-	 */
-	public static void handleInitialReferences(BundleContext context)
-			throws InvalidSyntaxException {
-		Collection<ServiceReference<Interceptor>> refs = context
-				.getServiceReferences(Interceptor.class, null);
-		for (ServiceReference<Interceptor> reference : refs) {
-			Interceptor svc = context.getService(reference);
-			svc.toString();
-			InterceptorsServiceRegistry.INSTANCE.getInterceptors().add(svc);
-		}
-	}
+  /**
+   * Initial call to tracker
+   * 
+   * @param context
+   *          bundle context
+   * @throws InvalidSyntaxException
+   *           parsing error
+   */
+  public static void handleInitialReferences(BundleContext context)
+      throws InvalidSyntaxException {
+    Collection<ServiceReference<Interceptor>> refs = context
+        .getServiceReferences(Interceptor.class, null);
+    for (ServiceReference<Interceptor> reference : refs) {
+      Interceptor svc = context.getService(reference);
+      svc.toString();
+      InterceptorsServiceRegistry.INSTANCE.getInterceptors().add(svc);
+    }
+  }
 
-	/**
-	 * Modification of a service
-	 */
-	@Override
-	public void modifiedService(ServiceReference reference, Object service) {
-		this.removedService(reference, service);
-		this.addingService(reference);
+  /**
+   * Modification of a service
+   */
+  @Override
+  public void modifiedService(ServiceReference reference, Object service) {
+    this.removedService(reference, service);
+    this.addingService(reference);
 
-	}
+  }
 
 }

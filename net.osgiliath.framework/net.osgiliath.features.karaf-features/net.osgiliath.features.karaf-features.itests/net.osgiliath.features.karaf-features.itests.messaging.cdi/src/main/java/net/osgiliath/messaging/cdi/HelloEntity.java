@@ -23,23 +23,23 @@ package net.osgiliath.messaging.cdi;
 import java.io.Serializable;
 
 import lombok.Data;
+
 /**
  * 
- * @author charliemordant
- * Entity sample
+ * @author charliemordant Entity sample
  */
 @Data
 public class HelloEntity implements Serializable {
-    /**
-	 * serial
-	 */
-    private static final long serialVersionUID = -559379928931329555L;
-    /**
-     * Id
-     */
-    protected Long entityId;
-    /**
-     * Message
-     */
-    private String helloMessage;
+  /**
+   * serial
+   */
+  private static final long serialVersionUID = -559379928931329555L;
+  /**
+   * Id
+   */
+  protected Long entityId;
+  /**
+   * Message
+   */
+  private String helloMessage;
 }

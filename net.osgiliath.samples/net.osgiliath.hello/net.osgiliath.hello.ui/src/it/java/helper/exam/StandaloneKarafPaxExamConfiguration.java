@@ -35,27 +35,27 @@ import org.slf4j.LoggerFactory;
  * @author charliemordant
  * 
  */
-public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafConfiguration {
+public class StandaloneKarafPaxExamConfiguration extends
+    AbstractPaxExamKarafConfiguration {
 
-	
-	@Override
-	protected Option featureToTest() {
+  @Override
+  protected Option featureToTest() {
 
-		return features(
-				maven().artifactId("net.osgiliath.hello.features")
-				.groupId("net.osgiliath.hello").type("xml")
-				.classifier("features")
-				.versionAsInProject(), "net.osgiliath.hello.full.blueprint.itests");
-	}
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+    return features(
+        maven().artifactId("net.osgiliath.hello.features")
+            .groupId("net.osgiliath.hello").type("xml").classifier("features")
+            .versionAsInProject(), "net.osgiliath.hello.full.blueprint.itests");
+  }
 
-	}
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+  }
+
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
 }

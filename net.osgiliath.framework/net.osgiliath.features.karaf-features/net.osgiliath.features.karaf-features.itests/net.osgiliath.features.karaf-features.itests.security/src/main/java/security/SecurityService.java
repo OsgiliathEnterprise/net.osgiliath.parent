@@ -27,23 +27,23 @@ package security;
  * 
  */
 public interface SecurityService {
-    /**
-     * Authenticate a {@link MUser},
-     * 
-     * @param username
-     *            his username
-     * @param password
-     *            his password
-     * @return true if the user exists
-     */
-    boolean authenticate(final String username, final String password);
+  /**
+   * Authenticate a {@link MUser},
+   * 
+   * @param username
+   *          his username
+   * @param password
+   *          his password
+   * @return true if the user exists
+   */
+  boolean authenticate(final String username, final String password);
 
-    /**
-     * Register the {@link MUser}
-     * 
-     * @param arg0
-     *            the {@link MUser} to register
-     * @return the registered {@link MUser}
-     */
-     MUser onSubscription(MUser arg0);
+  /**
+   * Register the {@link MUser}
+   * 
+   * @param arg0
+   *          the {@link MUser} to register
+   * @return the registered {@link MUser}
+   */
+  MUser onSubscription(MUser arg0);
 }

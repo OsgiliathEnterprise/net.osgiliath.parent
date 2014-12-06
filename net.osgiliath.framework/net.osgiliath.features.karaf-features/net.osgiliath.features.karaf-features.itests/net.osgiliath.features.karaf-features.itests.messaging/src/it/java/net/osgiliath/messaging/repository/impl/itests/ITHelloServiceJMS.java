@@ -60,70 +60,67 @@ import org.springframework.jms.core.JmsOperations;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
-	private static Logger LOG = LoggerFactory
-			.getLogger(ITHelloServiceJMS.class);
+  private static Logger LOG = LoggerFactory.getLogger(ITHelloServiceJMS.class);
 
-	@Inject
-	private BundleContext bundleContext;
-	// Exported service via blueprint.xml
-	@Inject
-	@Filter(timeout = 40000)
-	private HelloRepository helloService;
-	// JMS template
-	@Inject
-	@Filter(value = "(component-type=jmsXA)")
-	private JmsOperations jmsTemplate;
-	@Inject
-	private BootFinished finished;
+  @Inject
+  private BundleContext bundleContext;
+  // Exported service via blueprint.xml
+  @Inject
+  @Filter(timeout = 40000)
+  private HelloRepository helloService;
+  // JMS template
+  @Inject
+  @Filter(value = "(component-type=jmsXA)")
+  private JmsOperations jmsTemplate;
+  @Inject
+  private BootFinished finished;
 
-	// probe
-	@ProbeBuilder
-	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(AbstractPaxExamKarafConfiguration.class);
-		builder.addTest(HelloEntityMessageCreator.class);
-		builder.setHeader(Constants.EXPORT_PACKAGE,
-				"net.osgiliath.messaging.repository.impl.itests");
-		builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-		return builder;
-	}
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.addTest(HelloEntityMessageCreator.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.messaging.repository.impl.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
 
-	@Test
-	public void testSayHello() throws Exception {
-		LOG.trace("************Listing **********************");
-		for (Bundle b : bundleContext.getBundles()) {
-			LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
-					+ b.getState());
-		}
-		LOG.trace("*********  End list ****************");
-		jmsTemplate.send("HELLO.IN", new HelloEntityMessageCreator());
-		
-		Message message = jmsTemplate.receive("HELLO.OUT");
-		Hellos hellos = (Hellos) ((ObjectMessage)message).getObject();
-		assertEquals(1, hellos.getEntities().size());
-		helloService.deleteAll();
-	}
+  @Test
+  public void testSayHello() throws Exception {
+    LOG.trace("************Listing **********************");
+    for (Bundle b : bundleContext.getBundles()) {
+      LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+    }
+    LOG.trace("*********  End list ****************");
+    jmsTemplate.send("HELLO.IN", new HelloEntityMessageCreator());
 
-	@Override
-	protected Option featureToTest() {
-		return features(
-				maven().artifactId(
-						"net.osgiliath.features.karaf-features.itests.feature")
-						.groupId("net.osgiliath.framework").type("xml")
-						.classifier("features").versionAsInProject(),
-				"osgiliath-itests-messaging");
-	}
+    Message message = jmsTemplate.receive("HELLO.OUT");
+    Hellos hellos = (Hellos) ((ObjectMessage) message).getObject();
+    assertEquals(1, hellos.getEntities().size());
+    helloService.deleteAll();
+  }
 
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId("net.osgiliath.framework").type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-messaging");
+  }
 
-	}
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
-	
+  }
+
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
 }

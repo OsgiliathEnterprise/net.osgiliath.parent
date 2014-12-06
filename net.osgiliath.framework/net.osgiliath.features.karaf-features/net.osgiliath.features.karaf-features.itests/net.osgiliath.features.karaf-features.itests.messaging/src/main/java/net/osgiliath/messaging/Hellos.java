@@ -24,21 +24,20 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import lombok.Data;
+
 /**
  * 
- * @author charliemordant
- * message collection
+ * @author charliemordant message collection
  */
 @Data
 public class Hellos implements Serializable {
-    /**
-	 * serial
-	 */
-    private static final long serialVersionUID = 1104941154797467749L;
-    /**
-     * collection
-     */
-    private Collection<HelloEntity> entities;
-
+  /**
+   * serial
+   */
+  private static final long serialVersionUID = 1104941154797467749L;
+  /**
+   * collection
+   */
+  private Collection<HelloEntity> entities;
 
 }

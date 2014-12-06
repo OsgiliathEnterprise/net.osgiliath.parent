@@ -62,81 +62,78 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
-    private static Logger LOG = LoggerFactory
-	    .getLogger(ITHelloServiceJMS.class);
+  private static Logger LOG = LoggerFactory.getLogger(ITHelloServiceJMS.class);
 
-    @Inject
-    private BundleContext bundleContext;
-    @Inject
-    @Filter(timeout = 40000)
-    private BootFinished bootFinished;
-    @Inject
-    @Filter(value = "(component-type=jms)")
-    private Component jmsComponent;
-   
+  @Inject
+  private BundleContext bundleContext;
+  @Inject
+  @Filter(timeout = 40000)
+  private BootFinished bootFinished;
+  @Inject
+  @Filter(value = "(component-type=jms)")
+  private Component jmsComponent;
 
-    // probe
-    @ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfiguration.class);
-	builder.setHeader(Constants.EXPORT_PACKAGE,
-		"net.osgiliath.messaging.repository.impl.itests");
-	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.messaging.repository.impl.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 
-	return builder;
+    return builder;
+  }
+
+  @Test
+  public void testSayHello() throws Exception {
+    LOG.trace("************Listing **********************");
+    for (Bundle b : bundleContext.getBundles()) {
+      LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
     }
+    LOG.trace("*********  End list ****************");
+    HelloEntity entity = new HelloEntity();
+    entity.setHelloMessage("Charlie");
+    LOG.info("Sending Body");
+    ProducerTemplate template = jmsComponent.getCamelContext()
+        .createProducerTemplate();
+    template.sendBody("jms:queue:helloServiceQueueIn", entity);
+    ConsumerTemplate consumer = template.getCamelContext()
+        .createConsumerTemplate();
+    LOG.info("Waiting answer");
+    Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
+        4000, Hellos.class);
+    LOG.warn("Hellos: " + hellos);
+    assertEquals(1, hellos.getEntities().size());
 
-    @Test
-    public void testSayHello() throws Exception {
-	LOG.trace("************Listing **********************");
-	for (Bundle b : bundleContext.getBundles()) {
-	    LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
-		    + b.getState());
-	}
-	LOG.trace("*********  End list ****************");
-	HelloEntity entity = new HelloEntity();
-	entity.setHelloMessage("Charlie");
-	LOG.info("Sending Body");
-	ProducerTemplate template = jmsComponent.getCamelContext()
-		.createProducerTemplate();
-	template.sendBody("jms:queue:helloServiceQueueIn", entity);
-	ConsumerTemplate consumer = template.getCamelContext()
-		.createConsumerTemplate();
-	LOG.info("Waiting answer");
-	Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
-		4000, Hellos.class);
-	LOG.warn("Hellos: " + hellos);
-	assertEquals(1, hellos.getEntities().size());
+  }
 
-    }
+  @Override
+  protected Option featureToTest() {
 
-    @Override
-    protected Option featureToTest() {
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId("net.osgiliath.framework").type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-messaging-cdi");
+  }
 
-	return features(
-		maven().artifactId(
-			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId("net.osgiliath.framework").type("xml")
-			.classifier("features").versionAsInProject(),
-		"osgiliath-itests-messaging-cdi");
-    }
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-    static {
-	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+  }
 
-    }
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
-    @Configuration
-    public Option[] config() {
-	return createConfig();
-    }
+  @Override
+  protected Option loggingLevel() {
 
-	@Override
-	protected Option loggingLevel() {
-		
-		return logLevel(LogLevel.INFO);
-	}
+    return logLevel(LogLevel.INFO);
+  }
 
 }

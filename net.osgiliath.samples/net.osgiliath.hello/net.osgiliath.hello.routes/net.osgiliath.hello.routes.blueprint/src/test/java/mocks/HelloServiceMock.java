@@ -32,34 +32,33 @@ import com.google.common.collect.Lists;
 
 //TODO Mock service
 public class HelloServiceMock implements HelloService {
-    private List<HelloEntity> mockedMessageStrings = Lists.newArrayList();
+  private List<HelloEntity> mockedMessageStrings = Lists.newArrayList();
 
-    @Override
-    public void persistHello(HelloEntity helloMessage_p) {
-	mockedMessageStrings.add(helloMessage_p);
-    }
+  @Override
+  public void persistHello(HelloEntity helloMessage_p) {
+    mockedMessageStrings.add(helloMessage_p);
+  }
 
-    @Override
-    public Hellos getHellos() {
+  @Override
+  public Hellos getHellos() {
 
-	return Hellos
-		.builder()
-		.helloCollection(
-			Lists.newArrayList(Iterables.transform(
-				mockedMessageStrings,
-				new Function<HelloEntity, String>() {
+    return Hellos
+        .builder()
+        .helloCollection(
+            Lists.newArrayList(Iterables.transform(mockedMessageStrings,
+                new Function<HelloEntity, String>() {
 
-				    @Override
-				    public String apply(HelloEntity arg0) {
+                  @Override
+                  public String apply(HelloEntity arg0) {
 
-					return arg0.getHelloMessage();
-				    }
-				}))).build();
-    }
+                    return arg0.getHelloMessage();
+                  }
+                }))).build();
+  }
 
-    @Override
-    public void deleteAll() {
-	mockedMessageStrings.clear();
-    }
+  @Override
+  public void deleteAll() {
+    mockedMessageStrings.clear();
+  }
 
 }

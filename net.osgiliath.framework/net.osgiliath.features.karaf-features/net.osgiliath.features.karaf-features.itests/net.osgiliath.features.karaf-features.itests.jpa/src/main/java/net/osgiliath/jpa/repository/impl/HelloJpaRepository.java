@@ -42,38 +42,43 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
  * @author charliemordant Spring data jpa repository declaration
  */
 public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long>
-	implements HelloRepository {
-    /**
-     * Entity manager
-     */
-    @Setter
-    private EntityManager entityManager;
+    implements HelloRepository {
+  /**
+   * Entity manager
+   */
+  @Setter
+  private EntityManager entityManager;
 
-    /**
-     * Ctor
-     * @param domainClass class
-     * @param em entity manager
-     */
-    public HelloJpaRepository(final Class<HelloEntity> domainClass, final EntityManager entityManager) {
-	super(domainClass, entityManager);
-	setEntityManager(entityManager);
-    }
-    /**
-     * Finds by helloMessage
-     */
-    @Override
-    public final Collection<? extends HelloEntity> findByHelloObjectMessage(
-	   final String message_p) {
-	final CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
-	final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-	final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
-	cq.select(helloObject);
-	final Predicate where = cb.equal(helloObject.get(HelloEntity_.helloMessage), message_p);
-	cq.where(where);
-	final TypedQuery<HelloEntity> q = this.entityManager.createQuery(cq);
-	final List<HelloEntity> result = q.getResultList();
-	return result;
-    }
-    
+  /**
+   * Ctor
+   * 
+   * @param domainClass
+   *          class
+   * @param em
+   *          entity manager
+   */
+  public HelloJpaRepository(final Class<HelloEntity> domainClass,
+      final EntityManager entityManager) {
+    super(domainClass, entityManager);
+    setEntityManager(entityManager);
+  }
+
+  /**
+   * Finds by helloMessage
+   */
+  @Override
+  public final Collection<? extends HelloEntity> findByHelloObjectMessage(
+      final String message_p) {
+    final CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
+    final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
+    final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
+    cq.select(helloObject);
+    final Predicate where = cb.equal(
+        helloObject.get(HelloEntity_.helloMessage), message_p);
+    cq.where(where);
+    final TypedQuery<HelloEntity> q = this.entityManager.createQuery(cq);
+    final List<HelloEntity> result = q.getResultList();
+    return result;
+  }
 
 }

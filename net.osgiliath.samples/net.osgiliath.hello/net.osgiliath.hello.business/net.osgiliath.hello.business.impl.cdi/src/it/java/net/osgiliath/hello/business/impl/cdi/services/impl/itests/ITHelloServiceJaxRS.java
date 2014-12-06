@@ -68,118 +68,116 @@ import org.osgi.framework.Constants;
 @ExamReactorStrategy(PerClass.class)
 @Slf4j
 public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
-	@Inject
-	@Filter(timeout = 400000)
-	private BootFinished bootFinished;
-	@Inject
-	private BundleContext bundleContext;
-	// JMS template
-	@Inject
-	@Filter(value = "(component-type=jms)")
-	private Component jmsComponent;
-	// exported REST adress
-	private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  @Inject
+  @Filter(timeout = 400000)
+  private BootFinished bootFinished;
+  @Inject
+  private BundleContext bundleContext;
+  // JMS template
+  @Inject
+  @Filter(value = "(component-type=jms)")
+  private Component jmsComponent;
+  // exported REST adress
+  private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
-	// probe
-	@ProbeBuilder
-	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.addTest(AbstractPaxExamKarafConfiguration.class);
-		builder.setHeader(Constants.EXPORT_PACKAGE,
-				"net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
-		builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-		return builder;
-	}
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
 
-	@Before
-	public void cleanMessages() {
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.delete();
-		client.close();
-	}
+  @Before
+  public void cleanMessages() {
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    builder.delete();
+    client.close();
+  }
 
-	@Test
-	public void testSayHello() throws Exception {
-		log.trace("************ start testSayHello **********************");
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.post(Entity.xml(HelloEntity.builder().helloMessage("John")
-				.build()));
-		Invocation.Builder respbuilder = target
-				.request(MediaType.APPLICATION_XML);
-		Hellos hellos = respbuilder.get(Hellos.class);
-		assertEquals(1, hellos.getHelloCollection().size());
-		client.close();
+  @Test
+  public void testSayHello() throws Exception {
+    log.trace("************ start testSayHello **********************");
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    builder
+        .post(Entity.xml(HelloEntity.builder().helloMessage("John").build()));
+    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
+    Hellos hellos = respbuilder.get(Hellos.class);
+    assertEquals(1, hellos.getHelloCollection().size());
+    client.close();
 
-		log.trace("************ end testSayHello **********************");
-	}
+    log.trace("************ end testSayHello **********************");
+  }
 
-	@Test
-	public void testSayHelloValidationError() throws Exception {
-		log.trace("************ start testSayHelloValidationError **********************");
-		log.debug("************Listing **********************");
-		for (Bundle b : bundleContext.getBundles()) {
-			log.debug("bundle: " + b.getSymbolicName() + ", state: "
-					+ b.getState());
+  @Test
+  public void testSayHelloValidationError() throws Exception {
+    log.trace("************ start testSayHelloValidationError **********************");
+    log.debug("************Listing **********************");
+    for (Bundle b : bundleContext.getBundles()) {
+      log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
-		}
-		log.debug("*********  End list ****************");
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		builder.post(Entity
-				.xml(HelloEntity.builder().helloMessage("J").build()));
-		log.trace("************ end testSayHelloValidationError **********************");
+    }
+    log.debug("*********  End list ****************");
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    builder.post(Entity.xml(HelloEntity.builder().helloMessage("J").build()));
+    log.trace("************ end testSayHelloValidationError **********************");
 
-	}
+  }
 
-	@Test
-	public void testSayHelloJMS() {
-		log.info("************ start testSayHelloJMS **********************");
-		log.debug("Component: " + jmsComponent);
-		log.trace("Camel context: " + jmsComponent.getCamelContext());
-		ProducerTemplate template = jmsComponent.getCamelContext()
-				.createProducerTemplate();
-		log.trace("Producer template: " + template);
-		template.sendBody("jms:queue:helloServiceQueueIn", HelloEntity
-				.builder().helloMessage("Doe").build());
-		ConsumerTemplate consumer = jmsComponent.getCamelContext()
-				.createConsumerTemplate();
-		Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
-				Hellos.class);
-		assertTrue(hellos.getHelloCollection().size() > 0);
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(helloServiceBaseUrl);
-		target = target.path("hello");
-		Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-		client.close();
-		log.info("************ end testSayHelloJMS **********************");
-	}
+  @Test
+  public void testSayHelloJMS() {
+    log.info("************ start testSayHelloJMS **********************");
+    log.debug("Component: " + jmsComponent);
+    log.trace("Camel context: " + jmsComponent.getCamelContext());
+    ProducerTemplate template = jmsComponent.getCamelContext()
+        .createProducerTemplate();
+    log.trace("Producer template: " + template);
+    template.sendBody("jms:queue:helloServiceQueueIn", HelloEntity.builder()
+        .helloMessage("Doe").build());
+    ConsumerTemplate consumer = jmsComponent.getCamelContext()
+        .createConsumerTemplate();
+    Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
+        Hellos.class);
+    assertTrue(hellos.getHelloCollection().size() > 0);
+    Client client = ClientBuilder.newClient();
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    client.close();
+    log.info("************ end testSayHelloJMS **********************");
+  }
 
-	@Override
-	protected Option featureToTest() {
+  @Override
+  protected Option featureToTest() {
 
-		return features(maven().groupId(System.getProperty(MODULE_GROUP_ID))
-				.artifactId(System.getProperty(MODULE_GROUP_ID) + ".features")
-				.type("xml").classifier("features").versionAsInProject(),
-				System.getProperty(MODULE_PARENT_ARTIFACT_ID) + ".itests.cdi");
-	}
+    return features(
+        maven().groupId(System.getProperty(MODULE_GROUP_ID))
+            .artifactId(System.getProperty(MODULE_GROUP_ID) + ".features")
+            .type("xml").classifier("features").versionAsInProject(),
+        System.getProperty(MODULE_PARENT_ARTIFACT_ID) + ".itests.cdi");
+  }
 
-	static {
-		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-	}
+  }
 
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
 }

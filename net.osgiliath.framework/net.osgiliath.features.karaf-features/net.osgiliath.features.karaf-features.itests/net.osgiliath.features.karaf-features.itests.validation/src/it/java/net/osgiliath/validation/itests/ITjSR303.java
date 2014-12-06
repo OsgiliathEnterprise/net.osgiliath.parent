@@ -58,63 +58,63 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
-    private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
+  private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
 
-    @Inject
-    private BundleContext bundleContext;
-    // Exported service via blueprint.xml
-    @Inject
-    @Filter(timeout = 40000)
-    private IValidatorFactorySample consumer;
+  @Inject
+  private BundleContext bundleContext;
+  // Exported service via blueprint.xml
+  @Inject
+  @Filter(timeout = 40000)
+  private IValidatorFactorySample consumer;
 
-    // probe
-    @ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfiguration.class);
-	builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.validation.itests");
-	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-	return builder;
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.validation.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
+
+  @Test(expected = ConstraintViolationException.class)
+  public void testValidateNull() throws Exception {
+    for (Bundle b : bundleContext.getBundles()) {
+      LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
     }
-
-    @Test(expected = ConstraintViolationException.class)
-    public void testValidateNull() throws Exception {
-	for (Bundle b : bundleContext.getBundles()) {
-	    LOG.debug("bundle: " + b.getSymbolicName() + ", state: "
-		    + b.getState());
-	}
-	try {
-	    consumer.nullMessageValidation(null);
-	    fail("Tho shall not be here");
-	} catch (Exception iae) {
-	    iae.printStackTrace();
-	}
-	HelloObject object = new HelloObject();
-	object.setMessage(null);
-	consumer.nullMessageValidation(object);
-	fail("Tho shall not be here");
-
+    try {
+      consumer.nullMessageValidation(null);
+      fail("Tho shall not be here");
+    } catch (Exception iae) {
+      iae.printStackTrace();
     }
+    HelloObject object = new HelloObject();
+    object.setMessage(null);
+    consumer.nullMessageValidation(object);
+    fail("Tho shall not be here");
 
-    @Override
-    protected Option featureToTest() {
-	return features(
-		maven().artifactId(
-			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId("net.osgiliath.framework").type("xml")
-			.classifier("features").versionAsInProject(),
-		"osgiliath-itests-validation");
-    }
+  }
 
-    static {
-	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId("net.osgiliath.framework").type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-validation");
+  }
 
-    }
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-    @Configuration
-    public Option[] config() {
-	return createConfig();
-    }
+  }
+
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
 }

@@ -33,49 +33,49 @@ import net.osgiliath.jaxrs.repository.HelloRepository;
  * @author charliemordant Implementation of the REST service
  */
 public class HelloJaxRSRepository implements HelloRepository {
-    /**
-     * Model element list
-     */
-    private List<HelloEntity> entities = new ArrayList<HelloEntity>();
+  /**
+   * Model element list
+   */
+  private List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
-    /**
-     * find entities corrsponding to message
-     */
-    @Override
-    public final Collection<? extends HelloEntity> findByHelloObjectMessage(
-	    final String message_p) {
-	final List<HelloEntity> ret = new ArrayList<HelloEntity>();
-	for (HelloEntity ent : this.entities) {
-	    if (ent.getHelloMessage().equals(message_p)) {
-		ret.add(ent);
-	    }
-	}
-	return ret;
+  /**
+   * find entities corrsponding to message
+   */
+  @Override
+  public final Collection<? extends HelloEntity> findByHelloObjectMessage(
+      final String message_p) {
+    final List<HelloEntity> ret = new ArrayList<HelloEntity>();
+    for (HelloEntity ent : this.entities) {
+      if (ent.getHelloMessage().equals(message_p)) {
+        ret.add(ent);
+      }
     }
+    return ret;
+  }
 
-    /**
-     * Save an entity
-     */
-    @Override
-    public final <S extends HelloEntity> S save(final S entity) {
-	this.entities.add(entity);
-	return entity;
-    }
+  /**
+   * Save an entity
+   */
+  @Override
+  public final <S extends HelloEntity> S save(final S entity) {
+    this.entities.add(entity);
+    return entity;
+  }
 
-    /**
-     * Finds all entities
-     */
-    @Override
-    public final Hellos findAll() {
-	return Hellos.builder().hellos(this.entities).build();
-    }
+  /**
+   * Finds all entities
+   */
+  @Override
+  public final Hellos findAll() {
+    return Hellos.builder().hellos(this.entities).build();
+  }
 
-    /**
-     * Deletes all entities
-     */
-    @Override
-    public void deleteAll() {
-	this.entities.clear();
-    }
+  /**
+   * Deletes all entities
+   */
+  @Override
+  public void deleteAll() {
+    this.entities.clear();
+  }
 
 }

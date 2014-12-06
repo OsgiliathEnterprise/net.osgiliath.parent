@@ -49,41 +49,42 @@ import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 @Eager
 @ApplicationScoped
 @CXFEndpoint(url = "/helloService", providersClasses = {
-	JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class, ResourceListingProvider.class, ApiDeclarationProvider.class })
+    JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class,
+    ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceImpl implements HelloServiceJaxRS {
-    /**
-     * Instances elements
-     */
-    private Collection<HelloObject> objects = new ArrayList<HelloObject>();
+  /**
+   * Instances elements
+   */
+  private Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
-    /**
-     * Registering instance
-     */
-    @Override
-    public void persistHello(final HelloObject helloObject) {
-	this.objects.add(helloObject);
+  /**
+   * Registering instance
+   */
+  @Override
+  public void persistHello(final HelloObject helloObject) {
+    this.objects.add(helloObject);
 
-    }
+  }
 
-    /**
-     * Returns registered instances
-     */
-    @Override
-    public Hellos getHellos() {
+  /**
+   * Returns registered instances
+   */
+  @Override
+  public Hellos getHellos() {
 
-	return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
-		new Function<HelloObject, String>() {
+    return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
+        new Function<HelloObject, String>() {
 
-		    @Override
-		    public String apply(final HelloObject input) {
-			return input.getHelloMessage();
-		    };
-		})));
-    }
+          @Override
+          public String apply(final HelloObject input) {
+            return input.getHelloMessage();
+          };
+        })));
+  }
 
-	@Override
-	public void deleteHellos() {
-		this.objects.clear();
-	}
+  @Override
+  public void deleteHellos() {
+    this.objects.clear();
+  }
 
 }

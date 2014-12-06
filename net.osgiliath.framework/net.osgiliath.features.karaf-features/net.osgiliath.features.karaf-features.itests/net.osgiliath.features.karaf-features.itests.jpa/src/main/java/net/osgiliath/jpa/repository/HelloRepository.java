@@ -27,30 +27,37 @@ import net.osgiliath.jpa.model.HelloEntity;
 
 /**
  * 
- * @author charliemordant
- * JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
+ * @author charliemordant JPA accessible interface by business or route module
+ *         (see business module for JMS or REST export, don't forget the
+ *         osgi.bnd cxf package export)
  */
 public interface HelloRepository {
-    /**
-     * Finds by message
-     * @param message_p message
-     * @return corresponding entities
-     */
-    Collection<? extends HelloEntity> findByHelloObjectMessage(
-	    String message_p);
-    /**
-     * Saves
-     * @param entity the eneity
-     * @return saved entity
-     */
-    <S extends HelloEntity> S save(S entity);
-    /**
-     * 
-     * @return all entities
-     */
-    List<HelloEntity> findAll();
-    /**
-     * deletes all
-     */
-    void deleteAll();
+  /**
+   * Finds by message
+   * 
+   * @param message_p
+   *          message
+   * @return corresponding entities
+   */
+  Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
+
+  /**
+   * Saves
+   * 
+   * @param entity
+   *          the eneity
+   * @return saved entity
+   */
+  <S extends HelloEntity> S save(S entity);
+
+  /**
+   * 
+   * @return all entities
+   */
+  List<HelloEntity> findAll();
+
+  /**
+   * deletes all
+   */
+  void deleteAll();
 }

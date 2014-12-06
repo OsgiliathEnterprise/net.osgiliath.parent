@@ -40,53 +40,60 @@ import org.apache.cxf.message.Message;
 @Documented
 @Qualifier
 public @interface CXFEndpoint {
-    /**
-     * Service url
-     * 
-     * @return the service endpoint url
-     */
-    @Nonbinding
-    String url() default "";
+  /**
+   * Service url
+   * 
+   * @return the service endpoint url
+   */
+  @Nonbinding
+  String url() default "";
 
-    /**
-     * Factory name (gets or creates this one)
-     * 
-     * @return the factory name
-     */
-    @Nonbinding
-    String factoryId() default "defaultCDIFactory";
+  /**
+   * Factory name (gets or creates this one)
+   * 
+   * @return the factory name
+   */
+  @Nonbinding
+  String factoryId() default "defaultCDIFactory";
 
-    /**
-     * Message providers
-     * 
-     * @return interceptors classes (will automatically added to factory if not)
-     */
-    @Nonbinding
-    Class<? extends Object>[] providersClasses() default {
-	    JAXBElementProvider.class, JSONProvider.class };
+  /**
+   * Message providers
+   * 
+   * @return interceptors classes (will automatically added to factory if not)
+   */
+  @Nonbinding
+  Class<? extends Object>[] providersClasses() default {
+      JAXBElementProvider.class, JSONProvider.class };
 
-    /**
-     * In interceptors classes
-     * @return interceptors classes (will automatically added to factory if not)
-     */
-    @Nonbinding
-    Class<? extends Interceptor<? extends Message>>[] inInterceptors() default {};
-    /**
-     * out interceptors classes
-     * @return interceptors classes (will automatically added to factory if not)
-     */
-    @Nonbinding
-    Class<? extends Interceptor<? extends Message>>[] outInterceptors() default {};
-    /**
-     * In fault interceptors classes
-     * @return interceptors classes (will automatically added to factory if not)
-     */
-    @Nonbinding
-    Class<? extends Interceptor<? extends Message>>[] inFaultInterceptors() default {};
-    /**
-     * out fault interceptors classes
-     * @return interceptors classes (will automatically added to factory if not)
-     */
-    @Nonbinding
-    Class<? extends Interceptor<? extends Message>>[] outFaultInterceptors() default {};
+  /**
+   * In interceptors classes
+   * 
+   * @return interceptors classes (will automatically added to factory if not)
+   */
+  @Nonbinding
+  Class<? extends Interceptor<? extends Message>>[] inInterceptors() default {};
+
+  /**
+   * out interceptors classes
+   * 
+   * @return interceptors classes (will automatically added to factory if not)
+   */
+  @Nonbinding
+  Class<? extends Interceptor<? extends Message>>[] outInterceptors() default {};
+
+  /**
+   * In fault interceptors classes
+   * 
+   * @return interceptors classes (will automatically added to factory if not)
+   */
+  @Nonbinding
+  Class<? extends Interceptor<? extends Message>>[] inFaultInterceptors() default {};
+
+  /**
+   * out fault interceptors classes
+   * 
+   * @return interceptors classes (will automatically added to factory if not)
+   */
+  @Nonbinding
+  Class<? extends Interceptor<? extends Message>>[] outFaultInterceptors() default {};
 }

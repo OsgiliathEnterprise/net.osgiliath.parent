@@ -22,6 +22,6 @@ package net.osgiliath.cdi.properties.api;
 
 public interface IPropertyProvider {
 
-	public abstract String getInjectedProperty();
+  public abstract String getInjectedProperty();
 
 }

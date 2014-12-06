@@ -39,63 +39,70 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 /**
  * 
- * @author charliemordant
- * Spring data jpa repository declaration
+ * @author charliemordant Spring data jpa repository declaration
  */
 public class HelloObjectJpaRepository extends
-	SimpleJpaRepository<HelloEntity, Long> implements HelloObjectRepository {
-    /**
-     * Blueprint injected entityManager
-     */
-    @Setter
-    private EntityManager entityManager;
-    /**
-     * Ctor
-     * @param domainClass clazz
-     * @param em entity Manager
-     */
-    public HelloObjectJpaRepository(Class<HelloEntity> domainClass,
-	    EntityManager entityManager) {
-	super(domainClass, entityManager);
-	setEntityManager(entityManager);
-    }
-    /**
-     * Query to find elements by message 
-     */
-    @Override
-    public Collection<? extends HelloEntity> findByHelloObjectMessage(
-	    final String message_p) {
-	final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-	final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-	final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
-	cq.select(helloObject);
-	final Predicate where = cb.equal(helloObject.get(HelloEntity_.helloMessage),
-		message_p);
-	cq.where(where);
-	final TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
-	final List<HelloEntity> result = q.getResultList();
-	return result;
-    }
-    /**
-     * Saves an entity
-     */
-    @Override
-    public <S extends HelloEntity> S save(S entity) {
-	return super.save(entity);
-    }
-    /**
-     * gets all entities
-     */
-    @Override
-    public List<HelloEntity> findAll() {
-	return super.findAll();
-    }
-    /**
-     * deletes all entities
-     */
-    @Override
-    public void deleteAll() {
-	super.deleteAll();
-    }
+    SimpleJpaRepository<HelloEntity, Long> implements HelloObjectRepository {
+  /**
+   * Blueprint injected entityManager
+   */
+  @Setter
+  private EntityManager entityManager;
+
+  /**
+   * Ctor
+   * 
+   * @param domainClass
+   *          clazz
+   * @param em
+   *          entity Manager
+   */
+  public HelloObjectJpaRepository(Class<HelloEntity> domainClass,
+      EntityManager entityManager) {
+    super(domainClass, entityManager);
+    setEntityManager(entityManager);
+  }
+
+  /**
+   * Query to find elements by message
+   */
+  @Override
+  public Collection<? extends HelloEntity> findByHelloObjectMessage(
+      final String message_p) {
+    final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
+    final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
+    cq.select(helloObject);
+    final Predicate where = cb.equal(
+        helloObject.get(HelloEntity_.helloMessage), message_p);
+    cq.where(where);
+    final TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
+    final List<HelloEntity> result = q.getResultList();
+    return result;
+  }
+
+  /**
+   * Saves an entity
+   */
+  @Override
+  public <S extends HelloEntity> S save(S entity) {
+    return super.save(entity);
+  }
+
+  /**
+   * gets all entities
+   */
+  @Override
+  public List<HelloEntity> findAll() {
+    return super.findAll();
+  }
+
+  /**
+   * deletes all entities
+   */
+  @Override
+  public void deleteAll() {
+    super.deleteAll();
+  }
 
 }

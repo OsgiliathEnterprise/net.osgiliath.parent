@@ -40,34 +40,34 @@ import com.google.common.collect.Lists;
 @Eager
 @ApplicationScoped
 public class HelloServiceImpl implements HelloServiceJaxRS {
-    /**
-     * Instances registry
-     */
-    private Collection<HelloObject> objects = new ArrayList<HelloObject>();
+  /**
+   * Instances registry
+   */
+  private Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
-    /**
-     * Saves instance
-     */
-    @Override
-    public final void persistHello(final HelloObject helloObject) {
-	this.objects.add(helloObject);
-    }
+  /**
+   * Saves instance
+   */
+  @Override
+  public final void persistHello(final HelloObject helloObject) {
+    this.objects.add(helloObject);
+  }
 
-    /**
-     * Returns instances
-     */
-    @Override
-    public Hellos getHellos() {
+  /**
+   * Returns instances
+   */
+  @Override
+  public Hellos getHellos() {
 
-	return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
-		new Function<HelloObject, String>() {
+    return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
+        new Function<HelloObject, String>() {
 
-		    @Override
-		    public String apply(HelloObject input) {
+          @Override
+          public String apply(HelloObject input) {
 
-			return input.getHelloMessage();
-		    };
-		})));
-    }
+            return input.getHelloMessage();
+          };
+        })));
+  }
 
 }

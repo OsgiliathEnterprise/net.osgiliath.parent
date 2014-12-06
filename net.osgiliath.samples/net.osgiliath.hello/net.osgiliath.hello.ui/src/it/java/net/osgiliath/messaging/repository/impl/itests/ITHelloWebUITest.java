@@ -46,50 +46,48 @@ import org.slf4j.LoggerFactory;
  * 
  */
 public class ITHelloWebUITest {
-	private static Logger LOG = LoggerFactory.getLogger(ITHelloWebUITest.class);
+  private static Logger LOG = LoggerFactory.getLogger(ITHelloWebUITest.class);
 
-	
-	/**
-	 * . A correct {@link AbstractUtilisateur} Name
-	 */
-	private static final String CORRECT_NAME = "CorrectName";
-	@Test
-	public void testSayHello() throws Exception {
-		final WebDriver driver;
-		driver = new FirefoxDriver();
+  /**
+   * . A correct {@link AbstractUtilisateur} Name
+   */
+  private static final String CORRECT_NAME = "CorrectName";
 
-		// Sleep until the elements we want is visible or 5 seconds is over
-		long end = System.currentTimeMillis() + 10000;
-		(new WebDriverWait(driver, 300))
-				.until(new ExpectedCondition<Boolean>() {
-					public Boolean apply(WebDriver d) {
-						driver.get("http://localhost:8181/net.osgiliath.hello.ui");
-						boolean ret = d.getTitle().toLowerCase()
-								.startsWith("hello");
-						if (!ret) {
-							driver.navigate().refresh();
-						}
-						return ret;
-					}
-				});
-		WebElement element;
-		element = driver.findElement(By.id("helloInput"));
-		element.click();
-		element.sendKeys(CORRECT_NAME);
-		element = driver.findElement(By.id("helloButton"));
-		element.click();
-		(new WebDriverWait(driver, 20))
-		.until(new ExpectedCondition<Boolean>() {
-			public Boolean apply(WebDriver d) {
-				
-				Collection<WebElement> cells =  d.findElements(By.xpath("//table//tr//td"));
-				
-				return cells.size() == 1;
-			}
-		});
-		end = System.currentTimeMillis() + 10000;
-		
-		driver.close();
-	}
+  @Test
+  public void testSayHello() throws Exception {
+    final WebDriver driver;
+    driver = new FirefoxDriver();
+
+    // Sleep until the elements we want is visible or 5 seconds is over
+    long end = System.currentTimeMillis() + 10000;
+    (new WebDriverWait(driver, 300)).until(new ExpectedCondition<Boolean>() {
+      public Boolean apply(WebDriver d) {
+        driver.get("http://localhost:8181/net.osgiliath.hello.ui");
+        boolean ret = d.getTitle().toLowerCase().startsWith("hello");
+        if (!ret) {
+          driver.navigate().refresh();
+        }
+        return ret;
+      }
+    });
+    WebElement element;
+    element = driver.findElement(By.id("helloInput"));
+    element.click();
+    element.sendKeys(CORRECT_NAME);
+    element = driver.findElement(By.id("helloButton"));
+    element.click();
+    (new WebDriverWait(driver, 20)).until(new ExpectedCondition<Boolean>() {
+      public Boolean apply(WebDriver d) {
+
+        Collection<WebElement> cells = d.findElements(By
+            .xpath("//table//tr//td"));
+
+        return cells.size() == 1;
+      }
+    });
+    end = System.currentTimeMillis() + 10000;
+
+    driver.close();
+  }
 
 }

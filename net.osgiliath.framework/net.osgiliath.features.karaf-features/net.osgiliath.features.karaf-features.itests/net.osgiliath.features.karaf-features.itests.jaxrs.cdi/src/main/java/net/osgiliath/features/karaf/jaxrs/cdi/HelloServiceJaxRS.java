@@ -20,7 +20,6 @@ package net.osgiliath.features.karaf.jaxrs.cdi;
  * #L%
  */
 
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -37,25 +36,26 @@ import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
  * @author charliemordant REST service definition
  */
 @Path("/hello")
-public interface HelloServiceJaxRS  {
-    /**
-     * Registering instance
-     * 
-     * @param helloObject
-     *            instance
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_XML)
-    void persistHello(HelloObject helloObject);
+public interface HelloServiceJaxRS {
+  /**
+   * Registering instance
+   * 
+   * @param helloObject
+   *          instance
+   */
+  @POST
+  @Consumes(MediaType.APPLICATION_XML)
+  void persistHello(HelloObject helloObject);
 
-    /**
-     * retrieving instances
-     * 
-     * @return instances
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    Hellos getHellos();
-    @DELETE
-    void deleteHellos();
+  /**
+   * retrieving instances
+   * 
+   * @return instances
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_XML)
+  Hellos getHellos();
+
+  @DELETE
+  void deleteHellos();
 }

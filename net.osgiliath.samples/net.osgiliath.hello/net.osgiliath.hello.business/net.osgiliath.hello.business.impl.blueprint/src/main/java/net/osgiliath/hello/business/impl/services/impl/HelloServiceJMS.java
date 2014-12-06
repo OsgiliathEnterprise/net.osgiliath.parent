@@ -55,112 +55,109 @@ import com.google.common.collect.Lists;
  */
 @Slf4j
 public class HelloServiceJMS implements HelloService, MessageListener {
-	/**
-	 * Database persistence repository
-	 */
-	@Setter
-	private HelloObjectRepository helloObjectRepository;
-	/**
-	 * Hibernate validator
-	 */
-	@Setter
-	private Validator validator;
-	/**
-	 * JMS producer
-	 */
-	@Setter
-	private JmsOperations template;
+  /**
+   * Database persistence repository
+   */
+  @Setter
+  private HelloObjectRepository helloObjectRepository;
+  /**
+   * Hibernate validator
+   */
+  @Setter
+  private Validator validator;
+  /**
+   * JMS producer
+   */
+  @Setter
+  private JmsOperations template;
 
-	/**
-	 * JMS consumer
-	 * 
-	 * @throws JMSException
-	 */
-	@Override
-	public void persistHello(HelloEntity hello) {
+  /**
+   * JMS consumer
+   * 
+   * @throws JMSException
+   */
+  @Override
+  public void persistHello(HelloEntity hello) {
 
-		
-			this.log.error("****************** Save on JMS Service **********************");
-			this.log.info("persisting new message with jms: "
-					+ hello.getHelloMessage());
-			final Set<ConstraintViolation<HelloEntity>> validationResults = validator
-					.validate(hello);
-			final StringBuilder errors = new StringBuilder("");
+    this.log
+        .error("****************** Save on JMS Service **********************");
+    this.log
+        .info("persisting new message with jms: " + hello.getHelloMessage());
+    final Set<ConstraintViolation<HelloEntity>> validationResults = validator
+        .validate(hello);
+    final StringBuilder errors = new StringBuilder("");
 
-			if (!validationResults.isEmpty()) {
-				for (ConstraintViolation<HelloEntity> violation : validationResults) {
-					this.log.info("subscription error, validating user:"
-							+ violation.getMessage());
-					errors.append(violation.getPropertyPath())
-							.append(": ")
-							.append(violation.getMessage().replaceAll("\"", ""))
-							.append(";").append(System.lineSeparator());
-				}
-				this.template.send("helloServiceQueueErrors", new MessageCreator() {
-					public Message createMessage(final Session session)
-							throws JMSException {
-						return session.createTextMessage(errors.toString());
-					}
-				});
-			}
-			this.helloObjectRepository.save(hello);
-			this.template.send("helloServiceQueueOut", new MessageCreator() {
-				public Message createMessage(final Session session)
-						throws JMSException {
-					return session.createObjectMessage(getHellos());
-				}
-			});
-		
-	}
+    if (!validationResults.isEmpty()) {
+      for (ConstraintViolation<HelloEntity> violation : validationResults) {
+        this.log.info("subscription error, validating user:"
+            + violation.getMessage());
+        errors.append(violation.getPropertyPath()).append(": ")
+            .append(violation.getMessage().replaceAll("\"", "")).append(";")
+            .append(System.lineSeparator());
+      }
+      this.template.send("helloServiceQueueErrors", new MessageCreator() {
+        public Message createMessage(final Session session) throws JMSException {
+          return session.createTextMessage(errors.toString());
+        }
+      });
+    }
+    this.helloObjectRepository.save(hello);
+    this.template.send("helloServiceQueueOut", new MessageCreator() {
+      public Message createMessage(final Session session) throws JMSException {
+        return session.createObjectMessage(getHellos());
+      }
+    });
 
-	/**
-	 * Returns all entities
-	 */
-	@Override
-	public Hellos getHellos() {
+  }
 
-		final Collection<HelloEntity> helloObjects = this.helloObjectRepository
-				.findAll();
-		if (helloObjects.isEmpty()) {
-			throw new UnsupportedOperationException(
-					"You could not call this method when the list is empty");
-		}
-		return Hellos
-				.builder()
-				.helloCollection(
-						Lists.newArrayList(Iterables.transform(helloObjects,
-								helloObjectToStringFunction))).build();
-	}
+  /**
+   * Returns all entities
+   */
+  @Override
+  public Hellos getHellos() {
 
-	/**
-	 * Function that transforms entities to string
-	 */
-	private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+    final Collection<HelloEntity> helloObjects = this.helloObjectRepository
+        .findAll();
+    if (helloObjects.isEmpty()) {
+      throw new UnsupportedOperationException(
+          "You could not call this method when the list is empty");
+    }
+    return Hellos
+        .builder()
+        .helloCollection(
+            Lists.newArrayList(Iterables.transform(helloObjects,
+                helloObjectToStringFunction))).build();
+  }
 
-		@Override
-		public String apply(HelloEntity entity) {
-			return entity.getHelloMessage();
-		}
-	};
+  /**
+   * Function that transforms entities to string
+   */
+  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
-	/**
-	 * Deletes all entities
-	 */
-	@Override
-	public void deleteAll() {
-		this.helloObjectRepository.deleteAll();
+    @Override
+    public String apply(HelloEntity entity) {
+      return entity.getHelloMessage();
+    }
+  };
 
-	}
+  /**
+   * Deletes all entities
+   */
+  @Override
+  public void deleteAll() {
+    this.helloObjectRepository.deleteAll();
 
-	@Override
-	public void onMessage(Message message) {
-		try {
-			HelloEntity helloObject_p = (HelloEntity) ((ObjectMessage) message).getObject();
-			persistHello(helloObject_p);
-		} catch (JMSException e) {
-			log.error("error receiving JMS message", e);
-		}
+  }
 
-		
-	}
+  @Override
+  public void onMessage(Message message) {
+    try {
+      HelloEntity helloObject_p = (HelloEntity) ((ObjectMessage) message)
+          .getObject();
+      persistHello(helloObject_p);
+    } catch (JMSException e) {
+      log.error("error receiving JMS message", e);
+    }
+
+  }
 }

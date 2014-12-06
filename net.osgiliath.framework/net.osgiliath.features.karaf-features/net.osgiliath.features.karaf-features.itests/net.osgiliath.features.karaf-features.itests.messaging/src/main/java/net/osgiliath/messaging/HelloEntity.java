@@ -26,28 +26,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
+
 /**
  * 
- * @author charliemordant
- * sample entity
+ * @author charliemordant sample entity
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class HelloEntity implements Serializable {
-    /**
-	 * serial
-	 */
-    private static final long serialVersionUID = -559379928931329555L;
-    /**
-     * Id
-     */
-    private Long entityId;
-    /**
-     * message
-     */
-    private String helloMessage;
+  /**
+   * serial
+   */
+  private static final long serialVersionUID = -559379928931329555L;
+  /**
+   * Id
+   */
+  private Long entityId;
+  /**
+   * message
+   */
+  private String helloMessage;
 
-   
 }

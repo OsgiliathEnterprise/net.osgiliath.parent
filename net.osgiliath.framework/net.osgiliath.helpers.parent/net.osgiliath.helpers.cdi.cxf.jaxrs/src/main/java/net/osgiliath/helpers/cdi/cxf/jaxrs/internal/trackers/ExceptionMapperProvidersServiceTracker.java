@@ -30,74 +30,85 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
+
 /**
  * 
- * @author charliemordant
- * Exception mappers OSGI service trackers
+ * @author charliemordant Exception mappers OSGI service trackers
  */
 public class ExceptionMapperProvidersServiceTracker implements
-	ServiceTrackerCustomizer {
-    /**
-     * The bundle context
-     */
-    private final BundleContext context;
-    /**
-     * Ctor
-     * @param context the bundle context
-     */
-    public ExceptionMapperProvidersServiceTracker(BundleContext context) {
-	this.context = context;
-    }
-    /**
-     * Service tracker added service
-     */
-    // callback method if MyClass service object is registered
-    public Object addingService(final ServiceReference reference) {
-	final Object serviceObject = this.context.getService(reference);
+    ServiceTrackerCustomizer {
+  /**
+   * The bundle context
+   */
+  private final BundleContext context;
 
-	if (serviceObject instanceof ExceptionMapper<?>) {
-	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
-		    .add((ExceptionMapper) serviceObject);
+  /**
+   * Ctor
+   * 
+   * @param context
+   *          the bundle context
+   */
+  public ExceptionMapperProvidersServiceTracker(BundleContext context) {
+    this.context = context;
+  }
 
-	}
+  /**
+   * Service tracker added service
+   */
+  // callback method if MyClass service object is registered
+  public Object addingService(final ServiceReference reference) {
+    final Object serviceObject = this.context.getService(reference);
 
-	return reference;
-    }
-    /**
-     * remove service
-     */
-    // callback if necessary class is deregistred
-    public void removedService(final ServiceReference reference, final Object service) {
-	final Object serviceObject = this.context.getService(reference);
-	if (serviceObject instanceof ExceptionMapper<?>) {
-	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
-		    .remove((ExceptionMapper) serviceObject);
-
-	}
-    }
-    /**
-     * Initial call to tracker
-     * @param context bundle context
-     * @throws InvalidSyntaxException parsing error
-     */
-    public static void handleInitialReferences(final BundleContext context)
-	    throws InvalidSyntaxException {
-	final Collection<ServiceReference<ExceptionMapper>> refs = context
-		.getServiceReferences(ExceptionMapper.class, null);
-	for (ServiceReference<ExceptionMapper> reference : refs) {
-	    final ExceptionMapper svc = context.getService(reference);
-	    ProvidersServiceRegistry.getInstance().getExceptionMappers()
-		    .add(svc);
-	}
-    }
-    /**
-     * Modification of a service
-     */
-    @Override
-    public void modifiedService(final ServiceReference reference, final Object service) {
-	this.removedService(reference, service);
-	this.addingService(reference);
+    if (serviceObject instanceof ExceptionMapper<?>) {
+      ProvidersServiceRegistry.getInstance().getExceptionMappers()
+          .add((ExceptionMapper) serviceObject);
 
     }
+
+    return reference;
+  }
+
+  /**
+   * remove service
+   */
+  // callback if necessary class is deregistred
+  public void removedService(final ServiceReference reference,
+      final Object service) {
+    final Object serviceObject = this.context.getService(reference);
+    if (serviceObject instanceof ExceptionMapper<?>) {
+      ProvidersServiceRegistry.getInstance().getExceptionMappers()
+          .remove((ExceptionMapper) serviceObject);
+
+    }
+  }
+
+  /**
+   * Initial call to tracker
+   * 
+   * @param context
+   *          bundle context
+   * @throws InvalidSyntaxException
+   *           parsing error
+   */
+  public static void handleInitialReferences(final BundleContext context)
+      throws InvalidSyntaxException {
+    final Collection<ServiceReference<ExceptionMapper>> refs = context
+        .getServiceReferences(ExceptionMapper.class, null);
+    for (ServiceReference<ExceptionMapper> reference : refs) {
+      final ExceptionMapper svc = context.getService(reference);
+      ProvidersServiceRegistry.getInstance().getExceptionMappers().add(svc);
+    }
+  }
+
+  /**
+   * Modification of a service
+   */
+  @Override
+  public void modifiedService(final ServiceReference reference,
+      final Object service) {
+    this.removedService(reference, service);
+    this.addingService(reference);
+
+  }
 
 }

@@ -31,33 +31,32 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
+
 /**
  * 
- * @author charliemordant
- * Sample entity
+ * @author charliemordant Sample entity
  */
 @Data
 @Builder
-//builder pattern
+// builder pattern
 @NoArgsConstructor
-//constructor
+// constructor
 @AllArgsConstructor
 @Entity
 public class HelloEntity implements Serializable {
-    /**
-	 * Serial
-	 */
-    private static final transient long serialVersionUID = -4563351879876924302L;
-    /**
-     * Id
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long entityId;
-    /**
-     * message
-     */
-    private String helloMessage;
-
+  /**
+   * Serial
+   */
+  private static final transient long serialVersionUID = -4563351879876924302L;
+  /**
+   * Id
+   */
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  protected Long entityId;
+  /**
+   * message
+   */
+  private String helloMessage;
 
 }

@@ -31,29 +31,30 @@ import org.apache.cxf.interceptor.Interceptor;
  * @author charliemordant JaxRS endpoints registry
  */
 public enum InterceptorsServiceRegistry {
-	/**
-	 * Singleton instance
-	 */
-	INSTANCE;
-	/**
-	 * Interceptor registry
-	 */
-	private Collection<Interceptor> interceptors;
+  /**
+   * Singleton instance
+   */
+  INSTANCE;
+  /**
+   * Interceptor registry
+   */
+  private Collection<Interceptor> interceptors;
 
-	/**
-	 * Default constructor
-	 */
-	private InterceptorsServiceRegistry() {
+  /**
+   * Default constructor
+   */
+  private InterceptorsServiceRegistry() {
 
-		interceptors = Sets.newHashSet();
-	}
-	/**
-	 * Getter
-	 * 
-	 * @return interceptors
-	 */
-	public Collection<Interceptor> getInterceptors() {
-		return this.interceptors;
-	}
+    interceptors = Sets.newHashSet();
+  }
+
+  /**
+   * Getter
+   * 
+   * @return interceptors
+   */
+  public Collection<Interceptor> getInterceptors() {
+    return this.interceptors;
+  }
 
 }

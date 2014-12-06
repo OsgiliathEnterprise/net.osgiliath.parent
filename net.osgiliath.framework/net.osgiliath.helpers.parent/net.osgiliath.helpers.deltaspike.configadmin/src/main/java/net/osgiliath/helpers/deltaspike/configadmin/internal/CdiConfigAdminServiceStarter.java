@@ -31,33 +31,31 @@ import org.osgi.framework.BundleContext;
  */
 @Slf4j
 public class CdiConfigAdminServiceStarter {
-	/**
-	 * Configadmin service tracker
-	 */
-	@Setter
-	private BundleContext context;
+  /**
+   * Configadmin service tracker
+   */
+  @Setter
+  private BundleContext context;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
-	 * )
-	 */
-	public void start(BundleContext bundleContext) throws Exception {
-		ConfigAdminTracker.getInstance(context);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
+   */
+  public void start(BundleContext bundleContext) throws Exception {
+    ConfigAdminTracker.getInstance(context);
 
-	}
+  }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
-	 * )
-	 */
-	public void stop(BundleContext context) throws Exception {
-		ConfigAdminTracker.stop();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
+   */
+  public void stop(BundleContext context) throws Exception {
+    ConfigAdminTracker.stop();
+  }
 
 }

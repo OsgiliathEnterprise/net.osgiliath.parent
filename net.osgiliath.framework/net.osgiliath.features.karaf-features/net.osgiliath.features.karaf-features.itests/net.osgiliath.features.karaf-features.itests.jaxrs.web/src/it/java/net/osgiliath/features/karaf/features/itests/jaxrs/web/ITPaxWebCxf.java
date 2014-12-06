@@ -36,7 +36,6 @@ import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 
-
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,80 +50,79 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * 
- * @author charliemordant
- * REST service tests
+ * @author charliemordant REST service tests
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
-    /**
-     * Logger
-     */
-    private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
+  /**
+   * Logger
+   */
+  private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 
-    // Exported service via blueprint.xml
-    @Inject
-    @Filter(timeout = 400000)
-    private BootFinished bootFinished;
-    // exported REST adress
-    private static String helloServiceBaseUrl = "http://localhost:8181/helloService";
+  // Exported service via blueprint.xml
+  @Inject
+  @Filter(timeout = 400000)
+  private BootFinished bootFinished;
+  // exported REST adress
+  private static String helloServiceBaseUrl = "http://localhost:8181/helloService";
 
-    // probe
-    @ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfiguration.class);
-	builder.setHeader(Constants.EXPORT_PACKAGE,
-		"net.osgiliath.features.karaf.features.itests.jaxrs.cdi");
-	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-	
-	return builder;
-    }
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.features.karaf.features.itests.jaxrs.cdi");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
 
-    @Test
-    public void testSayHello() throws Exception {
-	LOG.trace("************ start testSayHello **********************");
-	Client client = ClientBuilder.newClient();
+    return builder;
+  }
 
-	WebTarget target = client.target(helloServiceBaseUrl);
-	target = target.path("hello");
-	Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-	HelloObject entity = HelloObject.builder().helloMessage("John").build();
+  @Test
+  public void testSayHello() throws Exception {
+    LOG.trace("************ start testSayHello **********************");
+    Client client = ClientBuilder.newClient();
 
-	builder.post(Entity.xml(entity));
-	Invocation.Builder respbuilder = target
-		.request(MediaType.APPLICATION_XML);
+    WebTarget target = client.target(helloServiceBaseUrl);
+    target = target.path("hello");
+    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    HelloObject entity = HelloObject.builder().helloMessage("John").build();
 
-	Hellos hellos = respbuilder.get(Hellos.class);
+    builder.post(Entity.xml(entity));
+    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
 
-	respbuilder.delete();
-	client.close();
-	assertEquals(1, hellos.getHelloCollection().size());
-	LOG.trace("************ end testSayHello **********************");
+    Hellos hellos = respbuilder.get(Hellos.class);
 
-    }
+    respbuilder.delete();
+    client.close();
+    assertEquals(1, hellos.getHelloCollection().size());
+    LOG.trace("************ end testSayHello **********************");
 
-    @Override
-    protected Option featureToTest() {
+  }
 
-	return features(
-		maven().artifactId(
-			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId("net.osgiliath.framework").type("xml")
-			.classifier("features").versionAsInProject(),
-		"osgiliath-itests-jaxrs-web");
-    }
+  @Override
+  protected Option featureToTest() {
 
-    static {
-	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId("net.osgiliath.framework").type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-jaxrs-web");
+  }
 
-    }
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-    @Configuration
-    public Option[] config() {
-	return createConfig();
-    }
+  }
+
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 }

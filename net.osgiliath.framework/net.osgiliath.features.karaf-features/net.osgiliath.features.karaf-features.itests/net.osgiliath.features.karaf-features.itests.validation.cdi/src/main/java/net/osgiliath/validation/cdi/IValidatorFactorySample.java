@@ -25,14 +25,14 @@ import javax.validation.executable.ValidateOnExecution;
  */
 /**
  * 
- * @author charliemordant
- * Validation service interface
+ * @author charliemordant Validation service interface
  */
 public interface IValidatorFactorySample {
-    /**
-     * must throw exception
-     * @param object
-     */
-    @ValidateOnExecution
-    void nullMessageValidation(@NotNull @Valid HelloObject object);
+  /**
+   * must throw exception
+   * 
+   * @param object
+   */
+  @ValidateOnExecution
+  void nullMessageValidation(@NotNull @Valid HelloObject object);
 }

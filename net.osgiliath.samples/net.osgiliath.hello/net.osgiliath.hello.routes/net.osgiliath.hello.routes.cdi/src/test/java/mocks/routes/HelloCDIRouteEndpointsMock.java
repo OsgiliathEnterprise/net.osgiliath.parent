@@ -31,20 +31,20 @@ import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spi.DataFormat;
 
 public class HelloCDIRouteEndpointsMock extends RouteBuilder {
-    // TODO Mock routing, you can also use integration test like in the business
-    // module
-    @Override
-    public void configure() throws Exception {
-	JAXBContext ctx = JAXBContext.newInstance(new Class[] {
-		HelloEntity.class, Hellos.class });
-	// initialize jaxbformat from jaxbcontext
-	DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
-	from("{{net.osgiliath.hello.business.url.restservice}}/hello").choice()
-		.when(header(Exchange.HTTP_METHOD).isEqualTo(constant("GET")))
-		.beanRef("helloService", "getHellos").marshal(jaxBDataFormat)
-		.when(header(Exchange.HTTP_METHOD).isEqualTo(constant("POST")))
-		.unmarshal(jaxBDataFormat)
-		.beanRef("helloService", "persistHello(${body})").endChoice();
-    }
+  // TODO Mock routing, you can also use integration test like in the business
+  // module
+  @Override
+  public void configure() throws Exception {
+    JAXBContext ctx = JAXBContext.newInstance(new Class[] { HelloEntity.class,
+        Hellos.class });
+    // initialize jaxbformat from jaxbcontext
+    DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
+    from("{{net.osgiliath.hello.business.url.restservice}}/hello").choice()
+        .when(header(Exchange.HTTP_METHOD).isEqualTo(constant("GET")))
+        .beanRef("helloService", "getHellos").marshal(jaxBDataFormat)
+        .when(header(Exchange.HTTP_METHOD).isEqualTo(constant("POST")))
+        .unmarshal(jaxBDataFormat)
+        .beanRef("helloService", "persistHello(${body})").endChoice();
+  }
 
 }

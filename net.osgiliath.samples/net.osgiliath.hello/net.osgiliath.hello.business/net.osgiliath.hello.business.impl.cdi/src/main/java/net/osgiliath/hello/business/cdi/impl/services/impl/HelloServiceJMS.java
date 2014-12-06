@@ -53,62 +53,62 @@ import com.google.common.collect.Lists;
 @Slf4j
 @ContextName
 public class HelloServiceJMS extends RouteBuilder implements HelloService {
-    @Inject
-    @OsgiService
-    private HelloObjectRepository helloObjectRepository;
-    @Inject
-    @Uri("jms:queue:helloServiceQueueOut")
-    private ProducerTemplate producer;
+  @Inject
+  @OsgiService
+  private HelloObjectRepository helloObjectRepository;
+  @Inject
+  @Uri("jms:queue:helloServiceQueueOut")
+  private ProducerTemplate producer;
+
+  @Override
+  public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
+    log.info("****************** Save on JMS Service **********************");
+    log.info("persisting new message with jms: "
+        + helloObject_p.getHelloMessage());
+    helloObjectRepository.save(helloObject_p);
+    producer.sendBody(getHellos());
+  }
+
+  @Override
+  public Hellos getHellos() {
+
+    Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+    if (helloObjects.isEmpty()) {
+      throw new UnsupportedOperationException(
+          "You could not call this method when the list is empty");
+    }
+    return Hellos
+        .builder()
+        .helloCollection(
+            Lists.newArrayList(Iterables.transform(helloObjects,
+                helloObjectToStringFunction))).build();
+  }
+
+  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
-    public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
-	log.info("****************** Save on JMS Service **********************");
-	log.info("persisting new message with jms: "
-		+ helloObject_p.getHelloMessage());
-	helloObjectRepository.save(helloObject_p);
-	producer.sendBody(getHellos());
+    public String apply(HelloEntity arg0) {
+      return arg0.getHelloMessage();
     }
+  };
 
-    @Override
-    public Hellos getHellos() {
+  @Override
+  public void deleteAll() {
+    helloObjectRepository.deleteAll();
 
-	Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
-	if (helloObjects.isEmpty()) {
-		throw new UnsupportedOperationException(
-		    "You could not call this method when the list is empty");
-	}
-	return Hellos
-		.builder()
-		.helloCollection(
-			Lists.newArrayList(Iterables.transform(helloObjects,
-				helloObjectToStringFunction))).build();
-    }
+  }
 
-    private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  @Override
+  public void configure() throws Exception {
+    from("jms:queue:helloServiceQueueIn").process(new Processor() {
 
-	@Override
-	public String apply(HelloEntity arg0) {
-	    return arg0.getHelloMessage();
-	}
-    };
+      @Override
+      public void process(Exchange exchange) throws Exception {
+        persistHello((HelloEntity) exchange.getIn().getBody());
 
-    @Override
-    public void deleteAll() {
-	helloObjectRepository.deleteAll();
+      }
 
-    }
+    });
 
-    @Override
-    public void configure() throws Exception {
-	from("jms:queue:helloServiceQueueIn").process(new Processor() {
-
-	    @Override
-	    public void process(Exchange exchange) throws Exception {
-		persistHello((HelloEntity) exchange.getIn().getBody());
-
-	    }
-
-	});
-
-    }
+  }
 }

@@ -31,10 +31,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
+
 /**
  * 
- * @author charliemordant
- * Message collection
+ * @author charliemordant Message collection
  */
 @Data
 @Builder
@@ -43,13 +43,13 @@ import lombok.experimental.Builder;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Hellos implements Serializable {
-    /**
-	 * Serial
-	 */
-    private static final long serialVersionUID = -5352246104371387691L;
-    
-    /**
-     * Element collection
-     */
-    private List<String> helloCollection;
+  /**
+   * Serial
+   */
+  private static final long serialVersionUID = -5352246104371387691L;
+
+  /**
+   * Element collection
+   */
+  private List<String> helloCollection;
 }

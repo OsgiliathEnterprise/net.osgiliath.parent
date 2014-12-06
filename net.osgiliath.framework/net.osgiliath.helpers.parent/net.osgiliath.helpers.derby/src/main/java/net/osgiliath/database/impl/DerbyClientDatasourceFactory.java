@@ -44,110 +44,107 @@ import org.osgi.service.jdbc.DataSourceFactory;
 @Slf4j
 public class DerbyClientDatasourceFactory implements DataSourceFactory {
 
-	@Override
-	public DataSource createDataSource(Properties props) throws SQLException {
-		ClientDataSource40 ds = new ClientDataSource40();
-		setProperties(ds, props);
-		return ds;
-	}
+  @Override
+  public DataSource createDataSource(Properties props) throws SQLException {
+    ClientDataSource40 ds = new ClientDataSource40();
+    setProperties(ds, props);
+    return ds;
+  }
 
-	private void setProperties(ClientDataSource ds, Properties properties)
-			throws SQLException {
-		Properties props = (Properties) properties.clone();
-		String doStartServer = (String) props
-				.remove(ClientConnectionConstant.AUTO_START_SERVER);
-		if (doStartServer != null) {
-			if (Boolean.parseBoolean(doStartServer)) {
-				doStartServer(props);
-			}
-		}
-		String databaseName = (String) props
-				.remove(DataSourceFactory.JDBC_DATABASE_NAME);
-		if (databaseName == null) {
-			throw new SQLException("missing required property "
-					+ DataSourceFactory.JDBC_DATABASE_NAME);
-		}
-		ds.setDatabaseName(databaseName);
+  private void setProperties(ClientDataSource ds, Properties properties)
+      throws SQLException {
+    Properties props = (Properties) properties.clone();
+    String doStartServer = (String) props
+        .remove(ClientConnectionConstant.AUTO_START_SERVER);
+    if (doStartServer != null) {
+      if (Boolean.parseBoolean(doStartServer)) {
+        doStartServer(props);
+      }
+    }
+    String databaseName = (String) props
+        .remove(DataSourceFactory.JDBC_DATABASE_NAME);
+    if (databaseName == null) {
+      throw new SQLException("missing required property "
+          + DataSourceFactory.JDBC_DATABASE_NAME);
+    }
+    ds.setDatabaseName(databaseName);
 
-		String password = (String) props
-				.remove(DataSourceFactory.JDBC_PASSWORD);
-		ds.setPassword(password);
+    String password = (String) props.remove(DataSourceFactory.JDBC_PASSWORD);
+    ds.setPassword(password);
 
-		String user = (String) props.remove(DataSourceFactory.JDBC_USER);
-		ds.setUser(user);
+    String user = (String) props.remove(DataSourceFactory.JDBC_USER);
+    ds.setUser(user);
 
-		String createDatabase = (String) props
-				.remove(ClientConnectionConstant.CREATE_DATABASE);
-		ds.setCreateDatabase(createDatabase);
-		
-		String serverName = (String) props
-				.remove(DataSourceFactory.JDBC_SERVER_NAME);
-		ds.setServerName(serverName);
-		String portNumber = (String) props
-				.remove(DataSourceFactory.JDBC_PORT_NUMBER);
-		if (portNumber != null) {
-			ds.setPortNumber(Integer.parseInt(portNumber));
-		} else {
-			ds.setPortNumber(1527);
-		}
-	}
+    String createDatabase = (String) props
+        .remove(ClientConnectionConstant.CREATE_DATABASE);
+    ds.setCreateDatabase(createDatabase);
 
-	private void doStartServer(Properties properties) {
-		String host = (String) properties
-				.get(DataSourceFactory.JDBC_SERVER_NAME);
-		if (host == null) {
-			host = "localhost";
-		}
-		String portNumberS = (String) properties
-				.get(DataSourceFactory.JDBC_PORT_NUMBER);
-		int portNumber = portNumberS == null ? 1527 : Integer
-				.parseInt(portNumberS);
-		boolean alreadyStarted = false;
-		if (Activator.getInstance().getStartedServers().containsKey(host)) {
-			alreadyStarted = Activator.getInstance().getStartedServers()
-					.get(host).contains(portNumber);
-		}
-		if (!alreadyStarted) {
-			try {
-				InetAddress adress = InetAddress.getByName(host);
-				NetworkServerControl control = new NetworkServerControl(adress, portNumber);
-				String writer = (String) properties
-						.remove(ClientConnectionConstant.LOG_FILE);
-				if (writer == null) {
-					writer = "derbyServer.log";
-				}
-				PrintWriter printWriter = new PrintWriter(writer);
-				control.start(printWriter);
-				Activator.getInstance().addNetworkControl(host, portNumber, control);
-			} catch ( Exception e) {
-				log.error("Error creating host adress", e);
-			}
-		}
+    String serverName = (String) props
+        .remove(DataSourceFactory.JDBC_SERVER_NAME);
+    ds.setServerName(serverName);
+    String portNumber = (String) props
+        .remove(DataSourceFactory.JDBC_PORT_NUMBER);
+    if (portNumber != null) {
+      ds.setPortNumber(Integer.parseInt(portNumber));
+    } else {
+      ds.setPortNumber(1527);
+    }
+  }
 
-	}
+  private void doStartServer(Properties properties) {
+    String host = (String) properties.get(DataSourceFactory.JDBC_SERVER_NAME);
+    if (host == null) {
+      host = "localhost";
+    }
+    String portNumberS = (String) properties
+        .get(DataSourceFactory.JDBC_PORT_NUMBER);
+    int portNumber = portNumberS == null ? 1527 : Integer.parseInt(portNumberS);
+    boolean alreadyStarted = false;
+    if (Activator.getInstance().getStartedServers().containsKey(host)) {
+      alreadyStarted = Activator.getInstance().getStartedServers().get(host)
+          .contains(portNumber);
+    }
+    if (!alreadyStarted) {
+      try {
+        InetAddress adress = InetAddress.getByName(host);
+        NetworkServerControl control = new NetworkServerControl(adress,
+            portNumber);
+        String writer = (String) properties
+            .remove(ClientConnectionConstant.LOG_FILE);
+        if (writer == null) {
+          writer = "derbyServer.log";
+        }
+        PrintWriter printWriter = new PrintWriter(writer);
+        control.start(printWriter);
+        Activator.getInstance().addNetworkControl(host, portNumber, control);
+      } catch (Exception e) {
+        log.error("Error creating host adress", e);
+      }
+    }
 
-	@Override
-	public ConnectionPoolDataSource createConnectionPoolDataSource(
-			Properties props) throws SQLException {
-		ClientConnectionPoolDataSource40 ds = new ClientConnectionPoolDataSource40();
-		setProperties(ds, props);
-		
-		return ds;
-	}
+  }
 
-	@Override
-	public XADataSource createXADataSource(Properties props)
-			throws SQLException {
-		ClientXADataSource40 ds = new ClientXADataSource40();
-		setProperties(ds, props);
-		return ds;
-	}
+  @Override
+  public ConnectionPoolDataSource createConnectionPoolDataSource(
+      Properties props) throws SQLException {
+    ClientConnectionPoolDataSource40 ds = new ClientConnectionPoolDataSource40();
+    setProperties(ds, props);
 
-	@Override
-	public Driver createDriver(Properties props) throws SQLException {
-		ClientDriver40 driver = new ClientDriver40();
-		
-		return driver;
-	}
+    return ds;
+  }
+
+  @Override
+  public XADataSource createXADataSource(Properties props) throws SQLException {
+    ClientXADataSource40 ds = new ClientXADataSource40();
+    setProperties(ds, props);
+    return ds;
+  }
+
+  @Override
+  public Driver createDriver(Properties props) throws SQLException {
+    ClientDriver40 driver = new ClientDriver40();
+
+    return driver;
+  }
 
 }

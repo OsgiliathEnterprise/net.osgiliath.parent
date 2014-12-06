@@ -21,12 +21,12 @@ package helpers.cxf.exception.handling;
  */
 
 public class ExceptionMappingConstants {
-	/**
-	 * The exception body http header
-	 */
-	public static final String EXCEPTION_BODY_HEADER = "ExceptionBody";
-	/**
-	 * The exception message property
-	 */
-	public static final String EXCEPTION_MESSAGE = "message";
+  /**
+   * The exception body http header
+   */
+  public static final String EXCEPTION_BODY_HEADER = "ExceptionBody";
+  /**
+   * The exception message property
+   */
+  public static final String EXCEPTION_MESSAGE = "message";
 }

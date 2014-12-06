@@ -29,25 +29,29 @@ import javax.ws.rs.core.MediaType;
 
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.Hellos;
+
 /**
  * 
- * @author charliemordant
- * REST service export
+ * @author charliemordant REST service export
  */
 @Path("/hello")
 public interface HelloServiceJaxRS {
-    /**
-     * register instance
-     * @param helloObject instance
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_XML)
-    void persistHello(HelloObject helloObject);
-    /**
-     * get all
-     * @return registered instances
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    Hellos getHellos();
+  /**
+   * register instance
+   * 
+   * @param helloObject
+   *          instance
+   */
+  @POST
+  @Consumes(MediaType.APPLICATION_XML)
+  void persistHello(HelloObject helloObject);
+
+  /**
+   * get all
+   * 
+   * @return registered instances
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_XML)
+  Hellos getHellos();
 }

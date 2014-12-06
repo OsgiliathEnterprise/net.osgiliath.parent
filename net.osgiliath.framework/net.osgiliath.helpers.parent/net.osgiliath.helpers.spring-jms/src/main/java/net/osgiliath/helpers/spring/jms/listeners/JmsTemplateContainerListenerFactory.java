@@ -26,11 +26,10 @@ import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 public interface JmsTemplateContainerListenerFactory {
 
-	public abstract DefaultMessageListenerContainer create(boolean transacted,
-			String destinationName, MessageListener messageListener);
+  public abstract DefaultMessageListenerContainer create(boolean transacted,
+      String destinationName, MessageListener messageListener);
 
-	public abstract DefaultMessageListenerContainer create(boolean transacted,
-			String destinationName, MessageListener messageListener,
-			boolean isPubSub);
+  public abstract DefaultMessageListenerContainer create(boolean transacted,
+      String destinationName, MessageListener messageListener, boolean isPubSub);
 
 }

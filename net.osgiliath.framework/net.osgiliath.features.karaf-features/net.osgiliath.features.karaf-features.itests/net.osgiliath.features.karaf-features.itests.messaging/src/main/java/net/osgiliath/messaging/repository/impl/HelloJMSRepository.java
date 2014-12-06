@@ -45,75 +45,74 @@ import org.springframework.jms.core.MessageCreator;
  */
 @Slf4j
 public class HelloJMSRepository implements HelloRepository, MessageListener {
-	/**
-	 * JMS producer
-	 */
-	// @Produce(uri = "jms:queue:helloServiceQueueOut")
-	@Setter
-	private JmsOperations producer;
-	
-	
-	/**
-	 * instances registry
-	 */
-	private List<HelloEntity> entities = new ArrayList<HelloEntity>();
+  /**
+   * JMS producer
+   */
+  // @Produce(uri = "jms:queue:helloServiceQueueOut")
+  @Setter
+  private JmsOperations producer;
 
-	/**
-	 * finds entities by message
-	 */
-	@Override
-	public final Collection<? extends HelloEntity> findByHelloObjectMessage(
-			/*@Body*/ final String message_p) {
-		final List<HelloEntity> ret = new ArrayList<HelloEntity>();
-		for (HelloEntity ent : this.entities) {
-			if (ent.getHelloMessage().equals(message_p))
-				ret.add(ent);
-		}
-		return ret;
-	}
+  /**
+   * instances registry
+   */
+  private List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
-	/**
-	 * Consumer method for instance save
-	 */
-	// @Override
-	// @Consume(uri = "jms:queue:helloServiceQueueIn")
-	public final <S extends HelloEntity> void save(/* @Body */final S entity) {
-		this.entities.add(entity);
-		this.producer.send("HELLO.OUT", new MessageCreator() {
+  /**
+   * finds entities by message
+   */
+  @Override
+  public final Collection<? extends HelloEntity> findByHelloObjectMessage(
+  /* @Body */final String message_p) {
+    final List<HelloEntity> ret = new ArrayList<HelloEntity>();
+    for (HelloEntity ent : this.entities) {
+      if (ent.getHelloMessage().equals(message_p))
+        ret.add(ent);
+    }
+    return ret;
+  }
 
-			@Override
-			public Message createMessage(Session arg0) throws JMSException {
-				log.info("returning persisted message");
-				return arg0.createObjectMessage(findAll());
-			}
-		});
+  /**
+   * Consumer method for instance save
+   */
+  // @Override
+  // @Consume(uri = "jms:queue:helloServiceQueueIn")
+  public final <S extends HelloEntity> void save(/* @Body */final S entity) {
+    this.entities.add(entity);
+    this.producer.send("HELLO.OUT", new MessageCreator() {
 
-	}
+      @Override
+      public Message createMessage(Session arg0) throws JMSException {
+        log.info("returning persisted message");
+        return arg0.createObjectMessage(findAll());
+      }
+    });
 
-	@Override
-	public Hellos findAll() {
-		Hellos hellos = new Hellos();
-		hellos.setEntities(entities);
-		return hellos;
-	}
+  }
 
-	@Override
-	public void deleteAll() {
-		entities.clear();
-	}
+  @Override
+  public Hellos findAll() {
+    Hellos hellos = new Hellos();
+    hellos.setEntities(entities);
+    return hellos;
+  }
 
-	@Override
-	public void onMessage(Message message) {
-		ObjectMessage objectMessage = (ObjectMessage) message;
-		try {
-			HelloEntity entity = (HelloEntity) objectMessage.getObject();
-			log.info("received message for persistance");
-			save(entity);
+  @Override
+  public void deleteAll() {
+    entities.clear();
+  }
 
-		} catch (JMSException e) {
-			log.error("error parsing jms message", e);
-		}
+  @Override
+  public void onMessage(Message message) {
+    ObjectMessage objectMessage = (ObjectMessage) message;
+    try {
+      HelloEntity entity = (HelloEntity) objectMessage.getObject();
+      log.info("received message for persistance");
+      save(entity);
 
-	}
+    } catch (JMSException e) {
+      log.error("error parsing jms message", e);
+    }
+
+  }
 
 }

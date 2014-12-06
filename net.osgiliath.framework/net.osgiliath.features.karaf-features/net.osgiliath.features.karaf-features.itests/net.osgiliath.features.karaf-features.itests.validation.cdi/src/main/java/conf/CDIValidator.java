@@ -25,20 +25,21 @@ import javax.enterprise.inject.Produces;
 import javax.validation.Validator;
 
 import net.osgiliath.validator.osgi.ValidatorHelper;
+
 /**
  * 
- * @author charliemordant
- * CDI bootstrap configuration class
+ * @author charliemordant CDI bootstrap configuration class
  */
 public class CDIValidator {
-    /**
-     * cdi injected validator
-     * @return the validator (with good classloader)
-     */
-    @Produces
-    @org.hibernate.validator.cdi.HibernateValidator
-    @Default
-    public Validator createValidator() {
-	return ValidatorHelper.getValidator();
-    }
+  /**
+   * cdi injected validator
+   * 
+   * @return the validator (with good classloader)
+   */
+  @Produces
+  @org.hibernate.validator.cdi.HibernateValidator
+  @Default
+  public Validator createValidator() {
+    return ValidatorHelper.getValidator();
+  }
 }

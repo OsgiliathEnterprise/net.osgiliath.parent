@@ -48,102 +48,93 @@ import org.apache.commons.io.IOUtils;
  */
 @ContextName
 public class HelloRoute extends RouteBuilder {
-    /**
-     * Json Dataformat
-     */
-    private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
-	    HelloEntity.class, Hellos.class);
-    /**
-     * JSR303 Validation message processor
-     */
-    @Inject
-    @Named("thrownExceptionMessageToInBodyProcessor")
-    @Setter
-    private Processor thrownExceptionMessageToInBodyProcessor;
-    /**
-     * XmlJson processor
-     */
-    @Inject
-    @Named("xmljson")
-    private DataFormat xmljson;
-    /**
-     * changes inputstream to string
-     */
-    private Processor octetsStreamToStringProcessor = new Processor() {
+  /**
+   * Json Dataformat
+   */
+  private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
+      HelloEntity.class, Hellos.class);
+  /**
+   * JSR303 Validation message processor
+   */
+  @Inject
+  @Named("thrownExceptionMessageToInBodyProcessor")
+  @Setter
+  private Processor thrownExceptionMessageToInBodyProcessor;
+  /**
+   * XmlJson processor
+   */
+  @Inject
+  @Named("xmljson")
+  private DataFormat xmljson;
+  /**
+   * changes inputstream to string
+   */
+  private Processor octetsStreamToStringProcessor = new Processor() {
 
-	@Override
-	public void process(Exchange exchange) throws Exception {
-	    InputStream bodyObject = exchange.getIn()
-		    .getBody(InputStream.class);
-	    StringWriter writer = new StringWriter();
-	    IOUtils.copy(bodyObject, writer);
-	    String theString = writer.toString();
-	    exchange.getIn().setBody(theString);
-
-	}
-    };
-
-    /**
-     * Messaging route
-     */
     @Override
-    public void configure() throws Exception {
-	JAXBContext ctx = JAXBContext.newInstance(new Class[] {
-		HelloEntity.class, Hellos.class });
-	final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
-
-	from("{{hello.MessagingEntryPoint}}")
-		.log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
-		.filter(header("webSocketMsgType").isNotEqualTo("heartBeat"))
-		.choice()
-		.when(header("httpRequestType").isEqualTo("POST"))
-		.to("direct:persistObject")
-		.endChoice()
-		.otherwise()
-		.setBody(
-			simple("{error:  'Command not supported for the JaxRS queue'}"))
-		.to("direct:toError");
-
-	from("direct:persistObject")
-		.setHeader(Exchange.HTTP_METHOD, constant("POST"))
-		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
-		.unmarshal(this.helloObjectJSonFormat)
-		.marshal(jaxBDataFormat)
-		.log(LoggingLevel.INFO, "marshalled: ${body}")
-		.doTry()
-		.inOnly("{{net.osgiliath.hello.business.url.restservice}}/hello")
-		.to("direct:updateTopic")
-		.doCatch(Exception.class)
-		.log(LoggingLevel.WARN,
-			"Exception while persisting message")
-		.to("direct:helloValidationError").end();
-
-	from("direct:updateTopic")
-		.setHeader(Exchange.HTTP_METHOD, constant("GET"))
-		.setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
-		.inOut("{{net.osgiliath.hello.business.url.restservice}}/hello")
-		.inOut("direct:marshall").to("{{hello.MessagingEndPoint}}");
-
-	from("direct:marshall").process(this.octetsStreamToStringProcessor)
-		.log("hello data retrieved from JaxRS : ${in.body}")
-		.marshal(this.xmljson)
-		.log(LoggingLevel.INFO, "marshalled: ${body}");
-
-	from("direct:helloValidationError")
-		.process(this.thrownExceptionMessageToInBodyProcessor)
-		.process(new Processor() {
-
-		    @Override
-		    public void process(Exchange exchange) throws Exception {
-			exchange.getIn().setBody(
-				exchange.getIn().getBody(String.class)
-					.replaceAll("\"", "'")
-					.replaceAll("\n", ""));
-		    }
-		}).setBody(simple("{\"error\": \"${body}\"}"))
-		.log("Subscription error: ${body}")
-		.to("{{hello.MessagingErrors}}");
+    public void process(Exchange exchange) throws Exception {
+      InputStream bodyObject = exchange.getIn().getBody(InputStream.class);
+      StringWriter writer = new StringWriter();
+      IOUtils.copy(bodyObject, writer);
+      String theString = writer.toString();
+      exchange.getIn().setBody(theString);
 
     }
+  };
+
+  /**
+   * Messaging route
+   */
+  @Override
+  public void configure() throws Exception {
+    JAXBContext ctx = JAXBContext.newInstance(new Class[] { HelloEntity.class,
+        Hellos.class });
+    final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
+
+    from("{{hello.MessagingEntryPoint}}")
+        .log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
+        .filter(header("webSocketMsgType").isNotEqualTo("heartBeat"))
+        .choice()
+        .when(header("httpRequestType").isEqualTo("POST"))
+        .to("direct:persistObject")
+        .endChoice()
+        .otherwise()
+        .setBody(
+            simple("{error:  'Command not supported for the JaxRS queue'}"))
+        .to("direct:toError");
+
+    from("direct:persistObject")
+        .setHeader(Exchange.HTTP_METHOD, constant("POST"))
+        .setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
+        .unmarshal(this.helloObjectJSonFormat).marshal(jaxBDataFormat)
+        .log(LoggingLevel.INFO, "marshalled: ${body}").doTry()
+        .inOnly("{{net.osgiliath.hello.business.url.restservice}}/hello")
+        .to("direct:updateTopic").doCatch(Exception.class)
+        .log(LoggingLevel.WARN, "Exception while persisting message")
+        .to("direct:helloValidationError").end();
+
+    from("direct:updateTopic").setHeader(Exchange.HTTP_METHOD, constant("GET"))
+        .setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
+        .inOut("{{net.osgiliath.hello.business.url.restservice}}/hello")
+        .inOut("direct:marshall").to("{{hello.MessagingEndPoint}}");
+
+    from("direct:marshall").process(this.octetsStreamToStringProcessor)
+        .log("hello data retrieved from JaxRS : ${in.body}")
+        .marshal(this.xmljson).log(LoggingLevel.INFO, "marshalled: ${body}");
+
+    from("direct:helloValidationError")
+        .process(this.thrownExceptionMessageToInBodyProcessor)
+        .process(new Processor() {
+
+          @Override
+          public void process(Exchange exchange) throws Exception {
+            exchange.getIn().setBody(
+                exchange.getIn().getBody(String.class).replaceAll("\"", "'")
+                    .replaceAll("\n", ""));
+          }
+        }).setBody(simple("{\"error\": \"${body}\"}"))
+        .log("Subscription error: ${body}").to("{{hello.MessagingErrors}}");
+
+  }
 
 }

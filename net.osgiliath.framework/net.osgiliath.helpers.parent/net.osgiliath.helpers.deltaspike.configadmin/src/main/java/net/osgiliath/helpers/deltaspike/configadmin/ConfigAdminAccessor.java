@@ -30,13 +30,14 @@ import org.osgi.framework.InvalidSyntaxException;
 
 public class ConfigAdminAccessor {
 
-	public static String getProperty(BundleContext context, String key) throws IOException,
-	InvalidSyntaxException{
-		return ConfigAdminTracker.getInstance(context).getProperty(key);
-		
-	}
-	public static Map<String, String> getProperties(BundleContext context) {
-		return ConfigAdminTracker.getInstance(context).getProperties();
-	}
-		
+  public static String getProperty(BundleContext context, String key)
+      throws IOException, InvalidSyntaxException {
+    return ConfigAdminTracker.getInstance(context).getProperty(key);
+
+  }
+
+  public static Map<String, String> getProperties(BundleContext context) {
+    return ConfigAdminTracker.getInstance(context).getProperties();
+  }
+
 }

@@ -29,65 +29,71 @@ import lombok.Setter;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.transaction.PlatformTransactionManager;
 
+public class XACapableJmsTemplateContainerListenerFactory implements
+    JmsTemplateContainerListenerFactory {
+  @Setter
+  private PlatformTransactionManager txManager;
+  @Setter
+  private ConnectionFactory nonXAFactory;
+  @Setter
+  private ConnectionFactory xAFactory;
+  @Setter
+  private int concurrentConsumers;
+  @Setter
+  private int receiveTimeout;
 
-public class XACapableJmsTemplateContainerListenerFactory implements JmsTemplateContainerListenerFactory {
-	@Setter
-	private PlatformTransactionManager txManager;
-	@Setter
-	private ConnectionFactory nonXAFactory;
-	@Setter
-	private ConnectionFactory xAFactory;
-	@Setter
-	private int concurrentConsumers;
-	@Setter
-	private int receiveTimeout;
-	
-	
-	/* (non-Javadoc)
-	 * @see net.osgiliath.helpers.spring.jms.listeners.IJmsTemplateContainerListenerFactory#create(boolean, java.lang.String, javax.jms.MessageListener)
-	 */
-	@Override
-	public DefaultMessageListenerContainer create(boolean transacted,
-			String destinationName, MessageListener messageListener) {
-		return create(transacted, destinationName, messageListener, false);
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * net.osgiliath.helpers.spring.jms.listeners.IJmsTemplateContainerListenerFactory
+   * #create(boolean, java.lang.String, javax.jms.MessageListener)
+   */
+  @Override
+  public DefaultMessageListenerContainer create(boolean transacted,
+      String destinationName, MessageListener messageListener) {
+    return create(transacted, destinationName, messageListener, false);
 
-	}
+  }
 
-	/* (non-Javadoc)
-	 * @see net.osgiliath.helpers.spring.jms.listeners.IJmsTemplateContainerListenerFactory#create(boolean, java.lang.String, javax.jms.MessageListener, boolean)
-	 */
-	@Override
-	public DefaultMessageListenerContainer create(boolean transacted,
-			String destinationName, MessageListener messageListener,
-			boolean isPubSub) {
-		ManageableDefaultJmsContainerListener container = new ManageableDefaultJmsContainerListener();
-		container.setCacheLevel(DefaultMessageListenerContainer.CACHE_AUTO);
-		container.setConcurrentConsumers(concurrentConsumers);
-		container.setDestinationName(destinationName);
-		container.setMessageListener(messageListener);
-		container.setReceiveTimeout(receiveTimeout);
-		container.setPubSubDomain(isPubSub);
-		
-		if (transacted) {
-			addTransactedInfos(container);
-		} else {
-			addNonTransactedInfo(container);
-			container.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
-		}
-		container.initialize();
-		container.start();
-		return container;
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * net.osgiliath.helpers.spring.jms.listeners.IJmsTemplateContainerListenerFactory
+   * #create(boolean, java.lang.String, javax.jms.MessageListener, boolean)
+   */
+  @Override
+  public DefaultMessageListenerContainer create(boolean transacted,
+      String destinationName, MessageListener messageListener, boolean isPubSub) {
+    ManageableDefaultJmsContainerListener container = new ManageableDefaultJmsContainerListener();
+    container.setCacheLevel(DefaultMessageListenerContainer.CACHE_AUTO);
+    container.setConcurrentConsumers(concurrentConsumers);
+    container.setDestinationName(destinationName);
+    container.setMessageListener(messageListener);
+    container.setReceiveTimeout(receiveTimeout);
+    container.setPubSubDomain(isPubSub);
 
-	private void addNonTransactedInfo(DefaultMessageListenerContainer container) {
-		container.setConnectionFactory(nonXAFactory);
+    if (transacted) {
+      addTransactedInfos(container);
+    } else {
+      addNonTransactedInfo(container);
+      container.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
+    }
+    container.initialize();
+    container.start();
+    return container;
+  }
 
-	}
+  private void addNonTransactedInfo(DefaultMessageListenerContainer container) {
+    container.setConnectionFactory(nonXAFactory);
 
-	private void addTransactedInfos(DefaultMessageListenerContainer container) {
-		container.setTransactionManager(txManager);
-		container.setConnectionFactory(xAFactory);
-		container.setTransactionTimeout(receiveTimeout);
-	}
+  }
+
+  private void addTransactedInfos(DefaultMessageListenerContainer container) {
+    container.setTransactionManager(txManager);
+    container.setConnectionFactory(xAFactory);
+    container.setTransactionTimeout(receiveTimeout);
+  }
 
 }

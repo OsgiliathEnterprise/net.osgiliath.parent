@@ -30,17 +30,19 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
  */
 @OsgiServiceProvider
 public class PropertyProvider implements IPropertyProvider {
-//	@Inject
-//    @ConfigProperty(name = "injectedProperty")
-//    private String injectedProperty;
-    
-    /* (non-Javadoc)
-	 * @see net.osgiliath.cdi.properties.impl.IConsumer#getInjectedProperty()
-	 */
-    @Override
-	public String getInjectedProperty() {
-    	return ConfigResolver.getPropertyValue("injectedProperty");
-	//	return injectedProperty;
-	}
-	
+  // @Inject
+  // @ConfigProperty(name = "injectedProperty")
+  // private String injectedProperty;
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see net.osgiliath.cdi.properties.impl.IConsumer#getInjectedProperty()
+   */
+  @Override
+  public String getInjectedProperty() {
+    return ConfigResolver.getPropertyValue("injectedProperty");
+    // return injectedProperty;
+  }
+
 }

@@ -26,40 +26,40 @@ package security;
  * 
  */
 public enum AUTHORITY {
-    /**
-     * Rights access
-     */
-    MEMBER("Member"), PREMIUM("Premium");
-    /**
-     * RA Strings
-     */
-    public static final String S_MEMBER = "Member";
-    /**
-     * RA Strings
-     */
-    public static final String S_PREMIUM = "Premium";
-    /**
-     * Selected RA
-     */
-    private final String auth;
+  /**
+   * Rights access
+   */
+  MEMBER("Member"), PREMIUM("Premium");
+  /**
+   * RA Strings
+   */
+  public static final String S_MEMBER = "Member";
+  /**
+   * RA Strings
+   */
+  public static final String S_PREMIUM = "Premium";
+  /**
+   * Selected RA
+   */
+  private final String auth;
 
-    /**
-     * Constructor
-     * 
-     * @param auth
-     *            the string for the authority
-     */
-    AUTHORITY(String auth) {
-	this.auth = auth;
-    }
+  /**
+   * Constructor
+   * 
+   * @param auth
+   *          the string for the authority
+   */
+  AUTHORITY(String auth) {
+    this.auth = auth;
+  }
 
-    /**
-     * return the string equivalent of the object
-     * 
-     * @return as it said
-     */
-    public final String getAuth() {
-	return auth;
-    }
+  /**
+   * return the string equivalent of the object
+   * 
+   * @return as it said
+   */
+  public final String getAuth() {
+    return auth;
+  }
 
 }

@@ -40,21 +40,21 @@ import org.ops4j.pax.cdi.api.OsgiService;
 @Slf4j
 public class HelloComponents {
 
-	/**
-	 * OSGI import
-	 */
-	@Inject
-	@OsgiService(filter = "(component-type=jms)", dynamic = true)
-	private Component jms;
+  /**
+   * OSGI import
+   */
+  @Inject
+  @OsgiService(filter = "(component-type=jms)", dynamic = true)
+  private Component jms;
 
-	/**
-	 * 
-	 * @return Messaging component
-	 */
-	@Produces
-	@Named("jms")
-	public Component getJms() {
-		log.info("Inject jms route");
-		return jms;
-	}
+  /**
+   * 
+   * @return Messaging component
+   */
+  @Produces
+  @Named("jms")
+  public Component getJms() {
+    log.info("Inject jms route");
+    return jms;
+  }
 }

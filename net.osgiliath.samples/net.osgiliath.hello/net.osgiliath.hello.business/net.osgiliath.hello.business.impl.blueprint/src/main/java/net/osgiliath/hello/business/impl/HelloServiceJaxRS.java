@@ -37,28 +37,29 @@ import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 /**
  * 
- * @author charliemordant
- * REST service declaration
+ * @author charliemordant REST service declaration
  */
 @Path("/hello")
-@Api(value="hello", description="The hello resource access")
+@Api(value = "hello", description = "The hello resource access")
 public interface HelloServiceJaxRS extends HelloService {
-    /**
-     * saves an entity
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_XML)
-    void persistHello(HelloEntity helloObject);
-    /**
-     * gets all entities
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    @ApiOperation(value = "Find all hellos", notes = "More notes about this method", response = Hellos.class)
-    Hellos getHellos();
-    /**
-     * deletes all entities
-     */
-    @DELETE
-    void deleteAll();
+  /**
+   * saves an entity
+   */
+  @POST
+  @Consumes(MediaType.APPLICATION_XML)
+  void persistHello(HelloEntity helloObject);
+
+  /**
+   * gets all entities
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_XML)
+  @ApiOperation(value = "Find all hellos", notes = "More notes about this method", response = Hellos.class)
+  Hellos getHellos();
+
+  /**
+   * deletes all entities
+   */
+  @DELETE
+  void deleteAll();
 }

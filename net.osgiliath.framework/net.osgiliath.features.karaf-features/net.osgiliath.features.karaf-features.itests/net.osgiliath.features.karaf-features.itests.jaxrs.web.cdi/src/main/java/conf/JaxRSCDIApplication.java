@@ -29,28 +29,28 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import net.osgiliath.features.karaf.jaxrs.web.cdi.HelloServiceJaxRS;
+
 /**
  * 
- * @author charliemordant
- * Web CDI REST application registering
+ * @author charliemordant Web CDI REST application registering
  */
 @ApplicationPath("helloService")
 public class JaxRSCDIApplication extends Application {
-    /**
-     * Injection of the service
-     */
-    @Inject
-    private HelloServiceJaxRS helloServiceJaxRS;
+  /**
+   * Injection of the service
+   */
+  @Inject
+  private HelloServiceJaxRS helloServiceJaxRS;
 
-    /**
-     * Returns service implems
-     */
-    @Override
-    public Set<Object> getSingletons() {
-	final Set<Object> ret = new HashSet<Object>();
-	ret.add(this.helloServiceJaxRS);
-	return ret;
+  /**
+   * Returns service implems
+   */
+  @Override
+  public Set<Object> getSingletons() {
+    final Set<Object> ret = new HashSet<Object>();
+    ret.add(this.helloServiceJaxRS);
+    return ret;
 
-    }
+  }
 
 }

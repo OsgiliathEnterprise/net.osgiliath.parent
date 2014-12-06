@@ -28,12 +28,12 @@ import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 import org.springframework.jms.core.MessageCreator;
 
-public class HelloEntityMessageCreator implements MessageCreator{
+public class HelloEntityMessageCreator implements MessageCreator {
 
-	@Override
-	public Message createMessage(Session session) throws JMSException {
-		return session.createObjectMessage(HelloEntity
-				.builder().helloMessage("Doe").build());
-	}
+  @Override
+  public Message createMessage(Session session) throws JMSException {
+    return session.createObjectMessage(HelloEntity.builder()
+        .helloMessage("Doe").build());
+  }
 
 }

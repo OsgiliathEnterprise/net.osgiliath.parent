@@ -29,10 +29,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
+
 /**
  * 
- * @author charliemordant
- * Sample Model Object
+ * @author charliemordant Sample Model Object
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -41,15 +41,15 @@ import lombok.experimental.Builder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HelloEntity {
-    /**
-     * Id
-     */
-    @XmlElement
-    private Long entityId;
-    /**
-     * helloMessage
-     */
-    @XmlElement
-    private String helloMessage;
+  /**
+   * Id
+   */
+  @XmlElement
+  private Long entityId;
+  /**
+   * helloMessage
+   */
+  @XmlElement
+  private String helloMessage;
 
 }

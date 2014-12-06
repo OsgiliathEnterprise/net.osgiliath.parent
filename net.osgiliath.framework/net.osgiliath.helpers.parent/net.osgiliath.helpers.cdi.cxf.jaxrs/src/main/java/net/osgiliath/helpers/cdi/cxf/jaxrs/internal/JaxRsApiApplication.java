@@ -22,7 +22,8 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-@ApplicationPath( "cxf" )
+
+@ApplicationPath("cxf")
 public class JaxRsApiApplication extends Application {
 
 }

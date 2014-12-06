@@ -43,12 +43,12 @@ import lombok.experimental.Builder;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Hellos implements Serializable {
-    /**
-	 * serial
-	 */
-    private static final long serialVersionUID = -5352246104371387691L;
-    /**
-     * String list for returned elements
-     */
-    private List<String> helloCollection;
+  /**
+   * serial
+   */
+  private static final long serialVersionUID = -5352246104371387691L;
+  /**
+   * String list for returned elements
+   */
+  private List<String> helloCollection;
 }
