@@ -20,43 +20,40 @@ package net.osgiliath.helpers.cdi.cxf.jaxrs.internal.registry;
  * #L%
  */
 
+import com.google.common.collect.Sets;
+
 import java.util.Collection;
 
 import org.apache.cxf.interceptor.Interceptor;
 
-import com.google.common.collect.Sets;
 /**
  * 
- * @author charliemordant
- * JaxRS endpoints registry
+ * @author charliemordant JaxRS endpoints registry
  */
-public class InterceptorsServiceRegistry {
-    /**
-     * Singleton instance
-     */
-    private static InterceptorsServiceRegistry instance = null;
+public enum InterceptorsServiceRegistry {
+	/**
+	 * Singleton instance
+	 */
+	INSTANCE;
+	/**
+	 * Interceptor registry
+	 */
+	private Collection<Interceptor> interceptors;
 
-    /**
-     * Interceptor registry
-     */
-    private Collection<Interceptor> interceptors = Sets.newHashSet();
-    /**
-     * 
-     * @return the singleton instance
-     */
-    public static InterceptorsServiceRegistry getInstance() {
-	if (instance == null) {
-	    instance = new InterceptorsServiceRegistry();
+	/**
+	 * Default constructor
+	 */
+	private InterceptorsServiceRegistry() {
+
+		interceptors = Sets.newHashSet();
 	}
-	return instance;
-    }
-    /**
-     * Getter
-     * @return interceptors
-     */
-    public Collection<Interceptor> getInterceptors() {
-	return this.interceptors;
-    }
-
+	/**
+	 * Getter
+	 * 
+	 * @return interceptors
+	 */
+	public Collection<Interceptor> getInterceptors() {
+		return this.interceptors;
+	}
 
 }

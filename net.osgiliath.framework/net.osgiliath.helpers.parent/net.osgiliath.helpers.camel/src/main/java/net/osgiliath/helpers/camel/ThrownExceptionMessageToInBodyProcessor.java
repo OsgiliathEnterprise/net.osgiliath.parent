@@ -56,16 +56,16 @@ public class ThrownExceptionMessageToInBodyProcessor implements Processor {
 	 */
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		HttpOperationFailedException c = exchange.getProperty(
+		final HttpOperationFailedException exception = exchange.getProperty(
 				Exchange.EXCEPTION_CAUGHT, HttpOperationFailedException.class);
-		SAXBuilder sxb = new SAXBuilder();
-		if (c != null
-				&& c.getResponseHeaders().get(
-						ExceptionMappingConstants.EXCEPTION_BODY_HEADER) != null) {
-			String body = c.getResponseHeaders().get(
+		if (null != exception
+				&& null != exception.getResponseHeaders().get(
+						ExceptionMappingConstants.EXCEPTION_BODY_HEADER)) {
+			final String body = exception.getResponseHeaders().get(
 					ExceptionMappingConstants.EXCEPTION_BODY_HEADER);
 			LOG.info("Catched error in route: " + body);
-			Document doc = sxb.build(new StringReader(body));
+			final SAXBuilder sxb = new SAXBuilder();
+			final Document doc = sxb.build(new StringReader(body));
 			exchange.getIn()
 					.setBody(
 							doc.getRootElement()
