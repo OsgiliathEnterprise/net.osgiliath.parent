@@ -147,7 +147,6 @@
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.license>apache_v2</project.license>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${parent.path}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${parent.path}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<maven-scm.version>1.9.1</maven-scm.version>
