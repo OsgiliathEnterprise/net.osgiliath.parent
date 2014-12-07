@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1411321872393
+Bnd-LastModified: 1417366636390
 Build-Jdk: 1.7.0_51
 Built-By: gpetracek
 Bundle-Description: Apache DeltaSpike Parent for container projects
@@ -10,28 +10,28 @@ Bundle-Name: deltaspike-data-module-api
 Bundle-SymbolicName: org.apache.deltaspike.modules.deltaspike-data-modul
  e-api
 Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 1.0.3
+Bundle-Version: 1.2.0
 Created-By: Apache Maven Bundle Plugin
 Export-Package: org.apache.deltaspike.data.api;uses:="javax.persistence,
  javax.persistence.criteria,javax.persistence.metamodel,org.apache.delta
- spike.data.spi,org.apache.deltaspike.partialbean.api";version="1.0.3",o
- rg.apache.deltaspike.data.api.audit;uses:="javax.inject";version="1.0.3
+ spike.data.spi,org.apache.deltaspike.partialbean.api";version="1.2.0",o
+ rg.apache.deltaspike.data.api.audit;uses:="javax.inject";version="1.2.0
  ",org.apache.deltaspike.data.api.criteria;uses:="javax.persistence.crit
- eria,javax.persistence,javax.persistence.metamodel";version="1.0.3",org
+ eria,javax.persistence,javax.persistence.metamodel";version="1.2.0",org
  .apache.deltaspike.data.api.mapping;uses:="org.apache.deltaspike.data.s
- pi,javax.inject,javax.persistence";version="1.0.3",org.apache.deltaspik
- e.data.spi;uses:="javax.persistence";version="1.0.3"
+ pi,javax.inject,javax.persistence";version="1.2.0",org.apache.deltaspik
+ e.data.spi;uses:="javax.persistence";version="1.2.0"
 Implementation-Title: Apache DeltaSpike Data-Module API
 Implementation-Vendor: The Apache Software Foundation
 Implementation-Vendor-Id: org.apache.deltaspike.modules
-Implementation-Version: 1.0.3
+Implementation-Version: 1.2.0
 Import-Package: javax.inject;version="[1.0,2)",javax.persistence;version
  ="[1.1,2)",javax.persistence.criteria;version="[1.1,2)",javax.persisten
  ce.metamodel;version="[1.1,2)",org.apache.deltaspike.partialbean.api;ve
- rsion="[1.0,2)"
-Karaf-Info: DeltaSpike;deltaspike-data-module-api=1.0.3
+ rsion="[1.2,2)"
+Karaf-Info: DeltaSpike;deltaspike-data-module-api=1.2.0
 Pax-ManagedBeans: META-INF/beans.xml
 Specification-Title: Apache DeltaSpike Data-Module API
 Specification-Vendor: The Apache Software Foundation
-Specification-Version: 1.0.3
+Specification-Version: 1.2.0
 Tool: Bnd-1.50.0

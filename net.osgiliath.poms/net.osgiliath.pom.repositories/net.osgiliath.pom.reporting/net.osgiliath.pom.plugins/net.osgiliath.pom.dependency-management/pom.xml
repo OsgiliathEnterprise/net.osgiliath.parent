@@ -2446,7 +2446,7 @@
 		<org.apache.commons_commons-dbcp2.version>2.0.1</org.apache.commons_commons-dbcp2.version>
 		<org.apache.commons_commons-pool2.version>2.2</org.apache.commons_commons-pool2.version>
 		<org.apache.cxf.karaf_cxf-karaf-commands.version>3.0.1</org.apache.cxf.karaf_cxf-karaf-commands.version>
-		<org.apache.deltaspike.version>1.0.3</org.apache.deltaspike.version>
+		<org.apache.deltaspike.version>1.2.0</org.apache.deltaspike.version>
 		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>
 		<org.apache.felix.framework.version>4.2.1</org.apache.felix.framework.version>
 		<org.apache.felix.fileinstall.version>3.4.2</org.apache.felix.fileinstall.version>
