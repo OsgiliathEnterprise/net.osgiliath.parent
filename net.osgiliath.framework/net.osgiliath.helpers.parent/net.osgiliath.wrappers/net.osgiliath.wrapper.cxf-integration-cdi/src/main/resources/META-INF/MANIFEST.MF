@@ -6,6 +6,6 @@ Built-By: dkulp
 Build-Jdk: 1.6.0_65
 Specification-Vendor: The Apache Software Foundation
 Specification-Title: Apache CXF CDI Integration
-Created-By: Apache Maven 3.2.2
+Created-By: Apache Maven 3.0.5
 Archiver-Version: Plexus Archiver
 

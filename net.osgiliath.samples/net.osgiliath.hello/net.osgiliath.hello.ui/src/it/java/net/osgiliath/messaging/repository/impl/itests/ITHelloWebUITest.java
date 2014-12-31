@@ -61,11 +61,16 @@ public class ITHelloWebUITest {
 
     // Sleep until the elements we want is visible or 5 seconds is over
     long end = System.currentTimeMillis() + 10000;
-    driver.get("http://localhost:8181/net.osgiliath.hello.ui");
-    WebDriverWait wait =  new WebDriverWait(driver, 300, 1000);
-    wait.until(
-        ExpectedConditions.titleContains("hello")
-      );
+       (new WebDriverWait(driver, 300)).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+              driver.get("http://localhost:8181/net.osgiliath.hello.ui");
+              boolean ret = d.getTitle().toLowerCase().startsWith("hello");
+              if (!ret) {
+                driver.navigate().refresh();
+              }
+              return ret;
+            }
+          });
     WebElement element;
     element = driver.findElement(By.id("helloInput"));
     element.click();

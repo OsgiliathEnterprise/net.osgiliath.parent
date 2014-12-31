@@ -30,11 +30,17 @@ public class ITWebUI {
 
 		    // Sleep until the elements we want is visible or 5 seconds is over
 		    long end = System.currentTimeMillis() + 10000;
-		    driver.get("http://localhost:8181/"+ System.getProperty(ARTIFACTID));
-		    WebDriverWait wait =  new WebDriverWait(driver, 300, 1000);
-		    wait.until(
-		        ExpectedConditions.titleContains(System.getProperty(ARTIFACTID))
-		      );
+		    (new WebDriverWait(driver, 300)).until(new ExpectedCondition<Boolean>() {
+		      public Boolean apply(WebDriver d) {
+		        driver.get("http://localhost:8181/" + System.getProperty(ARTIFACTID));
+		        boolean ret = d.getTitle().toLowerCase().startsWith(System.getProperty(ARTIFACTID));
+		        if (!ret) {
+		          driver.navigate().refresh();
+		        }
+		        return ret;
+		      }
+		    });
+		   
 		    WebElement element;
 			// Sleep until the elements we want is visible or 5 seconds is over
 //			(new WebDriverWait(driver, 200))
