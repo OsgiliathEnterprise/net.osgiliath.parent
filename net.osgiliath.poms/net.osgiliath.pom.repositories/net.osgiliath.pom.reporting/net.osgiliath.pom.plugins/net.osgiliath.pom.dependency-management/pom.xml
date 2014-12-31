@@ -2420,7 +2420,7 @@
 		<joda-time.version>2.3</joda-time.version>
 		<jolokia.version>1.2.2</jolokia.version>
 		<junit.version>4.9</junit.version>
-		<karaf.feature.cxf.version>3.0.1</karaf.feature.cxf.version>
+		<karaf.feature.cxf.version>3.0.2</karaf.feature.cxf.version>
 		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
 		<karaf.feature.jndi.version>3.0.2</karaf.feature.jndi.version>
 		<karaf.feature.jpa.version>1.0.1</karaf.feature.jpa.version>
