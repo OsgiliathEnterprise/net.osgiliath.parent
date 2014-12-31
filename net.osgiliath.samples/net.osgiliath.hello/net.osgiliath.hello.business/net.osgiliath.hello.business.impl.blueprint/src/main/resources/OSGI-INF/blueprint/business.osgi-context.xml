@@ -96,7 +96,7 @@
 	<bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">
 		<property name="resourcePackage" value="net.osgiliath.hello.business.impl" />
 		<property name="version" value="${project.version}" />
-		<property name="basePath" value="$[jaxrs.server.protocol]://$[jaxrs.server.uri]:$[jaxrs.server.port]/cxf/helloService" />
+		<property name="basePath" value="cxf/helloService" />
 		<property name="title" value="${project.name}" />
 		<property name="description" value="${project.description}" />
 		<property name="scan" value="true" />

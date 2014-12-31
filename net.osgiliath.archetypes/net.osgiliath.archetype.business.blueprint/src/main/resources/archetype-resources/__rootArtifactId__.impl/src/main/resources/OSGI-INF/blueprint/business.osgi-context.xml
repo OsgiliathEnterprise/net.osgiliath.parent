@@ -92,7 +92,7 @@
 	<bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">
 		<property name="resourcePackage" value="${symbol_dollar}{artifactId}" />
 		<property name="version" value="${symbol_dollar}{project.version}" />
-		<property name="basePath" value="${symbol_dollar}[jaxrs.server.protocol]://${symbol_dollar}[jaxrs.server.uri]:${symbol_dollar}[jaxrs.server.port]/cxf/${symbol_dollar}{artifactId}Service" />
+		<property name="basePath" value="cxf/${symbol_dollar}{artifactId}Service" />
 		<property name="title" value="${symbol_dollar}{project.name}" />
 		<property name="description" value="${symbol_dollar}{project.description}" />
 		<property name="contact" value="masterdev@wondermail.org" />
