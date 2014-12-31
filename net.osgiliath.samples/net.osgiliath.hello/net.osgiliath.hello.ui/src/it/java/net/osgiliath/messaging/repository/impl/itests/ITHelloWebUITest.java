@@ -35,6 +35,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,16 +61,11 @@ public class ITHelloWebUITest {
 
     // Sleep until the elements we want is visible or 5 seconds is over
     long end = System.currentTimeMillis() + 10000;
-    (new WebDriverWait(driver, 300)).until(new ExpectedCondition<Boolean>() {
-      public Boolean apply(WebDriver d) {
-        driver.get("http://localhost:8181/net.osgiliath.hello.ui");
-        boolean ret = d.getTitle().toLowerCase().startsWith("hello");
-        if (!ret) {
-          driver.navigate().refresh();
-        }
-        return ret;
-      }
-    });
+    driver.get("http://localhost:8181/net.osgiliath.hello.ui");
+    WebDriverWait wait =  new WebDriverWait(driver, 300, 1000);
+    wait.until(
+        ExpectedConditions.titleContains("hello")
+      );
     WebElement element;
     element = driver.findElement(By.id("helloInput"));
     element.click();

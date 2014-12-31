@@ -151,7 +151,6 @@
 		<dependency>
 			<groupId>com.google.guava</groupId><!-- Due to Selenium -->
 			<artifactId>guava</artifactId>
-			<version>${com.google.guava.selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>

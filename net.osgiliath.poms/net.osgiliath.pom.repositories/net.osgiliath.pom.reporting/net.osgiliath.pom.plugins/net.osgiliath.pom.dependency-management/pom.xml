@@ -2377,10 +2377,9 @@
 	<properties>
 		<ant.ant.version>1.6.5</ant.ant.version>
 		<biz.aQute.bnd_bndlib.version>2.2.0</biz.aQute.bnd_bndlib.version>
-		<camel-version>2.14.0</camel-version>
+		<camel-version>2.14.1</camel-version>
 		<cdi-api.version>1.2</cdi-api.version>
 		<com.google.guava.version>13.0</com.google.guava.version>
-		<com.google.guava.selenium.version>15.0</com.google.guava.selenium.version>
 		<com.fasterxml.jackson.version>2.4.1</com.fasterxml.jackson.version><!-- Do not upgrade cause of camel-json -->
 		<com.fasterxml.classmate.version>1.0.0</com.fasterxml.classmate.version>
 		<com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version>
@@ -2523,7 +2522,7 @@
 		<org.ops4j.pax.web_pax-web-features.version>3.1.2</org.ops4j.pax.web_pax-web-features.version>
 		<org.osgi.version>5.0.0</org.osgi.version>
 		<org.osgi-core.version>5.0.0</org.osgi-core.version>
-		<org.seleniumhq.selenium.version>2.43.1</org.seleniumhq.selenium.version>
+		<org.seleniumhq.selenium.version>2.44.0</org.seleniumhq.selenium.version>
 		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
 		<org.springframework.data.commons.version>1.9.0.RELEASE</org.springframework.data.commons.version>
 		<org.springframework.data.jpa.version>1.7.0.RELEASE</org.springframework.data.jpa.version>
