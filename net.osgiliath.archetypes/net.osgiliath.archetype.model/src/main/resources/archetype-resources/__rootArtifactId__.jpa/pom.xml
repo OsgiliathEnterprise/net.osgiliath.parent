@@ -83,7 +83,13 @@
 		</plugins>
 	</build>
 	<dependencies>
-
+<dependency>
+			<groupId>net.osgiliath.framework</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-common</artifactId>
+			<version>${osgiliath.framework.maven.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>

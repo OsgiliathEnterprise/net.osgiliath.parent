@@ -55,7 +55,9 @@ public interface HelloServiceJaxRS {
   @GET
   @Produces(MediaType.APPLICATION_XML)
   Hellos getHellos();
-
+  /**
+   * Delete all hellos
+   */
   @DELETE
   void deleteHellos();
 }

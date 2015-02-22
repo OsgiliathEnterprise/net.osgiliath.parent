@@ -7,7 +7,7 @@
 	</parent>
 	<artifactId>net.osgiliath.helpers.swagger.cdi</artifactId>
 	<name>Swagger CDI wrapper</name>
-	<description>Wrapper for swagger cdi</description>
+	<description>Helper for swagger cdi</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -40,6 +40,10 @@
 			<artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-servlet_3.0_spec</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.swagger-annotations</artifactId>
 		</dependency>
@@ -54,8 +58,17 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>

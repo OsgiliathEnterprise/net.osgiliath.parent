@@ -42,8 +42,8 @@
 			<version>${maven-shade-plugin.version}</version>
 		</dependency>
 		<dependency>
-                <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.core</artifactId>
-            </dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+		</dependency>
 	</dependencies>
 </project>

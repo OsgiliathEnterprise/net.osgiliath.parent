@@ -22,25 +22,25 @@ limitations under the License.
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/${project.parent.artifactId}-cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/${project.parent.artifactId}-functional/${project.version}/xml/features</repository>
-	<repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
-	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-karaf-enterprise/${project.version}/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
 	<feature name='osgiliath-validation-common' version='${project.version}' start-level="50" description="Validation common libraries (JSR303)">
 		<feature version='${project.version}'>osgiliath-functional</feature>
-		<feature version='${org.apache.karaf.features_enterprise_connector.version}'>connector</feature>
+		<feature version='${org.apache.geronimo.components_geronimo-connector.version}'>osgiliath-connector</feature>
 		<bundle >mvn:${project.groupId}/net.osgiliath.helpers.validation.osgi.services/${project.version}</bundle>
-		<bundle >mvn:org.hibernate/hibernate-validator/${org.hibernate.validator.version}</bundle>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/${org.apache.servicemix.bundles.cglib.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${geronimo-atinject_1.0_spec.version}</bundle>
-		<bundle >mvn:org.jboss.logging/jboss-logging/${org.jboss.logging.version}</bundle>
-		<bundle >mvn:org.apache.geronimo.specs/geronimo-el_2.2_spec/${geronimo-el_2.2_spec.version}</bundle>
-		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles.aspectj.version}</bundle>
-		<bundle >mvn:javax.validation/validation-api/${validation-api.version}</bundle>
-		<bundle >mvn:com.fasterxml/classmate/${com.fasterxml.classmate.version}</bundle>
+		<bundle >mvn:org.hibernate/hibernate-validator/${org.hibernate_hibernate-validator.version}</bundle>
+		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version}</bundle>
+		<bundle >mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
+		<bundle >mvn:org.jboss.logging/jboss-logging/${org.jboss.logging_jboss-logging.version}</bundle>
+		<bundle >mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
+		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
+		<bundle >mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+		<bundle >mvn:com.fasterxml/classmate/${com.fasterxml_classmate.version}</bundle>
 		<!--
-		<bundle >wrap:mvn:org.hibernate/hibernate-validator-cdi/${org.hibernate.validator.version}$Bundle-SymbolicName=org.hibernate.validator.cdi</bundle>-->
+		<bundle >wrap:mvn:org.hibernate/hibernate-validator-cdi/${org.hibernate_hibernate-validator-cdi.version}$Bundle-SymbolicName=org.hibernate.validator.cdi</bundle>-->
 	</feature>
 	<feature name='osgiliath-validation' version='${project.version}' start-level="50" description="Validation with Spring">
-		<feature version='${karaf.feature.spring4.version}'>spring</feature>
+		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring</feature>
 		<feature version='${project.version}'>osgiliath-validation-common</feature>
 	</feature>
 	<feature name='osgiliath-validation-cdi' version='${project.version}' description="Validation with CDI">

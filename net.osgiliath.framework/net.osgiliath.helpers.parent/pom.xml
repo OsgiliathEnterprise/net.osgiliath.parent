@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
 		contributor license agreements. See the NOTICE file distributed with this 
@@ -48,7 +49,6 @@
 		<module>net.osgiliath.helpers.validation.osgi.services</module>
 		<module>net.osgiliath.helpers.activemq.jms.connectionfactory.exporter</module>
 		<module>net.osgiliath.helpers.cxf.exception.handling</module>
-		<module>net.osgiliath.helpers.cdi.cxf.jaxrs</module>
 		<module>net.osgiliath.helpers.cdi.eager</module>
 		<module>net.osgiliath.wrappers</module>
 		<module>net.osgiliath.helpers.deltaspike.configadmin</module>
@@ -61,5 +61,5 @@
 		<module>net.osgiliath.helpers.activemq.broker</module>
 		<module>net.osgiliath.helpers.camel.activemq</module>
 		<module>net.osgiliath.helpers.spring-jms</module>
-	</modules>
+  </modules>
 </project>

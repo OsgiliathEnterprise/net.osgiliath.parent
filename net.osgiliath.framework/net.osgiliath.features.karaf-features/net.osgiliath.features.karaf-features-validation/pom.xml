@@ -1,10 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding 
-		copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may 
-		obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed 
-		on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the 
-		License. -->
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the 
+		Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, 
+		software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
@@ -14,17 +12,14 @@
 	<name>Osgiliath validation features</name>
 	<description>JSR303 (validation) support for Osgiliath framework</description>
 	<dependencies>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
-			<groupId>com.fasterxml</groupId>
-			<artifactId>classmate</artifactId>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${project.parent.artifactId}-cdi</artifactId>
@@ -32,7 +27,6 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${project.parent.artifactId}-functional</artifactId>
@@ -40,123 +34,44 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.validation.osgi.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
 			<artifactId>net.osgiliath.wrapper.hibernate.validator.cdi.osgi</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- org.apache.karaf.features_enterprise_transaction -->
-		<dependency>
-			<groupId>org.apache.aries.transaction</groupId>
-			<artifactId>org.apache.aries.transaction.blueprint</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_transaction -->
-		<dependency>
-			<groupId>org.apache.aries.transaction</groupId>
-			<artifactId>org.apache.aries.transaction.manager</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_connector -->
-		<dependency>
-			<groupId>org.apache.geronimo.components</groupId>
-			<artifactId>geronimo-connector</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-atinject_1.0_spec</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-el_2.2_spec</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_connector -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-j2ee-connector_1.6_spec</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features<_enterprise_transaction -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jta_1.1_spec</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_connector -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-validation_1.0_spec</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>enterprise</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>spring</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 		<dependency>
 			<groupId>org.jboss.logging</groupId>
 			<artifactId>jboss-logging</artifactId>

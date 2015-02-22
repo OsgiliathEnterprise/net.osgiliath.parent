@@ -4,14 +4,13 @@
 	permissions and limitations under the License. #L% -->
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
-	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${karaf.feature.cxf.version}/xml/features</repository>
-	<repository>mvn:org.apache.camel.karaf/apache-camel/${camel-version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-messaging/${project.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-standard/${project.version}/xml/features</repository>
-
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-camel/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-jaxrs/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-messaging/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-cdi/${project.version}/xml/features</repository>
+	
 	<feature name="osgiliath-routes" version="${project.version}" start-level="60" description="All Osgiliath routing capabilities">
-		<feature version='${camel-version}'>camel-blueprint</feature>
+		<feature version='${org.apache.camel.version}'>osgiliath-camel-blueprint</feature>
 		<feature version='${project.version}'>osgiliath-camel-rest</feature>
 		<feature version='${project.version}'>osgiliath-camel-messaging</feature>
 		<feature version='${project.version}'>osgiliath-camel-messaging-web</feature>
@@ -26,52 +25,52 @@
 		<feature version='${project.version}'>osgiliath-cdi-web</feature>
 	</feature>
 	<feature name="osgiliath-camel-cdi-configadmin" version="${project.version}" description="Config admin support for camel with CDI">
-		<feature version="${camel-version}">camel-core</feature>
+		<feature version="${org.apache.camel.version}">osgiliath-camel-core</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
-		<bundle>mvn:org.apache.camel/camel-cdi/${camel-version}</bundle>
+		<bundle>mvn:org.apache.camel/camel-cdi/${org.apache.camel_camel-cdi.version}</bundle>
 	</feature>
 	<feature name="osgiliath-routes-xmlandjson" version="${project.version}" start-level="60" description="Xml to Json transformation libs">
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles.jdom.version}</bundle>
-		<bundle dependency='true'>mvn:javax.json/javax.json-api/${javax.json-api.version}</bundle>
-		<feature version='${camel-version}'>camel-xstream</feature>
-		<feature version="${camel-version}">camel-jaxb</feature>
-		<feature version='${camel-version}'>camel-jackson</feature>
-		<feature version='${camel-version}'>camel-xmljson</feature>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version}</bundle>
+		<bundle dependency='true'>mvn:javax.json/javax.json-api/${javax.json_javax.json-api.version}</bundle>
+		<feature version='${org.apache.camel.version}'>osgiliath-camel-xstream</feature>
+		<feature version="${org.apache.camel.version}">osgiliath-camel-jaxb</feature>
+		<feature version='${org.apache.camel.version}'>osgiliath-camel-jackson</feature>
+		<feature version='${org.apache.camel.version}'>osgiliath-camel-xmljson</feature>
 	</feature>
 	<feature name="osgiliath-elasticsearch" version="${project.version}" start-level="60" description="Elasticsearch in camel">
 		<feature version='${project.version}'>osgiliath-data-elasticsearch</feature>
-		<bundle>mvn:org.apache.camel/camel-elasticsearch/${camel-version}</bundle>
+		<bundle>mvn:org.apache.camel/camel-elasticsearch/${org.apache.camel_camel-elasticsearch.version}</bundle>
 	</feature>
 	<feature name="osgiliath-camel-rest" version="${project.version}" resolver="(obr)" start-level="60" description="REST client with camel">
 		<feature version='${project.version}'>osgiliath-rest</feature>
-		<feature version='${camel-version}'>camel-http</feature>
+		<feature version='${org.apache.camel.version}'>osgiliath-camel-http</feature>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel/${project.version}</bundle>
-		<feature version="${camel-version}">camel-cxf</feature>
+		<!-- <feature version="${org.apache.camel.version}">osgiliath-camel-cxf</feature>  -->
 	</feature>
 	<feature name="osgiliath-camel-rest-cdi" version="${project.version}" resolver="(obr)" description="REST client with camel with CDI">
 		<feature version='${project.version}'>osgiliath-camel-rest</feature>
 		<feature version='${project.version}'>osgiliath-rest-cdi</feature>
 	</feature>
 	<feature name="osgiliath-camel-messaging" version="${project.version}" resolver="(obr)" start-level="60" description="Messaging routes">
-		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-		<bundle>mvn:org.apache.activemq/activemq-camel/${org.apache.activemq.version}</bundle>
+		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.activemq-camel/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.activemq/${project.version}</bundle>
-		<feature version="${camel-version}">camel-jms</feature>
+		<feature version="${org.apache.camel.version}">osgiliath-camel-jms</feature>
 		<feature version='${project.version}'>osgiliath-messaging-spring</feature>
 	</feature>
 	<feature name="osgiliath-camel-messaging-cdi" version="${project.version}" resolver="(obr)" description="Messaging routes CDI way">
-		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-		<bundle>mvn:org.apache.activemq/activemq-camel/${org.apache.activemq.version}</bundle>
+		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.activemq-camel/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.activemq/${project.version}</bundle>
-		<feature version="${camel-version}">camel-jms</feature>
+		<feature version="${org.apache.camel.version}">osgiliath-camel-jms</feature>
 		<feature version='${project.version}'>osgiliath-messaging</feature>
 	</feature>
 
 	<feature name="osgiliath-camel-messaging-web" version="${project.version}" start-level="60" description="Messaging routes for Web (WebSoket)">
 		<feature version="${project.version}">osgiliath-messaging-websocket</feature>
-		<feature version="${camel-version}">camel-websocket</feature>
+		<feature version="${org.apache.camel.version}">osgiliath-camel-websocket</feature>
 		<feature version='${project.version}'>osgiliath-messaging</feature>
-		<bundle>mvn:org.apache.activemq/activemq-camel/${org.apache.activemq.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.activemq-camel/${project.version}</bundle>
 	</feature>
 </features>

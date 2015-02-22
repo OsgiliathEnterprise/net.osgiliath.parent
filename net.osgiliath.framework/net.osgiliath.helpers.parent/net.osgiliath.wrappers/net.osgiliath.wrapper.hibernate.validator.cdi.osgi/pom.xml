@@ -44,7 +44,7 @@
 				<configuration>
 					<instructions>
 						<_include>-osgi.bnd</_include>
-						<Bundle-Version>${org.hibernate.validator.version}</Bundle-Version>
+						<Bundle-Version>${org.hibernate_hibernate-validator-cdi.version}</Bundle-Version>
 						<Embed-Dependency>hibernate-validator-cdi,!*</Embed-Dependency>
 					</instructions>
 				</configuration>

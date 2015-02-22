@@ -12,230 +12,39 @@
 	<name>Osgiliath Derby database features</name>
 	<description>Feature for Derby database support</description>
 	<dependencies>
-		<!-- org.liquibase_liquibase-core -->
-		<dependency>
-			<groupId>ant</groupId>
-			<artifactId>ant</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-		</dependency>
-		<!-- org.liquibase_liquibase-core -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.helpers.derby</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-		<!-- net.osgiliath.framework_net.osgiliath.helpers.derby -->
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
 			<artifactId>net.osgiliath.wrapper.derby</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jndi -->
-		<dependency>
-			<groupId>org.apache.aries.jndi</groupId>
-			<artifactId>org.apache.aries.jndi.api</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jndi -->
-		<dependency>
-			<groupId>org.apache.aries.jndi</groupId>
-			<artifactId>org.apache.aries.jndi.core</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jndi -->
-		<dependency>
-			<groupId>org.apache.aries.jndi</groupId>
-			<artifactId>org.apache.aries.jndi.legacy.support</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jndi -->
-		<dependency>
-			<groupId>org.apache.aries.jndi</groupId>
-			<artifactId>org.apache.aries.jndi.rmi</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jndi -->
-		<dependency>
-			<groupId>org.apache.aries.jndi</groupId>
-			<artifactId>org.apache.aries.jndi.url</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.aries.transaction</groupId>
-			<artifactId>org.apache.aries.transaction.blueprint</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-		
-		<dependency>
-			<groupId>org.apache.aries.transaction</groupId>
-			<artifactId>org.apache.aries.transaction.manager</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-pool2</artifactId>
-		</dependency>
-
-		<!-- net.osgiliath.wrappers_net.osgiliath.wrapper.derby -->
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-		</dependency>
-		<!-- net.osgiliath.wrappers_net.osgiliath.wrapper.derby -->
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derbyclient</artifactId>
-		</dependency>
-		<!-- net.osgiliath.wrappers_net.osgiliath.wrapper.derby -->
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derbynet</artifactId>
-		</dependency>
-		<!-- net.osgiliath.wrappers_net.osgiliath.wrapper.derby -->
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derbytools</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.components</groupId>
-			<artifactId>geronimo-connector</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-j2ee-connector_1.6_spec</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jta_1.1_spec</artifactId>
-		</dependency>
-		<!-- net.osgiliath.wrappers_net.osgiliath.wrapper.derby -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-servlet_3.0_spec</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-validation_1.0_spec</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.karaf.deployer</groupId>
-			<artifactId>org.apache.karaf.deployer.spring</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>enterprise</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>spring</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jndi -->
-		<dependency>
-			<groupId>org.apache.karaf.jndi</groupId>
-			<artifactId>org.apache.karaf.jndi.command</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jndi -->
-		<dependency>
-			<groupId>org.apache.karaf.jndi</groupId>
-			<artifactId>org.apache.karaf.jndi.core</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 		<dependency>
 			<groupId>org.apache.neethi</groupId>
 			<artifactId>neethi</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.junit</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise -->
-		<dependency>
-			<groupId>org.apache.xbean</groupId>
-			<artifactId>xbean-naming</artifactId>
-		</dependency>
-		<!-- org.liquibase_liquibase-osgi -->
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-osgi</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.base</groupId>
-			<artifactId>ops4j-base-lang</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.base</groupId>
-			<artifactId>ops4j-base-spi</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.jdbc</groupId>
-			<artifactId>pax-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.jdbc</groupId>
-			<artifactId>pax-jdbc-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.jdbc</groupId>
-			<artifactId>pax-jdbc-derby</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.jdbc</groupId>
-			<artifactId>pax-jdbc-pool-aries</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.jdbc</groupId>
@@ -244,35 +53,9 @@
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.pax.swissbox</groupId>
-			<artifactId>pax-swissbox-core</artifactId>
+			<groupId>org.ops4j.pax.tipi</groupId>
+			<artifactId>org.ops4j.pax.tipi.junit</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.swissbox</groupId>
-			<artifactId>pax-swissbox-lifecycle</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.swissbox</groupId>
-			<artifactId>pax-swissbox-extender</artifactId>
-		</dependency>
-
-		<!-- net.osgiliath.framework_net.osgiliath.helpers.derby -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<!-- org.liquibase_liquibase-core -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
-		</dependency>
-		<!-- org.liquibase_liquibase-core -->
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
-		</dependency>
-
-
 	</dependencies>
 	<build>
 		<resources>

@@ -82,12 +82,11 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.5</version>
 				<configuration>
 					<filesets>
 						<fileset>
 							<directory>target</directory>
-<directory>node_modules</directory>
+							<directory>node_modules</directory>
 						</fileset>
 					</filesets>
 				</configuration>
@@ -96,11 +95,9 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 	</build>
 	<dependencies>
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>

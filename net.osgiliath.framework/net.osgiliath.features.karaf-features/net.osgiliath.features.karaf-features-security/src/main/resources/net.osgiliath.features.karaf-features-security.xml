@@ -20,22 +20,25 @@ limitations under the License.
 -->
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
-	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
-	<repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
-	<feature name='osgiliath-security' version='${project.version}' start-level="40" description="Spring Security feature (Auth/Autz)">
-		<feature version='${karaf.feature.spring3.version}'>spring-jdbc</feature>
-		<bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang.version}</bundle>
-		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool.version}</bundle>
-		<bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jsr250-1.0/${org.apache.servicemix.specs.version}</bundle>
-		<bundle>mvn:org.springframework.security/spring-security-aspects/${org.springframework.security.version}</bundle>
-		<bundle>mvn:org.springframework.security/spring-security-core/${org.springframework.security.version}</bundle>
-		<feature version='${karaf.feature.spring3.version}'>spring-web</feature>
-		<bundle>mvn:org.springframework.security/spring-security-config/${org.springframework.security.version}</bundle>
-		<bundle>mvn:org.springframework.batch/spring-batch-core/${org.springframework.batch.version}</bundle>
-		<bundle>mvn:org.springframework.batch/spring-batch-infrastructure/${org.springframework.batch.version}</bundle>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-karaf-standard/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-spring/${project.version}/xml/features</repository>
+	
+	<feature name='osgiliath-security' version='${project.version}' description="Spring Security feature (Auth/Autz)">
+		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-jdbc</feature>
+		<bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
+		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-aspects/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-core/${project.version}</bundle>
+		<feature version='${org.apache.servicemix.bundles.spring4.version}'>osgiliath-spring-web</feature>
+		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-jms</feature>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-config/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-batch-core/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-batch-infrastructure/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-ldap/${project.version}</bundle>
-		<bundle>mvn:org.springframework.security/spring-security-ldap/${org.springframework.security.version}</bundle>
-		<feature version='${karaf.version}'>http</feature>
-		<bundle>mvn:org.springframework.security/spring-security-web/${org.springframework.security.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-ldap/${project.version}</bundle>
+		<feature version='${org.apache.karaf.features_standard.version}'>osgiliath-http</feature>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-web/${project.version}</bundle>
 	</feature>
 </features>

@@ -1,10 +1,5 @@
 Import-Package: com.google.common.collect,\
  helpers.cxf.exception.handling.jaxrs.mapper,\
- javax.validation,\
- javax.transaction,\
- org.apache.cxf.jaxrs.provider,\
- org.apache.cxf.jaxrs.provider.json,\
- org.apache.cxf.jaxrs.impl.tl,\
- org.springframework.transaction;version="[3,4)",\
- org.springframework.validation.beanvalidation;version="[3,4)",\
+ org.springframework.transaction;version="[4,5)",\
+ org.springframework.validation.beanvalidation;version="[4,5)",\
  *

@@ -12,4 +12,5 @@ Import-Package: javax.jms,\
  org.apache.activemq.transport.ws,\
  org.apache.activemq.usage,\
  org.apache.activemq.util,\
- org.apache.activemq.xbean
+ org.apache.activemq.xbean,\
+ *

@@ -27,6 +27,7 @@ import javax.enterprise.inject.Produces;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helpers.deltaspike.configadmin.ConfigAdminAccessor;
 import net.osgiliath.helpers.swagger.cdi.CXFBeanJaxrsScanner;
+
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;

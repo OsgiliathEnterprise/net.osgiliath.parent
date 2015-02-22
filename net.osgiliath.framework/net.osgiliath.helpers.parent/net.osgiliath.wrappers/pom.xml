@@ -12,18 +12,22 @@
 	<description>OSGI Manifests wrappers for Osgiliath</description>
 	<modules>
 		<!-- <module>net.osgiliath.wrapper.camel-cdi</module> -->
-		<module>net.osgiliath.wrapper.deltaspike-data-module-api</module>
-		<module>net.osgiliath.wrapper.deltaspike-data-module-impl</module>
-		<module>net.osgiliath.wrapper.deltaspike-partial-bean-module-api</module>
-		<module>net.osgiliath.wrapper.deltaspike-partial-bean-module-impl</module>
-		<module>net.osgiliath.wrapper.fragment-ds-data</module>
 		<module>net.osgiliath.wrapper.hibernate.validator.cdi.osgi</module>
 		<module>net.osgiliath.wrapper.derby</module>
 		<module>net.osgiliath.wrapper.swagger-jaxrs</module>
 		<module>net.osgiliath.wrapper.jackson-module-scala</module>
 		<module>net.osgiliath.wrapper.cxf-integration-cdi</module>
 		<module>net.osgiliath.wrapper.swagger-core</module>
-		<module>net.osgiliath.wrapper.camel-spring</module>
 		<module>net.osgiliath.wrapper.spring-ldap</module>
+		<module>net.osgiliath.wrapper.camel-jms</module>
+		<module>net.osgiliath.wrappers.activemq-camel</module>
+		<module>net.osgiliath.wrapper.xbean-spring</module>
+		<module>net.osgiliath.wrapper.spring-batch-core</module>
+		<module>net.osgiliath.wrapper.spring-batch-infrastructure</module>
+		<module>net.osgiliath.wrapper.spring-security-aspects</module>
+		<module>net.osgiliath.wrapper.spring-security-config</module>
+		<module>net.osgiliath.wrapper.spring-security-core</module>
+		<module>net.osgiliath.wrapper.spring-security-ldap</module>
+		<module>net.osgiliath.wrapper.spring-security-web</module>
 	</modules>
 </project>

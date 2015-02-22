@@ -27,13 +27,13 @@
 	</feature>
 	<!-- UI -->
 	<feature name="${project.parent.artifactId}.ui" version="${project.version}">
-		<feature version='${karaf.version}'>war</feature>
+		<feature version='${karaf.version}'>osgiliath-war</feature>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.ui/${project.version}/war</bundle>
 	</feature>
 	<feature name="${project.parent.artifactId}.full.blueprint.itests" version="${project.version}">
 		<feature version='${project.version}'>${project.parent.artifactId}.business.blueprint</feature>
 		<feature version='${project.version}'>${project.parent.artifactId}.route.blueprint</feature>
-		<feature version='${karaf.version}'>war</feature>
+		<feature version='${karaf.version}'>osgiliath-war</feature>
 		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.ui/target/net.osgiliath.hello.ui.war</bundle>
 	</feature>
 	<!-- CDI -->

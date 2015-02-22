@@ -12,7 +12,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4</version>
 				<executions>
 					<execution>
 						<id>assembly:package</id>
@@ -89,7 +88,7 @@
 					<arguments>
 						<argument>overrides=scala=[2,3);scala.xml=[1.0.0,3.0.0);scala.collection=[2,3);scala.collection.convert=[2,3);scala.collection.generic=[2,3);scala.collection.immutable=[2,3);scala.collection.mutable=[2,3);scala.math=[2,3);scala.reflect=[2,3);scala.runtime=[2,3);scala.util.matching=[2,3)</argument>
 						<argument>basedir=${project.basedir}</argument>
-						<argument>bundleClasspath=org.apache.servicemix.bundles.swagger-core-${org.apache.servicemix.bundles.swagger.version}</argument>
+						<argument>bundleClasspath=org.apache.servicemix.bundles.swagger-core-${org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-core.version}</argument>
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>

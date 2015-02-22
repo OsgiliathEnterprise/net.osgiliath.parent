@@ -90,8 +90,8 @@ public class ManifestBundleImportVersionUpdaterTransformer {
       String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
       StringBuilder regexp = new StringBuilder();
       regexp.append("([a-zA-Z0-9\\.]+?)");// symbolicname
-      regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9]*\")*?)*?)");// specialization
-      regexp.append("(,(?!\\s*[\\.\\]\\)0-9]*\")|$)");// iterator
+      regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9a-zA-Z]*\")*?)*?)");// specialization
+      regexp.append("(,(?!\\s*[\\.\\]\\)0-9a-zA-Z]*\")|$)");// iterator
       Pattern pattern = Pattern.compile(regexp.toString());// ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
       Matcher matcher = pattern.matcher(imports);
       while (matcher.find()) {

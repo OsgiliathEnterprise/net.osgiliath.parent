@@ -20,8 +20,6 @@ package net.osgiliath.hello.business.cdi.impl.services.impl;
  * #L%
  */
 
-import helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
-
 import java.util.Collection;
 
 import javax.inject.Inject;
@@ -32,18 +30,12 @@ import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
-import net.osgiliath.helpers.cdi.cxf.jaxrs.CXFEndpoint;
-import net.osgiliath.helpers.cdi.eager.Eager;
 
-import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
-import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 import org.ops4j.pax.cdi.api.OsgiService;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
-import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 /**
  * Sample of a business service with JaxRS and CDI
@@ -52,10 +44,10 @@ import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
  * 
  */
 @Slf4j
-@Eager
-@CXFEndpoint(url = "/helloService", providersClasses = {
-    JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class,
-    ResourceListingProvider.class, ApiDeclarationProvider.class })
+//@Eager
+//@CXFEndpoint(url = "/helloService", providersClasses = {
+//    JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class,
+//    ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceJaxRS implements
     net.osgiliath.hello.business.cdi.impl.HelloServiceJaxRS {
   /**

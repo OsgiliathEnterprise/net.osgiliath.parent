@@ -30,10 +30,7 @@
 		
 	<reference id="jTATransactionManager" interface="javax.transaction.TransactionManager"></reference>
 	
-	<bean id="required" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
-	</bean>
+	
 
 	<reference id="jms" interface="org.apache.camel.Component"
 		availability="mandatory" filter="(component-type=jms)">

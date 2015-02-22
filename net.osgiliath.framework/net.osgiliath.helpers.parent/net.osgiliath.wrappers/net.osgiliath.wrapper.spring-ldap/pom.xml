@@ -87,9 +87,9 @@
 				<configuration>
 					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
-						<argument>overrides=org.springframework.jdbc.datasource=[3,4);org.springframework.orm.hibernate3=[3,4)</argument>
+						<argument>overrides=org.springframework.jdbc.datasource=[4.0.0,5.0.0);org.springframework.orm.hibernate3=[4.0.0,5.0.0);org.springframework.beans=[4.0.0,5.0.0);org.springframework.beans.factory=[4.0.0,5.0.0);org.springframework.beans.factory.config=[4.0.0,5.0.0);org.springframework.context=[4.0.0,5.0.0);org.springframework.core=[4.0.0,5.0.0);org.springframework.core.io=[4.0.0,5.0.0);org.springframework.dao=[4.0.0,5.0.0);org.springframework.transaction=[4.0.0,5.0.0);org.springframework.transaction.support=[4.0.0,5.0.0);org.springframework.util=[4.0.0,5.0.0)</argument>
 						<argument>basedir=${project.basedir}</argument>
-						<argument>bundleClasspath=org.apache.servicemix.bundles.spring-ldap-${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap}.jar</argument>
+						<argument>bundleClasspath=org.apache.servicemix.bundles.spring-ldap-${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version}.jar</argument>
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>

@@ -19,90 +19,79 @@
 	<name>Osgiliath full features</name>
 	<description>Messaging, CDI... Corse grained features for Osgiliath</description>
 	<dependencies>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-cdi</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-cdi</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-derby</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-derby</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-functional</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-jaxrs</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-jpa</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-messaging</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-monitoring</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-monitoring</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-routes</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-routes</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-security</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-standard</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-karaf-standard</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.features.karaf-features-full -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-validation</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-validation</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>

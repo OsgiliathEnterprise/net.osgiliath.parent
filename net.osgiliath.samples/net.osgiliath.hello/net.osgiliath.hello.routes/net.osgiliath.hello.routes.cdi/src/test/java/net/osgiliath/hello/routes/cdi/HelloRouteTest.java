@@ -42,12 +42,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 //TODO unit test route sample
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/net.osgiliath.hello.routes.test-context.xml" })
-public class HelloRouteTest {
+public class HelloRouteTest extends AbstractJUnit4SpringContextTests{
 
   @Produce(uri = "{{hello.MessagingEntryPoint}}")
   protected ProducerTemplate helloEntryPoint;

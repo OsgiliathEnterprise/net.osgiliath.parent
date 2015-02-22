@@ -10,13 +10,14 @@
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
 	name="${project.artifactId}-${project.version}">
-	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-cdi/${project.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-functional/${project.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/xml/features</repository>
-	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
-	<repository>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-cdi/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-functional/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-karaf-standard/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-jaxrs/${project.version}/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/standard/${org.apache.karaf.features_standard.version}/xml/features</repository>
+	<repository>mvn:io.hawt/hawtio-karaf/${io.hawt_hawtio-karaf.version}/xml/features</repository>
 	<feature name="osgiliath-swagger-ui" version="${project.version}" resolver="(obr)" start-level="70" description="Swagger console to query webservices">
-		<feature version='${karaf.version}'>war</feature>
+		<feature version='${org.apache.karaf.features_standard.version}'>osgiliath-war</feature>
 		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-swagger</feature>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.swagger.ui/${project.version}/war</bundle>
@@ -26,14 +27,21 @@
 		<feature version="${project.version}">osgiliath-swagger-rest-cdi</feature>
 	</feature>
 	<feature name="osgiliath-swagger" version="${project.version}" start-level="70" description="Swagger framework support for blueprint">
- 	 	 <bundle>mvn:org.javassist/javassist/${org.javassist.version}</bundle>
+ 	 	 <bundle>mvn:org.javassist/javassist/${org.javassist_javassist.version}</bundle>
  	 	 <feature version="${project.version}">osgiliath-functional</feature>
  	 	 <feature version="${project.version}">osgiliath-scala</feature>
  	 	 <feature version="${project.version}">osgiliath-swagger-rest</feature>
  	 </feature>
 	<feature name="osgiliath-hawtio" version="${project.version}" resolver="(obr)" start-level="70" description="HawtIO monitoring console">
-		<feature version="${hawtio.version}">hawtio-core</feature>
-		<bundle>mvn:org.jolokia/jolokia-osgi/${jolokia.version}</bundle>
+		<feature version="${hawtio.version}">osgiliath-hawtio-core</feature>
+		<bundle>mvn:org.jolokia/jolokia-osgi/${org.jolokia_jolokia.version}</bundle>
 	</feature>
-		
+	<feature name="osgiliath-hawtio-core" version="${hawtio.version}" resolver="(obr)">
+    	<details>Installs the core hawtio war file with minimal extensions</details>
+    	<feature>osgliath-war</feature>
+    	<bundle>mvn:io.hawt/hawtio-json-schema-mbean/${io.hawt_hawtio-json-schema-mbean.version}</bundle>
+    	<bundle>mvn:io.hawt/hawtio-osgi-jmx/${io.hawt_hawtio-json-schema-mbean.version}</bundle>
+    	<bundle>mvn:io.hawt/hawtio-web/${hawtio.version}/war</bundle>
+    	<config name="jmx.acl.hawtio.plugin">* = *</config>
+  </feature>
 </features>

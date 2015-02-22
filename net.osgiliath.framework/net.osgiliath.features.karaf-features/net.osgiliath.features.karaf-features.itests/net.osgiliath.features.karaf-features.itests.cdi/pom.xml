@@ -118,7 +118,6 @@
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
 			<artifactId>net.osgiliath.helpers.exam</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

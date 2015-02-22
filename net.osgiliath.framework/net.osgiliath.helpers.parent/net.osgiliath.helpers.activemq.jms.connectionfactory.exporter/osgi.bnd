@@ -15,4 +15,3 @@ Import-Package: javax.jms,\
  org.apache.activemq.util,\
  org.apache.activemq.xbean,
  *
-Export-Package: *

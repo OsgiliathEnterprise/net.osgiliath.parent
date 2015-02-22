@@ -13,8 +13,11 @@
 	<!-- access through JTATransactionManager -->
 	<reference id="jmsXaPoolConnectionFactory" interface="javax.jms.ConnectionFactory" filter="(component-type=jmsXA)" />
 	<reference id="pooledConnectionFactory" interface="javax.jms.ConnectionFactory" filter="(component-type=jms)" />
-	<reference id="osgiPlatformTransactionManager" interface="org.springframework.transaction.PlatformTransactionManager" />
-
+	<!-- <reference id="transactionManager" interface ="javax.transaction.TransactionManager"></reference> -->
+	 <reference id="osgiPlatformTransactionManager" interface="org.springframework.transaction.PlatformTransactionManager" />
+<!--  <bean id="springTxManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+<argument ref="transactionManager"></argument>
+</bean> -->
 	<bean id="jmsTemplateContainerListenerFactory" class="net.osgiliath.helpers.spring.jms.listeners.XACapableJmsTemplateContainerListenerFactory">
 		<property name="nonXAFactory" ref="pooledConnectionFactory"></property>
 		<property name="XAFactory" ref="jmsXaPoolConnectionFactory"></property>

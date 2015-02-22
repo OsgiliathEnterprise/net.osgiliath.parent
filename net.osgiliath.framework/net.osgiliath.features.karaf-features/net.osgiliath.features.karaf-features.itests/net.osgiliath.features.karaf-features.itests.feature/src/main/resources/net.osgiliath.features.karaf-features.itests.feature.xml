@@ -44,7 +44,7 @@ limitations under the License.
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jaxrs/target/net.osgiliath.features.karaf-features.itests.jaxrs-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-jaxrs-web' version='${project.version}'>
-		<feature version='${karaf.version}'>war</feature>
+		<feature version='${karaf.version}'>osgiliath-war</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${project.version}'>osgiliath-rest</feature>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jaxrs.web/target/net.osgiliath.features.karaf-features.itests.jaxrs.web-${project.version}.jar</bundle>
@@ -57,7 +57,7 @@ limitations under the License.
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jaxrs.cdi/target/net.osgiliath.features.karaf-features.itests.jaxrs.cdi-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-jaxrs-web-cdi' version='${project.version}'>
-		<feature version='${karaf.version}'>war</feature>
+		<feature version='${karaf.version}'>osgiliath-war</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${project.version}'>osgiliath-rest-cdi</feature>

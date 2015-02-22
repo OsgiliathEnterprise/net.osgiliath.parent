@@ -47,7 +47,7 @@ ${symbol_pound}L%
 		-->
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.ui" version="${symbol_dollar}{project.version}">
-		<feature version='${symbol_dollar}{karaf.version}'>war</feature>
+		<feature version='${symbol_dollar}{karaf.version}'>osgiliath-war</feature>
 		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.ui/${symbol_dollar}{project.version}/war</bundle>
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.full" version="${symbol_dollar}{project.version}">
@@ -58,7 +58,7 @@ ${symbol_pound}L%
 	<!--<feature name="${symbol_dollar}{project.parent.artifactId}.full.itests" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
 		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.route</feature>
-		<feature version='${symbol_dollar}{karaf.version}'>war</feature>
+		<feature version='${symbol_dollar}{karaf.version}'>osgiliath-war</feature>
 		<bundle>file:${symbol_dollar}{project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.ui/target/${symbol_dollar}{project.parent.artifactId}.ui.war</bundle>
 	</feature>-->
 	<!--<feature name="${symbol_dollar}{project.groupId}.route" version="${symbol_dollar}{project.version}"><!-- if you use blueprint instead of cdi, replace o-full-cdi by osgiliath-full-->

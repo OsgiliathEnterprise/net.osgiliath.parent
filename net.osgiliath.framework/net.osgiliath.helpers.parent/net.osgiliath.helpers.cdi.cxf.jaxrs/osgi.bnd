@@ -1,6 +1,0 @@
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
-Provide-Capability = org.ops4j.pax.cdi.extension; extension="jaxrs-cdi"
-Bundle-Activator: net.osgiliath.helpers.cdi.cxf.jaxrs.internal.CXFHelperActivator
-Import-Package: javax.annotation;version="0",\
- *
-Private-Package: net.osgiliath.helpers.cdi.cxf.jaxrs.internal

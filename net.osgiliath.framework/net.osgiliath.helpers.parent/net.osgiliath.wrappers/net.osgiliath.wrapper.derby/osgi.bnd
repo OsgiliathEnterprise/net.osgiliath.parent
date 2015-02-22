@@ -1,4 +1,4 @@
-Export-Package: *
+Export-Package: org.apache.derby.*
 Import-Package: !com.ibm.db2.jcc,\
  !com.ibm.jvm,\
  !com.sun.management,\

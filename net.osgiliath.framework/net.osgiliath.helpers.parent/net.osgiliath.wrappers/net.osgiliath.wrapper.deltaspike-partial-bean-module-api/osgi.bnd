@@ -1,3 +1,0 @@
-Import-Package: javax.annotation;version="0",\
- *
-Export-Package: org.apache.deltaspike.partialbean.api

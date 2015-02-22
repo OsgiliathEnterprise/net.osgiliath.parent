@@ -40,6 +40,10 @@
 			<artifactId>guava</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 		</dependency>
@@ -60,10 +64,6 @@
 			<artifactId>geronimo-atinject_1.0_spec</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-el_2.2_spec</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.ops4j.pax.cdi</groupId>
 			<artifactId>pax-cdi-api</artifactId>
 		</dependency>
@@ -72,5 +72,4 @@
 			<artifactId>pax-cdi-spi</artifactId>
 		</dependency>
 	</dependencies>
-
 </project>

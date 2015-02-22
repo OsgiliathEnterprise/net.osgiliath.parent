@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Export-Package: org.apache.activemq.camel;version="5.9.0",org.apache.a
+ ctivemq.camel.component;uses:="org.springframework.jms.connection";ve
+ rsion="5.9.0",org.apache.activemq.camel.component.broker;uses:="org.a
+ pache.activemq.camel.converter";version="5.9.0",org.apache.activemq.c
+ amel.converter;uses:="org.springframework.jms.support.converter";vers
+ ion="5.9.0"
+Implementation-Title: Apache ActiveMQ
+Bundle-ClassPath: ., activemq-camel-5.9.0.jar
+Implementation-Version: 5.9.0
+Built-By: gtully
+Tool: Bnd-1.50.0
+Bundle-Name: activemq-camel
+Created-By: Apache Maven Bundle Plugin
+Bundle-Vendor: The Apache Software Foundation
+Build-Jdk: 1.6.0_51
+Bundle-Version: 5.9.0
+Bnd-LastModified: 1381791136702
+Bundle-ManifestVersion: 2
+Bundle-Description: ActiveMQ component for Camel
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Import-Package: org.springframework.jms.connection;version="[4,4.1.2.R
+ ELEASE_1]",org.springframework.jms.support.converter;version="[4,4.1.
+ 2.RELEASE_1]"
+Bundle-DocURL: http://www.apache.org/
+Bundle-SymbolicName: org.apache.activemq.activemq-camel
+

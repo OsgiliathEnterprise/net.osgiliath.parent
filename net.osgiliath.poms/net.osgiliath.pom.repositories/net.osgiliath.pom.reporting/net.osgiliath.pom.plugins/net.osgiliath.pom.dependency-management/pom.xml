@@ -18,13 +18,6 @@
 	</modules>
 	<dependencyManagement>
 		<dependencies>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<dependency>
-				<groupId>ant</groupId>
-				<artifactId>ant</artifactId>
-				<version>${ant.ant.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bndlib</artifactId>
@@ -33,282 +26,177 @@
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>${logback.version}</version>
-				<scope>runtime</scope>
+				<version>${ch.qos.logback_logback-classic.version}</version>
+				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<artifactId>slf4j-api</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+				</exclusions>
 			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-core</artifactId>
-				<version>${logback.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>com.fasterxml</groupId>
 				<artifactId>classmate</artifactId>
-				<version>${com.fasterxml.classmate.version}</version>
+				<version>${com.fasterxml_classmate.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
-				<version>${com.fasterxml.jackson.version}</version>
+				<version>${com.fasterxml.jackson.core_jackson-annotations.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
-				<version>${com.fasterxml.jackson.version}</version>
+				<version>${com.fasterxml.jackson.core_jackson-core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
-				<version>${com.fasterxml.jackson.version}</version>
+				<version>${com.fasterxml.jackson.core_jackson-databind.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.dataformat</groupId>
 				<artifactId>jackson-dataformat-smile</artifactId>
-				<version>${com.fasterxml.jackson.version}</version>
+				<version>${com.fasterxml.jackson.dataformat_jackson-dataformat-smile.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.jaxrs</groupId>
 				<artifactId>jackson-jaxrs-base</artifactId>
-				<version>${com.fasterxml.jackson.version}</version>
+				<version>${com.fasterxml.jackson.jaxrs_jackson-jaxrs-base.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.jaxrs</groupId>
 				<artifactId>jackson-jaxrs-json-provider</artifactId>
-				<version>${com.fasterxml.jackson.version}</version>
+				<version>${com.fasterxml.jackson.jaxrs_jackson-jaxrs-json-provider.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.module</groupId>
 				<artifactId>jackson-module-jaxb-annotations</artifactId>
-				<version>${com.fasterxml.jackson.version}</version>
+				<version>${com.fasterxml.jackson.module_jackson-module-jaxb-annotations.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-function -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>${com.google.guava.version}</version>
+				<version>${com.google.guava_guava.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
-				<version>${commons-beanutils.version}</version>
+				<version>${commons-beanutils_commons-beanutils.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
-				<version>${commons-codec.version}</version>
+				<version>${commons-codec_commons-codec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
-				<version>${commons-collections.version}</version>
+				<version>${commons-collections_commons-collections.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>commons-dbcp</groupId>
-				<artifactId>commons-dbcp</artifactId>
-				<version>${commons-dbcp.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<version>${commons-io.version}</version>
+				<version>${commons-io_commons-io.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
-				<version>${commons-lang.version}</version>
+				<version>${commons-lang_commons-lang.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>commons-logging</groupId>
-				<artifactId>commons-logging</artifactId>
-				<version>${common-logging_common-logging.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>commons-net</groupId>
 				<artifactId>commons-net</artifactId>
-				<version>${common-net_common-net.version}</version>
+				<version>${commons-net_commons-net.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>commons-pool</groupId>
 				<artifactId>commons-pool</artifactId>
-				<version>${commons-pool.version}</version>
+				<version>${commons-pool_commons-pool.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>io.hawt</groupId>
 				<artifactId>hawtio-karaf</artifactId>
-				<version>${hawtio.version}</version>
+				<version>${io.hawt_hawtio-karaf.version}</version>
 				<type>xml</type>
 				<classifier>features</classifier>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>io.hawt</groupId>
 				<artifactId>hawtio-json-schema-mbean</artifactId>
-				<version>${hawtio.version}</version>
+				<version>${io.hawt_hawtio-json-schema-mbean.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>io.hawt</groupId>
 				<artifactId>hawtio-osgi-jmx</artifactId>
-				<version>${hawtio.version}</version>
+				<version>${io.hawt_hawtio-json-schema-mbean.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>io.hawt</groupId>
 				<artifactId>hawtio-web</artifactId>
-				<version>${hawtio.version}</version>
+				<version>${io.hawt_hawtio-web.version}</version>
 				<type>war</type>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>javax.annotation</groupId>
 				<artifactId>javax.annotation-api</artifactId>
-				<version>${javax.annotation.javax.annotation-api.version}</version>
+				<version>${javax.annotation_javax.annotation-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>javax.el</groupId>
 				<artifactId>javax.el-api</artifactId>
-				<version>${javax.el-api.version}</version>
+				<version>${javax.el_javax.el-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>javax.enterprise</groupId>
 				<artifactId>cdi-api</artifactId>
-				<version>${cdi-api.version}</version>
+				<version>${javax.enterprise_cdi-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>javax.inject</groupId>
-				<artifactId>javax.inject</artifactId>
-				<version>${javax.inject.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>javax.interceptor</groupId>
 				<artifactId>javax.interceptor-api</artifactId>
-				<version>${javax.interceptor-api.version}</version>
+				<version>${javax.interceptor_javax.interceptor-api.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>javax.jms</groupId>
-				<artifactId>jms-api</artifactId>
-				<version>${javax.jms.api.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>javax.json</groupId>
 				<artifactId>javax.json-api</artifactId>
-				<version>${javax.json-api.version}</version>
+				<version>${javax.json_javax.json-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>javax.mail</groupId>
 				<artifactId>mail</artifactId>
-				<version>${javax.mail.mail.version}</version>
+				<version>${javax.mail_mail.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>javax.servlet-api</artifactId>
-				<version>${javax.servlet-api.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>${javax.servlet.servlet-api.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
-				<version>${validation-api.version}</version>
+				<version>${javax.validation_validation-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
-				<version>${joda-time.version}</version>
+				<version>${joda-time_joda-time.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activeio-core</artifactId>
 				<version>${org.apache.activemq_activeio-core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-blueprint</artifactId>
-				<version>${org.apache.activemq.version}</version>
+				<version>${org.apache.activemq_activemq-blueprint.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.activemq</groupId>
-				<artifactId>activemq-broker</artifactId>
-				<version>${org.apache.activemq.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-camel</artifactId>
-				<version>${org.apache.activemq.version}</version>
+				<version>${org.apache.activemq_activemq-camel.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.activemq</groupId>
-				<artifactId>activemq-console</artifactId>
-				<version>${org.apache.activemq.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.activemq</groupId>
-				<artifactId>activemq-kahadb-store</artifactId>
-				<version>${org.apache.activemq.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-karaf</artifactId>
-				<version>${org.apache.activemq.version}</version>
+				<version>${org.apache.activemq_activemq-karaf.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.eclipse.jetty.orbit</groupId>
@@ -316,11 +204,10 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-osgi</artifactId>
-				<version>${org.apache.activemq.version}</version>
+				<version>${org.apache.activemq_activemq-osgi.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>com.sun.jdmk</groupId>
@@ -335,136 +222,32 @@
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-pool</artifactId>
-				<version>${org.apache.activemq.version}</version>
+				<version>${org.apache.activemq_activemq-pool.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.activemq</groupId>
-				<artifactId>activemq-ra</artifactId>
-				<version>${org.apache.activemq.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.activemq</groupId>
-				<artifactId>activemq-stomp</artifactId>
-				<version>${org.apache.activemq.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.aries.blueprint</groupId>
-				<artifactId>org.apache.aries.blueprint</artifactId>
-				<version>${org.apache.aries.blueprint.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.aries</groupId>
 				<artifactId>org.apache.aries.util</artifactId>
-				<version>${org.apache.aries.util.version}</version>
+				<version>${org.apache.aries_org.apache.aries.util.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jndi</groupId>
-				<artifactId>org.apache.aries.jndi.api</artifactId>
-				<version>${org.apache.aries.jndi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jndi</groupId>
-				<artifactId>org.apache.aries.jndi.core</artifactId>
-				<version>${org.apache.aries.jndi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jndi</groupId>
-				<artifactId>org.apache.aries.jndi.legacy.support</artifactId>
-				<version>${org.apache.aries.jndi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jndi</groupId>
-				<artifactId>org.apache.aries.jndi.rmi</artifactId>
-				<version>${org.apache.aries.jndi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jndi</groupId>
-				<artifactId>org.apache.aries.jndi.url</artifactId>
-				<version>${org.apache.aries.jndi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jpa</groupId>
-				<artifactId>org.apache.aries.jpa.api</artifactId>
-				<version>${org.apache.aries.jpa.api.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jpa</groupId>
-				<artifactId>org.apache.aries.jpa.blueprint.aries</artifactId>
-				<version>${karaf.feature.jpa.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jpa</groupId>
-				<artifactId>org.apache.aries.jpa.container</artifactId>
-				<version>${org.apache.aries.jpa.api.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.aries.jpa</groupId>
-				<artifactId>org.apache.aries.jpa.container.context</artifactId>
-				<version>${karaf.feature.jpa.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
-			<dependency>
-				<groupId>org.apache.aries.spifly</groupId>
-				<artifactId>org.apache.aries.spifly.core-internal</artifactId>
-				<version>${org.apache.aries.spifly.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.aries.spifly</groupId>
 				<artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
-				<version>${org.apache.aries.spifly.version}</version>
+				<version>${org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
-			<dependency>
-				<groupId>org.apache.aries.spifly</groupId>
-				<artifactId>org.apache.aries.spifly.weaver-internal</artifactId>
-				<version>${org.apache.aries.spifly.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
-			<dependency>
-				<groupId>org.apache.aries.transaction</groupId>
-				<artifactId>org.apache.aries.transaction.blueprint</artifactId>
-				<version>${org.apache.aries.transaction.blueprint.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.aries.transaction</groupId>
-				<artifactId>org.apache.aries.transaction.jdbc</artifactId>
-				<version>${org.apache.aries.transaction.jdbc.version}</version>
-			</dependency>
-
-
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.aries.transaction</groupId>
 				<artifactId>org.apache.aries.transaction.manager</artifactId>
-				<version>${karaf.feature.transaction.version}</version>
+				<version>${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}</version>
 			</dependency>
-
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-blueprint</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-blueprint.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-cdi</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-cdi.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.apache.camel.deltaspike.core</groupId>
@@ -480,943 +263,504 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-core</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-cdi.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.camel</groupId>
-				<artifactId>camel-core-osgi</artifactId>
-				<version>${camel-version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.apache.camel</groupId>
-				<artifactId>camel-cxf</artifactId>
-				<version>${camel-version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-rs-security-auth</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-bindings-soap</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-jaxws</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-features-clustering</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.apache.camel</groupId>
-				<artifactId>camel-cxf-transport</artifactId>
-				<version>${camel-version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-bindings-soap</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-databinding-jaxb</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-elasticsearch</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-elasticsearch.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-http</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-http.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-jackson</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-jackson.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-jaxb</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-jaxb.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-jms</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-jms.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-spring</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-test</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-test.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-test-spring</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-test-spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-websocket</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-websocket.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-xmljson</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-xmljson.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-xstream</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel_camel-xstream.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.camel.karaf</groupId>
 				<artifactId>apache-camel</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel.version}</version>
 				<type>xml</type>
 				<classifier>features</classifier>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.camel.karaf</groupId>
 				<artifactId>camel-karaf-commands</artifactId>
-				<version>${camel-version}</version>
+				<version>${org.apache.camel.karaf_camel-karaf-commands.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-dbcp2</artifactId>
-				<version>${org.apache.commons_commons-dbcp2.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-jexl</artifactId>
-				<version>${commons-jexl.version}</version>
+				<version>${org.apache.commons_commons-jexl.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-pool2</artifactId>
-				<version>${org.apache.commons_commons-pool2.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-core</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-core.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-integration-cdi</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-integration-cdi.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-bindings-soap</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-bindings-soap.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-bindings-xml</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-bindings-xml.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-databinding-jaxb</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-databinding-jaxb.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-frontend-jaxrs</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-frontend-jaxrs.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-frontend-jaxws</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-frontend-jaxws.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-frontend-simple</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-frontend-simple.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-management</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-management.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-rs-client</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-rs-client.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-rs-extension-providers</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-rs-extension-providers.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-rs-extension-search</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-rs-extension-search.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-rs-service-description</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-rs-service-description.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-transports-http</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-transports-http.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-transports-http-jetty</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-transports-http-jetty.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-rt-ws-policy</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-wsdl</artifactId>
-				<version>${karaf.feature.cxf.version}</version>
+				<version>${org.apache.cxf_cxf-rt-wsdl.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf.karaf</groupId>
 				<artifactId>apache-cxf</artifactId>
 				<type>xml</type>
 				<classifier>features</classifier>
-				<version>${org.apache.cxf.karaf_cxf-karaf-commands.version}</version>
+				<version>${org.apache.cxf.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.cxf.karaf</groupId>
 				<artifactId>cxf-karaf-commands</artifactId>
 				<version>${org.apache.cxf.karaf_cxf-karaf-commands.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-bean-validation-module-api</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-bean-validation-module-impl</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.cdictrl</groupId>
-				<artifactId>deltaspike-cdictrl-weld</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.cdictrl</groupId>
-				<artifactId>deltaspike-cdictrl-api</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
 				<groupId>org.apache.deltaspike.core</groupId>
 				<artifactId>deltaspike-core-api</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
+				<version>${org.apache.deltaspike.core_deltaspike-core-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.apache.deltaspike.core</groupId>
 				<artifactId>deltaspike-core-impl</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
+				<version>${org.apache.deltaspike.core_deltaspike-core-impl.version}</version>
 				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-data-module-api</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-data-module-impl</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-				<scope>runtime</scope>
+				<version>${org.apache.deltaspike.modules_deltaspike-data-module-api.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-jpa-module-api</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
+				<version>${org.apache.deltaspike.modules_deltaspike-jpa-module-api.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-jpa-module-impl</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-partial-bean-module-api</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-partial-bean-module-impl</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-security-module-api</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-security-module-impl</artifactId>
-				<version>${org.apache.deltaspike.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>org.apache.derby</groupId>
 				<artifactId>derby</artifactId>
-				<version>${derby.version}</version>
+				<version>${org.apache.derby_derby.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>org.apache.derby</groupId>
 				<artifactId>derbyclient</artifactId>
-				<version>${derby.version}</version>
+				<version>${org.apache.derby_derbyclient.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>org.apache.derby</groupId>
 				<artifactId>derbynet</artifactId>
-				<version>${derby.version}</version>
+				<version>${org.apache.derby_derbynet.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>org.apache.derby</groupId>
 				<artifactId>derbytools</artifactId>
-				<version>${derby.version}</version>
+				<version>${org.apache.derby_derbytools.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.fileinstall</artifactId>
-				<version>${org.apache.felix.fileinstall.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.framework</artifactId>
-				<version>${org.apache.felix.framework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.gogo.runtime</artifactId>
-				<version>${org.apache.felix.gogo.runtime.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.geronimo.components</groupId>
 				<artifactId>geronimo-connector</artifactId>
 				<version>${org.apache.geronimo.components_geronimo-connector.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-activation_1.1_spec</artifactId>
-				<version>${org.apache.geronimo.specs_geronimo-activation_1.1_spec.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-annotation_1.1_spec</artifactId>
-				<version>${geronimo-annotation_1.1_spec.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-atinject_1.0_spec</artifactId>
-				<version>${geronimo-atinject_1.0_spec.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-el_2.2_spec</artifactId>
-				<version>${geronimo-el_2.2_spec.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-j2ee-connector_1.5_spec</artifactId>
-				<version>${org.apache.geronimo.specs_geronimo-j2ee-connector_1.5_spec.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-j2ee-connector_1.6_spec</artifactId>
 				<version>${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
-				<version>${geronimo-j2ee-management_1.1_spec.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-jaspic_1.0_spec</artifactId>
-				<version>${geronimo-jaspic_1.0_spec.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-jaspic_1.0_spec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-jms_1.1_spec</artifactId>
-				<version>${geronimo-jms_1.1_spec.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-jpa_2.0_spec</artifactId>
-				<version>${org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-jta_1.1_spec</artifactId>
-				<version>${geronimo-jta_1.1_spec.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-osgi-registry</artifactId>
-				<version>${org.apache.geronimo.specs.geronimo-osgi-registry.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-osgi-registry.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-servlet_3.0_spec</artifactId>
-				<version>${geronimo-servlet_3.0_spec.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
-			<dependency>
-				<groupId>org.apache.geronimo.specs</groupId>
-				<artifactId>geronimo-validation_1.0_spec</artifactId>
-				<version>${org.apache.geronimo.specs_geronimo-validation_1.0_spec.version}</version>
+				<version>${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.karaf</groupId>
 				<artifactId>apache-karaf</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf_apache-karaf.version}</version>
 				<type>zip</type>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.apache.karaf.bundle</groupId>
-				<artifactId>org.apache.karaf.bundle.springstate</artifactId>
-				<version>${karaf.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<dependency>
-				<groupId>org.apache.karaf.deployer</groupId>
-				<artifactId>org.apache.karaf.deployer.spring</artifactId>
-				<version>${karaf.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.karaf.features</groupId>
 				<artifactId>enterprise</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf.features_enterprise.version}</version>
 				<type>xml</type>
 				<classifier>features</classifier>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.karaf.features</groupId>
 				<artifactId>spring</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf.features_spring.version}</version>
 				<type>xml</type>
 				<classifier>features</classifier>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.karaf.features</groupId>
 				<artifactId>standard</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf.features_standard.version}</version>
 				<type>xml</type>
 				<classifier>features</classifier>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
+
 			<dependency>
 				<groupId>org.apache.karaf.http</groupId>
 				<artifactId>org.apache.karaf.http.command</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf.http_org.apache.karaf.http.command.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.karaf.http</groupId>
 				<artifactId>org.apache.karaf.http.core</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf.http_org.apache.karaf.http.core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.karaf.jdbc</groupId>
-				<artifactId>org.apache.karaf.jdbc.command</artifactId>
-				<version>${org.apache.karaf.jdbc_org.apache.karaf.jdbc.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.karaf.jdbc</groupId>
-				<artifactId>org.apache.karaf.jdbc.core</artifactId>
-				<version>${org.apache.karaf.jdbc_org.apache.karaf.jdbc.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<dependency>
-				<groupId>org.apache.karaf.jms</groupId>
-				<artifactId>org.apache.karaf.jms.command</artifactId>
-				<version>${karaf.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<dependency>
-				<groupId>org.apache.karaf.jms</groupId>
-				<artifactId>org.apache.karaf.jms.core</artifactId>
-				<version>${karaf.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.karaf.jndi</groupId>
-				<artifactId>org.apache.karaf.jndi.command</artifactId>
-				<version>${karaf.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.karaf.jndi</groupId>
-				<artifactId>org.apache.karaf.jndi.core</artifactId>
-				<version>${karaf.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.apache.karaf.web</groupId>
 				<artifactId>org.apache.karaf.web.command</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf.web_org.apache.karaf.web.command.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.apache.karaf.web</groupId>
 				<artifactId>org.apache.karaf.web.core</artifactId>
-				<version>${karaf.version}</version>
+				<version>${org.apache.karaf.web_org.apache.karaf.web.core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>org.apache.neethi</groupId>
 				<artifactId>neethi</artifactId>
 				<version>${org.apache.neethi_neethi.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.openjpa</groupId>
 				<artifactId>openjpa</artifactId>
-				<version>${openjpa.version}</version>
+				<version>${org.apache.openjpa_openjpa.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.ant</artifactId>
-				<version>${org.apache.servicemix.bundles.ant.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
-				<version>${org.apache.servicemix.bundles.aopalliance.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
-				<version>${org.apache.servicemix.bundles.aspectj.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
-				<version>${org.apache.servicemix.bundles.cglib.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.commons-beanutils</artifactId>
-				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.commons-dbcp</artifactId>
-				<version>${org.apache.servicemix.bundles.commons-dbcp.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.dom4j</artifactId>
-				<version>${org.apache.servicemix.bundles.dom4j.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.dom4j.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.elasticsearch</artifactId>
-				<version>${org.apache.servicemix.bundles.elasticsearch.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.elasticsearch.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.ezmorph</artifactId>
-				<version>${org.apache.servicemix.bundles.ezmorph}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ezmorph}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.fastinfoset</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.fastinfoset.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.jackson-module-scala</artifactId>
-				<version>${org.apache.servicemix.bundles.jackson-module-scala.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jackson-module-scala.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.jakarta-regexp</artifactId>
-				<version>${org.apache.servicemix.bundles.jakarta-regexp.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jakarta-regexp.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.jasypt</artifactId>
-				<version>${org.apache.servicemix.bundles.jasypt.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.jaxb-impl</artifactId>
-				<version>${org.apache.servicemix.bundles.jaxb-impl.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version}</version>
+				<scope>runtime</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.jaxb-xjc</artifactId>
-				<version>${org.apache.servicemix.bundles.jaxb-impl.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-xjc.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
-				<version>${org.apache.servicemix.bundles.jdom.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.json4s</artifactId>
-				<version>${org.apache.servicemix.bundles.json4s.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.json4s.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.json-lib</artifactId>
-				<version>${org.apache.servicemix.bundles.json-lib.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.junit</artifactId>
-				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version}</version>
-			</dependency>
-
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.kxml2</artifactId>
-				<version>${org.apache.servicemix.bundles.kxml2.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.lucene</artifactId>
-				<version>${org.apache.servicemix.bundles.lucene.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.lucene.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.oro</artifactId>
-				<version>${org.apache.servicemix.bundles.oro.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.protobuf-java</artifactId>
-				<version>${org.apache.servicemix.bundles.protobuf-java.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.protobuf-java.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.reflections</artifactId>
-				<version>${org.apache.servicemix.bundles.reflections.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.serp</artifactId>
-				<version>${org.apache.servicemix.bundles.serp.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-context.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-expression.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-jdbc</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-jms</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-ldap</artifactId>
-				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-orm</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.spring-oxm</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
-			</dependency>
-			<!-- archetype-cdi -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-test</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-test.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-tx</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-tx.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-web</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-webmvc</artifactId>
-				<version>${karaf.feature.spring4.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.swagger-annotations</artifactId>
-				<version>${org.apache.servicemix.bundles.swagger.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-annotations.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
-				<version>${org.apache.servicemix.bundles.swagger.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-core.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>javax.ws.rs</groupId>
@@ -1424,11 +768,10 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.swagger-jaxrs</artifactId>
-				<version>${org.apache.servicemix.bundles.swagger.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-jaxrs.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>javax.ws.rs</groupId>
@@ -1436,168 +779,100 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.velocity</artifactId>
-				<version>${org.apache.servicemix.bundles.velocity.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.wsdl4j</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.xmlresolver</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.xpp3</artifactId>
-				<version>${org.apache.servicemix.bundles.xpp3.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
-				<version>${org.apache.servicemix.bundles.xstream.version}</version>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
+				<version>${org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.jaxb-api-2.2</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
+				<version>${org.apache.servicemix.specs_org.apache.servicemix.specs.jaxb-api-2.2.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.jaxws-api-2.2</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
+				<version>${org.apache.servicemix.specs_org.apache.servicemix.specs.jaxws-api-2.2.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<dependency>
-				<groupId>org.apache.servicemix.specs</groupId>
-				<artifactId>org.apache.servicemix.specs.jsr250-1.0</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
+				<version>${org.apache.servicemix.specs_org.apache.servicemix.specs.jsr339-api-2.0.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.saaj-api-1.3</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
+				<version>${org.apache.servicemix.specs_org.apache.servicemix.specs.saaj-api-1.3.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.scripting-api-1.0</artifactId>
 				<version>${org.apache.servicemix.specs_org.apache.servicemix.specs.scripting-api-1.0.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.apache.servicemix.specs</groupId>
 				<artifactId>org.apache.servicemix.specs.stax-api-1.0</artifactId>
-				<version>${org.apache.servicemix.specs.version}</version>
+				<version>${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.apache.ws.xmlschema</groupId>
 				<artifactId>xmlschema-core</artifactId>
-				<version>${org.apache.ws.xmlschema.xmlschema-core.version}</version>
+				<version>${org.apache.ws.xmlschema_xmlschema-core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<dependency>
-				<groupId>org.apache.xbean</groupId>
-				<artifactId>xbean-asm-util</artifactId>
-				<version>${xbean.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
 				<artifactId>xbean-asm4-shaded</artifactId>
 				<version>${org.apache.xbean_xbean-asm4-shaded.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
 				<artifactId>xbean-blueprint</artifactId>
-				<version>${xbean.version}</version>
+				<version>${org.apache.xbean_xbean-blueprint.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
 				<artifactId>xbean-bundleutils</artifactId>
-				<version>${xbean.version}</version>
+				<version>${org.apache.xbean_xbean-bundleutils.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
 				<artifactId>xbean-finder</artifactId>
-				<version>${xbean.version}</version>
+				<version>${org.apache.xbean_xbean-finder.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.xbean</groupId>
-				<artifactId>xbean-finder-shaded</artifactId>
-				<version>${xbean.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
-			<dependency>
-				<groupId>org.apache.xbean</groupId>
-				<artifactId>xbean-naming</artifactId>
-				<version>${xbean.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
 				<artifactId>xbean-reflect</artifactId>
-				<version>${xbean.version}</version>
+				<version>${org.apache.xbean_xbean-reflect.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
 				<artifactId>xbean-spring</artifactId>
-				<version>${xbean.version}</version>
+				<version>${org.apache.xbean_xbean-spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
@@ -1618,172 +893,84 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-core-asl</artifactId>
 				<version>${org.codehaus.jackson_jackson-core-asl.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-mapper-asl</artifactId>
-				<version>${org.codehaus.jackson_jackson-core-asl.version}</version>
+				<version>${org.codehaus.jackson_jackson-mapper-asl.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.codehaus.jettison</groupId>
 				<artifactId>jettison</artifactId>
-				<version>${jettison.version}</version>
+				<version>${org.codehaus.jettison_jettison.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-component-annotations</artifactId>
-				<version>${org.codehaus.plexus.version}</version>
+				<version>${org.codehaus.plexus_plexus-component-annotations.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.codehaus.woodstox</groupId>
 				<artifactId>stax2-api</artifactId>
-				<version>${stax2-api.version}</version>
+				<version>${org.codehaus.woodstox_stax2-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-standard -->
 			<dependency>
 				<groupId>org.codehaus.woodstox</groupId>
 				<artifactId>woodstox-core-asl</artifactId>
-				<version>${org.codehaus.woodstox.woodstox-core-asl.version}</version>
+				<version>${org.codehaus.woodstox_woodstox-core-asl.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-websocket</artifactId>
-				<version>${org.eclipse.jetty.aggregate_jetty-all-server.version}</version>
+				<version>${org.eclipse.jetty_jetty-websocket.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.eclipse.jetty.aggregate</groupId>
 				<artifactId>jetty-all-server</artifactId>
 				<version>${org.eclipse.jetty.aggregate_jetty-all-server.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.glassfish</groupId>
 				<artifactId>javax.json</artifactId>
-				<version>${org.glassfish.javax.json.version}</version>
+				<version>${org.glassfish_javax.json.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
-				<version>${org.hibernate.validator.version}</version>
+				<version>${org.hibernate_hibernate-validator.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator-cdi</artifactId>
-				<version>${org.hibernate.validator.version}</version>
+				<version>${org.hibernate_hibernate-validator-cdi.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.jacoco</groupId>
-				<artifactId>org.jacoco.agent</artifactId>
-				<classifier>runtime</classifier>
-				<version>${org.jacoco.agent.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
-				<version>${org.javassist.version}</version>
+				<version>${org.javassist_javassist.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.jboss.classfilewriter</groupId>
-				<artifactId>jboss-classfilewriter</artifactId>
-				<version>${org.jboss.classfilewriter.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-validation -->
 			<dependency>
 				<groupId>org.jboss.logging</groupId>
 				<artifactId>jboss-logging</artifactId>
-				<version>${org.jboss.logging.version}</version>
+				<version>${org.jboss.logging_jboss-logging.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.jboss.spec.javax.annotation</groupId>
-				<artifactId>jboss-annotations-api_1.2_spec</artifactId>
-				<version>${org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.jboss.spec.javax.el</groupId>
-				<artifactId>jboss-el-api_3.0_spec</artifactId>
-				<version>${org.jboss.spec.javax.el.jboss-el-api_3.0_spec.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.jboss.spec.javax.interceptor</groupId>
-				<artifactId>jboss-interceptors-api_1.2_spec</artifactId>
-				<version>${org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.jboss.weld</groupId>
-				<artifactId>weld-api</artifactId>
-				<version>${org.jboss.weld.weld-api.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.jboss.weld</groupId>
-				<artifactId>weld-core-impl</artifactId>
-				<version>${org.jboss.weld.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.jboss.weld</groupId>
-				<artifactId>weld-core-jsf</artifactId>
-				<version>${org.jboss.weld.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.jboss.weld</groupId>
 				<artifactId>weld-osgi-bundle</artifactId>
-				<version>${org.jboss.weld.version}</version>
+				<version>${org.jboss.weld_weld-osgi-bundle.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.jboss.weld</groupId>
-				<artifactId>weld-spi</artifactId>
-				<version>${org.jboss.weld.weld-api.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.weld.servlet</groupId>
-				<artifactId>weld-servlet-core</artifactId>
-				<version>${org.jboss.weld.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.jolokia</groupId>
 				<artifactId>jolokia-osgi</artifactId>
-				<version>${jolokia.version}</version>
+				<version>${org.jolokia_jolokia.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.json</groupId>
-				<artifactId>json</artifactId>
-				<version>${org.json.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 			<dependency>
 				<groupId>org.jvnet.jaxb2_commons</groupId>
 				<artifactId>jaxb2-basics-runtime</artifactId>
@@ -1792,375 +979,235 @@
 			<dependency>
 				<groupId>org.kubek2k</groupId>
 				<artifactId>springockito</artifactId>
-				<version>${springockito.version}</version>
+				<version>${org.kubek2k_springockito.version}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<dependency>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-core</artifactId>
-				<version>${org.liquibase.liquibase.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
 			<dependency>
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-osgi</artifactId>
-				<version>${org.liquibase.liquibase.version}</version>
+				<version>${org.liquibase_liquibase-osgi.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
-				<version>${mockito.version}</version>
+				<version>${org.mockito_.mockito-allversion}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.mvel</groupId>
 				<artifactId>mvel2</artifactId>
-				<version>${org.mvel2.version}</version>
+				<version>${org.mvel2_mvel2.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.base</groupId>
 				<artifactId>ops4j-base</artifactId>
-				<version>${ops4j.base.version}</version>
+				<version>${org.ops4j.base_ops4j-base.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ops4j.base</groupId>
 				<artifactId>ops4j-base-lang</artifactId>
-				<version>${ops4j.base.version}</version>
+				<version>${org.ops4j.base_ops4j-base-lang.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.base</groupId>
 				<artifactId>ops4j-base-monitors</artifactId>
-				<version>${ops4j.base.version}</version>
+				<version>${org.ops4j.base_ops4j-base-monitors.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.base</groupId>
 				<artifactId>ops4j-base-net</artifactId>
-				<version>${ops4j.base.version}</version>
+				<version>${org.ops4j.base_ops4j-base-net.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.ops4j.base</groupId>
-				<artifactId>ops4j-base-spi</artifactId>
-				<version>${ops4j.base.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.base</groupId>
 				<artifactId>ops4j-base-util-property</artifactId>
-				<version>${ops4j.base.version}</version>
+				<version>${org.ops4j.base_ops4j-base-util-property.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-api</artifactId>
-				<version>${pax-cdi.version}</version>
+				<version>${org.ops4j.pax.cdi_pax-cdi-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-extender</artifactId>
-				<version>${pax-cdi.version}</version>
+				<version>${org.ops4j.pax.cdi_pax-cdi-extender.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-extension</artifactId>
-				<version>${pax-cdi.version}</version>
+				<version>${org.ops4j.pax.cdi_pax-cdi-extension.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-features</artifactId>
 				<type>xml</type>
 				<classifier>features</classifier>
-				<version>${pax-cdi.version}</version>
+				<version>${org.ops4j.pax.cdi_pax-cdi-features.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.cdi</groupId>
-				<artifactId>pax-cdi-openwebbeans</artifactId>
-				<version>${pax-cdi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-spi</artifactId>
-				<version>${pax-cdi.version}</version>
+				<version>${org.ops4j.pax.cdi_pax-cdi-spi.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-web</artifactId>
-				<version>${pax-cdi.version}</version>
+				<version>${org.ops4j.pax.cdi_pax-cdi-web.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-web-weld</artifactId>
-				<version>${pax-cdi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<dependency>
-				<groupId>org.ops4j.pax.cdi</groupId>
-				<artifactId>pax-cdi-weld</artifactId>
-				<version>${pax-cdi.version}</version>
+				<version>${org.ops4j.pax.cdi_pax-cdi-web-weld.version}</version>
 				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
-				<artifactId>pax-cdi-web-openwebbeans</artifactId>
-				<version>${pax-cdi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.cdi.fragment</groupId>
-				<artifactId>pax-cdi-fragment-ds-jpa</artifactId>
-				<version>${pax-cdi.version}</version>
+				<artifactId>pax-cdi-weld</artifactId>
+				<version>${org.ops4j.pax.cdi_pax-cdi-weld.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.exam</groupId>
 				<artifactId>pax-exam</artifactId>
-				<version>${exam.version}</version>
+				<version>${org.ops4j.pax.exam_pax-exam.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.exam</groupId>
 				<artifactId>pax-exam-container-karaf</artifactId>
-				<version>${exam.version}</version>
+				<version>${org.ops4j.pax.exam_pax-exam-container-karaf.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.exam</groupId>
 				<artifactId>pax-exam-junit4</artifactId>
-				<version>${exam.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.exam</groupId>
-				<artifactId>pax-exam-link-mvn</artifactId>
-				<version>${exam.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.jdbc</groupId>
-				<artifactId>pax-jdbc</artifactId>
-				<version>${pax.jdbc.version}</version>
+				<version>${org.ops4j.pax.exam_pax-exam-junit4.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.jdbc</groupId>
 				<artifactId>pax-jdbc-features</artifactId>
-				<version>${pax.jdbc.version}</version>
+				<version>${org.ops4j.pax.jdbc_pax-jdbc-features.version}</version>
 				<type>xml</type>
 				<classifier>features</classifier>
 			</dependency>
 			<dependency>
-				<groupId>org.ops4j.pax.jdbc</groupId>
-				<artifactId>pax-jdbc-config</artifactId>
-				<version>${pax.jdbc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.jdbc</groupId>
-				<artifactId>pax-jdbc-derby</artifactId>
-				<version>${pax.jdbc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.jdbc</groupId>
-				<artifactId>pax-jdbc-pool-aries</artifactId>
-				<version>${pax.jdbc.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.jpa</groupId>
-				<artifactId>pax-jpa</artifactId>
-				<version>${pax-jpa.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-bnd</artifactId>
-				<version>${pax.swissbox.version}</version>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-bnd.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-core</artifactId>
-				<version>${pax.swissbox.version}</version>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-extender</artifactId>
-				<version>${pax.swissbox.version}</version>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-lifecycle</artifactId>
-				<version>${pax.swissbox.version}</version>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.swissbox</groupId>
-				<artifactId>pax-swissbox-optional-jcl</artifactId>
-				<version>${pax.swissbox.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-property</artifactId>
-				<version>${pax.swissbox.version}</version>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-property.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-tracker</artifactId>
-				<version>${pax.swissbox.version}</version>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-tracker.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.ops4j.pax.swissbox</groupId>
-				<artifactId>pax-swissbox-framework</artifactId>
-				<version>${pax.swissbox.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.tinybundles</groupId>
-				<artifactId>tinybundles</artifactId>
-				<version>${pax.tinybundle.version}</version>
+				<groupId>org.ops4j.pax.tipi</groupId>
+				<artifactId>org.ops4j.pax.tipi.junit</artifactId>
+				<version>${org.ops4j.pax.tipi_org.ops4j.pax.tipi.junit.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.url</groupId>
 				<artifactId>pax-url-aether</artifactId>
-				<version>${url.version}</version>
+				<version>${org.ops4j.pax.url_pax-url-aether.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.pax.url</groupId>
 				<artifactId>pax-url-commons</artifactId>
-				<version>${url.version}</version>
+				<version>${org.ops4j.pax.url_pax-url-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.url</groupId>
 				<artifactId>pax-url-reference</artifactId>
-				<version>${url.version}</version>
+				<version>${org.ops4j.pax.url_pax-url-reference.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.pax.url</groupId>
 				<artifactId>pax-url-war</artifactId>
-				<version>${url.version}</version>
+				<version>${org.ops4j.pax.url_pax-url-war.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-api</artifactId>
-				<version>${pax-web-features.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-api.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-deployer</artifactId>
-				<version>${pax-web-features.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-deployer.version}</version>
+				<scope>runtime</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-extender-war</artifactId>
-				<version>${pax-web-features.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-extender-war.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-extender-whiteboard</artifactId>
-				<version>${pax-web-features.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-extender-whiteboard.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-features</artifactId>
-				<type>xml</type>
-				<classifier>features</classifier>
 				<version>${org.ops4j.pax.web_pax-web-features.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.web</groupId>
-				<artifactId>pax-web-features</artifactId>
-				<version>${pax-web-features.version}</version>
 				<type>xml</type>
 				<classifier>jettyconfig</classifier>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-jetty</artifactId>
-				<version>${pax-web-features.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-jetty.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-jsp</artifactId>
-				<version>${pax-web-features.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-jsp.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-runtime</artifactId>
-				<version>${pax-web-features.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-runtime.version}</version>
+				<scope>runtime</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-spi</artifactId>
-				<version>${pax-web-features.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.osgi</groupId>
-				<artifactId>org.osgi.compendium</artifactId>
-				<version>${org.osgi.version}</version>
+				<version>${org.ops4j.pax.web_pax-web-spi.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.core</artifactId>
-				<version>${org.osgi.version}</version>
+				<version>${org.osgi_org.osgi.core.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.enterprise</artifactId>
-				<version>${org.osgi.version}</version>
+				<version>${org.osgi_org.osgi.enterprise.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-monitoring -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.ow2.asm</groupId>
 				<artifactId>asm-all</artifactId>
-				<version>${org.ow2.asm.asm-all.version}</version>
+				<version>${org.ow2.asm_asm-all.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -2168,389 +1215,382 @@
 				<version>${org.projectlombok.version}</version>
 				<scope>provided</scope>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-function -->
 			<dependency>
 				<groupId>org.scala-lang</groupId>
 				<artifactId>scala-library</artifactId>
-				<version>${scala.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-function -->
-			<dependency>
-				<groupId>org.scala-lang.modules</groupId>
-				<artifactId>scala-xml_2.11</artifactId>
-				<version>${scala-xml_2.11.version}</version>
+				<version>${org.scala-lang_scala-library.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
-				<version>${org.seleniumhq.selenium.version}</version>
+				<version>${org.seleniumhq.selenium_selenium-java.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-firefox-driver</artifactId>
-				<version>${org.seleniumhq.selenium.version}</version>
+				<version>${org.seleniumhq.selenium_selenium-firefox-driver.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-cdi -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jcl-over-slf4j</artifactId>
-				<version>${slf4j.version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring</artifactId>
-				<version>${org.springframework.spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-expression</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jms</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>${org.springframework.version}</version>
+				<version>${org.slf4j.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
-				<version>${org.springframework.version}</version>
+				<version>${org.springframework_spring-test.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${org.springframework.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
-			<dependency>
 				<groupId>org.springframework.batch</groupId>
 				<artifactId>spring-batch-core</artifactId>
-				<version>${org.springframework.batch.version}</version>
+				<version>${org.springframework.batch_spring-batch-core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.springframework.batch</groupId>
 				<artifactId>spring-batch-infrastructure</artifactId>
-				<version>${org.springframework.batch.version}</version>
+				<version>${org.springframework.batch_spring-batch-infrastructure.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-commons</artifactId>
-				<version>${org.springframework.data.commons.version}</version>
+				<version>${org.springframework.data_spring-data-commons.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jpa -->
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-jpa</artifactId>
-				<version>${org.springframework.data.jpa.version}</version>
+				<version>${org.springframework.data_spring-data-jpa.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.springframework.osgi</groupId>
-				<artifactId>spring-osgi-annotation</artifactId>
-				<version>${org.springframework.osgi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.springframework.osgi</groupId>
-				<artifactId>spring-osgi-core</artifactId>
-				<version>${org.springframework.osgi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.springframework.osgi</groupId>
-				<artifactId>spring-osgi-extender</artifactId>
-				<version>${org.springframework.osgi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
-			<dependency>
-				<groupId>org.springframework.osgi</groupId>
-				<artifactId>spring-osgi-io</artifactId>
-				<version>${org.springframework.osgi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.osgi</groupId>
-				<artifactId>spring-osgi-web</artifactId>
-				<version>${org.springframework.osgi.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-aspects</artifactId>
-				<version>${org.springframework.security.version}</version>
+				<version>${org.springframework.security_spring-security-aspects.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-config</artifactId>
-				<version>${org.springframework.security.version}</version>
+				<version>${org.springframework.security_spring-security-config.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-core</artifactId>
-				<version>${org.springframework.security.version}</version>
+				<version>${org.springframework.security_spring-security-core.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-ldap</artifactId>
-				<version>${org.springframework.security.version}</version>
+				<version>${org.springframework.security_spring-security-ldap.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-web</artifactId>
-				<version>${org.springframework.security.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-derby -->
-			<dependency>
-				<groupId>org.yaml</groupId>
-				<artifactId>snakeyaml</artifactId>
-				<version>${org.yaml.snakeyaml.version}</version>
-			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-jaxrs -->
-			<dependency>
-				<groupId>stax</groupId>
-				<artifactId>stax-api</artifactId>
-				<version>${stax_stax-api.version}</version>
+				<version>${org.springframework.security_spring-security-web.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>xml-apis</groupId>
 				<artifactId>xml-apis</artifactId>
-				<version>${xml-apis.version}</version>
+				<version>${xml-apis_xml-apis.version}</version>
 			</dependency>
-			<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-routes -->
 			<dependency>
 				<groupId>xom</groupId>
 				<artifactId>xom</artifactId>
-				<version>${xom.version}</version>
+				<version>${xom_xom.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<properties>
-		<ant.ant.version>1.6.5</ant.ant.version>
-		<biz.aQute.bnd_bndlib.version>2.2.0</biz.aQute.bnd_bndlib.version>
-		<camel-version>2.14.1</camel-version>
-		<cdi-api.version>1.2</cdi-api.version>
-		<com.google.guava.version>13.0</com.google.guava.version>
-		<com.fasterxml.jackson.version>2.4.1</com.fasterxml.jackson.version><!-- Do not upgrade cause of camel-json -->
-		<com.fasterxml.classmate.version>1.0.0</com.fasterxml.classmate.version>
-		<com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version>
-		<commons-beanutils.version>1.9.2</commons-beanutils.version>
-		<commons-codec.version>1.9</commons-codec.version>
-		<commons-collections.version>3.2.1</commons-collections.version>
-		<commons-dbcp.version>1.4</commons-dbcp.version>
-		<commons-jexl.version>2.1.1</commons-jexl.version>
-		<commons-io.version>2.4</commons-io.version>
-		<commons-lang.version>2.6</commons-lang.version>
-		<common-logging_common-logging.version>1.1.3</common-logging_common-logging.version>
-		<common-net_common-net.version>3.3</common-net_common-net.version>
-		<commons-pool.version>1.6</commons-pool.version>
-		<cucumber.version>1.1.8</cucumber.version>
-		<derby.version>10.10.2.0</derby.version>
-		<easymock.version>3.1</easymock.version>
-		<geronimo-annotation_1.1_spec.version>1.0.1</geronimo-annotation_1.1_spec.version>
-		<geronimo-atinject_1.0_spec.version>1.0</geronimo-atinject_1.0_spec.version>
-		<geronimo-el_2.2_spec.version>1.0.3</geronimo-el_2.2_spec.version>
-		<geronimo-j2ee-management_1.1_spec.version>1.0.1</geronimo-j2ee-management_1.1_spec.version>
-		<geronimo-jaspic_1.0_spec.version>1.1</geronimo-jaspic_1.0_spec.version>
-		<geronimo-jcdi_1.0_spec.version>1.0</geronimo-jcdi_1.0_spec.version>
-		<geronimo-jms_1.1_spec.version>1.1.1</geronimo-jms_1.1_spec.version>
-		<geronimo-jta_1.1_spec.version>1.1.1</geronimo-jta_1.1_spec.version>
-		<geronimo-servlet_3.0_spec.version>1.0</geronimo-servlet_3.0_spec.version>
-		<hawtio.version>1.4.20</hawtio.version>
-		<javax.annotation.javax.annotation-api.version>1.2</javax.annotation.javax.annotation-api.version>
-		<javax.el-api.version>3.0.0</javax.el-api.version>
-		<javax.inject.version>1</javax.inject.version>
-		<javax.interceptor-api.version>1.2</javax.interceptor-api.version>
-		<javax.jms.api.version>1.1-rev-1</javax.jms.api.version>
-		<javax.json-api.version>1.0</javax.json-api.version>
-		<javax.mail.mail.version>1.4.4</javax.mail.mail.version>
-		<javax.persistence.version>2.0.4.v201112161009</javax.persistence.version>
-		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-		<javax.servlet.servlet-api.version>2.4</javax.servlet.servlet-api.version>
-		<jettison.version>1.3.5</jettison.version>
-		<joda-time.version>2.3</joda-time.version>
-		<jolokia.version>1.2.2</jolokia.version>
-		<junit.version>4.9</junit.version>
-		<karaf.feature.cxf.version>3.0.2</karaf.feature.cxf.version>
-		<karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version>
-		<karaf.feature.jndi.version>3.0.2</karaf.feature.jndi.version>
-		<karaf.feature.jpa.version>1.0.1</karaf.feature.jpa.version>
-		<karaf.feature.spring3.version>${org.springframework.version}_1</karaf.feature.spring3.version>
-		<karaf.feature.spring4.version>4.0.7.RELEASE_1</karaf.feature.spring4.version>
-		<karaf.feature.spring-dm.version>1.2.1</karaf.feature.spring-dm.version>
-		<karaf.feature.transaction.version>1.1.0</karaf.feature.transaction.version>
-		<org.liquibase.liquibase.version>3.2.2</org.liquibase.liquibase.version>
-		<logback.version>1.1.2</logback.version>
-		<mockito.version>1.8.4</mockito.version>
+		<biz.aQute.bnd_bndlib.version>2.4.0</biz.aQute.bnd_bndlib.version>
+		<ch.qos.logback_logback-classic.version>${logback.version}</ch.qos.logback_logback-classic.version>
+		<com.fasterxml_classmate.version>1.1.0</com.fasterxml_classmate.version>
+		<com.fasterxml.jackson.core_jackson-annotations.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.core_jackson-annotations.version>
+		<com.fasterxml.jackson.core_jackson-core.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.core_jackson-core.version>
+		<com.fasterxml.jackson.core_jackson-databind.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.core_jackson-databind.version>
+		<com.fasterxml.jackson.dataformat_jackson-dataformat-smile.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.dataformat_jackson-dataformat-smile.version>
+		<com.fasterxml.jackson.jaxrs_jackson-jaxrs-base.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.jaxrs_jackson-jaxrs-base.version>
+		<com.fasterxml.jackson.jaxrs_jackson-jaxrs-json-provider.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.jaxrs_jackson-jaxrs-json-provider.version>
+		<com.fasterxml.jackson.module_jackson-module-jaxb-annotations.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.module_jackson-module-jaxb-annotations.version>
+		<com.google.guava_guava.version>13.0.1</com.google.guava_guava.version>
+		<commons-beanutils_commons-beanutils.version>1.9.2</commons-beanutils_commons-beanutils.version>
+		<commons-codec_commons-codec.version>1.9</commons-codec_commons-codec.version>
+		<commons-collections_commons-collections.version>3.2.1</commons-collections_commons-collections.version>
+		<commons-io_commons-io.version>2.4</commons-io_commons-io.version>
+		<commons-lang_commons-lang.version>2.6</commons-lang_commons-lang.version>
+		<commons-net_commons-net.version>3.3</commons-net_commons-net.version>
+		<commons-pool_commons-pool.version>1.6</commons-pool_commons-pool.version>
+		<io.hawt_hawtio-karaf.version>${hawtio.version}</io.hawt_hawtio-karaf.version>
+		<io.hawt_hawtio-json-schema-mbean.version>${hawtio.version}</io.hawt_hawtio-json-schema-mbean.version>
+		<io.hawt_hawtio-json-schema-mbean.version>${hawtio.version}</io.hawt_hawtio-json-schema-mbean.version>
+		<io.hawt_hawtio-web.version>${hawtio.version}</io.hawt_hawtio-web.version>
+		<javax.annotation_javax.annotation-api.version>1.2</javax.annotation_javax.annotation-api.version>
+		<javax.el_javax.el-api.version>3.0.0</javax.el_javax.el-api.version>
+		<javax.enterprise_cdi-api.version>1.2</javax.enterprise_cdi-api.version>
+		<javax.interceptor_javax.interceptor-api.version>1.2</javax.interceptor_javax.interceptor-api.version>
+		<javax.json_javax.json-api.version>1.0</javax.json_javax.json-api.version>
+		<javax.mail_mail.version>1.4.4</javax.mail_mail.version>
+		<javax.validation_validation-api.version>1.1.0.Final</javax.validation_validation-api.version>
+		<joda-time_joda-time.version>2.3</joda-time_joda-time.version>
 		<org.apache.activemq_activeio-core.version>3.1.4</org.apache.activemq_activeio-core.version>
-		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
-		<org.apache.aries.blueprint.version>1.1.0</org.apache.aries.blueprint.version>
-		<org.apache.aries.jndi.version>1.0.0</org.apache.aries.jndi.version>
-		<org.apache.aries.jpa.api.version>1.0.0</org.apache.aries.jpa.api.version>
-		<org.apache.aries.proxy.api.version>1.0.1</org.apache.aries.proxy.api.version>
-		<org.apache.aries.proxy.service.version>1.0.3</org.apache.aries.proxy.service.version>
-		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
-		<org.apache.aries.transaction.blueprint.version>1.0.1</org.apache.aries.transaction.blueprint.version>
-		<org.apache.aries.transaction.jdbc.version>2.1.0</org.apache.aries.transaction.jdbc.version>
-		<org.apache.aries.util.version>1.1.0</org.apache.aries.util.version>
-		<org.apache.commons_commons-dbcp2.version>2.0.1</org.apache.commons_commons-dbcp2.version>
-		<org.apache.commons_commons-pool2.version>2.2</org.apache.commons_commons-pool2.version>
-		<org.apache.cxf.karaf_cxf-karaf-commands.version>3.0.1</org.apache.cxf.karaf_cxf-karaf-commands.version>
-		<org.apache.deltaspike.version>1.2.0</org.apache.deltaspike.version>
-		<org.apache.derby.version>10.9.1.0</org.apache.derby.version>
-		<org.apache.felix.framework.version>4.2.1</org.apache.felix.framework.version>
-		<org.apache.felix.fileinstall.version>3.4.2</org.apache.felix.fileinstall.version>
-		<org.apache.felix.gogo.runtime.version>0.12.1</org.apache.felix.gogo.runtime.version>
+		<org.apache.activemq_activemq-blueprint.version>${org.apache.activemq.version}</org.apache.activemq_activemq-blueprint.version>
+		<org.apache.activemq_activemq-camel.version>${org.apache.activemq.version}</org.apache.activemq_activemq-camel.version>
+		<org.apache.activemq_activemq-karaf.version>${org.apache.activemq.version}</org.apache.activemq_activemq-karaf.version>
+		<org.apache.activemq_activemq-osgi.version>${org.apache.activemq.version}</org.apache.activemq_activemq-osgi.version>
+		<org.apache.activemq_activemq-pool.version>${org.apache.activemq.version}</org.apache.activemq_activemq-pool.version>
+		<org.apache.aries_org.apache.aries.util.version>1.1.0</org.apache.aries_org.apache.aries.util.version>
+		<org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version>${org.apache.aries.spifly.version}</org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version>
+		<org.apache.aries.transaction_org.apache.aries.transaction.manager.version>${org.apache.aries.transaction.version}</org.apache.aries.transaction_org.apache.aries.transaction.manager.version>
+		<org.apache.camel_camel-blueprint.version>${org.apache.camel.version}</org.apache.camel_camel-blueprint.version>
+		<org.apache.camel_camel-cdi.version>${org.apache.camel.version}</org.apache.camel_camel-cdi.version>
+		<org.apache.camel_camel-cdi.version>${org.apache.camel.version}</org.apache.camel_camel-cdi.version>
+		<org.apache.camel_camel-elasticsearch.version>${org.apache.camel.version}</org.apache.camel_camel-elasticsearch.version>
+		<org.apache.camel_camel-http.version>${org.apache.camel.version}</org.apache.camel_camel-http.version>
+		<org.apache.camel_camel-jackson.version>${org.apache.camel.version}</org.apache.camel_camel-jackson.version>
+		<org.apache.camel_camel-jaxb.version>${org.apache.camel.version}</org.apache.camel_camel-jaxb.version>
+		<org.apache.camel_camel-jms.version>${org.apache.camel.version}</org.apache.camel_camel-jms.version>
+		<org.apache.camel_camel-spring.version>${org.apache.camel.version}</org.apache.camel_camel-spring.version>
+		<org.apache.camel_camel-test.version>${org.apache.camel.version}</org.apache.camel_camel-test.version>
+		<org.apache.camel_camel-test-spring.version>${org.apache.camel.version}</org.apache.camel_camel-test-spring.version>
+		<org.apache.camel_camel-websocket.version>${org.apache.camel.version}</org.apache.camel_camel-websocket.version>
+		<org.apache.camel_camel-xmljson.version>${org.apache.camel.version}</org.apache.camel_camel-xmljson.version>
+		<org.apache.camel_camel-xstream.version>${org.apache.camel.version}</org.apache.camel_camel-xstream.version>
+		<org.apache.camel.karaf_camel-karaf-commands.version>${org.apache.camel.version}</org.apache.camel.karaf_camel-karaf-commands.version>
+		<org.apache.commons_commons-jexl.version>2.1.1</org.apache.commons_commons-jexl.version>
+		<org.apache.cxf_cxf-core.version>${org.apache.cxf.version}</org.apache.cxf_cxf-core.version>
+		<org.apache.cxf_cxf-integration-cdi.version>${org.apache.cxf.version}</org.apache.cxf_cxf-integration-cdi.version>
+		<org.apache.cxf_cxf-rt-bindings-soap.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-bindings-soap.version>
+		<org.apache.cxf_cxf-rt-bindings-xml.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-bindings-xml.version>
+		<org.apache.cxf_cxf-rt-databinding-jaxb.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-databinding-jaxb.version>
+		<org.apache.cxf_cxf-rt-frontend-jaxrs.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-frontend-jaxrs.version>
+		<org.apache.cxf_cxf-rt-frontend-jaxws.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-frontend-jaxws.version>
+		<org.apache.cxf_cxf-rt-frontend-simple.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-frontend-simple.version>
+		<org.apache.cxf_cxf-rt-management.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-management.version>
+		<org.apache.cxf_cxf-rt-rs-client.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-rs-client.version>
+		<org.apache.cxf_cxf-rt-rs-extension-providers.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-rs-extension-providers.version>
+		<org.apache.cxf_cxf-rt-rs-extension-search.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-rs-extension-search.version>
+		<org.apache.cxf_cxf-rt-rs-service-description.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-rs-service-description.version>
+		<org.apache.cxf_cxf-rt-transports-http.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-transports-http.version>
+		<org.apache.cxf_cxf-rt-transports-http-jetty.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-transports-http-jetty.version>
+		<org.apache.cxf_cxf-rt-wsdl.version>${org.apache.cxf.version}</org.apache.cxf_cxf-rt-wsdl.version>
+		<org.apache.cxf.karaf_cxf-karaf-commands.version>${org.apache.cxf.version}</org.apache.cxf.karaf_cxf-karaf-commands.version>
+		<org.apache.deltaspike.core_deltaspike-core-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.core_deltaspike-core-api.version>
+		<org.apache.deltaspike.core_deltaspike-core-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.core_deltaspike-core-impl.version>
+		<org.apache.deltaspike.modules_deltaspike-data-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-data-module-api.version>
+		<org.apache.deltaspike.modules_deltaspike-jpa-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-jpa-module-api.version>
+		<org.apache.derby_derby.version>${derby.version}</org.apache.derby_derby.version>
+		<org.apache.derby_derbyclient.version>${derby.version}</org.apache.derby_derbyclient.version>
+		<org.apache.derby_derbynet.version>${derby.version}</org.apache.derby_derbynet.version>
+		<org.apache.derby_derbytools.version>${derby.version}</org.apache.derby_derbytools.version>
 		<org.apache.geronimo.components_geronimo-connector.version>3.1.1</org.apache.geronimo.components_geronimo-connector.version>
-		<org.apache.geronimo.specs_geronimo-activation_1.1_spec.version>1.1</org.apache.geronimo.specs_geronimo-activation_1.1_spec.version>
-		<org.apache.geronimo.specs.geronimo-osgi-registry.version>1.1</org.apache.geronimo.specs.geronimo-osgi-registry.version>
-		<org.apache.geronimo.specs_geronimo-j2ee-connector_1.5_spec.version>2.0.0</org.apache.geronimo.specs_geronimo-j2ee-connector_1.5_spec.version>
+		<org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version>1.0</org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version>
 		<org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version>1.0</org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version>
-		<org.apache.geronimo.specs_geronimo-validation_1.0_spec.version>1.1</org.apache.geronimo.specs_geronimo-validation_1.0_spec.version>
-		<org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version>1.1</org.apache.geronimo.specs.geronimo-jpa_2.0_spec.version>
-		<org.apache.karaf.features_enterprise_connector.version>3.1.1</org.apache.karaf.features_enterprise_connector.version>
-		<org.apache.karaf.jdbc_org.apache.karaf.jdbc.version>${karaf.version}</org.apache.karaf.jdbc_org.apache.karaf.jdbc.version>
-		<org.apache.karaf.jndi_org.apache.karaf.jndi.api.version>3.0.1</org.apache.karaf.jndi_org.apache.karaf.jndi.api.version>
+		<org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version>1.0.1</org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version>
+		<org.apache.geronimo.specs_geronimo-jaspic_1.0_spec.version>1.1</org.apache.geronimo.specs_geronimo-jaspic_1.0_spec.version>
+		<org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>1.1.1</org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>
+		<org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version>1.1</org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version>
+		<org.apache.geronimo.specs_geronimo-jta_1.1_spec.version>1.1.1</org.apache.geronimo.specs_geronimo-jta_1.1_spec.version>
+		<org.apache.geronimo.specs_geronimo-osgi-registry.version>1.1</org.apache.geronimo.specs_geronimo-osgi-registry.version>
+		<org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version>1.0</org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version>
+		<org.apache.karaf_apache-karaf.version>${karaf.version}</org.apache.karaf_apache-karaf.version>
+		<org.apache.karaf.features_enterprise.version>${karaf.version}</org.apache.karaf.features_enterprise.version>
+		<org.apache.karaf.features_enterprise_jpa.version>2.0.0</org.apache.karaf.features_enterprise_jpa.version>
+		<org.apache.karaf.features_spring.version>${karaf.version}</org.apache.karaf.features_spring.version>
+		<org.apache.karaf.features_standard.version>${karaf.version}</org.apache.karaf.features_standard.version>
+		<org.apache.karaf.http_org.apache.karaf.http.command.version>${karaf.version}</org.apache.karaf.http_org.apache.karaf.http.command.version>
+		<org.apache.karaf.http_org.apache.karaf.http.core.version>${karaf.version}</org.apache.karaf.http_org.apache.karaf.http.core.version>
+		<org.apache.karaf.web_org.apache.karaf.web.command.version>${karaf.version}</org.apache.karaf.web_org.apache.karaf.web.command.version>
+		<org.apache.karaf.web_org.apache.karaf.web.core.version>${karaf.version}</org.apache.karaf.web_org.apache.karaf.web.core.version>
 		<org.apache.neethi_neethi.version>3.0.3</org.apache.neethi_neethi.version>
-		<org.apache.openjpa.version>2.3.0</org.apache.openjpa.version>
+		<org.apache.openjpa_openjpa.version>2.3.0</org.apache.openjpa_openjpa.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>1.7.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>1.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>1.8.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>3.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version>1.4_3</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>3.1_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap>1.3.2.RELEASE_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version>1.6.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version>
-		<org.apache.servicemix.bundles.ant.version>1.7.0_6</org.apache.servicemix.bundles.ant.version>
-		<org.apache.servicemix.bundles.aopalliance.version>1.0_6</org.apache.servicemix.bundles.aopalliance.version>
-		<org.apache.servicemix.bundles.aspectj.version>1.8.0_1</org.apache.servicemix.bundles.aspectj.version>
-		<org.apache.servicemix.bundles.cglib.version>3.0_1</org.apache.servicemix.bundles.cglib.version>
-		<org.apache.servicemix.bundles.commons-collections.version>3.2.1_3</org.apache.servicemix.bundles.commons-collections.version>
-		<org.apache.servicemix.bundles.commons-dbcp.version>1.4_3</org.apache.servicemix.bundles.commons-dbcp.version>
-		<org.apache.servicemix.bundles.commons-pool.version>1.5.4_4</org.apache.servicemix.bundles.commons-pool.version>
-		<org.apache.servicemix.bundles.dom4j.version>1.6.1_5</org.apache.servicemix.bundles.dom4j.version>
-		<org.apache.servicemix.bundles.elasticsearch.version>1.1.0_1</org.apache.servicemix.bundles.elasticsearch.version>
-		<org.apache.servicemix.bundles.ezmorph>1.0.6_1</org.apache.servicemix.bundles.ezmorph>
-		<org.apache.servicemix.bundles.jackson-module-scala.version>2.3.0_1</org.apache.servicemix.bundles.jackson-module-scala.version>
-		<org.apache.servicemix.bundles.jakarta-regexp.version>1.4_1</org.apache.servicemix.bundles.jakarta-regexp.version>
-		<org.apache.servicemix.bundles.jasypt.version>1.9.2_1</org.apache.servicemix.bundles.jasypt.version>
-		<org.apache.servicemix.bundles.jaxb-impl.version>2.2.1.1_2</org.apache.servicemix.bundles.jaxb-impl.version>
-		<org.apache.servicemix.bundles.jdom.version>2.0.2_1</org.apache.servicemix.bundles.jdom.version>
-		<org.apache.servicemix.bundles.json4s.version>3.2.8_1</org.apache.servicemix.bundles.json4s.version>
-		<org.apache.servicemix.bundles.json-lib.version>2.4_1</org.apache.servicemix.bundles.json-lib.version>
-		<org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles.kxml2.version>
-		<org.apache.servicemix.bundles.lucene.version>4.7.0_1</org.apache.servicemix.bundles.lucene.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>1.8.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.dom4j.version>1.6.1_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.dom4j.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.elasticsearch.version>1.1.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.elasticsearch.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.ezmorph>1.0.6_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.ezmorph>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.fastinfoset.version>1.2.13_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.fastinfoset.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>4.9_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.jackson-module-scala.version>2.3.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.jackson-module-scala.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.jakarta-regexp.version>1.4_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.jakarta-regexp.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version>1.9.2_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version>${org.apache.servicemix.bundles.jaxb.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-xjc.version>${org.apache.servicemix.bundles.jaxb.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-xjc.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version>2.0.2_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.json4s.version>3.2.8_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.json4s.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version>2.4_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.lucene.version>4.7.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.lucene.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.protobuf-java.version>2.4.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.protobuf-java.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>0.9.8_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-context.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-context.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-core.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-core.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-expression.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-expression.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-test.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-test.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-tx.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-tx.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-annotations.version>${org.apache.servicemix.bundles.swagger.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-annotations.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-core.version>${org.apache.servicemix.bundles.swagger.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-core.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-jaxrs.version>${org.apache.servicemix.bundles.swagger.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-jaxrs.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version>1.7_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version>1.6.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>1.2_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>
-		<org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles.oro.version>
-		<org.apache.servicemix.bundles.protobuf-java.version>2.4.1_1</org.apache.servicemix.bundles.protobuf-java.version>
-		<org.apache.servicemix.bundles.reflections.version>0.9.8_1</org.apache.servicemix.bundles.reflections.version>
-		<org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles.serp.version>
-		<org.apache.servicemix.bundles.swagger.version>1.3.4_1</org.apache.servicemix.bundles.swagger.version>
-		<org.apache.servicemix.bundles.velocity.version>1.7_6</org.apache.servicemix.bundles.velocity.version>
-		<org.apache.servicemix.bundles.xpp3.version>1.1.4c_7</org.apache.servicemix.bundles.xpp3.version>
-		<org.apache.servicemix.bundles.xstream.version>1.4.7_1</org.apache.servicemix.bundles.xstream.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>1.1.4c_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>1.4.7_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>
+		<org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version>${org.apache.servicemix.specs.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version>
+		<org.apache.servicemix.specs_org.apache.servicemix.specs.jaxb-api-2.2.version>${org.apache.servicemix.specs.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.jaxb-api-2.2.version>
+		<org.apache.servicemix.specs_org.apache.servicemix.specs.jaxws-api-2.2.version>${org.apache.servicemix.specs.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.jaxws-api-2.2.version>
+		<org.apache.servicemix.specs_org.apache.servicemix.specs.jsr339-api-2.0.version>${org.apache.servicemix.specs.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.jsr339-api-2.0.version>
+		<org.apache.servicemix.specs_org.apache.servicemix.specs.saaj-api-1.3.version>${org.apache.servicemix.specs.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.saaj-api-1.3.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.scripting-api-1.0.version>1.9.0</org.apache.servicemix.specs_org.apache.servicemix.specs.scripting-api-1.0.version>
-		<org.apache.servicemix.specs.version>2.4.0</org.apache.servicemix.specs.version>
-		<org.apache.ws.xmlschema.xmlschema-core.version>2.1.0</org.apache.ws.xmlschema.xmlschema-core.version>
+		<org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version>${org.apache.servicemix.specs.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version>
+		<org.apache.ws.xmlschema_xmlschema-core.version>2.1.0</org.apache.ws.xmlschema_xmlschema-core.version>
 		<org.apache.xbean_xbean-asm4-shaded.version>3.16</org.apache.xbean_xbean-asm4-shaded.version>
+		<org.apache.xbean_xbean-blueprint.version>${xbean.version}</org.apache.xbean_xbean-blueprint.version>
+		<org.apache.xbean_xbean-bundleutils.version>${xbean.version}</org.apache.xbean_xbean-bundleutils.version>
+		<org.apache.xbean_xbean-finder.version>${xbean.version}</org.apache.xbean_xbean-finder.version>
+		<org.apache.xbean_xbean-reflect.version>${xbean.version}</org.apache.xbean_xbean-reflect.version>
+		<org.apache.xbean_xbean-spring.version>${xbean.version}</org.apache.xbean_xbean-spring.version>
 		<org.apache.zookeeper_zookeeper.version>3.4.5</org.apache.zookeeper_zookeeper.version>
-		<org.codehaus.jackson_jackson-core-asl.version>1.9.12</org.codehaus.jackson_jackson-core-asl.version>
-		<org.codehaus.woodstox.woodstox-core-asl.version>4.4.0</org.codehaus.woodstox.woodstox-core-asl.version>
-		<org.eclipse.jetty.aggregate_jetty-all-server.version>8.1.15.v20140411</org.eclipse.jetty.aggregate_jetty-all-server.version>
-		<org.glassfish.javax.json.version>1.0.4</org.glassfish.javax.json.version>
-		<org.hibernate.validator.version>5.0.3.Final</org.hibernate.validator.version>
-		<org.jacoco.agent.version>0.7.0.201403182114</org.jacoco.agent.version>
-		<org.javassist.version>3.18.2-GA</org.javassist.version>
-		<org.jboss.classfilewriter.version>1.0.4.Final</org.jboss.classfilewriter.version>
-		<org.jboss.logging.version>3.1.3.GA</org.jboss.logging.version>
-		<org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec.version>1.0.0.Alpha1</org.jboss.spec.javax.annotation.jboss-annotations-api_1.2_spec.version>
-		<org.jboss.spec.javax.el.jboss-el-api_3.0_spec.version>1.0.0.Alpha1</org.jboss.spec.javax.el.jboss-el-api_3.0_spec.version>
-		<org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec>1.0.0.Alpha1</org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec>
-		<org.jboss.weld.weld-api.version>2.2.SP3</org.jboss.weld.weld-api.version>
-		<org.jboss.weld.version>2.2.4.Final</org.jboss.weld.version>
-		<org.json.version>20140107</org.json.version>
+		<org.codehaus.jackson_jackson-core-asl.version>${org.codehaus.jackson.version}</org.codehaus.jackson_jackson-core-asl.version>
+		<org.codehaus.jackson_jackson-mapper-asl.version>${org.codehaus.jackson.version}</org.codehaus.jackson_jackson-mapper-asl.version>
+		<org.codehaus.jettison_jettison.version>1.3.7</org.codehaus.jettison_jettison.version>
+		<org.codehaus.plexus_plexus-component-annotations.version>${org.codehaus.plexus.version}</org.codehaus.plexus_plexus-component-annotations.version>
+		<org.codehaus.woodstox_stax2-api.version>3.1.4</org.codehaus.woodstox_stax2-api.version>
+		<org.codehaus.woodstox_woodstox-core-asl.version>4.4.0</org.codehaus.woodstox_woodstox-core-asl.version>
+		<org.eclipse.jetty_jetty-websocket.version>${org.eclipse.jetty.version}</org.eclipse.jetty_jetty-websocket.version>
+		<org.eclipse.jetty.aggregate_jetty-all-server.version>${org.eclipse.jetty.version}</org.eclipse.jetty.aggregate_jetty-all-server.version>
+		<org.glassfish_javax.json.version>1.0.4</org.glassfish_javax.json.version>
+		<org.hibernate_hibernate-validator.version>${hibernate-validator.version}</org.hibernate_hibernate-validator.version>
+		<org.hibernate_hibernate-validator-cdi.version>${hibernate-validator.version}</org.hibernate_hibernate-validator-cdi.version>
+		<org.javassist_javassist.version>3.18.2-GA</org.javassist_javassist.version>
+		<org.jboss.logging_jboss-logging.version>3.1.3.GA</org.jboss.logging_jboss-logging.version>
+		<org.jboss.weld_weld-osgi-bundle.version>${org.jboss.weld.version}</org.jboss.weld_weld-osgi-bundle.version>
+		<org.jolokia_jolokia.version>1.2.2</org.jolokia_jolokia.version>
 		<org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>0.6.4</org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>
-		<org.mvel2.version>2.1.9.Final</org.mvel2.version>
-		<org.mod4j.org.eclipse.jface.binding.version>1.3.0</org.mod4j.org.eclipse.jface.binding.version>
-		<org.ops4j.pax.web_pax-web-features.version>3.1.2</org.ops4j.pax.web_pax-web-features.version>
+		<org.kubek2k_springockito.version>1.0.9</org.kubek2k_springockito.version>
+		<org.liquibase_liquibase-osgi.version>3.2.2</org.liquibase_liquibase-osgi.version>
+		<org.mockito_.mockito-allversion>1.8.4</org.mockito_.mockito-allversion>
+		<org.mvel2_mvel2.version>2.1.9.Final</org.mvel2_mvel2.version>
+		<org.ops4j.base_ops4j-base.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base.version>
+		<org.ops4j.base_ops4j-base-lang.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base-lang.version>
+		<org.ops4j.base_ops4j-base-monitors.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base-monitors.version>
+		<org.ops4j.base_ops4j-base-net.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base-net.version>
+		<org.ops4j.base_ops4j-base-util-property.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base-util-property.version>
+		<org.ops4j.pax.cdi_pax-cdi-api.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-api.version>
+		<org.ops4j.pax.cdi_pax-cdi-extender.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-extender.version>
+		<org.ops4j.pax.cdi_pax-cdi-extension.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-extension.version>
+		<org.ops4j.pax.cdi_pax-cdi-features.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-features.version>
+		<org.ops4j.pax.cdi_pax-cdi-spi.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-spi.version>
+		<org.ops4j.pax.cdi_pax-cdi-web.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-web.version>
+		<org.ops4j.pax.cdi_pax-cdi-web-weld.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-web-weld.version>
+		<org.ops4j.pax.cdi_pax-cdi-weld.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-weld.version>
+		<org.ops4j.pax.exam_pax-exam.version>${org.ops4j.pax.exam.version}</org.ops4j.pax.exam_pax-exam.version>
+		<org.ops4j.pax.exam_pax-exam-container-karaf.version>${org.ops4j.pax.exam.version}</org.ops4j.pax.exam_pax-exam-container-karaf.version>
+		<org.ops4j.pax.exam_pax-exam-junit4.version>${org.ops4j.pax.exam.version}</org.ops4j.pax.exam_pax-exam-junit4.version>
+		<org.ops4j.pax.jdbc_pax-jdbc-features.version>0.4.0</org.ops4j.pax.jdbc_pax-jdbc-features.version>
+		<org.ops4j.pax.swissbox_pax-swissbox-bnd.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-bnd.version>
+		<org.ops4j.pax.swissbox_pax-swissbox-core.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-core.version>
+		<org.ops4j.pax.swissbox_pax-swissbox-extender.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-extender.version>
+		<org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version>
+		<org.ops4j.pax.swissbox_pax-swissbox-property.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-property.version>
+		<org.ops4j.pax.swissbox_pax-swissbox-tracker.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-tracker.version>
+		<org.ops4j.pax.tipi_org.ops4j.pax.tipi.junit.version>4.12.0.1</org.ops4j.pax.tipi_org.ops4j.pax.tipi.junit.version>
+		<org.ops4j.pax.url_pax-url-aether.version>${org.ops4j.pax.url.version}</org.ops4j.pax.url_pax-url-aether.version>
+		<org.ops4j.pax.url_pax-url-commons.version>${org.ops4j.pax.url.version}</org.ops4j.pax.url_pax-url-commons.version>
+		<org.ops4j.pax.url_pax-url-reference.version>${org.ops4j.pax.url.version}</org.ops4j.pax.url_pax-url-reference.version>
+		<org.ops4j.pax.url_pax-url-war.version>${org.ops4j.pax.url.version}</org.ops4j.pax.url_pax-url-war.version>
+		<org.ops4j.pax.web_pax-web-api.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-api.version>
+		<org.ops4j.pax.web_pax-web-deployer.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-deployer.version>
+		<org.ops4j.pax.web_pax-web-extender-war.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-extender-war.version>
+		<org.ops4j.pax.web_pax-web-extender-whiteboard.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-extender-whiteboard.version>
+		<org.ops4j.pax.web_pax-web-features.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-features.version>
+		<org.ops4j.pax.web_pax-web-jetty.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-jetty.version>
+		<org.ops4j.pax.web_pax-web-jsp.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-jsp.version>
+		<org.ops4j.pax.web_pax-web-runtime.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-runtime.version>
+		<org.ops4j.pax.web_pax-web-spi.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-spi.version>
+		<org.osgi_org.osgi.enterprise.version>${org.osgi.version}</org.osgi_org.osgi.enterprise.version>
+		<org.osgi_org.osgi.core.version>${org.osgi.version}</org.osgi_org.osgi.core.version>
+		<org.ow2.asm_asm-all.version>5.0.3</org.ow2.asm_asm-all.version>
+		<org.scala-lang_scala-library.version>${org.scala-lang.version}</org.scala-lang_scala-library.version>
+		<org.seleniumhq.selenium_selenium-java.version>${org.seleniumhq.selenium.version}</org.seleniumhq.selenium_selenium-java.version>
+		<org.seleniumhq.selenium_selenium-firefox-driver.version>${org.seleniumhq.selenium.version}</org.seleniumhq.selenium_selenium-firefox-driver.version>
+		<org.slf4j.version>1.7.7</org.slf4j.version>
+		<org.springframework_spring-test.version>${org.springframework.version}</org.springframework_spring-test.version>
+		<org.springframework.batch_spring-batch-core.version>${org.springframework.batch.version}</org.springframework.batch_spring-batch-core.version>
+		<org.springframework.batch_spring-batch-infrastructure.version>${org.springframework.batch.version}</org.springframework.batch_spring-batch-infrastructure.version>
+		<org.springframework.data_spring-data-commons.version>1.9.0.RELEASE</org.springframework.data_spring-data-commons.version>
+		<org.springframework.data_spring-data-jpa.version>1.7.0.RELEASE</org.springframework.data_spring-data-jpa.version>
+		<org.springframework.security_spring-security-aspects.version>${org.springframework.security.version}</org.springframework.security_spring-security-aspects.version>
+		<org.springframework.security_spring-security-config.version>${org.springframework.security.version}</org.springframework.security_spring-security-config.version>
+		<org.springframework.security_spring-security-core.version>${org.springframework.security.version}</org.springframework.security_spring-security-core.version>
+		<org.springframework.security_spring-security-ldap.version>${org.springframework.security.version}</org.springframework.security_spring-security-ldap.version>
+		<org.springframework.security_spring-security-web.version>${org.springframework.security.version}</org.springframework.security_spring-security-web.version>
+		<xml-apis_xml-apis.version>1.4.01</xml-apis_xml-apis.version>
+		<xom_xom.version>1.2.5</xom_xom.version>
+
+
+
+		<com.fasterxml.jackson.version>2.4.1</com.fasterxml.jackson.version> <!-- Do not upgrade cause of camel-json -->
+		<derby.version>10.10.2.0</derby.version>
+		<hawtio.version>1.4.47</hawtio.version>
+		<logback.version>1.1.2</logback.version>
+		<hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
+		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
+		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
+		<org.apache.aries.transaction.version>1.1.1</org.apache.aries.transaction.version>
+		<org.apache.camel.version>2.14.1</org.apache.camel.version>
+		<org.apache.cxf.version>3.0.3</org.apache.cxf.version>
+		<org.apache.deltaspike.version>1.2.1</org.apache.deltaspike.version>
+		<org.apache.servicemix.bundles.jaxb.version>2.2.1.1_2</org.apache.servicemix.bundles.jaxb.version>
+		<org.apache.servicemix.bundles.spring4.version>4.1.2.RELEASE_1</org.apache.servicemix.bundles.spring4.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>1.3.2.RELEASE_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>
+		<org.apache.servicemix.bundles.swagger.version>1.3.4_1</org.apache.servicemix.bundles.swagger.version>
+		<org.apache.servicemix.specs.version>2.4.0</org.apache.servicemix.specs.version>
+		<org.codehaus.jackson.version>1.9.12</org.codehaus.jackson.version>
+		<org.eclipse.jetty.version>8.1.15.v20140411</org.eclipse.jetty.version>
+		<org.jboss.weld.version>2.2.4.Final</org.jboss.weld.version>
 		<org.osgi.version>5.0.0</org.osgi.version>
-		<org.osgi-core.version>5.0.0</org.osgi-core.version>
+		<org.ops4j.base.version>1.5.0</org.ops4j.base.version>
+		<org.ops4j.pax.cdi.version>0.11.0</org.ops4j.pax.cdi.version>
+		<org.ops4j.pax.swissbox.version>1.8.0</org.ops4j.pax.swissbox.version>
+		<org.ops4j.pax.url.version>2.2.0</org.ops4j.pax.url.version>
+		<org.ops4j.pax.web.version>3.1.4</org.ops4j.pax.web.version>
+		<org.scala-lang.version>2.10.4</org.scala-lang.version>
 		<org.seleniumhq.selenium.version>2.44.0</org.seleniumhq.selenium.version>
+		<org.springframework.version>4.1.4.RELEASE</org.springframework.version>
 		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
-		<org.springframework.data.commons.version>1.9.0.RELEASE</org.springframework.data.commons.version>
-		<org.springframework.data.jpa.version>1.7.0.RELEASE</org.springframework.data.jpa.version>
-		<org.springframework.osgi.version>1.2.1</org.springframework.osgi.version>
-		<org.springframework.version>3.2.11.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
-		<org.springframework.spring.version>2.0.6</org.springframework.spring.version>
-		<org.ow2.asm.asm-all.version>5.0.2</org.ow2.asm.asm-all.version>
-		<org.yaml.snakeyaml.version>1.13</org.yaml.snakeyaml.version>
-		<ops4j.base.version>1.4.0</ops4j.base.version>
-		<pax-cdi.version>0.8.0</pax-cdi.version>
-		<pax.jdbc.version>0.4.0</pax.jdbc.version>
-		<pax-jpa.version>0.2.0</pax-jpa.version>
-		<pax.swissbox.version>1.7.1</pax.swissbox.version>
-		<pax.tinybundle.version>2.0.0</pax.tinybundle.version>
-		<pax-web-features.version>3.1.2</pax-web-features.version>
-		<pax-jetty.version>8.1.15.v20140411</pax-jetty.version>
-		<scala.version>2.10.4</scala.version>
-		<scala-xml_2.11.version>1.0.2</scala-xml_2.11.version>
-		<slf4j.version>1.7.7</slf4j.version>
-		<springockito.version>1.0.9</springockito.version>
-		<stax_stax-api.version>1.0.1</stax_stax-api.version>
-		<stax2-api.version>3.1.4</stax2-api.version>
-		<url.version>2.2.0</url.version>
-		<validation-api.version>1.1.0.Final</validation-api.version>
 		<xbean.version>3.18</xbean.version>
-		<xom.version>1.2.5</xom.version>
-		<xml-apis.version>1.4.01</xml-apis.version>
+
+
+
+
+
+		<!-- <ant.ant.version>1.6.5</ant.ant.version> <com.fasterxml_classmate.version>1.0.0</com.fasterxml_classmate.version> <com.ibm.icu.version>4.4.2.v20110823</com.ibm.icu.version> <common-logging_common-logging.version>1.1.3</common-logging_common-logging.version> 
+			<cucumber.version>1.1.8</cucumber.version> <easymock.version>3.1</easymock.version> <geronimo-jcdi_1.0_spec.version>1.0</geronimo-jcdi_1.0_spec.version> <hawtio.version>1.4.47</hawtio.version> <javax.annotation.javax.annotation-api.version>1.2</javax.annotation.javax.annotation-api.version> 
+			<javax.el-api.version>3.0.0</javax.el-api.version> <javax.inject.version>1</javax.inject.version> <javax.interceptor-api.version>1.2</javax.interceptor-api.version> <javax.persistence.version>2.0.4.v201112161009</javax.persistence.version> <javax.servlet-api.version>3.1.0</javax.servlet-api.version> 
+			<javax.servlet.servlet-api.version>2.4</javax.servlet.servlet-api.version> <junit.version>4.9</junit.version> <karaf.feature.jetty.version>8.1.9.v20130131</karaf.feature.jetty.version> <karaf.feature.jndi.version>3.0.3</karaf.feature.jndi.version> <karaf.feature.jpa.version>2.0.0</karaf.feature.jpa.version> 
+			<karaf.feature.spring3.version>${org.springframework.version}_1</karaf.feature.spring3.version> <karaf.feature.spring-dm.version>1.2.1</karaf.feature.spring-dm.version> <karaf.feature.transaction.version>1.1.1</karaf.feature.transaction.version> <org.apache.aries.blueprint.version>1.1.0</org.apache.aries.blueprint.version> 
+			<org.apache.aries.jndi.version>1.0.0</org.apache.aries.jndi.version> <org.apache.aries.jpa.api.version>1.0.2</org.apache.aries.jpa.api.version> <org.apache.aries.jpa.blueprint.version>1.0.4</org.apache.aries.jpa.blueprint.version> <org.apache.aries.proxy.api.version>1.0.1</org.apache.aries.proxy.api.version> 
+			<org.apache.aries.proxy.service.version>1.0.3</org.apache.aries.proxy.service.version> <org.apache.aries.transaction.blueprint.version>1.0.1</org.apache.aries.transaction.blueprint.version> <org.apache.aries.transaction.jdbc.version>2.1.0</org.apache.aries.transaction.jdbc.version> 
+			<org.apache.commons_commons-dbcp2.version>2.0.1</org.apache.commons_commons-dbcp2.version> <org.apache.commons_commons-pool2.version>2.2</org.apache.commons_commons-pool2.version> <org.apache.derby.version>10.9.1.0</org.apache.derby.version> <org.apache.felix.framework.version>4.2.1</org.apache.felix.framework.version> 
+			<org.apache.felix.fileinstall.version>3.4.2</org.apache.felix.fileinstall.version> <org.apache.felix.gogo.runtime.version>0.12.1</org.apache.felix.gogo.runtime.version> <org.apache.geronimo.specs_geronimo-activation_1.1_spec.version>1.1</org.apache.geronimo.specs_geronimo-activation_1.1_spec.version> 
+			<org.apache.geronimo.specs_geronimo-j2ee-connector_1.5_spec.version>2.0.0</org.apache.geronimo.specs_geronimo-j2ee-connector_1.5_spec.version> <org.apache.geronimo.specs_geronimo-validation_1.0_spec.version>1.1</org.apache.geronimo.specs_geronimo-validation_1.0_spec.version> 
+			<org.apache.karaf.features_enterprise_connector.version>3.1.1</org.apache.karaf.features_enterprise_connector.version> <org.apache.karaf.jdbc_org.apache.karaf.jdbc.version>${karaf.version}</org.apache.karaf.jdbc_org.apache.karaf.jdbc.version> <org.apache.karaf.jndi_org.apache.karaf.jndi.api.version>3.0.3</org.apache.karaf.jndi_org.apache.karaf.jndi.api.version> 
+			<org.apache.servicemix.bundles.commons-collections.version>3.2.1_3</org.apache.servicemix.bundles.commons-collections.version> <org.apache.servicemix.bundles.commons-pool.version>1.5.4_4</org.apache.servicemix.bundles.commons-pool.version> <org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>1.8.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version> 
+			<org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>3.8.2_4</org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version> <org.jacoco.agent.version>0.7.0.201403182114</org.jacoco.agent.version> <org.jboss.classfilewriter.version>1.0.4.Final</org.jboss.classfilewriter.version> 
+			<org.jboss.spec.javax.el.jboss-el-api_3.0_spec.version>1.0.0.Alpha1</org.jboss.spec.javax.el.jboss-el-api_3.0_spec.version> <org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec>1.0.0.Alpha1</org.jboss.spec.javax.interceptor.jboss-interceptors-api_1.2_spec> 
+			<org.jboss.weld.weld-api.version>2.2.SP3</org.jboss.weld.weld-api.version> <org.json.version>20140107</org.json.version> <org.mod4j.org.eclipse.jface.binding.version>1.3.0</org.mod4j.org.eclipse.jface.binding.version> <org.ops4j.pax.web_org.ops4j.pax.web.version>3.1.2</org.ops4j.pax.web_org.ops4j.pax.web.version> 
+			<org.osgi.version>5.0.0</org.osgi.version> <org.osgi-core.version>5.0.0</org.osgi-core.version> <org.springframework.osgi.version>1.2.1</org.springframework.osgi.version> <org.springframework.spring.version>2.0.6</org.springframework.spring.version> <org.yaml.snakeyaml.version>1.13</org.yaml.snakeyaml.version> 
+			<pax-jpa.version>0.2.0</pax-jpa.version> <pax.tinybundle.version>2.0.0</pax.tinybundle.version> <pax-jetty.version>8.1.15.v20140411</pax-jetty.version> <scala-xml_2.11.version>1.0.2</scala-xml_2.11.version> <stax_stax-api.version>1.0.1</stax_stax-api.version> 
+			<xom.version>1.2.5</xom.version> -->
+
 	</properties>
 
 </project>

@@ -1,2 +1,0 @@
-Provide-Capability: org.ops4j.pax.cdi.extension;extension="deltaspike-data-impl"
-Fragment-Host: org.apache.deltaspike.modules.deltaspike-data-module-impl

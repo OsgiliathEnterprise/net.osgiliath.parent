@@ -66,12 +66,6 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>standard</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-full</artifactId>

@@ -1,10 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding 
-		copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may 
-		obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed 
-		on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the 
-		License. -->
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the 
+		Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, 
+		software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
@@ -15,355 +13,193 @@
 	<description>Asynchronous messaging support for Osgiliath</description>
 	<packaging>jar</packaging>
 	<dependencies>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<dependency>
-			<groupId>commons-net</groupId>
-			<artifactId>commons-net</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activeio-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-karaf-enterprise</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-karaf-standard</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.activemq.broker</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.activemq.jms.connectionfactory.exporter</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.spring-jms</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activeio-core</artifactId>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.xbean-spring</artifactId>
+			<version>${project.version}</version>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-blueprint</artifactId>
 		</dependency>
-		
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-karaf</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-osgi</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.aries</groupId>
 			<artifactId>org.apache.aries.util</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_enterprise_transaction -->
-		<dependency>
-			<groupId>org.apache.aries.transaction</groupId>
-			<artifactId>org.apache.aries.transaction.blueprint</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_transaction -->
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.aries.transaction</groupId>
 			<artifactId>org.apache.aries.transaction.manager</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-jexl</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_standard_jetty -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-annotation_1.1_spec</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-j2ee-connector_1.5_spec</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jms -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_standard_jetty -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jaspic_1.0_spec</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_enterprise_jms -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jms_1.1_spec</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_standard_jetty -->
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jta_1.1_spec</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<!-- org.ops4j.pax.web_pax-web-features_pax-jetty -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-servlet_3.0_spec</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.karaf.deployer</groupId>
-			<artifactId>org.apache.karaf.deployer.spring</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>enterprise</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.karaf.features</groupId>
 			<artifactId>spring</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<dependency>
-			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>standard</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<!-- org.apache.karaf.features_standard_jms -->
-		<dependency>
-			<groupId>org.apache.karaf.jms</groupId>
-			<artifactId>org.apache.karaf.jms.command</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_standard_jms -->
-		<dependency>
-			<groupId>org.apache.karaf.jms</groupId>
-			<artifactId>org.apache.karaf.jms.core</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jasypt</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jaxb-impl</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
+			<version>1.1_4</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.oro</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-aop</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-beans</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-core</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring-jms -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-jms</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_spring_spring -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-tx</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.velocity</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xpp3</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
 		</dependency>
-		<!-- org.ops4j.pax.web_pax-web-features_pax-jetty != 2.2.0 -->
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
-		<dependency>
-			<groupId>org.apache.servicemix.specs</groupId>
-			<artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
-		</dependency>
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
-		<dependency>
-			<groupId>org.apache.servicemix.specs</groupId>
-			<artifactId>org.apache.servicemix.specs.jaxb-api-2.2</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.servicemix.specs</groupId>
 			<artifactId>org.apache.servicemix.specs.scripting-api-1.0</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
-		<dependency>
-			<groupId>org.apache.servicemix.specs</groupId>
-			<artifactId>org.apache.servicemix.specs.stax-api-1.0</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-blueprint</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
-			<groupId>org.apache.xbean</groupId>
-			<artifactId>xbean-spring</artifactId>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
 		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jettison</groupId>
 			<artifactId>jettison</artifactId>
 		</dependency>
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
-		<dependency>
-			<groupId>org.codehaus.woodstox</groupId>
-			<artifactId>stax2-api</artifactId>
-		</dependency>
-		<!-- org.apache.camel.karaf_apache-camel_xml-specs-api != 2.2.0 -->
-		<dependency>
-			<groupId>org.codehaus.woodstox</groupId>
-			<artifactId>woodstox-core-asl</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-websocket</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_standard_jetty -->
-		<dependency>
-			<groupId>org.eclipse.jetty.aggregate</groupId>
-			<artifactId>jetty-all-server</artifactId>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics-runtime</artifactId>
 		</dependency>
-		<!-- org.apache.karaf.features_standard_jetty -->
-		<dependency>
-			<groupId>org.ops4j.pax.web</groupId>
-			<artifactId>pax-web-features</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<!-- net.osgiliath.framework_net.osgiliath.features.karaf-features-messaging -->
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
-		</dependency>
-		<!-- org.apache.karaf.features_standard_jetty -->
-		<dependency>
-			<groupId>org.ow2.asm</groupId>
-			<artifactId>asm-all</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

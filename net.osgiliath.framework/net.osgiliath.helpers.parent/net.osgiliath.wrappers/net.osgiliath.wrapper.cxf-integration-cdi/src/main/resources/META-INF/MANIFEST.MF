@@ -3,9 +3,9 @@ Implementation-Vendor: The Apache Software Foundation
 Implementation-Title: Apache CXF CDI Integration
 Implementation-Vendor-Id: org.apache
 Built-By: dkulp
-Build-Jdk: 1.6.0_65
+Build-Jdk: 1.7.0_71
 Specification-Vendor: The Apache Software Foundation
 Specification-Title: Apache CXF CDI Integration
-Created-By: Apache Maven 3.0.5
+Created-By: Apache Maven 3.2.3
 Archiver-Version: Plexus Archiver
 
