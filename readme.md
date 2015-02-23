@@ -60,9 +60,9 @@ We'll accept most of contributions in a very short time so don't be shy!
 In order to release Osgiliath on m2 central, you've got to execute these two command:
 
 ```
-export MAVEN_OPTS="-Xmx2048M -XX:MaxPermSize=1G" (in your .profile)
-mvn release:prepare -Psonatype-oss-release
-mvn release:perform -Dgoals=deploy
+    export MAVEN_OPTS="-Xmx2048M -XX:MaxPermSize=1G" (in your .profile)
+    mvn release:prepare -Psonatype-oss-release
+    mvn release:perform -Dgoals=deploy
 ```
 
 
