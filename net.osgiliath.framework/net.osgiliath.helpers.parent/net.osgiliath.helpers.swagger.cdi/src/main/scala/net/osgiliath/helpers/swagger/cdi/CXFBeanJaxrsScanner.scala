@@ -21,7 +21,6 @@ package net.osgiliath.helpers.swagger.cdi;
  */
 
 import scala.collection.JavaConverters._
-import net.osgiliath.helpers.cdi.cxf.jaxrs.CDICXFFacade
 import scala.collection.immutable.List
 import com.google.common.base.Function
 import com.google.common.collect.Collections2
