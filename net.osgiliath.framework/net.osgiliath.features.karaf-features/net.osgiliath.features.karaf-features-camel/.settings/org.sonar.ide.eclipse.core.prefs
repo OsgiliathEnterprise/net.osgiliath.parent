@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-extraProperties=sonar.jacoco.reportPath\=${parent.path}/target/jacoco.exec\r\nsonar.jacoco.itReportPath\=${parent.path}/target/jacoco-it.exec\r\nsonar.java.coveragePlugin\=jacoco
+extraProperties=sonar.jacoco.itReportPath\=${parent.path}/target/jacoco-it.exec\r\nsonar.java.coveragePlugin\=jacoco\r\nsonar.jacoco.reportPath\=${parent.path}/target/jacoco.exec
 projectKey=net.osgiliath.framework\:net.osgiliath.features.karaf-features-camel
 serverUrl=http\://quality.osgiliath.net
 version=2

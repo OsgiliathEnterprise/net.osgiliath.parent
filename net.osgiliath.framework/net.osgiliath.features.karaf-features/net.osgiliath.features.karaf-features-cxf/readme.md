@@ -9,7 +9,7 @@ Web services features for Osgiliath framework
 
 Reference this feature in your pom:
 ```
-<dependency>
+        <dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.maven.version.version}</version>
 			<artifactId>net.osgiliath.features.karaf-features-cxf</artifactId>
