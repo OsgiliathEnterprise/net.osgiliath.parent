@@ -19,9 +19,9 @@ In order to use database versioning, follow this steps:
 * Execute mvn clean install -Pdb-diff to have the according tables structure changelog
 * Then add the generated changelogs on the database module/src/main/resources/db/db.changelog.xml
 ```
-<databaseChangeLog>
-<include file="db/db-20121120_120949.changelog.xml" />
-</databaseChangeLog>
+    <databaseChangeLog>
+        <include file="db/db-20121120_120949.changelog.xml" />
+    </databaseChangeLog>
 ```  
 * Execute mvn clean install -Pdb-data to retrieve ALL the production data on a changelog (it will be located on the db folder of the database module sources)
 
@@ -31,6 +31,6 @@ Data is not properly ordered regarding referential integrity
 
 Once this file has been cleaned-up, we can include it as well in our main db.changelog.xml file:
 ```
-<include file="db/db-data-20121128_170043.changelog.xml" />
+    <include file="db/db-data-20121128_170043.changelog.xml" />
 ```
 
