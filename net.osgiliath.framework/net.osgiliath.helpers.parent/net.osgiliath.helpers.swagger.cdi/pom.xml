@@ -31,11 +31,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.helpers.cdi.cxf.jaxrs</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
 			<artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
 		</dependency>
