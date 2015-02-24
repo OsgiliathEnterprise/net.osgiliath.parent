@@ -431,6 +431,9 @@
 						<mavenExecutorId>forked-path</mavenExecutorId>
 						<releaseProfiles>release</releaseProfiles>
 						<useReleaseProfile>false</useReleaseProfile>
+                                                <checkModificationExcludes>
+                                                    <checkModificationExclude>build.properties</checkModificationExclude>
+</checkModificationExcludes>
 					</configuration>
 				</plugin>
 				<plugin>
