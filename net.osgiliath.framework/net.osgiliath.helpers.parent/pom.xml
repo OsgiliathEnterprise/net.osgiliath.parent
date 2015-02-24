@@ -13,7 +13,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath</groupId>
-		<version>0.1.2-SNAPSHOT</version>
+		<version>0.1.2</version>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
