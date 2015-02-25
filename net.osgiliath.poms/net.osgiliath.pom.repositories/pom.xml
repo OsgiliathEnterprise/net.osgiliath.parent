@@ -13,7 +13,7 @@
 	<parent>
 		<artifactId>net.osgiliath.poms</artifactId>
 		<groupId>net.osgiliath</groupId>
-		<version>0.1.2-SNAPSHOT</version>
+		<version>0.1.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.pom.repositories</artifactId>
 	<packaging>pom</packaging>
