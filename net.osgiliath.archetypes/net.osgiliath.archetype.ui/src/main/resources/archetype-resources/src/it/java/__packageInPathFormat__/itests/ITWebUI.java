@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 @ExamReactorStrategy(PerClass.class)
 public class ITWebUI {
 	private static Logger LOG = LoggerFactory.getLogger(ITWebUI.class);
-	private static final String ARTIFACTID = "module.artifactId";
+	private static final String ARTIFACTID = "project.artifactId";
 	@Test
 	public void testMyUI()  {
 		@Test
