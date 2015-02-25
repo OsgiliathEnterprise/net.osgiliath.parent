@@ -24,9 +24,9 @@ task 'clean', 'Removes distribution', ->
 
 task 'dist', 'Build a distribution', ->
   console.log "Build distribution in ./target"
-  fs.mkdirSync('target') if not path.existsSync('target')
-  fs.mkdirSync('target/net.osgiliath.helpers.swagger.ui') if not path.existsSync('target/net.osgiliath.helpers.swagger.ui')
-  fs.mkdirSync('target/net.osgiliath.helpers.swagger.ui/lib') if not path.existsSync('target/net.osgiliath.helpers.swagger.ui/lib')
+  fs.mkdirSync('target') if not fs.existsSync('target')
+  fs.mkdirSync('target/net.osgiliath.helpers.swagger.ui') if not fs.existsSync('target/net.osgiliath.helpers.swagger.ui')
+  fs.mkdirSync('target/net.osgiliath.helpers.swagger.ui/lib') if not fs.existsSync('target/net.osgiliath.helpers.swagger.ui/lib')
 
   appContents = new Array remaining = sourceFiles.length
   for file, index in sourceFiles then do (file, index) ->

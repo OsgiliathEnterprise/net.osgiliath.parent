@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Swagger UI</title>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
+  <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
   <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='css/reset.css' media='print' rel='stylesheet' type='text/css'/>
@@ -25,7 +25,7 @@
   <script type="text/javascript">
     $(function () {
       window.swaggerUi = new SwaggerUi({
-      url: "http://localhost:8181/yourwerviceserver/api-docs",
+      url: "http://petstore.swagger.wordnik.com/api/api-docs",
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
@@ -47,7 +47,8 @@
       onFailure: function(data) {
         log("Unable to Load SwaggerUI");
       },
-      docExpansion: "none"
+      docExpansion: "none",
+      sorter : "alpha"
     });
 
     $('#input_apiKey').change(function() {
@@ -74,7 +75,7 @@
       <div class='input icon-btn'>
         <img id="show-wordnik-dev-icon" src="images/wordnik_api.png" title="Show Wordnik Developer Apis">
       </div>
-      <div class='input'><input placeholder="http://localhost:8181/cxf/yourWebServiceServer/api-docs" id="input_baseUrl" name="baseUrl" type="text"/></div>
+      <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
       <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
       <div class='input'><a id="explore" href="#">Explore</a></div>
     </form>
