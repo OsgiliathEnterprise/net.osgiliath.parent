@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
-		<version>0.1.3</version>
+		<version>0.1.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-common</artifactId>
 	<name>Osgiliath common features</name>
