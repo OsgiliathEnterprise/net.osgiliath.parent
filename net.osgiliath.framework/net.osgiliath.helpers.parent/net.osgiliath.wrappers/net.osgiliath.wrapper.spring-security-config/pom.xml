@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.wrappers</groupId>
 		<artifactId>net.osgiliath.wrappers</artifactId>
-		<version>0.1.3-SNAPSHOT</version>
+		<version>0.1.3</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.spring-security-config</artifactId>
 	<name>spring-security-config wrapper</name>
