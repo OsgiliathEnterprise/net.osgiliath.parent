@@ -19,8 +19,6 @@ public class ITWebUI {
 	private static final String ARTIFACTID = "project.artifactId";
 	@Test
 	public void testMyUI()  {
-		@Test
-		public void testSayHello() throws Exception {
 			final WebDriver driver;
 			driver = new FirefoxDriver();
 			

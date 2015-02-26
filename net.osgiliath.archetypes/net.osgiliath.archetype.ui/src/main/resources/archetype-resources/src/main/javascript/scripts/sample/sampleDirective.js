@@ -1,5 +1,5 @@
 'use strict';
-angular.module('sampleApp').directive('sampleWindow',
+angular.module('sampleApp').directive('samplewindow',
 		function() {
 			console.log('loaded myApp module');
 			return {
