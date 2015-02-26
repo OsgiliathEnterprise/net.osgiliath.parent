@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: myController', function () {
+describe('Controller: sampleController', function () {
 
   // load the controller's module
   beforeEach(module('myApp'));
@@ -11,13 +11,13 @@ describe('Controller: myController', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    myCtrl = $controller('myController', {
+    myCtrl = $controller('sampleController', {
       $scope: scope,
       stompservice: mockedService
     });
   }));
 
-  it('should attach the myMessage', function () {
-//    expect(scope.helloMessage).toBe('');
+  it('should attach the sampleMessage', function () {
+//    expect(scope.sampleMessage).toBe('');
   });
 });

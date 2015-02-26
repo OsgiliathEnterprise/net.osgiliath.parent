@@ -34,7 +34,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 import java.io.File;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.CoreOptions;
 import org.ops4j.pax.exam.MavenUtils;
@@ -52,7 +52,7 @@ import org.slf4j.LoggerFactory;
  * @author charliemordant
  * 
  */
-public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafConfigurationFactory {
+public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafConfiguration {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(StandaloneKarafPaxExamConfiguration.class);
 	

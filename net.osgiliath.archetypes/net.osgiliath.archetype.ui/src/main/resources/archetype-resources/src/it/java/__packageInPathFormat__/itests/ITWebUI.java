@@ -14,8 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RunWith(PaxExam.class)
-@ExamReactorStrategy(PerClass.class)
 public class ITWebUI {
 	private static Logger LOG = LoggerFactory.getLogger(ITWebUI.class);
 	private static final String ARTIFACTID = "project.artifactId";
@@ -25,9 +23,7 @@ public class ITWebUI {
 		public void testSayHello() throws Exception {
 			final WebDriver driver;
 			driver = new FirefoxDriver();
-			final WebDriver driver;
-		    driver = new FirefoxDriver();
-
+			
 		    // Sleep until the elements we want is visible or 5 seconds is over
 		    long end = System.currentTimeMillis() + 10000;
 		    (new WebDriverWait(driver, 300)).until(new ExpectedCondition<Boolean>() {
@@ -42,19 +38,7 @@ public class ITWebUI {
 		    });
 		   
 		    WebElement element;
-			// Sleep until the elements we want is visible or 5 seconds is over
-//			(new WebDriverWait(driver, 200))
-//					.until(new ExpectedCondition<Boolean>() {
-//						public Boolean apply(WebDriver d) {
-//							driver.get("http://localhost:8181/" + System.getProperty(ARTIFACTID));
-//							boolean ret = d.getTitle().toLowerCase()
-//									.startsWith(System.getProperty(ARTIFACTID));
-//							if (!ret) {
-//								driver.navigate().refresh();
-//							}
-//							return ret;
-//						}
-//					});
+			
 			//TODO your test here
 			driver.close();
 	}

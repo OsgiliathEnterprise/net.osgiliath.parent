@@ -15,8 +15,8 @@ var unit = function(config) {
 	config.files = shared.sharedfiles.concat([
 			unit.mainfolder + 'scripts/services/stompservice.js',
 			unit.mainfolder + 'scripts/main/mainRoute.js',
-			unit.mainfolder + 'scripts/sample/myDirective.js',
-			unit.mainfolder + 'scripts/sample/myController.js',
+			unit.mainfolder + 'scripts/sample/sampleDirective.js',
+			unit.mainfolder + 'scripts/sample/sampleController.js',
 			unit.bowercomponent + 'angular-mocks/angular-mocks.js',
 			/* 'test/mock/*.js', */unit.testfolder + '/spec/**/*.js' ]);
 	config.urlRoot = '/__unit/';
