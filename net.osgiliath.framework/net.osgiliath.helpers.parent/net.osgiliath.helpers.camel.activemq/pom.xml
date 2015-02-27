@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers.parent</artifactId>
-		<version>0.1.4</version>
+		<version>0.1.5-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.camel.activemq</artifactId>
 	<name>Camel components for activeMQ</name>
