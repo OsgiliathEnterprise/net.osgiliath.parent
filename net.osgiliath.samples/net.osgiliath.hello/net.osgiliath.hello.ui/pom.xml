@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>net.osgiliath.hello</groupId>
 		<artifactId>net.osgiliath.hello</artifactId>
-		<version>0.1.4-SNAPSHOT</version>
+		<version>0.1.4</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.ui</artifactId>
 	<packaging>war</packaging>

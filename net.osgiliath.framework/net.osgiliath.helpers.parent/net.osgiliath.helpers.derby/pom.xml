@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers.parent</artifactId>
-		<version>0.1.4-SNAPSHOT</version>
+		<version>0.1.4</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.derby</artifactId>
 	<name>Helpers for Apache Derby database</name>
