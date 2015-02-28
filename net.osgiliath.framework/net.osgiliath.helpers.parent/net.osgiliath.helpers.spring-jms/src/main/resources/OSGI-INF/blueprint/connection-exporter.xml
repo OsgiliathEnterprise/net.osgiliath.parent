@@ -36,7 +36,7 @@
 	<bean id="jmsProducerTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<argument ref="pooledConnectionFactory"></argument>
 		<property name="receiveTimeout" value="$[async.components.receivetimeout]"></property>
-		<property name="sessionTransacted" value="true"></property>
+		<property name="sessionTransacted" value="false"></property>
 		<property name="deliveryPersistent" value="false" />
 		<property name="deliveryMode" value="1" />
 	</bean>
