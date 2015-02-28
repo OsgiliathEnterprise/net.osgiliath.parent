@@ -34,14 +34,14 @@ import javax.enterprise.inject.spi.ProcessBean;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
 /**
- * 
+ * Eager CDI bean starting extension.
  * @author charliemordant Eager bean startup CDI extension
  */
 public class EagerExtension implements Extension {
   /**
    * List of eager startup beans
    */
-  private Collection<Bean<?>> eagerBeansList = new ArrayList<Bean<?>>();
+  private transient Collection<Bean<?>> eagerBeansList = new ArrayList<Bean<?>>();
 
   /**
    * Add beans to eager startup beans registry
@@ -65,7 +65,7 @@ public class EagerExtension implements Extension {
    */
   public void load(@Observes AfterDeploymentValidation event,
       BeanManager beanManager) {
-    for (Bean<?> bean : this.eagerBeansList) {
+    for (final Bean<?> bean : this.eagerBeansList) {
       // note: toString() is important to instantiate the bean
       beanManager.getReference(bean, bean.getBeanClass(),
           beanManager.createCreationalContext(bean)).toString();
