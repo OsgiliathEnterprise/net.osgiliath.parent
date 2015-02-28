@@ -51,10 +51,10 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
   @Override
   public Response toResponse(Exception arg0) {
     // On cree une instance de SAXBuilder
-    Element root = new Element("Exception");
-    Document doc = new Document(root);
-    populateXML(arg0, root);
-    String res = new XMLOutputter(Format.getPrettyFormat()).outputString(doc);
+    final Element root = new Element("Exception");
+    final Document doc = new Document(root);
+    this.populateXML(arg0, root);
+    final String res = new XMLOutputter(Format.getPrettyFormat()).outputString(doc);
     LOG.info("CXF exception thrown: " + res, arg0);
     return Response.status(Response.Status.FORBIDDEN)
         .type(MediaType.APPLICATION_XML)
@@ -71,19 +71,19 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
    *          the Xml Element (Jdom)
    */
   private void populateXML(Throwable arg0, Element root) {
-    Element clazz = new Element("class");
+    final Element clazz = new Element("class");
     clazz.setText(arg0.getClass().getSimpleName());
     root.getChildren().add(clazz);
-    Element message = new Element("message");
+    final Element message = new Element("message");
     message.setText(arg0.getMessage());
     root.getChildren().add(message);
-    Element localizedMessage = new Element("localizedMessage");
+    final Element localizedMessage = new Element("localizedMessage");
     localizedMessage.setText(arg0.getLocalizedMessage());
     root.getChildren().add(localizedMessage);
     if (arg0.getCause() != null) {
-      Element cause = new Element("Cause");
+      final Element cause = new Element("Cause");
       root.getChildren().add(cause);
-      populateXML(arg0.getCause(), cause);
+      this.populateXML(arg0.getCause(), cause);
     }
   }
 
