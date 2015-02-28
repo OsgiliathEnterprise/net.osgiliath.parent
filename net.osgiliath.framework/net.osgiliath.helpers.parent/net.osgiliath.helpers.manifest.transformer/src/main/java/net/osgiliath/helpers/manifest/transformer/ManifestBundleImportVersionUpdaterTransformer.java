@@ -86,29 +86,29 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     StringBuilder updatedImports = new StringBuilder();
 
     if (this.entriesVersionUpdates != null) {
-      String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
-      StringBuilder regexp = new StringBuilder();
+      final String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
+      final StringBuilder regexp = new StringBuilder();
       regexp.append("([a-zA-Z0-9\\.]+?)");// symbolicname
       regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9a-zA-Z]*\")*?)*?)");// specialization
       regexp.append("(,(?!\\s*[\\.\\]\\)0-9a-zA-Z]*\")|$)");// iterator
-      Pattern pattern = Pattern.compile(regexp.toString());// ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
-      Matcher matcher = pattern.matcher(imports);
+      final Pattern pattern = Pattern.compile(regexp.toString());// ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
+      final Matcher matcher = pattern.matcher(imports);
       while (matcher.find()) {
-        String symbolicName = matcher.group(1);
+        final String symbolicName = matcher.group(1);
         Boolean foundMatch = Boolean.FALSE;
         updatedImports.append(symbolicName);
         for (Iterator<String> i = this.entriesVersionUpdates.keySet()
             .iterator(); i.hasNext();) {
-          String key = i.next();
+          final String key = i.next();
           if (key.equals(symbolicName)) {
             String specialization = matcher.group(2);
             if (specialization != null) {
               foundMatch = Boolean.TRUE;
               System.out.println("Replacement matched: " + symbolicName + ","
                   + specialization);
-              Pattern versionDeclarationPattern = Pattern
+              final Pattern versionDeclarationPattern = Pattern
                   .compile(";\\s*version\\s*=\\s*\"");
-              Matcher versionDeclarationMatcher = versionDeclarationPattern
+              final Matcher versionDeclarationMatcher = versionDeclarationPattern
                   .matcher(specialization);
               if (versionDeclarationMatcher.find()) {
                 specialization = specialization.replaceAll(
@@ -123,7 +123,7 @@ public class ManifestBundleImportVersionUpdaterTransformer {
           }
         }
         if (!foundMatch) {
-          String specialization = matcher.group(2);
+          final String specialization = matcher.group(2);
           updatedImports.append(specialization);
 
         }
@@ -190,14 +190,14 @@ public class ManifestBundleImportVersionUpdaterTransformer {
   }
 
   private void addBundleClassPath(String bundleClasspath) {
-    Attributes attributes = manifest.getMainAttributes();
+    final Attributes attributes = manifest.getMainAttributes();
     attributes.put(new Attributes.Name(Constants.BUNDLE_CLASSPATH), "., "
         + bundleClasspath + ".jar");
   }
 
   private void createOverrideMap(String[] overrides) {
     for (String override : overrides) {
-      String[] mapEntry = override.split("=");
+      final String[] mapEntry = override.split("=");
       if (mapEntry.length == 2) {
         this.entriesVersionUpdates.put(mapEntry[0], mapEntry[1]);
       }
