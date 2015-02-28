@@ -25,13 +25,13 @@ import javax.validation.Validator;
 import net.osgiliath.validator.osgi.internal.ValidatorFactorySingleton;
 
 /**
- * 
- * @author charliemordant gets the validator
+ * gets the validator.
+ * @author charliemordant 
  */
 public class ValidatorHelper {
 
   /**
-   * 
+   * The validator.
    * @return the singleton validator
    */
   public static Validator getValidator() {

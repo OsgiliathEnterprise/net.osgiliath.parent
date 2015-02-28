@@ -1,5 +1,5 @@
 Import-Package: com.google.common.collect,\
- helpers.cxf.exception.handling.jaxrs.mapper,\
+ net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper,\
  org.springframework.transaction;version="[4,5)",\
  org.springframework.validation.beanvalidation;version="[4,5)",\
  *

@@ -1,4 +1,4 @@
-package security;
+package net.osgiliath.security;
 
 /*
  * #%L
@@ -30,7 +30,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * Represent a User
+ * Represent a User.
  * 
  * @author Charlie
  * 

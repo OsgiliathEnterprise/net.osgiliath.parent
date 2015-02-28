@@ -32,8 +32,8 @@ import org.apache.camel.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
 
 /**
- * 
- * @author charliemordant Messaging components imports
+ * Messaging components imports.
+ * @author charliemordant
  */
 @Eager
 @ApplicationScoped
@@ -45,16 +45,16 @@ public class HelloComponents {
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
-  private Component jms;
+  private transient Component jms;
 
   /**
-   * 
+   * JMS component
    * @return Messaging component
    */
   @Produces
   @Named("jms")
   public Component getJms() {
     log.info("Inject jms route");
-    return jms;
+    return this.jms;
   }
 }

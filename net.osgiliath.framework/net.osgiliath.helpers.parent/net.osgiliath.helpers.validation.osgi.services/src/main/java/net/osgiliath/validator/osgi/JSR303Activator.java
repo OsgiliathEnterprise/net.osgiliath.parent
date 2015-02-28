@@ -20,34 +20,30 @@ package net.osgiliath.validator.osgi;
  * #L%
  */
 
-import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
-import javax.validation.bootstrap.ProviderSpecificBootstrap;
 import javax.validation.spi.ValidationProvider;
 
-import net.osgiliath.validator.osgi.internal.HibernateValidationOSGIServicesProviderResolver;
 import net.osgiliath.validator.osgi.internal.OsgiServiceValidationProviderTracker;
 import net.osgiliath.validator.osgi.internal.ValidatorFactorySingleton;
 
-import org.hibernate.validator.HibernateValidator;
-import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
- * 
- * @author charliemordant Activator for JSR303 provider services
+ * Activator for JSR303 provider services.
+ * @author charliemordant 
  */
 public class JSR303Activator implements BundleActivator {
   /**
-   * Validation providers tracker
+   * Validation providers tracker.
    */
   private ServiceTracker tracker;
 
   /**
-   * Start method
+   * Start method.
+   * @param context the bundle context
    */
   @Override
   public void start(BundleContext context) throws Exception {
@@ -66,7 +62,8 @@ public class JSR303Activator implements BundleActivator {
   }
 
   /**
-   * Stop validation providers bundle
+   * Stop validation providers bundle.
+   * @param context the bundle context
    */
   @Override
   public void stop(BundleContext context) throws Exception {

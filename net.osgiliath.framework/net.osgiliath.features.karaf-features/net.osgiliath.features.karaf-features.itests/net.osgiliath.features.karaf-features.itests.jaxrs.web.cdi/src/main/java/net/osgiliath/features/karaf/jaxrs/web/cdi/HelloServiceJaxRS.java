@@ -31,8 +31,8 @@ import net.osgiliath.features.karaf.jaxrs.web.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.Hellos;
 
 /**
- * 
- * @author charliemordant REST service export
+ * REST service export.
+ * @author charliemordant
  */
 @Path("/hello")
 public interface HelloServiceJaxRS {

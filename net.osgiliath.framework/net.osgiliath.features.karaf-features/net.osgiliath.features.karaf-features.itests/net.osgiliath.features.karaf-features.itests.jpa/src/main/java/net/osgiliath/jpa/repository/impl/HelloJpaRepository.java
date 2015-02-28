@@ -38,8 +38,9 @@ import net.osgiliath.jpa.repository.HelloRepository;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 /**
+ * Spring data jpa repository declaration.
  * 
- * @author charliemordant Spring data jpa repository declaration
+ * @author charliemordant
  */
 public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long>
     implements HelloRepository {
@@ -47,7 +48,7 @@ public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long>
    * Entity manager
    */
   @Setter
-  private EntityManager entityManager;
+  private transient EntityManager entityManager;
 
   /**
    * Ctor
@@ -65,20 +66,25 @@ public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long>
 
   /**
    * Finds by helloMessage
+   * 
+   * @param message
+   *          the message to find elements from
+   * @return all corrsponding entities
    */
   @Override
   public final Collection<? extends HelloEntity> findByHelloObjectMessage(
-      final String message_p) {
-    final CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
-    final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-    final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
-    cq.select(helloObject);
-    final Predicate where = cb.equal(
-        helloObject.get(HelloEntity_.helloMessage), message_p);
-    cq.where(where);
-    final TypedQuery<HelloEntity> q = this.entityManager.createQuery(cq);
-    final List<HelloEntity> result = q.getResultList();
-    return result;
+      final String message) {
+    final CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
+    final CriteriaQuery<HelloEntity> criteria = builder
+        .createQuery(HelloEntity.class);
+    final Root<HelloEntity> helloObject = criteria.from(HelloEntity.class);
+    criteria.select(helloObject);
+    final Predicate where = builder.equal(
+        helloObject.get(HelloEntity_.helloMessage), message);
+    criteria.where(where);
+    final TypedQuery<HelloEntity> query = this.entityManager
+        .createQuery(criteria);
+    return query.getResultList();
   }
 
 }

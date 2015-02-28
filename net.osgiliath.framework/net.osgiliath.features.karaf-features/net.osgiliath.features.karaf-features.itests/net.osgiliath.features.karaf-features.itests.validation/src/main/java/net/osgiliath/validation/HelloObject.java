@@ -25,12 +25,12 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
- * Sample validated entity
+ * Sample validated entity.
  */
 @Data
 public class HelloObject {
   /**
-   * message
+   * message.
    */
   @NotNull
   private String message;

@@ -38,16 +38,12 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Sample of a business service with JaxRS and CDI
+ * Sample of a business service with JaxRS and CDI.
  * 
  * @author charliemordant
  * 
  */
 @Slf4j
-//@Eager
-//@CXFEndpoint(url = "/helloService", providersClasses = {
-//    JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class,
-//    ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceJaxRS implements
     net.osgiliath.hello.business.cdi.impl.HelloServiceJaxRS {
   /**
@@ -55,21 +51,23 @@ public class HelloServiceJaxRS implements
    */
   @Inject
   @OsgiService
-  private HelloObjectRepository helloObjectRepository;
+  private transient HelloObjectRepository helloObjectRepository;
 
   /**
    * persistence module
+   * @param helloObject element to save
    */
   @Override
-  public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
+  public void persistHello(@NotNull @Valid HelloEntity helloObject) {
     log.info("persisting new message with jaxrs: "
-        + helloObject_p.getHelloMessage());
-    this.helloObjectRepository.save(helloObject_p);
+        + helloObject.getHelloMessage());
+    this.helloObjectRepository.save(helloObject);
 
   }
 
   /**
    * Gets hello entities
+   * @return the entities
    */
   @Override
   public Hellos getHellos() {

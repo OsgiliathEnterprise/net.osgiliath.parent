@@ -29,12 +29,7 @@ import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.validation.ConstraintViolation;
-import javax.validation.ValidationException;
 import javax.validation.Validator;
-
-import org.springframework.jms.core.JmsOperations;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +37,9 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
+
+import org.springframework.jms.core.JmsOperations;
+import org.springframework.jms.core.MessageCreator;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -59,17 +57,17 @@ public class HelloServiceJMS implements HelloService, MessageListener {
    * Database persistence repository
    */
   @Setter
-  private HelloObjectRepository helloObjectRepository;
+  private transient HelloObjectRepository helloObjectRepository;
   /**
    * Hibernate validator
    */
   @Setter
-  private Validator validator;
+  private transient Validator validator;
   /**
    * JMS producer
    */
   @Setter
-  private JmsOperations template;
+  private transient JmsOperations template;
 
   /**
    * JMS consumer
@@ -79,17 +77,17 @@ public class HelloServiceJMS implements HelloService, MessageListener {
   @Override
   public void persistHello(HelloEntity hello) {
 
-    this.log
+    log
         .error("****************** Save on JMS Service **********************");
-    this.log
+    log
         .info("persisting new message with jms: " + hello.getHelloMessage());
-    final Set<ConstraintViolation<HelloEntity>> validationResults = validator
+    final Set<ConstraintViolation<HelloEntity>> validationResults = this.validator
         .validate(hello);
     final StringBuilder errors = new StringBuilder("");
 
     if (!validationResults.isEmpty()) {
-      for (ConstraintViolation<HelloEntity> violation : validationResults) {
-        this.log.info("subscription error, validating user:"
+      for (final ConstraintViolation<HelloEntity> violation : validationResults) {
+        log.info("subscription error, validating user:"
             + violation.getMessage());
         errors.append(violation.getPropertyPath()).append(": ")
             .append(violation.getMessage().replaceAll("\"", "")).append(";")
@@ -148,14 +146,18 @@ public class HelloServiceJMS implements HelloService, MessageListener {
     this.helloObjectRepository.deleteAll();
 
   }
-
+  /**
+   * Method called on message reception
+   * @param message received message
+   */
   @Override
   public void onMessage(Message message) {
     try {
-      HelloEntity helloObject_p = (HelloEntity) ((ObjectMessage) message)
+      final HelloEntity helloObject_p = (HelloEntity) ((ObjectMessage) message)
           .getObject();
       persistHello(helloObject_p);
-    } catch (JMSException e) {
+    }
+    catch (JMSException e) {
       log.error("error receiving JMS message", e);
     }
 

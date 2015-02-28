@@ -30,15 +30,15 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 /**
- * 
- * @author charliemordant Service tracker for validation providers
+ * Service tracker for validation providers.
+ * @author charliemordant
  */
 public class OsgiServiceValidationProviderTracker implements
     ServiceTrackerCustomizer {
   /**
    * bundle context
    */
-  private final BundleContext context;
+  private final transient BundleContext context;
 
   /**
    * CTor
@@ -52,37 +52,37 @@ public class OsgiServiceValidationProviderTracker implements
 
   /**
    * Adding validation provider
+   * @param reference the service reference to add
+   * @return the service
    */
   // callback method if MyClass service object is registered
   public Object addingService(final ServiceReference reference) {
     final Object serviceObject = this.context.getService(reference);
-    if (serviceObject instanceof ValidationProvider<?>) {
-      if (!HibernateValidationOSGIServicesProviderResolver.getInstance()
-          .getValidationProviders().contains(serviceObject)) {
-        HibernateValidationOSGIServicesProviderResolver.getInstance()
-            .getValidationProviders()
-            .add((ValidationProvider<?>) serviceObject);
-      }
+    if (serviceObject instanceof ValidationProvider<?>
+        && !HibernateValidationOSGIServicesProviderResolver.getInstance()
+            .getValidationProviders().contains(serviceObject)) {
+      HibernateValidationOSGIServicesProviderResolver.getInstance()
+          .getValidationProviders().add((ValidationProvider<?>) serviceObject);
     }
 
     return reference;
-    // return service object
   }
 
   /**
    * Removed validation provider
+   * @param reference the service reference
+   * @param service the service to remove
    */
   // callback if necessary class is deregistred
   public void removedService(final ServiceReference reference,
       final Object service) {
     final Object serviceObject = this.context.getService(reference);
-    if (serviceObject instanceof ValidationProvider<?>) {
-      if (HibernateValidationOSGIServicesProviderResolver.getInstance()
-          .getValidationProviders().contains(serviceObject)) {
-        HibernateValidationOSGIServicesProviderResolver.getInstance()
-            .getValidationProviders()
-            .remove((ValidationProvider<?>) serviceObject);
-      }
+    if (serviceObject instanceof ValidationProvider<?>
+        && HibernateValidationOSGIServicesProviderResolver.getInstance()
+            .getValidationProviders().contains(serviceObject)) {
+      HibernateValidationOSGIServicesProviderResolver.getInstance()
+          .getValidationProviders()
+          .remove((ValidationProvider<?>) serviceObject);
     }
   }
 
@@ -98,7 +98,7 @@ public class OsgiServiceValidationProviderTracker implements
       throws InvalidSyntaxException {
     final Collection<ServiceReference<ValidationProvider>> refs = context
         .getServiceReferences(ValidationProvider.class, null);
-    for (ServiceReference<ValidationProvider> reference : refs) {
+    for (final ServiceReference<ValidationProvider> reference : refs) {
       HibernateValidationOSGIServicesProviderResolver.getInstance()
           .getValidationProviders().add(context.getService(reference));
     }
@@ -106,6 +106,8 @@ public class OsgiServiceValidationProviderTracker implements
 
   /**
    * Modified service
+   * @param reference service reference
+   * @param service service
    */
   @Override
   public void modifiedService(final ServiceReference reference,

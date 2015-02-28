@@ -43,10 +43,11 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
    * Instances registry
    */
-  private Collection<HelloObject> objects = new ArrayList<HelloObject>();
+  private final Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
    * Saves instance
+   * @param helloObject instance to save
    */
   @Override
   public final void persistHello(final HelloObject helloObject) {
@@ -55,6 +56,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
 
   /**
    * Returns instances
+   * @return all instances
    */
   @Override
   public Hellos getHellos() {
@@ -66,7 +68,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
           public String apply(HelloObject input) {
 
             return input.getHelloMessage();
-          };
+          }
         })));
   }
 

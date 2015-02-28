@@ -21,7 +21,6 @@ package net.osgiliath.validator.osgi.internal;
  */
 
 import javax.validation.Validation;
-import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.validation.bootstrap.ProviderSpecificBootstrap;
 
@@ -29,22 +28,21 @@ import org.hibernate.validator.HibernateValidator;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 
 /**
- * 
- * @author charliemordant The validator factory singleton
+ * The validator factory singleton.
+ * @author charliemordant
  */
 public class ValidatorFactorySingleton {
   /**
    * factory singleton
    */
-  private static ValidatorFactory validatorFactory = null;
+  private static transient ValidatorFactory validatorFactory = null;
 
   /**
    * 
    * @return the singleton validator
    */
-  public static ValidatorFactory getValidatorFactory() {
+  public static synchronized ValidatorFactory getValidatorFactory() {
     if (validatorFactory == null) {
-
       final ProviderSpecificBootstrap<HibernateValidatorConfiguration> validationBootStrap = Validation
           .byProvider(HibernateValidator.class);
 
@@ -55,10 +53,9 @@ public class ValidatorFactorySingleton {
 
       final HibernateValidatorConfiguration configure = validationBootStrap
           .configure();
-      validatorFactory = configure/*
-                                   * .constraintValidatorFactory (new
-                                   * CDIAwareConstraintValidatorFactory ())
-                                   */.buildValidatorFactory();
+      validatorFactory = configure./*constraintValidatorFactory (new
+                                    CDIAwareConstraintValidatorFactory ())
+                                   .*/buildValidatorFactory();
     }
     return validatorFactory;
   }

@@ -32,8 +32,8 @@ import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
 
 /**
- * 
- * @author charliemordant REST service definition
+ * REST service definition
+ * @author charliemordant.
  */
 @Path("/hello")
 public interface HelloServiceJaxRS {
@@ -49,7 +49,6 @@ public interface HelloServiceJaxRS {
 
   /**
    * retrieving instances
-   * 
    * @return instances
    */
   @GET

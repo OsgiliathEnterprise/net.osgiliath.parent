@@ -33,28 +33,28 @@ import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
 
 /**
- * 
- * @author charliemordant Validation test
+ * Validation test.
+ * @author charliemordant
  */
 @Slf4j
 public class ValidatorFactorySample implements IValidatorFactorySample {
   @Setter
-  private Validator validator;
+  private transient Validator validator;
 
   /**
-   * Validation of a null message
+   * Validation of a null message.
+   * @param object element to validate
    */
-  public void nullMessageValidation(HelloObject object) {
+  public final void nullMessageValidation(HelloObject object) {
 
-    final Set<ConstraintViolation<HelloObject>> validationResults = validator
+    final Set<ConstraintViolation<HelloObject>> validationResults = this.validator
         .validate(object);
     if (!validationResults.isEmpty()) {
       throw new ConstraintViolationException(
           new HashSet<ConstraintViolation<?>>(validationResults));
     }
     if (object != null) {
-      // Exception must have be thrown
-      System.out.println(object.toString());
+      log.error("Exception should have been thrown" + object.toString());
     }
 
   }

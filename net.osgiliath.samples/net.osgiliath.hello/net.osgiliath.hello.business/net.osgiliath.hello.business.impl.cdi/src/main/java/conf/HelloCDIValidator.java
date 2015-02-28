@@ -27,12 +27,12 @@ import javax.validation.Validator;
 import net.osgiliath.validator.osgi.ValidatorHelper;
 
 /**
- * 
- * @author charliemordant CDI validator producer
+ * CDI validator producer.
+ * @author charliemordant
  */
 public class HelloCDIValidator {
   /**
-   * 
+   * CDI validator
    * @return the CDI injected validator
    */
   @Produces

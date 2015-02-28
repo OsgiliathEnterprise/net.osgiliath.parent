@@ -43,44 +43,53 @@ import org.ops4j.pax.exam.options.DefaultCompositeOption;
 @Slf4j
 public abstract class AbstractPaxExamKarafConfiguration {
   /**
-   * according Java property to set is jcoverage.command
+   * according Java property to set is jcoverage.command.
    */
   protected static final String COVERAGE_COMMAND = "jcoverage.command";
   /**
-   * according Java property to set is maven.user.settings
+   * according Java property to set is maven.user.settings.
    */
   protected static final String CONFIGURED_MAVEN_USER_SETTINGS = "maven.user.settings";
   /**
-   * according Java property to set is org.apache.maven.user-settings
+   * according Java property to set is org.apache.maven.user-settings.
    */
   protected static final String DEFAULT_MAVEN_USER_SETTINGS = "maven.user.settings.default";
   /**
-   * according Java property to set is org.apache.maven.global-settings
+   * according Java property to set is org.apache.maven.global-settings.
    */
   protected static final String DEFAULT_MAVEN_GLOBAL_SETTINGS = "maven.global.settings.default";
   /**
-   * according Java property to set is project.groupId
+   * according Java property to set is project.groupId.
    */
   protected static final String MODULE_GROUP_ID = "project.groupId";
   /**
-   * according Java property to set is project.parent.artifactId
+   * according Java property to set is project.parent.artifactId.
    */
   protected static final String MODULE_PARENT_ARTIFACT_ID = "project.parent.artifactId";
   /**
-   * according Java property to set is project.artifactId
+   * according Java property to set is project.artifactId.
    */
   protected static final String MODULE_ARTIFACT_ID = "project.artifactId";
   /**
-   * According property is maven.repos.urls
+   * According property is maven.repos.urls.
    */
   protected static final String MAVEN_REPOS_URLS = "maven.repos.urls";
 
   @SuppressWarnings("UnusedDeclaration")
+  /**
+   * Default debug options to set if you want to debug the code
+   */
   protected static final String DEBUG_VM_OPTION = "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=31313";
-  protected static String paxRunnerVmOption = null;
-
+  /**
+   * Pax VM options
+   */
+  protected static String paxRunnerVmOption;
+  /**
+   * Creates default pax exam configuration for Karaf
+   * @return the default configuration
+   */
   public Option[] createConfig() {
-    Option[] base = options(
+    final Option[] base = options(
         cleanCaches(),
         karafDistributionConfiguration()
             .frameworkUrl(
@@ -95,12 +104,15 @@ public abstract class AbstractPaxExamKarafConfiguration {
         addCodeCoverageOption(), addMavenSettingsOptions(),
         mavenReposURLOptions(), loggingLevel(), addExtraOptions(),
         featureToTest());
-    Option[] baseAndJVM = OptionUtils.combine(base, addJVMOptions());
+    final Option[] baseAndJVM = OptionUtils.combine(base, addJVMOptions());
     final Option vmOption = (paxRunnerVmOption != null) ? CoreOptions
         .vmOption(paxRunnerVmOption) : null;
     return OptionUtils.combine(baseAndJVM, vmOption);
   }
-
+  /**
+   * Sets Maven repository urls
+   * @return maven overriden URLS
+   */
   private Option mavenReposURLOptions() {
     if (System.getProperty(MAVEN_REPOS_URLS) != null) {
       log.info("replacing repositories urls by: "
@@ -111,7 +123,10 @@ public abstract class AbstractPaxExamKarafConfiguration {
     }
     return new DefaultCompositeOption();
   }
-
+  /**
+   * Overriden maven settings
+   * @return maven settings files options
+   */
   private Option addMavenSettingsOptions() {
     if (System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS) != null) {
       log.info("adding user reference settings "
@@ -138,7 +153,10 @@ public abstract class AbstractPaxExamKarafConfiguration {
     return new DefaultCompositeOption();
 
   }
-
+  /**
+   * Increses default heap size
+   * @return Heap size Options
+   */
   private Option[] addJVMOptions() {
 
     final String maxHeap = "-Xmx512m";
@@ -147,7 +165,10 @@ public abstract class AbstractPaxExamKarafConfiguration {
     return options(CoreOptions.vmOption(maxHeap),
         CoreOptions.vmOption(minHeap), CoreOptions.vmOption(maxPerm));
   }
-
+  /**
+   * Adds code coverage options
+   * @return code coverage options
+   */
   private Option addCodeCoverageOption() {
     final String coverageCommand = System.getProperty(COVERAGE_COMMAND);
     if (coverageCommand != null && !coverageCommand.isEmpty()) {
@@ -156,14 +177,23 @@ public abstract class AbstractPaxExamKarafConfiguration {
     }
     return new DefaultCompositeOption();
   }
-
+  /**
+   * Default logging level
+   * @return Log level options
+   */
   protected Option loggingLevel() {
     return logLevel(LogLevel.INFO);
   }
-
+  /**
+   * Additionnal options to override
+   * @return return additional options
+   */
   protected Option addExtraOptions() {
     return new DefaultCompositeOption();
   }
-
+  /**
+   * Karaf feature to test 
+   * @return karaf feature Option
+   */
   protected abstract Option featureToTest();
 }

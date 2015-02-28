@@ -25,6 +25,8 @@ import java.io.StringWriter;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.HttpMethod;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 
 import lombok.Setter;
@@ -42,9 +44,9 @@ import org.apache.camel.spi.DataFormat;
 import org.apache.commons.io.IOUtils;
 
 /**
- * 
- * @author charliemordant sample route, see apache camel and EIP keyword on the
- *         net ;)
+ * sample route, see apache camel and EIP keyword on the
+ *         net ;).
+ * @author charliemordant 
  */
 @ContextName
 public class HelloRoute extends RouteBuilder {
@@ -59,24 +61,24 @@ public class HelloRoute extends RouteBuilder {
   @Inject
   @Named("thrownExceptionMessageToInBodyProcessor")
   @Setter
-  private Processor thrownExceptionMessageToInBodyProcessor;
+  private transient Processor thrownExceptionMessageToInBodyProcessor;
   /**
    * XmlJson processor
    */
   @Inject
   @Named("xmljson")
-  private DataFormat xmljson;
+  private transient DataFormat xmljson;
   /**
    * changes inputstream to string
    */
-  private Processor octetsStreamToStringProcessor = new Processor() {
+  private transient Processor octetsStreamToStringProcessor = new Processor() {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-      InputStream bodyObject = exchange.getIn().getBody(InputStream.class);
-      StringWriter writer = new StringWriter();
+      final InputStream bodyObject = exchange.getIn().getBody(InputStream.class);
+      final StringWriter writer = new StringWriter();
       IOUtils.copy(bodyObject, writer);
-      String theString = writer.toString();
+      final String theString = writer.toString();
       exchange.getIn().setBody(theString);
 
     }
@@ -87,7 +89,7 @@ public class HelloRoute extends RouteBuilder {
    */
   @Override
   public void configure() throws Exception {
-    JAXBContext ctx = JAXBContext.newInstance(new Class[] { HelloEntity.class,
+    final JAXBContext ctx = JAXBContext.newInstance(new Class[] { HelloEntity.class,
         Hellos.class });
     final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 
@@ -95,7 +97,7 @@ public class HelloRoute extends RouteBuilder {
         .log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
         .filter(header("webSocketMsgType").isNotEqualTo("heartBeat"))
         .choice()
-        .when(header("httpRequestType").isEqualTo("POST"))
+        .when(header("httpRequestType").isEqualTo(HttpMethod.POST))
         .to("direct:persistObject")
         .endChoice()
         .otherwise()
@@ -104,8 +106,8 @@ public class HelloRoute extends RouteBuilder {
         .to("direct:toError");
 
     from("direct:persistObject")
-        .setHeader(Exchange.HTTP_METHOD, constant("POST"))
-        .setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
+        .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.POST))
+        .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))
         .unmarshal(this.helloObjectJSonFormat).marshal(jaxBDataFormat)
         .log(LoggingLevel.INFO, "marshalled: ${body}").doTry()
         .inOnly("{{net.osgiliath.hello.business.url.restservice}}/hello")
@@ -113,8 +115,8 @@ public class HelloRoute extends RouteBuilder {
         .log(LoggingLevel.WARN, "Exception while persisting message")
         .to("direct:helloValidationError").end();
 
-    from("direct:updateTopic").setHeader(Exchange.HTTP_METHOD, constant("GET"))
-        .setHeader(Exchange.CONTENT_TYPE, constant("application/xml"))
+    from("direct:updateTopic").setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
+        .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))
         .inOut("{{net.osgiliath.hello.business.url.restservice}}/hello")
         .inOut("direct:marshall").to("{{hello.MessagingEndPoint}}");
 

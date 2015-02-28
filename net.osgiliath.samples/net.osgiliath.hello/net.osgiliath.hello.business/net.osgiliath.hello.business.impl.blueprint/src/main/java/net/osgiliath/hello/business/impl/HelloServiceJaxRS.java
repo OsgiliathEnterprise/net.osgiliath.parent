@@ -36,14 +36,18 @@ import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 /**
+ * REST service declaration.
  * 
- * @author charliemordant REST service declaration
+ * @author charliemordant
  */
 @Path("/hello")
 @Api(value = "hello", description = "The hello resource access")
 public interface HelloServiceJaxRS extends HelloService {
   /**
    * saves an entity
+   * 
+   * @param helloObject
+   *          element to persist
    */
   @POST
   @Consumes(MediaType.APPLICATION_XML)

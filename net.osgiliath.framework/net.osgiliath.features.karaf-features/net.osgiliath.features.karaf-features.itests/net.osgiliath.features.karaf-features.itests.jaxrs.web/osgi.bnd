@@ -7,6 +7,6 @@ Import-Package: javax.servlet,\
  org.apache.cxf.jaxrs.provider.json,\
  org.apache.cxf.jaxrs.impl.tl,\
  org.apache.cxf.transport.http,\
- helpers.cxf.exception.handling.jaxrs.mapper,\
+ net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper,\
  *
  

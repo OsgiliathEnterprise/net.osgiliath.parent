@@ -25,8 +25,8 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 
- * @author charliemordant Entity sample
+ * Entity sample.
+ * @author charliemordant
  */
 @Data
 public class HelloEntity implements Serializable {

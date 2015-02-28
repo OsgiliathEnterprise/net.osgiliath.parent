@@ -31,8 +31,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
 /**
- * 
- * @author charliemordant Sample Model Object
+ * Sample Model Object.
+ * @author charliemordant 
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

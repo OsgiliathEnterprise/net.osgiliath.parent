@@ -37,24 +37,45 @@ import java.util.regex.Pattern;
 
 import org.codehaus.plexus.util.IOUtil;
 import org.osgi.framework.Constants;
-
+/**
+ * Overrides Manifest import versions
+ * @author charliemordant
+ *
+ */
 public class ManifestBundleImportVersionUpdaterTransformer {
+  /**
+   * parsed manifest entries
+   */
   // Configuration
   private final transient Map<String, String> entriesVersionUpdates = new HashMap<String, String>();
-
+  /**
+   * True if the manifest is found.
+   */
   // Fields
   private transient boolean manifestDiscovered;
+  /**
+   * The Manifest.
+   */
   private transient Manifest manifest;
-
+  /**
+   * Singleton.
+   */
   private static ManifestBundleImportVersionUpdaterTransformer instance;
-
+  /**
+   * Singleton instance.
+   * @return the transformer
+   */
   private static ManifestBundleImportVersionUpdaterTransformer getInstance() {
     if (ManifestBundleImportVersionUpdaterTransformer.instance == null) {
       ManifestBundleImportVersionUpdaterTransformer.instance = new ManifestBundleImportVersionUpdaterTransformer();
     }
     return ManifestBundleImportVersionUpdaterTransformer.instance;
   }
-
+  /**
+   * Found manifest
+   * @param resource file to test
+   * @return true if it is a manifest
+   */
   public final boolean canTransformResource(final String resource) {
     if (JarFile.MANIFEST_NAME.equalsIgnoreCase(resource)) {
       return true;
@@ -74,7 +95,10 @@ public class ManifestBundleImportVersionUpdaterTransformer {
       IOUtil.close(is);
     }
   }
-
+  /**
+   * Updates manifest
+   * @throws IOException error updating it
+   */
   public void updateManifestImportsWithOverrides() throws IOException {
     // If we didn't find a manifest, then let's create one.
     if (this.manifest == null) {
@@ -82,24 +106,24 @@ public class ManifestBundleImportVersionUpdaterTransformer {
       this.manifest = new Manifest();
     }
 
-    Attributes attributes = manifest.getMainAttributes();
-    StringBuilder updatedImports = new StringBuilder();
+    final Attributes attributes = manifest.getMainAttributes();
+    final StringBuilder updatedImports = new StringBuilder();
 
     if (this.entriesVersionUpdates != null) {
       final String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
       final StringBuilder regexp = new StringBuilder();
-      regexp.append("([a-zA-Z0-9\\.]+?)");// symbolicname
-      regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9a-zA-Z]*\")*?)*?)");// specialization
-      regexp.append("(,(?!\\s*[\\.\\]\\)0-9a-zA-Z]*\")|$)");// iterator
-      final Pattern pattern = Pattern.compile(regexp.toString());// ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
+      regexp.append("([a-zA-Z0-9\\.]+?)"); // symbolicname
+      regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9a-zA-Z]*\")*?)*?)"); // specialization
+      regexp.append("(,(?!\\s*[\\.\\]\\)0-9a-zA-Z]*\")|$)"); // iterator
+      final Pattern pattern = Pattern.compile(regexp.toString()); // ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
       final Matcher matcher = pattern.matcher(imports);
       while (matcher.find()) {
         final String symbolicName = matcher.group(1);
         Boolean foundMatch = Boolean.FALSE;
         updatedImports.append(symbolicName);
-        for (Iterator<String> i = this.entriesVersionUpdates.keySet()
-            .iterator(); i.hasNext();) {
-          final String key = i.next();
+        for (final Iterator<String> iterator = this.entriesVersionUpdates.keySet()
+            .iterator(); iterator.hasNext();) {
+          final String key = iterator.next();
           if (key.equals(symbolicName)) {
             String specialization = matcher.group(2);
             if (specialization != null) {
@@ -114,7 +138,8 @@ public class ManifestBundleImportVersionUpdaterTransformer {
                 specialization = specialization.replaceAll(
                     ";\\s*version\\s*=\\s*\".*?\"", ";version=\""
                         + this.entriesVersionUpdates.get(key) + "\"");
-              } else {
+              }
+              else {
                 specialization = specialization + ";version=\""
                     + this.entriesVersionUpdates.get(key) + "\"";
               }
@@ -128,7 +153,6 @@ public class ManifestBundleImportVersionUpdaterTransformer {
 
         }
         updatedImports.append(",");
-
       }
 
     }
@@ -138,7 +162,11 @@ public class ManifestBundleImportVersionUpdaterTransformer {
             updatedImports.toString().length() - 1));
 
   }
-
+  /**
+   * Main class
+   * @param args string args
+   * @throws IOException if parsing/replacement is not found
+   */
   public static void main(String[] args) throws IOException {
     String[] overrides = null;
     String basedir = null;
@@ -146,9 +174,11 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     for (String arg : args) {
       if (arg.startsWith("overrides=")) {
         overrides = arg.replaceFirst("overrides=", "").split(";");
-      } else if (arg.startsWith("basedir=")) {
+      }
+      else if (arg.startsWith("basedir=")) {
         basedir = arg.replaceFirst("basedir=", "");
-      } else if (arg.startsWith("bundleClasspath=")) {
+      }
+      else if (arg.startsWith("bundleClasspath=")) {
         bundleClasspath = arg.replaceFirst("bundleClasspath=", "");
       }
       System.out.println("Argument: " + arg);
@@ -172,7 +202,11 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     getInstance().addBundleClassPath(bundleClasspath);
     getInstance().writeManifest(basedir);
   }
-
+  /**
+   * Writes modifications to manifest
+   * @param basedir Manifest base dir
+   * @throws IOException if something goes wrong while writing
+   */
   private void writeManifest(String basedir) throws IOException {
     OutputStream os = null;
     try {
@@ -180,9 +214,11 @@ public class ManifestBundleImportVersionUpdaterTransformer {
           + "/src/main/resources/META-INF/MANIFEST.MF");
       this.manifest.write(os);
 
-    } catch (FileNotFoundException e) {
+    }
+    catch (FileNotFoundException e) {
       e.printStackTrace();
-    } finally {
+    }
+    finally {
       if (null != os) {
         os.close();
       }

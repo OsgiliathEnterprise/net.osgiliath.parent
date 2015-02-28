@@ -20,16 +20,14 @@ package conf;
  * #L%
  */
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 
 import org.apache.cxf.cdi.CXFCdiServlet;
 
 /**
- * 
- * @author charliemordant Services servlet
+ * Services servlet.
+ * @author charliemordant
  */
 @WebServlet(urlPatterns = { "/cxf/*" }, initParams = {
     @WebInitParam(name = "jaxrs.providers", value = "org.apache.cxf.jaxrs.provider.JAXBElementProvider,org.apache.cxf.jaxrs.provider.json.JSONProvider"),
@@ -37,8 +35,8 @@ import org.apache.cxf.cdi.CXFCdiServlet;
 public class JaxRSCDIServicesProviderServlet extends CXFCdiServlet {
 
   /**
-	 * 
-	 */
+   * Serial 
+   */
   private static final long serialVersionUID = 6922224281418865476L;
 
 }

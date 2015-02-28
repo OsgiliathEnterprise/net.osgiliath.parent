@@ -30,6 +30,11 @@ import net.osgiliath.helpers.cdi.eager.Eager;
 import org.apache.camel.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
 import lombok.extern.slf4j.Slf4j;
+/**
+ * CDI camel components instanciation
+ * @author charliemordant
+ *
+ */
 @Eager
 @ApplicationScoped
 @Slf4j

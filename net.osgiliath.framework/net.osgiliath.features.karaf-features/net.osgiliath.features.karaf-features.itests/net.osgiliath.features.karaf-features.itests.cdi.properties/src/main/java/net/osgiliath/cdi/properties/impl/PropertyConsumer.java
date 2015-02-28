@@ -3,7 +3,7 @@ package net.osgiliath.cdi.properties.impl;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import net.osgiliath.cdi.properties.api.IPropertyProvider;
+import net.osgiliath.cdi.properties.api.IPropertyConsumer;
 
 import org.apache.deltaspike.core.api.config.ConfigProperty;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
@@ -28,11 +28,13 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
  * limitations under the License.
  * #L%
  */
+/**
+ * Provides property.
+ * @author charliemordant
+ *
+ */
 @OsgiServiceProvider
-public class PropertyProvider implements IPropertyProvider {
-  // @Inject
-  // @ConfigProperty(name = "injectedProperty")
-  // private String injectedProperty;
+public class PropertyConsumer implements IPropertyConsumer {
 
   /*
    * (non-Javadoc)
@@ -40,9 +42,8 @@ public class PropertyProvider implements IPropertyProvider {
    * @see net.osgiliath.cdi.properties.impl.IConsumer#getInjectedProperty()
    */
   @Override
-  public String getInjectedProperty() {
+  public final String getInjectedProperty() {
     return ConfigResolver.getPropertyValue("injectedProperty");
-    // return injectedProperty;
   }
 
 }

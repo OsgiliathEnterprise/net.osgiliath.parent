@@ -41,8 +41,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
- * @author charliemordant JMS Service implementation
+ * JMS Service implementation.
+ * @author charliemordant
  */
 @ApplicationScoped
 @Eager
@@ -56,9 +56,9 @@ public class HelloJMSCDIRepository implements HelloCDIRepository {
   /**
    * entities registry
    */
-  private List<HelloEntity> entities = new ArrayList<HelloEntity>();
+  private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
   /**
-   * message producer for integrtaion test
+   * message producer for integration test
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueOut")
@@ -78,10 +78,12 @@ public class HelloJMSCDIRepository implements HelloCDIRepository {
 
   /**
    * Saves entities
+   * @param entity element to save
+   * @return the saved element
    */
   public <S extends HelloEntity> void directSave(@Body S entity) {
-    internalProducer.sendBody(entity);
-    routeProducer.sendBody(entity);
+    this.internalProducer.sendBody(entity);
+    this.routeProducer.sendBody(entity);
 
   }
 
@@ -90,6 +92,7 @@ public class HelloJMSCDIRepository implements HelloCDIRepository {
    * 
    * @param entity
    *          to consume
+   * @return the persisted element
    */
   @Consume(uri = "jms:queue:helloServiceQueueIn2")
   public <S extends HelloEntity> void save(@Body S entity) {

@@ -27,7 +27,7 @@ import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 /**
- * Business service interface declaration
+ * Business service interface declaration.
  * 
  * @author charliemordant
  * 
@@ -37,10 +37,10 @@ public interface HelloService {
   /**
    * Saves an entity
    * 
-   * @param helloMessage_p
+   * @param helloMessage
    *          entity to save
    */
-  void persistHello(@NotNull @Valid HelloEntity helloMessage_p);
+  void persistHello(@NotNull @Valid HelloEntity helloMessage);
 
   /**
    * get entities

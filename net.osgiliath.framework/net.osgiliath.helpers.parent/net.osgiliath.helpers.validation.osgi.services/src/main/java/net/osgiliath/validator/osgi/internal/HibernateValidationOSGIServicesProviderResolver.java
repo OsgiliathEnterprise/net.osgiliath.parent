@@ -58,7 +58,7 @@ public class HibernateValidationOSGIServicesProviderResolver implements
    * 
    * @return the Singleton instance
    */
-  public static ValidationProviderResolver getInstance() {
+  public synchronized static ValidationProviderResolver getInstance() {
     if (instance == null) {
       instance = new HibernateValidationOSGIServicesProviderResolver();
       ((HibernateValidationOSGIServicesProviderResolver) instance).providers
@@ -68,11 +68,12 @@ public class HibernateValidationOSGIServicesProviderResolver implements
   }
 
   /**
-   * gets providers
+   * gets providers.
+   * @return the validation providers
    */
   @Override
   public List<ValidationProvider<?>> getValidationProviders() {
-    return providers;
+    return this.providers;
   }
 
 }

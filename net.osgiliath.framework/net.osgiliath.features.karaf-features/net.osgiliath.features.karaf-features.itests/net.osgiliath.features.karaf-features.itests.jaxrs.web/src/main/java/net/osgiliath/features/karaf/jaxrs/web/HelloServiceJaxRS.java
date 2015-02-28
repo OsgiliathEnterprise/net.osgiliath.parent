@@ -32,8 +32,8 @@ import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 
 /**
- * 
- * @author charliemordant REST service definition
+ * REST service definition.
+ * @author charliemordant
  */
 @Path("/hello")
 public interface HelloServiceJaxRS {
@@ -55,7 +55,9 @@ public interface HelloServiceJaxRS {
   @GET
   @Produces(MediaType.APPLICATION_XML)
   Hellos getHellos();
-
+  /**
+   * deletes all elements
+   */
   @DELETE
   void deleteHellos();
 }

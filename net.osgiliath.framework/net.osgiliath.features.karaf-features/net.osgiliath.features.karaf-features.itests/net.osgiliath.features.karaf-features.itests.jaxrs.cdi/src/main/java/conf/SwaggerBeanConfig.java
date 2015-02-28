@@ -23,6 +23,7 @@ package conf;
 import java.io.IOException;
 
 import javax.enterprise.inject.Produces;
+import javax.ws.rs.ApplicationPath;
 
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.helpers.deltaspike.configadmin.internal.ConfigAdminTracker;
@@ -33,33 +34,36 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
-
+/**
+ * Default Swagger bean configuration.
+ * @author charliemordant
+ *
+ */
 @Slf4j
 public class SwaggerBeanConfig {
+  /**
+   * Configuration producer
+   * @return the configuration
+   */
   @Produces
   public BeanConfig getConfig() {
-    BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass()
+    final BeanConfig beanConfig = new CXFBeanJaxrsScanner(this.getClass()
         .getClassLoader());
-    BundleContext context = FrameworkUtil.getBundle(this.getClass())
+    final BundleContext context = FrameworkUtil.getBundle(this.getClass())
         .getBundleContext();
-    String protocol;
+    final ConfigAdminTracker tracker = ConfigAdminTracker.getInstance(context);
+    String endPointURI = "";
     try {
-      protocol = ConfigAdminTracker.getInstance(context).getProperty(
-          "jaxrs.server.protocol");
-
-      String uri = ConfigAdminTracker.getInstance(context).getProperty(
-          "jaxrs.server.uri");
-      String port = ConfigAdminTracker.getInstance(context).getProperty(
-          "jaxrs.server.port");
-
-      beanConfig.setBasePath(protocol + "://" + uri + ":" + port
-          + "/cxf/helloService");
-
-    } catch (IOException | InvalidSyntaxException e) {
+         endPointURI = tracker.getProperty(
+        "jaxrs.server.protocol") + "://" + tracker.getProperty("jaxrs.server.uri") + ":" + tracker.getProperty("jaxrs.server.port")  + "/cxf" + CXFApplication.class.getAnnotation(ApplicationPath.class).value();
+      beanConfig.setBasePath(endPointURI
+         );
+    }
+    catch (IOException | InvalidSyntaxException e) {
       log.error("Error configuring Swagger bean", e);
     }
-    log.info("Swagger bean configuration started");
-    beanConfig.setResourcePackage("net.osgiliath.hello.business.cdi.impl");
+    log.info("Swagger bean configuration started for endpoint: " + endPointURI);
+    beanConfig.setResourcePackage("net.osgiliath.features.karaf.jaxrs.cdi");
     beanConfig.setScan(true);
     return beanConfig;
   }

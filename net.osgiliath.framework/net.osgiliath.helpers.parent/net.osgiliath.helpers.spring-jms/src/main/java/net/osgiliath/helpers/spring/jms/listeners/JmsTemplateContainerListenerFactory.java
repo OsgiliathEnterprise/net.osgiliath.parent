@@ -23,13 +23,31 @@ package net.osgiliath.helpers.spring.jms.listeners;
 import javax.jms.MessageListener;
 
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
-
+/**
+ * JMS container listener
+ * @author charliemordant
+ *
+ */
 public interface JmsTemplateContainerListenerFactory {
-
-  public abstract DefaultMessageListenerContainer create(boolean transacted,
+  /**
+   * Creates a Listener container
+   * @param transacted if though should have transactions
+   * @param destinationName destination
+   * @param messageListener the listener
+   * @return the listener
+   */
+   DefaultMessageListenerContainer create(boolean transacted,
       String destinationName, MessageListener messageListener);
+  /**
+   * Creates a Listener container
+   * @param transacted if though should have transactions
+   * @param destinationName destination
+   * @param messageListener the listener
+   * @param isPubSub publish/subscribe vs queue
+   * @return the listener
+   */
 
-  public abstract DefaultMessageListenerContainer create(boolean transacted,
+  DefaultMessageListenerContainer create(boolean transacted,
       String destinationName, MessageListener messageListener, boolean isPubSub);
 
 }

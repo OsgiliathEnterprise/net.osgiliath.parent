@@ -32,36 +32,48 @@ import org.osgi.framework.ServiceReference;
 
 import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
-
+/**
+ * Exports swagger readers and writers service for CDI modules.
+ * @author charliemordant
+ *
+ */
 public class SwaggerCdiActivator implements BundleActivator {
+  /**
+   * start
+   * @param context bundle context
+   */
   @Override
   public void start(BundleContext context) throws Exception {
-    ResourceListingProvider resourceListingProvider = new ResourceListingProvider();
-    Dictionary<String, String> filter = new Hashtable<String, String>();
+    final ResourceListingProvider resourceListingProvider = new ResourceListingProvider();
+    final Dictionary<String, String> filter = new Hashtable<String, String>();
     filter.put("mapper.type", "resourceListingProvider");
     context.registerService(MessageBodyWriter.class, resourceListingProvider,
         filter);
-    ApiDeclarationProvider apiDeclarationProvider = new ApiDeclarationProvider();
-    Dictionary<String, String> filter2 = new Hashtable<String, String>();
+    final ApiDeclarationProvider apiDeclarationProvider = new ApiDeclarationProvider();
+    final Dictionary<String, String> filter2 = new Hashtable<String, String>();
     filter.put("mapper.type", "apiDeclarationProvider");
     context.registerService(MessageBodyWriter.class, apiDeclarationProvider,
         filter2);
 
   }
-
+  /**
+   * stop.
+   * @param context Bundle context
+   * 
+   */
   @Override
   public void stop(BundleContext context) throws Exception {
-    Collection<ServiceReference<ResourceListingProvider>> references = context
+    final Collection<ServiceReference<ResourceListingProvider>> references = context
         .getServiceReferences(ResourceListingProvider.class,
             "(mapper.type=resourceListingProvider)");
-    for (ServiceReference<ResourceListingProvider> reference : references) {
+    for (final ServiceReference<ResourceListingProvider> reference : references) {
       context.ungetService(reference);
     }
 
-    Collection<ServiceReference<ApiDeclarationProvider>> references2 = context
+    final Collection<ServiceReference<ApiDeclarationProvider>> references2 = context
         .getServiceReferences(ApiDeclarationProvider.class,
             "(mapper.type=apiDeclarationProvider)");
-    for (ServiceReference<ApiDeclarationProvider> reference : references2) {
+    for (final ServiceReference<ApiDeclarationProvider> reference : references2) {
       context.ungetService(reference);
     }
   }

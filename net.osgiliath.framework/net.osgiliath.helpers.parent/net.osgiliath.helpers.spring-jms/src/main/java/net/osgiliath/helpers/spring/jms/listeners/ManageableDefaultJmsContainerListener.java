@@ -21,9 +21,16 @@ package net.osgiliath.helpers.spring.jms.listeners;
  */
 
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
-
+/**
+ * Adds shutdown info to the default spring container listener.
+ * @author charliemordant
+ *
+ */
 public class ManageableDefaultJmsContainerListener extends
     DefaultMessageListenerContainer {
+  /**
+   * Shutdowns gracefully.
+   */
   public void shutdownGracefully() {
     this.stop();
     this.destroy();

@@ -25,9 +25,16 @@ import javax.enterprise.inject.Produces;
 import javax.validation.Validator;
 
 import net.osgiliath.validator.osgi.ValidatorHelper;
-
+/**
+ * Produces default hibernate validator
+ * @author charliemordant
+ *
+ */
 public class CDIValidator {
-	
+	/**
+	 * Creates JSR 303 the Validator
+	 * @return the Validator
+	 */
 	@Produces
 	@org.hibernate.validator.cdi.HibernateValidator
 	@Default

@@ -27,8 +27,8 @@ import javax.validation.Validator;
 import net.osgiliath.validator.osgi.ValidatorHelper;
 
 /**
- * 
- * @author charliemordant CDI bootstrap configuration class
+ * CDI bootstrap configuration class.
+ * @author charliemordant
  */
 public class CDIValidator {
   /**
@@ -39,7 +39,7 @@ public class CDIValidator {
   @Produces
   @org.hibernate.validator.cdi.HibernateValidator
   @Default
-  public Validator createValidator() {
+  public final Validator createValidator() {
     return ValidatorHelper.getValidator();
   }
 }

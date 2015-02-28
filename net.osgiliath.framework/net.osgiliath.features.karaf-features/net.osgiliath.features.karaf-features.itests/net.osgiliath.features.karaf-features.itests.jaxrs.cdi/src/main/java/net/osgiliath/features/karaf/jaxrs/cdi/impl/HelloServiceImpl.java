@@ -31,23 +31,21 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
+ * REST Service implementation for testing purpose.
  * 
- * @author charliemordant REST Service implementation for testing purpose (the
- *         only noticeable thing is the CXFEndpoint annotation
+ * @author charliemordant
  */
-//@Eager
-//@ApplicationScoped
-//@CXFEndpoint(url = "/helloService", providersClasses = {
-//    JAXBElementProvider.class, JSONProvider.class, ExceptionXmlMapper.class,
- //   ResourceListingProvider.class, ApiDeclarationProvider.class })
 public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
    * Instances elements
    */
-  private Collection<HelloObject> objects = new ArrayList<HelloObject>();
+  private final Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
    * Registering instance
+   * 
+   * @param helloObject
+   *          the element to save in the database
    */
   @Override
   public void persistHello(final HelloObject helloObject) {
@@ -57,20 +55,22 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
 
   /**
    * Returns registered instances
+   * 
+   * @return all instances
    */
   @Override
   public Hellos getHellos() {
-
     return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
         new Function<HelloObject, String>() {
-
           @Override
           public String apply(final HelloObject input) {
             return input.getHelloMessage();
-          };
+          }
         })));
   }
-
+  /**
+   * Deletes all elements
+   */
   @Override
   public void deleteHellos() {
     this.objects.clear();

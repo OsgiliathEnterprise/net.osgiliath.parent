@@ -26,8 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.osgi.framework.BundleContext;
 
 /**
- * 
- * @author charliemordant Activator for config admin
+ * Activator for config admin listener.
+ * @author charliemordant
  */
 @Slf4j
 public class CdiConfigAdminServiceStarter {
@@ -35,7 +35,7 @@ public class CdiConfigAdminServiceStarter {
    * Configadmin service tracker
    */
   @Setter
-  private BundleContext context;
+  private transient BundleContext context;
 
   /*
    * (non-Javadoc)
@@ -43,8 +43,9 @@ public class CdiConfigAdminServiceStarter {
    * @see
    * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
    */
-  public void start(BundleContext bundleContext) throws Exception {
-    ConfigAdminTracker.getInstance(context);
+  public final void start(final BundleContext bundleContext) throws Exception {
+    this.context = bundleContext;
+    ConfigAdminTracker.getInstance(this.context);
 
   }
 
@@ -54,7 +55,8 @@ public class CdiConfigAdminServiceStarter {
    * @see
    * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
    */
-  public void stop(BundleContext context) throws Exception {
+  public final void stop(final BundleContext context) throws Exception {
+    this.context = null;
     ConfigAdminTracker.stop();
   }
 

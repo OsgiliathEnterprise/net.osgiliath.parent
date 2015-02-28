@@ -32,8 +32,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
- * @author charliemordant Components configuration with CDI
+ * Components configuration with CDI.
+ * @author charliemordant
  */
 @Eager
 public class CDIMessagingComponents {
@@ -47,7 +47,7 @@ public class CDIMessagingComponents {
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
-  private Component jms;
+  private transient Component jms;
 
   /**
    * Producer
@@ -56,9 +56,9 @@ public class CDIMessagingComponents {
    */
   @Produces
   @Named("jms")
-  public Component getJms() {
+  public final Component getJms() {
     LOG.info("Inject jms route");
-    return jms;
+    return this.jms;
   }
 
 }

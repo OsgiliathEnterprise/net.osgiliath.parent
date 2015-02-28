@@ -35,8 +35,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
 /**
- * 
- * @author charliemordant Message collection elements
+ * Message collection elements.
+ * @author charliemordant
  */
 @Data
 @Builder

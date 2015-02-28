@@ -39,7 +39,7 @@
 		<jaxrs:providers>
 			<ref component-id="jaxbProvider" />
 			<bean id="validationException"
-				class="helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
+				class="net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
 		</jaxrs:providers>
 	</jaxrs:server>
 </blueprint>

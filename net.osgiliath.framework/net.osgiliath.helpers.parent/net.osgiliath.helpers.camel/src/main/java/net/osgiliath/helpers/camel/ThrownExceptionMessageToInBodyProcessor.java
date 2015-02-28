@@ -2,7 +2,7 @@ package net.osgiliath.helpers.camel;
 
 /*
  * #%L
- * helpers.cxf.exception.handling
+ * net.osgiliath.helpers.cxf.exception.handling
  * %%
  * Copyright (C) 2013 Osgiliath corp
  * %%
@@ -20,9 +20,9 @@ package net.osgiliath.helpers.camel;
  * #L%
  */
 
-import helpers.cxf.exception.handling.ExceptionMappingConstants;
-
 import java.io.StringReader;
+
+import net.osgiliath.helpers.cxf.exception.handling.ExceptionMappingConstants;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -43,7 +43,7 @@ public class ThrownExceptionMessageToInBodyProcessor implements Processor {
   /**
    * The Logger.
    */
-  private static Logger LOG = LoggerFactory
+  private static final Logger LOG = LoggerFactory
       .getLogger(ThrownExceptionMessageToInBodyProcessor.class);
 
   /*

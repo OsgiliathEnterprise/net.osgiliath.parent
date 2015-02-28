@@ -1,8 +1,8 @@
-package helpers.cxf.exception.handling.jaxrs.mapper;
+package net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper;
 
 /*
  * #%L
- * helpers.cxf.exception.handling
+ * net.osgiliath.helpers.cxf.exception.handling
  * %%
  * Copyright (C) 2013 Osgiliath corp
  * %%
@@ -20,11 +20,11 @@ package helpers.cxf.exception.handling.jaxrs.mapper;
  * #L%
  */
 
-import helpers.cxf.exception.handling.ExceptionMappingConstants;
-
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
+
+import net.osgiliath.helpers.cxf.exception.handling.ExceptionMappingConstants;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -43,7 +43,7 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
   /**
    * The Logger
    */
-  private static Logger LOG = LoggerFactory.getLogger(ExceptionXmlMapper.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ExceptionXmlMapper.class);
 
   /**
    * Map the catched Exception to the response body (xml format)

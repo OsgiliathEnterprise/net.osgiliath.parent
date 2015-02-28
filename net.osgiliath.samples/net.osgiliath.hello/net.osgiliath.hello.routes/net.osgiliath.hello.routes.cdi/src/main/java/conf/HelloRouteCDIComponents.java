@@ -37,8 +37,8 @@ import org.apache.camel.spi.DataFormat;
 import org.ops4j.pax.cdi.api.OsgiService;
 
 /**
- * 
- * @author charliemordant CDI configuration
+ * CDI configuration.
+ * @author charliemordant
  */
 @Slf4j
 @Eager
@@ -48,16 +48,16 @@ public class HelloRouteCDIComponents {
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
-  private Component jms;
+  private transient Component jms;
   /**
    * transactional messaging component
    */
   @Inject
   @OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
-  private Component jmsXA;
+  private transient Component jmsXA;
 
   /**
-   * 
+   * Exception message converter processor
    * @return JSR303 message processor
    */
   @Produces
@@ -68,26 +68,29 @@ public class HelloRouteCDIComponents {
   }
 
   /**
+   * JMS Conponent
    * @return JMS component CDI export
    */
   @Produces
   @Named("jms")
   public Component getJms() {
     log.info("Inject jms");
-    return jms;
+    return this.jms;
   }
 
   /**
+   * JMS XA component.
    * @return JMS XA component CDI export
    */
   @Produces
   @Named("jmsXA")
   public Component getJmsXA() {
     log.info("Inject jmsXA");
-    return jmsXA;
+    return this.jmsXA;
   }
 
   /**
+   * HTTP camel component
    * @return HTTP component CDI export
    */
   @Produces
@@ -98,6 +101,7 @@ public class HelloRouteCDIComponents {
   }
 
   /**
+   * JSon dataformat
    * @return Json component CDI export
    */
   @Produces
@@ -107,6 +111,7 @@ public class HelloRouteCDIComponents {
   }
 
   /**
+   * XML to json dataformat
    * @return XmlJson component CDI export
    */
   @Produces

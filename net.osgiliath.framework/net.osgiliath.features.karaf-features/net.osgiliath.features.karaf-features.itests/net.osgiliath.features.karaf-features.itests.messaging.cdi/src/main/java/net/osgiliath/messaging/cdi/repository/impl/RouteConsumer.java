@@ -33,8 +33,8 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 
 /**
- * 
- * @author charliemordant CDI consumer via routes
+ * CDI consumer via routes.
+ * @author charliemordant
  */
 @ContextName
 public class RouteConsumer extends RouteBuilder {

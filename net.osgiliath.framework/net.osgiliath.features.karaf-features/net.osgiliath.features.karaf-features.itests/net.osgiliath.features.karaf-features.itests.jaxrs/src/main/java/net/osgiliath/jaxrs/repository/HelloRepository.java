@@ -21,7 +21,6 @@ package net.osgiliath.jaxrs.repository;
  */
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -34,20 +33,23 @@ import javax.ws.rs.core.MediaType;
 import net.osgiliath.jaxrs.HelloEntity;
 import net.osgiliath.jaxrs.Hellos;
 
-//JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the template.mf cxf package export)
 /**
- * 
+ * REST accessible interface by business or route module
  * @author charliemordant REST definition of the service
  */
 @Path("/hello")
 public interface HelloRepository {
   /**
-   * find entities corrsponding to message
+   * find entities that contains the corresponding to message
+   * @param message the message to find entities
+   * @return all corresponding entities
    */
-  Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
+  Collection<? extends HelloEntity> findByHelloObjectMessage(String message);
 
   /**
    * Save an entity
+   * @param entity entity to save
+   * @return the persisted entity
    */
   @POST
   @Consumes(MediaType.APPLICATION_XML)
@@ -55,6 +57,7 @@ public interface HelloRepository {
 
   /**
    * Finds all entities
+   * @return all entities
    */
   @GET
   @Produces(MediaType.APPLICATION_XML)

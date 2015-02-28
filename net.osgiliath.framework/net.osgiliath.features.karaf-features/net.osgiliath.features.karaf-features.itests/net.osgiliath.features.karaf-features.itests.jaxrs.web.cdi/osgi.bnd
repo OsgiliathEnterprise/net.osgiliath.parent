@@ -20,6 +20,6 @@ Import-Package: javax.servlet,javax.servlet.http,\
  org.apache.cxf.ws.policy,\
  org.apache.cxf.ws.policy.attachment,\
  org.apache.camel.component.cxf.transport,\
- helpers.cxf.exception.handling.jaxrs.mapper,\
+ net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper,\
  *
  

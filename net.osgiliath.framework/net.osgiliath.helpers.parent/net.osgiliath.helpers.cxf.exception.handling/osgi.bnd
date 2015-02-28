@@ -4,4 +4,4 @@ Import-Package: javax.ws.rs.ext,\
 	org.jdom2.output,\
 	org.jdom2.input,\
 	*
-Private-Package: helpers.cxf.exception.handling
+Private-Package: net.osgiliath.helpers.cxf.exception.handling

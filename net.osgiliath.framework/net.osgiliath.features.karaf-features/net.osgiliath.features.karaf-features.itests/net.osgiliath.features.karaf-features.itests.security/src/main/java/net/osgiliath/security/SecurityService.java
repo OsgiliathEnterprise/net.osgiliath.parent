@@ -1,4 +1,4 @@
-package security;
+package net.osgiliath.security;
 
 /*
  * #%L

@@ -45,7 +45,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * JMS sample of Hello service exports
+ * JMS sample of Hello service exports.
  * 
  * @author charliemordant
  * 
@@ -53,26 +53,38 @@ import com.google.common.collect.Lists;
 @Slf4j
 @ContextName
 public class HelloServiceJMS extends RouteBuilder implements HelloService {
+  /**
+   * The repository.
+   */
   @Inject
   @OsgiService
-  private HelloObjectRepository helloObjectRepository;
+  private transient HelloObjectRepository helloObjectRepository;
+  /**
+   * JMS producer.
+   */
   @Inject
   @Uri("jms:queue:helloServiceQueueOut")
   private ProducerTemplate producer;
-
+  /**
+   * saves element
+   * @param helloObject element to save
+   */
   @Override
-  public void persistHello(@NotNull @Valid HelloEntity helloObject_p) {
+  public void persistHello(@NotNull @Valid HelloEntity helloObject) {
     log.info("****************** Save on JMS Service **********************");
     log.info("persisting new message with jms: "
-        + helloObject_p.getHelloMessage());
-    helloObjectRepository.save(helloObject_p);
-    producer.sendBody(getHellos());
+        + helloObject.getHelloMessage());
+    this.helloObjectRepository.save(helloObject);
+    this.producer.sendBody(getHellos());
   }
-
+  /**
+   * Returns all elements
+   * @return all elements
+   */
   @Override
   public Hellos getHellos() {
 
-    Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+    final Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
     if (helloObjects.isEmpty()) {
       throw new UnsupportedOperationException(
           "You could not call this method when the list is empty");
@@ -81,9 +93,11 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
         .builder()
         .helloCollection(
             Lists.newArrayList(Iterables.transform(helloObjects,
-                helloObjectToStringFunction))).build();
+                this.helloObjectToStringFunction))).build();
   }
-
+  /**
+   * transforming elements in strings
+   */
   private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
@@ -91,20 +105,24 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
       return arg0.getHelloMessage();
     }
   };
-
+  /**
+   * Deletes all elements
+   */
   @Override
   public void deleteAll() {
-    helloObjectRepository.deleteAll();
+    this.helloObjectRepository.deleteAll();
 
   }
-
+  /**
+   * receives JMS message
+   */
   @Override
   public void configure() throws Exception {
     from("jms:queue:helloServiceQueueIn").process(new Processor() {
 
       @Override
       public void process(Exchange exchange) throws Exception {
-        persistHello((HelloEntity) exchange.getIn().getBody());
+       persistHello((HelloEntity) exchange.getIn().getBody());
 
       }
 

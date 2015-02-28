@@ -40,39 +40,46 @@ import org.springframework.jms.core.JmsOperations;
 import org.springframework.jms.core.MessageCreator;
 
 /**
+ * JMS repository implementation for itests purpose.
  * 
- * @author charliemordant JMS repository implementation for itests purpose
+ * @author charliemordant
  */
 @Slf4j
 public class HelloJMSRepository implements HelloRepository, MessageListener {
   /**
    * JMS producer
    */
-  // @Produce(uri = "jms:queue:helloServiceQueueOut")
   @Setter
-  private JmsOperations producer;
+  private transient JmsOperations producer;
 
   /**
    * instances registry
    */
-  private List<HelloEntity> entities = new ArrayList<HelloEntity>();
+  private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
   /**
    * finds entities by message
+   * 
+   * @param message
+   *          message to find corresponding elements from
+   * @return matched messages
    */
   @Override
   public final Collection<? extends HelloEntity> findByHelloObjectMessage(
-  /* @Body */final String message_p) {
+  /* @Body */final String message) {
     final List<HelloEntity> ret = new ArrayList<HelloEntity>();
-    for (HelloEntity ent : this.entities) {
-      if (ent.getHelloMessage().equals(message_p))
+    for (final HelloEntity ent : this.entities) {
+      if (ent.getHelloMessage().equals(message)) {
         ret.add(ent);
+      }
     }
     return ret;
   }
 
   /**
    * Consumer method for instance save
+   * @param entity the element to save
+   * @return persisted element
    */
   // @Override
   // @Consume(uri = "jms:queue:helloServiceQueueIn")
@@ -88,17 +95,21 @@ public class HelloJMSRepository implements HelloRepository, MessageListener {
     });
 
   }
-
+  /**
+   * returns all elements
+   */
   @Override
   public Hellos findAll() {
-    Hellos hellos = new Hellos();
-    hellos.setEntities(entities);
+    final Hellos hellos = new Hellos();
+    hellos.setEntities(this.entities);
     return hellos;
   }
-
+  /**
+   * deletes all elements
+   */
   @Override
   public void deleteAll() {
-    entities.clear();
+    this.entities.clear();
   }
 
   @Override

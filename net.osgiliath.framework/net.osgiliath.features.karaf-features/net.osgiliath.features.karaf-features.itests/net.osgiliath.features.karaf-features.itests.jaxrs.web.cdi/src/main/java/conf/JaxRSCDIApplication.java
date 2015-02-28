@@ -23,7 +23,6 @@ package conf;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -31,8 +30,8 @@ import javax.ws.rs.core.Application;
 import net.osgiliath.features.karaf.jaxrs.web.cdi.HelloServiceJaxRS;
 
 /**
- * 
- * @author charliemordant Web CDI REST application registering
+ * Web CDI REST application registering.
+ * @author charliemordant
  */
 @ApplicationPath("helloService")
 public class JaxRSCDIApplication extends Application {
@@ -43,7 +42,8 @@ public class JaxRSCDIApplication extends Application {
   private HelloServiceJaxRS helloServiceJaxRS;
 
   /**
-   * Returns service implems
+   * returned service instances
+   * @return service implems
    */
   @Override
   public Set<Object> getSingletons() {

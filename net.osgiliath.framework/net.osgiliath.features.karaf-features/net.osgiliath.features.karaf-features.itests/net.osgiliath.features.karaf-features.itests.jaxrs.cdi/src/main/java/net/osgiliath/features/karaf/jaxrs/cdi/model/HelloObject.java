@@ -32,7 +32,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
-//TODO Sample of a model bean exportable by web service (xml), persistable and validatable supporting builder pattern
+/**
+ * Sample of an entity.
+ * @author charliemordant
+ */
 @Data
 // equals, hashcode, getters and setters
 @Builder
@@ -43,11 +46,6 @@ import lombok.experimental.Builder;
 // other constructor
 @XmlRootElement
 // xml marshalling
-/**
- * 
- * @author charliemordant
- * Element instances
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class HelloObject implements Serializable {
   /**

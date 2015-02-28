@@ -86,7 +86,7 @@
 			<ref component-id="resourceWriter" />
 			<ref component-id="apiWriter" />
 			<bean id="validationException"
-				class="helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
+				class="net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
 		</jaxrs:providers>
 	</jaxrs:server> 
 	<bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">

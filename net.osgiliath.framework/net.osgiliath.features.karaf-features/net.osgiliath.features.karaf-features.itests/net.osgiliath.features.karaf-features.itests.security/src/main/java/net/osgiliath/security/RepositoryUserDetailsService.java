@@ -1,4 +1,4 @@
-package security;
+package net.osgiliath.security;
 
 /*
  * #%L
@@ -48,7 +48,7 @@ public class RepositoryUserDetailsService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(final String arg0)
       throws UsernameNotFoundException {
-    for (UserDetails details : this.users) {
+    for (final UserDetails details : RepositoryUserDetailsService.users) {
       if (details.getUsername().equals(arg0))
         return details;
     }

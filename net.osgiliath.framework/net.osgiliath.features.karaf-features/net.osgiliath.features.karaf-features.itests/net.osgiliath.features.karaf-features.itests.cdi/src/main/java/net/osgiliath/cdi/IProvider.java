@@ -20,12 +20,12 @@ package net.osgiliath.cdi;
  * #L%
  */
 /**
- * 
+ * Message provider
  * @author charliemordant CDI provider definition
  */
 public interface IProvider {
   /**
-   * Message provider
+   * Message provider message.
    * 
    * @return a message
    */

@@ -38,7 +38,7 @@ import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 /**
- * see how it configures REST web services URIs
+ * see how it configures REST web services URIs.
  * 
  * @author charliemordant
  *
@@ -47,7 +47,8 @@ import net.osgiliath.hello.model.jpa.model.HelloEntity;
 @Api(value = "hello", description = "The hello resource access")
 public interface HelloServiceJaxRS extends HelloService {
   /**
-   * Saves Hello
+   * Saves Hello.
+   * @param helloObject element to save
    */
   @POST
   @Consumes(MediaType.APPLICATION_XML)
@@ -55,6 +56,7 @@ public interface HelloServiceJaxRS extends HelloService {
 
   /**
    * Gets hellos
+   * @return all elements
    */
   @GET
   @Produces(MediaType.APPLICATION_XML)

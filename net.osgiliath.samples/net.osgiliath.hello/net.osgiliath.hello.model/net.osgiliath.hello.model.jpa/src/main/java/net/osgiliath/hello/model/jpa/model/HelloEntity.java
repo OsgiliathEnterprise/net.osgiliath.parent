@@ -39,9 +39,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
 /**
- * 
- * @author charliemordant Sample of a model bean exportable by web service
- *         (xml), persistable and validatable supporting builder pattern
+ * Sample of a model bean exportable by web service
+ *         (xml), persistable and validatable supporting builder pattern.
+ * @author charliemordant 
  */
 @Data
 // equals, hashcode, getters and setters

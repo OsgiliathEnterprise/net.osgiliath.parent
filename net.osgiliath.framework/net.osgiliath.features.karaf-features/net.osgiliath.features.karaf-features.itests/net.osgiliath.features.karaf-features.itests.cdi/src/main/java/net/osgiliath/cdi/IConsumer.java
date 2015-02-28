@@ -20,7 +20,7 @@ package net.osgiliath.cdi;
  * #L%
  */
 /**
- * 
+ * Message consumer interface
  * @author charliemordant Interface for CDI consuming
  */
 public interface IConsumer {

@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.XmlElement;
 import lombok.Data;
 
 /**
- * 
- * @author charliemordant General persistence entity
+ * General persistence entity.
+ * @author charliemordant
  */
 @Data
 @MappedSuperclass
@@ -47,7 +47,9 @@ public abstract class AbstractEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   protected Long entityId;
-
+  /**
+   * Element version
+   */
   @Version
   private Long version;
 

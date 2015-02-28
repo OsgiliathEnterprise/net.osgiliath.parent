@@ -19,9 +19,16 @@ package net.osgiliath.cdi.properties.api;
  * limitations under the License.
  * #L%
  */
-
-public interface IPropertyProvider {
-
+/**
+ * Properties provider interface.
+ * @author charliemordant
+ *
+ */
+public interface IPropertyConsumer {
+  /**
+   * Retreives the injected properties
+   * @return the injected properties.
+   */
   public abstract String getInjectedProperty();
 
 }

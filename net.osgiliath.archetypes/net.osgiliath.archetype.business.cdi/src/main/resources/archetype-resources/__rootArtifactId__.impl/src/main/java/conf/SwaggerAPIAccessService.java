@@ -34,16 +34,25 @@ import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * Swagger configartion publishing
+ * @author charliemordant
+ *
+ */
 @Slf4j
 @Path("/api-docs")
 @Api("/api-docs")
 @Produces(value={MediaType.APPLICATION_JSON})
 public class SwaggerAPIAccessService extends ApiListingResourceJSON{
+    /**
+     * Configuration to provide
+     */
 	@Inject
 	private BeanConfig config;
 	
-
+	/**
+	 * injects the configuration
+	 */
 	@PostConstruct
 	private void injectConfig() {
 		config.toString();

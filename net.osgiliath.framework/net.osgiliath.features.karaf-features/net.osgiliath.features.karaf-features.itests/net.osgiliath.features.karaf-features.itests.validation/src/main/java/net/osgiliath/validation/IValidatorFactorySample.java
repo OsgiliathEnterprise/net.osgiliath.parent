@@ -20,14 +20,14 @@ package net.osgiliath.validation;
  * #L%
  */
 /**
- * 
- * @author charliemordant Validation service interface
+ * Validation service interface.
+ * @author charliemordant
  */
 public interface IValidatorFactorySample {
   /**
-   * must throw exception
+   * must throw exception.
    * 
-   * @param object
+   * @param object element to validate
    */
   void nullMessageValidation(HelloObject object);
 }

@@ -1,4 +1,4 @@
-package helpers.cxf.exception.handling;
+package net.osgiliath.helpers.cxf.exception.handling;
 
 /*
  * #%L
@@ -19,14 +19,18 @@ package helpers.cxf.exception.handling;
  * limitations under the License.
  * #L%
  */
-
+/**
+ * Constants for Exception mapping.
+ * @author charliemordant
+ *
+ */
 public class ExceptionMappingConstants {
   /**
-   * The exception body http header
+   * The exception body http header.
    */
   public static final String EXCEPTION_BODY_HEADER = "ExceptionBody";
   /**
-   * The exception message property
+   * The exception message property.
    */
   public static final String EXCEPTION_MESSAGE = "message";
 }

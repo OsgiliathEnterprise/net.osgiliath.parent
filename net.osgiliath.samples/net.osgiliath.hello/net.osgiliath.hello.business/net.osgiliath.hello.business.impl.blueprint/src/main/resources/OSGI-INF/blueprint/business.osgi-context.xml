@@ -88,7 +88,7 @@
 			<ref component-id="jaxbProvider" />
 			<!-- <ref component-id="jsonProvider" /> -->
 			<bean id="validationException"
-				class="helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
+				class="net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
 			<ref component-id="resourceWriter" />
 			<ref component-id="apiWriter" />
 		</jaxrs:providers>

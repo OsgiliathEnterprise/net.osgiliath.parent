@@ -23,10 +23,10 @@ package net.osgiliath.messaging.cdi.repository;
 import net.osgiliath.messaging.cdi.HelloEntity;
 
 /**
- * 
- * @author charliemordant JPA accessible interface by business or route module
+ * JPA accessible interface by business or route module
  *         (see business module for JMS or REST export, don't forget the
- *         template.mf cxf package export)
+ *         template.mf cxf package export).
+ * @author charliemordant
  */
 public interface HelloCDIRepository {
   /**
@@ -34,6 +34,7 @@ public interface HelloCDIRepository {
    * 
    * @param entity
    *          to save
+   * @return the persisted element
    */
   <S extends HelloEntity> void directSave(S entity);
 }

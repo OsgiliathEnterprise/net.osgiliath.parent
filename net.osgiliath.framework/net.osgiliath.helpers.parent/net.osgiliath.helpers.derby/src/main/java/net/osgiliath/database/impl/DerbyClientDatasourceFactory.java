@@ -40,28 +40,39 @@ import org.apache.derby.jdbc.ClientDataSource40;
 import org.apache.derby.jdbc.ClientDriver40;
 import org.apache.derby.jdbc.ClientXADataSource40;
 import org.osgi.service.jdbc.DataSourceFactory;
-
+/**
+ * DS factory.
+ * @author charliemordant
+ *
+ */
 @Slf4j
 public class DerbyClientDatasourceFactory implements DataSourceFactory {
-
+  /**
+   * creates a datasource from properties
+   * @param props ds properties
+   * @return The datasource
+   */
   @Override
   public DataSource createDataSource(Properties props) throws SQLException {
-    ClientDataSource40 ds = new ClientDataSource40();
+    final ClientDataSource40 ds = new ClientDataSource40();
     setProperties(ds, props);
     return ds;
   }
-
+  /**
+   * Sets properties for datasource
+   * @param ds the DS to update
+   * @param properties properties to set
+   * @throws SQLException in case of unsupported DS Operations
+   */
   private void setProperties(ClientDataSource ds, Properties properties)
       throws SQLException {
-    Properties props = (Properties) properties.clone();
-    String doStartServer = (String) props
+    final Properties props = (Properties) properties.clone();
+    final String doStartServer = (String) props
         .remove(ClientConnectionConstant.AUTO_START_SERVER);
-    if (doStartServer != null) {
-      if (Boolean.parseBoolean(doStartServer)) {
-        doStartServer(props);
-      }
+    if (doStartServer != null && Boolean.parseBoolean(doStartServer)) {
+        this.doStartServer(props);
     }
-    String databaseName = (String) props
+   final String databaseName = (String) props
         .remove(DataSourceFactory.JDBC_DATABASE_NAME);
     if (databaseName == null) {
       throw new SQLException("missing required property "
@@ -69,36 +80,37 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
     }
     ds.setDatabaseName(databaseName);
 
-    String password = (String) props.remove(DataSourceFactory.JDBC_PASSWORD);
+    final String password = (String) props.remove(DataSourceFactory.JDBC_PASSWORD);
     ds.setPassword(password);
 
-    String user = (String) props.remove(DataSourceFactory.JDBC_USER);
+    final String user = (String) props.remove(DataSourceFactory.JDBC_USER);
     ds.setUser(user);
 
-    String createDatabase = (String) props
+    final String createDatabase = (String) props
         .remove(ClientConnectionConstant.CREATE_DATABASE);
     ds.setCreateDatabase(createDatabase);
 
-    String serverName = (String) props
+    final String serverName = (String) props
         .remove(DataSourceFactory.JDBC_SERVER_NAME);
     ds.setServerName(serverName);
-    String portNumber = (String) props
+    final String portNumber = (String) props
         .remove(DataSourceFactory.JDBC_PORT_NUMBER);
     if (portNumber != null) {
       ds.setPortNumber(Integer.parseInt(portNumber));
-    } else {
-      ds.setPortNumber(1527);
+    }
+    else {
+      ds.setPortNumber(ClientConnectionConstant.DEFAULT_PORT);
     }
   }
 
   private void doStartServer(Properties properties) {
     String host = (String) properties.get(DataSourceFactory.JDBC_SERVER_NAME);
     if (host == null) {
-      host = "localhost";
+      host = ClientConnectionConstant.DEFAULT_HOST;
     }
-    String portNumberS = (String) properties
+    final String portNumberS = (String) properties
         .get(DataSourceFactory.JDBC_PORT_NUMBER);
-    int portNumber = portNumberS == null ? 1527 : Integer.parseInt(portNumberS);
+    final int portNumber = portNumberS == null ? ClientConnectionConstant.DEFAULT_PORT : Integer.parseInt(portNumberS);
     boolean alreadyStarted = false;
     if (Activator.getInstance().getStartedServers().containsKey(host)) {
       alreadyStarted = Activator.getInstance().getStartedServers().get(host)
@@ -106,15 +118,15 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
     }
     if (!alreadyStarted) {
       try {
-        InetAddress adress = InetAddress.getByName(host);
-        NetworkServerControl control = new NetworkServerControl(adress,
+        final InetAddress adress = InetAddress.getByName(host);
+        final NetworkServerControl control = new NetworkServerControl(adress,
             portNumber);
         String writer = (String) properties
-            .remove(ClientConnectionConstant.LOG_FILE);
+            .remove(ClientConnectionConstant.LOG_FILE_PROPERTY);
         if (writer == null) {
-          writer = "derbyServer.log";
+          writer = ClientConnectionConstant.LOG_FILE;
         }
-        PrintWriter printWriter = new PrintWriter(writer);
+        final PrintWriter printWriter = new PrintWriter(writer);
         control.start(printWriter);
         Activator.getInstance().addNetworkControl(host, portNumber, control);
       } catch (Exception e) {

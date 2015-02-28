@@ -26,24 +26,25 @@ import net.osgiliath.messaging.HelloEntity;
 import net.osgiliath.messaging.Hellos;
 
 /**
- * 
- * @author charliemordant JMS repository defintion
+ * JMS repository definition.
+ * @author charliemordant
  */
 public interface HelloRepository {
   /**
    * finds entity by message
    * 
-   * @param message_p
+   * @param message
    *          the message
    * @return corrsponding entities
    */
-  Collection<? extends HelloEntity> findByHelloObjectMessage(String message_p);
+  Collection<? extends HelloEntity> findByHelloObjectMessage(String message);
 
   /**
    * Entity persistence
    * 
    * @param entity
    *          to save
+   * @return the saved elements
    */
   <S extends HelloEntity> void save(S entity);
 

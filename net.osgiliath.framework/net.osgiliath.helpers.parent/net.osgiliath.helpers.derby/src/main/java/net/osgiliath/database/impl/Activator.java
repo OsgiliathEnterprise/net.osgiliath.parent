@@ -26,60 +26,88 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import net.osgiliath.database.constants.ClientConnectionConstant;
+
 import org.apache.derby.drda.NetworkServerControl;
 import org.apache.derby.jdbc.ClientDriver;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.jdbc.DataSourceFactory;
-
+/**
+ * Pax-JDBC derby client activator
+ * @author charliemordant
+ *
+ */
 public class Activator implements BundleActivator {
-
-  private Map<String, Map<Integer, NetworkServerControl>> startedServers = new HashMap<String, Map<Integer, NetworkServerControl>>();
+  /**
+   * Started derby servers
+   */
+  private final Map<String, Map<Integer, NetworkServerControl>> startedServers = new HashMap<String, Map<Integer, NetworkServerControl>>();
+  /**
+   * Singleton
+   */
   private static Activator _instance;
-
+  /**
+   * Start method
+   * @param context the bundle context
+   */
   @Override
   public void start(BundleContext context) throws Exception {
-    DerbyClientDatasourceFactory dsf = new DerbyClientDatasourceFactory();
-    Dictionary<String, String> props = new Hashtable<String, String>();
+    final DerbyClientDatasourceFactory dsf = new DerbyClientDatasourceFactory();
+    final Dictionary<String, String> props = new Hashtable<String, String>();
     props.put(DataSourceFactory.OSGI_JDBC_DRIVER_CLASS,
         ClientDriver.class.getName());
-    props.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME, "derbyclient");
+    props.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME, ClientConnectionConstant.PAX_JDBC_DS_ID);
     context.registerService(DataSourceFactory.class.getName(), dsf, props);
     _instance = this;
   }
-
+  /**
+   * Stop method
+   * @param context the bundle context
+   */
   @Override
   public void stop(BundleContext context) throws Exception {
-    for (Map<Integer, NetworkServerControl> controls : getInstance().startedServers
+    for (final Map<Integer, NetworkServerControl> controls : getInstance().startedServers
         .values()) {
-      for (NetworkServerControl control : controls.values()) {
+      for (final NetworkServerControl control : controls.values()) {
         control.shutdown();
       }
     }
     getInstance().startedServers.clear();
 
   }
-
+  /**
+   * Singleton
+   * @return the singleton
+   */
   protected static Activator getInstance() {
     return _instance;
   }
-
+  /**
+   * gets the started derby servers
+   * @return the started derby servers
+   */
   protected Map<String, Collection<Integer>> getStartedServers() {
-    Map<String, Collection<Integer>> ret = new HashMap<String, Collection<Integer>>();
-    for (Entry<String, Map<Integer, NetworkServerControl>> keys : startedServers
+    final Map<String, Collection<Integer>> ret = new HashMap<String, Collection<Integer>>();
+    for (final Entry<String, Map<Integer, NetworkServerControl>> keys : this.startedServers
         .entrySet()) {
       ret.put(keys.getKey(), keys.getValue().keySet());
 
     }
     return ret;
   }
-
+  /**
+   * Adds a network control for a server
+   * @param host DB host
+   * @param port DB port
+   * @param control Network control
+   */
   protected void addNetworkControl(String host, int port,
       NetworkServerControl control) {
-    Map<Integer, NetworkServerControl> candidate = startedServers.get(host);
+    Map<Integer, NetworkServerControl> candidate = this.startedServers.get(host);
     if (candidate == null) {
       candidate = new HashMap<Integer, NetworkServerControl>();
-      startedServers.put(host, candidate);
+      this.startedServers.put(host, candidate);
     }
     candidate.put(port, control);
   }

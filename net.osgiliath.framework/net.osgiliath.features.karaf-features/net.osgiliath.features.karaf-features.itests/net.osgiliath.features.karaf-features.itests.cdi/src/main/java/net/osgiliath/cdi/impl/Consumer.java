@@ -29,7 +29,7 @@ import org.ops4j.pax.cdi.api.OsgiService;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 /**
- * 
+ * Consumes provider's message
  * @author charliemordant Consumer of injected bean
  */
 @OsgiServiceProvider(classes = { IConsumer.class })
@@ -39,12 +39,12 @@ public class Consumer implements IConsumer {
    */
   @Inject
   @OsgiService(timeout = 2000, dynamic = true)
-  private IProvider provider;
+  private transient IProvider provider;
 
   /**
    * Consumed method by itests
    */
-  public String getHello() {
-    return provider.getMessage();
+  public final String getHello() {
+    return this.provider.getMessage();
   }
 }

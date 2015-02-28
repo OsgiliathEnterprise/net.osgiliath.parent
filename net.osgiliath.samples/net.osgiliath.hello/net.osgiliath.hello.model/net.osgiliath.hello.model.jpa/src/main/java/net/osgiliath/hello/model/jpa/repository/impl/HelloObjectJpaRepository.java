@@ -38,8 +38,8 @@ import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 /**
- * 
- * @author charliemordant Spring data jpa repository declaration
+ * Spring data jpa repository declaration.
+ * @author charliemordant
  */
 public class HelloObjectJpaRepository extends
     SimpleJpaRepository<HelloEntity, Long> implements HelloObjectRepository {
@@ -47,7 +47,7 @@ public class HelloObjectJpaRepository extends
    * Blueprint injected entityManager
    */
   @Setter
-  private EntityManager entityManager;
+  private transient EntityManager entityManager;
 
   /**
    * Ctor
@@ -65,24 +65,28 @@ public class HelloObjectJpaRepository extends
 
   /**
    * Query to find elements by message
+   * @param message message to find element from
+   * @return all corresponding entities
+   * 
    */
   @Override
   public Collection<? extends HelloEntity> findByHelloObjectMessage(
-      final String message_p) {
-    final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-    final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-    final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
-    cq.select(helloObject);
-    final Predicate where = cb.equal(
-        helloObject.get(HelloEntity_.helloMessage), message_p);
-    cq.where(where);
-    final TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
-    final List<HelloEntity> result = q.getResultList();
-    return result;
+      final String message) {
+    final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+    final CriteriaQuery<HelloEntity> query = builder.createQuery(HelloEntity.class);
+    final Root<HelloEntity> helloObject = query.from(HelloEntity.class);
+    query.select(helloObject);
+    final Predicate where = builder.equal(
+        helloObject.get(HelloEntity_.helloMessage), message);
+    query.where(where);
+    final TypedQuery<HelloEntity> instanciatedQuery = entityManager.createQuery(query);
+    return instanciatedQuery.getResultList();
   }
 
   /**
    * Saves an entity
+   * @param entity element to save
+   * @return the persisted entity
    */
   @Override
   public <S extends HelloEntity> S save(S entity) {
@@ -91,6 +95,7 @@ public class HelloObjectJpaRepository extends
 
   /**
    * gets all entities
+   * @return all entities
    */
   @Override
   public List<HelloEntity> findAll() {

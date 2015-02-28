@@ -36,18 +36,26 @@ import com.google.common.collect.Sets;
 import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
-
+/**
+ * REST services publishing
+ * @author charliemordant
+ *
+ */
 @ApplicationPath("/sampleService")
 public class CXFApplication extends Application {
   
      // @Inject private HelloServiceJaxRS helloService;
       @Inject private ApiListingResourceJSON swaggerService;
+       /**
+        * Services to publish
+        * @return the services
+        */
       @Override
-      public Set< Object > getSingletons() {
+      public Set<Object> getSingletons() {
           return Sets.< Object >newHashSet(
              // helloService,
-              swaggerService,
-              new JAXBElementProvider(),
+              this.swaggerService,
+              new JAXBElementProvider<Object>(),
               new ExceptionXmlMapper(),
               new ResourceListingProvider(),
               new ApiDeclarationProvider(),

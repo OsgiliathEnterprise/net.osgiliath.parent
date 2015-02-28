@@ -29,21 +29,20 @@ import javax.ws.rs.core.Application;
 import net.osgiliath.features.karaf.jaxrs.web.impl.HelloServiceImpl;
 
 /**
- * 
- * @author charliemordant JaxRS application registering services
+ * JaxRS application registering services.
+ * @author charliemordant
  */
 @ApplicationPath("/helloService")
 public class JaxRSApplication extends Application {
 
   /**
-   * Returns services singletons
+   * @return services singletons
    */
   @Override
   public Set<Object> getSingletons() {
     final Set<Object> ret = new HashSet<Object>();
     ret.add(new HelloServiceImpl());
     return ret;
-
   }
 
 }

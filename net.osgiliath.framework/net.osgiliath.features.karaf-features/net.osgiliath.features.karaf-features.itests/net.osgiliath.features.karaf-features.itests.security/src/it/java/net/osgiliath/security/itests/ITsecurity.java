@@ -1,4 +1,4 @@
-package security.itests;
+package net.osgiliath.security.itests;
 
 /*
  * #%L
@@ -27,6 +27,8 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import javax.inject.Inject;
 
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
+import net.osgiliath.security.MUser;
+import net.osgiliath.security.SecurityService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,9 +46,6 @@ import org.osgi.framework.Constants;
 //import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import security.MUser;
-import security.SecurityService;
 
 /**
  * TODO example of an integration test

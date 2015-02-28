@@ -1,4 +1,4 @@
-package security;
+package net.osgiliath.security;
 
 /*
  * #%L
@@ -19,47 +19,36 @@ package security;
  * limitations under the License.
  * #L%
  */
+
+import java.io.Serializable;
+
+import lombok.Setter;
+
+import org.springframework.security.core.GrantedAuthority;
+
 /**
- * Right access for an {@link MUser}
+ * Represent an Authority for right access management.
  * 
  * @author Charlie
  * 
  */
-public enum AUTHORITY {
-  /**
-   * Rights access
-   */
-  MEMBER("Member"), PREMIUM("Premium");
-  /**
-   * RA Strings
-   */
-  public static final String S_MEMBER = "Member";
-  /**
-   * RA Strings
-   */
-  public static final String S_PREMIUM = "Premium";
-  /**
-   * Selected RA
-   */
-  private final String auth;
+
+@SuppressWarnings("serial")
+public class MAuthority implements GrantedAuthority, Serializable {
 
   /**
-   * Constructor
-   * 
-   * @param auth
-   *          the string for the authority
+   * The Authority
    */
-  AUTHORITY(String auth) {
-    this.auth = auth;
-  }
+  @Setter
+  private AUTHORITY authority;
 
   /**
-   * return the string equivalent of the object
-   * 
-   * @return as it said
+   * returns authority String representation
+   * @return the authority
    */
-  public final String getAuth() {
-    return auth;
+  @Override
+  public String getAuthority() {
+    return this.authority.getAuth();
   }
 
 }

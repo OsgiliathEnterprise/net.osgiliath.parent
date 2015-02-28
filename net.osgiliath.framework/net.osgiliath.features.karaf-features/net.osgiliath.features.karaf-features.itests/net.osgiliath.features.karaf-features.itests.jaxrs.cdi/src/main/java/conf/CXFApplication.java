@@ -20,7 +20,11 @@ package conf;
  * #L%
  */
 
-import helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.google.common.collect.Sets;
+import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
+import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
+import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 
 import java.util.Set;
 
@@ -29,29 +33,37 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import net.osgiliath.features.karaf.jaxrs.cdi.HelloServiceJaxRS;
+import net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
 
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import com.google.common.collect.Sets;
-import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
-import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
-import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
-
+/**
+ * Main CXF application that publishes services.
+ * 
+ * @author charliemordant
+ *
+ */
 @ApplicationPath("/helloService")
 public class CXFApplication extends Application {
-  
-      @Inject private HelloServiceJaxRS helloService;
-      @Inject private ApiListingResourceJSON swaggerService;
-      @Override
-      public Set< Object > getSingletons() {
-          return Sets.< Object >newHashSet(
-              helloService,
-              swaggerService,
-              new JAXBElementProvider(),
-              new ExceptionXmlMapper(),
-              new ResourceListingProvider(),
-              new ApiDeclarationProvider(),
-              new JacksonJsonProvider());
-      }
+  /**
+   * The injected REST endpoint
+   */
+  @Inject
+  private HelloServiceJaxRS helloService;
+  /**
+   * Swagger endpoint
+   */
+  @Inject
+  private ApiListingResourceJSON swaggerService;
+
+  /*
+   * @see {@link javax.ws.rs.core.Application#getSingletons()}
+   */
+  @Override
+  public Set<Object> getSingletons() {
+    return Sets.<Object> newHashSet(this.helloService, this.swaggerService,
+        new JAXBElementProvider<Object>(), new ExceptionXmlMapper(),
+        new ResourceListingProvider(), new ApiDeclarationProvider(),
+        new JacksonJsonProvider());
+  }
 }

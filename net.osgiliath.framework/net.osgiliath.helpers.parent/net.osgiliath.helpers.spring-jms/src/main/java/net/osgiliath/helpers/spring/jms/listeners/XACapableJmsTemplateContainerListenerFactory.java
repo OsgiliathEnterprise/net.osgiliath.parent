@@ -28,17 +28,36 @@ import lombok.Setter;
 
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.transaction.PlatformTransactionManager;
-
+/**
+ * Listener container implementation.
+ * @author charliemordant
+ *
+ */
 public class XACapableJmsTemplateContainerListenerFactory implements
     JmsTemplateContainerListenerFactory {
+  /**
+   * Transaction manager.
+   */
   @Setter
-  private PlatformTransactionManager txManager;
+  private transient PlatformTransactionManager txManager;
+  /**
+   * No XA JMS connection factory
+   */
   @Setter
-  private ConnectionFactory nonXAFactory;
+  private transient ConnectionFactory nonXAFactory;
+  /**
+   * XA JMS connection factory
+   */
   @Setter
-  private ConnectionFactory xAFactory;
+  private transient ConnectionFactory xAFactory;
+  /**
+   * Number of concurrent consumers
+   */
   @Setter
-  private int concurrentConsumers;
+  private transient int concurrentConsumers;
+  /**
+   * Timeout
+   */
   @Setter
   private int receiveTimeout;
 
@@ -52,7 +71,7 @@ public class XACapableJmsTemplateContainerListenerFactory implements
   @Override
   public DefaultMessageListenerContainer create(boolean transacted,
       String destinationName, MessageListener messageListener) {
-    return create(transacted, destinationName, messageListener, false);
+    return this.create(transacted, destinationName, messageListener, false);
 
   }
 
@@ -66,17 +85,18 @@ public class XACapableJmsTemplateContainerListenerFactory implements
   @Override
   public DefaultMessageListenerContainer create(boolean transacted,
       String destinationName, MessageListener messageListener, boolean isPubSub) {
-    ManageableDefaultJmsContainerListener container = new ManageableDefaultJmsContainerListener();
+    final ManageableDefaultJmsContainerListener container = new ManageableDefaultJmsContainerListener();
     container.setCacheLevel(DefaultMessageListenerContainer.CACHE_AUTO);
-    container.setConcurrentConsumers(concurrentConsumers);
+    container.setConcurrentConsumers(this.concurrentConsumers);
     container.setDestinationName(destinationName);
     container.setMessageListener(messageListener);
-    container.setReceiveTimeout(receiveTimeout);
+    container.setReceiveTimeout(this.receiveTimeout);
     container.setPubSubDomain(isPubSub);
 
     if (transacted) {
       addTransactedInfos(container);
-    } else {
+    }
+    else {
       addNonTransactedInfo(container);
       container.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
     }
@@ -84,16 +104,22 @@ public class XACapableJmsTemplateContainerListenerFactory implements
     container.start();
     return container;
   }
-
+  /**
+   * Adds info for non transacted connection
+   * @param container container to provision
+   */
   private void addNonTransactedInfo(DefaultMessageListenerContainer container) {
-    container.setConnectionFactory(nonXAFactory);
+    container.setConnectionFactory(this.nonXAFactory);
 
   }
-
+  /**
+   * Adds info for transacted connection
+   * @param container container to provision
+   */
   private void addTransactedInfos(DefaultMessageListenerContainer container) {
-    container.setTransactionManager(txManager);
-    container.setConnectionFactory(xAFactory);
-    container.setTransactionTimeout(receiveTimeout);
+    container.setTransactionManager(this.txManager);
+    container.setConnectionFactory(this.xAFactory);
+    container.setTransactionTimeout(this.receiveTimeout);
   }
 
 }

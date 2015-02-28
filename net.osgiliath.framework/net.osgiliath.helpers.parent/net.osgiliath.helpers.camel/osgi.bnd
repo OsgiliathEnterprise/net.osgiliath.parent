@@ -5,5 +5,3 @@ Import-Package: javax.ws.rs.ext,\
 	org.jdom2.output,\
 	org.jdom2.input,\
 	*
-Bundle-Activator: helpers.cxf.exception.handling.CxfExceptionHandlerActivator
-Private-Package: helpers.cxf.exception.handling

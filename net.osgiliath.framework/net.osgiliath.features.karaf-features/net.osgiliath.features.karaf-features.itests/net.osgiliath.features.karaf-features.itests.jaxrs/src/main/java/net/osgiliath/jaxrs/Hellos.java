@@ -31,7 +31,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
-
+/**
+ * Simple entity collection wrapper.
+ * @author charliemordant
+ *
+ */
 @Data
 @XmlRootElement
 @Builder
@@ -39,6 +43,9 @@ import lombok.experimental.Builder;
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Hellos {
+  /**
+   * Collection of entities
+   */
   @XmlElement
-  private Collection<HelloEntity> hellos;
+  private Collection<HelloEntity> helloCollection;
 }

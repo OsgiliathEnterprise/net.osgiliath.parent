@@ -33,8 +33,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
 /**
- * 
- * @author charliemordant Sample entity
+ * Sample entity.
+ * @author charliemordant
  */
 @Data
 @Builder

@@ -29,24 +29,24 @@ import net.osgiliath.jaxrs.Hellos;
 import net.osgiliath.jaxrs.repository.HelloRepository;
 
 /**
- * 
+ * Simple Jaxrs Repository
  * @author charliemordant Implementation of the REST service
  */
 public class HelloJaxRSRepository implements HelloRepository {
   /**
-   * Model element list
+   * Model element list.
    */
-  private List<HelloEntity> entities = new ArrayList<HelloEntity>();
+  private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
   /**
    * find entities corrsponding to message
    */
   @Override
   public final Collection<? extends HelloEntity> findByHelloObjectMessage(
-      final String message_p) {
+      final String message) {
     final List<HelloEntity> ret = new ArrayList<HelloEntity>();
-    for (HelloEntity ent : this.entities) {
-      if (ent.getHelloMessage().equals(message_p)) {
+    for (final HelloEntity ent : this.entities) {
+      if (ent.getHelloMessage().equals(message)) {
         ret.add(ent);
       }
     }
@@ -67,7 +67,7 @@ public class HelloJaxRSRepository implements HelloRepository {
    */
   @Override
   public final Hellos findAll() {
-    return Hellos.builder().hellos(this.entities).build();
+    return Hellos.builder().helloCollection(this.entities).build();
   }
 
   /**

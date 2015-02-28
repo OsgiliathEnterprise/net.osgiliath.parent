@@ -26,8 +26,8 @@ import java.util.Collection;
 import lombok.Data;
 
 /**
- * 
- * @author charliemordant message collection
+ * message collection.
+ * @author charliemordant
  */
 @Data
 public class Hellos implements Serializable {

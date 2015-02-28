@@ -31,17 +31,21 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
+ * REST service implementation.
  * 
- * @author charliemordant REST service implementation
+ * @author charliemordant
  */
 public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
    * Instance collection
    */
-  private Collection<HelloObject> objects = new ArrayList<HelloObject>();
+  private final Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
    * Saves instances
+   * 
+   * @param helloObject
+   *          the element to save
    */
   @Override
   public final void persistHello(final HelloObject helloObject) {
@@ -50,6 +54,8 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
 
   /**
    * return instances
+   * 
+   * @return all elements
    */
   @Override
   public Hellos getHellos() {
@@ -59,10 +65,12 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
           @Override
           public String apply(final HelloObject input) {
             return input.getHelloMessage();
-          };
+          }
         })));
   }
-
+  /**
+   * Deletes all elements.
+   */
   @Override
   public void deleteHellos() {
     this.objects.clear();

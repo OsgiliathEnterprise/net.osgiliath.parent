@@ -26,7 +26,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
 
-import net.osgiliath.cdi.properties.api.IPropertyProvider;
+import net.osgiliath.cdi.properties.api.IPropertyConsumer;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 
 import org.junit.Test;
@@ -51,7 +51,7 @@ public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
   // Exported service via blueprint.xml
   @Inject
   @Filter(timeout = 40000)
-  private IPropertyProvider consumer;
+  private IPropertyConsumer consumer;
 
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {

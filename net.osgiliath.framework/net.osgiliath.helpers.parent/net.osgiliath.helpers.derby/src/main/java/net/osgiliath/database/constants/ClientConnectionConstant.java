@@ -19,9 +19,20 @@ package net.osgiliath.database.constants;
  * limitations under the License.
  * #L%
  */
-
+/**
+ * Database constants
+ * @author charliemordant
+ *
+ */
 public class ClientConnectionConstant {
+  private ClientConnectionConstant() {
+    //Do nothing
+  }
   public static final String AUTO_START_SERVER = "serverAutoStart";
   public static final String CREATE_DATABASE = "createDatabase";
-  public static final Object LOG_FILE = "derbyServerLog";
+  public static final Object LOG_FILE_PROPERTY = "derbyServerLog";
+  public static final String PAX_JDBC_DS_ID = "derbyclient";
+  public static final int DEFAULT_PORT = 1527;
+  public static final String DEFAULT_HOST = "localhost";
+  public static final String LOG_FILE = "derbyServer.log";
 }

@@ -38,7 +38,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Sample of a business service with JaxRS
+ * Sample of a business service with JaxRS.
  * 
  * @author charliemordant
  * 
@@ -47,42 +47,46 @@ import com.google.common.collect.Lists;
 public class HelloServiceJaxRS implements
     net.osgiliath.hello.business.impl.HelloServiceJaxRS {
   /**
-   * Repository to persist data
+   * Repository to persist data.
    */
   @Setter
   private HelloObjectRepository helloObjectRepository;
   /**
-   * JSR 303 validator
+   * JSR 303 validator.
    */
-  // JSR 303 validator
   @Setter
   private Validator validator;
 
   /**
-   * Saves the object or throw an exception if the Object is not valid
+   * Saves the object or throw an exception if the Object is not valid.
+   * 
+   * @param helloObject
+   *          the element to save
    */
   @Override
-  public final void persistHello(final HelloEntity helloObject_p) {
-    this.log.info("persisting new message with jaxrs: "
-        + helloObject_p.getHelloMessage());
+  public final void persistHello(final HelloEntity helloObject) {
+    log.info("persisting new message with jaxrs: "
+        + helloObject.getHelloMessage());
     final Set<ConstraintViolation<HelloEntity>> validationResults = validator
-        .validate(helloObject_p);
+        .validate(helloObject);
     final StringBuilder errors = new StringBuilder("");
     if (!validationResults.isEmpty()) {
       for (ConstraintViolation<HelloEntity> violation : validationResults) {
-        this.log.info("subscription error, validating user:"
+        log.info("subscription error, validating user:"
             + violation.getMessage());
         errors.append(violation.getPropertyPath()).append(": ")
             .append(violation.getMessage().replaceAll("\"", "")).append(";");
       }
       throw new ValidationException(errors.toString());
     }
-    this.helloObjectRepository.save(helloObject_p);
+    this.helloObjectRepository.save(helloObject);
 
   }
 
   /**
    * get all hellos
+   * 
+   * @return all messages
    */
   @Override
   public Hellos getHellos() {
@@ -102,7 +106,6 @@ public class HelloServiceJaxRS implements
   /**
    * Function that transforms helloEntity to String
    */
-  // Guava function waiting for Java 8
   private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
