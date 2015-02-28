@@ -40,7 +40,7 @@ import org.osgi.framework.Constants;
 
 public class ManifestBundleImportVersionUpdaterTransformer {
   // Configuration
-  private transient Map<String, String> entriesVersionUpdates = new HashMap<String, String>();
+  private final transient Map<String, String> entriesVersionUpdates = new HashMap<String, String>();
 
   // Fields
   private transient boolean manifestDiscovered;
@@ -55,11 +55,10 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     return ManifestBundleImportVersionUpdaterTransformer.instance;
   }
 
-  public boolean canTransformResource(String resource) {
+  public final boolean canTransformResource(final String resource) {
     if (JarFile.MANIFEST_NAME.equalsIgnoreCase(resource)) {
       return true;
     }
-
     return false;
   }
 
