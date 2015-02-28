@@ -119,7 +119,9 @@ public abstract class AbstractPaxExamKarafConfiguration {
       return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
           "org.ops4j.pax.url.mvn.settings",
           System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS));
-    } else if (System.getProperty(DEFAULT_MAVEN_USER_SETTINGS) != null) {
+    }
+    else
+      if (System.getProperty(DEFAULT_MAVEN_USER_SETTINGS) != null) {
       log.info("adding user reference settings "
           + System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
       return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
@@ -139,15 +141,15 @@ public abstract class AbstractPaxExamKarafConfiguration {
 
   private Option[] addJVMOptions() {
 
-    String maxHeap = "-Xmx512m";
-    String minHeap = "-Xms128m";
-    String maxPerm = "-XX:MaxPermSize=256m";
+    final String maxHeap = "-Xmx512m";
+    final String minHeap = "-Xms128m";
+    final String maxPerm = "-XX:MaxPermSize=256m";
     return options(CoreOptions.vmOption(maxHeap),
         CoreOptions.vmOption(minHeap), CoreOptions.vmOption(maxPerm));
   }
 
   private Option addCodeCoverageOption() {
-    String coverageCommand = System.getProperty(COVERAGE_COMMAND);
+    final String coverageCommand = System.getProperty(COVERAGE_COMMAND);
     if (coverageCommand != null && !coverageCommand.isEmpty()) {
       log.info("covering code with command " + coverageCommand);
       return CoreOptions.vmOption(coverageCommand);
