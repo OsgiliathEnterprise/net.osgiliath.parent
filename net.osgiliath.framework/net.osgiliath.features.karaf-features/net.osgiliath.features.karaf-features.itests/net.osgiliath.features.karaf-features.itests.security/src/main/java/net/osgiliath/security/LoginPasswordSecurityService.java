@@ -27,6 +27,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.authentication.dao.SaltSource;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
@@ -124,7 +125,7 @@ public class LoginPasswordSecurityService implements SecurityService {
       aut = this.authenticationManager.authenticate(aut);
       SecurityContextHolder.getContext().setAuthentication(aut);
     }
-    catch (Exception e) {
+    catch (AuthenticationException e) {
       log.error("error while authenticating", e);
       return false;
     }

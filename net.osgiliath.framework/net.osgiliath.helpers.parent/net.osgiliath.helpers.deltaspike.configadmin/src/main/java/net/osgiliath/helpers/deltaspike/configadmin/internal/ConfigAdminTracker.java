@@ -211,7 +211,8 @@ public class ConfigAdminTracker implements
     final Map<String, String> ret = Maps.newHashMap();
     try {
       for (final ConfigurationAdmin admin : getInstance(null).admins) {
-        final Configuration[] configurations = admin.listConfigurations(null);
+        Configuration[] configurations;
+        configurations = admin.listConfigurations(null);
         if (configurations != null) {
           for (final Configuration configuration : configurations) {
             if (log.isDebugEnabled()) {
@@ -231,7 +232,7 @@ public class ConfigAdminTracker implements
         }
       }
     }
-    catch (Exception e) {
+    catch (IOException | InvalidSyntaxException e) {
       log.error("Error retreiving configadmin property", e);
     }
     return ret;
