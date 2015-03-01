@@ -57,7 +57,7 @@ public class CXFApplication extends Application {
        */
       @Override
       public Set<Object> getSingletons() {
-          return Sets.<Object>newHashSet(
+          return Sets.<Object> newHashSet(
               this.helloService,
               this.swaggerService,
               new JAXBElementProvider<Object>(),

@@ -20,6 +20,8 @@ package net.osgiliath.hello.business.impl;
  * #L%
  */
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,10 +29,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;

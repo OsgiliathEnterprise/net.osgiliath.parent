@@ -84,6 +84,8 @@ public class ConfigAdminTracker implements
   /**
    * Singleton.
    * 
+   * @param context
+   *          the bundle context
    * @return the singleton instance
    */
   public static synchronized ConfigAdminTracker getInstance(
@@ -93,7 +95,8 @@ public class ConfigAdminTracker implements
       if (context == null) {
         instance.context = FrameworkUtil.getBundle(DeltaSpike.class)
             .getBundleContext();
-      } else {
+      }
+      else {
         instance.context = context;
       }
       instance.tracker = new ServiceTracker(instance.context,
@@ -128,7 +131,8 @@ public class ConfigAdminTracker implements
         ConfigAdminTracker.getInstance(bundleContext).getAdmins()
             .add((ConfigurationAdmin) bundleContext.getService(adminRef));
       }
-    } catch (InvalidSyntaxException e) {
+    }
+    catch (InvalidSyntaxException e) {
       log.error("Error getting servicereferences of config admin", e);
     }
   }
@@ -197,8 +201,10 @@ public class ConfigAdminTracker implements
     }
     return null;
   }
+
   /**
    * Retrieves the Properties map.
+   * 
    * @return the properties key/values.
    */
   public Map<String, String> getProperties() {
@@ -230,8 +236,10 @@ public class ConfigAdminTracker implements
     }
     return ret;
   }
+
   /**
    * Gets the configuration sources.
+   * 
    * @return the configuration sources.
    */
   @Override

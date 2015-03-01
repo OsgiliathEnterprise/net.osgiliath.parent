@@ -20,11 +20,9 @@ package utils;
  * #L%
  */
 
-import javax.inject.Named;
-
-import org.apache.camel.dataformat.xstream.XStreamDataFormat;
-
 import com.thoughtworks.xstream.XStream;
+import javax.inject.Named;
+import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 
 /**
  * Mandatory for xstream camel processing (xstream is not

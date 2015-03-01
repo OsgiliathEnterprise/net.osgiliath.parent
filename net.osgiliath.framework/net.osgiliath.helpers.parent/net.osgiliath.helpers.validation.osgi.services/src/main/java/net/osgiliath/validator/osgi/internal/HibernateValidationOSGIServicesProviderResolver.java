@@ -20,14 +20,12 @@ package net.osgiliath.validator.osgi.internal;
  * #L%
  */
 
+import com.google.common.collect.Lists;
 import java.util.List;
-
 import javax.validation.ValidationProviderResolver;
 import javax.validation.spi.ValidationProvider;
-
 import org.hibernate.validator.HibernateValidator;
 
-import com.google.common.collect.Lists;
 
 /**
  * OSGi classpath aware {@link javax.validation.ValidationProviderResolver

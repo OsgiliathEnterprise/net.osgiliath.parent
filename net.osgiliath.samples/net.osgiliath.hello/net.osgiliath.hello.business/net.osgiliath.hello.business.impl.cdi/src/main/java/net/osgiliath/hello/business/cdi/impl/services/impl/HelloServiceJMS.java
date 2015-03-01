@@ -20,18 +20,18 @@ package net.osgiliath.hello.business.cdi.impl.services.impl;
  * #L%
  */
 
-import java.util.Collection;
-
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import javax.inject.Inject;
+import java.util.Collection;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
@@ -40,9 +40,6 @@ import org.apache.camel.cdi.ContextName;
 import org.apache.camel.cdi.Uri;
 import org.ops4j.pax.cdi.api.OsgiService;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * JMS sample of Hello service exports.

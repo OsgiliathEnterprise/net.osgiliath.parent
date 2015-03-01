@@ -110,7 +110,10 @@ public class LoginPasswordSecurityService implements SecurityService {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
+   * @param username the username
+   * @param password the password
+   * @return if the user is authenticated
    */
 
   public boolean authenticate(String username, String password) {
@@ -129,7 +132,9 @@ public class LoginPasswordSecurityService implements SecurityService {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
+   * @param subscriptionMessageIn the received message
+   * @return the user
    */
 
   public final MUser onSubscription(final MUser subscriptionMessageIn) {

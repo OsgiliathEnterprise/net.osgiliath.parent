@@ -20,10 +20,8 @@ package utils;
  * #L%
  */
 
-import org.apache.camel.dataformat.xstream.XStreamDataFormat;
-
 import com.thoughtworks.xstream.XStream;
-
+import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 /**
  * Mandatory for xstream camel processing (xstream is not
  *         able to recognize its classloader.

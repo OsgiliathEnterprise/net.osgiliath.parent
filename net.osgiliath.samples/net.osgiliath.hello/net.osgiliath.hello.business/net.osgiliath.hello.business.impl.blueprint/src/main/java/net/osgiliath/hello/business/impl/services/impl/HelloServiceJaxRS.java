@@ -20,23 +20,19 @@ package net.osgiliath.hello.business.impl.services.impl;
  * #L%
  */
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import java.util.Collection;
 import java.util.Set;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.ValidationException;
 import javax.validation.Validator;
-
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 /**
  * Sample of a business service with JaxRS.
  * 

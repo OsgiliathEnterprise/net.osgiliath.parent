@@ -19,16 +19,15 @@ package net.osgiliath.features.karaf.jaxrs.cdi.impl;
  * limitations under the License.
  * #L%
  */
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import net.osgiliath.features.karaf.jaxrs.cdi.HelloServiceJaxRS;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * REST Service implementation for testing purpose.
@@ -68,6 +67,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
           }
         })));
   }
+
   /**
    * Deletes all elements.
    */

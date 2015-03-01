@@ -33,8 +33,10 @@ import org.apache.derby.jdbc.ClientDriver;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.jdbc.DataSourceFactory;
+
 /**
  * Pax-JDBC derby client activator.
+ * 
  * @author charliemordant
  *
  */
@@ -46,10 +48,13 @@ public class Activator implements BundleActivator {
   /**
    * Singleton
    */
-  private static Activator _instance;
+  private static Activator instance;
+
   /**
    * Start method.
-   * @param context the bundle context
+   * 
+   * @param context
+   *          the bundle context
    */
   @Override
   public void start(BundleContext context) throws Exception {
@@ -57,13 +62,17 @@ public class Activator implements BundleActivator {
     final Dictionary<String, String> props = new Hashtable<String, String>();
     props.put(DataSourceFactory.OSGI_JDBC_DRIVER_CLASS,
         ClientDriver.class.getName());
-    props.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME, ClientConnectionConstant.PAX_JDBC_DS_ID);
+    props.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME,
+        ClientConnectionConstant.PAX_JDBC_DS_ID);
     context.registerService(DataSourceFactory.class.getName(), dsf, props);
-    _instance = this;
+    instance = this;
   }
+
   /**
    * Stop method.
-   * @param context the bundle context
+   * 
+   * @param context
+   *          the bundle context
    */
   @Override
   public void stop(BundleContext context) throws Exception {
@@ -76,15 +85,19 @@ public class Activator implements BundleActivator {
     getInstance().startedServers.clear();
 
   }
+
   /**
    * Singleton.
+   * 
    * @return the singleton
    */
   protected static Activator getInstance() {
-    return _instance;
+    return instance;
   }
+
   /**
    * Gets the started derby servers.
+   * 
    * @return the started derby servers
    */
   protected Map<String, Collection<Integer>> getStartedServers() {
@@ -96,15 +109,21 @@ public class Activator implements BundleActivator {
     }
     return ret;
   }
+
   /**
    * Adds a network control for a server.
-   * @param host DB host
-   * @param port DB port
-   * @param control Network control
+   * 
+   * @param host
+   *          DB host
+   * @param port
+   *          DB port
+   * @param control
+   *          Network control
    */
   protected void addNetworkControl(String host, int port,
       NetworkServerControl control) {
-    Map<Integer, NetworkServerControl> candidate = this.startedServers.get(host);
+    Map<Integer, NetworkServerControl> candidate = this.startedServers
+        .get(host);
     if (candidate == null) {
       candidate = new HashMap<Integer, NetworkServerControl>();
       this.startedServers.put(host, candidate);
