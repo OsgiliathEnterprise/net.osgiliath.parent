@@ -29,6 +29,6 @@ public interface IPropertyConsumer {
    * Retreives the injected properties.
    * @return the injected properties.
    */
-  public abstract String getInjectedProperty();
+  String getInjectedProperty();
 
 }

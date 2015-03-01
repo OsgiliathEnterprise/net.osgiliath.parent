@@ -41,9 +41,9 @@ import org.apache.camel.spi.DataFormat;
 import org.apache.commons.io.IOUtils;
 
 /**
- * sample route, see apache camel and EIP keyword on the
- *         net ;).
- * @author charliemordant 
+ * sample route, see apache camel and EIP keyword on the net ;).
+ * 
+ * @author charliemordant
  */
 public class HelloRoute extends RouteBuilder {
   /**
@@ -68,7 +68,8 @@ public class HelloRoute extends RouteBuilder {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-      final InputStream bodyObject = exchange.getIn().getBody(InputStream.class);
+      final InputStream bodyObject = exchange.getIn()
+          .getBody(InputStream.class);
       final StringWriter writer = new StringWriter();
       IOUtils.copy(bodyObject, writer);
       final String theString = writer.toString();
@@ -82,8 +83,8 @@ public class HelloRoute extends RouteBuilder {
    */
   @Override
   public void configure() throws Exception {
-    final JAXBContext ctx = JAXBContext.newInstance(new Class[] { HelloEntity.class,
-        Hellos.class, });
+    final JAXBContext ctx = JAXBContext.newInstance(new Class[] {
+        HelloEntity.class, Hellos.class, });
     final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 
     from("{{hello.MessagingEntryPoint}}")
@@ -108,7 +109,8 @@ public class HelloRoute extends RouteBuilder {
         .log(LoggingLevel.WARN, "Validation exception encountered")
         .to("direct:helloValidationError").end();
 
-    from("direct:updateTopic").setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
+    from("direct:updateTopic")
+        .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
         .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))
         .inOut("{{net.osgiliath.hello.business.url.restservice}}/hello")
         .inOut("direct:marshall").to("{{hello.MessagingEndPoint}}");

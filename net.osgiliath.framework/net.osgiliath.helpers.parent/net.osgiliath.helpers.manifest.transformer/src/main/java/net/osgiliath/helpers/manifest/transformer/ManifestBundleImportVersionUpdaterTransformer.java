@@ -193,7 +193,7 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     String[] overrides = null;
     String basedir = null;
     String bundleClasspath = null;
-    for (String arg : args) {
+    for (final String arg : args) {
       if (arg.startsWith("overrides=")) {
         overrides = arg.replaceFirst("overrides=", "").split(";");
       }
@@ -260,7 +260,7 @@ public class ManifestBundleImportVersionUpdaterTransformer {
   }
 
   private void createOverrideMap(String[] overrides) {
-    for (String override : overrides) {
+    for (final String override : overrides) {
       final String[] mapEntry = override.split("=");
       if (mapEntry.length == 2) {
         this.entriesVersionUpdates.put(mapEntry[0], mapEntry[1]);

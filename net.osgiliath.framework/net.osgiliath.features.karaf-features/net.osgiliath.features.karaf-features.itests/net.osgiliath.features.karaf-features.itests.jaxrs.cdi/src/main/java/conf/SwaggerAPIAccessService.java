@@ -29,20 +29,23 @@ import javax.ws.rs.core.MediaType;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
+
 /**
  * Swagger REST service.
+ * 
  * @author charliemordant
  *
  */
 @Path("/api-docs")
 @Api("/api-docs")
-@Produces(value = MediaType.APPLICATION_JSON )
+@Produces(value = MediaType.APPLICATION_JSON)
 public class SwaggerAPIAccessService extends ApiListingResourceJSON {
   /**
    * Injected Swagger bean config.
    */
   @Inject
   private transient BeanConfig config;
+
   /**
    * Publish bean configuration.
    */

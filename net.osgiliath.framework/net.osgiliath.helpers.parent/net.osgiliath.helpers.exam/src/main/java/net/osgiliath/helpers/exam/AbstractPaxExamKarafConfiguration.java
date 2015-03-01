@@ -42,6 +42,8 @@ import org.ops4j.pax.exam.options.DefaultCompositeOption;
 
 @Slf4j
 public abstract class AbstractPaxExamKarafConfiguration {
+  private static final String PAX_URL_MVN_SETTINGS_PROPERTY = "org.ops4j.pax.url.mvn.settings";
+  private static final String PAX_URL_MVN_CFG = "etc/org.ops4j.pax.url.mvn.cfg";
   /**
    * according Java property to set is jcoverage.command.
    */
@@ -130,7 +132,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
     if (System.getProperty(MAVEN_REPOS_URLS) != null) {
       log.info("replacing repositories urls by: "
           + System.getProperty(MAVEN_REPOS_URLS));
-      return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
+      return editConfigurationFilePut(PAX_URL_MVN_CFG,
           "org.ops4j.pax.url.mvn.repositories",
           System.getProperty(MAVEN_REPOS_URLS));
     }
@@ -144,23 +146,23 @@ public abstract class AbstractPaxExamKarafConfiguration {
     if (System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS) != null) {
       log.info("adding user reference settings "
           + System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS));
-      return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
-          "org.ops4j.pax.url.mvn.settings",
+      return editConfigurationFilePut(PAX_URL_MVN_CFG,
+          PAX_URL_MVN_SETTINGS_PROPERTY,
           System.getProperty(CONFIGURED_MAVEN_USER_SETTINGS));
     }
     else
       if (System.getProperty(DEFAULT_MAVEN_USER_SETTINGS) != null) {
       log.info("adding user reference settings "
           + System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
-      return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
-          "org.ops4j.pax.url.mvn.settings",
+      return editConfigurationFilePut(PAX_URL_MVN_CFG,
+          PAX_URL_MVN_SETTINGS_PROPERTY,
           System.getProperty(DEFAULT_MAVEN_USER_SETTINGS));
     }
     if (System.getProperty(DEFAULT_MAVEN_GLOBAL_SETTINGS) != null) {
       log.info("adding global reference settings "
           + System.getProperty(DEFAULT_MAVEN_GLOBAL_SETTINGS));
-      return editConfigurationFilePut("etc/org.ops4j.pax.url.mvn.cfg",
-          "org.ops4j.pax.url.mvn.settings",
+      return editConfigurationFilePut(PAX_URL_MVN_CFG,
+          PAX_URL_MVN_SETTINGS_PROPERTY,
           System.getProperty(DEFAULT_MAVEN_GLOBAL_SETTINGS));
     }
     return new DefaultCompositeOption();

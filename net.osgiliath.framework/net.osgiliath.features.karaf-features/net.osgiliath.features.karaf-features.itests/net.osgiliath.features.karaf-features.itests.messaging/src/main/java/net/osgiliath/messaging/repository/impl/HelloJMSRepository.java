@@ -117,7 +117,7 @@ public class HelloJMSRepository implements HelloRepository, MessageListener {
    */
   @Override
   public void onMessage(Message message) {
-    ObjectMessage objectMessage = (ObjectMessage) message;
+    final ObjectMessage objectMessage = (ObjectMessage) message;
     try {
       final HelloEntity entity = (HelloEntity) objectMessage.getObject();
       log.info("received message for persistance");

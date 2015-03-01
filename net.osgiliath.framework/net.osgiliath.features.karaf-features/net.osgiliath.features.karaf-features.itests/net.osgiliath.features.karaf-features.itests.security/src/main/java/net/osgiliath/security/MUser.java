@@ -58,7 +58,7 @@ public class MUser implements UserDetails, Serializable {
   @Override
   public Collection<GrantedAuthority> getAuthorities() {
     final Collection<GrantedAuthority> ret = new HashSet<GrantedAuthority>();
-    for (MAuthority authority : this.mAuthorities) {
+    for (final MAuthority authority : this.mAuthorities) {
       ret.add(authority);
     }
     return ret;

@@ -71,7 +71,7 @@ public class HelloServiceJaxRS implements
         .validate(helloObject);
     final StringBuilder errors = new StringBuilder("");
     if (!validationResults.isEmpty()) {
-      for (ConstraintViolation<HelloEntity> violation : validationResults) {
+      for (final ConstraintViolation<HelloEntity> violation : validationResults) {
         log.info("subscription error, validating user:"
             + violation.getMessage());
         errors.append(violation.getPropertyPath()).append(": ")

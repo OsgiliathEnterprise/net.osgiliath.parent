@@ -180,7 +180,7 @@ public class ConfigAdminTracker implements
   public String getProperty(String key) throws IOException,
       InvalidSyntaxException {
     log.info("Retreiving property key: " + key);
-    for (ConfigurationAdmin admin : getInstance(null).admins) {
+    for (final ConfigurationAdmin admin : getInstance(null).admins) {
       final Configuration[] configurations = admin.listConfigurations(null);
       if (configurations != null) {
         for (final Configuration configuration : configurations) {
@@ -202,7 +202,7 @@ public class ConfigAdminTracker implements
    * @return the properties key/values.
    */
   public Map<String, String> getProperties() {
-    Map<String, String> ret = Maps.newHashMap();
+    final Map<String, String> ret = Maps.newHashMap();
     try {
       for (final ConfigurationAdmin admin : getInstance(null).admins) {
         final Configuration[] configurations = admin.listConfigurations(null);
@@ -213,7 +213,7 @@ public class ConfigAdminTracker implements
             }
             final Dictionary<String, Object> dictionary = configuration
                 .getProperties();
-            Enumeration<String> keys = dictionary.keys();
+            final Enumeration<String> keys = dictionary.keys();
             while (keys.hasMoreElements()) {
               final String key = keys.nextElement();
               final Object val = dictionary.get(key);
@@ -237,7 +237,7 @@ public class ConfigAdminTracker implements
   @Override
   public List<ConfigSource> getConfigSources() {
     final List<ConfigSource> ret = Lists.newArrayList();
-    for (ConfigurationAdmin admin : getInstance(null).admins) {
+    for (final ConfigurationAdmin admin : getInstance(null).admins) {
       Configuration[] configurations;
       try {
         configurations = admin.listConfigurations(null);
