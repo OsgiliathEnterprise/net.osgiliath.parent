@@ -1,11 +1,7 @@
 package net.osgiliath.cdi.properties.impl;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import net.osgiliath.cdi.properties.api.IPropertyConsumer;
 
-import org.apache.deltaspike.core.api.config.ConfigProperty;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
