@@ -30,27 +30,30 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
- * Spring security {@link UserDetailsService}
+ * Spring security {@link UserDetailsService}.
  * 
  * @author Charlie
  * 
  */
 public class RepositoryUserDetailsService implements UserDetailsService {
   /**
-   * Retrieves the user model jaxrs adress
+   * Retrieves the user model jaxrs adress.
    */
   @Getter
   private static Collection<UserDetails> users = new HashSet<UserDetails>();
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
+   * @param arg0 the user name
+   * @return S security user details.
    */
   @Override
   public UserDetails loadUserByUsername(final String arg0)
       throws UsernameNotFoundException {
     for (final UserDetails details : RepositoryUserDetailsService.users) {
-      if (details.getUsername().equals(arg0))
+      if (details.getUsername().equals(arg0)) {
         return details;
+      }
     }
     throw new UsernameNotFoundException("no user with this pseudo");
 

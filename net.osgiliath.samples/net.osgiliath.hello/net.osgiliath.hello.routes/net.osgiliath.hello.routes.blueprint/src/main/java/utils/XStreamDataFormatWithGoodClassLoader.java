@@ -25,13 +25,13 @@ import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 import com.thoughtworks.xstream.XStream;
 
 /**
- * 
- * @author charliemordant Mandatory for xstream camel processing (xstream is not
- *         able to recognize its classloader
+ * Mandatory for xstream camel processing (xstream is not
+ *         able to recognize its classloader.
+ * @author charliemordant 
  */
 public class XStreamDataFormatWithGoodClassLoader extends XStreamDataFormat {
   /**
-   * sets the right classloader for xstream
+   * sets the right classloader for xstream.
    */
   public XStreamDataFormatWithGoodClassLoader() {
     super();

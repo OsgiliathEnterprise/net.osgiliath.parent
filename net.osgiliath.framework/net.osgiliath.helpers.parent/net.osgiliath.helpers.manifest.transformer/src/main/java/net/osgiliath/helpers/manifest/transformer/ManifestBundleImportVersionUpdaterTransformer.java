@@ -37,14 +37,16 @@ import java.util.regex.Pattern;
 
 import org.codehaus.plexus.util.IOUtil;
 import org.osgi.framework.Constants;
+
 /**
- * Overrides Manifest import versions
+ * Overrides Manifest import versions.
+ * 
  * @author charliemordant
  *
  */
 public class ManifestBundleImportVersionUpdaterTransformer {
   /**
-   * parsed manifest entries
+   * parsed manifest entries.
    */
   // Configuration
   private final transient Map<String, String> entriesVersionUpdates = new HashMap<String, String>();
@@ -61,8 +63,10 @@ public class ManifestBundleImportVersionUpdaterTransformer {
    * Singleton.
    */
   private static ManifestBundleImportVersionUpdaterTransformer instance;
+
   /**
    * Singleton instance.
+   * 
    * @return the transformer
    */
   private static ManifestBundleImportVersionUpdaterTransformer getInstance() {
@@ -71,9 +75,12 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     }
     return ManifestBundleImportVersionUpdaterTransformer.instance;
   }
+
   /**
-   * Found manifest
-   * @param resource file to test
+   * Found manifest.
+   * 
+   * @param resource
+   *          file to test
    * @return true if it is a manifest
    */
   public final boolean canTransformResource(final String resource) {
@@ -83,6 +90,14 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     return false;
   }
 
+  /**
+   * Processes manifest handling.
+   * 
+   * @param is
+   *          the stream.
+   * @throws IOException
+   *           if the stream could not be opened.
+   */
   public void processResource(InputStream is) throws IOException {
     // We just want to take the first manifest we come across as that's our
     // project's manifest. This is the behavior
@@ -95,9 +110,12 @@ public class ManifestBundleImportVersionUpdaterTransformer {
       IOUtil.close(is);
     }
   }
+
   /**
-   * Updates manifest
-   * @throws IOException error updating it
+   * Updates manifest.
+   * 
+   * @throws IOException
+   *           error updating it
    */
   public void updateManifestImportsWithOverrides() throws IOException {
     // If we didn't find a manifest, then let's create one.
@@ -106,7 +124,7 @@ public class ManifestBundleImportVersionUpdaterTransformer {
       this.manifest = new Manifest();
     }
 
-    final Attributes attributes = manifest.getMainAttributes();
+    final Attributes attributes = this.manifest.getMainAttributes();
     final StringBuilder updatedImports = new StringBuilder();
 
     if (this.entriesVersionUpdates != null) {
@@ -121,8 +139,8 @@ public class ManifestBundleImportVersionUpdaterTransformer {
         final String symbolicName = matcher.group(1);
         Boolean foundMatch = Boolean.FALSE;
         updatedImports.append(symbolicName);
-        for (final Iterator<String> iterator = this.entriesVersionUpdates.keySet()
-            .iterator(); iterator.hasNext();) {
+        for (final Iterator<String> iterator = this.entriesVersionUpdates
+            .keySet().iterator(); iterator.hasNext();) {
           final String key = iterator.next();
           if (key.equals(symbolicName)) {
             String specialization = matcher.group(2);
@@ -162,10 +180,14 @@ public class ManifestBundleImportVersionUpdaterTransformer {
             updatedImports.toString().length() - 1));
 
   }
+
   /**
-   * Main class
-   * @param args string args
-   * @throws IOException if parsing/replacement is not found
+   * Main class.
+   * 
+   * @param args
+   *          string args.
+   * @throws IOException
+   *           if parsing/replacement is not found
    */
   public static void main(String[] args) throws IOException {
     String[] overrides = null;
@@ -190,9 +212,11 @@ public class ManifestBundleImportVersionUpdaterTransformer {
           + "/src/main/resources/META-INF/MANIFEST.MF");
       getInstance().processResource(is);
 
-    } catch (FileNotFoundException e) {
+    }
+    catch (FileNotFoundException e) {
       e.printStackTrace();
-    } finally {
+    }
+    finally {
       if (null != is) {
         is.close();
       }
@@ -202,10 +226,14 @@ public class ManifestBundleImportVersionUpdaterTransformer {
     getInstance().addBundleClassPath(bundleClasspath);
     getInstance().writeManifest(basedir);
   }
+
   /**
-   * Writes modifications to manifest
-   * @param basedir Manifest base dir
-   * @throws IOException if something goes wrong while writing
+   * Writes modifications to manifest.
+   * 
+   * @param basedir
+   *          Manifest base dir
+   * @throws IOException
+   *           if something goes wrong while writing
    */
   private void writeManifest(String basedir) throws IOException {
     OutputStream os = null;

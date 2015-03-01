@@ -32,7 +32,7 @@ import org.osgi.framework.BundleContext;
 @Slf4j
 public class CdiConfigAdminServiceStarter {
   /**
-   * Configadmin service tracker
+   * Configadmin service tracker.
    */
   @Setter
   private transient BundleContext context;

@@ -42,12 +42,12 @@ import lombok.experimental.Builder;
 @AllArgsConstructor
 public class HelloEntity {
   /**
-   * Id
+   * Id.
    */
   @XmlElement
   private Long entityId;
   /**
-   * helloMessage
+   * helloMessage.
    */
   @XmlElement
   private String helloMessage;

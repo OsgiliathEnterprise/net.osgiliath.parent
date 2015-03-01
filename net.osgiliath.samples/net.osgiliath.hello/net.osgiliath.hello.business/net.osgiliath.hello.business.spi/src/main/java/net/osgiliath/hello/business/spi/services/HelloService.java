@@ -35,7 +35,7 @@ import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 public interface HelloService {
   /**
-   * Saves an entity
+   * Saves an entity.
    * 
    * @param helloMessage
    *          entity to save
@@ -43,14 +43,14 @@ public interface HelloService {
   void persistHello(@NotNull @Valid HelloEntity helloMessage);
 
   /**
-   * get entities
+   * get entities.
    * 
    * @return entities
    */
   Hellos getHellos();
 
   /**
-   * Delete entities
+   * Delete entities.
    */
   void deleteAll();
 

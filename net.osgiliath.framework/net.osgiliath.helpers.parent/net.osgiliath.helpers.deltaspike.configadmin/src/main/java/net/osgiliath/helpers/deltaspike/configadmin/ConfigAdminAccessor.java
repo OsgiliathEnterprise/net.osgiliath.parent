@@ -29,13 +29,13 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 
 /**
- * Provides access to the configuration admin tracker
+ * Provides access to the configuration admin tracker.
  * @author charliemordant
  *
  */
 public class ConfigAdminAccessor {
   /**
-   * retrieves a property
+   * Retrieves a property.
    * @param context context to retreive the key from
    * @param key property key
    * @return corresponding value
@@ -48,7 +48,7 @@ public class ConfigAdminAccessor {
 
   }
   /**
-   * Retreives all properties
+   * Retreives all properties.
    * @param context bundle context
    * @return all key/values
    */

@@ -46,7 +46,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * JMS sample of Hello service exports
+ * JMS sample of Hello service exports.
  * 
  * @author charliemordant
  * 
@@ -54,23 +54,23 @@ import com.google.common.collect.Lists;
 @Slf4j
 public class HelloServiceJMS implements HelloService, MessageListener {
   /**
-   * Database persistence repository
+   * Database persistence repository.
    */
   @Setter
   private transient HelloObjectRepository helloObjectRepository;
   /**
-   * Hibernate validator
+   * Hibernate validator.
    */
   @Setter
   private transient Validator validator;
   /**
-   * JMS producer
+   * JMS producer.
    */
   @Setter
   private transient JmsOperations template;
 
   /**
-   * JMS consumer
+   * JMS consumer.
    * 
    * @throws JMSException
    */

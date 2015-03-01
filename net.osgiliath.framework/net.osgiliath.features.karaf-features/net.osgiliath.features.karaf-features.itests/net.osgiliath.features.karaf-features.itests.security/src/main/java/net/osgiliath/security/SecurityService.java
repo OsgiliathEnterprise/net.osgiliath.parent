@@ -28,7 +28,7 @@ package net.osgiliath.security;
  */
 public interface SecurityService {
   /**
-   * Authenticate a {@link MUser},
+   * Authenticate a {@link MUser}.
    * 
    * @param username
    *          his username
@@ -39,7 +39,7 @@ public interface SecurityService {
   boolean authenticate(final String username, final String password);
 
   /**
-   * Register the {@link MUser}
+   * Register the {@link MUser}.
    * 
    * @param arg0
    *          the {@link MUser} to register

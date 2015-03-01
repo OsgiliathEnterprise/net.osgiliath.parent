@@ -26,7 +26,7 @@ package net.osgiliath.cdi.properties.api;
  */
 public interface IPropertyConsumer {
   /**
-   * Retreives the injected properties
+   * Retreives the injected properties.
    * @return the injected properties.
    */
   public abstract String getInjectedProperty();

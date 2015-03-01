@@ -35,7 +35,7 @@ import org.apache.cxf.cdi.CXFCdiServlet;
 public class JaxRSCDIServicesProviderServlet extends CXFCdiServlet {
 
   /**
-   * Serial 
+   * Serial.
    */
   private static final long serialVersionUID = 6922224281418865476L;
   /**

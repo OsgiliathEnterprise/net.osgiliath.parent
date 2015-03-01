@@ -39,12 +39,12 @@ import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 @Produces(value = MediaType.APPLICATION_JSON )
 public class SwaggerAPIAccessService extends ApiListingResourceJSON {
   /**
-   * Injected Swagger bean config
+   * Injected Swagger bean config.
    */
   @Inject
   private transient BeanConfig config;
   /**
-   * Publish bean configuration
+   * Publish bean configuration.
    */
   @PostConstruct
   private void injectConfig() {

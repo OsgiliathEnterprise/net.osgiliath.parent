@@ -94,11 +94,11 @@ public abstract class AbstractPaxExamKarafConfiguration {
   private static final String maxPerm = "-XX:MaxPermSize=256m";
   
   /**
-   * Pax VM options
+   * Pax VM options.
    */
   protected static String paxRunnerVmOption;
   /**
-   * Creates default pax exam configuration for Karaf
+   * Creates default pax exam configuration for Karaf.
    * @return the default configuration
    */
   public Option[] createConfig() {
@@ -123,7 +123,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
     return OptionUtils.combine(baseAndJVM, vmOption);
   }
   /**
-   * Sets Maven repository urls
+   * Sets Maven repository urls.
    * @return maven overriden URLS
    */
   private Option mavenReposURLOptions() {
@@ -137,7 +137,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
     return new DefaultCompositeOption();
   }
   /**
-   * Overriden maven settings
+   * Overriden maven settings.
    * @return maven settings files options
    */
   private Option addMavenSettingsOptions() {
@@ -167,7 +167,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
 
   }
   /**
-   * Increses default heap size
+   * Increses default heap size.
    * @return Heap size Options
    */
   private Option[] addJVMOptions() {
@@ -177,7 +177,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
         CoreOptions.vmOption(minHeap), CoreOptions.vmOption(maxPerm));
   }
   /**
-   * Adds code coverage options
+   * Adds code coverage options.
    * @return code coverage options
    */
   private Option addCodeCoverageOption() {
@@ -189,21 +189,21 @@ public abstract class AbstractPaxExamKarafConfiguration {
     return new DefaultCompositeOption();
   }
   /**
-   * Default logging level
+   * Default logging level.
    * @return Log level options
    */
   protected Option loggingLevel() {
     return logLevel(LogLevel.INFO);
   }
   /**
-   * Additionnal options to override
+   * Additionnal options to override.
    * @return return additional options
    */
   protected Option addExtraOptions() {
     return new DefaultCompositeOption();
   }
   /**
-   * Karaf feature to test 
+   * Karaf feature to test.
    * @return karaf feature Option
    */
   protected abstract Option featureToTest();

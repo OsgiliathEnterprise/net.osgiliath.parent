@@ -51,27 +51,27 @@ import org.apache.commons.io.IOUtils;
 @ContextName
 public class HelloRoute extends RouteBuilder {
   /**
-   * Json Dataformat
+   * Json Dataformat.
    */
   private transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
       HelloEntity.class, Hellos.class);
   /**
-   * JSR303 Validation message processor
+   * JSR303 Validation message processor.
    */
   @Inject
   @Named("thrownExceptionMessageToInBodyProcessor")
   @Setter
   private transient Processor thrownExceptionMessageToInBodyProcessor;
   /**
-   * XmlJson processor
+   * XmlJson processor.
    */
   @Inject
   @Named("xmljson")
   private transient DataFormat xmljson;
   /**
-   * changes inputstream to string
+   * changes inputstream to string.
    */
-  private transient Processor octetsStreamToStringProcessor = new Processor() {
+  private final transient Processor octetsStreamToStringProcessor = new Processor() {
 
     @Override
     public void process(Exchange exchange) throws Exception {
@@ -85,7 +85,7 @@ public class HelloRoute extends RouteBuilder {
   };
 
   /**
-   * Messaging route
+   * Messaging route.
    */
   @Override
   public void configure() throws Exception {

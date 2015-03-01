@@ -47,22 +47,22 @@ import org.apache.commons.io.IOUtils;
  */
 public class HelloRoute extends RouteBuilder {
   /**
-   * Jackson converters
+   * Jackson converters.
    */
   private transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
       HelloEntity.class, Hellos.class);
   /**
-   * processes JSR303 validation errors
+   * processes JSR303 validation errors.
    */
   @Setter
   private transient Processor thrownExceptionMessageToInBodyProcessor;
   /**
-   * xmljson dataformat
+   * xmljson dataformat.
    */
   @Setter
   private transient DataFormat xmljson;
   /**
-   * changes inputstream to string
+   * changes inputstream to string.
    */
   private transient Processor octetsStreamToStringProcessor = new Processor() {
 
@@ -78,7 +78,7 @@ public class HelloRoute extends RouteBuilder {
   };
 
   /**
-   * Configures routes
+   * Configures routes.
    */
   @Override
   public void configure() throws Exception {

@@ -37,13 +37,13 @@ import org.springframework.security.core.GrantedAuthority;
 public class MAuthority implements GrantedAuthority, Serializable {
 
   /**
-   * The Authority
+   * The Authority.
    */
   @Setter
   private AUTHORITY authority;
 
   /**
-   * returns authority String representation
+   * returns authority String representation.
    * @return the authority
    */
   @Override

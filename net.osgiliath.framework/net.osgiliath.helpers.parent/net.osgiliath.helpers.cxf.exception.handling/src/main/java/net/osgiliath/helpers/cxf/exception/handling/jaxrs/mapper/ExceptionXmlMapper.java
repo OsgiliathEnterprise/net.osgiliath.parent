@@ -34,19 +34,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * CXF exception Mapper
+ * CXF exception Mapper.
  * 
  * @author Charlie
  * 
  */
 public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
   /**
-   * The Logger
+   * The Logger.
    */
   private static final Logger LOG = LoggerFactory.getLogger(ExceptionXmlMapper.class);
 
   /**
-   * Map the catched Exception to the response body (xml format)
+   * Map the catched Exception to the response body (xml format).
    */
   @Override
   public Response toResponse(Exception arg0) {
@@ -63,7 +63,7 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
   }
 
   /**
-   * Create the xml description of an exception
+   * Create the xml description of an exception.
    * 
    * @param arg0
    *          the Throwable

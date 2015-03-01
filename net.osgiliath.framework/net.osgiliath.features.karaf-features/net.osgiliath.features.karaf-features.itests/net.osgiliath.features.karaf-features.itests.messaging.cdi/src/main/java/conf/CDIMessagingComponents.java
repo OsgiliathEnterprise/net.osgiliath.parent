@@ -38,20 +38,19 @@ import org.slf4j.LoggerFactory;
 @Eager
 public class CDIMessagingComponents {
   /**
-   * logger
+   * Logger.
    */
   private static final Logger LOG = LoggerFactory
       .getLogger(CDIMessagingComponents.class);
   /**
-   * OSGI service import
+   * OSGI service import.
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
   private transient Component jms;
 
   /**
-   * Producer
-   * 
+   * Producer.
    * @return the jms component
    */
   @Produces

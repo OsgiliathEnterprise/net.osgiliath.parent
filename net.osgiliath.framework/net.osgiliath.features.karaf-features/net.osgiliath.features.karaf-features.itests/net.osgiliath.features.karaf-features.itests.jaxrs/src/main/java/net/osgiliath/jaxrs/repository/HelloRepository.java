@@ -34,20 +34,20 @@ import net.osgiliath.jaxrs.HelloEntity;
 import net.osgiliath.jaxrs.Hellos;
 
 /**
- * REST accessible interface by business or route module
+ * REST accessible interface by business or route module.
  * @author charliemordant REST definition of the service
  */
 @Path("/hello")
 public interface HelloRepository {
   /**
-   * find entities that contains the corresponding to message
+   * find entities that contains the corresponding to message.
    * @param message the message to find entities
    * @return all corresponding entities
    */
   Collection<? extends HelloEntity> findByHelloObjectMessage(String message);
 
   /**
-   * Save an entity
+   * Save an entity.
    * @param entity entity to save
    * @return the persisted entity
    */
@@ -56,7 +56,7 @@ public interface HelloRepository {
   <S extends HelloEntity> S save(S entity);
 
   /**
-   * Finds all entities
+   * Finds all entities.
    * @return all entities
    */
   @GET
@@ -64,7 +64,7 @@ public interface HelloRepository {
   Hellos findAll();
 
   /**
-   * Deletes all entities
+   * Deletes all entities.
    */
   @DELETE
   void deleteAll();

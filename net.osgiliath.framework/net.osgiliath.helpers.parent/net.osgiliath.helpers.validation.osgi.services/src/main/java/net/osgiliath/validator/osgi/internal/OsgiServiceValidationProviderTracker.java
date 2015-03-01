@@ -36,12 +36,12 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 public class OsgiServiceValidationProviderTracker implements
     ServiceTrackerCustomizer {
   /**
-   * bundle context
+   * bundle context.
    */
   private final transient BundleContext context;
 
   /**
-   * CTor
+   * CTor.
    * 
    * @param context
    *          bundle context
@@ -51,7 +51,7 @@ public class OsgiServiceValidationProviderTracker implements
   }
 
   /**
-   * Adding validation provider
+   * Adding validation provider.
    * @param reference the service reference to add
    * @return the service
    */
@@ -69,7 +69,7 @@ public class OsgiServiceValidationProviderTracker implements
   }
 
   /**
-   * Removed validation provider
+   * Removed validation provider.
    * @param reference the service reference
    * @param service the service to remove
    */
@@ -87,7 +87,7 @@ public class OsgiServiceValidationProviderTracker implements
   }
 
   /**
-   * Initial providers parsing
+   * Initial providers parsing.
    * 
    * @param context
    *          bundle context
@@ -105,7 +105,7 @@ public class OsgiServiceValidationProviderTracker implements
   }
 
   /**
-   * Modified service
+   * Modified service.
    * @param reference service reference
    * @param service service
    */

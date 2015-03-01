@@ -41,22 +41,22 @@ public class XACapableJmsTemplateContainerListenerFactory implements
   @Setter
   private transient PlatformTransactionManager txManager;
   /**
-   * No XA JMS connection factory
+   * No XA JMS connection factory.
    */
   @Setter
   private transient ConnectionFactory nonXAFactory;
   /**
-   * XA JMS connection factory
+   * XA JMS connection factory.
    */
   @Setter
   private transient ConnectionFactory xAFactory;
   /**
-   * Number of concurrent consumers
+   * Number of concurrent consumers.
    */
   @Setter
   private transient int concurrentConsumers;
   /**
-   * Timeout
+   * Timeout.
    */
   @Setter
   private int receiveTimeout;
@@ -105,7 +105,7 @@ public class XACapableJmsTemplateContainerListenerFactory implements
     return container;
   }
   /**
-   * Adds info for non transacted connection
+   * Adds info for non transacted connection.
    * @param container container to provision
    */
   private void addNonTransactedInfo(DefaultMessageListenerContainer container) {
@@ -113,7 +113,7 @@ public class XACapableJmsTemplateContainerListenerFactory implements
 
   }
   /**
-   * Adds info for transacted connection
+   * Adds info for transacted connection.
    * @param container container to provision
    */
   private void addTransactedInfos(DefaultMessageListenerContainer container) {

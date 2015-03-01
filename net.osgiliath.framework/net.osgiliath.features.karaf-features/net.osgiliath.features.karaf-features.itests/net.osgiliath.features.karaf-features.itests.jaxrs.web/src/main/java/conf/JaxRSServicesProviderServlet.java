@@ -25,7 +25,7 @@ import javax.servlet.annotation.WebServlet;
 
 import org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet;
 /**
- * Simple JaxRS Servlet
+ * Simple JaxRS Servlet.
  * @author charliemordant
  */
 @WebServlet(urlPatterns = { "/*" }, initParams = {
@@ -34,7 +34,7 @@ import org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet;
 public class JaxRSServicesProviderServlet extends CXFNonSpringJaxrsServlet {
 
   /**
-   * serial
+   * serial.
    */
   private static final long serialVersionUID = 6922224281418865476L;
   /**

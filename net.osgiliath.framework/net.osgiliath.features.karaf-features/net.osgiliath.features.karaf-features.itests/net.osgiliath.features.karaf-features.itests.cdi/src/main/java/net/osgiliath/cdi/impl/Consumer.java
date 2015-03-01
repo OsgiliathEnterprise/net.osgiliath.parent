@@ -29,20 +29,21 @@ import org.ops4j.pax.cdi.api.OsgiService;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 /**
- * Consumes provider's message
+ * Consumes provider's message.
  * @author charliemordant Consumer of injected bean
  */
 @OsgiServiceProvider(classes = { IConsumer.class })
 public class Consumer implements IConsumer {
   /**
-   * Injected CDI provider
+   * Injected CDI provider.
    */
   @Inject
   @OsgiService(timeout = 2000, dynamic = true)
   private transient IProvider provider;
 
   /**
-   * Consumed method by itests
+   * Consumed method by itests.
+   * @return the message
    */
   public final String getHello() {
     return this.provider.getMessage();

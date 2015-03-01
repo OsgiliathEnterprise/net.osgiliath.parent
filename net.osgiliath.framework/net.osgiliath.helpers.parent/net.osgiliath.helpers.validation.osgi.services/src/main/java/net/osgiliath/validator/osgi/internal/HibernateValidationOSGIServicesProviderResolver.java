@@ -37,16 +37,16 @@ import com.google.common.collect.Lists;
 public class HibernateValidationOSGIServicesProviderResolver implements
     ValidationProviderResolver {
   /**
-   * Singleton instance
+   * Singleton instance.
    */
   private static ValidationProviderResolver instance = null;
   /**
-   * Validation providers
+   * Validation providers.
    */
   private List<ValidationProvider<?>> providers = Lists.newArrayList();
 
   /**
-   * private CTor
+   * private CTor.
    */
   private HibernateValidationOSGIServicesProviderResolver() {
     super();
@@ -54,7 +54,7 @@ public class HibernateValidationOSGIServicesProviderResolver implements
   }
 
   /**
-   * Singleton
+   * Singleton.
    * 
    * @return the Singleton instance
    */

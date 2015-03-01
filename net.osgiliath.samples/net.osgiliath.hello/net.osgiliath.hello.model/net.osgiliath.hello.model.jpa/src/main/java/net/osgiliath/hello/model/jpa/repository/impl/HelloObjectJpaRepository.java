@@ -44,13 +44,13 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 public class HelloObjectJpaRepository extends
     SimpleJpaRepository<HelloEntity, Long> implements HelloObjectRepository {
   /**
-   * Blueprint injected entityManager
+   * Blueprint injected entityManager.
    */
   @Setter
   private transient EntityManager entityManager;
 
   /**
-   * Ctor
+   * Ctor.
    * 
    * @param domainClass
    *          clazz
@@ -64,7 +64,7 @@ public class HelloObjectJpaRepository extends
   }
 
   /**
-   * Query to find elements by message
+   * Query to find elements by message.
    * @param message message to find element from
    * @return all corresponding entities
    * 
@@ -84,7 +84,7 @@ public class HelloObjectJpaRepository extends
   }
 
   /**
-   * Saves an entity
+   * Saves an entity.
    * @param entity element to save
    * @return the persisted entity
    */
@@ -94,7 +94,7 @@ public class HelloObjectJpaRepository extends
   }
 
   /**
-   * gets all entities
+   * gets all entities.
    * @return all entities
    */
   @Override

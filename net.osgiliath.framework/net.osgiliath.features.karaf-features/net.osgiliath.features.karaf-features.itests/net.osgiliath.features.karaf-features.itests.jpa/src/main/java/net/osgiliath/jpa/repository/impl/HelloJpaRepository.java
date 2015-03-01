@@ -21,7 +21,6 @@ package net.osgiliath.jpa.repository.impl;
  */
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -45,13 +44,13 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long>
     implements HelloRepository {
   /**
-   * Entity manager
+   * Entity manager.
    */
   @Setter
   private transient EntityManager entityManager;
 
   /**
-   * Ctor
+   * Ctor.
    * 
    * @param domainClass
    *          class
@@ -65,11 +64,11 @@ public class HelloJpaRepository extends SimpleJpaRepository<HelloEntity, Long>
   }
 
   /**
-   * Finds by helloMessage
+   * Finds by helloMessage.
    * 
    * @param message
    *          the message to find elements from
-   * @return all corrsponding entities
+   * @return all corresponding entities
    */
   @Override
   public final Collection<? extends HelloEntity> findByHelloObjectMessage(

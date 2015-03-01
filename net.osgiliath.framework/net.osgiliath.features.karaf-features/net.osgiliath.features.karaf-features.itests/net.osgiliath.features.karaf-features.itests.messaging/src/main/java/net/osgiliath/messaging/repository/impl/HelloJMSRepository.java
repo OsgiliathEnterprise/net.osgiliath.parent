@@ -47,18 +47,18 @@ import org.springframework.jms.core.MessageCreator;
 @Slf4j
 public class HelloJMSRepository implements HelloRepository, MessageListener {
   /**
-   * JMS producer
+   * JMS producer.
    */
   @Setter
   private transient JmsOperations producer;
 
   /**
-   * instances registry
+   * instances registry.
    */
   private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
   /**
-   * finds entities by message
+   * finds entities by message.
    * 
    * @param message
    *          message to find corresponding elements from
@@ -77,7 +77,7 @@ public class HelloJMSRepository implements HelloRepository, MessageListener {
   }
 
   /**
-   * Consumer method for instance save
+   * Consumer method for instance save.
    * @param entity the element to save
    * @return persisted element
    */
@@ -96,7 +96,7 @@ public class HelloJMSRepository implements HelloRepository, MessageListener {
 
   }
   /**
-   * returns all elements
+   * returns all elements.
    */
   @Override
   public Hellos findAll() {
@@ -105,22 +105,26 @@ public class HelloJMSRepository implements HelloRepository, MessageListener {
     return hellos;
   }
   /**
-   * deletes all elements
+   * deletes all elements.
    */
   @Override
   public void deleteAll() {
     this.entities.clear();
   }
-
+  /**
+   * Camel message listener.
+   * @param message the lessage
+   */
   @Override
   public void onMessage(Message message) {
     ObjectMessage objectMessage = (ObjectMessage) message;
     try {
-      HelloEntity entity = (HelloEntity) objectMessage.getObject();
+      final HelloEntity entity = (HelloEntity) objectMessage.getObject();
       log.info("received message for persistance");
       save(entity);
 
-    } catch (JMSException e) {
+    }
+    catch (JMSException e) {
       log.error("error parsing jms message", e);
     }
 

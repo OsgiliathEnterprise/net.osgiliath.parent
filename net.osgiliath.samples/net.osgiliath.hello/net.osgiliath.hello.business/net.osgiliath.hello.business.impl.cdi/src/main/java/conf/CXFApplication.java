@@ -37,22 +37,22 @@ import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 /**
- * Application registering services
+ * Application registering services.
  * @author charliemordant
  *
  */
 @ApplicationPath("/helloService")
 public class CXFApplication extends Application {
     /**
-     * JaxRS service to register
+     * JaxRS service to register.
      */
       @Inject private transient HelloServiceJaxRS helloService;
       /**
-       * Swagger API service
+       * Swagger API service.
        */
       @Inject private transient  ApiListingResourceJSON swaggerService;
       /**
-       * Registered web services
+       * Registered web services.
        * @return services
        */
       @Override

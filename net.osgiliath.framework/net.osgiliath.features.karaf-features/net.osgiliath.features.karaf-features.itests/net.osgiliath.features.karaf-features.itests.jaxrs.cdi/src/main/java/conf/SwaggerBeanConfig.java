@@ -34,15 +34,18 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 
 import com.wordnik.swagger.jaxrs.config.BeanConfig;
+
 /**
  * Default Swagger bean configuration.
+ * 
  * @author charliemordant
  *
  */
 @Slf4j
 public class SwaggerBeanConfig {
   /**
-   * Configuration producer
+   * Configuration producer.
+   * 
    * @return the configuration
    */
   @Produces
@@ -54,10 +57,11 @@ public class SwaggerBeanConfig {
     final ConfigAdminTracker tracker = ConfigAdminTracker.getInstance(context);
     String endPointURI = "";
     try {
-         endPointURI = tracker.getProperty(
-        "jaxrs.server.protocol") + "://" + tracker.getProperty("jaxrs.server.uri") + ":" + tracker.getProperty("jaxrs.server.port")  + "/cxf" + CXFApplication.class.getAnnotation(ApplicationPath.class).value();
-      beanConfig.setBasePath(endPointURI
-         );
+      endPointURI = tracker.getProperty("jaxrs.server.protocol") + "://"
+          + tracker.getProperty("jaxrs.server.uri") + ":"
+          + tracker.getProperty("jaxrs.server.port") + "/cxf"
+          + CXFApplication.class.getAnnotation(ApplicationPath.class).value();
+      beanConfig.setBasePath(endPointURI);
     }
     catch (IOException | InvalidSyntaxException e) {
       log.error("Error configuring Swagger bean", e);

@@ -20,7 +20,7 @@ package net.osgiliath.database.constants;
  * #L%
  */
 /**
- * Database constants
+ * Database constants.
  * @author charliemordant
  *
  */

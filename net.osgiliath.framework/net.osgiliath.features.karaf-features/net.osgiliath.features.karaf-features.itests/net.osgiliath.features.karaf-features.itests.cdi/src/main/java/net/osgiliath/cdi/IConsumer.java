@@ -20,12 +20,12 @@ package net.osgiliath.cdi;
  * #L%
  */
 /**
- * Message consumer interface
+ * Message consumer interface.
  * @author charliemordant Interface for CDI consuming
  */
 public interface IConsumer {
   /**
-   * Hello method
+   * Hello method.
    * 
    * @return the hello String
    */

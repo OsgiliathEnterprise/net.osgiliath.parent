@@ -41,14 +41,14 @@ import org.ops4j.pax.cdi.api.OsgiService;
 public class HelloComponents {
 
   /**
-   * OSGI import
+   * OSGI import.
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
   private transient Component jms;
 
   /**
-   * JMS component
+   * JMS component.
    * @return Messaging component
    */
   @Produces

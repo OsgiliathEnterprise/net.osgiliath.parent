@@ -39,7 +39,9 @@ public class HelloJaxRSRepository implements HelloRepository {
   private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
   /**
-   * find entities corrsponding to message
+   * find entities corrsponding to message.
+   * @param message the message
+   * @return the corresponding entities
    */
   @Override
   public final Collection<? extends HelloEntity> findByHelloObjectMessage(
@@ -54,7 +56,9 @@ public class HelloJaxRSRepository implements HelloRepository {
   }
 
   /**
-   * Save an entity
+   * Save an entity.
+   * @param entity the entity to save
+   * @return the persisted entity
    */
   @Override
   public final <S extends HelloEntity> S save(final S entity) {
@@ -63,7 +67,8 @@ public class HelloJaxRSRepository implements HelloRepository {
   }
 
   /**
-   * Finds all entities
+   * Finds all entities.
+   * @return all entities
    */
   @Override
   public final Hellos findAll() {
@@ -71,7 +76,7 @@ public class HelloJaxRSRepository implements HelloRepository {
   }
 
   /**
-   * Deletes all entities
+   * Deletes all entities.
    */
   @Override
   public void deleteAll() {

@@ -39,7 +39,7 @@ import org.apache.camel.cdi.ContextName;
 @ContextName
 public class RouteConsumer extends RouteBuilder {
   /**
-   * message consuming route
+   * message consuming route.
    */
   @Override
   public void configure() throws Exception {

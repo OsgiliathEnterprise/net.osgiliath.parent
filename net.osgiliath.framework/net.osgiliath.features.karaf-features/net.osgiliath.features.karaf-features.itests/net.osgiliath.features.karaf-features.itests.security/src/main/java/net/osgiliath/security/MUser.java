@@ -39,20 +39,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 @SuppressWarnings("serial")
 public class MUser implements UserDetails, Serializable {
   /**
-   * His Pseudo
+   * His Pseudo.
    */
   private String pseudo;
   /**
-   * His pwd
+   * His pwd.
    */
   private String password;
   /**
-   * His rights
+   * His rights.
    */
-  private Collection<MAuthority> mAuthorities = new HashSet<MAuthority>();
+  private final Collection<MAuthority> mAuthorities = new HashSet<MAuthority>();
 
   /**
-   * Returns a List of Authorities
+   * Returns a List of Authorities.
+   * @return the authorities.
    */
   @Override
   public Collection<GrantedAuthority> getAuthorities() {
@@ -64,7 +65,8 @@ public class MUser implements UserDetails, Serializable {
   }
 
   /**
-   * Spring rm management
+   * Spring rm management.
+   * @return the username.
    */
   @Override
   public String getUsername() {
@@ -72,7 +74,8 @@ public class MUser implements UserDetails, Serializable {
   }
 
   /**
-   * account expired
+   * account expired.
+   * @return if account is expired.
    */
   @Override
   public boolean isAccountNonExpired() {
@@ -80,7 +83,8 @@ public class MUser implements UserDetails, Serializable {
   }
 
   /**
-   * Account locked
+   * Account locked.
+   * @return if account locked.
    */
   @Override
   public boolean isAccountNonLocked() {
@@ -88,7 +92,8 @@ public class MUser implements UserDetails, Serializable {
   }
 
   /**
-   * Rights expired
+   * Rights expired.
+   * @return if credential expired.
    */
   @Override
   public boolean isCredentialsNonExpired() {
@@ -96,7 +101,8 @@ public class MUser implements UserDetails, Serializable {
   }
 
   /**
-   * Account enabled
+   * Account enabled.
+   * @return if acount is enabled.
    */
   @Override
   public boolean isEnabled() {

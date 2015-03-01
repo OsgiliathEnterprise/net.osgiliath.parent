@@ -31,7 +31,7 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 @OsgiServiceProvider
 public class Provider implements IProvider {
   /**
-   * CDI consumed method
+   * CDI consumed method.
    */
   @Override
   public final String getMessage() {

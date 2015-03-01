@@ -48,7 +48,7 @@ import org.osgi.service.jdbc.DataSourceFactory;
 @Slf4j
 public class DerbyClientDatasourceFactory implements DataSourceFactory {
   /**
-   * creates a datasource from properties
+   * creates a datasource from properties.
    * @param props ds properties
    * @return The datasource
    */
@@ -59,7 +59,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
     return ds;
   }
   /**
-   * Sets properties for datasource
+   * Sets properties for datasource.
    * @param ds the DS to update
    * @param properties properties to set
    * @throws SQLException in case of unsupported DS Operations
@@ -102,7 +102,10 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
       ds.setPortNumber(ClientConnectionConstant.DEFAULT_PORT);
     }
   }
-
+  /**
+   * Starts the databsases servers.
+   * @param properties server's properties.
+   */
   private void doStartServer(Properties properties) {
     String host = (String) properties.get(DataSourceFactory.JDBC_SERVER_NAME);
     if (host == null) {
@@ -135,7 +138,11 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
     }
 
   }
-
+  /**
+   * Creates pooling datasources.
+   * @param props properties
+   * @return the datasource
+   */
   @Override
   public ConnectionPoolDataSource createConnectionPoolDataSource(
       Properties props) throws SQLException {
@@ -144,14 +151,22 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
 
     return ds;
   }
-
+  /**
+   * Creates XA datasources.
+   * @param props properties
+   * @return the datasource
+   */
   @Override
   public XADataSource createXADataSource(Properties props) throws SQLException {
     ClientXADataSource40 ds = new ClientXADataSource40();
     setProperties(ds, props);
     return ds;
   }
-
+  /**
+   * Creates Client driver.
+   * @param props properties
+   * @return the DS Driver
+   */
   @Override
   public Driver createDriver(Properties props) throws SQLException {
     ClientDriver40 driver = new ClientDriver40();

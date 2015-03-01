@@ -21,6 +21,7 @@ package conf;
  */
 
 import javax.enterprise.inject.Produces;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -35,38 +36,61 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.ops4j.pax.cdi.api.OsgiService;
+/**
+ * CDI injected camel components.
+ * @author charliemordant
+ *
+ */
 @Slf4j
 @Eager
 public class Components {
-
+    /**
+     * JMS component.
+     */
 	@Inject
 	@OsgiService(filter = "(component-type=jms)", dynamic = true)
-	private Component jms;
+	private transient Component jms;
+    /**
+     * JMS transacted component.
+     */
 	
 	@Inject
 	@OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
-	private Component jmsXA;
-		
+	private transient Component jmsXA;
+    /**
+     * Validation exception transformer component.
+     * @return the processor
+     */		
 	@Produces
 	@Named("thrownExceptionMessageToInBodyProcessor")
 	public Processor getThrownExceptionMessageToInBodyProcessor() {
 		LOG.info("Inject Processor in body");
 		return new ThrownExceptionMessageToInBodyProcessor();
 	}
+	/**
+	 * JMS cdi producer.
+	 * @return the JMS component
+	 */
 	@Produces
 	@Named("jms")
 	public Component getJms() {
 		LOG.info("Inject jms");
-		return jms;
+		return this.jms;
 	}
-
+	/**
+     * JMS XA cdi producer.
+     * @return the JMS XA component
+     */
 	@Produces
 	@Named("jmsXA")
 	public Component getJmsXA() {
 		LOG.info("Inject jmsXA");
-		return jmsXA;
+		return this.jmsXA;
 	}
-	
+	/**
+	 * HTTP camel component.
+	 * @return the HTTP component.
+	 */
 	@Produces
 	@Named("http")
 	public Component getHttp() {
@@ -74,12 +98,19 @@ public class Components {
 		return new HttpComponent();
 	}
 	
-	
+	/**
+	 * JSON camel dataformt.
+	 * @return the dataformat.
+	 */
 	@Produces
 	@Named("json")
 	public DataFormat getJacksonDataFormat() {
 		return new JacksonDataFormat();
 	}
+	/**
+	 * XML to Json dataformat.
+	 * @return the dataformat.
+	 */
 	@Produces
 	@Named("xmljson")
 	public DataFormat getXmlJsonDataFormat() {

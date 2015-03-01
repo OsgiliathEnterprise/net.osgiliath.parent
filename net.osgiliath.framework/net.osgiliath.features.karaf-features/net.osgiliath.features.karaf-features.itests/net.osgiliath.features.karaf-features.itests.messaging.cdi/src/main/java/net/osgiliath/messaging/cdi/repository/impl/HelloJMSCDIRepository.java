@@ -49,35 +49,35 @@ import org.slf4j.LoggerFactory;
 @ContextName
 public class HelloJMSCDIRepository implements HelloCDIRepository {
   /**
-   * Logger
+   * Logger.
    */
   private static final Logger LOG = LoggerFactory
       .getLogger(HelloJMSCDIRepository.class);
   /**
-   * entities registry
+   * entities registry.
    */
   private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
   /**
-   * message producer for integration test
+   * message producer for integration test.
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueOut")
   private transient ProducerTemplate producer;
   /**
-   * message producer for internal consuming
+   * message producer for internal consuming.
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueIn2")
   private transient ProducerTemplate internalProducer;
   /**
-   * Producer for the route
+   * Producer for the route.
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueIn")
   private transient ProducerTemplate routeProducer;
 
   /**
-   * Saves entities
+   * Saves entities.
    * @param entity element to save
    * @return the saved element
    */
@@ -88,7 +88,7 @@ public class HelloJMSCDIRepository implements HelloCDIRepository {
   }
 
   /**
-   * Internal consumer (not working for now)
+   * Internal consumer (not working for now).
    * 
    * @param entity
    *          to consume

@@ -30,7 +30,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
- * {@link SecurityService} implementation
+ * {@link SecurityService} implementation.
  * 
  * @author Charlie
  * 
@@ -38,40 +38,73 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Slf4j
 public class LoginPasswordSecurityService implements SecurityService {
   /**
-   * The {@link AuthenticationManager}
+   * The {@link AuthenticationManager}.
    */
-  private AuthenticationManager authenticationManager;
+  private transient AuthenticationManager authenticationManager;
 
   /**
-   * The {@link PasswordEncoder}
+   * The {@link PasswordEncoder}.
    */
-  private PasswordEncoder passwordEncoder;
+  private transient PasswordEncoder passwordEncoder;
   /**
-   * The {@link SaltSource}
+   * The {@link SaltSource}.
    */
-  private SaltSource saltSource;
+  private transient SaltSource saltSource;
 
+  /**
+   * gets the {@link AuthenticationManager}.
+   * 
+   * @return the {@link AuthenticationManager}
+   */
   public AuthenticationManager getAuthenticationManager() {
-    return authenticationManager;
+    return this.authenticationManager;
   }
 
+  /**
+   * sets the {@link AuthenticationManager}.
+   * 
+   * @param authenticationManager
+   *          the {@link AuthenticationManager}
+   */
   public void setAuthenticationManager(
-      AuthenticationManager authenticationManager) {
+      final AuthenticationManager authenticationManager) {
     this.authenticationManager = authenticationManager;
   }
 
+  /**
+   * gets the {@link PasswordEncoder}.
+   * 
+   * @return the {@link PasswordEncoder}
+   */
   public PasswordEncoder getPasswordEncoder() {
-    return passwordEncoder;
+    return this.passwordEncoder;
   }
 
-  public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+  /**
+   * sets the {@link PasswordEncoder}.
+   * 
+   * @param passwordEncoder
+   *          the {@link PasswordEncoder}
+   */
+  public void setPasswordEncoder(final PasswordEncoder passwordEncoder) {
     this.passwordEncoder = passwordEncoder;
   }
 
+  /**
+   * gets the {@link SaltSource}.
+   * 
+   * @return the {@link SaltSource}
+   */
   public SaltSource getSaltSource() {
-    return saltSource;
+    return this.saltSource;
   }
 
+  /**
+   * sets the {@link SaltSource}.
+   * 
+   * @param saltSource
+   *          the {@link SaltSource}
+   */
   public void setSaltSource(SaltSource saltSource) {
     this.saltSource = saltSource;
   }
@@ -87,7 +120,8 @@ public class LoginPasswordSecurityService implements SecurityService {
     try {
       aut = this.authenticationManager.authenticate(aut);
       SecurityContextHolder.getContext().setAuthentication(aut);
-    } catch (Exception e) {
+    }
+    catch (Exception e) {
       log.error("error while authenticating", e);
       return false;
     }

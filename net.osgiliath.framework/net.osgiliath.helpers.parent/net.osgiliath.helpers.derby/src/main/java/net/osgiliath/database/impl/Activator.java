@@ -34,13 +34,13 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.jdbc.DataSourceFactory;
 /**
- * Pax-JDBC derby client activator
+ * Pax-JDBC derby client activator.
  * @author charliemordant
  *
  */
 public class Activator implements BundleActivator {
   /**
-   * Started derby servers
+   * Started derby servers.
    */
   private final Map<String, Map<Integer, NetworkServerControl>> startedServers = new HashMap<String, Map<Integer, NetworkServerControl>>();
   /**
@@ -48,7 +48,7 @@ public class Activator implements BundleActivator {
    */
   private static Activator _instance;
   /**
-   * Start method
+   * Start method.
    * @param context the bundle context
    */
   @Override
@@ -62,7 +62,7 @@ public class Activator implements BundleActivator {
     _instance = this;
   }
   /**
-   * Stop method
+   * Stop method.
    * @param context the bundle context
    */
   @Override
@@ -77,14 +77,14 @@ public class Activator implements BundleActivator {
 
   }
   /**
-   * Singleton
+   * Singleton.
    * @return the singleton
    */
   protected static Activator getInstance() {
     return _instance;
   }
   /**
-   * gets the started derby servers
+   * Gets the started derby servers.
    * @return the started derby servers
    */
   protected Map<String, Collection<Integer>> getStartedServers() {
@@ -97,7 +97,7 @@ public class Activator implements BundleActivator {
     return ret;
   }
   /**
-   * Adds a network control for a server
+   * Adds a network control for a server.
    * @param host DB host
    * @param port DB port
    * @param control Network control

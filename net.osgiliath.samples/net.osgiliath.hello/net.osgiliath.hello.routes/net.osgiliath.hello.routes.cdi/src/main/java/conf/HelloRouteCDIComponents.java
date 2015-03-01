@@ -44,20 +44,20 @@ import org.ops4j.pax.cdi.api.OsgiService;
 @Eager
 public class HelloRouteCDIComponents {
   /**
-   * Messaging component import
+   * Messaging component import.
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
   private transient Component jms;
   /**
-   * transactional messaging component
+   * transactional messaging component.
    */
   @Inject
   @OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
   private transient Component jmsXA;
 
   /**
-   * Exception message converter processor
+   * Exception message converter processor.
    * @return JSR303 message processor
    */
   @Produces
@@ -68,7 +68,7 @@ public class HelloRouteCDIComponents {
   }
 
   /**
-   * JMS Conponent
+   * JMS Component.
    * @return JMS component CDI export
    */
   @Produces
@@ -90,7 +90,7 @@ public class HelloRouteCDIComponents {
   }
 
   /**
-   * HTTP camel component
+   * HTTP camel component.
    * @return HTTP component CDI export
    */
   @Produces
@@ -101,7 +101,7 @@ public class HelloRouteCDIComponents {
   }
 
   /**
-   * JSon dataformat
+   * JSon dataformat.
    * @return Json component CDI export
    */
   @Produces
@@ -111,7 +111,7 @@ public class HelloRouteCDIComponents {
   }
 
   /**
-   * XML to json dataformat
+   * XML to json dataformat.
    * @return XmlJson component CDI export
    */
   @Produces

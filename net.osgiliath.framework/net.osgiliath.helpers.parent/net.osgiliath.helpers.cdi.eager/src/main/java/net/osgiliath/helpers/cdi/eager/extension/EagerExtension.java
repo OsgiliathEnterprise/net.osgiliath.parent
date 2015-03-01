@@ -39,12 +39,12 @@ import net.osgiliath.helpers.cdi.eager.Eager;
  */
 public class EagerExtension implements Extension {
   /**
-   * List of eager startup beans
+   * List of eager startup beans.
    */
   private final transient Collection<Bean<?>> eagerBeansList = new ArrayList<Bean<?>>();
 
   /**
-   * Add beans to eager startup beans registry
+   * Add beans to eager startup beans registry.
    * 
    * @param event event to process
    */
@@ -56,7 +56,7 @@ public class EagerExtension implements Extension {
   }
 
   /**
-   * Loads all eagered annotated
+   * Loads all eagered annotated beans.
    * 
    * @param event
    *          deployement hook

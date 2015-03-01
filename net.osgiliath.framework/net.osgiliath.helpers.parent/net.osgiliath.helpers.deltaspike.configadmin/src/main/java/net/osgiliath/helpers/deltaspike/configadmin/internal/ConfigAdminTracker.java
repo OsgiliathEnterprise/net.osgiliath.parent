@@ -55,12 +55,12 @@ public class ConfigAdminTracker implements
     ServiceTrackerCustomizer<ConfigurationAdmin, Object>, ConfigSourceProvider {
 
   /**
-   * Properties
+   * Properties.
    */
   private final Collection<ConfigurationAdmin> admins = new HashSet<>();
 
   /**
-   * gets the registered configurations
+   * Gets the registered configurations.
    * 
    * @return the registered configurations
    */
@@ -77,7 +77,7 @@ public class ConfigAdminTracker implements
    */
   private transient BundleContext context;
   /**
-   * The service tracker
+   * The service tracker.
    */
   private transient ServiceTracker tracker;
 
@@ -145,7 +145,7 @@ public class ConfigAdminTracker implements
   }
 
   /**
-   * Modified a config
+   * Modified a config.
    */
   @Override
   public final void modifiedService(
@@ -156,7 +156,7 @@ public class ConfigAdminTracker implements
   }
 
   /**
-   * removed config
+   * removed config.
    */
   @Override
   public final void removedService(
@@ -167,7 +167,7 @@ public class ConfigAdminTracker implements
   }
 
   /**
-   * Get the property with the according key
+   * Get the property with the according key.
    * 
    * @param key
    *          the propertuy key
@@ -197,7 +197,10 @@ public class ConfigAdminTracker implements
     }
     return null;
   }
-
+  /**
+   * Retrieves the Properties map.
+   * @return the properties key/values.
+   */
   public Map<String, String> getProperties() {
     Map<String, String> ret = Maps.newHashMap();
     try {
@@ -227,7 +230,10 @@ public class ConfigAdminTracker implements
     }
     return ret;
   }
-
+  /**
+   * Gets the configuration sources.
+   * @return the configuration sources.
+   */
   @Override
   public List<ConfigSource> getConfigSources() {
     final List<ConfigSource> ret = Lists.newArrayList();

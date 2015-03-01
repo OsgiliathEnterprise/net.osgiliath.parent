@@ -37,12 +37,12 @@ import com.google.common.collect.Lists;
  */
 public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
-   * Instances elements
+   * Instances elements.
    */
   private final Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
-   * Registering instance
+   * Registering instance.
    * 
    * @param helloObject
    *          the element to save in the database
@@ -54,7 +54,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
   }
 
   /**
-   * Returns registered instances
+   * Returns registered instances.
    * 
    * @return all instances
    */
@@ -69,7 +69,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
         })));
   }
   /**
-   * Deletes all elements
+   * Deletes all elements.
    */
   @Override
   public void deleteHellos() {

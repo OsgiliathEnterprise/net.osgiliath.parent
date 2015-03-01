@@ -36,13 +36,13 @@ import net.osgiliath.features.karaf.jaxrs.web.cdi.HelloServiceJaxRS;
 @ApplicationPath("helloService")
 public class JaxRSCDIApplication extends Application {
   /**
-   * Injection of the service
+   * Injection of the service.
    */
   @Inject
   private transient HelloServiceJaxRS helloServiceJaxRS;
 
   /**
-   * returned service instances
+   * returned service instances.
    * @return service implems
    */
   @Override

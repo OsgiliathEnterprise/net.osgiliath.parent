@@ -30,7 +30,7 @@ import net.osgiliath.messaging.cdi.HelloEntity;
  */
 public interface HelloCDIRepository {
   /**
-   * Saves the entity
+   * Saves the entity.
    * 
    * @param entity
    *          to save
