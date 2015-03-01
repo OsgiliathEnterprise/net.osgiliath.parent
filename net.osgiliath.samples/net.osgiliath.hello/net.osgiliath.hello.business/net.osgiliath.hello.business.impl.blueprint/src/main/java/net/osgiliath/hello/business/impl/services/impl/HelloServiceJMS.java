@@ -125,7 +125,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
         .builder()
         .helloCollection(
             Lists.newArrayList(Iterables.transform(helloObjects,
-                helloObjectToStringFunction))).build();
+                this.helloObjectToStringFunction))).build();
   }
 
   /**
