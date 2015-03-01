@@ -36,7 +36,11 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.options.DefaultCompositeOption;
-
+/**
+ * General Pax exam configuration for Karaf.
+ * @author charliemordant
+ *
+ */
 @Slf4j
 public abstract class AbstractPaxExamKarafConfiguration {
   /**
