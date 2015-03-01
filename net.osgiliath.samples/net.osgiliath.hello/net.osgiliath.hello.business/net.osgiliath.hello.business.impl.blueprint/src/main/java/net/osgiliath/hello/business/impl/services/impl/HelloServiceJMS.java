@@ -72,7 +72,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
   /**
    * JMS consumer.
    * 
-   * @throws JMSException
+   * @throws JMSException persistence error
    */
   @Override
   public void persistHello(HelloEntity hello) {
@@ -109,7 +109,8 @@ public class HelloServiceJMS implements HelloService, MessageListener {
   }
 
   /**
-   * Returns all entities
+   * Returns all entities.
+   * @return all entities
    */
   @Override
   public Hellos getHellos() {
@@ -128,9 +129,9 @@ public class HelloServiceJMS implements HelloService, MessageListener {
   }
 
   /**
-   * Function that transforms entities to string
+   * Function that transforms entities to string.
    */
-  private transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  private final transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
     public String apply(HelloEntity entity) {

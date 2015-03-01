@@ -75,7 +75,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
     this.producer.sendBody(getHellos());
   }
   /**
-   * Returns all elements
+   * Returns all elements.
    * @return all elements
    */
   @Override
@@ -95,7 +95,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
   /**
    * transforming elements in strings
    */
-  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  private final transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
     public String apply(HelloEntity arg0) {
@@ -111,7 +111,8 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 
   }
   /**
-   * receives JMS message
+   * receives JMS message.
+   * @throws Exception Persistence error
    */
   @Override
   public void configure() throws Exception {
