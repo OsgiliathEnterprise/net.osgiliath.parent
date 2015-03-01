@@ -53,7 +53,7 @@ public class HelloRoute extends RouteBuilder {
   /**
    * Json Dataformat
    */
-  private DataFormat helloObjectJSonFormat = new JacksonDataFormat(
+  private transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
       HelloEntity.class, Hellos.class);
   /**
    * JSR303 Validation message processor
@@ -90,7 +90,7 @@ public class HelloRoute extends RouteBuilder {
   @Override
   public void configure() throws Exception {
     final JAXBContext ctx = JAXBContext.newInstance(new Class[] { HelloEntity.class,
-        Hellos.class });
+        Hellos.class, });
     final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 
     from("{{hello.MessagingEntryPoint}}")

@@ -37,7 +37,7 @@ import lombok.Data;
 @Data
 @MappedSuperclass
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class AbstractEntity {
+public class AbstractEntity {
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
     @XmlElement
     protected Long entityId;

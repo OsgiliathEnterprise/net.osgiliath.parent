@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 extraProperties=sonar.jacoco.itReportPath\=${parent.path}/target/jacoco-it.exec\r\nsonar.java.coveragePlugin\=jacoco\r\nsonar.jacoco.reportPath\=${parent.path}/target/jacoco.exec
+lastAnalysisDate=1425167343000
 projectKey=net.osgiliath.wrappers\:net.osgiliath.wrapper.spring-batch-core
 serverUrl=http\://quality.osgiliath.net
 version=2

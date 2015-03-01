@@ -39,7 +39,7 @@ public class JSR303Activator implements BundleActivator {
   /**
    * Validation providers tracker.
    */
-  private ServiceTracker tracker;
+  private transient ServiceTracker tracker;
 
   /**
    * Start method.

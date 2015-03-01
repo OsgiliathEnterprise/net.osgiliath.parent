@@ -79,7 +79,7 @@ public class ConfigAdminTracker implements
   /**
    * The service tracker
    */
-  private ServiceTracker tracker;
+  private transient ServiceTracker tracker;
 
   /**
    * Singleton.
@@ -89,7 +89,6 @@ public class ConfigAdminTracker implements
   public static synchronized ConfigAdminTracker getInstance(
       BundleContext context) {
     if (instance == null) {
-
       instance = new ConfigAdminTracker();
       if (context == null) {
         instance.context = FrameworkUtil.getBundle(DeltaSpike.class)

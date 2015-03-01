@@ -81,6 +81,19 @@ public abstract class AbstractPaxExamKarafConfiguration {
    */
   protected static final String DEBUG_VM_OPTION = "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=31313";
   /**
+   * Max heap size.
+   */
+  private static final String maxHeap = "-Xmx512m";
+  /**
+   * Min heap size.
+   */
+  private static final String minHeap = "-Xms128m";
+  /**
+   * Max perm size.
+   */
+  private static final String maxPerm = "-XX:MaxPermSize=256m";
+  
+  /**
    * Pax VM options
    */
   protected static String paxRunnerVmOption;
@@ -159,9 +172,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
    */
   private Option[] addJVMOptions() {
 
-    final String maxHeap = "-Xmx512m";
-    final String minHeap = "-Xms128m";
-    final String maxPerm = "-XX:MaxPermSize=256m";
+    
     return options(CoreOptions.vmOption(maxHeap),
         CoreOptions.vmOption(minHeap), CoreOptions.vmOption(maxPerm));
   }

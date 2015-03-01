@@ -88,7 +88,7 @@ public class HelloServiceJaxRS implements
    * converts entities to Strings
    */
   // Guava function waiting for Java 8
-  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  private transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
     public String apply(HelloEntity arg0) {

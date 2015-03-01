@@ -39,16 +39,16 @@ import lombok.Data;
 @MappedSuperclass
 // @XmlRootElement on your child class
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class AbstractEntity {
+public class AbstractEntity {
   /**
-   * Identifier
+   * Identifier.
    */
   @XmlElement
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   protected Long entityId;
   /**
-   * Element version
+   * Element version.
    */
   @Version
   private Long version;

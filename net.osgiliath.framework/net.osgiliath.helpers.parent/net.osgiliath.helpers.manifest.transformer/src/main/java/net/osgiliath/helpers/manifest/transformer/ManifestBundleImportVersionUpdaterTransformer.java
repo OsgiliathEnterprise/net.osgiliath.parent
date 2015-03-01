@@ -152,7 +152,7 @@ public class ManifestBundleImportVersionUpdaterTransformer {
           updatedImports.append(specialization);
 
         }
-        updatedImports.append(",");
+        updatedImports.append(',');
       }
 
     }

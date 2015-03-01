@@ -62,19 +62,19 @@ public class HelloJMSCDIRepository implements HelloCDIRepository {
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueOut")
-  private ProducerTemplate producer;
+  private transient ProducerTemplate producer;
   /**
    * message producer for internal consuming
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueIn2")
-  private ProducerTemplate internalProducer;
+  private transient ProducerTemplate internalProducer;
   /**
    * Producer for the route
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueIn")
-  private ProducerTemplate routeProducer;
+  private transient ProducerTemplate routeProducer;
 
   /**
    * Saves entities

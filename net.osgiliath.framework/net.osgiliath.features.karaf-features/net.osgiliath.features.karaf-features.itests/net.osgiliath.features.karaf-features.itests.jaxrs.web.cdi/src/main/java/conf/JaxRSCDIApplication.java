@@ -39,7 +39,7 @@ public class JaxRSCDIApplication extends Application {
    * Injection of the service
    */
   @Inject
-  private HelloServiceJaxRS helloServiceJaxRS;
+  private transient HelloServiceJaxRS helloServiceJaxRS;
 
   /**
    * returned service instances

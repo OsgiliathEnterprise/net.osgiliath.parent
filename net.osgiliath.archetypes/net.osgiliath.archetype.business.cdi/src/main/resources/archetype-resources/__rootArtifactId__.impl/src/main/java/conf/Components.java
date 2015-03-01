@@ -42,12 +42,12 @@ public class Components {
 	
 	@Inject
 	@OsgiService(filter = "(component-type=jms)", dynamic = true)
-	private Component jms;
+	private transient Component jms;
 
 	@Produces
 	@Named("jms")
 	public Component getJms() {
 		log.info("Inject jms route");
-		return jms;
+		return this.jms;
 	}
 }

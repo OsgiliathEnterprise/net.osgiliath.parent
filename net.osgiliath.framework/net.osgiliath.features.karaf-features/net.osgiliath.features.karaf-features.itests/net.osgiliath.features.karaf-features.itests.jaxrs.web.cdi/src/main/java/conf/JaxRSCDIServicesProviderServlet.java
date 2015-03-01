@@ -38,5 +38,11 @@ public class JaxRSCDIServicesProviderServlet extends CXFCdiServlet {
    * Serial 
    */
   private static final long serialVersionUID = 6922224281418865476L;
+  /**
+   * Ctor.
+   */
+  public JaxRSCDIServicesProviderServlet() {
+    super();
+  }
 
 }

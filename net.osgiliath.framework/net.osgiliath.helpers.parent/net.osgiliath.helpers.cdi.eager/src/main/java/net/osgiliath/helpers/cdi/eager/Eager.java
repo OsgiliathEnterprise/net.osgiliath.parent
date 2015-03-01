@@ -21,9 +21,9 @@ package net.osgiliath.helpers.cdi.eager;
  */
 
 import javax.inject.Qualifier;
-import static java.lang.annotation.ElementType.TYPE;
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 
@@ -33,7 +33,7 @@ import java.lang.annotation.Target;
  *         if they're not injected
  */
 @Qualifier
-@Retention(RUNTIME)
-@Target(TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
 public @interface Eager {
 }

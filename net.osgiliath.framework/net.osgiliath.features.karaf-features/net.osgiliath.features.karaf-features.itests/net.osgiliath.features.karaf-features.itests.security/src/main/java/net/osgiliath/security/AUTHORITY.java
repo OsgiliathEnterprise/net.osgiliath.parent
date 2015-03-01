@@ -20,14 +20,14 @@ package net.osgiliath.security;
  * #L%
  */
 /**
- * Right access for an {@link MUser}
+ * Right access for an {@link MUser}.
  * 
  * @author Charlie
  * 
  */
 public enum AUTHORITY {
   /**
-   * Rights access
+   * Rights access.
    */
   MEMBER("Member"), PREMIUM("Premium");
   /**

@@ -44,8 +44,8 @@ import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 @ApplicationPath("/sampleService")
 public class CXFApplication extends Application {
   
-     // @Inject private HelloServiceJaxRS helloService;
-      @Inject private ApiListingResourceJSON swaggerService;
+     // @Inject private transient HelloServiceJaxRS helloService;
+      @Inject private transient ApiListingResourceJSON swaggerService;
        /**
         * Services to publish
         * @return the services

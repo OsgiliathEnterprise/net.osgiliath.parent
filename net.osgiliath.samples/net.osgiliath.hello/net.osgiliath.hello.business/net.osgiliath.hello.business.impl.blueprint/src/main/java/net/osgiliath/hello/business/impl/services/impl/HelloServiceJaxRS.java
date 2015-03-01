@@ -50,12 +50,12 @@ public class HelloServiceJaxRS implements
    * Repository to persist data.
    */
   @Setter
-  private HelloObjectRepository helloObjectRepository;
+  private transient HelloObjectRepository helloObjectRepository;
   /**
    * JSR 303 validator.
    */
   @Setter
-  private Validator validator;
+  private transient Validator validator;
 
   /**
    * Saves the object or throw an exception if the Object is not valid.
@@ -75,7 +75,7 @@ public class HelloServiceJaxRS implements
         log.info("subscription error, validating user:"
             + violation.getMessage());
         errors.append(violation.getPropertyPath()).append(": ")
-            .append(violation.getMessage().replaceAll("\"", "")).append(";");
+            .append(violation.getMessage().replaceAll("\"", "")).append(';');
       }
       throw new ValidationException(errors.toString());
     }
@@ -106,7 +106,7 @@ public class HelloServiceJaxRS implements
   /**
    * Function that transforms helloEntity to String
    */
-  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  private transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
     public String apply(HelloEntity arg0) {

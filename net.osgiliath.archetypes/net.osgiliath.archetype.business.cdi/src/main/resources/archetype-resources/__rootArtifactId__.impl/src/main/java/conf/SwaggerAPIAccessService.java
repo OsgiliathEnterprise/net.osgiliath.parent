@@ -42,20 +42,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Path("/api-docs")
 @Api("/api-docs")
-@Produces(value={MediaType.APPLICATION_JSON})
+@Produces(value= MediaType.APPLICATION_JSON)
 public class SwaggerAPIAccessService extends ApiListingResourceJSON{
     /**
      * Configuration to provide
      */
 	@Inject
-	private BeanConfig config;
+	private transient BeanConfig config;
 	
 	/**
 	 * injects the configuration
 	 */
 	@PostConstruct
 	private void injectConfig() {
-		config.toString();
+		this.config.toString();
 	}
 
 }

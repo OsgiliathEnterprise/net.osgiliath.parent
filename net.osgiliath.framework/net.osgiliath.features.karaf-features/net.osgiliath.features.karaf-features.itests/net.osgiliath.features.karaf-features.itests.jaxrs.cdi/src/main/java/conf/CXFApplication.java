@@ -49,12 +49,12 @@ public class CXFApplication extends Application {
    * The injected REST endpoint
    */
   @Inject
-  private HelloServiceJaxRS helloService;
+  private transient HelloServiceJaxRS helloService;
   /**
    * Swagger endpoint
    */
   @Inject
-  private ApiListingResourceJSON swaggerService;
+  private transient ApiListingResourceJSON swaggerService;
 
   /*
    * @see {@link javax.ws.rs.core.Application#getSingletons()}

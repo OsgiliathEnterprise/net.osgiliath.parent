@@ -83,7 +83,7 @@ public class HelloRoute extends RouteBuilder {
   @Override
   public void configure() throws Exception {
     final JAXBContext ctx = JAXBContext.newInstance(new Class[] { HelloEntity.class,
-        Hellos.class });
+        Hellos.class, });
     final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 
     from("{{hello.MessagingEntryPoint}}")

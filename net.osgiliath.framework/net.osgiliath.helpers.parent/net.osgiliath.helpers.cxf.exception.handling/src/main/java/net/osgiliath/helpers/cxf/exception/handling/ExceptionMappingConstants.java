@@ -26,6 +26,12 @@ package net.osgiliath.helpers.cxf.exception.handling;
  */
 public class ExceptionMappingConstants {
   /**
+   * Private Ctor.
+   */
+  private ExceptionMappingConstants() {
+    super();
+  }
+  /**
    * The exception body http header.
    */
   public static final String EXCEPTION_BODY_HEADER = "ExceptionBody";

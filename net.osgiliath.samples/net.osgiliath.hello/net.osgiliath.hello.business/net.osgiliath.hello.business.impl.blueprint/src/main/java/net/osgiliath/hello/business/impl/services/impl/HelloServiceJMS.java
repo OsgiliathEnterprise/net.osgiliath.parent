@@ -90,7 +90,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
         log.info("subscription error, validating user:"
             + violation.getMessage());
         errors.append(violation.getPropertyPath()).append(": ")
-            .append(violation.getMessage().replaceAll("\"", "")).append(";")
+            .append(violation.getMessage().replaceAll("\"", "")).append(';')
             .append(System.lineSeparator());
       }
       this.template.send("helloServiceQueueErrors", new MessageCreator() {
@@ -130,7 +130,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
   /**
    * Function that transforms entities to string
    */
-  private Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  private transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
     public String apply(HelloEntity entity) {

@@ -46,11 +46,11 @@ public class CXFApplication extends Application {
     /**
      * JaxRS service to register
      */
-      @Inject private HelloServiceJaxRS helloService;
+      @Inject private transient HelloServiceJaxRS helloService;
       /**
        * Swagger API service
        */
-      @Inject private ApiListingResourceJSON swaggerService;
+      @Inject private transient  ApiListingResourceJSON swaggerService;
       /**
        * Registered web services
        * @return services

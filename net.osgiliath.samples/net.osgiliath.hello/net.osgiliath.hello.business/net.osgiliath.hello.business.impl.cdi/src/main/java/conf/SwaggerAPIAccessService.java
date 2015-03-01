@@ -37,13 +37,13 @@ import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
  */
 @Path("/api-docs")
 @Api("/api-docs")
-@Produces(value = { MediaType.APPLICATION_JSON })
+@Produces(value = MediaType.APPLICATION_JSON )
 public class SwaggerAPIAccessService extends ApiListingResourceJSON {
   /**
    * Swagger configuration
    */
   @Inject
-  private BeanConfig config;
+  private transient BeanConfig config;
   /**
    * Creates configuration
    */
