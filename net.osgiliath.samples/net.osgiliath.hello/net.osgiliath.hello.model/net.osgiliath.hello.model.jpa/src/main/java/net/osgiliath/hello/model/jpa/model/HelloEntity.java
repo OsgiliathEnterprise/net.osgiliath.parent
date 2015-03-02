@@ -56,11 +56,11 @@ import lombok.experimental.Builder;
 @ApiModel(value = "Hello Entity", description = "Hello resource representation")
 public class HelloEntity extends AbstractEntity implements Serializable {
   /**
-   * Serial
+   * Serial.
    */
   private static final transient long serialVersionUID = 6233801298404301547L;
   /**
-   * Message
+   * Message.
    */
   @XmlElement
   // XML node

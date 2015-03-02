@@ -73,7 +73,7 @@ public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
   /**
-   * Test an injected property
+   * Test an injected property.
    * @throws Exception not expected
    */
   @Test

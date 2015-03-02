@@ -29,7 +29,7 @@ import net.osgiliath.jaxrs.Hellos;
 import net.osgiliath.jaxrs.repository.HelloRepository;
 
 /**
- * Simple Jaxrs Repository
+ * Simple Jaxrs Repository.
  * @author charliemordant Implementation of the REST service
  */
 public class HelloJaxRSRepository implements HelloRepository {

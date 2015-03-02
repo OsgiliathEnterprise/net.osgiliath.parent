@@ -103,7 +103,7 @@ public class HelloObjectJpaRepository extends
   }
 
   /**
-   * deletes all entities
+   * deletes all entities.
    */
   @Override
   public void deleteAll() {

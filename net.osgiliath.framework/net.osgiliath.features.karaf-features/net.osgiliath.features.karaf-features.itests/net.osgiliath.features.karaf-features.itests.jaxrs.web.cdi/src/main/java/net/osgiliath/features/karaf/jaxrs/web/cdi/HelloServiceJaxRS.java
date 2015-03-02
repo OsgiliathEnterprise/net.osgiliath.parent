@@ -37,7 +37,7 @@ import net.osgiliath.features.karaf.jaxrs.web.cdi.model.Hellos;
 @Path("/hello")
 public interface HelloServiceJaxRS {
   /**
-   * register instance
+   * register instance.
    * 
    * @param helloObject
    *          instance
@@ -47,7 +47,7 @@ public interface HelloServiceJaxRS {
   void persistHello(HelloObject helloObject);
 
   /**
-   * get all
+   * get all.
    * 
    * @return registered instances
    */

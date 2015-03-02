@@ -81,7 +81,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
   @Override
   public Hellos getHellos() {
 
-    final Collection<HelloEntity> helloObjects = helloObjectRepository.findAll();
+    final Collection<HelloEntity> helloObjects = this.helloObjectRepository.findAll();
     if (helloObjects.isEmpty()) {
       throw new UnsupportedOperationException(
           "You could not call this method when the list is empty");
@@ -93,7 +93,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
                 this.helloObjectToStringFunction))).build();
   }
   /**
-   * transforming elements in strings
+   * transforming elements in strings.
    */
   private final transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
@@ -103,7 +103,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
     }
   };
   /**
-   * Deletes all elements
+   * Deletes all elements.
    */
   @Override
   public void deleteAll() {

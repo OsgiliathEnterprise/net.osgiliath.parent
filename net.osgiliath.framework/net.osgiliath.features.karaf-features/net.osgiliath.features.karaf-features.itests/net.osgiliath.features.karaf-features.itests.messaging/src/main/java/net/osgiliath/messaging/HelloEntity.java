@@ -37,15 +37,15 @@ import lombok.experimental.Builder;
 @AllArgsConstructor
 public class HelloEntity implements Serializable {
   /**
-   * serial
+   * serial.
    */
   private static final long serialVersionUID = -559379928931329555L;
   /**
-   * Id
+   * Id.
    */
   private Long entityId;
   /**
-   * message
+   * message.
    */
   private String helloMessage;
 

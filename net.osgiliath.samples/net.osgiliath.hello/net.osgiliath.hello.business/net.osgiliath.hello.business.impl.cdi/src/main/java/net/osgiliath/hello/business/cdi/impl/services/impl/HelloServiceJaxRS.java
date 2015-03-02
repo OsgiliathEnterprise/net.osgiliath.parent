@@ -47,14 +47,14 @@ import com.google.common.collect.Lists;
 public class HelloServiceJaxRS implements
     net.osgiliath.hello.business.cdi.impl.HelloServiceJaxRS {
   /**
-   * JPA persistence repository
+   * JPA persistence repository.
    */
   @Inject
   @OsgiService
   private transient HelloObjectRepository helloObjectRepository;
 
   /**
-   * persistence module
+   * persistence module.
    * @param helloObject element to save
    */
   @Override
@@ -66,12 +66,12 @@ public class HelloServiceJaxRS implements
   }
 
   /**
-   * Gets hello entities
+   * Gets hello entities.
    * @return the entities
    */
   @Override
   public Hellos getHellos() {
-    final Collection<HelloEntity> helloObjects = helloObjectRepository
+    final Collection<HelloEntity> helloObjects = this.helloObjectRepository
         .findAll();
     if (helloObjects.isEmpty()) {
       throw new UnsupportedOperationException(
@@ -85,7 +85,7 @@ public class HelloServiceJaxRS implements
   }
 
   /**
-   * converts entities to Strings
+   * converts entities to Strings.
    */
   // Guava function waiting for Java 8
   private final transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
@@ -97,7 +97,7 @@ public class HelloServiceJaxRS implements
   };
 
   /**
-   * deletes all entities
+   * deletes all entities.
    */
   @Override
   public void deleteAll() {

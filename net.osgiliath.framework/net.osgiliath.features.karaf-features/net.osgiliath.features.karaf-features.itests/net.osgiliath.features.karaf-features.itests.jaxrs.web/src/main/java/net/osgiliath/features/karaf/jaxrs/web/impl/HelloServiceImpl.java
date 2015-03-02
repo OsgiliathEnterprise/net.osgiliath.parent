@@ -37,12 +37,12 @@ import com.google.common.collect.Lists;
  */
 public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
-   * Instance collection
+   * Instance collection.
    */
   private final transient Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
-   * Saves instances
+   * Saves instances.
    * 
    * @param helloObject
    *          the element to save
@@ -53,7 +53,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
   }
 
   /**
-   * return instances
+   * return instances.
    * 
    * @return all elements
    */

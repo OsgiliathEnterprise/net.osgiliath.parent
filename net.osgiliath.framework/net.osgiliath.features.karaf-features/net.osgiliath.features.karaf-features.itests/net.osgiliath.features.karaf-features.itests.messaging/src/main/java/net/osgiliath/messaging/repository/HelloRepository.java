@@ -31,7 +31,7 @@ import net.osgiliath.messaging.Hellos;
  */
 public interface HelloRepository {
   /**
-   * finds entity by message
+   * finds entity by message.
    * 
    * @param message
    *          the message
@@ -40,7 +40,7 @@ public interface HelloRepository {
   Collection<? extends HelloEntity> findByHelloObjectMessage(String message);
 
   /**
-   * Entity persistence
+   * Entity persistence.
    * 
    * @param entity
    *          to save
@@ -49,14 +49,14 @@ public interface HelloRepository {
   <S extends HelloEntity> void save(S entity);
 
   /**
-   * gets all entities
+   * gets all entities.
    * 
    * @return all entities
    */
   Hellos findAll();
 
   /**
-   * deletes all entities
+   * deletes all entities.
    */
   void deleteAll();
 }

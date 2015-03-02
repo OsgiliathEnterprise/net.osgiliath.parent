@@ -48,7 +48,7 @@ public abstract class AbstractPaxExamKarafConfiguration {
    */
   private static final String PAX_URL_MVN_SETTINGS_PROPERTY = "org.ops4j.pax.url.mvn.settings";
   /**
-   * Pax maven url handler file location
+   * Pax maven url handler file location.
    */
   private static final String PAX_URL_MVN_CFG = "etc/org.ops4j.pax.url.mvn.cfg";
   /**

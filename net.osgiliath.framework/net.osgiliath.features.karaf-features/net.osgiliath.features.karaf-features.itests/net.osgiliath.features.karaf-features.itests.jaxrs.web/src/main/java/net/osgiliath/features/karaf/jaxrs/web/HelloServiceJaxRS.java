@@ -38,7 +38,7 @@ import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 @Path("/hello")
 public interface HelloServiceJaxRS {
   /**
-   * Saves elements
+   * Saves elements.
    * 
    * @param helloObject
    *          object to save
@@ -48,7 +48,7 @@ public interface HelloServiceJaxRS {
   void persistHello(HelloObject helloObject);
 
   /**
-   * get all
+   * get all.
    * 
    * @return all instances
    */
@@ -56,7 +56,7 @@ public interface HelloServiceJaxRS {
   @Produces(MediaType.APPLICATION_XML)
   Hellos getHellos();
   /**
-   * deletes all elements
+   * deletes all elements.
    */
   @DELETE
   void deleteHellos();

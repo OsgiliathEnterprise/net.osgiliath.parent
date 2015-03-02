@@ -44,7 +44,7 @@ import lombok.experimental.Builder;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Hellos {
   /**
-   * Collection of entities
+   * Collection of entities.
    */
   @XmlElement
   private Collection<HelloEntity> helloCollection;

@@ -32,7 +32,7 @@ import net.osgiliath.validator.osgi.ValidatorHelper;
  */
 public class CDIValidator {
   /**
-   * cdi injected validator
+   * cdi injected validator.
    * 
    * @return the validator (with good classloader)
    */

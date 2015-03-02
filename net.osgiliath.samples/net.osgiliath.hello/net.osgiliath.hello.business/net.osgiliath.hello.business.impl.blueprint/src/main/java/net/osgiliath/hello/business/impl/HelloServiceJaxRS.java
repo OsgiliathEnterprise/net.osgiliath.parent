@@ -42,7 +42,7 @@ import net.osgiliath.hello.model.jpa.model.HelloEntity;
 @Api(value = "hello", description = "The hello resource access")
 public interface HelloServiceJaxRS extends HelloService {
   /**
-   * saves an entity
+   * saves an entity.
    * 
    * @param helloObject
    *          element to persist
@@ -52,7 +52,7 @@ public interface HelloServiceJaxRS extends HelloService {
   void persistHello(HelloEntity helloObject);
 
   /**
-   * gets all entities
+   * gets all entities.
    */
   @GET
   @Produces(MediaType.APPLICATION_XML)
@@ -60,7 +60,7 @@ public interface HelloServiceJaxRS extends HelloService {
   Hellos getHellos();
 
   /**
-   * deletes all entities
+   * deletes all entities.
    */
   @DELETE
   void deleteAll();

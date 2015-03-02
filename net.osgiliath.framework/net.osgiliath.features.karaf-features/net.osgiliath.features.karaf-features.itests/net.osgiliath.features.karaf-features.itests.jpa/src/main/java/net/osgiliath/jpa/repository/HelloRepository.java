@@ -33,7 +33,7 @@ import net.osgiliath.jpa.model.HelloEntity;
  */
 public interface HelloRepository {
   /**
-   * Finds by message
+   * Finds by message.
    * 
    * @param message
    *          message
@@ -42,7 +42,7 @@ public interface HelloRepository {
   Collection<? extends HelloEntity> findByHelloObjectMessage(String message);
 
   /**
-   * Saves
+   * Saves.
    * 
    * @param entity
    *          the entity
@@ -51,13 +51,13 @@ public interface HelloRepository {
   <S extends HelloEntity> S save(S entity);
 
   /**
-   * 
+   * Finds all entities.
    * @return all entities
    */
   List<HelloEntity> findAll();
 
   /**
-   * deletes all
+   * deletes all.
    */
   void deleteAll();
 }

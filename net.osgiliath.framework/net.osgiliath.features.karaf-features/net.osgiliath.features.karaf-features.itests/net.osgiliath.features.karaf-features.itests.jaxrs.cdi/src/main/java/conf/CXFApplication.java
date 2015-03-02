@@ -46,12 +46,12 @@ import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 @ApplicationPath("/helloService")
 public class CXFApplication extends Application {
   /**
-   * The injected REST endpoint
+   * The injected REST endpoint.
    */
   @Inject
   private transient HelloServiceJaxRS helloService;
   /**
-   * Swagger endpoint
+   * Swagger endpoint.
    */
   @Inject
   private transient ApiListingResourceJSON swaggerService;

@@ -32,7 +32,7 @@ import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 @Named("xstream")
 public class CDIXStreamDataFormatWithGoodClassLoader extends XStreamDataFormat {
   /**
-   * sets the right classloader for xstream
+   * sets the right classloader for xstream.
    */
   public CDIXStreamDataFormatWithGoodClassLoader() {
     super();

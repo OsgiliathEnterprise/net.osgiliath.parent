@@ -55,7 +55,7 @@ public interface HelloServiceJaxRS extends HelloService {
   void persistHello(@NotNull @Valid HelloEntity helloObject);
 
   /**
-   * Gets hellos
+   * Gets hellos.
    * @return all elements
    */
   @GET
@@ -64,7 +64,7 @@ public interface HelloServiceJaxRS extends HelloService {
   Hellos getHellos();
 
   /**
-   * deletes all hello
+   * deletes all hello.
    */
   @DELETE
   void deleteAll();

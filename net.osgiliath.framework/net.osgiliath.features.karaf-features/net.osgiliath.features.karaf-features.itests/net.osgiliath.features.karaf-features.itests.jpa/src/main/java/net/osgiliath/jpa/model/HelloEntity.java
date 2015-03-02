@@ -45,17 +45,17 @@ import lombok.experimental.Builder;
 @Entity
 public class HelloEntity implements Serializable {
   /**
-   * Serial
+   * Serial.
    */
   private static final transient long serialVersionUID = -4563351879876924302L;
   /**
-   * Id
+   * Id.
    */
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   protected Long entityId;
   /**
-   * message
+   * message.
    */
   private String helloMessage;
 

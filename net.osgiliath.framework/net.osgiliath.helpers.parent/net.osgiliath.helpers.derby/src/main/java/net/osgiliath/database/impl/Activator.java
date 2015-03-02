@@ -46,7 +46,7 @@ public class Activator implements BundleActivator {
    */
   private final Map<String, Map<Integer, NetworkServerControl>> startedServers = new HashMap<String, Map<Integer, NetworkServerControl>>();
   /**
-   * Singleton
+   * Singleton.
    */
   private static Activator instance;
 

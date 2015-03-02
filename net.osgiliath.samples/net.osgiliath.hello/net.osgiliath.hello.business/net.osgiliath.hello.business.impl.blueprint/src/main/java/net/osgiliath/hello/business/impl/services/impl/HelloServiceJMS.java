@@ -140,7 +140,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
   };
 
   /**
-   * Deletes all entities
+   * Deletes all entities.
    */
   @Override
   public void deleteAll() {
@@ -148,7 +148,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
 
   }
   /**
-   * Method called on message reception
+   * Method called on message reception.
    * @param message received message
    */
   @Override

@@ -70,7 +70,7 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
   /**
    * exported REST adress.
    */
-  private static String helloServiceBaseUrl = "http://localhost:8181/helloService/cxf";
+  private static String HELLO_SERVICE_URL = "http://localhost:8181/helloService/cxf";
 
   /**
    * probe adding the abstract test class.
@@ -88,7 +88,7 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
   /**
-   * Tries to send and hello entity to the web service
+   * Tries to send and hello entity to the web service.
    * @throws Exception not expected
    */
   @Test
@@ -98,7 +98,7 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
 
     final Client client = ClientBuilder.newClient();
 
-    WebTarget target = client.target(helloServiceBaseUrl);
+    WebTarget target = client.target(HELLO_SERVICE_URL);
     target = target.path("hello");
     final Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
     final HelloObject entity = HelloObject.builder().helloMessage("John").build();

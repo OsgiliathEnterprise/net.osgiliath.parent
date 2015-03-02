@@ -31,7 +31,7 @@ import com.wordnik.swagger.jaxrs.config.BeanConfig;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 
 /**
- * Swagger service
+ * Swagger service.
  * @author charliemordant
  *
  */
@@ -40,12 +40,12 @@ import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 @Produces(value = MediaType.APPLICATION_JSON )
 public class SwaggerAPIAccessService extends ApiListingResourceJSON {
   /**
-   * Swagger configuration
+   * Swagger configuration.
    */
   @Inject
   private transient BeanConfig config;
   /**
-   * Creates configuration
+   * Creates configuration.
    */
   @PostConstruct
   private void injectConfig() {

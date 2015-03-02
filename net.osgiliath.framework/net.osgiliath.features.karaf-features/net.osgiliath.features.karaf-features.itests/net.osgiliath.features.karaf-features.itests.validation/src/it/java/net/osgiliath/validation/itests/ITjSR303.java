@@ -66,7 +66,7 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
   @Inject
   private transient BundleContext bundleContext;
   /**
-   * Exported service via blueprint.xml
+   * Exported service via blueprint.xml.
    */
   @Inject
   @Filter(timeout = 40000)

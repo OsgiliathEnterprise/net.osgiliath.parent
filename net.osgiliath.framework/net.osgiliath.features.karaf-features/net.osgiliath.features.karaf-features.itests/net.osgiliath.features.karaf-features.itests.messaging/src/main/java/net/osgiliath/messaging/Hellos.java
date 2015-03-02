@@ -32,11 +32,11 @@ import lombok.Data;
 @Data
 public class Hellos implements Serializable {
   /**
-   * serial
+   * serial.
    */
   private static final long serialVersionUID = 1104941154797467749L;
   /**
-   * collection
+   * collection.
    */
   private Collection<HelloEntity> entities;
 

@@ -41,12 +41,12 @@ import com.google.common.collect.Lists;
 @ApplicationScoped
 public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
-   * Instances registry
+   * Instances registry.
    */
   private final transient Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
-   * Saves instance
+   * Saves instance.
    * @param helloObject instance to save
    */
   @Override
@@ -55,7 +55,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
   }
 
   /**
-   * Returns instances
+   * Returns instances.
    * @return all instances
    */
   @Override
