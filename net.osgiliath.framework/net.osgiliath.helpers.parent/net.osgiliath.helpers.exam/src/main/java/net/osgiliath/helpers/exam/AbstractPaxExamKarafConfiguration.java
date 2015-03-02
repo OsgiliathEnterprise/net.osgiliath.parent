@@ -92,15 +92,15 @@ public abstract class AbstractPaxExamKarafConfiguration {
   /**
    * Max heap size.
    */
-  private static final String maxHeap = "-Xmx512m";
+  private static final String MAX_HEAP = "-Xmx512m";
   /**
    * Min heap size.
    */
-  private static final String minHeap = "-Xms128m";
+  private static final String MIN_HEAP = "-Xms128m";
   /**
    * Max perm size.
    */
-  private static final String maxPerm = "-XX:MaxPermSize=256m";
+  private static final String MAX_PERM = "-XX:MaxPermSize=256m";
   
   /**
    * Pax VM options.
@@ -182,8 +182,8 @@ public abstract class AbstractPaxExamKarafConfiguration {
   private Option[] addJVMOptions() {
 
     
-    return options(CoreOptions.vmOption(maxHeap),
-        CoreOptions.vmOption(minHeap), CoreOptions.vmOption(maxPerm));
+    return options(CoreOptions.vmOption(MAX_HEAP),
+        CoreOptions.vmOption(MIN_HEAP), CoreOptions.vmOption(MAX_PERM));
   }
   /**
    * Adds code coverage options.

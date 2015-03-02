@@ -48,7 +48,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO example of an integration test
+ * Security integration test.
  * 
  * @author charliemordant
  * 
@@ -56,16 +56,27 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITsecurity extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
-
+  /**
+   * Logger.
+   */
+  private static final Logger LOG = LoggerFactory.getLogger(ITsecurity.class);
+  /**
+   * OSGI Bundle context.
+   */
   @Inject
-  private BundleContext bundleContext;
-  // Exported service via blueprint.xml
+  private transient BundleContext bundleContext;
+  /**
+   *  Exported service via blueprint.xml.
+   */
   @Inject
   @Filter(timeout = 40000)
-  private SecurityService securityService;
+  private transient SecurityService securityService;
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * @param builder the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -74,21 +85,27 @@ public class ITsecurity extends AbstractPaxExamKarafConfiguration {
     builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
     return builder;
   }
-
+  /**
+   * User authentication test.
+   * @throws Exception not expected
+   */
   @Test
   public void testAuthenticate() throws Exception {
     LOG.trace("************Listing **********************");
-    for (Bundle b : bundleContext.getBundles()) {
+    for (final Bundle b : bundleContext.getBundles()) {
       LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
     }
-    MUser user = new MUser();
+    final MUser user = new MUser();
     user.setPseudo("toto");
     user.setPassword("myPassword");
-    securityService.onSubscription(user);
-    assertTrue(securityService.authenticate("toto", "myPassword"));
+    this.securityService.onSubscription(user);
+    assertTrue(this.securityService.authenticate("toto", "myPassword"));
 
   }
-
+  /**
+   * Karaf feature to test.
+   * @return the feature
+   */
   @Override
   protected Option featureToTest() {
     return features(
@@ -101,10 +118,13 @@ public class ITsecurity extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Pax exam configuration creation.
+   * @return the provisionned configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();

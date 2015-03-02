@@ -41,7 +41,7 @@ public class HibernateValidationOSGIServicesProviderResolver implements
   /**
    * Validation providers.
    */
-  private transient List<ValidationProvider<?>> providers = Lists.newArrayList();
+  private final transient List<ValidationProvider<?>> providers = Lists.newArrayList();
 
   /**
    * private CTor.

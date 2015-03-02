@@ -87,7 +87,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   /**
    * exported REST address.
    */
-  private static final String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  private static final String SERVICE_BASE_URL = "http://localhost:8181/cxf/helloService";
 
   /**
    * probe adding the abstract test class.
@@ -112,7 +112,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   @Before
   public void cleanMessages() {
     final Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(helloServiceBaseUrl);
+    WebTarget target = client.target(SERVICE_BASE_URL);
     target = target.path("hello");
     final Invocation.Builder builder = target
         .request(MediaType.APPLICATION_XML);
@@ -130,7 +130,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   public void testSayHello() throws Exception {
     log.trace("************ start testSayHello **********************");
     final Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(helloServiceBaseUrl);
+    WebTarget target = client.target(SERVICE_BASE_URL);
     target = target.path("hello");
     final Invocation.Builder builder = target
         .request(MediaType.APPLICATION_XML);
@@ -163,7 +163,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
       log.debug("*********  End list ****************");
     }
     Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(helloServiceBaseUrl);
+    WebTarget target = client.target(SERVICE_BASE_URL);
     target = target.path("hello");
     Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
     builder.post(Entity.xml(HelloEntity.builder().helloMessage("J").build()));
@@ -192,7 +192,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
         "jms:queue:helloServiceQueueOut", Hellos.class);
     assertTrue(hellos.getHelloCollection().size() > 0);
     final Client client = ClientBuilder.newClient();
-    WebTarget target = client.target(helloServiceBaseUrl);
+    WebTarget target = client.target(SERVICE_BASE_URL);
     target = target.path("hello");
     target
         .request(MediaType.APPLICATION_XML);

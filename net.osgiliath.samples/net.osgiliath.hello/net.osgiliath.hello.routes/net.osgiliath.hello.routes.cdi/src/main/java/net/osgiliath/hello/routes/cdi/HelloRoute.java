@@ -53,7 +53,7 @@ public class HelloRoute extends RouteBuilder {
   /**
    * Json Dataformat.
    */
-  private transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
+  private final transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
       HelloEntity.class, Hellos.class);
   /**
    * JSR303 Validation message processor.

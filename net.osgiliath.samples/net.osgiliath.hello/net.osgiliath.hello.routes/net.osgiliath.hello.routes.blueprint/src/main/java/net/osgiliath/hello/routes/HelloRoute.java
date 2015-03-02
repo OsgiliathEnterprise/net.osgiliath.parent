@@ -49,7 +49,7 @@ public class HelloRoute extends RouteBuilder {
   /**
    * Jackson converters.
    */
-  private transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
+  private final transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
       HelloEntity.class, Hellos.class);
   /**
    * processes JSR303 validation errors.
@@ -64,7 +64,7 @@ public class HelloRoute extends RouteBuilder {
   /**
    * changes inputstream to string.
    */
-  private transient Processor octetsStreamToStringProcessor = new Processor() {
+  private final transient Processor octetsStreamToStringProcessor = new Processor() {
 
     @Override
     public void process(Exchange exchange) throws Exception {

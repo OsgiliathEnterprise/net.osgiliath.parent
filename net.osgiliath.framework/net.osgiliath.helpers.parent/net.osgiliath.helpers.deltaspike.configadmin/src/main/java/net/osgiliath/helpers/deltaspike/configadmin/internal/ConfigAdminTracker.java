@@ -188,12 +188,16 @@ public class ConfigAdminTracker implements
       final Configuration[] configurations = admin.listConfigurations(null);
       if (configurations != null) {
         for (final Configuration configuration : configurations) {
-          log.debug("parsing configuration: " + configuration.getPid());
+          if (log.isDebugEnabled()) {
+            log.debug("parsing configuration: " + configuration.getPid());
+          }
           final Dictionary<String, Object> dictionary = configuration
               .getProperties();
           final Object valObject = dictionary.get(key);
           if (valObject != null && valObject instanceof String) {
-            log.trace("got value: " + valObject);
+            if (log.isTraceEnabled()) {
+              log.trace("got value: " + valObject);
+            }
             return (String) valObject;
           }
         }

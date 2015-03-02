@@ -47,8 +47,6 @@ import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
 /**
  * Validation integration test with CDI.
  * 
@@ -109,7 +107,9 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
       fail("Tho shall not be here");
     }
     catch (Exception iae) {
-      LOG.debug( "Expected null check trace", iae);
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("Expected null check trace", iae);
+      }
     }
     final HelloObject object = new HelloObject();
     object.setMessage(null);
@@ -117,8 +117,10 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
     fail("Tho shall not be here");
 
   }
+
   /**
    * Karaf feature to test.
+   * 
    * @return the Feature option
    */
   @Override
@@ -136,8 +138,10 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
     // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
+
   /**
    * Creates the test configuration.
+   * 
    * @return the tests configuration
    */
   @Configuration

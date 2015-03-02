@@ -85,7 +85,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   /**
    * exported REST address.
    */
-  private static final String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  private static final String SERVICE_BASE_URL = "http://localhost:8181/cxf/helloService";
 
   /**
    * probe adding the abstract test class.
@@ -123,7 +123,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
     }
     final Client client = ClientBuilder.newClient();
 
-    WebTarget target = client.target(helloServiceBaseUrl);
+    WebTarget target = client.target(SERVICE_BASE_URL);
     target = target.path("hello");
     final Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
     final HelloEntity entity = HelloEntity.builder().helloMessage("Charlie").build();

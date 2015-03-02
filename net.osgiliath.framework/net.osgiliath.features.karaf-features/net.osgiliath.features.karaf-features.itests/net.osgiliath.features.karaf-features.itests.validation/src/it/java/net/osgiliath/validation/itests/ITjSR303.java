@@ -107,7 +107,9 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
       fail("Tho shall not be here");
     }
     catch (Exception iae) {
-      LOG.debug("Expected error", iae);
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("Expected error", iae);
+      }
     }
     final HelloObject object = new HelloObject();
     object.setMessage(null);
@@ -115,8 +117,10 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
     fail("Tho shall not be here");
 
   }
+
   /**
    * Karaf feature to test.
+   * 
    * @return the Feature option
    */
   @Override
@@ -134,8 +138,10 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
     // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
+
   /**
    * Creates the test configuration.
+   * 
    * @return the tests configuration
    */
   @Configuration
