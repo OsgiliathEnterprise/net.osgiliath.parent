@@ -20,14 +20,31 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * Integration test.
+ * @author me
+ *
+ */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITService extends AbstractPaxExamKarafConfigurationFactory {
+    /**
+     * Logger.
+     */
 	private static Logger LOG = LoggerFactory.getLogger(ITService.class);
+	/**
+     * Boot finished event
+     */
 	@Inject
 	@Filter(timeout = 400000)
 	private BootFinished bootFinished;
+	/**
+     * probe adding the abstract test class.
+     * 
+     * @param builder
+     *          the pax probe builder
+     * @return the provisionned probe.
+     */
 	@ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
@@ -41,7 +58,10 @@ public class ITService extends AbstractPaxExamKarafConfigurationFactory {
 	public void testMyService()  {
 	//TODO make the test!
 	}
-	
+	/**
+     * Karaf feature to test.
+     * @return the feature
+     */
 	@Override
 	protected Option featureToTest() {
 		
@@ -55,10 +75,13 @@ public class ITService extends AbstractPaxExamKarafConfigurationFactory {
 	}
 	static {
 		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+		// paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
 	}
-
+	/**
+     * Pax exam configuration creation.
+     * @return the provisionned configuration
+     */
 	@Configuration
 	public Option[] config() {
 		return createConfig();

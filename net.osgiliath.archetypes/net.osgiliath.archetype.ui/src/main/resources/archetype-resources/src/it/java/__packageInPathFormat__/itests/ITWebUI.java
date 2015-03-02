@@ -13,14 +13,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * Integration test skeletton.
+ * @author charliemordant
+ *
+ */
 public class ITWebUI {
+    /**
+     * Logger.
+     */
 	private static Logger LOG = LoggerFactory.getLogger(ITWebUI.class);
+	/**
+	 * Generic artifactid property.
+	 */
 	private static final String ARTIFACTID = "project.artifactId";
+	/**
+	 * Test.
+	 */
 	@Test
 	public void testMyUI()  {
-			final WebDriver driver;
-			driver = new FirefoxDriver();
+			final WebDriver driver = new FirefoxDriver();
 			
 		    // Sleep until the elements we want is visible or 5 seconds is over
 		    long end = System.currentTimeMillis() + 10000;

@@ -47,15 +47,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * General integration test declaration
+ * General integration test declaration.
  * 
  * @author charliemordant
  * 
  */
 public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafConfiguration {
+  /**
+   * Logger.
+   */
 	private static final Logger LOG = LoggerFactory
 			.getLogger(StandaloneKarafPaxExamConfiguration.class);
-	
+	/**
+	 * Integration tested feature.
+	 */
 	@Override
 	protected Option featureToTest() {
 
@@ -68,10 +73,12 @@ public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafCon
 	}
 	static {
 		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION;
+		// paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
 	}
-
+	/**
+	 * Pax exam provisionning.
+	 */
 	@Configuration
 	public Option[] config() {
 		return createConfig();
