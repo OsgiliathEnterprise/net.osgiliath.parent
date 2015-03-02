@@ -42,7 +42,6 @@ import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
 import org.apache.karaf.features.BootFinished;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,7 +58,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 
 /**
- * TODO example of an integration test
+ * Test a CDI web service and JMS messages.
  * 
  * @author charliemordant
  * 
@@ -68,19 +67,35 @@ import org.osgi.framework.Constants;
 @ExamReactorStrategy(PerClass.class)
 @Slf4j
 public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
+  /**
+   * Boot finished event.
+   */
   @Inject
   @Filter(timeout = 400000)
-  private BootFinished bootFinished;
+  private transient BootFinished bootFinished;
+  /**
+   * OSGI Bundle context.
+   */
   @Inject
-  private BundleContext bundleContext;
-  // JMS template
+  private transient BundleContext bundleContext;
+  /**
+   * JMS template.
+   */
   @Inject
   @Filter(value = "(component-type=jms)")
-  private Component jmsComponent;
-  // exported REST adress
-  private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  private transient Component jmsComponent;
+  /**
+   * exported REST address.
+   */
+  private static final String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * 
+   * @param builder
+   *          the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -91,42 +106,62 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
 
+  /**
+   * Cleans all data.
+   */
   @Before
   public void cleanMessages() {
-    Client client = ClientBuilder.newClient();
+    final Client client = ClientBuilder.newClient();
     WebTarget target = client.target(helloServiceBaseUrl);
     target = target.path("hello");
-    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    final Invocation.Builder builder = target
+        .request(MediaType.APPLICATION_XML);
     builder.delete();
     client.close();
   }
 
+  /**
+   * Web service call test.
+   * 
+   * @throws Exception
+   *           not expected
+   */
   @Test
   public void testSayHello() throws Exception {
     log.trace("************ start testSayHello **********************");
-    Client client = ClientBuilder.newClient();
+    final Client client = ClientBuilder.newClient();
     WebTarget target = client.target(helloServiceBaseUrl);
     target = target.path("hello");
-    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    final Invocation.Builder builder = target
+        .request(MediaType.APPLICATION_XML);
     builder
         .post(Entity.xml(HelloEntity.builder().helloMessage("John").build()));
-    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
-    Hellos hellos = respbuilder.get(Hellos.class);
+    final Invocation.Builder respbuilder = target
+        .request(MediaType.APPLICATION_XML);
+    final Hellos hellos = respbuilder.get(Hellos.class);
     assertEquals(1, hellos.getHelloCollection().size());
     client.close();
 
     log.trace("************ end testSayHello **********************");
   }
 
+  /**
+   * Test REST message error (look at the console trace).
+   * 
+   * @throws Exception
+   *           not expected
+   */
   @Test
   public void testSayHelloValidationError() throws Exception {
-    log.trace("************ start testSayHelloValidationError **********************");
-    log.debug("************Listing **********************");
-    for (Bundle b : bundleContext.getBundles()) {
-      log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+    if (log.isDebugEnabled()) {
+      log.trace("************ start testSayHelloValidationError ***************");
+      log.debug("************Listing **********************");
+      for (Bundle b : bundleContext.getBundles()) {
+        log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
+      }
+      log.debug("*********  End list ****************");
     }
-    log.debug("*********  End list ****************");
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(helloServiceBaseUrl);
     target = target.path("hello");
@@ -136,29 +171,38 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
 
   }
 
+  /**
+   * Test JMS call.
+   */
   @Test
   public void testSayHelloJMS() {
     log.info("************ start testSayHelloJMS **********************");
-    log.debug("Component: " + jmsComponent);
-    log.trace("Camel context: " + jmsComponent.getCamelContext());
-    ProducerTemplate template = jmsComponent.getCamelContext()
+    if (log.isDebugEnabled()) {
+      log.debug("Component: " + this.jmsComponent);
+      log.trace("Camel context: " + this.jmsComponent.getCamelContext());
+    }
+    final ProducerTemplate template = this.jmsComponent.getCamelContext()
         .createProducerTemplate();
     log.trace("Producer template: " + template);
     template.sendBody("jms:queue:helloServiceQueueIn", HelloEntity.builder()
         .helloMessage("Doe").build());
-    ConsumerTemplate consumer = jmsComponent.getCamelContext()
+    final ConsumerTemplate consumer = this.jmsComponent.getCamelContext()
         .createConsumerTemplate();
-    Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
-        Hellos.class);
+    final Hellos hellos = consumer.receiveBody(
+        "jms:queue:helloServiceQueueOut", Hellos.class);
     assertTrue(hellos.getHelloCollection().size() > 0);
-    Client client = ClientBuilder.newClient();
+    final Client client = ClientBuilder.newClient();
     WebTarget target = client.target(helloServiceBaseUrl);
     target = target.path("hello");
-    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    target
+        .request(MediaType.APPLICATION_XML);
     client.close();
     log.info("************ end testSayHelloJMS **********************");
   }
-
+  /**
+   * Karaf feature to test.
+   * @return the feature
+   */
   @Override
   protected Option featureToTest() {
 
@@ -171,10 +215,13 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Pax exam configuration creation.
+   * @return the provisionned configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();

@@ -50,24 +50,33 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * Test for pax-web and CXF.
+ * @author charliemordant
+ *
+ */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
   private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 
-  // Exported service via blueprint.xml
+  /**
+   * Boot finished event.
+   */
   @Inject
   @Filter(timeout = 400000)
   private BootFinished bootFinished;
-  // JMS template
-  // @Inject
-  // @Filter(value="(component-type=jms)")
-  // private Component jmsComponent;
-  // exported REST adress
+ 
+  /**
+   * exported REST adress.
+   */
   private static String helloServiceBaseUrl = "http://localhost:8181/helloService/cxf";
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * @param builder the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -78,30 +87,36 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
 
     return builder;
   }
-
+  /**
+   * Tries to send and hello entity to the web service
+   * @throws Exception not expected
+   */
   @Test
   @Ignore
   public void testSayHello() throws Exception {
     LOG.trace("************ start testSayHello **********************");
 
-    Client client = ClientBuilder.newClient();
+    final Client client = ClientBuilder.newClient();
 
     WebTarget target = client.target(helloServiceBaseUrl);
     target = target.path("hello");
-    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-    HelloObject entity = HelloObject.builder().helloMessage("John").build();
+    final Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    final HelloObject entity = HelloObject.builder().helloMessage("John").build();
 
     builder.post(Entity.xml(entity));
-    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
+    final Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
 
-    Hellos hellos = respbuilder.get(Hellos.class);
+    final Hellos hellos = respbuilder.get(Hellos.class);
 
     respbuilder.delete();
     client.close();
     assertEquals(1, hellos.getHelloCollection().size());
     LOG.trace("************ end testSayHello **********************");
   }
-
+  /**
+   * Feature to test.
+   * @return the feature
+   */
   @Override
   protected Option featureToTest() {
     return features(
@@ -111,13 +126,16 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
             .classifier("features").versionAsInProject(),
         "osgiliath-itests-jaxrs-web-cdi");
   }
-
+  
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Creates the default configuration.
+   * @return the default configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();

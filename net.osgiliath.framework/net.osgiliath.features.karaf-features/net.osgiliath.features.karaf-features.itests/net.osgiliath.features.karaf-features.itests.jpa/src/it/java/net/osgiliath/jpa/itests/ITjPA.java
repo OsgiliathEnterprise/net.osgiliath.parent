@@ -49,7 +49,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * TODO example of an integration test
+ * JPA test case.
  * 
  * @author charliemordant
  * 
@@ -57,14 +57,20 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITjPA extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory.getLogger(ITjPA.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ITjPA.class);
 
-  // Exported service via blueprint.xml
+  /**
+   *  Exported service via blueprint.xml.
+   */
   @Inject
   @Filter(timeout = 60000)
-  private HelloRepository repository;
+  private transient HelloRepository repository;
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * @param builder the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -73,21 +79,27 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
     builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
     return builder;
   }
-
+  /**
+   * Send entity to persist.
+   * @throws Exception not expected
+   */
   @Test
   public void testSayHello() throws Exception {
-
+    LOG.trace("Begin integration test");
     HelloEntity entity = new HelloEntity();
     entity.setHelloMessage("hello");
     entity = repository.save(entity);
-    Collection<? extends HelloEntity> entities = repository.findAll();
+    final Collection<? extends HelloEntity> entities = repository.findAll();
 
     assertEquals(entities.size(), 1);
-    HelloEntity persisted = entities.iterator().next();
+    final HelloEntity persisted = entities.iterator().next();
     assertEquals(persisted.getHelloMessage(), "hello");
     assertNotNull(persisted.getEntityId());
   }
-
+  /**
+   * Feature to test.
+   * @return the feature
+   */
   @Override
   protected Option featureToTest() {
 
@@ -101,10 +113,13 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Creates the default configuration.
+   * @return the default configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();

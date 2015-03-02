@@ -55,7 +55,7 @@ public class HelloJMSRepository implements HelloRepository, MessageListener {
   /**
    * instances registry.
    */
-  private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
+  private final transient List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
   /**
    * finds entities by message.

@@ -52,7 +52,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jms.core.JmsOperations;
 
 /**
- * TODO example of an integration test
+ * JMS integration test.
  * 
  * @author charliemordant
  * 
@@ -60,22 +60,41 @@ import org.springframework.jms.core.JmsOperations;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory.getLogger(ITHelloServiceJMS.class);
-
+  /**
+   * The logger.
+   */
+  private static final Logger LOG = LoggerFactory
+      .getLogger(ITHelloServiceJMS.class);
+  /**
+   * OSGI bundle context.
+   */
   @Inject
-  private BundleContext bundleContext;
-  // Exported service via blueprint.xml
+  private transient BundleContext bundleContext;
+  /**
+   * Exported service via blueprint.xml.
+   */
   @Inject
   @Filter(timeout = 40000)
-  private HelloRepository helloService;
-  // JMS template
+  private transient HelloRepository helloService;
+  /**
+   * JMS template.
+   */
   @Inject
   @Filter(value = "(component-type=jmsXA)")
-  private JmsOperations jmsTemplate;
+  private transient JmsOperations jmsTemplate;
+  /**
+   * Boofinished event.
+   */
   @Inject
   private BootFinished finished;
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * 
+   * @param builder
+   *          the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -87,21 +106,32 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
 
+  /**
+   * Test JMS call.
+   * 
+   * @throws Exception
+   *           not expected
+   */
   @Test
   public void testSayHello() throws Exception {
-    LOG.trace("************Listing **********************");
-    for (Bundle b : bundleContext.getBundles()) {
-      LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+    if (LOG.isDebugEnabled()) {
+      LOG.trace("************Listing **********************");
+      for (final Bundle b : bundleContext.getBundles()) {
+        LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+      }
+      LOG.trace("*********  End list ****************");
     }
-    LOG.trace("*********  End list ****************");
-    jmsTemplate.send("HELLO.IN", new HelloEntityMessageCreator());
+    this.jmsTemplate.send("HELLO.IN", new HelloEntityMessageCreator());
 
-    Message message = jmsTemplate.receive("HELLO.OUT");
-    Hellos hellos = (Hellos) ((ObjectMessage) message).getObject();
+    final Message message = jmsTemplate.receive("HELLO.OUT");
+    final Hellos hellos = (Hellos) ((ObjectMessage) message).getObject();
     assertEquals(1, hellos.getEntities().size());
-    helloService.deleteAll();
+    this.helloService.deleteAll();
   }
-
+  /**
+   * Karaf feature to test.
+   * @return the feature
+   */
   @Override
   protected Option featureToTest() {
     return features(
@@ -114,10 +144,13 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Pax exam configuration creation.
+   * @return the provisionned configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();

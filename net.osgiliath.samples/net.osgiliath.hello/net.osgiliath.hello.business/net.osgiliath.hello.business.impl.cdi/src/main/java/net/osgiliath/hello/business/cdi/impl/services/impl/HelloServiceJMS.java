@@ -61,7 +61,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
    */
   @Inject
   @Uri("jms:queue:helloServiceQueueOut")
-  private ProducerTemplate producer;
+  private transient ProducerTemplate producer;
   /**
    * saves element
    * @param helloObject element to save

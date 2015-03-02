@@ -45,7 +45,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * CDI integration tests
+ * CDI integration tests.
  * 
  * @author charliemordant
  * 
@@ -53,13 +53,22 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITcDI extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory.getLogger(ITcDI.class);
-  // Exported service via blueprint.xml
+  /**
+   * Logger.
+   */
+  private static final Logger LOG = LoggerFactory.getLogger(ITcDI.class);
+  /**
+   *  Exported service via blueprint.xml (CDI consumer).
+   */
   @Inject
   @Filter(timeout = 40000)
-  private IConsumer consumer;
+  private transient IConsumer consumer;
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * @param builder the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
@@ -69,13 +78,19 @@ public class ITcDI extends AbstractPaxExamKarafConfiguration {
     builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
     return builder;
   }
-
+  /**
+   * Tries to consume a CDI injected message.
+   * @throws Exception not expected
+   */
   @Test
   public void testSayHello() throws Exception {
     LOG.info("consumer should be injected");
-    assertEquals(consumer.getHello(), "hello");
+    assertEquals(this.consumer.getHello(), "hello");
   }
-
+  /**
+   * Tested karaf provision feature.
+   * @return the according Karaf feature
+   */
   @Override
   protected Option featureToTest() {
     return features(
@@ -88,10 +103,13 @@ public class ITcDI extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Creates the default configuration.
+   * @return the default configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();

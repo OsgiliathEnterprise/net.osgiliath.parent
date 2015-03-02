@@ -50,7 +50,7 @@ import org.slf4j.LoggerFactory;
 //import javax.inject.Inject;
 
 /**
- * TODO example of an integration test
+ * Validation integration test.
  * 
  * @author charliemordant
  * 
@@ -58,16 +58,29 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
-
+  /**
+   * Logger.
+   */
+  private static final Logger LOG = LoggerFactory.getLogger(ITjSR303.class);
+  /**
+   * Test bundle context.
+   */
   @Inject
-  private BundleContext bundleContext;
-  // Exported service via blueprint.xml
+  private transient BundleContext bundleContext;
+  /**
+   * Exported service via blueprint.xml.
+   */
   @Inject
   @Filter(timeout = 40000)
-  private IValidatorFactorySample consumer;
+  private transient IValidatorFactorySample consumer;
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * 
+   * @param builder
+   *          the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -78,24 +91,36 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
 
+  /**
+   * Send null message to trigger a validation exception.
+   * 
+   * @throws Exception
+   *           the expected violation
+   */
   @Test(expected = ConstraintViolationException.class)
   public void testValidateNull() throws Exception {
-    for (Bundle b : bundleContext.getBundles()) {
-      LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+    if (LOG.isDebugEnabled()) {
+      for (Bundle b : bundleContext.getBundles()) {
+        LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+      }
     }
     try {
-      consumer.nullMessageValidation(null);
+      this.consumer.nullMessageValidation(null);
       fail("Tho shall not be here");
-    } catch (Exception iae) {
-      iae.printStackTrace();
     }
-    HelloObject object = new HelloObject();
+    catch (Exception iae) {
+      LOG.debug( "Expected null check trace", iae);
+    }
+    final HelloObject object = new HelloObject();
     object.setMessage(null);
-    consumer.nullMessageValidation(object);
+    this.consumer.nullMessageValidation(object);
     fail("Tho shall not be here");
 
   }
-
+  /**
+   * Feature to test.
+   * @return the Feature option
+   */
   @Override
   protected Option featureToTest() {
     return features(
@@ -108,10 +133,13 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Creates the test configuration.
+   * @return the tests configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();

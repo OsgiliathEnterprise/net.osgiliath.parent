@@ -38,7 +38,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
    * Instances elements.
    */
-  private final Collection<HelloObject> objects = new ArrayList<HelloObject>();
+  private final transient Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
    * Registering instance.

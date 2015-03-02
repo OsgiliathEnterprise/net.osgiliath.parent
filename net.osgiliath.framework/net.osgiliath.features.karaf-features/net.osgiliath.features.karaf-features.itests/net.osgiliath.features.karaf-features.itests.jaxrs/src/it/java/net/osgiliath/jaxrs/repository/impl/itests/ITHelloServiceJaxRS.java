@@ -56,7 +56,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * REST integration tests
+ * REST integration tests.
  * 
  * @author charliemordant
  * 
@@ -65,19 +65,35 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
-
+  /**
+   * OSGI bundleContext.
+   */
   @Inject
-  private BundleContext bundleContext;
+  private transient BundleContext bundleContext;
+  /**
+   * Bootfinished event.
+   */
   @Inject
   @Filter(timeout = 60000)
-  private BootFinished bootFinished;
-  protected static final Logger log = LoggerFactory
+  private transient BootFinished bootFinished;
+  /**
+   * Logger.
+   */
+  protected static final Logger LOG = LoggerFactory
       .getLogger(ITHelloServiceJaxRS.class);
 
-  // exported REST adress
-  private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  /**
+   * exported REST address.
+   */
+  private static final String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * 
+   * @param builder
+   *          the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -89,32 +105,43 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
 
+  /**
+   * Web service call.
+   * 
+   * @throws Exception
+   *           not expected
+   */
   @Test
   public void testSayHello() throws Exception {
-    log.trace("************Listing **********************");
-    for (Bundle b : bundleContext.getBundles()) {
-      log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+    if (LOG.isDebugEnabled()) {
+      LOG.trace("************Listing **********************");
+      for (Bundle b : bundleContext.getBundles()) {
+        LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
+      }
+      LOG.trace("************end Listing **********************");
     }
-    log.trace("************end Listing **********************");
-    Client client = ClientBuilder.newClient();
+    final Client client = ClientBuilder.newClient();
 
     WebTarget target = client.target(helloServiceBaseUrl);
     target = target.path("hello");
-    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-    HelloEntity entity = HelloEntity.builder().helloMessage("Charlie").build();
+    final Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    final HelloEntity entity = HelloEntity.builder().helloMessage("Charlie").build();
 
     builder.post(Entity.xml(entity));
-    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
+    final Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
 
-    Hellos hellos = respbuilder.get(Hellos.class);
+    final Hellos hellos = respbuilder.get(Hellos.class);
 
     assertEquals(1, hellos.getHelloCollection().size());
     respbuilder.delete();
     client.close();
 
   }
-
+  /**
+   * Karaf feature to test.
+   * @return the feature
+   */
   @Override
   protected Option featureToTest() {
     return features(
@@ -127,17 +154,16 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Pax exam configuration creation.
+   * @return the provisionned configuration
+   */
   @Configuration
   public Option[] config() {
-    Option[] ret = createConfig();
-    ret = OptionUtils.combine(ret,
-        mavenBundle("net.osgiliath.framework", "net.osgiliath.helpers.exam")
-            .versionAsInProject());
-    return ret;
+    return createConfig();
   }
 
 }

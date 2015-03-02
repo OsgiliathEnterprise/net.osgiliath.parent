@@ -43,7 +43,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
   /**
    * Instances registry
    */
-  private final Collection<HelloObject> objects = new ArrayList<HelloObject>();
+  private final transient Collection<HelloObject> objects = new ArrayList<HelloObject>();
 
   /**
    * Saves instance

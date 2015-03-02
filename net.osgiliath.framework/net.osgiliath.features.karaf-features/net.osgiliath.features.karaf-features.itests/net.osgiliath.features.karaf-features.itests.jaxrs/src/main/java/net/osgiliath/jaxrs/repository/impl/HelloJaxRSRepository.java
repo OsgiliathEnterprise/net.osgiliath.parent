@@ -36,7 +36,7 @@ public class HelloJaxRSRepository implements HelloRepository {
   /**
    * Model element list.
    */
-  private final List<HelloEntity> entities = new ArrayList<HelloEntity>();
+  private final transient List<HelloEntity> entities = new ArrayList<HelloEntity>();
 
   /**
    * find entities corrsponding to message.

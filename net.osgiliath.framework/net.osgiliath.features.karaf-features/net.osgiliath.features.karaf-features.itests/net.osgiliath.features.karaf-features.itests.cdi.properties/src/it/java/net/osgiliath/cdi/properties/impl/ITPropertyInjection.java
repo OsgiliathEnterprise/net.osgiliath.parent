@@ -42,17 +42,27 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**
+ * Test Deltaspike property injection.
+ * @author charliemordant
+ *
+ */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
   private static Logger LOG = LoggerFactory
       .getLogger(ITPropertyInjection.class);
-  // Exported service via blueprint.xml
+  /**
+   *  OSGI exported deltaspike consumer.
+   */
   @Inject
   @Filter(timeout = 40000)
-  private IPropertyConsumer consumer;
-
+  private transient IPropertyConsumer consumer;
+  /**
+   * probe adding the abstract test class.
+   * @param builder the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
@@ -62,13 +72,19 @@ public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
     builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
     return builder;
   }
-
+  /**
+   * Test an injected property
+   * @throws Exception not expected
+   */
   @Test
   public void testSayHello() throws Exception {
     LOG.info("consumer should be injected");
     assertEquals(consumer.getInjectedProperty(), "hello");
   }
-
+  /**
+   * Karaf feature to test.
+   * @return the feature
+   */
   @Override
   protected Option featureToTest() {
     return features(
@@ -81,10 +97,13 @@ public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
-
+  /**
+   * Pax exam configuration creation.
+   * @return the provisionned configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();
