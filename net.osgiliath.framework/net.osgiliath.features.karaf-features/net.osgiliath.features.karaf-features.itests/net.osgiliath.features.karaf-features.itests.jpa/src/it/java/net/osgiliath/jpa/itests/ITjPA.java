@@ -88,7 +88,7 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
     LOG.trace("Begin integration test");
     HelloEntity entity = new HelloEntity();
     entity.setHelloMessage("hello");
-    entity = repository.save(entity);
+    repository.save(entity);
     final Collection<? extends HelloEntity> entities = repository.findAll();
 
     assertEquals(entities.size(), 1);

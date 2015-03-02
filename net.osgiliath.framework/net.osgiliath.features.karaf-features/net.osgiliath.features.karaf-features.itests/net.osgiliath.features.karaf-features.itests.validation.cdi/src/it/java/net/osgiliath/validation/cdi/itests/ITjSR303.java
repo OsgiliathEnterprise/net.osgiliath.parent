@@ -47,10 +47,10 @@ import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//import javax.inject.Inject;
+
 
 /**
- * Validation integration test.
+ * Validation integration test with CDI.
  * 
  * @author charliemordant
  * 
@@ -100,7 +100,7 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
   @Test(expected = ConstraintViolationException.class)
   public void testValidateNull() throws Exception {
     if (LOG.isDebugEnabled()) {
-      for (Bundle b : bundleContext.getBundles()) {
+      for (final Bundle b : this.bundleContext.getBundles()) {
         LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
       }
     }
@@ -118,7 +118,7 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
 
   }
   /**
-   * Feature to test.
+   * Karaf feature to test.
    * @return the Feature option
    */
   @Override

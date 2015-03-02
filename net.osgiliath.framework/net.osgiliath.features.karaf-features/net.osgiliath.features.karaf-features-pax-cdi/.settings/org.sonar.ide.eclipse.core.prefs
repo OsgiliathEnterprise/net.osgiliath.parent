@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 extraProperties=sonar.jacoco.itReportPath\=${parent.path}/target/jacoco-it.exec\r\nsonar.java.coveragePlugin\=jacoco\r\nsonar.jacoco.reportPath\=${parent.path}/target/jacoco.exec
-lastAnalysisDate=1425246569856
+lastAnalysisDate=1425335859922
 projectKey=net.osgiliath.framework\:net.osgiliath.features.karaf-features-pax-cdi
 serverUrl=http\://quality.osgiliath.net
 version=2
