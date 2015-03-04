@@ -21,7 +21,7 @@
 		<amq:destinationPolicy>
 			<amq:policyMap>
 				<amq:policyEntries>
-					<amq:policyEntry queue=">" producerFlowControl="true" memoryLimit="5mb">
+					<amq:policyEntry queue=">" producerFlowControl="true"  memoryLimit="20mb">
 						<amq:deadLetterStrategy>
 							<amq:individualDeadLetterStrategy queuePrefix="DLQ." useQueueForQueueMessages="true" />
 						</amq:deadLetterStrategy>
@@ -29,6 +29,7 @@
 				</amq:policyEntries>
 			</amq:policyMap>
 		</amq:destinationPolicy>
+		
 		<amq:managementContext>
 			<amq:managementContext createConnector="true" />
 		</amq:managementContext>
@@ -41,7 +42,7 @@
 		<amq:systemUsage>
 			<amq:systemUsage>
 				<amq:memoryUsage>
-					<amq:memoryUsage limit="420 mb" />
+					<amq:memoryUsage limit="420 mb" percentUsage="50" />
 				</amq:memoryUsage>
 				<amq:storeUsage>
 					<amq:storeUsage limit="1 gb" />

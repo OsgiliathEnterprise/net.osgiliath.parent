@@ -42,6 +42,9 @@ Then, you can directly use the archectypes as they're published in Maven central
 Or look at the examples or even the features integration tests to see how to code something.
 Readme.md will describe what's doing a module all along your way through this repo, so don't hesitate to crawl into!
 
+# Running on Karaf
+Be sure to set JAVA_MAX_MEM and JAVA_MAX_PERM_MEM to higher size (i.e. 1024M) before running an Osgiliath application on Karaf
+
 
 # License
 

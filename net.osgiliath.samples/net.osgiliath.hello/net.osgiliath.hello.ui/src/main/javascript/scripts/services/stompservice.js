@@ -13,8 +13,8 @@ angular.module('commonapp', []).service('stompservice', function(){
 	this.password = 'guest';
 	this.url = this.protocol + '://' + this.host + ':' + this.port ;
 	this.stompClient = Stomp.client(this.url, 'v11.stomp');
-	this.stompClient.heartbeat.outgoing = 3000;
-	this.stompClient.heartbeat.incoming = 3000;
+	this.stompClient.heartbeat.outgoing = 30000;
+	this.stompClient.heartbeat.incoming = 30000;
 	this.stompClient.connect(this.user, this.password, function() {
 		console.info('client connected!');
 	}, function(error) {

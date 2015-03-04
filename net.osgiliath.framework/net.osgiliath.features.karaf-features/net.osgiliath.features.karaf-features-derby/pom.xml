@@ -43,6 +43,10 @@
 			<artifactId>neethi</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.junit</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-osgi</artifactId>
 		</dependency>
@@ -51,10 +55,6 @@
 			<artifactId>pax-jdbc-features</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.tipi</groupId>
-			<artifactId>org.ops4j.pax.tipi.junit</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
