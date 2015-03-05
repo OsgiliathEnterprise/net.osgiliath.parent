@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
-		<version>0.1.5-SNAPSHOT</version>
+		<version>0.1.5</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
 	<name>Osgiliath functional programming feature</name>
