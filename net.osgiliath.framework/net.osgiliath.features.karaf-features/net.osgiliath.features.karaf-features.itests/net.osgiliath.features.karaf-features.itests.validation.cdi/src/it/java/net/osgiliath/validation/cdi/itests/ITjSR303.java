@@ -104,7 +104,7 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
       this.consumer.nullMessageValidation(null);
       fail("Tho shall not be here");
     }
-    catch (ConstraintViolationException iae) {
+    catch (IllegalArgumentException iae) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("Expected null check trace", iae);
       }
