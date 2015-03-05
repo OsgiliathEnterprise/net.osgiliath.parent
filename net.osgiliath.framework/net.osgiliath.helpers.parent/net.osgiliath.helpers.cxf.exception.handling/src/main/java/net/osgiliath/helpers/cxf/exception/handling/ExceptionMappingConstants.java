@@ -24,7 +24,7 @@ package net.osgiliath.helpers.cxf.exception.handling;
  * @author charliemordant
  *
  */
-public class ExceptionMappingConstants {
+public final class ExceptionMappingConstants {
   /**
    * Private Ctor.
    */

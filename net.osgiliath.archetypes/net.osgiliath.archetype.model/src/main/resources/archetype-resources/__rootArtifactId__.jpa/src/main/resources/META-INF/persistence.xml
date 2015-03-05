@@ -31,7 +31,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
 		<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${symbol_dollar}{project.parent.artifactId}.database)</jta-data-source>
 		<!-- <non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=${symbol_dollar}{project.parent.artifactId}.database)</non-jta-data-source> -->
 		<!--<class>net.osgiliath.hello.model.jpa.model.HelloObject</class>-->
-		<class>${package}.model.AbstractEntity</class>
+		<class>${package}.model.GenericEntity</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<validation-mode>NONE</validation-mode>
 		<properties>

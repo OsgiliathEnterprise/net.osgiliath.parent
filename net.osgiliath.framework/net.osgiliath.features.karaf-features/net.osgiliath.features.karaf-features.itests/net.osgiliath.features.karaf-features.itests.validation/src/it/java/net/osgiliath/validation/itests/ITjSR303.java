@@ -26,11 +26,9 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
-
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.validation.HelloObject;
 import net.osgiliath.validation.IValidatorFactorySample;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -96,7 +94,7 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
    *           the expected violation
    */
   @Test(expected = ConstraintViolationException.class)
-  public void testValidateNull() throws Exception {
+  public void testValidateNull() throws ConstraintViolationException {
     if (LOG.isDebugEnabled()) {
       for (final Bundle b : this.bundleContext.getBundles()) {
         LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
@@ -106,7 +104,7 @@ public class ITjSR303 extends AbstractPaxExamKarafConfiguration {
       this.consumer.nullMessageValidation(null);
       fail("Tho shall not be here");
     }
-    catch (Exception iae) {
+    catch (ConstraintViolationException iae) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("Expected error", iae);
       }

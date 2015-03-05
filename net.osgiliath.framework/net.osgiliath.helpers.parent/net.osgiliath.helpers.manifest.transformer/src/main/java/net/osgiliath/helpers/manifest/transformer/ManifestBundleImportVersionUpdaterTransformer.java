@@ -93,21 +93,21 @@ public class ManifestBundleImportVersionUpdaterTransformer {
   /**
    * Processes manifest handling.
    * 
-   * @param is
+   * @param inputstream
    *          the stream.
    * @throws IOException
    *           if the stream could not be opened.
    */
-  public void processResource(InputStream is) throws IOException {
+  public void processResource(InputStream inputstream) throws IOException {
     // We just want to take the first manifest we come across as that's our
     // project's manifest. This is the behavior
     // now which is situational at best. Right now there is no context
     // passed in with the processing so we cannot
     // tell what artifact is being processed.
     if (!this.manifestDiscovered) {
-      this.manifest = new Manifest(is);
+      this.manifest = new Manifest(inputstream);
       this.manifestDiscovered = true;
-      IOUtil.close(is);
+      IOUtil.close(inputstream);
     }
   }
 
@@ -206,19 +206,19 @@ public class ManifestBundleImportVersionUpdaterTransformer {
       System.out.println("Argument: " + arg);
 
     }
-    InputStream is = null;
+    InputStream inputstream = null;
     try {
-      is = new FileInputStream(basedir
+      inputstream = new FileInputStream(basedir
           + "/src/main/resources/META-INF/MANIFEST.MF");
-      getInstance().processResource(is);
+      getInstance().processResource(inputstream);
 
     }
     catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     finally {
-      if (null != is) {
-        is.close();
+      if (null != inputstream) {
+        inputstream.close();
       }
     }
     getInstance().createOverrideMap(overrides);
@@ -236,25 +236,25 @@ public class ManifestBundleImportVersionUpdaterTransformer {
    *           if something goes wrong while writing
    */
   private void writeManifest(String basedir) throws IOException {
-    OutputStream os = null;
+    OutputStream outputstream = null;
     try {
-      os = new FileOutputStream(basedir
+      outputstream = new FileOutputStream(basedir
           + "/src/main/resources/META-INF/MANIFEST.MF");
-      this.manifest.write(os);
+      this.manifest.write(outputstream);
 
     }
     catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     finally {
-      if (null != os) {
-        os.close();
+      if (null != outputstream) {
+        outputstream.close();
       }
     }
   }
 
   private void addBundleClassPath(String bundleClasspath) {
-    final Attributes attributes = manifest.getMainAttributes();
+    final Attributes attributes = this.manifest.getMainAttributes();
     attributes.put(new Attributes.Name(Constants.BUNDLE_CLASSPATH), "., "
         + bundleClasspath + ".jar");
   }

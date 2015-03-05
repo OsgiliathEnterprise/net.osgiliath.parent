@@ -26,11 +26,9 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import javax.inject.Inject;
-
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.messaging.cdi.HelloEntity;
 import net.osgiliath.messaging.cdi.Hellos;
-
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
@@ -49,7 +47,6 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
-//import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -103,14 +100,12 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
   /**
    * JMS call.
    * 
-   * @throws Exception
-   *           not expected
    */
   @Test
-  public void testSayHello() throws Exception {
+  public void testSayHello() {
     if (LOG.isDebugEnabled()) {
       LOG.trace("************Listing **********************");
-      for (final Bundle b : bundleContext.getBundles()) {
+      for (final Bundle b : this.bundleContext.getBundles()) {
         LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
       }
       LOG.trace("*********  End list ****************");
@@ -124,14 +119,16 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
     final ConsumerTemplate consumer = template.getCamelContext()
         .createConsumerTemplate();
     LOG.info("Waiting answer");
-    final Hellos hellos = consumer.receiveBody("jms:queue:helloServiceQueueOut",
-        4000, Hellos.class);
+    final Hellos hellos = consumer.receiveBody(
+        "jms:queue:helloServiceQueueOut", 4000, Hellos.class);
     LOG.warn("Hellos: " + hellos);
     assertEquals(1, hellos.getEntities().size());
 
   }
+
   /**
    * Karaf feature to test.
+   * 
    * @return the feature
    */
   @Override
@@ -150,8 +147,10 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
     // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
+
   /**
    * Pax exam configuration creation.
+   * 
    * @return the provisionned configuration
    */
   @Configuration

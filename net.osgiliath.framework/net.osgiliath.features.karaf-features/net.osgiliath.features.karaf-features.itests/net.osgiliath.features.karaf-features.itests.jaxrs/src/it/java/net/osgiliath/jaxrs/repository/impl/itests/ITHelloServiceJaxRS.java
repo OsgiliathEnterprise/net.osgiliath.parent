@@ -22,7 +22,6 @@ package net.osgiliath.jaxrs.repository.impl.itests;
 
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
-import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
@@ -32,17 +31,14 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.jaxrs.HelloEntity;
 import net.osgiliath.jaxrs.Hellos;
-
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.Option;
-import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
@@ -108,14 +104,12 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   /**
    * Web service call.
    * 
-   * @throws Exception
-   *           not expected
    */
   @Test
-  public void testSayHello() throws Exception {
+  public void testSayHello() {
     if (LOG.isDebugEnabled()) {
       LOG.trace("************Listing **********************");
-      for (Bundle b : bundleContext.getBundles()) {
+      for (final Bundle b : this.bundleContext.getBundles()) {
         LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
       }

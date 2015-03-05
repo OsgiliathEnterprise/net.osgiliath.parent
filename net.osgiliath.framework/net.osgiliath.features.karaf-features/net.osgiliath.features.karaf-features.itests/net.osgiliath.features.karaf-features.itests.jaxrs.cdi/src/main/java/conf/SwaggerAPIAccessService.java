@@ -20,15 +20,14 @@ package conf;
  * #L%
  */
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.jaxrs.config.BeanConfig;
+import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.jaxrs.config.BeanConfig;
-import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 
 /**
  * Swagger REST service.

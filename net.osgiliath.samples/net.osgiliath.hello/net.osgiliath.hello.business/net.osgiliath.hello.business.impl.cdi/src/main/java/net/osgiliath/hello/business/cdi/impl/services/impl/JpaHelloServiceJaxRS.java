@@ -1,4 +1,4 @@
-package net.osgiliath.hello.business.impl.services.impl;
+package net.osgiliath.hello.business.cdi.impl.services.impl;
 
 /*
  * #%L
@@ -24,65 +24,46 @@ import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import java.util.Collection;
-import java.util.Set;
-import javax.validation.ConstraintViolation;
-import javax.validation.ValidationException;
-import javax.validation.Validator;
-import lombok.Setter;
+import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
+import org.ops4j.pax.cdi.api.OsgiService;
+
 /**
- * Sample of a business service with JaxRS.
+ * Sample of a business service with JaxRS and CDI.
  * 
  * @author charliemordant
  * 
  */
 @Slf4j
-public class HelloServiceJaxRS implements
-    net.osgiliath.hello.business.impl.HelloServiceJaxRS {
+public class JpaHelloServiceJaxRS implements
+    net.osgiliath.hello.business.cdi.impl.HelloServiceJaxRS {
   /**
-   * Repository to persist data.
+   * JPA persistence repository.
    */
-  @Setter
+  @Inject
+  @OsgiService
   private transient HelloObjectRepository helloObjectRepository;
-  /**
-   * JSR 303 validator.
-   */
-  @Setter
-  private transient Validator validator;
 
   /**
-   * Saves the object or throw an exception if the Object is not valid.
-   * 
-   * @param helloObject
-   *          the element to save
+   * persistence module.
+   * @param helloObject element to save
    */
   @Override
-  public final void persistHello(final HelloEntity helloObject) {
+  public void persistHello(@NotNull @Valid HelloEntity helloObject) {
     log.info("persisting new message with jaxrs: "
         + helloObject.getHelloMessage());
-    final Set<ConstraintViolation<HelloEntity>> validationResults = validator
-        .validate(helloObject);
-    final StringBuilder errors = new StringBuilder("");
-    if (!validationResults.isEmpty()) {
-      for (final ConstraintViolation<HelloEntity> violation : validationResults) {
-        log.info("subscription error, validating user:"
-            + violation.getMessage());
-        errors.append(violation.getPropertyPath()).append(": ")
-            .append(violation.getMessage().replaceAll("\"", "")).append(';');
-      }
-      throw new ValidationException(errors.toString());
-    }
     this.helloObjectRepository.save(helloObject);
 
   }
 
   /**
-   * get all hellos
-   * 
-   * @return all messages
+   * Gets hello entities.
+   * @return the entities
    */
   @Override
   public Hellos getHellos() {
@@ -90,19 +71,20 @@ public class HelloServiceJaxRS implements
         .findAll();
     if (helloObjects.isEmpty()) {
       throw new UnsupportedOperationException(
-          "You should not call this method when there is no Hello yet !");
+          "You could not call this method when there are no helloObjects");
     }
     return Hellos
         .builder()
         .helloCollection(
             Lists.newArrayList(Iterables.transform(helloObjects,
-                this.helloObjectToStringFunction))).build();
+                helloObjectToStringFunction))).build();
   }
 
   /**
-   * Function that transforms helloEntity to String
+   * converts entities to Strings.
    */
-  private transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
+  // Guava function waiting for Java 8
+  private final transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
     public String apply(HelloEntity arg0) {
@@ -111,10 +93,11 @@ public class HelloServiceJaxRS implements
   };
 
   /**
-   * Deletes all entities
+   * deletes all entities.
    */
   @Override
   public void deleteAll() {
+    log.info("deleting all datas");
     this.helloObjectRepository.deleteAll();
   }
 

@@ -24,7 +24,7 @@ package net.osgiliath.database.constants;
  * @author charliemordant
  *
  */
-public class ClientConnectionConstant {
+public final class ClientConnectionConstant {
   private ClientConnectionConstant() {
     //Do nothing
   }

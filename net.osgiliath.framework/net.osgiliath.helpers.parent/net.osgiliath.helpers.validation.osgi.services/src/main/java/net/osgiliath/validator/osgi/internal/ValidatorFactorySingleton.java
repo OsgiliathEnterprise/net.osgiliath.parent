@@ -33,13 +33,13 @@ import org.hibernate.validator.HibernateValidatorConfiguration;
  */
 public class ValidatorFactorySingleton {
   /**
-   * factory singleton
+   * factory singleton.
    */
   private static transient ValidatorFactory validatorFactory = null;
 
   /**
-   * 
-   * @return the singleton validator
+   * returns the validatorfactory.
+   * @return the singleton validatorfactory
    */
   public static synchronized ValidatorFactory getValidatorFactory() {
     if (validatorFactory == null) {

@@ -54,7 +54,7 @@ import lombok.experimental.Builder;
 // xml marshalling
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "Hello Entity", description = "Hello resource representation")
-public class HelloEntity extends AbstractEntity implements Serializable {
+public class HelloEntity extends GenericEntity implements Serializable {
   /**
    * Serial.
    */

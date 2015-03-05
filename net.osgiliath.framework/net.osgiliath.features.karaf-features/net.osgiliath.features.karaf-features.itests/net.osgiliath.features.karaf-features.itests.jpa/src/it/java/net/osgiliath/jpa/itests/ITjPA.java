@@ -26,13 +26,10 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import java.util.Collection;
-
 import javax.inject.Inject;
-
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.jpa.model.HelloEntity;
 import net.osgiliath.jpa.repository.HelloRepository;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -84,12 +81,12 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
    * @throws Exception not expected
    */
   @Test
-  public void testSayHello() throws Exception {
+  public void testSayHello() {
     LOG.trace("Begin integration test");
-    HelloEntity entity = new HelloEntity();
+    final HelloEntity entity = new HelloEntity();
     entity.setHelloMessage("hello");
-    repository.save(entity);
-    final Collection<? extends HelloEntity> entities = repository.findAll();
+    this.repository.save(entity);
+    final Collection<? extends HelloEntity> entities = this.repository.findAll();
 
     assertEquals(entities.size(), 1);
     final HelloEntity persisted = entities.iterator().next();

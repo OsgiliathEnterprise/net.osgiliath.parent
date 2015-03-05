@@ -20,18 +20,15 @@ package net.osgiliath.helpers.swagger.cdi;
  * #L%
  */
 
+import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
+import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
-
 import javax.ws.rs.ext.MessageBodyWriter;
-
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-
-import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
-import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
 /**
  * Exports swagger readers and writers service for CDI modules.
  * @author charliemordant
@@ -39,7 +36,7 @@ import com.wordnik.swagger.jaxrs.listing.ResourceListingProvider;
  */
 public class SwaggerCdiActivator implements BundleActivator {
   /**
-   * start
+   * start.
    * @param context bundle context
    */
   @Override

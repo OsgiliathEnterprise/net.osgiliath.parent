@@ -20,6 +20,8 @@ package net.osgiliath.helpers.deltaspike.configadmin.internal;
  * #L%
  */
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Dictionary;
@@ -27,9 +29,7 @@ import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-
 import lombok.extern.slf4j.Slf4j;
-
 import org.apache.deltaspike.core.api.common.DeltaSpike;
 import org.apache.deltaspike.core.spi.config.ConfigSource;
 import org.apache.deltaspike.core.spi.config.ConfigSourceProvider;
@@ -41,9 +41,6 @@ import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * Service tracker for camel cdi config admin properties resolution.
@@ -65,7 +62,7 @@ public class ConfigAdminTracker implements
    * @return the registered configurations
    */
   final Collection<ConfigurationAdmin> getAdmins() {
-    return admins;
+    return this.admins;
   }
 
   /**
@@ -165,7 +162,7 @@ public class ConfigAdminTracker implements
   @Override
   public final void removedService(
       ServiceReference<ConfigurationAdmin> reference, final Object service) {
-    final ConfigurationAdmin admin = context.getService(reference);
+    final ConfigurationAdmin admin = this.context.getService(reference);
     getInstance(null).admins.remove(admin);
 
   }
@@ -194,7 +191,7 @@ public class ConfigAdminTracker implements
           final Dictionary<String, Object> dictionary = configuration
               .getProperties();
           final Object valObject = dictionary.get(key);
-          if (valObject != null && valObject instanceof String) {
+          if (valObject instanceof String) {
             if (log.isTraceEnabled()) {
               log.trace("got value: " + valObject);
             }
@@ -269,7 +266,7 @@ public class ConfigAdminTracker implements
                 final Dictionary<String, Object> dictionary = configuration
                     .getProperties();
                 final Object valObject = dictionary.get(key);
-                if (valObject != null && valObject instanceof String) {
+                if (valObject instanceof String) {
                   log.trace("got value: " + valObject);
                   return (String) valObject;
                 }

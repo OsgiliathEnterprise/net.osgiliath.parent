@@ -34,11 +34,9 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
-
 import org.apache.karaf.features.BootFinished;
 import org.junit.Before;
 import org.junit.Test;
@@ -131,14 +129,12 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   /**
    * Tests a webservice call.
    * 
-   * @throws Exception
-   *           not expected
    */
   @Test
-  public void testSayHello() throws Exception {
+  public void testSayHello() {
     if (LOG.isDebugEnabled()) {
       LOG.debug("************Listing **********************");
-      for (Bundle b : bundleContext.getBundles()) {
+      for (final Bundle b : this.bundleContext.getBundles()) {
         LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
       }
@@ -161,14 +157,12 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   /**
    * Tests a web service validation call (look at the stacktrace).
    * 
-   * @throws Exception
-   *           not expected
    */
   @Test
-  public void testSayHelloValidationError() throws Exception {
+  public void testSayHelloValidationError() {
     if (LOG.isDebugEnabled()) {
       LOG.debug("************Listing **********************");
-      for (final Bundle b : bundleContext.getBundles()) {
+      for (final Bundle b : this.bundleContext.getBundles()) {
         LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
       }
@@ -199,7 +193,7 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
     if (LOG.isDebugEnabled()) {
       LOG.debug("creating message consumer");
     }
-    final Message rcv = template.receive("helloServiceQueueOut");
+    final Message rcv = this.template.receive("helloServiceQueueOut");
     final Hellos hellos = (Hellos) ((ObjectMessage) rcv).getObject();
     assertEquals(1, hellos.getHelloCollection().size());
     final Client client = ClientBuilder.newClient();

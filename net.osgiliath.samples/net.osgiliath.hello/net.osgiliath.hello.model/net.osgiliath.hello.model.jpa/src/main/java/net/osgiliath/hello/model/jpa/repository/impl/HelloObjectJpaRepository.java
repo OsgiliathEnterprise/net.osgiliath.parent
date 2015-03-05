@@ -72,14 +72,14 @@ public class HelloObjectJpaRepository extends
   @Override
   public Collection<? extends HelloEntity> findByHelloObjectMessage(
       final String message) {
-    final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+    final CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
     final CriteriaQuery<HelloEntity> query = builder.createQuery(HelloEntity.class);
     final Root<HelloEntity> helloObject = query.from(HelloEntity.class);
     query.select(helloObject);
     final Predicate where = builder.equal(
         helloObject.get(HelloEntity_.helloMessage), message);
     query.where(where);
-    final TypedQuery<HelloEntity> instanciatedQuery = entityManager.createQuery(query);
+    final TypedQuery<HelloEntity> instanciatedQuery = this.entityManager.createQuery(query);
     return instanciatedQuery.getResultList();
   }
 

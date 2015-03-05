@@ -112,11 +112,14 @@ public class LoginPasswordSecurityService implements SecurityService {
 
   /**
    * {@inheritDoc}.
-   * @param username the username
-   * @param password the password
+   * 
+   * @param username
+   *          the username
+   * @param password
+   *          the password
    * @return if the user is authenticated
    */
-
+  @Override
   public boolean authenticate(String username, String password) {
 
     Authentication aut = new UsernamePasswordAuthenticationToken(username,
@@ -134,10 +137,12 @@ public class LoginPasswordSecurityService implements SecurityService {
 
   /**
    * {@inheritDoc}.
-   * @param subscriptionMessageIn the received message
+   * 
+   * @param subscriptionMessageIn
+   *          the received message
    * @return the user
    */
-
+  @Override
   public final MUser onSubscription(final MUser subscriptionMessageIn) {
     final MAuthority auth = new MAuthority();
     auth.setAuthority(AUTHORITY.MEMBER);

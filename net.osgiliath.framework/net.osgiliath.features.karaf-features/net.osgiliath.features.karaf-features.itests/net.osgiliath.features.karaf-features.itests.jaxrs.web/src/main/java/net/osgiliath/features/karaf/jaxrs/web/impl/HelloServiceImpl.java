@@ -19,6 +19,9 @@ package net.osgiliath.features.karaf.jaxrs.web.impl;
  * limitations under the License.
  * #L%
  */
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -26,9 +29,8 @@ import net.osgiliath.features.karaf.jaxrs.web.HelloServiceJaxRS;
 import net.osgiliath.features.karaf.jaxrs.web.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.model.Hellos;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+
+
 
 /**
  * REST service implementation.
@@ -60,7 +62,7 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
   @Override
   public Hellos getHellos() {
 
-    return new Hellos(Lists.newArrayList(Iterables.transform(objects,
+    return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,
         new Function<HelloObject, String>() {
           @Override
           public String apply(final HelloObject input) {

@@ -32,12 +32,10 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
-
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
@@ -123,11 +121,9 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   /**
    * Web service call test.
    * 
-   * @throws Exception
-   *           not expected
    */
   @Test
-  public void testSayHello() throws Exception {
+  public void testSayHello() {
     log.trace("************ start testSayHello **********************");
     final Client client = ClientBuilder.newClient();
     WebTarget target = client.target(SERVICE_BASE_URL);
@@ -148,26 +144,24 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   /**
    * Test REST message error (look at the console trace).
    * 
-   * @throws Exception
-   *           not expected
    */
   @Test
-  public void testSayHelloValidationError() throws Exception {
+  public void testSayHelloValidationError() {
     if (log.isDebugEnabled()) {
-      log.trace("************ start testSayHelloValidationError ***************");
+      log.trace("************ start testSayHelloValidationError *************");
       log.debug("************Listing **********************");
-      for (Bundle b : bundleContext.getBundles()) {
+      for (final Bundle b : this.bundleContext.getBundles()) {
         log.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
 
       }
       log.debug("*********  End list ****************");
     }
-    Client client = ClientBuilder.newClient();
+    final Client client = ClientBuilder.newClient();
     WebTarget target = client.target(SERVICE_BASE_URL);
     target = target.path("hello");
-    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
+    final Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
     builder.post(Entity.xml(HelloEntity.builder().helloMessage("J").build()));
-    log.trace("************ end testSayHelloValidationError **********************");
+    log.trace("************ end testSayHelloValidationError ******************");
 
   }
 

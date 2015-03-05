@@ -1,4 +1,4 @@
-package net.osgiliath.hello.business.cdi.impl.services.impl;
+package net.osgiliath.hello.business.impl.services.impl;
 
 /*
  * #%L
@@ -20,54 +20,69 @@ package net.osgiliath.hello.business.cdi.impl.services.impl;
  * #L%
  */
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import java.util.Collection;
-
-import javax.inject.Inject;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
-
-import org.ops4j.pax.cdi.api.OsgiService;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 /**
- * Sample of a business service with JaxRS and CDI.
+ * Sample of a business service with JaxRS.
  * 
  * @author charliemordant
  * 
  */
 @Slf4j
-public class HelloServiceJaxRS implements
-    net.osgiliath.hello.business.cdi.impl.HelloServiceJaxRS {
+public class JpaHelloServiceJaxRS implements
+    net.osgiliath.hello.business.impl.HelloServiceJaxRS {
   /**
-   * JPA persistence repository.
+   * Repository to persist data.
    */
-  @Inject
-  @OsgiService
+  @Setter
   private transient HelloObjectRepository helloObjectRepository;
+  /**
+   * JSR 303 validator.
+   */
+  @Setter
+  private transient Validator validator;
 
   /**
-   * persistence module.
-   * @param helloObject element to save
+   * Saves the object or throw an exception if the Object is not valid.
+   * 
+   * @param helloObject
+   *          the element to save
    */
   @Override
-  public void persistHello(@NotNull @Valid HelloEntity helloObject) {
+  public final void persistHello(final HelloEntity helloObject) {
     log.info("persisting new message with jaxrs: "
         + helloObject.getHelloMessage());
+    final Set<ConstraintViolation<HelloEntity>> validationResults = this.validator
+        .validate(helloObject);
+    final StringBuilder errors = new StringBuilder("");
+    if (!validationResults.isEmpty()) {
+      for (final ConstraintViolation<HelloEntity> violation : validationResults) {
+        log.info("subscription error, validating user:"
+            + violation.getMessage());
+        errors.append(violation.getPropertyPath()).append(": ")
+            .append(violation.getMessage().replaceAll("\"", "")).append(';');
+      }
+      throw new ValidationException(errors.toString());
+    }
     this.helloObjectRepository.save(helloObject);
 
   }
 
   /**
-   * Gets hello entities.
-   * @return the entities
+   * get all hellos.
+   * 
+   * @return all messages
    */
   @Override
   public Hellos getHellos() {
@@ -75,19 +90,18 @@ public class HelloServiceJaxRS implements
         .findAll();
     if (helloObjects.isEmpty()) {
       throw new UnsupportedOperationException(
-          "You could not call this method when there are no helloObjects");
+          "You should not call this method when there is no Hello yet !");
     }
     return Hellos
         .builder()
         .helloCollection(
             Lists.newArrayList(Iterables.transform(helloObjects,
-                helloObjectToStringFunction))).build();
+                this.helloObjectToStringFunction))).build();
   }
 
   /**
-   * converts entities to Strings.
+   * Function that transforms helloEntity to String.
    */
-  // Guava function waiting for Java 8
   private final transient Function<HelloEntity, String> helloObjectToStringFunction = new Function<HelloEntity, String>() {
 
     @Override
@@ -97,11 +111,10 @@ public class HelloServiceJaxRS implements
   };
 
   /**
-   * deletes all entities.
+   * Deletes all entities.
    */
   @Override
   public void deleteAll() {
-    log.info("deleting all datas");
     this.helloObjectRepository.deleteAll();
   }
 

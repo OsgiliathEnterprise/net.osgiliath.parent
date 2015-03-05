@@ -51,7 +51,7 @@
 		factory-ref="validatorFactory" factory-method="getValidator" />
 	<!-- REST service declaration -->
 	<bean id="helloServiceJaxRs"
-		class="net.osgiliath.hello.business.impl.services.impl.HelloServiceJaxRS">
+		class="net.osgiliath.hello.business.impl.services.impl.JpaHelloServiceJaxRS">
 		<property name="helloObjectRepository" ref="helloObjectRepository"></property>
 		<property name="validator" ref="validator"></property>
 	</bean>

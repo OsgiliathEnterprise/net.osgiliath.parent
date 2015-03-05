@@ -31,7 +31,6 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.Hellos;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
@@ -58,7 +57,7 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 
   /**
    * Boot finished event.
@@ -89,11 +88,10 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
   }
   /**
    * Tries to send and hello entity to the web service.
-   * @throws Exception not expected
    */
   @Test
   @Ignore
-  public void testSayHello() throws Exception {
+  public void testSayHello() {
     LOG.trace("************ start testSayHello **********************");
 
     final Client client = ClientBuilder.newClient();

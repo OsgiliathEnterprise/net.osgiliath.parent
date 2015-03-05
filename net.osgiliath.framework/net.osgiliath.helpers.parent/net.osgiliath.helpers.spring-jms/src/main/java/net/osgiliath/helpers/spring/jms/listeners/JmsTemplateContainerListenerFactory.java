@@ -25,14 +25,14 @@ import javax.jms.MessageListener;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 /**
- * JMS container listener
+ * JMS container listener.
  * 
  * @author charliemordant
  *
  */
 public interface JmsTemplateContainerListenerFactory {
   /**
-   * Creates a Listener container
+   * Creates a Listener container.
    * 
    * @param transacted
    *          if though should have transactions
@@ -46,7 +46,7 @@ public interface JmsTemplateContainerListenerFactory {
       String destinationName, MessageListener messageListener);
 
   /**
-   * Creates a Listener container
+   * Creates a Listener container.
    * 
    * @param transacted
    *          if though should have transactions

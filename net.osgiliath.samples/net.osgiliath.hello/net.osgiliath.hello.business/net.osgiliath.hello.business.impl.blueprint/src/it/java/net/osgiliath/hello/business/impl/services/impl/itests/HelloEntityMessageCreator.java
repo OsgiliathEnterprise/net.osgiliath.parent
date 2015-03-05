@@ -27,9 +27,17 @@ import javax.jms.Session;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 
 import org.springframework.jms.core.MessageCreator;
-
+/**
+ * As Pax exam does not support inner class, we made a message creator.
+ * @author charliemordant
+ *
+ */
 public class HelloEntityMessageCreator implements MessageCreator {
-
+  /**
+   * Creates a hello entity.
+   * @param session the JMS session
+   * @return the according message
+   */
   @Override
   public Message createMessage(Session session) throws JMSException {
     return session.createObjectMessage(HelloEntity.builder()

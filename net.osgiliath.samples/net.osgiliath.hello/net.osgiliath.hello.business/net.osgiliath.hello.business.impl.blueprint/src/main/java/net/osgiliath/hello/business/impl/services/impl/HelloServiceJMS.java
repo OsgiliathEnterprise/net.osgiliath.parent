@@ -20,9 +20,11 @@ package net.osgiliath.hello.business.impl.services.impl;
  * #L%
  */
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import java.util.Collection;
 import java.util.Set;
-
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -30,20 +32,14 @@ import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.business.spi.services.HelloService;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
 import net.osgiliath.hello.model.jpa.repository.HelloObjectRepository;
-
 import org.springframework.jms.core.JmsOperations;
 import org.springframework.jms.core.MessageCreator;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * JMS sample of Hello service exports.
@@ -94,13 +90,25 @@ public class HelloServiceJMS implements HelloService, MessageListener {
             .append(System.lineSeparator());
       }
       this.template.send("helloServiceQueueErrors", new MessageCreator() {
-        public Message createMessage(final Session session) throws JMSException {
+        /**
+         * Creates a JMS message
+         * @param session JMS session
+         * @return the JMS message
+         * @throws JMSException invalid payload
+         */
+        public Message createMessage(final Session session) throws JMSException {          
           return session.createTextMessage(errors.toString());
         }
       });
     }
     this.helloObjectRepository.save(hello);
     this.template.send("helloServiceQueueOut", new MessageCreator() {
+      /**
+       * Creates a JMS message
+       * @param session JMS session
+       * @return the JMS message
+       * @throws JMSException invalid payload
+       */
       public Message createMessage(final Session session) throws JMSException {
         return session.createObjectMessage(getHellos());
       }
@@ -156,7 +164,7 @@ public class HelloServiceJMS implements HelloService, MessageListener {
     try {
       final HelloEntity helloObject_p = (HelloEntity) ((ObjectMessage) message)
           .getObject();
-      persistHello(helloObject_p);
+      this.persistHello(helloObject_p);
     }
     catch (JMSException e) {
       log.error("error receiving JMS message", e);

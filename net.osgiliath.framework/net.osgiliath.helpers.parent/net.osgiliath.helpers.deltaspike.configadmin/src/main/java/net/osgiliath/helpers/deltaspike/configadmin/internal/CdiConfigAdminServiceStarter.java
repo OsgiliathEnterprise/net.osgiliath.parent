@@ -37,25 +37,27 @@ public class CdiConfigAdminServiceStarter {
   @Setter
   private transient BundleContext context;
 
-  /*
+  /**
    * (non-Javadoc)
    * 
    * @see
    * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
+   * @param bundleContext the osgi bundle context
    */
-  public final void start(final BundleContext bundleContext) throws Exception {
+  public final void start(final BundleContext bundleContext) {
     this.context = bundleContext;
     ConfigAdminTracker.getInstance(this.context);
 
   }
 
-  /*
+  /**
    * (non-Javadoc)
    * 
    * @see
    * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
+   * @param bundleContext the osgi bundle context
    */
-  public final void stop(final BundleContext context) throws Exception {
+  public final void stop(final BundleContext context) {
     this.context = null;
     ConfigAdminTracker.stop();
   }

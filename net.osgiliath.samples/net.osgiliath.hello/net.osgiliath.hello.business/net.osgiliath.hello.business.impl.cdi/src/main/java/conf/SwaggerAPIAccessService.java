@@ -20,30 +20,31 @@ package conf;
  * #L%
  */
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.jaxrs.config.BeanConfig;
+import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.jaxrs.config.BeanConfig;
-import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
-
 /**
  * Swagger service.
+ * 
  * @author charliemordant
  *
  */
 @Path("/api-docs")
 @Api("/api-docs")
-@Produces(value = MediaType.APPLICATION_JSON )
+@Produces(value = MediaType.APPLICATION_JSON)
 public class SwaggerAPIAccessService extends ApiListingResourceJSON {
   /**
    * Swagger configuration.
    */
   @Inject
   private transient BeanConfig config;
+
   /**
    * Creates configuration.
    */

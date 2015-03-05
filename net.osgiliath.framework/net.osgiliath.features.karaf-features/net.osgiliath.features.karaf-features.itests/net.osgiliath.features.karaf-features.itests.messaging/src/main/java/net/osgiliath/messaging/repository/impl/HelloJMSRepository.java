@@ -121,7 +121,7 @@ public class HelloJMSRepository implements HelloRepository, MessageListener {
     try {
       final HelloEntity entity = (HelloEntity) objectMessage.getObject();
       log.info("received message for persistance");
-      save(entity);
+      this.save(entity);
 
     }
     catch (JMSException e) {

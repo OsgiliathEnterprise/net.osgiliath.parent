@@ -25,10 +25,8 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
-
 import net.osgiliath.cdi.properties.api.IPropertyConsumer;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -50,7 +48,7 @@ import org.slf4j.LoggerFactory;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory
+  private static final Logger LOG = LoggerFactory
       .getLogger(ITPropertyInjection.class);
   /**
    *  OSGI exported deltaspike consumer.
@@ -74,12 +72,11 @@ public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
   }
   /**
    * Test an injected property.
-   * @throws Exception not expected
    */
   @Test
-  public void testSayHello() throws Exception {
+  public void testSayHello() {
     LOG.info("consumer should be injected");
-    assertEquals(consumer.getInjectedProperty(), "hello");
+    assertEquals(this.consumer.getInjectedProperty(), "hello");
   }
   /**
    * Karaf feature to test.

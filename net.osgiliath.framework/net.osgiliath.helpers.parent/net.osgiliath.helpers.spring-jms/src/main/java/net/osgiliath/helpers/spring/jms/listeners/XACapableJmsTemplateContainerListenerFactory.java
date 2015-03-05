@@ -59,7 +59,7 @@ public class XACapableJmsTemplateContainerListenerFactory implements
    * Timeout.
    */
   @Setter
-  private int receiveTimeout;
+  private transient int receiveTimeout;
 
   /*
    * (non-Javadoc)

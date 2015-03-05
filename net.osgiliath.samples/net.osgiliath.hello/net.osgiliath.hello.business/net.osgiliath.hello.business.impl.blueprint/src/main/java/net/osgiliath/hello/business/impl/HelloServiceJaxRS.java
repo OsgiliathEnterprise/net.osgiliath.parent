@@ -53,6 +53,7 @@ public interface HelloServiceJaxRS extends HelloService {
 
   /**
    * gets all entities.
+   * @return All entities
    */
   @GET
   @Produces(MediaType.APPLICATION_XML)

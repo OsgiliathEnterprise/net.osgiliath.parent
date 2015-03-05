@@ -58,22 +58,22 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
    */
   @Override
   public DataSource createDataSource(Properties props) throws SQLException {
-    final ClientDataSource40 ds = new ClientDataSource40();
-    setProperties(ds, props);
-    return ds;
+    final ClientDataSource40 datasource = new ClientDataSource40();
+    this.setProperties(datasource, props);
+    return datasource;
   }
 
   /**
    * Sets properties for datasource.
    * 
-   * @param ds
+   * @param datasource
    *          the DS to update
    * @param properties
    *          properties to set
    * @throws SQLException
    *           in case of unsupported DS Operations
    */
-  private void setProperties(ClientDataSource ds, Properties properties)
+  private void setProperties(ClientDataSource datasource, Properties properties)
       throws SQLException {
     final Properties props = (Properties) properties.clone();
     final String doStartServer = (String) props
@@ -87,29 +87,29 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
       throw new SQLException("missing required property "
           + DataSourceFactory.JDBC_DATABASE_NAME);
     }
-    ds.setDatabaseName(databaseName);
+    datasource.setDatabaseName(databaseName);
 
     final String password = (String) props
         .remove(DataSourceFactory.JDBC_PASSWORD);
-    ds.setPassword(password);
+    datasource.setPassword(password);
 
     final String user = (String) props.remove(DataSourceFactory.JDBC_USER);
-    ds.setUser(user);
+    datasource.setUser(user);
 
     final String createDatabase = (String) props
         .remove(ClientConnectionConstant.CREATE_DATABASE);
-    ds.setCreateDatabase(createDatabase);
+    datasource.setCreateDatabase(createDatabase);
 
     final String serverName = (String) props
         .remove(DataSourceFactory.JDBC_SERVER_NAME);
-    ds.setServerName(serverName);
+    datasource.setServerName(serverName);
     final String portNumber = (String) props
         .remove(DataSourceFactory.JDBC_PORT_NUMBER);
     if (portNumber != null) {
-      ds.setPortNumber(Integer.parseInt(portNumber));
+      datasource.setPortNumber(Integer.parseInt(portNumber));
     }
     else {
-      ds.setPortNumber(ClientConnectionConstant.DEFAULT_PORT);
+      datasource.setPortNumber(ClientConnectionConstant.DEFAULT_PORT);
     }
   }
 
@@ -164,10 +164,10 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
   @Override
   public ConnectionPoolDataSource createConnectionPoolDataSource(
       Properties props) throws SQLException {
-    final ClientConnectionPoolDataSource40 ds = new ClientConnectionPoolDataSource40();
-    setProperties(ds, props);
+    final ClientConnectionPoolDataSource40 datasource = new ClientConnectionPoolDataSource40();
+    setProperties(datasource, props);
 
-    return ds;
+    return datasource;
   }
 
   /**
@@ -179,9 +179,9 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
    */
   @Override
   public XADataSource createXADataSource(Properties props) throws SQLException {
-    final ClientXADataSource40 ds = new ClientXADataSource40();
-    setProperties(ds, props);
-    return ds;
+    final ClientXADataSource40 datasource = new ClientXADataSource40();
+    setProperties(datasource, props);
+    return datasource;
   }
 
   /**

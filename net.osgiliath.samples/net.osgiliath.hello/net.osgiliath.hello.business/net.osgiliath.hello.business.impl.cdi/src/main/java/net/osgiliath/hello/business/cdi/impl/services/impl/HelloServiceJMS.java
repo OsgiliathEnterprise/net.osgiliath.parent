@@ -23,8 +23,8 @@ package net.osgiliath.hello.business.cdi.impl.services.impl;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import javax.inject.Inject;
 import java.util.Collection;
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -120,8 +120,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 
       @Override
       public void process(Exchange exchange) throws Exception {
-       persistHello((HelloEntity) exchange.getIn().getBody());
-
+        HelloServiceJMS.this.persistHello((HelloEntity) exchange.getIn().getBody());
       }
 
     });

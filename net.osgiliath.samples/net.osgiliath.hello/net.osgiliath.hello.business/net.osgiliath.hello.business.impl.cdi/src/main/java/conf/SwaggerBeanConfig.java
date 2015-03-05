@@ -31,14 +31,14 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 /**
- * Swagger configuration
+ * Swagger configuration.
  * @author charliemordant
  *
  */
 @Slf4j
 public class SwaggerBeanConfig {
   /**
-   * Gets the swagger configuration
+   * Gets the swagger configuration.
    * @return the swagger configuration
    */
   @Produces

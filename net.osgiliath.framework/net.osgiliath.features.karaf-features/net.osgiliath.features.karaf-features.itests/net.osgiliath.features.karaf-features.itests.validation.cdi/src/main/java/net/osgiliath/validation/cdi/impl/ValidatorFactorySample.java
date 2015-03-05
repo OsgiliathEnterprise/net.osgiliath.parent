@@ -39,7 +39,7 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 @Slf4j
 public class ValidatorFactorySample implements IValidatorFactorySample {
   /**
-   * Validation of a null message
+   * Validation of a null message.
    * @param object element to save
    */
   public void nullMessageValidation(@NotNull @Valid HelloObject object) {

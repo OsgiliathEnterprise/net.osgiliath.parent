@@ -24,14 +24,14 @@ import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
+import javax.jms.JMSException;
+
 import javax.inject.Inject;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
-
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.messaging.Hellos;
 import net.osgiliath.messaging.repository.HelloRepository;
-
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,7 +46,6 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
-//import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.core.JmsOperations;
@@ -108,22 +107,21 @@ public class ITHelloServiceJMS extends AbstractPaxExamKarafConfiguration {
 
   /**
    * Test JMS call.
+   * @throws JMSException not expected
    * 
-   * @throws Exception
-   *           not expected
    */
   @Test
-  public void testSayHello() throws Exception {
+  public void testSayHello() throws JMSException {
     if (LOG.isDebugEnabled()) {
       LOG.trace("************Listing **********************");
-      for (final Bundle b : bundleContext.getBundles()) {
+      for (final Bundle b : this.bundleContext.getBundles()) {
         LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
       }
       LOG.trace("*********  End list ****************");
     }
     this.jmsTemplate.send("HELLO.IN", new HelloEntityMessageCreator());
 
-    final Message message = jmsTemplate.receive("HELLO.OUT");
+    final Message message = this.jmsTemplate.receive("HELLO.OUT");
     final Hellos hellos = (Hellos) ((ObjectMessage) message).getObject();
     assertEquals(1, hellos.getEntities().size());
     this.helloService.deleteAll();

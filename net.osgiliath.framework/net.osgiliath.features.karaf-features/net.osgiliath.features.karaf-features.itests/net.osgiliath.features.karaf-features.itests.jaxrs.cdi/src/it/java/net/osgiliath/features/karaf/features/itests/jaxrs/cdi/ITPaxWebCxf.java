@@ -32,11 +32,9 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.features.karaf.jaxrs.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.cdi.model.Hellos;
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
-
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,23 +52,37 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * CDI REST test.
  * 
- * @author charliemordant CDI REST test
+ * @author charliemordant
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
-  private static Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
+  /**
+   * Logger.
+   */
+  private static final Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
 
-  // Exported service via blueprint.xml
+  /**
+   * Boot finished event.
+   */
   @Inject
   @Filter(timeout = 400000)
   private BootFinished bootFinished;
 
-  // exported REST adress
-  private static String helloServiceBaseUrl = "http://localhost:8181/cxf/helloService";
+  /**
+   * exported REST address.
+   */
+  private static final String SERVICE_BASE_URL = "http://localhost:8181/cxf/helloService";
 
-  // probe
+  /**
+   * probe adding the abstract test class.
+   * 
+   * @param builder
+   *          the pax probe builder
+   * @return the provisionned probe.
+   */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
@@ -82,28 +94,42 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
 
+  /**
+   * Test a web service call.
+   * 
+   */
   @Test
-  public void testSayHello() throws Exception {
-    LOG.trace("************ start testSayHello **********************");
-    Client client = ClientBuilder.newClient();
+  public void testSayHello() {
+    if (LOG.isTraceEnabled()) {
+      LOG.trace("************ start testSayHello **********************");
+    }
+    final Client client = ClientBuilder.newClient();
 
-    WebTarget target = client.target(helloServiceBaseUrl);
+    WebTarget target = client.target(SERVICE_BASE_URL);
     target = target.path("hello");
-    Invocation.Builder builder = target.request(MediaType.APPLICATION_XML);
-    HelloObject entity = HelloObject.builder().helloMessage("John").build();
+    final Invocation.Builder builder = target
+        .request(MediaType.APPLICATION_XML);
+    final HelloObject entity = HelloObject.builder().helloMessage("John")
+        .build();
 
     builder.post(Entity.xml(entity));
-    Invocation.Builder respbuilder = target.request(MediaType.APPLICATION_XML);
+    final Invocation.Builder respbuilder = target
+        .request(MediaType.APPLICATION_XML);
 
-    Hellos hellos = respbuilder.get(Hellos.class);
+    final Hellos hellos = respbuilder.get(Hellos.class);
 
     respbuilder.delete();
     client.close();
     assertEquals(1, hellos.getHelloCollection().size());
-    LOG.trace("************ end testSayHello **********************");
+    if (LOG.isTraceEnabled()) {
+      LOG.trace("************ end testSayHello **********************");
+    }
 
   }
-
+  /**
+   * Karaf feature to provision for the test.
+   * @return the Feature Option
+   */
   protected Option featureToTest() {
 
     return features(
@@ -116,18 +142,28 @@ public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-     //paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
 
+  /**
+   * Returns the Ops4J exam configuration.
+   * 
+   * @return the configuration
+   */
   @Configuration
   public Option[] config() {
     return createConfig();
   }
 
+  /**
+   * Sets the logging level.
+   * 
+   * @return the logging level Option
+   */
+
   @Override
   protected Option loggingLevel() {
-    // TODO Auto-generated method stub
     return logLevel(LogLevel.INFO);
   }
 

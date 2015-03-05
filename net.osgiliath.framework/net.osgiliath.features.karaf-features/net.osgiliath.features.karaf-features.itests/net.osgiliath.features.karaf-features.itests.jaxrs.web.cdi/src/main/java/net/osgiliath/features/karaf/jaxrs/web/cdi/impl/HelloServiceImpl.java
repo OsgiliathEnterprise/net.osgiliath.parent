@@ -19,19 +19,17 @@ package net.osgiliath.features.karaf.jaxrs.web.cdi.impl;
  * limitations under the License.
  * #L%
  */
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.enterprise.context.ApplicationScoped;
-
 import net.osgiliath.features.karaf.jaxrs.web.cdi.HelloServiceJaxRS;
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.HelloObject;
 import net.osgiliath.features.karaf.jaxrs.web.cdi.model.Hellos;
 import net.osgiliath.helpers.cdi.eager.Eager;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * 

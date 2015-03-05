@@ -39,7 +39,7 @@ import lombok.Data;
 @MappedSuperclass
 // @XmlRootElement on your child class
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AbstractEntity {
+public class GenericEntity {
   /**
    * Identifier.
    */

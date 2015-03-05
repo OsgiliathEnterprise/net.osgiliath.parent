@@ -21,7 +21,7 @@ package net.osgiliath.security;
  */
 
 /**
- * Authenticate a {@link MUser}
+ * Authenticate a {@link MUser}.
  * 
  * @author Charlie
  * 

@@ -25,11 +25,9 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
-
 import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import net.osgiliath.security.MUser;
 import net.osgiliath.security.SecurityService;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -43,7 +41,6 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
-//import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +63,7 @@ public class ITsecurity extends AbstractPaxExamKarafConfiguration {
   @Inject
   private transient BundleContext bundleContext;
   /**
-   *  Exported service via blueprint.xml.
+   * Exported service via blueprint.xml.
    */
   @Inject
   @Filter(timeout = 40000)
@@ -74,7 +71,9 @@ public class ITsecurity extends AbstractPaxExamKarafConfiguration {
 
   /**
    * probe adding the abstract test class.
-   * @param builder the pax probe builder
+   * 
+   * @param builder
+   *          the pax probe builder
    * @return the provisionned probe.
    */
   @ProbeBuilder
@@ -85,15 +84,18 @@ public class ITsecurity extends AbstractPaxExamKarafConfiguration {
     builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
     return builder;
   }
+
   /**
    * User authentication test.
-   * @throws Exception not expected
+   * 
    */
   @Test
-  public void testAuthenticate() throws Exception {
-    LOG.trace("************Listing **********************");
-    for (final Bundle b : bundleContext.getBundles()) {
-      LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+  public void testAuthenticate() {
+    if (LOG.isDebugEnabled()) {
+      LOG.trace("************Listing **********************");
+      for (final Bundle b : this.bundleContext.getBundles()) {
+        LOG.debug("bundle: " + b.getSymbolicName() + ", state: " + b.getState());
+      }
     }
     final MUser user = new MUser();
     user.setPseudo("toto");
@@ -102,8 +104,10 @@ public class ITsecurity extends AbstractPaxExamKarafConfiguration {
     assertTrue(this.securityService.authenticate("toto", "myPassword"));
 
   }
+
   /**
    * Karaf feature to test.
+   * 
    * @return the feature
    */
   @Override
@@ -121,8 +125,10 @@ public class ITsecurity extends AbstractPaxExamKarafConfiguration {
     // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
+
   /**
    * Pax exam configuration creation.
+   * 
    * @return the provisionned configuration
    */
   @Configuration
