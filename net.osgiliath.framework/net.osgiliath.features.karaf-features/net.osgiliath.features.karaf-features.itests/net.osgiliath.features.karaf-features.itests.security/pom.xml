@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features.itests</artifactId>
-		<version>0.1.5</version>
+		<version>0.1.6-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features.itests.security</artifactId>
 	<name>Osgiliath integration tests security</name>
