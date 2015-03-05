@@ -42,7 +42,7 @@
 		<amq:systemUsage>
 			<amq:systemUsage>
 				<amq:memoryUsage>
-					<amq:memoryUsage limit="420 mb" percentUsage="50" />
+					<amq:memoryUsage limit="420 mb" />
 				</amq:memoryUsage>
 				<amq:storeUsage>
 					<amq:storeUsage limit="1 gb" />
