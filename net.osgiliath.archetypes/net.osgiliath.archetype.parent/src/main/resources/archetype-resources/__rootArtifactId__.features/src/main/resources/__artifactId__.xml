@@ -55,7 +55,7 @@ ${symbol_pound}L%
 		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.route</feature>
 		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.ui</feature>	
 	</feature>
-	<!--<feature name="${symbol_dollar}{project.parent.artifactId}.full.itests" version="${symbol_dollar}{project.version}">
+	<!--<feature name="${symbol_dollar}{project.parent.artifactId}.ui.full.itests" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.business</feature>
 		<feature version='${symbol_dollar}{project.version}'>${symbol_dollar}{project.parent.artifactId}.route</feature>
 		<feature version='${symbol_dollar}{karaf.version}'>osgiliath-war</feature>
