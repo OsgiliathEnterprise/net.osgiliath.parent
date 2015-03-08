@@ -17,7 +17,6 @@ var unit = function(config) {
 			unit.mainfolder + 'scripts/main/mainRoute.js',
 			unit.mainfolder + 'scripts/hello/helloDirective.js',
 			unit.mainfolder + 'scripts/hello/helloController.js',
-			unit.bowercomponent + 'angular-mocks/angular-mocks.js',
 			/* 'test/mock/*.js', */unit.testfolder + '/spec/**/*.js' ]);
 	config.urlRoot = '/__unit/';
 	config.port = 8081;

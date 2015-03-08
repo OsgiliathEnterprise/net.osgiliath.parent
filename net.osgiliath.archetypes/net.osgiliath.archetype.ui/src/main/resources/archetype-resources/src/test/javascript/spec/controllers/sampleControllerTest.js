@@ -3,7 +3,7 @@
 describe('Controller: sampleController', function () {
 
   // load the controller's module
-  beforeEach(module('myApp'));
+  beforeEach(module('sampleApp'));
 
   var scope, mockedService;
   var myCtrl;

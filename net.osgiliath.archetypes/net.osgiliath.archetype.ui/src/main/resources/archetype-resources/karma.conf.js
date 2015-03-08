@@ -17,7 +17,6 @@ var unit = function(config) {
 			unit.mainfolder + 'scripts/main/mainRoute.js',
 			unit.mainfolder + 'scripts/sample/sampleDirective.js',
 			unit.mainfolder + 'scripts/sample/sampleController.js',
-			unit.bowercomponent + 'angular-mocks/angular-mocks.js',
 			/* 'test/mock/*.js', */unit.testfolder + '/spec/**/*.js' ]);
 	config.urlRoot = '/__unit/';
 	config.port = 8081;
@@ -26,7 +25,6 @@ var unit = function(config) {
 	};
 };
 unit.mainfolder = 'src/main/javascript/';
-unit.bowercomponent = shared.mainfolder + 'bower_components/';
 unit.testfolder = 'src/test/javascript/';
 
 module.exports = unit;

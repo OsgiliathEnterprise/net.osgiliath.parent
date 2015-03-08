@@ -67,9 +67,9 @@ public class StandaloneKarafPaxExamConfiguration extends AbstractPaxExamKarafCon
 		return features(
 				maven().groupId("${groupId}")
 				.artifactId(
-					"${groupId}.features").type("xml")
+					"${rootArtifactId}.features").type("xml")
 				.classifier("features").versionAsInProject(),
-				"${groupId}.full.itests");
+				"${rootArtifactId}.full.itests");
 	}
 	static {
 		// uncomment to enable debugging of this test class

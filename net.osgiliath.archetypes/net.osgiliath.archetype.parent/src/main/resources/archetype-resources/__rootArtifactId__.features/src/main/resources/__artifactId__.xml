@@ -61,7 +61,7 @@ ${symbol_pound}L%
 		<feature version='${symbol_dollar}{karaf.version}'>osgiliath-war</feature>
 		<bundle>file:${symbol_dollar}{project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.ui/target/${symbol_dollar}{project.parent.artifactId}.ui.war</bundle>
 	</feature>-->
-	<!--<feature name="${symbol_dollar}{project.groupId}.route" version="${symbol_dollar}{project.version}"><!-- if you use blueprint instead of cdi, replace o-full-cdi by osgiliath-full-->
+	<!--<feature name="${symbol_dollar}{project.groupId}.route" version="${symbol_dollar}{project.version}"> if you use blueprint instead of cdi, replace o-full-cdi by osgiliath-full
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-full-cdi</feature>
 		<configfile finalname="/etc/${symbol_dollar}{project.groupId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/camel</configfile>
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-routes</feature>
