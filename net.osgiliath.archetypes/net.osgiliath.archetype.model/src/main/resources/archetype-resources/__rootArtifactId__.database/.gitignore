@@ -2,3 +2,5 @@
 /.settings
 /.classpath
 /.project
+/src/site
+.DS_Store

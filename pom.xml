@@ -178,6 +178,10 @@
 											<name>parentPropertiesFile</name>
 											<value>${parentPropertiesFile}</value>
 										</property>
+										<property>
+											<name>appArtifactId</name>
+											<value>${project.artifactId}</value>
+										</property>
 									</properties>
 									<scripts>
 										<script> 
