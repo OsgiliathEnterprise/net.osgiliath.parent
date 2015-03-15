@@ -1,21 +1,21 @@
 Manifest-Version: 1.0
+Implementation-Title: org.springframework.security.aspects
 Export-Package: org.springframework.security.access.intercept.aspectj.
  aspect;version="3.2.5.RELEASE";uses:="org.aspectj.lang,org.aspectj.la
  ng.annotation,org.aspectj.runtime.internal,org.springframework.beans.
  factory,org.springframework.security.access.intercept.aspectj"
-Bundle-Vendor: SpringSource
-Implementation-Title: org.springframework.security.aspects
-Bundle-ClassPath: ., spring-security-aspects-3.2.5.RELEASE.jar
+Bundle-SymbolicName: org.springframework.security.aspects
 Implementation-Version: 3.2.5.RELEASE
 Bundle-Version: 3.2.5.RELEASE
-Tool: Bundlor 1.0.0.RELEASE
 Bundle-Name: Spring Security Aspects
+Bundle-ClassPath: ., spring-security-aspects-3.2.5.RELEASE.jar
 Bundle-ManifestVersion: 2
+Bundle-Vendor: SpringSource
 Import-Package: org.aspectj.lang;version="[1.6.0, 1.8.0)";resolution:=
  "optional",org.aspectj.lang.annotation;version="[1.6.0, 1.8.0)";resol
  ution:="optional",org.aspectj.runtime.internal;version="[1.6.0, 1.8.0
  )";resolution:="optional",org.springframework.beans.factory;version="
  [4,5)",org.springframework.security.access.intercept.aspectj;version=
  "[3.2.5.RELEASE, 3.3.0)"
-Bundle-SymbolicName: org.springframework.security.aspects
+Tool: Bundlor 1.0.0.RELEASE
 

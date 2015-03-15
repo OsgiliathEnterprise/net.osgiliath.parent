@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Implementation-Title: org.springframework.security.ldap
 Export-Package: org.springframework.security.ldap;version="3.2.5.RELEA
  SE";uses:="javax.naming,javax.naming.directory,org.apache.commons.log
  ging,org.springframework.ldap,org.springframework.ldap.core,org.sprin
@@ -30,14 +31,13 @@ Export-Package: org.springframework.security.ldap;version="3.2.5.RELEA
  ork.security.ldap,org.springframework.security.ldap.ppolicy,org.sprin
  gframework.security.ldap.search,org.springframework.security.provisio
  ning"
-Bundle-Vendor: SpringSource
-Implementation-Title: org.springframework.security.ldap
-Bundle-ClassPath: ., spring-security-ldap-3.2.5.RELEASE.jar
+Bundle-SymbolicName: org.springframework.security.ldap
 Implementation-Version: 3.2.5.RELEASE
 Bundle-Version: 3.2.5.RELEASE
-Tool: Bundlor 1.0.0.RELEASE
 Bundle-Name: Spring Security LDAP
+Bundle-ClassPath: ., spring-security-ldap-3.2.5.RELEASE.jar
 Bundle-ManifestVersion: 2
+Bundle-Vendor: SpringSource
 Import-Package: javax.naming;version="0";resolution:="optional",javax.
  naming.directory;version="0";resolution:="optional",javax.naming.ldap
  ;version="0";resolution:="optional",netscape.ldap.ber.stream;version=
@@ -85,5 +85,5 @@ Import-Package: javax.naming;version="0";resolution:="optional",javax.
  .2.5.RELEASE, 3.3.0)",org.springframework.security.provisioning;versi
  on="[3.2.5.RELEASE, 3.3.0)",org.springframework.util;version="[4.0.0,
  5.0.0)"
-Bundle-SymbolicName: org.springframework.security.ldap
+Tool: Bundlor 1.0.0.RELEASE
 

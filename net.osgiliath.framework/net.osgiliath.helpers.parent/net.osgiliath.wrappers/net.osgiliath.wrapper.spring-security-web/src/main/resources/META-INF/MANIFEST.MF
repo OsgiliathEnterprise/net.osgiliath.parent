@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Implementation-Title: org.springframework.security.web
 Export-Package: org.springframework.security.web;version="3.2.5.RELEAS
  E";uses:="javax.servlet,javax.servlet.http,org.apache.commons.logging
  ,org.springframework.security.core,org.springframework.security.web.f
@@ -129,14 +130,13 @@ Export-Package: org.springframework.security.web;version="3.2.5.RELEAS
  er;version="3.2.5.RELEASE";uses:="javax.servlet.http,org.springframew
  ork.expression,org.springframework.http,org.springframework.web.accep
  t"
-Bundle-Vendor: SpringSource
-Implementation-Title: org.springframework.security.web
-Bundle-ClassPath: ., spring-security-web-3.2.5.RELEASE.jar
+Bundle-SymbolicName: org.springframework.security.web
 Implementation-Version: 3.2.5.RELEASE
 Bundle-Version: 3.2.5.RELEASE
-Tool: Bundlor 1.0.0.RELEASE
 Bundle-Name: Spring Security Web
+Bundle-ClassPath: ., spring-security-web-3.2.5.RELEASE.jar
 Bundle-ManifestVersion: 2
+Bundle-Vendor: SpringSource
 Import-Package: javax.servlet;version="0",javax.servlet.http;version="
  0",javax.xml.parsers;version="0";resolution:="optional",org.apache.co
  mmons.logging;version="[1.0.4, 2.0.0)",org.springframework.beans;vers
@@ -189,5 +189,5 @@ Import-Package: javax.servlet;version="0",javax.servlet.http;version="
  eb.util;version="[4.0.0,5.0.0)";resolution:="optional",org.w3c.dom;ve
  rsion="0";resolution:="optional",org.xml.sax;version="0";resolution:=
  "optional"
-Bundle-SymbolicName: org.springframework.security.web
+Tool: Bundlor 1.0.0.RELEASE
 

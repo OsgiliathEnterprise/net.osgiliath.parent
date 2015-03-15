@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Implementation-Title: org.springframework.security.core
 Export-Package: org.springframework.security.access;version="3.2.5.REL
  EASE";uses:="org.springframework.aop.framework,org.springframework.se
  curity.authentication,org.springframework.security.core",org.springfr
@@ -115,14 +116,13 @@ Export-Package: org.springframework.security.access;version="3.2.5.REL
  k.security.core.context",org.springframework.security.util;version="3
  .2.5.RELEASE";uses:="org.aopalliance.intercept,org.springframework.co
  re.io"
-Bundle-Vendor: SpringSource
-Implementation-Title: org.springframework.security.core
-Bundle-ClassPath: ., spring-security-core-3.2.5.RELEASE.jar
+Bundle-SymbolicName: org.springframework.security.core
 Implementation-Version: 3.2.5.RELEASE
 Bundle-Version: 3.2.5.RELEASE
-Tool: Bundlor 1.0.0.RELEASE
 Bundle-Name: Spring Security Core
+Bundle-ClassPath: ., spring-security-core-3.2.5.RELEASE.jar
 Bundle-ManifestVersion: 2
+Bundle-Vendor: SpringSource
 Import-Package: javax.annotation.security;version="0";resolution:="opt
  ional",javax.crypto;version="0";resolution:="optional",javax.crypto.s
  pec;version="0";resolution:="optional",javax.security.auth;version="0
@@ -156,5 +156,5 @@ Import-Package: javax.annotation.security;version="0";resolution:="opt
  e.support;version="[4.0.0,5.0.0)";resolution:="optional",org.springfr
  amework.scheduling;version="[4.0.0,5.0.0)";resolution:="optional",org
  .springframework.util;version="[4.0.0,5.0.0)"
-Bundle-SymbolicName: org.springframework.security.core
+Tool: Bundlor 1.0.0.RELEASE
 

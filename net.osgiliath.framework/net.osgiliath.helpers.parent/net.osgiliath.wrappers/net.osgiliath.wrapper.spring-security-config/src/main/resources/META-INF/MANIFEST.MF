@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Implementation-Title: org.springframework.security.config
 Export-Package: org.springframework.security.config;version="3.2.5.REL
  EASE";uses:="org.springframework.beans.factory.config,org.springframe
  work.beans.factory.xml,org.w3c.dom",org.springframework.security.conf
@@ -141,14 +142,13 @@ Export-Package: org.springframework.security.config;version="3.2.5.REL
  ans.factory.support,org.springframework.beans.factory.xml,org.springf
  ramework.security.access.method,org.springframework.security.authenti
  cation,org.springframework.security.core,org.w3c.dom"
-Bundle-Vendor: SpringSource
-Implementation-Title: org.springframework.security.config
-Bundle-ClassPath: ., spring-security-core-3.2.5.RELEASE.jar
+Bundle-SymbolicName: org.springframework.security.config
 Implementation-Version: 3.2.5.RELEASE
 Bundle-Version: 3.2.5.RELEASE
-Tool: Bundlor 1.0.0.RELEASE
 Bundle-Name: Spring Security Namespace Configuration
+Bundle-ClassPath: ., spring-security-core-3.2.5.RELEASE.jar
 Bundle-ManifestVersion: 2
+Bundle-Vendor: SpringSource
 Import-Package: javax.servlet;version="0";resolution:="optional",javax
  .servlet.http;version="0";resolution:="optional",javax.sql;version="0
  ";resolution:="optional",org.aopalliance.intercept;version="[1.0.0, 2
@@ -261,5 +261,5 @@ Import-Package: javax.servlet;version="0";resolution:="optional",javax
  rk.web.servlet.config.annotation;version="[4.0.0,5.0.0)",org.springfr
  amework.web.servlet.support;version="[4.0.0,5.0.0)",org.w3c.dom;versi
  on="0";resolution:="optional"
-Bundle-SymbolicName: org.springframework.security.config
+Tool: Bundlor 1.0.0.RELEASE
 

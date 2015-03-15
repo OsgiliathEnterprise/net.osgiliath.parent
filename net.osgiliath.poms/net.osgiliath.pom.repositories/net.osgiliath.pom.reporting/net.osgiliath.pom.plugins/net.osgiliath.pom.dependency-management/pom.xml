@@ -1418,7 +1418,7 @@
 		<org.apache.karaf.web_org.apache.karaf.web.command.version>${karaf.version}</org.apache.karaf.web_org.apache.karaf.web.command.version>
 		<org.apache.karaf.web_org.apache.karaf.web.core.version>${karaf.version}</org.apache.karaf.web_org.apache.karaf.web.core.version>
 		<org.apache.neethi_neethi.version>3.0.3</org.apache.neethi_neethi.version>
-		<org.apache.openjpa_openjpa.version>2.3.0</org.apache.openjpa_openjpa.version>
+		<org.apache.openjpa_openjpa.version>${openjpa.version}</org.apache.openjpa_openjpa.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>1.7.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>1.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>1.8.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>

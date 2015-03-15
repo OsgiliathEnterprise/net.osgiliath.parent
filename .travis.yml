@@ -5,7 +5,7 @@ before_install:
 install: mvn --quiet install -Ptravis
 script: mvn --quiet verify -Ptravis
 jdk:
-  - oraclejdk7
+  - oraclejdk8
 notifications:
   email:
       - cmordant1@gmail.com
