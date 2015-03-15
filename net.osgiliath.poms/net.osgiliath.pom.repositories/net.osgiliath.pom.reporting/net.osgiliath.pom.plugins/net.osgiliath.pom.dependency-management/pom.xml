@@ -246,6 +246,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-catalog</artifactId>
+				<version>${org.apache.camel_camel-catalog.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-cdi</artifactId>
 				<version>${org.apache.camel_camel-cdi.version}</version>
 				<exclusions>
@@ -265,8 +270,13 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-commands-core</artifactId>
+				<version>${org.apache.camel_camel-commands-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-core</artifactId>
-				<version>${org.apache.camel_camel-cdi.version}</version>
+				<version>${org.apache.camel_camel-core.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
@@ -334,6 +344,11 @@
 				<groupId>org.apache.camel.karaf</groupId>
 				<artifactId>camel-karaf-commands</artifactId>
 				<version>${org.apache.camel.karaf_camel-karaf-commands.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel.karaf</groupId>
+				<artifactId>camel-karaf-commands-catalog</artifactId>
+				<version>${org.apache.camel.karaf_camel-karaf-commands-catalog.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -1340,8 +1355,11 @@
 		<org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version>${org.apache.aries.spifly.version}</org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version>
 		<org.apache.aries.transaction_org.apache.aries.transaction.manager.version>${org.apache.aries.transaction.version}</org.apache.aries.transaction_org.apache.aries.transaction.manager.version>
 		<org.apache.camel_camel-blueprint.version>${org.apache.camel.version}</org.apache.camel_camel-blueprint.version>
+		<org.apache.camel_camel-catalog.version>${org.apache.camel.version}</org.apache.camel_camel-catalog.version>
+		<org.apache.camel.karaf_camel-karaf-commands-catalog.version>${org.apache.camel.version}</org.apache.camel.karaf_camel-karaf-commands-catalog.version>
 		<org.apache.camel_camel-cdi.version>${org.apache.camel.version}</org.apache.camel_camel-cdi.version>
-		<org.apache.camel_camel-cdi.version>${org.apache.camel.version}</org.apache.camel_camel-cdi.version>
+		<org.apache.camel_camel-core.version>${org.apache.camel.version}</org.apache.camel_camel-core.version>
+		<org.apache.camel_camel-commands-core.version>${org.apache.camel.version}</org.apache.camel_camel-commands-core.version>
 		<org.apache.camel_camel-elasticsearch.version>${org.apache.camel.version}</org.apache.camel_camel-elasticsearch.version>
 		<org.apache.camel_camel-http.version>${org.apache.camel.version}</org.apache.camel_camel-http.version>
 		<org.apache.camel_camel-jackson.version>${org.apache.camel.version}</org.apache.camel_camel-jackson.version>
@@ -1544,7 +1562,7 @@
 		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
 		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
 		<org.apache.aries.transaction.version>1.1.1</org.apache.aries.transaction.version>
-		<org.apache.camel.version>2.14.1</org.apache.camel.version>
+		<org.apache.camel.version>2.15.0</org.apache.camel.version>
 		<org.apache.cxf.version>3.0.3</org.apache.cxf.version>
 		<org.apache.deltaspike.version>1.2.1</org.apache.deltaspike.version>
 		<org.apache.servicemix.bundles.jaxb.version>2.2.1.1_2</org.apache.servicemix.bundles.jaxb.version>

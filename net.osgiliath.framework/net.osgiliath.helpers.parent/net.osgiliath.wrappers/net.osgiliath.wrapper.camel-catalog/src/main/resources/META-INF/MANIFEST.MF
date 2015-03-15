@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Export-Package: org.apache.camel.catalog;uses:="javax.management";vers
+ ion="2.15.0",org.apache.camel.catalog.components;version="2.15.0",org
+ .apache.camel.catalog.dataformats;version="2.15.0",org.apache.camel.c
+ atalog.languages;version="2.15.0",org.apache.camel.catalog.models;ver
+ sion="2.15.0",org.apache.camel.catalog.schemas;version="2.15.0"
+Implementation-Title: Apache Camel
+Bundle-ClassPath: ., camel-catalog-2.15.0.jar
+Implementation-Version: 2.15.0
+Built-By: ubuntu
+Tool: Bnd-1.50.0
+Bundle-Name: camel-catalog
+Created-By: Apache Maven Bundle Plugin
+Bundle-Vendor: The Apache Software Foundation
+Build-Jdk: 1.7.0_76
+Bundle-Version: 2.15.0
+Bnd-LastModified: 1425709329721
+Bundle-ManifestVersion: 2
+Bundle-Description: Camel Catalog
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Import-Package: javax.management,org.apache.camel.catalog.components,o
+ rg.apache.camel.catalog.dataformats,org.apache.camel.catalog.language
+ s,org.apache.camel.catalog.models,org.apache.camel.catalog.schemas;ve
+ rsion="[2.15,3)"
+Bundle-DocURL: http://www.apache.org/
+Bundle-SymbolicName: org.apache.camel.camel-catalog
+Karaf-Info: Camel;camel-catalog=2.15.0
+

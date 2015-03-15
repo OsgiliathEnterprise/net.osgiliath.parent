@@ -20,6 +20,9 @@ package net.osgiliath.helpers.manifest.transformer;
  * #L%
  */
 
+import java.util.Collection;
+
+import java.util.HashSet;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -34,7 +37,6 @@ import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.codehaus.plexus.util.IOUtil;
 import org.osgi.framework.Constants;
 
@@ -59,6 +61,7 @@ public class ManifestBundleImportVersionUpdaterTransformer {
    * The Manifest.
    */
   private transient Manifest manifest;
+  private transient Collection<String> suppressList = new HashSet<String>();
   /**
    * Singleton.
    */
@@ -126,18 +129,25 @@ public class ManifestBundleImportVersionUpdaterTransformer {
 
     final Attributes attributes = this.manifest.getMainAttributes();
     final StringBuilder updatedImports = new StringBuilder();
-
-    if (this.entriesVersionUpdates != null) {
-      final String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
-      final StringBuilder regexp = new StringBuilder();
-      regexp.append("([a-zA-Z0-9\\.]+?)"); // symbolicname
-      regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9a-zA-Z]*\")*?)*?)"); // specialization
-      regexp.append("(,(?!\\s*[\\.\\]\\)0-9a-zA-Z]*\")|$)"); // iterator
-      final Pattern pattern = Pattern.compile(regexp.toString()); // ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
-      final Matcher matcher = pattern.matcher(imports);
-      while (matcher.find()) {
-        final String symbolicName = matcher.group(1);
-        Boolean foundMatch = Boolean.FALSE;
+    final String imports = attributes.getValue(Constants.IMPORT_PACKAGE);
+    final StringBuilder regexp = new StringBuilder();
+    regexp.append("([a-zA-Z0-9\\.]+?)"); // symbolicname
+    regexp.append("((;[^=]*?=([^;,]|,\\s*[\\.\\]\\)0-9a-zA-Z]*\")*?)*?)"); // specialization
+    regexp.append("(,(?!\\s*[\\.\\]\\)0-9a-zA-Z]*\")|$)"); // iterator
+    final Pattern pattern = Pattern.compile(regexp.toString()); // ([a-z|\\.]+?)((;\\w*?=\".*?\")*)(,|$)
+    final Matcher matcher = pattern.matcher(imports);
+    while (matcher.find()) {
+      final String symbolicName = matcher.group(1);
+      Boolean foundMatch = Boolean.FALSE;
+      if (this.suppressList != null) {
+        for (final Iterator<String> iterator = this.suppressList.iterator(); iterator.hasNext();) {
+          final String key = iterator.next();
+          if (key.equals(symbolicName)) {
+            foundMatch = Boolean.TRUE;
+          }
+        }
+      }
+      if (this.entriesVersionUpdates != null && !foundMatch) {
         updatedImports.append(symbolicName);
         for (final Iterator<String> iterator = this.entriesVersionUpdates
             .keySet().iterator(); iterator.hasNext();) {
@@ -191,11 +201,15 @@ public class ManifestBundleImportVersionUpdaterTransformer {
    */
   public static void main(String[] args) throws IOException {
     String[] overrides = null;
+    String[] suppress = null;
     String basedir = null;
     String bundleClasspath = null;
     for (final String arg : args) {
       if (arg.startsWith("overrides=")) {
         overrides = arg.replaceFirst("overrides=", "").split(";");
+      }
+      if (arg.startsWith("suppress=")) {
+        suppress = arg.replaceFirst("suppress=", "").split(";");
       }
       else if (arg.startsWith("basedir=")) {
         basedir = arg.replaceFirst("basedir=", "");
@@ -221,10 +235,21 @@ public class ManifestBundleImportVersionUpdaterTransformer {
         inputstream.close();
       }
     }
+    getInstance().createSuppressList(suppress);
     getInstance().createOverrideMap(overrides);
     getInstance().updateManifestImportsWithOverrides();
     getInstance().addBundleClassPath(bundleClasspath);
     getInstance().writeManifest(basedir);
+  }
+
+  private void createSuppressList(String[] suppress) {
+    if (null != suppress) {
+      for (final String override : suppress) {
+        this.suppressList.add(override);
+
+      }
+    }
+
   }
 
   /**
@@ -260,10 +285,12 @@ public class ManifestBundleImportVersionUpdaterTransformer {
   }
 
   private void createOverrideMap(String[] overrides) {
-    for (final String override : overrides) {
-      final String[] mapEntry = override.split("=");
-      if (mapEntry.length == 2) {
-        this.entriesVersionUpdates.put(mapEntry[0], mapEntry[1]);
+    if (null != overrides) {
+      for (final String override : overrides) {
+        final String[] mapEntry = override.split("=");
+        if (mapEntry.length == 2) {
+          this.entriesVersionUpdates.put(mapEntry[0], mapEntry[1]);
+        }
       }
     }
   }

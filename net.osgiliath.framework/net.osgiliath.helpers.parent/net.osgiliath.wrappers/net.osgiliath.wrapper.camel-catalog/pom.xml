@@ -5,9 +5,9 @@
 		<artifactId>net.osgiliath.wrappers</artifactId>
 		<version>0.1.6-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.wrapper.spring-ldap</artifactId>
-	<name>Spring-ldap wrapper</name>
-	<description>Spring ldap manifest updates</description>
+	<artifactId>net.osgiliath.wrapper.camel-catalog</artifactId>
+	<name>Camel catalog wrapper</name>
+	<description>As Camel catalog has some bundle export issues, we've got to wrap it: see https://issues.apache.org/jira/browse/CAMEL-8490</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -59,8 +59,8 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.apache.servicemix.bundles</groupId>
-									<artifactId>org.apache.servicemix.bundles.spring-ldap</artifactId>
+									<groupId>org.apache.camel</groupId>
+									<artifactId>camel-catalog</artifactId>
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
 								</artifactItem>
@@ -76,8 +76,8 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.apache.servicemix.bundles</groupId>
-									<artifactId>org.apache.servicemix.bundles.spring-ldap</artifactId>
+									<groupId>org.apache.camel</groupId>
+									<artifactId>camel-catalog</artifactId>
 									<includes>META-INF/MANIFEST.MF</includes>
 									<overWrite>true</overWrite><!-- TODO set to true -->
 									<outputDirectory>${project.build.resources[0].directory}/</outputDirectory>
@@ -101,9 +101,9 @@
 				<configuration>
 					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
-						<argument>overrides=org.springframework.jdbc.datasource=[4.0.0,5.0.0);org.springframework.orm.hibernate3=[4.0.0,5.0.0);org.springframework.beans=[4.0.0,5.0.0);org.springframework.beans.factory=[4.0.0,5.0.0);org.springframework.beans.factory.config=[4.0.0,5.0.0);org.springframework.context=[4.0.0,5.0.0);org.springframework.core=[4.0.0,5.0.0);org.springframework.core.io=[4.0.0,5.0.0);org.springframework.dao=[4.0.0,5.0.0);org.springframework.transaction=[4.0.0,5.0.0);org.springframework.transaction.support=[4.0.0,5.0.0);org.springframework.util=[4.0.0,5.0.0)</argument>
+						<argument>suppress=org.apache.camel.catalog.archetypes</argument>
 						<argument>basedir=${project.basedir}</argument>
-						<argument>bundleClasspath=org.apache.servicemix.bundles.spring-ldap-${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version}.jar</argument>
+						<argument>bundleClasspath=camel-catalog-${org.apache.camel_camel-catalog.version}</argument>
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
@@ -115,8 +115,8 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-ldap</artifactId>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-catalog</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>

@@ -30,8 +30,11 @@
     </feature>
     <feature name='osgiliath-camel-core' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
         <feature version='${org.apache.servicemix.specs.version}'>osgiliath-xml-specs-api</feature>
-        <bundle>mvn:org.apache.camel/camel-core/${org.apache.camel_camel-cdi.version}</bundle>
+        <bundle>mvn:org.apache.camel/camel-core/${org.apache.camel_camel-core.version}</bundle>
+        <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.camel-catalog/${project.version}</bundle>
+         <bundle>mvn:org.apache.camel/camel-commands-core/${org.apache.camel_camel-commands-core.version}</bundle>
         <bundle>mvn:org.apache.camel.karaf/camel-karaf-commands/${org.apache.camel.karaf_camel-karaf-commands.version}</bundle>
+        <bundle>mvn:org.apache.camel.karaf/camel-karaf-commands-catalog/${org.apache.camel.karaf_camel-karaf-commands-catalog.version}</bundle>
     </feature>
      <feature name='osgiliath-camel-jms' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
         <bundle dependency='true'>mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</bundle>

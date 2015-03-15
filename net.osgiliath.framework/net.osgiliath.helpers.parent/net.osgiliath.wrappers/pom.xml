@@ -29,5 +29,6 @@
 		<module>net.osgiliath.wrapper.spring-security-core</module>
 		<module>net.osgiliath.wrapper.spring-security-ldap</module>
 		<module>net.osgiliath.wrapper.spring-security-web</module>
+		<module>net.osgiliath.wrapper.camel-catalog</module>
 	</modules>
 </project>
