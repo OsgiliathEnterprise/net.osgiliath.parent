@@ -38,7 +38,7 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>src/main/resources/META-INF</directory>
+							<directory>src/main/resources</directory>
 							<includes>
 								<include>**/*.MF</include>
 							</includes>
