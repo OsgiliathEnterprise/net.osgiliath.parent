@@ -31,7 +31,7 @@ public final class ClientConnectionConstant {
   public static final String AUTO_START_SERVER = "serverAutoStart";
   public static final String CREATE_DATABASE = "createDatabase";
   public static final Object LOG_FILE_PROPERTY = "derbyServerLog";
-  public static final String PAX_JDBC_DS_ID = "derbyclient";
+  public static final String PAX_JDBC_DS_ID = "derbyclientstandalone";
   public static final int DEFAULT_PORT = 1527;
   public static final String DEFAULT_HOST = "localhost";
   public static final String LOG_FILE = "derbyServer.log";

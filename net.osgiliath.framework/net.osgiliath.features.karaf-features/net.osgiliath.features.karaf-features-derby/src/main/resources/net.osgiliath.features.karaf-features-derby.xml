@@ -11,7 +11,7 @@
 		<feature version='${org.apache.aries.transaction.version}'>transaction</feature>
 		<feature version='${karaf.version}'>jndi</feature>
 		<feature version='${org.ops4j.pax.jdbc_pax-jdbc-features.version}'>pax-jdbc-config</feature>
-		<feature version='${org.ops4j.pax.jdbc_pax-jdbc-features.version}'>pax-jdbc-pool-dbcp2</feature>
+		<feature version='${org.ops4j.pax.jdbc_pax-jdbc-features.version}'>pax-jdbc-pool-aries</feature>
 		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring</feature>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.derby/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.liquibase/liquibase-osgi/${org.liquibase_liquibase-osgi.version}</bundle>

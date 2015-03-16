@@ -2,6 +2,6 @@
 /.settings
 /.project
 /.git
-/.DS_Store
+.DS_Store
 src/site/markdown
 !/target/staging
