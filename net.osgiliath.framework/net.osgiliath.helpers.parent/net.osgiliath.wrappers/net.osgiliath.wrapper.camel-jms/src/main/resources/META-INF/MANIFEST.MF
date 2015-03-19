@@ -1,55 +1,50 @@
 Manifest-Version: 1.0
-Export-Service: org.apache.camel.spi.ComponentResolver;component=jms
-Bundle-Description: Camel JMS support
-Implementation-Title: Apache Camel
-Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
-Bundle-SymbolicName: org.apache.camel.camel-jms
-Implementation-Version: 2.15.0
-Built-By: ubuntu
-Karaf-Info: Camel;camel-jms=2.15.0
 Bnd-LastModified: 1425703952878
-Bundle-ManifestVersion: 2
-Bundle-DocURL: http://www.apache.org/
-Bundle-Vendor: The Apache Software Foundation
-Import-Package: javax.jms;version="[1.1,3)",org.apache.camel;version="
- [2.15,2.16)",org.apache.camel.api.management;version="[2.15,2.16)",or
- g.apache.camel.impl;version="[2.15,2.16)",org.apache.camel.spi;versio
- n="[2.15,2.16)",org.apache.camel.support;version="[2.15,2.16)",org.ap
- ache.camel.util;version="[2.15,2.16)",org.apache.camel.util.concurren
- t;version="[2.15,2.16)",org.apache.commons.logging;version="[1.1,2)",
- org.slf4j;version="[1.6,2)",org.springframework.beans;version="[4,4.1
- .2.RELEASE_1]",org.springframework.context;version="[4,4.1.2.RELEASE_
- 1]",org.springframework.core.task;version="[4,4.1.2.RELEASE_1]",org.s
- pringframework.jms;version="[4,4.1.2.RELEASE_1]",org.springframework.
- jms.connection;version="[4,4.1.2.RELEASE_1]",org.springframework.jms.
- core;version="[4,4.1.2.RELEASE_1]",org.springframework.jms.listener;v
- ersion="[4,4.1.2.RELEASE_1]",org.springframework.jms.support;version=
- "[4,4.1.2.RELEASE_1]",org.springframework.jms.support.converter;versi
- on="[4,4.1.2.RELEASE_1]",org.springframework.jms.support.destination;
- version="[4,4.1.2.RELEASE_1]",org.springframework.scheduling.concurre
- nt;version="[4,4.1.2.RELEASE_1]",org.springframework.transaction;vers
- ion="[4,4.1.2.RELEASE_1]",org.springframework.util;version="[4,4.1.2.
- RELEASE_1]",org.w3c.dom
-Tool: Bnd-1.50.0
-Export-Package: org.apache.camel.component.jms;uses:="org.apache.camel
- .util,org.springframework.jms.listener,org.apache.camel.util.concurre
- nt,org.apache.commons.logging,org.apache.camel,org.springframework.sc
- heduling.concurrent,org.springframework.core.task,org.apache.camel.sp
- i,org.springframework.jms,javax.jms,org.springframework.jms.core,org.
- apache.camel.support,org.springframework.util,org.slf4j,org.springfra
- mework.jms.support.converter,org.apache.camel.impl,org.w3c.dom,org.sp
- ringframework.transaction,org.springframework.beans,org.springframewo
- rk.context,org.springframework.jms.support.destination,org.springfram
- ework.jms.connection,org.springframework.jms.support,org.apache.camel
- .api.management,org.apache.camel.component.jms.reply";version="2.15.0
- ",org.apache.camel.component.jms.reply;uses:="org.apache.camel.suppor
- t,org.slf4j,org.apache.camel.component.jms,org.apache.camel,javax.jms
- ,org.springframework.jms.support.destination,org.springframework.jms.
- listener,org.springframework.util,org.springframework.core.task,org.a
- pache.camel.util,org.apache.camel.spi";version="2.15.0"
-Bundle-Name: camel-jms
-Bundle-Version: 2.15.0
-Bundle-ClassPath: ., camel-jms-2.15.0.jar
 Build-Jdk: 1.7.0_76
+Built-By: ubuntu
+Bundle-Description: Camel JMS support
+Bundle-DocURL: http://www.apache.org/
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: camel-jms
+Bundle-SymbolicName: org.apache.camel.camel-jms
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 2.15.0
 Created-By: Apache Maven Bundle Plugin
-
+Export-Package: org.apache.camel.component.jms;uses:="org.apache.camel.u
+ til,org.springframework.jms.listener,org.apache.camel.util.concurrent,o
+ rg.apache.commons.logging,org.apache.camel,org.springframework.scheduli
+ ng.concurrent,org.springframework.core.task,org.apache.camel.spi,org.sp
+ ringframework.jms,javax.jms,org.springframework.jms.core,org.apache.cam
+ el.support,org.springframework.util,org.slf4j,org.springframework.jms.s
+ upport.converter,org.apache.camel.impl,org.w3c.dom,org.springframework.
+ transaction,org.springframework.beans,org.springframework.context,org.s
+ pringframework.jms.support.destination,org.springframework.jms.connecti
+ on,org.springframework.jms.support,org.apache.camel.api.management,org.
+ apache.camel.component.jms.reply";version="2.15.0",org.apache.camel.com
+ ponent.jms.reply;uses:="org.apache.camel.support,org.slf4j,org.apache.c
+ amel.component.jms,org.apache.camel,javax.jms,org.springframework.jms.s
+ upport.destination,org.springframework.jms.listener,org.springframework
+ .util,org.springframework.core.task,org.apache.camel.util,org.apache.ca
+ mel.spi";version="2.15.0"
+Export-Service: org.apache.camel.spi.ComponentResolver;component=jms
+Implementation-Title: Apache Camel
+Implementation-Version: 2.15.0
+Import-Package: javax.jms;version="[1.1,3)",org.apache.camel;version="[2
+ .15,2.16)",org.apache.camel.api.management;version="[2.15,2.16)",org.ap
+ ache.camel.impl;version="[2.15,2.16)",org.apache.camel.spi;version="[2.
+ 15,2.16)",org.apache.camel.support;version="[2.15,2.16)",org.apache.cam
+ el.util;version="[2.15,2.16)",org.apache.camel.util.concurrent;version=
+ "[2.15,2.16)",org.apache.commons.logging;version="[1.1,2)",org.slf4j;ve
+ rsion="[1.6,2)",org.springframework.beans;version="[3.2,5)",org.springf
+ ramework.context;version="[3.2,5)",org.springframework.core.task;versio
+ n="[3.2,5)",org.springframework.jms;version="[3.2,5)",org.springframewo
+ rk.jms.connection;version="[3.2,5)",org.springframework.jms.core;versio
+ n="[3.2,5)",org.springframework.jms.listener;version="[3.2,5)",org.spri
+ ngframework.jms.support;version="[3.2,5)",org.springframework.jms.suppo
+ rt.converter;version="[3.2,5)",org.springframework.jms.support.destinat
+ ion;version="[3.2,5)",org.springframework.scheduling.concurrent;version
+ ="[3.2,5)",org.springframework.transaction;version="[3.2,5)",org.spring
+ framework.util;version="[3.2,5)",org.w3c.dom
+Karaf-Info: Camel;camel-jms=2.15.0
+Tool: Bnd-1.50.0
