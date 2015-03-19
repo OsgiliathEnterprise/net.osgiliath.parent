@@ -19,6 +19,26 @@
 		</resources>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${osgiliath-model.compiler.level}</source>
+					<target>${osgiliath-model.compiler.level}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.openjpa</groupId>
+				<artifactId>openjpa-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>
 			</plugin>
@@ -55,22 +75,6 @@
 					<sourceDirectory>target/generated-sources/metamodel</sourceDirectory>
 					<sourceDirectory>src/main/java</sourceDirectory>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.openjpa</groupId>
-				<artifactId>openjpa-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

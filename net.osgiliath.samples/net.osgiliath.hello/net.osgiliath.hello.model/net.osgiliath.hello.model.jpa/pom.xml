@@ -1,14 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
-		contributor license agreements. See the NOTICE file distributed with this 
-		work for additional information regarding copyright ownership. The ASF licenses 
-		this file to You under the Apache License, Version 2.0 (the "License"); you 
-		may not use this file except in compliance with the License. You may obtain 
-		a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless 
-		required by applicable law or agreed to in writing, software distributed 
-		under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-		OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-		the specific language governing permissions and limitations under the License. -->
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the 
+		Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, 
+		software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.hello</groupId>
@@ -27,6 +20,26 @@
 			</resource>
 		</resources>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${osgiliath-model.compiler.level}</source>
+					<target>${osgiliath-model.compiler.level}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.openjpa</groupId>
+				<artifactId>openjpa-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>
@@ -65,26 +78,10 @@
 					<sourceDirectory>src/main/java</sourceDirectory>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.openjpa</groupId>
-				<artifactId>openjpa-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
-	<dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-common</artifactId>
 			<version>${project.version}</version>
@@ -122,8 +119,7 @@
 		<!-- ================= Database Profiles ================= -->
 
 		<!-- ============================================================================================ -->
-		<!-- Generate database diff with liquibase, based on previously registered 
-			liquibase db changelog -->
+		<!-- Generate database diff with liquibase, based on previously registered liquibase db changelog -->
 		<!-- ============================================================================================ -->
 		<profile>
 			<id>db-diff</id>
@@ -145,8 +141,7 @@
 			</build>
 		</profile>
 		<!-- ============================================================================================ -->
-		<!-- Generate database data changelog for liquibase (run previously mvn 
-			-Pprod test-compile if you want to generate changelog for production data) -->
+		<!-- Generate database data changelog for liquibase (run previously mvn -Pprod test-compile if you want to generate changelog for production data) -->
 		<!-- ============================================================================================ -->
 		<profile>
 			<id>db-data</id>
