@@ -3,5 +3,5 @@
 /.classpath
 /.project
 /dependency-reduced-pom.xml
-/src/main/resources/META-INF/MANIFEST.MF
+/src/main/resources/META-INF
 /src/site
