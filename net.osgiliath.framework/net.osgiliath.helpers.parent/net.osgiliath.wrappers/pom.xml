@@ -31,4 +31,16 @@
 		<module>net.osgiliath.wrapper.spring-security-web</module>
 		<module>net.osgiliath.wrapper.camel-catalog</module>
 	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${osgiliath-model.compiler.level}</source>
+					<target>${osgiliath-model.compiler.level}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
