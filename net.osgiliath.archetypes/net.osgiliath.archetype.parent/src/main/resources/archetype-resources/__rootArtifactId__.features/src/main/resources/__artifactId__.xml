@@ -43,7 +43,7 @@ ${symbol_pound}L%
 		<!--TODO your itests dependencies here
 		<bundle>mvn:${symbol_dollar}{project.parent.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
 		file dependency to reference the bundle being tested as it is packaged during the 'package' phase and that we're testing after that and before the 'install' phase that deposit bundle on local maven repo
-		<bundle>file:${symbol_dollar}{parent.project.basedir}/${symbol_dollar}{project.parent.artifactId}.business/${symbol_dollar}{project.parent.artifactId}.business.impl/target${symbol_dollar}{project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
+		<bundle>file:${symbol_dollar}{parent.project.basedir}/${symbol_dollar}{project.parent.artifactId}.business/${symbol_dollar}{project.parent.artifactId}.business.impl/target/${symbol_dollar}{project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
 		-->
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.ui" version="${symbol_dollar}{project.version}">

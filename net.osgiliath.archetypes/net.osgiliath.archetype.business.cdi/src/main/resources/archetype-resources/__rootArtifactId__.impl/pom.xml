@@ -180,7 +180,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
-			<artifactId>${project.parent.parent.artifactId}.features</artifactId>
+			<artifactId>${rootArtifactId.parent.artifactId}.features</artifactId>
 			<classifier>features</classifier>
 			<type>xml</type>
 		</dependency>

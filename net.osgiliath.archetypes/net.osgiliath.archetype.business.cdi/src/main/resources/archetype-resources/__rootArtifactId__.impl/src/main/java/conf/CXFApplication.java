@@ -20,7 +20,7 @@ package conf;
  * #L%
  */
 
-import helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
+import net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
 
 import java.util.Set;
 

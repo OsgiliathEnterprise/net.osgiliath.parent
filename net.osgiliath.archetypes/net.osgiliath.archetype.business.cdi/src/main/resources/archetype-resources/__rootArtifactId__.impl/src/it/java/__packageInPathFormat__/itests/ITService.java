@@ -5,7 +5,7 @@ package ${package}.itests;
 import javax.inject.Inject;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;
@@ -30,7 +30,7 @@ import org.apache.camel.ProducerTemplate;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 @Slf4j
-public class ITService extends AbstractPaxExamKarafConfigurationFactory {
+public class ITService extends AbstractPaxExamKarafConfiguration {
     /**
      * Boot finished event
      */
@@ -47,7 +47,7 @@ public class ITService extends AbstractPaxExamKarafConfigurationFactory {
 	@ProbeBuilder
     public TestProbeBuilder extendProbe(TestProbeBuilder builder)
     {
-	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
+	builder.addTest(AbstractPaxExamKarafConfiguration.class);
 	builder.setHeader(Constants.EXPORT_PACKAGE, "${package}.itests");
         builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
         builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE,"*");
