@@ -1,24 +1,27 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1381791136702
-Build-Jdk: 1.6.0_51
-Built-By: gtully
 Bundle-Description: ActiveMQ component for Camel
-Bundle-DocURL: http://www.apache.org/
-Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
-Bundle-ManifestVersion: 2
-Bundle-Name: activemq-camel
-Bundle-SymbolicName: org.apache.activemq.activemq-camel
-Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 5.9.0
-Created-By: Apache Maven Bundle Plugin
-Export-Package: org.apache.activemq.camel;version="5.9.0",org.apache.act
- ivemq.camel.component;uses:="org.springframework.jms.connection";versio
- n="5.9.0",org.apache.activemq.camel.component.broker;uses:="org.apache.
- activemq.camel.converter";version="5.9.0",org.apache.activemq.camel.con
- verter;uses:="org.springframework.jms.support.converter";version="5.9.0
- "
 Implementation-Title: Apache ActiveMQ
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-SymbolicName: org.apache.activemq.activemq-camel
 Implementation-Version: 5.9.0
-Import-Package: org.springframework.jms.connection;version="[3,4)",org.s
- pringframework.jms.support.converter;version="[3,4)"
+Built-By: gtully
+Bnd-LastModified: 1381791136702
+Bundle-ManifestVersion: 2
+Bundle-DocURL: http://www.apache.org/
+Bundle-Vendor: The Apache Software Foundation
+Import-Package: org.springframework.jms.connection;version="[4,4.1.2.R
+ ELEASE_1]",org.springframework.jms.support.converter;version="[4,4.1.
+ 2.RELEASE_1]"
 Tool: Bnd-1.50.0
+Export-Package: org.apache.activemq.camel;version="5.9.0",org.apache.a
+ ctivemq.camel.component;uses:="org.springframework.jms.connection";ve
+ rsion="5.9.0",org.apache.activemq.camel.component.broker;uses:="org.a
+ pache.activemq.camel.converter";version="5.9.0",org.apache.activemq.c
+ amel.converter;uses:="org.springframework.jms.support.converter";vers
+ ion="5.9.0"
+Bundle-Name: activemq-camel
+Bundle-Version: 5.9.0
+Bundle-ClassPath: ., activemq-camel-5.9.0.jar
+Build-Jdk: 1.6.0_51
+Created-By: Apache Maven Bundle Plugin
+

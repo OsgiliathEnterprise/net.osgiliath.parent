@@ -1,26 +1,28 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1425709329721
-Build-Jdk: 1.7.0_76
-Built-By: ubuntu
 Bundle-Description: Camel Catalog
-Bundle-DocURL: http://www.apache.org/
-Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
-Bundle-ManifestVersion: 2
-Bundle-Name: camel-catalog
-Bundle-SymbolicName: org.apache.camel.camel-catalog
-Bundle-Vendor: The Apache Software Foundation
-Bundle-Version: 2.15.0
-Created-By: Apache Maven Bundle Plugin
-Export-Package: org.apache.camel.catalog;uses:="javax.management";versio
- n="2.15.0",org.apache.camel.catalog.components;version="2.15.0",org.apa
- che.camel.catalog.dataformats;version="2.15.0",org.apache.camel.catalog
- .languages;version="2.15.0",org.apache.camel.catalog.models;version="2.
- 15.0",org.apache.camel.catalog.schemas;version="2.15.0"
 Implementation-Title: Apache Camel
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-SymbolicName: org.apache.camel.camel-catalog
 Implementation-Version: 2.15.0
-Import-Package: javax.management,org.apache.camel.catalog.archetypes,org
- .apache.camel.catalog.components,org.apache.camel.catalog.dataformats,o
- rg.apache.camel.catalog.languages,org.apache.camel.catalog.models,org.a
- pache.camel.catalog.schemas;version="[2.15,3)"
+Built-By: ubuntu
 Karaf-Info: Camel;camel-catalog=2.15.0
+Bnd-LastModified: 1425709329721
+Bundle-ManifestVersion: 2
+Bundle-DocURL: http://www.apache.org/
+Bundle-Vendor: The Apache Software Foundation
+Import-Package: javax.management,org.apache.camel.catalog.components,o
+ rg.apache.camel.catalog.dataformats,org.apache.camel.catalog.language
+ s,org.apache.camel.catalog.models,org.apache.camel.catalog.schemas;ve
+ rsion="[2.15,3)"
 Tool: Bnd-1.50.0
+Export-Package: org.apache.camel.catalog;uses:="javax.management";vers
+ ion="2.15.0",org.apache.camel.catalog.components;version="2.15.0",org
+ .apache.camel.catalog.dataformats;version="2.15.0",org.apache.camel.c
+ atalog.languages;version="2.15.0",org.apache.camel.catalog.models;ver
+ sion="2.15.0",org.apache.camel.catalog.schemas;version="2.15.0"
+Bundle-Name: camel-catalog
+Bundle-Version: 2.15.0
+Bundle-ClassPath: ., camel-catalog-2.15.0.jar
+Build-Jdk: 1.7.0_76
+Created-By: Apache Maven Bundle Plugin
+

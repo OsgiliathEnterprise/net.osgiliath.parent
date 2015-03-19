@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Implementation-Title: org.springframework.security.config
 Export-Package: org.springframework.security.config;version="3.2.5.REL
  EASE";uses:="org.springframework.beans.factory.config,org.springframe
  work.beans.factory.xml,org.w3c.dom",org.springframework.security.conf
@@ -141,127 +142,124 @@ Export-Package: org.springframework.security.config;version="3.2.5.REL
  ans.factory.support,org.springframework.beans.factory.xml,org.springf
  ramework.security.access.method,org.springframework.security.authenti
  cation,org.springframework.security.core,org.w3c.dom"
-Bundle-Vendor: SpringSource
-Implementation-Title: org.springframework.security.config
+Bundle-SymbolicName: org.springframework.security.config
 Implementation-Version: 3.2.5.RELEASE
 Bundle-Version: 3.2.5.RELEASE
-Tool: Bundlor 1.0.0.RELEASE
 Bundle-Name: Spring Security Namespace Configuration
+Bundle-ClassPath: ., spring-security-core-3.2.5.RELEASE.jar
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.springframework.security.config
+Bundle-Vendor: SpringSource
 Import-Package: javax.servlet;version="0";resolution:="optional",javax
  .servlet.http;version="0";resolution:="optional",javax.sql;version="0
  ";resolution:="optional",org.aopalliance.intercept;version="[1.0.0, 2
  .0.0)",org.apache.commons.logging;version="[1.0.4, 2.0.0)",org.aspect
  j.weaver.tools;version="[1.6.0, 1.8.0)";resolution:="optional",org.op
  enid4java.consumer;version="[0.9.5, 1.0.0)";resolution:="optional",or
- g.springframework.aop;version="[3.2.8.RELEASE, 3.3.0)";resolution:="o
- ptional",org.springframework.aop.config;version="[3.2.8.RELEASE, 3.3.
- 0)";resolution:="optional",org.springframework.aop.framework;version=
- "[3.2.8.RELEASE, 3.3.0)";resolution:="optional",org.springframework.a
- op.target;version="[3.2.8.RELEASE, 3.3.0)";resolution:="optional",org
- .springframework.beans;version="[3.2.8.RELEASE, 3.3.0)",org.springfra
- mework.beans.factory;version="[3.2.8.RELEASE, 3.3.0)",org.springframe
- work.beans.factory.annotation;version="[3.2.8.RELEASE, 3.3.0)",org.sp
- ringframework.beans.factory.config;version="[3.2.8.RELEASE, 3.3.0)",o
- rg.springframework.beans.factory.parsing;version="[3.2.8.RELEASE, 3.3
- .0)",org.springframework.beans.factory.support;version="[3.2.8.RELEAS
- E, 3.3.0)",org.springframework.beans.factory.xml;version="[3.2.8.RELE
- ASE, 3.3.0)",org.springframework.context;version="[3.2.8.RELEASE, 3.3
- .0)",org.springframework.context.annotation;version="[3.2.8.RELEASE, 
- 3.3.0)",org.springframework.core;version="[3.2.8.RELEASE, 3.3.0)",org
- .springframework.core.annotation;version="[3.2.8.RELEASE, 3.3.0)",org
- .springframework.core.io;version="[3.2.8.RELEASE, 3.3.0)",org.springf
- ramework.core.type;version="[3.2.8.RELEASE, 3.3.0)",org.springframewo
- rk.http;version="[3.2.8.RELEASE, 3.3.0)";resolution:="optional",org.s
- pringframework.jdbc.datasource.init;version="[3.2.8.RELEASE, 3.3.0)";
- resolution:="optional",org.springframework.ldap.core;version="[1.3.0,
- 1.4.0)";resolution:="optional",org.springframework.ldap.core.support;
- version="[1.3.0,1.4.0)";resolution:="optional",org.springframework.se
- curity.access;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.se
- curity.access.annotation;version="[3.2.5.RELEASE, 3.3.0)",org.springf
- ramework.security.access.expression;version="[3.2.5.RELEASE, 3.3.0)",
- org.springframework.security.access.expression.method;version="[3.2.5
- .RELEASE, 3.3.0)",org.springframework.security.access.intercept;versi
- on="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.access.inter
- cept.aopalliance;version="[3.2.5.RELEASE, 3.3.0)",org.springframework
- .security.access.intercept.aspectj;version="[3.2.5.RELEASE, 3.3.0)",o
- rg.springframework.security.access.intercept.aspectj.aspect;version="
- [3.2.5.RELEASE, 3.3.0)",org.springframework.security.access.method;ve
- rsion="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.access.pr
- epost;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.a
- ccess.vote;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.secur
- ity.authentication;version="[3.2.5.RELEASE, 3.3.0)",org.springframewo
- rk.security.authentication.dao;version="[3.2.5.RELEASE, 3.3.0)",org.s
- pringframework.security.authentication.encoding;version="[3.2.5.RELEA
- SE, 3.3.0)",org.springframework.security.core;version="[3.2.5.RELEASE
- , 3.3.0)",org.springframework.security.core.authority;version="[3.2.5
- .RELEASE, 3.3.0)",org.springframework.security.core.authority.mapping
- ;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.core.s
- ession;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.
- core.userdetails;version="[3.2.5.RELEASE, 3.3.0)",org.springframework
- .security.core.userdetails.cache;version="[3.2.5.RELEASE, 3.3.0)",org
- .springframework.security.crypto.bcrypt;version="[3.2.5.RELEASE, 3.3.
- 0)",org.springframework.security.crypto.password;version="[3.2.5.RELE
- ASE, 3.3.0)",org.springframework.security.ldap;version="[3.2.5.RELEAS
- E, 3.3.0)",org.springframework.security.ldap.authentication;version="
- [3.2.5.RELEASE, 3.3.0)",org.springframework.security.ldap.search;vers
- ion="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.ldap.server
- ;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.ldap.u
- serdetails;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.secur
- ity.openid;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",or
- g.springframework.security.provisioning;version="[3.2.5.RELEASE, 3.3.
- 0)",org.springframework.security.web;version="[3.2.5.RELEASE, 3.3.0)"
- ;resolution:="optional",org.springframework.security.web.access;versi
- on="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframewor
- k.security.web.access.channel;version="[3.2.5.RELEASE, 3.3.0)";resolu
- tion:="optional",org.springframework.security.web.access.expression;v
- ersion="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springfram
- ework.security.web.access.intercept;version="[3.2.5.RELEASE, 3.3.0)";
- resolution:="optional",org.springframework.security.web.authenticatio
- n;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springf
- ramework.security.web.authentication.logout;version="[3.2.5.RELEASE, 
- 3.3.0)";resolution:="optional",org.springframework.security.web.authe
- ntication.preauth;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optio
- nal",org.springframework.security.web.authentication.preauth.j2ee;ver
+ g.springframework.aop;version="[4.0.0,5.0.0)";resolution:="optional",
+ org.springframework.aop.config;version="[4.0.0,5.0.0)";resolution:="o
+ ptional",org.springframework.aop.framework;version="[4.0.0,5.0.0)";re
+ solution:="optional",org.springframework.aop.target;version="[4.0.0,5
+ .0.0)";resolution:="optional",org.springframework.beans;version="[4.0
+ .0,5.0.0)",org.springframework.beans.factory;version="[4.0.0,5.0.0)",
+ org.springframework.beans.factory.annotation;version="[4.0.0,5.0.0)",
+ org.springframework.beans.factory.config;version="[4.0.0,5.0.0)",org.
+ springframework.beans.factory.parsing;version="[4.0.0,5.0.0)",org.spr
+ ingframework.beans.factory.support;version="[4.0.0,5.0.0)",org.spring
+ framework.beans.factory.xml;version="[4.0.0,5.0.0)",org.springframewo
+ rk.context;version="[4.0.0,5.0.0)",org.springframework.context.annota
+ tion;version="[4.0.0,5.0.0)",org.springframework.core;version="[4.0.0
+ ,5.0.0)",org.springframework.core.annotation;version="[4.0.0,5.0.0)",
+ org.springframework.core.io;version="[4.0.0,5.0.0)",org.springframewo
+ rk.core.type;version="[4.0.0,5.0.0)",org.springframework.http;version
+ ="[4.0.0,5.0.0)";resolution:="optional",org.springframework.jdbc.data
+ source.init;version="[4.0.0,5.0.0)";resolution:="optional",org.spring
+ framework.ldap.core;version="[1.3.0,1.4.0)";resolution:="optional",or
+ g.springframework.ldap.core.support;version="[1.3.0,1.4.0)";resolutio
+ n:="optional",org.springframework.security.access;version="[3.2.5.REL
+ EASE, 3.3.0)",org.springframework.security.access.annotation;version=
+ "[3.2.5.RELEASE, 3.3.0)",org.springframework.security.access.expressi
+ on;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.acce
+ ss.expression.method;version="[3.2.5.RELEASE, 3.3.0)",org.springframe
+ work.security.access.intercept;version="[3.2.5.RELEASE, 3.3.0)",org.s
+ pringframework.security.access.intercept.aopalliance;version="[3.2.5.
+ RELEASE, 3.3.0)",org.springframework.security.access.intercept.aspect
+ j;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.acces
+ s.intercept.aspectj.aspect;version="[3.2.5.RELEASE, 3.3.0)",org.sprin
+ gframework.security.access.method;version="[3.2.5.RELEASE, 3.3.0)",or
+ g.springframework.security.access.prepost;version="[3.2.5.RELEASE, 3.
+ 3.0)",org.springframework.security.access.vote;version="[3.2.5.RELEAS
+ E, 3.3.0)",org.springframework.security.authentication;version="[3.2.
+ 5.RELEASE, 3.3.0)",org.springframework.security.authentication.dao;ve
+ rsion="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.authentic
+ ation.encoding;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.s
+ ecurity.core;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.sec
+ urity.core.authority;version="[3.2.5.RELEASE, 3.3.0)",org.springframe
+ work.security.core.authority.mapping;version="[3.2.5.RELEASE, 3.3.0)"
+ ,org.springframework.security.core.session;version="[3.2.5.RELEASE, 3
+ .3.0)",org.springframework.security.core.userdetails;version="[3.2.5.
+ RELEASE, 3.3.0)",org.springframework.security.core.userdetails.cache;
+ version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.crypto.
+ bcrypt;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.
+ crypto.password;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.
+ security.ldap;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.se
+ curity.ldap.authentication;version="[3.2.5.RELEASE, 3.3.0)",org.sprin
+ gframework.security.ldap.search;version="[3.2.5.RELEASE, 3.3.0)",org.
+ springframework.security.ldap.server;version="[3.2.5.RELEASE, 3.3.0)"
+ ,org.springframework.security.ldap.userdetails;version="[3.2.5.RELEAS
+ E, 3.3.0)",org.springframework.security.openid;version="[3.2.5.RELEAS
+ E, 3.3.0)";resolution:="optional",org.springframework.security.provis
+ ioning;version="[3.2.5.RELEASE, 3.3.0)",org.springframework.security.
+ web;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.sprin
+ gframework.security.web.access;version="[3.2.5.RELEASE, 3.3.0)";resol
+ ution:="optional",org.springframework.security.web.access.channel;ver
  sion="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframew
- ork.security.web.authentication.preauth.x509;version="[3.2.5.RELEASE,
-  3.3.0)";resolution:="optional",org.springframework.security.web.auth
- entication.rememberme;version="[3.2.5.RELEASE, 3.3.0)";resolution:="o
- ptional",org.springframework.security.web.authentication.session;vers
- ion="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframewo
- rk.security.web.authentication.switchuser;version="[3.2.5.RELEASE, 3.
- 3.0)";resolution:="optional",org.springframework.security.web.authent
- ication.ui;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",or
- g.springframework.security.web.authentication.www;version="[3.2.5.REL
+ ork.security.web.access.expression;version="[3.2.5.RELEASE, 3.3.0)";r
+ esolution:="optional",org.springframework.security.web.access.interce
+ pt;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.spring
+ framework.security.web.authentication;version="[3.2.5.RELEASE, 3.3.0)
+ ";resolution:="optional",org.springframework.security.web.authenticat
+ ion.logout;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",or
+ g.springframework.security.web.authentication.preauth;version="[3.2.5
+ .RELEASE, 3.3.0)";resolution:="optional",org.springframework.security
+ .web.authentication.preauth.j2ee;version="[3.2.5.RELEASE, 3.3.0)";res
+ olution:="optional",org.springframework.security.web.authentication.p
+ reauth.x509;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",o
+ rg.springframework.security.web.authentication.rememberme;version="[3
+ .2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframework.secu
+ rity.web.authentication.session;version="[3.2.5.RELEASE, 3.3.0)";reso
+ lution:="optional",org.springframework.security.web.authentication.sw
+ itchuser;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.
+ springframework.security.web.authentication.ui;version="[3.2.5.RELEAS
+ E, 3.3.0)";resolution:="optional",org.springframework.security.web.au
+ thentication.www;version="[3.2.5.RELEASE, 3.3.0)";resolution:="option
+ al",org.springframework.security.web.bind.support;version="[3.2.5.REL
  EASE, 3.3.0)";resolution:="optional",org.springframework.security.web
- .bind.support;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional"
- ,org.springframework.security.web.context;version="[3.2.5.RELEASE, 3.
- 3.0)";resolution:="optional",org.springframework.security.web.context
- .request.async;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional
- ",org.springframework.security.web.csrf;version="[3.2.5.RELEASE, 3.3.
- 0)";resolution:="optional",org.springframework.security.web.debug;ver
- sion="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframew
- ork.security.web.firewall;version="[3.2.5.RELEASE, 3.3.0)";resolution
- :="optional",org.springframework.security.web.header;version="[3.2.5.
- RELEASE, 3.3.0)";resolution:="optional",org.springframework.security.
- web.header.writers;version="[3.2.5.RELEASE, 3.3.0)";resolution:="opti
- onal",org.springframework.security.web.header.writers.frameoptions;ve
- rsion="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframe
- work.security.web.jaasapi;version="[3.2.5.RELEASE, 3.3.0)";resolution
- :="optional",org.springframework.security.web.savedrequest;version="[
- 3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframework.sec
- urity.web.servlet.support.csrf;version="[3.2.5.RELEASE, 3.3.0)";resol
- ution:="optional",org.springframework.security.web.servletapi;version
+ .context;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.
+ springframework.security.web.context.request.async;version="[3.2.5.RE
+ LEASE, 3.3.0)";resolution:="optional",org.springframework.security.we
+ b.csrf;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.sp
+ ringframework.security.web.debug;version="[3.2.5.RELEASE, 3.3.0)";res
+ olution:="optional",org.springframework.security.web.firewall;version
  ="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframework.
- security.web.session;version="[3.2.5.RELEASE, 3.3.0)";resolution:="op
- tional",org.springframework.security.web.util;version="[3.2.5.RELEASE
- , 3.3.0)";resolution:="optional",org.springframework.security.web.uti
- l.matcher;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org
- .springframework.util;version="[3.2.8.RELEASE, 3.3.0)",org.springfram
- ework.util.xml;version="[3.2.8.RELEASE, 3.3.0)",org.springframework.w
- eb.accept;version="[3.2.8.RELEASE, 3.3.0)",org.springframework.web.se
- rvlet.config.annotation;version="[3.2.8.RELEASE, 3.3.0)",org.springfr
- amework.web.servlet.support;version="[3.2.8.RELEASE, 3.3.0)",org.w3c.
- dom;version="0";resolution:="optional"
+ security.web.header;version="[3.2.5.RELEASE, 3.3.0)";resolution:="opt
+ ional",org.springframework.security.web.header.writers;version="[3.2.
+ 5.RELEASE, 3.3.0)";resolution:="optional",org.springframework.securit
+ y.web.header.writers.frameoptions;version="[3.2.5.RELEASE, 3.3.0)";re
+ solution:="optional",org.springframework.security.web.jaasapi;version
+ ="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframework.
+ security.web.savedrequest;version="[3.2.5.RELEASE, 3.3.0)";resolution
+ :="optional",org.springframework.security.web.servlet.support.csrf;ve
+ rsion="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframe
+ work.security.web.servletapi;version="[3.2.5.RELEASE, 3.3.0)";resolut
+ ion:="optional",org.springframework.security.web.session;version="[3.
+ 2.5.RELEASE, 3.3.0)";resolution:="optional",org.springframework.secur
+ ity.web.util;version="[3.2.5.RELEASE, 3.3.0)";resolution:="optional",
+ org.springframework.security.web.util.matcher;version="[3.2.5.RELEASE
+ , 3.3.0)";resolution:="optional",org.springframework.util;version="[4
+ .0.0,5.0.0)",org.springframework.util.xml;version="[4.0.0,5.0.0)",org
+ .springframework.web.accept;version="[4.0.0,5.0.0)",org.springframewo
+ rk.web.servlet.config.annotation;version="[4.0.0,5.0.0)",org.springfr
+ amework.web.servlet.support;version="[4.0.0,5.0.0)",org.w3c.dom;versi
+ on="0";resolution:="optional"
+Tool: Bundlor 1.0.0.RELEASE
 
