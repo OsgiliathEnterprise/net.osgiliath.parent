@@ -69,7 +69,8 @@
 	<properties>
 		<!-- TODO change your organization, all your Manifests will be signed with 
 			this -->
-		<manifest.organization>Osgiliath</manifest.organization>
+		<manifest.organization>Corp</manifest.organization>
+		<database.port>1528</database.port>
   		<osgiliath.framework.maven.version>${project.version}</osgiliath.framework.maven.version>
   		<project.license>apache_v2</project.license><!-- please read the documentation of license-maven-plugin and choose a license that fits-->
 	</properties>
