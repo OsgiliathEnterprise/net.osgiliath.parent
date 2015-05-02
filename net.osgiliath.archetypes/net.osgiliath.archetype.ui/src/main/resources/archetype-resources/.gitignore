@@ -7,3 +7,6 @@
 /.tmp
 /.sass-cache/
 /npm-debug.log
+/.DS_Store
+/src/site
+.tern-project
