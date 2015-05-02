@@ -172,7 +172,11 @@
 		</dependency>
 		<!-- TODO your business dependencies here <dependency> <groupId>${project.groupId}</groupId> <version>${project.version}</version> <artifactId>${project.groupId}.routes.blueprint</artifactId> <scope>test</scope> </dependency> <dependency> <groupId>${project.groupId}</groupId> 
 			<version>${project.version}</version> <artifactId>${project.groupId}.business.impl.blueprint</artifactId> <scope>test</scope> </dependency> -->
-
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${project.parent.artifactId}.features</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- Karaf Test Framework Version -->
 		<dependency>
 			<groupId>org.apache.karaf</groupId>
