@@ -21,7 +21,7 @@ var unit = function(config) {
 	config.urlRoot = '/__unit/';
 	config.port = 8081;
 	config.proxies = {
-			'/' : 'http://localhost:9001/'
+			'/' : 'http://localhost:9003/'
 	};
 };
 unit.mainfolder = 'src/main/javascript/';
