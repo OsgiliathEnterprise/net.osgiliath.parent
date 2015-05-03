@@ -150,7 +150,7 @@
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.jacoco.reportPath>${parent.path}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${parent.path}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<sonar-maven-plugin.version>5.1</sonar-maven-plugin.version>
+		<sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
 		
 		<maven-scm.version>1.9.1</maven-scm.version>
 		<site.deploy.dir>/tmp/deploy</site.deploy.dir>
@@ -664,7 +664,7 @@
 				</executions>
 			</plugin>
 				<plugin>
-				<groupId>org.codehaus.sonar</groupId>
+				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 			</plugin>
 		
