@@ -350,7 +350,7 @@
 					<version>${selenium-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
+					<groupId>org.codehaus.sonar</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
 					<version>${sonar-maven-plugin.version}</version>
 				</plugin>
@@ -1390,7 +1390,7 @@
 		<org.springframework.data.commons.core.version>1.4.1.RELEASE</org.springframework.data.commons.core.version>
 		<maven-pax-plugin.version>1.5</maven-pax-plugin.version>
 		<selenium-maven-plugin.version>2.3</selenium-maven-plugin.version>
-		<sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
+		<sonar-maven-plugin.version>5.1</sonar-maven-plugin.version>
 		<openjpa.version>2.4.0</openjpa.version>
 		<project.root.build.directory>${session.executionRootDirectory}/target</project.root.build.directory>
 		<wagon-maven-plugin.version>1.0-beta-5</wagon-maven-plugin.version>

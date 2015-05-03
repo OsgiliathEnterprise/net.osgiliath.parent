@@ -19,7 +19,7 @@ package conf;
  * limitations under the License.
  * #L%
  */
-
+import com.wordnik.swagger.jaxrs.config.BeanConfig;
 import java.io.IOException;
 
 import javax.enterprise.inject.Produces;
@@ -33,7 +33,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 
-import com.wordnik.swagger.jaxrs.config.BeanConfig;
+
 
 /**
  * Default Swagger bean configuration.
