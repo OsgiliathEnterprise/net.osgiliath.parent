@@ -24,6 +24,7 @@ Import-Package: net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper,\
  org.apache.cxf.jaxrs.servlet,\
  org.hibernate.validator.internal.cdi.interceptor,\
  org.jboss.weld.bootstrap,\
+ org.osgi.framework,\
  org.springframework.transaction,\
  * 
  
