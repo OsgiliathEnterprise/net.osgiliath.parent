@@ -871,6 +871,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
+				<artifactId>xbean-asm5-shaded</artifactId>
+				<version>${org.apache.xbean_xbean-asm5-shaded.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xbean</groupId>
 				<artifactId>xbean-blueprint</artifactId>
 				<version>${org.apache.xbean_xbean-blueprint.version}</version>
 			</dependency>
@@ -1470,6 +1475,7 @@
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version>${org.apache.servicemix.specs.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version>
 		<org.apache.ws.xmlschema_xmlschema-core.version>2.1.0</org.apache.ws.xmlschema_xmlschema-core.version>
 		<org.apache.xbean_xbean-asm4-shaded.version>3.16</org.apache.xbean_xbean-asm4-shaded.version>
+		<org.apache.xbean_xbean-asm5-shaded.version>${xbean.version}</org.apache.xbean_xbean-asm5-shaded.version>
 		<org.apache.xbean_xbean-blueprint.version>${xbean.version}</org.apache.xbean_xbean-blueprint.version>
 		<org.apache.xbean_xbean-bundleutils.version>${xbean.version}</org.apache.xbean_xbean-bundleutils.version>
 		<org.apache.xbean_xbean-finder.version>${xbean.version}</org.apache.xbean_xbean-finder.version>

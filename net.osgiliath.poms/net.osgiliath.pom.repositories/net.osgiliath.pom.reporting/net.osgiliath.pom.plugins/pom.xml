@@ -1391,7 +1391,7 @@
 		<maven-pax-plugin.version>1.5</maven-pax-plugin.version>
 		<selenium-maven-plugin.version>2.3</selenium-maven-plugin.version>
 		<sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
-		<openjpa.version>2.3.0</openjpa.version>
+		<openjpa.version>2.4.0</openjpa.version>
 		<project.root.build.directory>${session.executionRootDirectory}/target</project.root.build.directory>
 		<wagon-maven-plugin.version>1.0-beta-5</wagon-maven-plugin.version>
 		<xerces.version>2.4.0</xerces.version>
