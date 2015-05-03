@@ -31,7 +31,7 @@
 		<module>net.osgiliath.wrapper.spring-security-web</module>
 		<module>net.osgiliath.wrapper.camel-catalog</module>
 	</modules>
-	<build>
+	<!-- <build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -42,5 +42,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>
+	</build> -->
 </project>
