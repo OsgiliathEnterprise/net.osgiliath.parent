@@ -227,7 +227,7 @@
 							</goals>
 							<phase>generate-sources</phase>
 							<configuration>
-								<compilerArguments>-Aopenjpa.source=7 -Aopenjpa.metamodel=true</compilerArguments>
+								<compilerArguments>-Aopenjpa.source=8 -Aopenjpa.metamodel=true</compilerArguments>
 								<processors>
 									<processor>org.apache.openjpa.persistence.meta.AnnotationProcessor6</processor>
 								</processors>
