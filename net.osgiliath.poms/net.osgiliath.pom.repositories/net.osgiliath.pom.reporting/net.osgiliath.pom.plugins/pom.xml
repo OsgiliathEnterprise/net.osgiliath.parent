@@ -509,7 +509,7 @@
 									</pluginExecutionFilter>
 									<action>
 										<execute>
-											<runOnIncremental>true</runOnIncremental>
+											<ignore/>
 										</execute>
 									</action>
 								</pluginExecution>

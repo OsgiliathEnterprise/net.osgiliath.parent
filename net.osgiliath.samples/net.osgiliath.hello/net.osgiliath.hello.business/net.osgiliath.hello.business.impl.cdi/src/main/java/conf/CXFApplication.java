@@ -19,7 +19,7 @@ package conf;
  * limitations under the License.
  * #L%
  */
-import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import com.google.common.collect.Sets;
 import com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider;
 import com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON;
@@ -61,6 +61,6 @@ public class CXFApplication extends Application {
     return Sets.<Object> newHashSet(this.helloService, this.swaggerService,
         new JAXBElementProvider<Object>(), new ExceptionXmlMapper(),
         new ResourceListingProvider(), new ApiDeclarationProvider(),
-        new JacksonJsonProvider());
+        new JacksonJaxbJsonProvider());
   }
 }
