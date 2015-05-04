@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features.karaf-features</artifactId>
-		<version>0.1.7</version>
+		<version>0.1.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.features.karaf-features-camel</artifactId>
 	<name>Osgiliath Camel</name>
