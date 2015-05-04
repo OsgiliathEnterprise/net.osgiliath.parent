@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers.parent</artifactId>
-		<version>0.1.7-SNAPSHOT</version>
+		<version>0.1.7</version>
 	</parent>
 	<artifactId>net.osgiliath.helpers.swagger.ui</artifactId>
 	<packaging>war</packaging>
