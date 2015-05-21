@@ -31,7 +31,16 @@
         <include>**/*.css</include>
         <include>**/*.scss</include>
       </includes>
+      <excludes>
+          <exclude>**/*stomp.js</exclude>
+      </excludes>
     </fileSet>
+    <fileSet filtered="false" encoding="UTF-8">
+      <directory>src/main/javascript</directory>
+      <includes>
+      	<include>**/*stomp.js</include>
+      </includes>
+    </fileSet>  
     <fileSet filtered="true" encoding="UTF-8">
       <directory></directory>
       <includes>
@@ -45,6 +54,9 @@
         <include>.gitignore</include>
         <include>osgi.bnd</include>
       </includes>
+      <excludes>
+          <exclude>**/*stomp.js</exclude>
+      </excludes>
     </fileSet>
   </fileSets>
 </archetype-descriptor>
