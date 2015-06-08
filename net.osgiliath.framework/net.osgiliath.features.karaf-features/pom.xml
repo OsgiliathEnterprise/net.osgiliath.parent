@@ -60,6 +60,7 @@
 		<module>net.osgiliath.features.karaf-features-pax-cdi</module>
 		<module>net.osgiliath.features.karaf-features-cxf</module>
 		<module>net.osgiliath.features.karaf-features-spring</module>
+		<module>net.osgiliath.features.karaf-features-agorava</module>
 	</modules>
 
 	<licenses>

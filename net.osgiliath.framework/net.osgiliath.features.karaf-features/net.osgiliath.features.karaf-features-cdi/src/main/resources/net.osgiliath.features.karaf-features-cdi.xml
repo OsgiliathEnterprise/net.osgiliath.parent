@@ -6,8 +6,10 @@
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/${project.parent.artifactId}-pax-cdi/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-common/${project.version}/xml/features</repository>
 	<feature name='osgiliath-cdi' version='${project.version}' resolver="(obr)" description="Enables Context dependency injection and CDI configuration admin handling in your project">
 		<feature>scr</feature>
+		<feature>osgiliath-weaving</feature>
 		<bundle dependency="true" start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
 		<feature>osgiliath-weld</feature>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.deltaspike.configadmin/${project.version}</bundle>
@@ -16,6 +18,7 @@
 		<bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.core_deltaspike-core-api.version}</bundle>
 	</feature>
 	<feature name='osgiliath-cdi-web' version='${project.version}' resolver="(obr)" description="Enables Context dependency injection for Web App">
+		<feature>osgiliath-cdi</feature>
 		<feature>osgilath-pax-cdi-1.2-web-weld</feature>
 	</feature>
 </features>

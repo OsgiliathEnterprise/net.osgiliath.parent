@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  Osgiliath Camel
+  %%
+  Copyright (C) 2013 - 2015 Osgiliath
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+	<repository>mvn:${project.groupId}/${project.parent.artifactId}-cdi/${project.version}/xml/features</repository>
+	<feature name='osgiliath-social' version='${project.version}' resolver="(obr)" description="Social features for osgiliath (Agorava)">
+		<feature>osgiliath-cdi</feature>
+		<bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core_jackson-core.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.core_jackson-databind.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.core_jackson-annotations.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-agorava-core/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-agorava-core-impl/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-agorava-core-impl-cdi/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-deltaspike-servlet-module-api/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-deltaspike-servlet-module-impl/${project.version}</bundle>
+	</feature>
+	
+</features>

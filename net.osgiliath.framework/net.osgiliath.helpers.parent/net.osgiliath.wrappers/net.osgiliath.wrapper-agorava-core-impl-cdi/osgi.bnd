@@ -1,0 +1,4 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
+Provide-Capability: org.ops4j.pax.cdi.extension;extension="agorava"
+Import-Package: *
+Export-Package: org.agorava.cdi.*

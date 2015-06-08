@@ -1,0 +1,3 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
+Import-Package: *
+Export-Package: org.apache.deltaspike.servlet.api.*

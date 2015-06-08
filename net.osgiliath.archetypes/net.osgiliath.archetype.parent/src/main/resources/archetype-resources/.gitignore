@@ -1,6 +1,6 @@
-/target
-/.settings
-/.project
+target
+.settings
+.project
 /.git
 .DS_Store
 src/site/markdown

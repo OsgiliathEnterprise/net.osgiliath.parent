@@ -92,8 +92,7 @@ public class ConfigAdminTracker implements
       if (context == null) {
         instance.context = FrameworkUtil.getBundle(DeltaSpike.class)
             .getBundleContext();
-      }
-      else {
+      } else {
         instance.context = context;
       }
       instance.tracker = new ServiceTracker(instance.context,
@@ -128,8 +127,7 @@ public class ConfigAdminTracker implements
         ConfigAdminTracker.getInstance(bundleContext).getAdmins()
             .add((ConfigurationAdmin) bundleContext.getService(adminRef));
       }
-    }
-    catch (InvalidSyntaxException e) {
+    } catch (InvalidSyntaxException e) {
       log.error("Error getting servicereferences of config admin", e);
     }
   }
@@ -232,8 +230,7 @@ public class ConfigAdminTracker implements
           }
         }
       }
-    }
-    catch (IOException | InvalidSyntaxException e) {
+    } catch (IOException | InvalidSyntaxException e) {
       log.error("Error retreiving configadmin property", e);
     }
     return ret;
@@ -302,8 +299,7 @@ public class ConfigAdminTracker implements
             });
           }
         }
-      }
-      catch (IOException | InvalidSyntaxException e) {
+      } catch (IOException | InvalidSyntaxException e) {
         log.error("Error retreiving configadmin property", e);
       }
 

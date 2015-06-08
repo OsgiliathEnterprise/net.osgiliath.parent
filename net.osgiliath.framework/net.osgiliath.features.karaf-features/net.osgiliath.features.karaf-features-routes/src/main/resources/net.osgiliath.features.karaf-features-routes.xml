@@ -54,14 +54,14 @@
 	</feature>
 	<feature name="osgiliath-camel-messaging" version="${project.version}" resolver="(obr)" start-level="60" description="Messaging routes">
 		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.activemq-camel/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.activemq-camel/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.activemq/${project.version}</bundle>
 		<feature version="${org.apache.camel.version}">osgiliath-camel-jms</feature>
 		<feature version='${project.version}'>osgiliath-messaging-spring</feature>
 	</feature>
 	<feature name="osgiliath-camel-messaging-cdi" version="${project.version}" resolver="(obr)" description="Messaging routes CDI way">
 		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.activemq-camel/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.activemq-camel/${project.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.camel.activemq/${project.version}</bundle>
 		<feature version="${org.apache.camel.version}">osgiliath-camel-jms</feature>
 		<feature version='${project.version}'>osgiliath-messaging</feature>
@@ -71,6 +71,6 @@
 		<feature version="${project.version}">osgiliath-messaging-websocket</feature>
 		<feature version="${org.apache.camel.version}">osgiliath-camel-websocket</feature>
 		<feature version='${project.version}'>osgiliath-messaging</feature>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrappers.activemq-camel/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.activemq-camel/${project.version}</bundle>
 	</feature>
 </features>

@@ -372,7 +372,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-  //    'bower:install',
+      'bower:install',
       'wiredep',
       'concurrent:server',
       'autoprefixer',

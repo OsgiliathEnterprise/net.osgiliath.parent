@@ -57,7 +57,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrappers.activemq-camel</artifactId>
+			<artifactId>net.osgiliath.wrapper.activemq-camel</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
