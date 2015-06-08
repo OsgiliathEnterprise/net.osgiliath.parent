@@ -30,7 +30,6 @@
 		<module>net.osgiliath.wrapper.spring-security-ldap</module>
 		<module>net.osgiliath.wrapper.spring-security-web</module>
 		<module>net.osgiliath.wrapper.camel-catalog</module>
-		<module>net.osgiliath.wrapper.activemq-camel</module>
 		<module>net.osgiliath.wrapper.agorava-core</module>
 		<module>net.osgiliath.wrapper.agorava-core-impl</module>
 		<module>net.osgiliath.wrapper.agorava-core-impl-cdi</module>
