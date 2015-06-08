@@ -38,7 +38,7 @@
 	</feature>
 	<feature name="osgiliath-hawtio-core" version="${hawtio.version}" resolver="(obr)">
     	<details>Installs the core hawtio war file with minimal extensions</details>
-    	<feature>osgliath-war</feature>
+    	<feature>osgiliath-war</feature>
     	<bundle>mvn:io.hawt/hawtio-json-schema-mbean/${io.hawt_hawtio-json-schema-mbean.version}</bundle>
     	<bundle>mvn:io.hawt/hawtio-osgi-jmx/${io.hawt_hawtio-json-schema-mbean.version}</bundle>
     	<bundle>mvn:io.hawt/hawtio-web/${hawtio.version}/war</bundle>
