@@ -5,9 +5,9 @@
     <artifactId>net.osgiliath.wrappers</artifactId>
     <version>0.1.7-SNAPSHOT</version>
   </parent>
-  <artifactId>net.osgiliath.wrapper-deltaspike-servlet-module-impl</artifactId>
-  	<name>Wrapper for Deltaspike servlet impl</name>
-	<description>OSGI manifest wrapper for deltaspike implementation</description>
+  <artifactId>net.osgiliath.wrapper.agorava-core-impl</artifactId>
+  	<name>Wrapper for Agorava core</name>
+	<description>OSGI manifest wrapper for Agorava core implementation</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -23,8 +23,8 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.apache.deltaspike.modules</groupId>
-									<artifactId>deltaspike-servlet-module-impl</artifactId>
+									<groupId>org.agorava</groupId>
+									<artifactId>agorava-core-impl</artifactId>
 									<overWrite>false</overWrite>
 									<outputDirectory>${project.build.directory}/classes</outputDirectory>
 								</artifactItem>
@@ -43,8 +43,8 @@
 				<configuration>
 					<instructions>
 						<_include>-osgi.bnd</_include>
-						<Bundle-Version>${org.apache.deltaspike.modules_deltaspike-servlet-module-impl.version}</Bundle-Version>
-						<Embed-Dependency>deltaspike-servlet-module-impl,!*</Embed-Dependency>
+						<Bundle-Version>${org.agorava_agorava-core-impl.version}</Bundle-Version>
+						<Embed-Dependency>agorava-core-impl,!*</Embed-Dependency>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -52,8 +52,8 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-servlet-module-impl</artifactId>
+			<groupId>org.agorava</groupId>
+			<artifactId>agorava-core-impl</artifactId>
 		</dependency>
 	</dependencies>
 </project>

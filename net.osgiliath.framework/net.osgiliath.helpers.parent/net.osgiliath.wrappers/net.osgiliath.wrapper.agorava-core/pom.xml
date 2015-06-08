@@ -5,7 +5,7 @@
 		<artifactId>net.osgiliath.wrappers</artifactId>
 		<version>0.1.7-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.wrapper-agorava-core</artifactId>
+	<artifactId>net.osgiliath.wrapper.agorava-core</artifactId>
 	<name>Wrapper for Agorava core</name>
 	<description>OSGI manifest wrapper for Agorava core</description>
 	<build>

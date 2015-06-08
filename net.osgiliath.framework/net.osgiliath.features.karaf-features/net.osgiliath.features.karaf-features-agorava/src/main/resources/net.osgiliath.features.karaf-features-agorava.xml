@@ -26,11 +26,11 @@
 		<bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core_jackson-core.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.core_jackson-databind.version}</bundle>
         <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.core_jackson-annotations.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-agorava-core/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-agorava-core-impl/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-agorava-core-impl-cdi/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-deltaspike-servlet-module-api/${project.version}</bundle>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper-deltaspike-servlet-module-impl/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.agorava-core/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.agorava-core-impl/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.agorava-core-impl-cdi/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-servlet-module-api/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-servlet-module-impl/${project.version}</bundle>
 	</feature>
 	
 </features>

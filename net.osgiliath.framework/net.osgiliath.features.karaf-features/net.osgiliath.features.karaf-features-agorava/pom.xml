@@ -64,27 +64,27 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper-agorava-core</artifactId>
+			<artifactId>net.osgiliath.wrapper.agorava-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper-agorava-core-impl</artifactId>
+			<artifactId>net.osgiliath.wrapper.agorava-core-impl</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper-agorava-core-impl-cdi</artifactId>
+			<artifactId>net.osgiliath.wrapper.agorava-core-impl-cdi</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper-deltaspike-servlet-module-api</artifactId>
+			<artifactId>net.osgiliath.wrapper.deltaspike-servlet-module-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper-deltaspike-servlet-module-impl</artifactId>
+			<artifactId>net.osgiliath.wrapper.deltaspike-servlet-module-impl</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
