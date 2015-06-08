@@ -133,7 +133,7 @@
 		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
 		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
-		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+		<maven-release-plugin.version>2.5.2</maven-release-plugin.version>
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
 		<org.apache.maven.plugins_maven-scm-publish-plugin.version>1.1</org.apache.maven.plugins_maven-scm-publish-plugin.version>
@@ -198,7 +198,7 @@
 											BufferedWriter out = new BufferedWriter(fstream)
 											String parentPath = propertyFile.getAbsolutePath().substring(0, propertyFile.getAbsolutePath().lastIndexOf(File.separator))
 											if (File.separator != "/") {
-												parentPath = parentPath.replace(File.separator,File.separator+File.separator+File.separator)
+												parentPath = parentPath.replace(File.separator,File.separator+File.separator)
 											}
 											out.write("parent.path = " + parentPath)
 											out.close()
