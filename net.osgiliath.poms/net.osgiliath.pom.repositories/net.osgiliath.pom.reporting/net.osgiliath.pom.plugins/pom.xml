@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>net.osgiliath.pom.reporting</artifactId>
 		<groupId>net.osgiliath</groupId>
-		<version>0.1.7-SNAPSHOT</version>
+		<version>0.1.8-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>net.osgiliath.pom.plugins</artifactId>
@@ -509,7 +509,7 @@
 									</pluginExecutionFilter>
 									<action>
 										<execute>
-											<ignore/>
+											<ignore />
 										</execute>
 									</action>
 								</pluginExecution>

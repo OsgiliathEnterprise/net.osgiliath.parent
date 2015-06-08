@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>net.osgiliath.hello</groupId>
 		<artifactId>net.osgiliath.hello.model</artifactId>
-		<version>0.1.7-SNAPSHOT</version>
+		<version>0.1.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.model.database</artifactId>
 	<name>Helloworld sample Database definition</name>

@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>net.osgiliath.pom.plugins</artifactId>
 		<groupId>net.osgiliath</groupId>
-		<version>0.1.7-SNAPSHOT</version>
+		<version>0.1.8-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>net.osgiliath.pom.dependency-management</artifactId>
@@ -177,21 +177,6 @@
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>${joda-time_joda-time.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.agorava</groupId>
-				<artifactId>agorava-core-api</artifactId>
-				<version>${org.agorava_agorava-core-api.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.agorava</groupId>
-				<artifactId>agorava-core-impl</artifactId>
-				<version>${org.agorava_agorava-core-impl.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.agorava</groupId>
-				<artifactId>agorava-core-impl-cdi</artifactId>
-				<version>${org.agorava_agorava-core-impl-cdi.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
@@ -482,16 +467,6 @@
 				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-jpa-module-api</artifactId>
 				<version>${org.apache.deltaspike.modules_deltaspike-jpa-module-api.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-servlet-module-api</artifactId>
-				<version>${org.apache.deltaspike.modules_deltaspike-servlet-module-api.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.deltaspike.modules</groupId>
-				<artifactId>deltaspike-servlet-module-impl</artifactId>
-				<version>${org.apache.deltaspike.modules_deltaspike-servlet-module-impl.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.derby</groupId>
@@ -1375,9 +1350,6 @@
 		<javax.mail_mail.version>1.4.4</javax.mail_mail.version>
 		<javax.validation_validation-api.version>1.1.0.Final</javax.validation_validation-api.version>
 		<joda-time_joda-time.version>2.3</joda-time_joda-time.version>
-		<org.agorava_agorava-core-api.version>${agorava.version}</org.agorava_agorava-core-api.version>
-		<org.agorava_agorava-core-impl.version>${agorava.version}</org.agorava_agorava-core-impl.version>
-		<org.agorava_agorava-core-impl-cdi.version>${agorava.version}</org.agorava_agorava-core-impl-cdi.version>
 		<org.apache.activemq_activeio-core.version>3.1.4</org.apache.activemq_activeio-core.version>
 		<org.apache.activemq_activemq-blueprint.version>${org.apache.activemq.version}</org.apache.activemq_activemq-blueprint.version>
 		<org.apache.activemq_activemq-camel.version>${org.apache.activemq.version}</org.apache.activemq_activemq-camel.version>
@@ -1427,8 +1399,6 @@
 		<org.apache.deltaspike.core_deltaspike-core-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.core_deltaspike-core-impl.version>
 		<org.apache.deltaspike.modules_deltaspike-data-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-data-module-api.version>
 		<org.apache.deltaspike.modules_deltaspike-jpa-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-jpa-module-api.version>
-		<org.apache.deltaspike.modules_deltaspike-servlet-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-servlet-module-api.version>
-		<org.apache.deltaspike.modules_deltaspike-servlet-module-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-servlet-module-impl.version>
 		<org.apache.derby_derby.version>${derby.version}</org.apache.derby_derby.version>
 		<org.apache.derby_derbyclient.version>${derby.version}</org.apache.derby_derbyclient.version>
 		<org.apache.derby_derbynet.version>${derby.version}</org.apache.derby_derbynet.version>
@@ -1589,7 +1559,7 @@
 		<xom_xom.version>1.2.5</xom_xom.version>
 
 
-		<agorava.version>0.7.0</agorava.version>
+
 		<com.fasterxml.jackson.version>2.4.1</com.fasterxml.jackson.version> <!-- Do not upgrade cause of camel-json -->
 		<derby.version>10.10.2.0</derby.version>
 		<hawtio.version>1.4.47</hawtio.version>
@@ -1600,7 +1570,7 @@
 		<org.apache.aries.transaction.version>1.1.1</org.apache.aries.transaction.version>
 		<org.apache.camel.version>2.15.0</org.apache.camel.version>
 		<org.apache.cxf.version>3.0.3</org.apache.cxf.version>
-		<org.apache.deltaspike.version>1.4.0</org.apache.deltaspike.version>
+		<org.apache.deltaspike.version>1.2.1</org.apache.deltaspike.version>
 		<org.apache.servicemix.bundles.jaxb.version>2.2.1.1_2</org.apache.servicemix.bundles.jaxb.version>
 		<org.apache.servicemix.bundles.spring4.version>4.1.2.RELEASE_1</org.apache.servicemix.bundles.spring4.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>1.3.2.RELEASE_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>
