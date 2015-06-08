@@ -198,7 +198,7 @@
 											BufferedWriter out = new BufferedWriter(fstream)
 											String parentPath = propertyFile.getAbsolutePath().substring(0, propertyFile.getAbsolutePath().lastIndexOf(File.separator))
 											if (File.separator != "/") {
-												parentPath = parentPath.replace(File.separator,File.separator+File.separator+File.separator)
+												parentPath = parentPath.replace(File.separator,File.separator+File.separator)
 											}
 											out.write("parent.path = " + parentPath)
 											out.close()
