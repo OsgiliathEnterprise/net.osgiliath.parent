@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 		<groupId>net.osgiliath</groupId>
-		<version>0.1.8-SNAPSHOT</version>
+		<version>0.1.8</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>net.osgiliath.pom.projects.definition</artifactId>
