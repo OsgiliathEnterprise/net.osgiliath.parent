@@ -44,8 +44,6 @@
 		<module>
   		net.osgiliath.features.karaf-features.itests.jaxrs.cdi
   	</module>
-		<!-- <module> net.osgiliath.features.karaf-features.itests.jpa.cdi </module> <module> net.osgiliath.features.karaf-features.itests.jpa.cdi.model </module> <module> net.osgiliath.features.karaf-features.itests.jpa.cdi.data 
-			</module> -->
 		<module>net.osgiliath.features.karaf-features.itests.cdi.properties</module>
 		<module>net.osgiliath.features.karaf-features.itests.jpa.cdi.entities</module>
 		<module>net.osgiliath.features.karaf-features.itests.jpa.cdi.daos</module>
