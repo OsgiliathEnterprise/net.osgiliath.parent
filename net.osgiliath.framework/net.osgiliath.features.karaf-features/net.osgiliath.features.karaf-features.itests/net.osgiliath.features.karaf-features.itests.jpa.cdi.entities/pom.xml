@@ -1,14 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>net.osgiliath.framework</groupId>
-		<artifactId>net.osgiliath.features.karaf-features.itests</artifactId>
-		<version>0.1.9-SNAPSHOT</version>
-	</parent>
-	<artifactId>net.osgiliath.features.karaf-features.itests.jpa</artifactId>
-	<name>Osgiliath integration tests JPA</name>
-	<description>JPA (persistence) integration tests for Osgiliath framework</description>
-	<build>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.osgiliath.framework</groupId>
+    <artifactId>net.osgiliath.features.karaf-features.itests</artifactId>
+    <version>0.1.9-SNAPSHOT</version>
+  </parent>
+  <artifactId>net.osgiliath.features.karaf-features.itests.jpa.cdi.entities</artifactId>
+  	<build>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -23,10 +21,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.servicemix.tooling</groupId>
-				<artifactId>depends-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.bsc.maven</groupId>
@@ -62,7 +56,7 @@
 						<id>pre-integration-test</id>
 						<configuration>
 							<includes>
-								<include>net.osgiliath.*</include>
+								<include>net.osgiliath.jpa.cdi.entities.*</include>
 							</includes>
 						</configuration>
 					</execution>
@@ -127,10 +121,6 @@
 		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-reference</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
 		</dependency>
 		<!-- Karaf Test Framework Version -->
 		<dependency>

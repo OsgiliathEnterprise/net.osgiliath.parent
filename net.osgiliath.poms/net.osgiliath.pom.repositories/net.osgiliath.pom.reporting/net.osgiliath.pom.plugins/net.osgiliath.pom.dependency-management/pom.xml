@@ -480,8 +480,38 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-data-module-impl</artifactId>
+				<version>${org.apache.deltaspike.modules_deltaspike-data-module-impl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.deltaspike.modules</groupId>
 				<artifactId>deltaspike-jpa-module-api</artifactId>
 				<version>${org.apache.deltaspike.modules_deltaspike-jpa-module-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-jpa-module-impl</artifactId>
+				<version>${org.apache.deltaspike.modules_deltaspike-jpa-module-impl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-partial-bean-module-api</artifactId>
+				<version>${org.apache.deltaspike.modules_deltaspike-partial-bean-module-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-partial-bean-module-impl</artifactId>
+				<version>${org.apache.deltaspike.modules_deltaspike-partial-bean-module-impl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-proxy-module-api</artifactId>
+				<version>${org.apache.deltaspike.modules_deltaspike-proxy-module-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-proxy-module-impl-asm5</artifactId>
+				<version>${org.apache.deltaspike.modules_deltaspike-proxy-module-impl-asm5.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.deltaspike.modules</groupId>
@@ -1140,6 +1170,18 @@
 				<classifier>features</classifier>
 			</dependency>
 			<dependency>
+				<groupId>org.ops4j.pax.jpa</groupId>
+				<artifactId>pax-jpa-features</artifactId>
+				<version>${org.ops4j.pax.jpa_pax-jpa-features.version}</version>
+				<type>xml</type>
+				<classifier>features</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.jpa</groupId>
+				<artifactId>pax-jpa</artifactId>
+				<version>${org.ops4j.pax.jpa_pax-jpa.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-bnd</artifactId>
 				<version>${org.ops4j.pax.swissbox_pax-swissbox-bnd.version}</version>
@@ -1428,7 +1470,13 @@
 		<org.apache.deltaspike.core_deltaspike-core-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.core_deltaspike-core-api.version>
 		<org.apache.deltaspike.core_deltaspike-core-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.core_deltaspike-core-impl.version>
 		<org.apache.deltaspike.modules_deltaspike-data-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-data-module-api.version>
+		<org.apache.deltaspike.modules_deltaspike-data-module-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-data-module-impl.version>
 		<org.apache.deltaspike.modules_deltaspike-jpa-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-jpa-module-api.version>
+		<org.apache.deltaspike.modules_deltaspike-jpa-module-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-jpa-module-impl.version>
+		<org.apache.deltaspike.modules_deltaspike-partial-bean-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-partial-bean-module-api.version>
+		<org.apache.deltaspike.modules_deltaspike-partial-bean-module-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-partial-bean-module-impl.version>
+		<org.apache.deltaspike.modules_deltaspike-proxy-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-proxy-module-api.version>
+		<org.apache.deltaspike.modules_deltaspike-proxy-module-impl-asm5.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-proxy-module-impl-asm5.version>
 		<org.apache.deltaspike.modules_deltaspike-servlet-module-api.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-servlet-module-api.version>
 		<org.apache.deltaspike.modules_deltaspike-servlet-module-impl.version>${org.apache.deltaspike.version}</org.apache.deltaspike.modules_deltaspike-servlet-module-impl.version>
 		<org.apache.derby_derby.version>${derby.version}</org.apache.derby_derby.version>
@@ -1551,6 +1599,8 @@
 		<org.ops4j.pax.exam_pax-exam-container-karaf.version>${org.ops4j.pax.exam.version}</org.ops4j.pax.exam_pax-exam-container-karaf.version>
 		<org.ops4j.pax.exam_pax-exam-junit4.version>${org.ops4j.pax.exam.version}</org.ops4j.pax.exam_pax-exam-junit4.version>
 		<org.ops4j.pax.jdbc_pax-jdbc-features.version>0.6.0</org.ops4j.pax.jdbc_pax-jdbc-features.version>
+		<org.ops4j.pax.jpa_pax-jpa-features.version>${org.ops4j.pax.jpa.version}</org.ops4j.pax.jpa_pax-jpa-features.version>
+		<org.ops4j.pax.jpa_pax-jpa.version>${org.ops4j.pax.jpa.version}</org.ops4j.pax.jpa_pax-jpa.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-bnd.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-bnd.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-core.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-core.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-extender.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-extender.version>
@@ -1614,6 +1664,7 @@
 		<org.osgi.version>5.0.0</org.osgi.version>
 		<org.ops4j.base.version>1.5.0</org.ops4j.base.version>
 		<org.ops4j.pax.cdi.version>0.11.0</org.ops4j.pax.cdi.version>
+		<org.ops4j.pax.jpa.version>0.3.0</org.ops4j.pax.jpa.version>
 		<org.ops4j.pax.swissbox.version>1.8.1</org.ops4j.pax.swissbox.version>
 		<org.ops4j.pax.url.version>2.4.1</org.ops4j.pax.url.version>
 		<org.ops4j.pax.web.version>3.1.4</org.ops4j.pax.web.version>
