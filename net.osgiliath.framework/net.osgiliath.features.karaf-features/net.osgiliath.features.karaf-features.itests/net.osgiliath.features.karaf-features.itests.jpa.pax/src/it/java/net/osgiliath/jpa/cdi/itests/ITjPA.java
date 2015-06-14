@@ -26,13 +26,10 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import java.util.Collection;
-
 import javax.inject.Inject;
-
-import net.osgiliath.features.jpa.cdi.model.HelloEntity;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfigurationFactory;
+import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
+import net.osgiliath.jpa.cdi.entities.HelloEntity;
 import net.osgiliath.jpa.cdi.repository.HelloRepository;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,57 +54,57 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITjPA extends AbstractPaxExamKarafConfigurationFactory {
-    private static Logger LOG = LoggerFactory.getLogger(ITjPA.class);
+public class ITjPA extends AbstractPaxExamKarafConfiguration {
+  private static Logger LOG = LoggerFactory.getLogger(ITjPA.class);
 
-    // Exported service via blueprint.xml
-    @Inject
-    @Filter(timeout = 60000)
-    private HelloRepository repository;
+  // Exported service via blueprint.xml
+  @Inject
+  @Filter(timeout = 60000)
+  private HelloRepository repository;
 
-    // probe
-    @ProbeBuilder
-    public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-	builder.addTest(AbstractPaxExamKarafConfigurationFactory.class);
-	builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.jpa.cdi.itests");
-	builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-	builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-	return builder;
-    }
+  // probe
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.jpa.cdi.itests");
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
 
-    @Ignore
-    @Test
-    public void testSayHello() throws Exception {
+  @Ignore
+  @Test
+  public void testSayHello() throws Exception {
 
-	HelloEntity entity = new HelloEntity();
-	entity.setHelloMessage("hello");
-	entity = repository.save(entity);
-	Collection<? extends HelloEntity> entities = repository.getAll();
+    HelloEntity entity = new HelloEntity();
+    entity.setHelloMessage("hello");
+    entity = repository.save(entity);
+    Collection<? extends HelloEntity> entities = repository.getAll();
 
-	assertEquals(entities.size(), 1);
-	HelloEntity persisted = entities.iterator().next();
-	assertEquals(persisted.getHelloMessage(), "hello");
-	assertNotNull(persisted.getEntityId());
-    }
+    assertEquals(entities.size(), 1);
+    HelloEntity persisted = entities.iterator().next();
+    assertEquals(persisted.getHelloMessage(), "hello");
+    assertNotNull(persisted.getEntityId());
+  }
 
-    @Override
-    protected Option featureToTest() {
-	return features(
-		maven().artifactId(
-			"net.osgiliath.features.karaf-features.itests.feature")
-			.groupId("net.osgiliath.framework").type("xml")
-			.classifier("features").versionAsInProject(),
-		"osgiliath-itests-jpa-cdi-data");
-    }
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven()
+            .artifactId("net.osgiliath.features.karaf-features.itests.feature")
+            .groupId("net.osgiliath.framework").type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-jpa-pax");
+  }
 
-    static {
-	// uncomment to enable debugging of this test class
-	// paxRunnerVmOption = DEBUG_VM_OPTION;
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
-    }
+  }
 
-    @Configuration
-    public Option[] config() {
-	return createConfig();
-    }
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 }

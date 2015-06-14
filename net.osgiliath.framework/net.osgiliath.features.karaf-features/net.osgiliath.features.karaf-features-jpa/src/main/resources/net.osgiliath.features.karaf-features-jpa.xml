@@ -43,7 +43,7 @@ limitations under the License.
 		<bundle >mvn:org.springframework.data/spring-data-commons/${org.springframework.data_spring-data-commons.version}</bundle>
 		<bundle >mvn:org.springframework.data/spring-data-jpa/${org.springframework.data_spring-data-jpa.version}</bundle>
 	</feature>
-	<feature name='osgiliath-jpa-cdi' version='${project.version}' resolver="(obr)" description="Java persistence API for CDI stack (try)">
+	<feature name='osgiliath-jpa-pax' version='${project.version}' resolver="(obr)" description="Java persistence API for CDI stack (try)">
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jndi</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jdbc</feature>
@@ -56,7 +56,7 @@ limitations under the License.
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
 	</feature>
 	<feature name='osgiliath-data-cdi' version='${project.version}' resolver="(obr)" description="Java simple dao API for CDI stack (try)">
-		<feature version='${project.version}'>osgiliath-jpa-cdi</feature>
+		<feature version='${project.version}'>osgiliath-jpa-pax</feature>
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-data-module-api/${org.apache.deltaspike.modules_deltaspike-data-module-api.version}</bundle>
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-data-module-impl/${org.apache.deltaspike.modules_deltaspike-data-module-api.version}</bundle>
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-api/${org.apache.deltaspike.modules_deltaspike-jpa-module-api.version}</bundle>

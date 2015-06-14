@@ -21,17 +21,15 @@ package net.osgiliath.jpa.cdi.repository;
  */
 
 import java.util.Collection;
+import net.osgiliath.jpa.cdi.entities.HelloEntity;
 
-import net.osgiliath.features.jpa.cdi.model.HelloEntity;
-
-import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 /**
  * 
  * @author charliemordant
  *JPA accessible interface by business or route module (see business module for JMS or REST export, don't forget the osgi.bnd cxf package export)
  */
-@Transactional
+
 public interface HelloRepository {
     /**
      * saves instance

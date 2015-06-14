@@ -22,18 +22,18 @@ package net.osgiliath.jpa.cdi.repository.impl;
 
 import java.util.Collection;
 import java.util.List;
-
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.osgiliath.features.jpa.cdi.model.HelloEntity;
+import net.osgiliath.jpa.cdi.entities.HelloEntity;
 import net.osgiliath.jpa.cdi.repository.HelloRepository;
-
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 /**
@@ -41,45 +41,48 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
  */
 @Slf4j
 @OsgiServiceProvider
+@ApplicationScoped
+@NoArgsConstructor
+@Data
 public class HelloRepositoryImpl implements HelloRepository {
 
-    /**
-     * Entity manager
-     */
-    @Inject
-    private EntityManager entityManager;
+  /**
+   * Entity manager
+   */
+  @Inject
+  private EntityManager entityManager;
 
-    /**
-     * save method
-     */
-    public final HelloEntity save(final HelloEntity entity) {
-	log.info("Persisting hello with message: " + entity.getHelloMessage());
-	entityManager.persist(entity);
-	return entity;
+  /**
+   * save method
+   */
+  public final HelloEntity save(final HelloEntity entity) {
+    log.info("Persisting hello with message: " + entity.getHelloMessage());
+    entityManager.persist(entity);
+    return entity;
+  }
+
+  /**
+   * gets all
+   */
+  public final Collection<HelloEntity> getAll() {
+    final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
+    final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
+    cq.select(helloObject);
+
+    final TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
+    final List<HelloEntity> result = q.getResultList();
+    log.info("Returning : " + result.size() + " hellomessages");
+    return result;
+
+  }
+
+  /**
+   * deletes all
+   */
+  public void deleteAll() {
+    for (HelloEntity entity : getAll()) {
+      entityManager.remove(entity);
     }
-
-    /**
-     * gets all
-     */
-    public final Collection<HelloEntity> getAll() {
-	final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-	final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
-	final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
-	cq.select(helloObject);
-
-	final TypedQuery<HelloEntity> q = entityManager.createQuery(cq);
-	final List<HelloEntity> result = q.getResultList();
-	log.info("Returning : " + result.size() + " hellomessages");
-	return result;
-
-    }
-
-    /**
-     * deletes all
-     */
-    public void deleteAll() {
-	for (HelloEntity entity : getAll()) {
-	    entityManager.remove(entity);
-	}
-    }
+  }
 }

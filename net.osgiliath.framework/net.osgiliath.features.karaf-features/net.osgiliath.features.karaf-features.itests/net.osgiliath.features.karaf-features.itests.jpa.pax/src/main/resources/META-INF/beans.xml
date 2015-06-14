@@ -25,7 +25,7 @@
                            http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd
                            http://jboss.org/schema/weld/beans http://jboss.org/schema/weld/beans_1_1.xsd"
        version="1.1" bean-discovery-mode="annotated">
-       <interceptors>
-        <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
-    </interceptors>
+       <!--<interceptors>
+          <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
+    </interceptors>-->
 </beans>

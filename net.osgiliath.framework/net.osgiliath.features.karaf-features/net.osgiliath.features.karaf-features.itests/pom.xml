@@ -46,6 +46,7 @@
   	</module>
 		<module>net.osgiliath.features.karaf-features.itests.cdi.properties</module>
 		<module>net.osgiliath.features.karaf-features.itests.jpa.cdi.entities</module>
+		<module>net.osgiliath.features.karaf-features.itests.jpa.pax</module>
 		<module>net.osgiliath.features.karaf-features.itests.jpa.cdi.daos</module>
 	</modules>
 
