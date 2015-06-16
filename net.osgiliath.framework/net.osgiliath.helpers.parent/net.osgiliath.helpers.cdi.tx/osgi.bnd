@@ -1,0 +1,3 @@
+Fragment-Host: org.jboss.weld.osgi-bundle
+Import-Package: org.jboss.weld.transaction.spi;version="[2.0,3.0)",\
+ *

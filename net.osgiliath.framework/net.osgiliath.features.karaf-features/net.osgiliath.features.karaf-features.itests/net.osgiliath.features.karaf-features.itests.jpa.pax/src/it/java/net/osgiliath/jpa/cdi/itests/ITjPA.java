@@ -24,6 +24,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
+
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 
 import java.util.Collection;
 import javax.inject.Inject;
@@ -76,12 +79,12 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
   @Test
   public void testSayHello() throws Exception {
 
-    HelloEntity entity = new HelloEntity();
-    entity.setHelloMessage("hello");
+    HelloEntity entity = HelloEntity.builder().helloMessage("hello").build();
+    
     entity = repository.save(entity);
     Collection<? extends HelloEntity> entities = repository.getAll();
 
-    assertEquals(entities.size(), 1);
+    assertEquals( 1,entities.size());
     HelloEntity persisted = entities.iterator().next();
     assertEquals(persisted.getHelloMessage(), "hello");
     assertNotNull(persisted.getEntityId());
@@ -99,9 +102,15 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION;
+   //  paxRunnerVmOption = DEBUG_VM_OPTION;
 
   }
+
+//  @Override
+//  protected Option loggingLevel() {
+//    // TODO Auto-generated method stub
+//    return logLevel(LogLevel.DEBUG);
+//  }
 
   @Configuration
   public Option[] config() {

@@ -1660,7 +1660,7 @@
 		<org.apache.servicemix.specs.version>2.4.0</org.apache.servicemix.specs.version>
 		<org.codehaus.jackson.version>1.9.12</org.codehaus.jackson.version>
 		<org.eclipse.jetty.version>8.1.15.v20140411</org.eclipse.jetty.version>
-		<org.jboss.weld.version>2.2.4.Final</org.jboss.weld.version>
+		<org.jboss.weld.version>2.2.13.Final</org.jboss.weld.version>
 		<org.osgi.version>5.0.0</org.osgi.version>
 		<org.ops4j.base.version>1.5.0</org.ops4j.base.version>
 		<org.ops4j.pax.cdi.version>0.11.0</org.ops4j.pax.cdi.version>

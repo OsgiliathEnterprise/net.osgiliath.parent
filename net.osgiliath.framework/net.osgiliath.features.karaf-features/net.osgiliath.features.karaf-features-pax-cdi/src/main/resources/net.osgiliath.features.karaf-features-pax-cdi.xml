@@ -5,7 +5,9 @@
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
     <repository>mvn:org.apache.karaf.features/standard/${org.apache.karaf.features_standard.version}/xml/features</repository>
+    <repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
     
+   
     <feature name="osgiliath-pax-cdi-1.2" description="Provide CDI 1.2 support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}" resolver="(obr)">
         <feature>scr</feature>
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>

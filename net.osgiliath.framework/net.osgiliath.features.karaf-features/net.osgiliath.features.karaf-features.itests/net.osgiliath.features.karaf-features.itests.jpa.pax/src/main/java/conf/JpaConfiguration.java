@@ -20,6 +20,11 @@ package conf;
  * #L%
  */
 
+import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
+
+import org.ops4j.pax.cdi.api.PrototypeScoped;
+import javax.enterprise.inject.Default;
+import javax.enterprise.inject.Disposes;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
@@ -38,7 +43,7 @@ public class JpaConfiguration {
    * Entity manager factory
    */
   @Inject
-  @OsgiService(required = true, filter = "(osgi.unit.name=myTestPu)")
+  @OsgiService
   private EntityManagerFactory emf;
 
   
@@ -56,8 +61,16 @@ public class JpaConfiguration {
    * @return the entity manager
    */
   @Produces
+  @Default
   public EntityManager createEntityManager() {
     return this.emf.createEntityManager();
+  }
+  public void dispose(@Disposes @Default EntityManager entityManager)
+  {
+      if (entityManager.isOpen())
+      {
+          entityManager.close();
+      }
   }
   // @Produces
   // @Default

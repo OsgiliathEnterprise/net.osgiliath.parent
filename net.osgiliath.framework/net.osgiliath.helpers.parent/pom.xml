@@ -61,5 +61,6 @@
 		<module>net.osgiliath.helpers.activemq.broker</module>
 		<module>net.osgiliath.helpers.camel.activemq</module>
 		<module>net.osgiliath.helpers.spring-jms</module>
-  </modules>
+		<module>net.osgiliath.helpers.cdi.tx</module>
+	</modules>
 </project>

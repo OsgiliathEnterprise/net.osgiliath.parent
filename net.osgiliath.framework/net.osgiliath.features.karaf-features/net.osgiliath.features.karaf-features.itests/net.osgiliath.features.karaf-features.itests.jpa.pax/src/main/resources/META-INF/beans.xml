@@ -24,8 +24,11 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                            http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd
                            http://jboss.org/schema/weld/beans http://jboss.org/schema/weld/beans_1_1.xsd"
-       version="1.1" bean-discovery-mode="annotated">
-       <!--<interceptors>
-          <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
-    </interceptors>-->
+       version="1.1" bean-discovery-mode="all">
+      <interceptors>
+        <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
+    </interceptors>
+     <!-- <alternatives>
+        <class>org.apache.deltaspike.jpa.impl.transaction.BeanManagedUserTransactionStrategy</class>
+    </alternatives>  -->
 </beans>

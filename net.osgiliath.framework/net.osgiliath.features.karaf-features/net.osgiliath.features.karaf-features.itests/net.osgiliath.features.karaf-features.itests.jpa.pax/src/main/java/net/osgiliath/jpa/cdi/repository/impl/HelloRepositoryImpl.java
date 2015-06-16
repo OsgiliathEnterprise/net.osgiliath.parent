@@ -20,30 +20,29 @@ package net.osgiliath.jpa.cdi.repository.impl;
  * #L%
  */
 
+
+
 import java.util.Collection;
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.jpa.cdi.entities.HelloEntity;
 import net.osgiliath.jpa.cdi.repository.HelloRepository;
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 /**
  * @author charliemordant JPA implementation with CDI injection
  */
-@Slf4j
+
 @OsgiServiceProvider
-@ApplicationScoped
-@NoArgsConstructor
-@Data
+@Slf4j
+//@Transactional
 public class HelloRepositoryImpl implements HelloRepository {
 
   /**
@@ -55,7 +54,8 @@ public class HelloRepositoryImpl implements HelloRepository {
   /**
    * save method
    */
-  public final HelloEntity save(final HelloEntity entity) {
+ 
+  public HelloEntity save(final HelloEntity entity) {
     log.info("Persisting hello with message: " + entity.getHelloMessage());
     entityManager.persist(entity);
     return entity;
@@ -64,7 +64,7 @@ public class HelloRepositoryImpl implements HelloRepository {
   /**
    * gets all
    */
-  public final Collection<HelloEntity> getAll() {
+  public Collection<HelloEntity> getAll() {
     final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
     final CriteriaQuery<HelloEntity> cq = cb.createQuery(HelloEntity.class);
     final Root<HelloEntity> helloObject = cq.from(HelloEntity.class);
