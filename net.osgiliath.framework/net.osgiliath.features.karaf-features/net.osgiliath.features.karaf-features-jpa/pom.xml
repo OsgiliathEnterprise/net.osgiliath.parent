@@ -29,6 +29,16 @@
 			<artifactId>joda-time</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>net.osgiliath.helpers.deltaspike.tx</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.helper.pax-jpa.tx</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helpers.cdi.eager</artifactId>
 			<version>${project.version}</version>

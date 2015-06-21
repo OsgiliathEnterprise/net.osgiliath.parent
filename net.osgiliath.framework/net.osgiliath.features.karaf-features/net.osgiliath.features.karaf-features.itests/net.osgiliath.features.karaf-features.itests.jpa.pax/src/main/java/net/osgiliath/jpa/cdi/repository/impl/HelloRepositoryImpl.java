@@ -42,7 +42,7 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 @OsgiServiceProvider
 @Slf4j
-//@Transactional
+@Transactional
 public class HelloRepositoryImpl implements HelloRepository {
 
   /**

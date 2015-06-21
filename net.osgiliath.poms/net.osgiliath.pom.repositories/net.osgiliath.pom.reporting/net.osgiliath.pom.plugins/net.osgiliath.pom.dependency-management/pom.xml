@@ -1196,10 +1196,15 @@
 				<artifactId>pax-swissbox-extender</artifactId>
 				<version>${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</version>
 			</dependency>
+			 <dependency>
+            <groupId>org.ops4j.pax.swissbox</groupId>
+            <artifactId>pax-swissbox-framework</artifactId>
+            <version>${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</version>
+        </dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-lifecycle</artifactId>
-				<version>${org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version}</version>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-framework.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
@@ -1420,8 +1425,6 @@
 		<org.agorava_agorava-core-api.version>${agorava.version}</org.agorava_agorava-core-api.version>
 		<org.agorava_agorava-core-impl.version>${agorava.version}</org.agorava_agorava-core-impl.version>
 		<org.agorava_agorava-core-impl-cdi.version>${agorava.version}</org.agorava_agorava-core-impl-cdi.version>
-
-
 		<org.apache.activemq_activeio-core.version>3.1.4</org.apache.activemq_activeio-core.version>
 		<org.apache.activemq_activemq-blueprint.version>${org.apache.activemq.version}</org.apache.activemq_activemq-blueprint.version>
 		<org.apache.activemq_activemq-camel.version>${org.apache.activemq.version}</org.apache.activemq_activemq-camel.version>
@@ -1604,6 +1607,7 @@
 		<org.ops4j.pax.swissbox_pax-swissbox-bnd.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-bnd.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-core.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-core.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-extender.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-extender.version>
+		<org.ops4j.pax.swissbox_pax-swissbox-framework.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-framework.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-property.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-property.version>
 		<org.ops4j.pax.swissbox_pax-swissbox-tracker.version>${org.ops4j.pax.swissbox.version}</org.ops4j.pax.swissbox_pax-swissbox-tracker.version>
@@ -1663,13 +1667,13 @@
 		<org.jboss.weld.version>2.2.13.Final</org.jboss.weld.version>
 		<org.osgi.version>5.0.0</org.osgi.version>
 		<org.ops4j.base.version>1.5.0</org.ops4j.base.version>
-		<org.ops4j.pax.cdi.version>0.11.0</org.ops4j.pax.cdi.version>
+		<org.ops4j.pax.cdi.version>0.12.0</org.ops4j.pax.cdi.version>
 		<org.ops4j.pax.jpa.version>0.3.0</org.ops4j.pax.jpa.version>
 		<org.ops4j.pax.swissbox.version>1.8.1</org.ops4j.pax.swissbox.version>
 		<org.ops4j.pax.url.version>2.4.1</org.ops4j.pax.url.version>
 		<org.ops4j.pax.web.version>3.1.4</org.ops4j.pax.web.version>
 		<org.scala-lang.version>2.10.4</org.scala-lang.version>
-		<org.seleniumhq.selenium.version>2.45.0</org.seleniumhq.selenium.version>
+		<org.seleniumhq.selenium.version>2.46.0</org.seleniumhq.selenium.version>
 		<org.springframework.version>4.1.4.RELEASE</org.springframework.version>
 		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>

@@ -20,20 +20,19 @@ package config;
  * #L%
  */
 
-import javax.enterprise.inject.Disposes;
-
-import javax.persistence.EntityManager;
-import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManagerFactory;
-import org.ops4j.pax.cdi.api.OsgiService;
-import javax.inject.Inject;
-import net.osgiliath.helpers.cdi.eager.Eager;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Disposes;
+import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import net.osgiliath.helpers.cdi.eager.Eager;
+import org.ops4j.pax.cdi.api.OsgiService;
 @ApplicationScoped
 @Eager
 public class EntityManagerProducer {
   @Inject
-  @OsgiService(filter="(osgi.unit.name=myTestPu)")
+  @OsgiService(filter="(osgi.unit.name=myTestPu)",timeout=10)
   private EntityManagerFactory emf;
   @Produces // you can also make this @RequestScoped
   public EntityManager create()

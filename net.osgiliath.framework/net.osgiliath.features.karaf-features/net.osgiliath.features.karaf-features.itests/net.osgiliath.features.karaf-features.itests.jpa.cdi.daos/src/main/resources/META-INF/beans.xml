@@ -25,4 +25,10 @@
    xsi:schemaLocation="
       http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
+       <interceptors>
+        <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
+    </interceptors>
+      <alternatives>
+        <class>net.osgiliath.helpers.deltaspike.tx.OsgiUserTransactionStrategy</class>
+    </alternatives> 
     </beans>

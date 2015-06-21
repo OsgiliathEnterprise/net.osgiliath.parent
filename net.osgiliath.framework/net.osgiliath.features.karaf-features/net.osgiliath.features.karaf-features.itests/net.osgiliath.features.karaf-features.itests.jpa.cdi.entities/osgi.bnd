@@ -1,6 +1,4 @@
 Meta-Persistence: META-INF/persistence.xml
 Import-Package: javax.persistence.*;version="[2.0,3.0)",\
- org.apache.openjpa.enhance;resolution:=optional,\
- org.apache.openjpa.util;resolution:=optional,\
  org.apache.derby.jdbc,\
  *

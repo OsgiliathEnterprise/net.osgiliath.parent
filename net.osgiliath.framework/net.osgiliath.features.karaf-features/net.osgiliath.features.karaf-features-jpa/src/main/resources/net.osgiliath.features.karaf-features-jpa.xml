@@ -36,29 +36,54 @@ limitations under the License.
 		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
 		<feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>
 		<feature version='${project.version}'>osgiliath-openjpa</feature>
-		<bundle >mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
+		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
 		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring</feature>
 		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-orm</feature>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
-		<bundle >mvn:org.springframework.data/spring-data-commons/${org.springframework.data_spring-data-commons.version}</bundle>
-		<bundle >mvn:org.springframework.data/spring-data-jpa/${org.springframework.data_spring-data-jpa.version}</bundle>
+		<bundle>mvn:org.springframework.data/spring-data-commons/${org.springframework.data_spring-data-commons.version}</bundle>
+		<bundle>mvn:org.springframework.data/spring-data-jpa/${org.springframework.data_spring-data-jpa.version}</bundle>
 	</feature>
-	<feature name='osgiliath-jpa-pax' version='${project.version}' resolver="(obr)" description="Java persistence API for CDI stack (try)">
+	
+	<feature name="osgiliath-pax-jpa" description="Provides JPA Service support" version="${project.version}" resolver="(obr)"
+             start-level="40"><!-- TODO remove while pax-jpa will integrate JTA support -->
+        <feature>scr</feature>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-lang/${org.ops4j.base_ops4j-base-lang.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-spi/${org.ops4j.base_ops4j-base.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-io/${org.ops4j.base_ops4j-base.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-monitors/${org.ops4j.base_ops4j-base.version}</bundle> 
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/${org.ops4j.pax.swissbox_pax-swissbox-core.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/${org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-tracker/${org.ops4j.pax.swissbox_pax-swissbox-tracker.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-framework/${org.ops4j.pax.swissbox_pax-swissbox-framework.version}</bundle>
+       <!--  <bundle dependency="true">mvn:org.osgi/org.osgi.core/${org.osgi_org.osgi.core.version}</bundle>  
+        <bundle dependency="true">mvn:org.osgi/org.osgi.enterprise/${org.osgi_org.osgi.enterprise.version}</bundle>-->
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
+
+        <bundle>mvn:${project.groupId}/net.osgiliath.helper.pax-jpa.tx/${project.version}</bundle>
+    </feature>
+	<feature name='osgiliath-jpa-cdi' version='${project.version}' resolver="(obr)" description="Java persistence API for CDI stack (try)" start-level="41">
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jndi</feature>
+		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jdbc</feature>
+		<feature version='${org.apache.aries.transaction.version}'>transaction</feature>
 		<feature version='${project.version}'>osgiliath-openjpa</feature>
-		<feature version='${org.ops4j.pax.jpa_pax-jpa-features.version}'>pax-jpa</feature>
-		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-api/${org.apache.deltaspike.modules_deltaspike-jpa-module-api.version}</bundle>
-		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-impl/${org.apache.deltaspike.modules_deltaspike-jpa-module-impl.version}</bundle>
+		<feature version='${project.version}'>osgiliath-pax-jpa</feature>
+		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
+		
+		<bundle>mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-api/${org.apache.deltaspike.modules_deltaspike-jpa-module-api.version}</bundle>
+		<bundle>mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-impl/${org.apache.deltaspike.modules_deltaspike-jpa-module-impl.version}</bundle>
+		<bundle>mvn:${groupId}/net.osgiliath.helpers.deltaspike.tx/${project.version}</bundle>
 		<!-- <feature version='${org.apache.servicemix.bundles.spring4.version}'>spring</feature>
 		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-jdbc</feature>
 		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-orm</feature>
 		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-tx</feature>  -->
 		<bundle>mvn:${project.groupId}/net.osgiliath.helpers.cdi.eager/${project.version}</bundle>
 	</feature>
-	<feature name='osgiliath-data-cdi' version='${project.version}' resolver="(obr)" description="Java simple dao API for CDI stack (try)">
-		<feature version='${project.version}'>osgiliath-jpa-pax</feature>
+	<feature name='osgiliath-data-cdi' version='${project.version}' resolver="(obr)" description="Java simple dao API for CDI stack (try)" start-level="42">
+		<feature version='${project.version}'>osgiliath-jpa-cdi</feature>
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-data-module-api/${org.apache.deltaspike.modules_deltaspike-data-module-api.version}</bundle>
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-data-module-impl/${org.apache.deltaspike.modules_deltaspike-data-module-api.version}</bundle>
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-partial-bean-module-api/${org.apache.deltaspike.modules_deltaspike-partial-bean-module-api.version}</bundle>

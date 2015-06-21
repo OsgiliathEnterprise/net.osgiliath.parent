@@ -1,0 +1,5 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)", \
+ org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)"
+Import-Package: javax.persistence;version="[2.0,3.0)",\
+ *
+Export-Package: *,!internal

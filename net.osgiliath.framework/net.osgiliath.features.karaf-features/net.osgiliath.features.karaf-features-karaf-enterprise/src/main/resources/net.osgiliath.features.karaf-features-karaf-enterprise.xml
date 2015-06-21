@@ -10,13 +10,11 @@
         <feature version="${org.apache.aries.transaction.version}">transaction</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
         <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
-        <!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-validation_1.0_spec/1.1</bundle> -->
         <bundle>mvn:org.apache.geronimo.components/geronimo-connector/${org.apache.geronimo.components_geronimo-connector.version}</bundle>
     </feature>
 	<feature name="osgiliath-openjpa" version="${project.version}" resolver="(obr)" start-level='30' description="OpenJPA (persistence implementation) engine">
 		<details>Enable Apache OpenJPA as persistence engine.</details>
-		<feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>
-		<!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/${geronimo-annotation_1.1_spec.version}</bundle>  -->
+		<!-- <feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>  -->
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
 		<bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>

@@ -18,6 +18,7 @@
 		<bundle dependency="true">mvn:org.apache.neethi/neethi/${org.apache.neethi_neethi.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helpers.derby/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+		
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.junit/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version}</bundle>
 	</feature>
 </features>

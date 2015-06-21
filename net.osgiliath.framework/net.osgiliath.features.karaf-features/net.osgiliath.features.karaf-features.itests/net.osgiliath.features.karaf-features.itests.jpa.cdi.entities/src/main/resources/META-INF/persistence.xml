@@ -2,11 +2,11 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd">
-	<persistence-unit name="myTestPu" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="myTestPu" transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<!-- TODO exported by database module -->
-		  <!-- <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=myDB)</jta-data-source> --> 
-		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=myDB)</non-jta-data-source>
+		<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=myDb)</jta-data-source> 
+		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=myDb)</non-jta-data-source>
 		<class>net.osgiliath.jpa.cdi.entities.HelloEntity</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<validation-mode>NONE</validation-mode>

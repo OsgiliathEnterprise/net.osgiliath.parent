@@ -97,12 +97,12 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
             .artifactId("net.osgiliath.features.karaf-features.itests.feature")
             .groupId("net.osgiliath.framework").type("xml")
             .classifier("features").versionAsInProject(),
-        "osgiliath-itests-jpa-pax");
+        "osgiliath-itests-jpa-cdi");
   }
 
   static {
     // uncomment to enable debugging of this test class
-   //  paxRunnerVmOption = DEBUG_VM_OPTION;
+   // paxRunnerVmOption = DEBUG_VM_OPTION;
 
   }
 

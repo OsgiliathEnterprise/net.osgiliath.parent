@@ -20,8 +20,9 @@ package conf;
  * #L%
  */
 
-import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
+import javax.transaction.UserTransaction;
 
+import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
 import org.ops4j.pax.cdi.api.PrototypeScoped;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
@@ -43,10 +44,12 @@ public class JpaConfiguration {
    * Entity manager factory
    */
   @Inject
-  @OsgiService
+  @OsgiService(timeout=3000)
   private EntityManagerFactory emf;
+//  @Inject
+//  @OsgiService
+//  private UserTransaction tx;
 
-  
   /**
    * transaction manager
    * 
@@ -55,6 +58,12 @@ public class JpaConfiguration {
   // @Inject
   // @OsgiService(dynamic=true,required=true)
   // private TransactionManager txManager;
+//  @Produces
+//  @Default
+//  public UserTransaction createUserTransaction() {
+//    return this.tx;
+//  }
+
   /**
    * Entity manager producer
    * 
@@ -65,12 +74,11 @@ public class JpaConfiguration {
   public EntityManager createEntityManager() {
     return this.emf.createEntityManager();
   }
-  public void dispose(@Disposes @Default EntityManager entityManager)
-  {
-      if (entityManager.isOpen())
-      {
-          entityManager.close();
-      }
+
+  public void dispose(@Disposes @Default EntityManager entityManager) {
+    if (entityManager.isOpen()) {
+      entityManager.close();
+    }
   }
   // @Produces
   // @Default

@@ -7,14 +7,14 @@
 	<repository>mvn:${project.groupId}/${project.parent.artifactId}-pax-cdi/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/${project.parent.artifactId}-common/${project.version}/xml/features</repository>
-	 <feature name="osgiliath-cdi-tx-weld" version="${org.ops4j.pax.cdi_pax-cdi-features.version}" description="OSGi Support for JCA Connector 1.6" resolver="(obr)">
+	 <feature name="osgiliath-cdi-tx-weld" version="${org.ops4j.pax.cdi_pax-cdi-features.version}" description="OSGi Support for Transactional CDI" resolver="(obr)">
     	<feature version="${org.apache.aries.transaction.version}">transaction</feature>
     	<bundle dependency='true'>mvn:org.apache.xbean/xbean-blueprint/${xbean.version}</bundle>
     	<bundle>mvn:${project.groupId}/net.osgiliath.helpers.cdi.tx/${project.version}</bundle>
     </feature>
 	<feature name='osgiliath-cdi' version='${project.version}' resolver="(obr)" description="Enables Context dependency injection and CDI configuration admin handling in your project">
 		<feature>scr</feature>
-		<feature>osgiliath-weaving</feature>
+		<!-- <feature>osgiliath-weaving</feature>-->
 		<bundle dependency="true" start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
 		<feature>osgiliath-weld</feature>
 		<feature version="${org.ops4j.pax.cdi.version}">osgiliath-cdi-tx-weld</feature>

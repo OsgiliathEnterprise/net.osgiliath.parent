@@ -127,11 +127,6 @@
 									<type>cfg</type>
 									<classifier>db</classifier>
 								</artifact>
-								<artifact>
-									<file>${project.build.directory}/classes/${project.artifactId}.database-nojta.cfg</file>
-									<type>cfg</type>
-									<classifier>dbnojta</classifier>
-								</artifact>
 							</artifacts>
 						</configuration>
 					</execution>

@@ -66,20 +66,20 @@ limitations under the License.
 	<feature name='osgiliath-itests-jpa' version='${project.version}'>
 		<feature version='${project.version}'>osgiliath-derby</feature>
 		<feature version='${project.version}'>osgiliath-jpa</feature>
-		<configfile finalname="/etc/org.ops4j.datasource-myDB.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/db</configfile>
+		<configfile finalname="/etc/org.ops4j.datasource-myDb.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/db</configfile>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa/target/net.osgiliath.features.karaf-features.itests.jpa-${project.version}.jar</bundle>
 	</feature>
-	<feature name='osgiliath-itests-jpa-pax' version='${project.version}'>
+	<feature name='osgiliath-itests-jpa-cdi' version='${project.version}'>
 		<feature version='${project.version}'>osgiliath-derby</feature>
-		<feature version='${project.version}'>osgiliath-jpa-pax</feature>
-		<configfile finalname="/etc/org.ops4j.datasource-myDB.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/dbnojta</configfile>
+		<feature version='${project.version}'>osgiliath-jpa-cdi</feature>
+		<configfile finalname="/etc/org.ops4j.datasource-myDb.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/db</configfile>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa.cdi.entities/target/net.osgiliath.features.karaf-features.itests.jpa.cdi.entities-${project.version}.jar</bundle>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa.pax/target/net.osgiliath.features.karaf-features.itests.jpa.pax-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-jpa-cdi-data' version='${project.version}'>
 		<feature version='${project.version}'>osgiliath-derby</feature>
 		<feature version='${project.version}'>osgiliath-data-cdi</feature>
-		<configfile finalname="/etc/org.ops4j.datasource-myDB.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/dbnojta</configfile>
+		<configfile finalname="/etc/org.ops4j.datasource-myDb.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/db</configfile>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa.cdi.entities/target/net.osgiliath.features.karaf-features.itests.jpa.cdi.entities-${project.version}.jar</bundle>
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jpa.cdi.daos/target/net.osgiliath.features.karaf-features.itests.jpa.cdi.daos-${project.version}.jar</bundle>
 	</feature>

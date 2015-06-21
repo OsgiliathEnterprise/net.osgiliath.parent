@@ -62,5 +62,7 @@
 		<module>net.osgiliath.helpers.camel.activemq</module>
 		<module>net.osgiliath.helpers.spring-jms</module>
 		<module>net.osgiliath.helpers.cdi.tx</module>
+		<module>net.osgiliath.helpers.deltaspike.tx</module>
+		<module>net.osgiliath.helper.pax-jpa.tx</module>
 	</modules>
 </project>

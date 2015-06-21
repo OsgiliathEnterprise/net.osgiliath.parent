@@ -1,0 +1,16 @@
+Export-Package: org.ops4j.pax.jpa;version="0.3.0",org.ops4j.pax.jpa.jaxb\
+ ;uses:="javax.xml.bind.annotation,javax.xml.bind.annotation.adapters";v\
+ ersion="0.3.0"
+Import-Package: javax.persistence;version="[2.0,3)",javax.persistence.spi;ve\
+ rsion="1.0",org.ops4j.io;version="[1.4,2)",org.ops4j.lang;version="[1.4\
+ ,2)",org.ops4j.pax.swissbox.core;version="[1.7,2)",org.ops4j.pax.swissb\
+ ox.extender;version="[1.7,2)",javax.naming,javax.sql,javax.xml.bind,jav\
+ ax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.xml.tra\
+ nsform,javax.xml.transform.sax,org.ops4j.pax.jpa.jaxb,org.osgi.framewor\
+ k;version="[1.6,2)",org.osgi.framework.hooks.weaving;version="[1.0,2)",\
+ org.osgi.framework.wiring;version="[1.0,2)",org.osgi.service.jdbc;versi\
+ on="[1.0,2)",org.osgi.service.jpa;version="[1.0,2)",org.slf4j;version="\
+ [1.6,2)",org.xml.sax,org.xml.sax.helpers
+Service-Component: OSGI-INF/*
+Bundle-Version: 0.3.0
+Bundle-SymbolicName: org.ops4j.pax.jpa
