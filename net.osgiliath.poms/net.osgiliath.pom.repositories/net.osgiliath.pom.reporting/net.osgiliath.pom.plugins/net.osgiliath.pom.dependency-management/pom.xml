@@ -652,6 +652,11 @@
 				<version>${org.apache.openjpa_openjpa.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.apache.santuario</groupId>
+				<artifactId>xmlsec</artifactId>
+				<version>${org.apache.santuario_xmlsec.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.ant</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</version>
@@ -665,6 +670,11 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.bcel</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.bcel.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -759,6 +769,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.opensaml</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.opensaml.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.oro</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version}</version>
 			</dependency>
@@ -771,6 +786,11 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.reflections</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.saaj-impl</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.saaj-impl.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -866,6 +886,16 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.xalan</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xalan.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.xerces</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xerces.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.xmlresolver</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version}</version>
 			</dependency>
@@ -918,6 +948,36 @@
 				<groupId>org.apache.ws.xmlschema</groupId>
 				<artifactId>xmlschema-core</artifactId>
 				<version>${org.apache.ws.xmlschema_xmlschema-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.wss4j</groupId>
+				<artifactId>wss4j-bindings</artifactId>
+				<version>${org.apache.wss4j_wss4j-bindings.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.wss4j</groupId>
+				<artifactId>wss4j-policy</artifactId>
+				<version>${org.apache.wss4j_wss4j-policy.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.wss4j</groupId>
+				<artifactId>wss4j-ws-security-common</artifactId>
+				<version>${org.apache.wss4j_wss4j-ws-security-common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.wss4j</groupId>
+				<artifactId>wss4j-ws-security-dom</artifactId>
+				<version>${org.apache.wss4j_wss4j-wss4j-ws-security-dom.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.wss4j</groupId>
+				<artifactId>wss4j-ws-security-policy-stax</artifactId>
+				<version>${org.apache.wss4j_wss4j-ws-security-policy-stax.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.wss4j</groupId>
+				<artifactId>wss4j-ws-security-stax</artifactId>
+				<version>${org.apache.wss4j_wss4j-ws-security-stax.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
@@ -1055,6 +1115,11 @@
 				<groupId>org.jvnet.jaxb2_commons</groupId>
 				<artifactId>jaxb2-basics-runtime</artifactId>
 				<version>${org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.staxex</groupId>
+				<artifactId>stax-ex</artifactId>
+				<version>${org.jvnet.staxex_stax-ex.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.kubek2k</groupId>
@@ -1196,11 +1261,11 @@
 				<artifactId>pax-swissbox-extender</artifactId>
 				<version>${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</version>
 			</dependency>
-			 <dependency>
-            <groupId>org.ops4j.pax.swissbox</groupId>
-            <artifactId>pax-swissbox-framework</artifactId>
-            <version>${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</version>
-        </dependency>
+			<dependency>
+				<groupId>org.ops4j.pax.swissbox</groupId>
+				<artifactId>pax-swissbox-framework</artifactId>
+				<version>${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.swissbox</groupId>
 				<artifactId>pax-swissbox-lifecycle</artifactId>
@@ -1507,9 +1572,11 @@
 		<org.apache.karaf.web_org.apache.karaf.web.core.version>${karaf.version}</org.apache.karaf.web_org.apache.karaf.web.core.version>
 		<org.apache.neethi_neethi.version>3.0.3</org.apache.neethi_neethi.version>
 		<org.apache.openjpa_openjpa.version>${openjpa.version}</org.apache.openjpa_openjpa.version>
+		<org.apache.santuario_xmlsec.version>2.0.2</org.apache.santuario_xmlsec.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>1.7.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>1.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>1.8.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.bcel.version>5.2_4</org.apache.servicemix.bundles_org.apache.servicemix.bundles.bcel.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>3.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version>1.4_3</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>3.1_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>
@@ -1528,9 +1595,11 @@
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>4.12_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.lucene.version>4.7.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.lucene.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.opensaml.version>2.6.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.opensaml.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.protobuf-java.version>2.4.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.protobuf-java.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>0.9.8_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.saaj-impl.version>1.3.23_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.saaj-impl.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-context.version>${org.apache.servicemix.bundles.spring4.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-context.version>
@@ -1546,6 +1615,8 @@
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-jaxrs.version>${org.apache.servicemix.bundles.swagger.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-jaxrs.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version>1.7_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version>1.6.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xalan.version>2.7.1_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xalan.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xerces.version>2.11.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xerces.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>1.2_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>1.1.4c_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>1.4.7_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>
@@ -1564,6 +1635,12 @@
 		<org.apache.xbean_xbean-finder.version>${xbean.version}</org.apache.xbean_xbean-finder.version>
 		<org.apache.xbean_xbean-reflect.version>${xbean.version}</org.apache.xbean_xbean-reflect.version>
 		<org.apache.xbean_xbean-spring.version>${xbean.version}</org.apache.xbean_xbean-spring.version>
+		<org.apache.wss4j_wss4j-bindings.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-bindings.version>
+			<org.apache.wss4j_wss4j-policy.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-policy.version>
+			<org.apache.wss4j_wss4j-ws-security-common.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-common.version>
+			<org.apache.wss4j_wss4j-wss4j-ws-security-dom.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-wss4j-ws-security-dom.version>
+			<org.apache.wss4j_wss4j-ws-security-policy-stax.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-policy-stax.version>
+			<org.apache.wss4j_wss4j-ws-security-stax.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-stax.version>
 		<org.apache.zookeeper_zookeeper.version>3.4.5</org.apache.zookeeper_zookeeper.version>
 		<org.codehaus.jackson_jackson-core-asl.version>${org.codehaus.jackson.version}</org.codehaus.jackson_jackson-core-asl.version>
 		<org.codehaus.jackson_jackson-mapper-asl.version>${org.codehaus.jackson.version}</org.codehaus.jackson_jackson-mapper-asl.version>
@@ -1581,6 +1658,7 @@
 		<org.jboss.weld_weld-osgi-bundle.version>${org.jboss.weld.version}</org.jboss.weld_weld-osgi-bundle.version>
 		<org.jolokia_jolokia.version>1.2.2</org.jolokia_jolokia.version>
 		<org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>0.6.4</org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>
+		<org.jvnet.staxex_stax-ex.version>1.7.6</org.jvnet.staxex_stax-ex.version>
 		<org.kubek2k_springockito.version>1.0.9</org.kubek2k_springockito.version>
 		<org.liquibase_liquibase-osgi.version>3.2.2</org.liquibase_liquibase-osgi.version>
 		<org.mockito_.mockito-allversion>1.8.4</org.mockito_.mockito-allversion>
@@ -1662,6 +1740,7 @@
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>1.3.2.RELEASE_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>
 		<org.apache.servicemix.bundles.swagger.version>1.3.4_1</org.apache.servicemix.bundles.swagger.version>
 		<org.apache.servicemix.specs.version>2.4.0</org.apache.servicemix.specs.version>
+		<org.apache.wss4j.version>2.0.2</org.apache.wss4j.version>
 		<org.codehaus.jackson.version>1.9.12</org.codehaus.jackson.version>
 		<org.eclipse.jetty.version>8.1.15.v20140411</org.eclipse.jetty.version>
 		<org.jboss.weld.version>2.2.13.Final</org.jboss.weld.version>

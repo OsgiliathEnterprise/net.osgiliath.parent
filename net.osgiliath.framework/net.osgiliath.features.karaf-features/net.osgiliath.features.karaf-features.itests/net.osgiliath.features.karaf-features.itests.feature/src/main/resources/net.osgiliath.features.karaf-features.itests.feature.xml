@@ -22,6 +22,7 @@ limitations under the License.
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-derby/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-cxf/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-full/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-functional/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/xml/features</repository>
@@ -61,6 +62,11 @@ limitations under the License.
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${project.version}'>osgiliath-rest-cdi</feature>
+		<feature version='${org.apache.cxf.version}'>osgiliath-cxf-jaxws</feature>
+		<feature version='${org.apache.wss4j.version}'>osgiliath-wss4j</feature>
+		<feature version='${org.apache.cxf.version}'>osgiliath-cxf-ws-policy</feature>
+		
+
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jaxrs.web.cdi/target/net.osgiliath.features.karaf-features.itests.jaxrs.web.cdi-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-jpa' version='${project.version}'>

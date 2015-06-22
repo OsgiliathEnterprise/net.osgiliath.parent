@@ -32,6 +32,13 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.features.karaf-features-cxf</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>

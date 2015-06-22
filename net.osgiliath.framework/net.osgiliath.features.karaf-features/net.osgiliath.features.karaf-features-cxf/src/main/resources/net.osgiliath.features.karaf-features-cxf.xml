@@ -61,6 +61,40 @@
 		<bundle start-level="40">mvn:org.apache.cxf/cxf-rt-frontend-simple/${org.apache.cxf_cxf-rt-frontend-simple.version}</bundle>
 		<bundle start-level="40">mvn:org.apache.cxf/cxf-rt-frontend-jaxws/${org.apache.cxf_cxf-rt-frontend-jaxws.version}</bundle>
 	</feature>
+	<feature name="osgiliath-cxf-wsdl" version="${org.apache.cxf.version}" resolver="(obr)">
+        <feature version="${org.apache.cxf.version}">osgiliath-cxf-core</feature>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.wsdl4j/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.wsdl4j.version}</bundle>
+        <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-wsdl/${org.apache.cxf.version}</bundle>
+    </feature>
+	 <feature name="osgiliath-cxf-ws-policy" version="${org.apache.cxf.version}" resolver="(obr)">
+        <feature version="${org.apache.cxf.version}">osgiliath-cxf-wsdl</feature>
+        <bundle start-level="30" dependency="true">mvn:org.apache.neethi/neethi/${org.apache.neethi_neethi.version}</bundle>
+        <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-ws-policy/${org.apache.cxf.version}</bundle>
+    </feature>
+	    <feature name="osgiliath-wss4j" version="${org.apache.wss4j.version}" resolver="(obr)">
+        <feature version="${org.apache.cxf.version}">osgiliath-cxf-specs</feature>
+        <bundle start-level="25" dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
+        <bundle start-level="25" dependency="true">mvn:commons-codec/commons-codec/${commons-codec_commons-codec.version}</bundle>
+        <bundle start-level="25" dependency="true">mvn:org.apache.santuario/xmlsec/${org.apache.santuario_xmlsec.version}</bundle>
+        <bundle start-level="25" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.opensaml/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.opensaml.version}</bundle>
+        <bundle start-level="25">mvn:org.jvnet.staxex/stax-ex/${org.jvnet.staxex_stax-ex.version}</bundle>
+        <bundle start-level="25">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.saaj-impl/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.saaj-impl.version}</bundle>
+        <bundle start-level="25">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xmlresolver/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xerces/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xerces.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.bcel/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.bcel.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xalan/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xalan.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.neethi/neethi/${org.apache.neethi_neethi.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.wss4j/wss4j-bindings/${org.apache.wss4j_wss4j-bindings.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.wss4j/wss4j-ws-security-common/${org.apache.wss4j_wss4j-ws-security-common.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.wss4j/wss4j-ws-security-dom/${org.apache.wss4j_wss4j-wss4j-ws-security-dom.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.wss4j/wss4j-policy/${org.apache.wss4j_wss4j-policy.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.wss4j/wss4j-ws-security-stax/${org.apache.wss4j_wss4j-ws-security-policy-stax.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.wss4j/wss4j-ws-security-policy-stax/${org.apache.wss4j_wss4j-ws-security-stax.version}</bundle>
+    </feature>
+	
+	
+	
 	<feature name="osgiliath-cxf-specs" version="${org.apache.cxf.version}" resolver="(obr)">
 		<bundle start-level="9" dependency="true">mvn:org.apache.geronimo.specs/geronimo-osgi-registry/${org.apache.geronimo.specs_geronimo-osgi-registry.version}</bundle>
 		<!-- <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version}</bundle>  -->
