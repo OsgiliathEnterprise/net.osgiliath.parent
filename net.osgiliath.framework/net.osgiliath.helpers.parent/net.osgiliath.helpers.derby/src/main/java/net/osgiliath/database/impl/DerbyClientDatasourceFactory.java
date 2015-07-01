@@ -180,7 +180,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
   @Override
   public XADataSource createXADataSource(Properties props) throws SQLException {
     final ClientXADataSource40 datasource = new ClientXADataSource40();
-    setProperties(datasource, props);
+    this.setProperties(datasource, props);
     return datasource;
   }
 

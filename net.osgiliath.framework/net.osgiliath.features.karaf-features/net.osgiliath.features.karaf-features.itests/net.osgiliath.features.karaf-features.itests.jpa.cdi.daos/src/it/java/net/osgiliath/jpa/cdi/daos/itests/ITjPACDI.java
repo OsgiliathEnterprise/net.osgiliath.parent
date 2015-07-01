@@ -83,7 +83,7 @@ public class ITjPACDI extends AbstractPaxExamKarafConfiguration {
    * @throws Exception not expected
    */
   @Test
-  @Ignore
+ @Ignore
   public void testSayHello() {
     LOG.trace("Begin integration test");
     final HelloEntity entity = new HelloEntity();

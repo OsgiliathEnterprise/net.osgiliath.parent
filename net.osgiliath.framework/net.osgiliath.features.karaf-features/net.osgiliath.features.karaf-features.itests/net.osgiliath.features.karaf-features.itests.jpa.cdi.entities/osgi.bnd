@@ -1,4 +1,8 @@
 Meta-Persistence: META-INF/persistence.xml
+JPA-PersistenceUnits: myTestPu
 Import-Package: javax.persistence.*;version="[2.0,3.0)",\
  org.apache.derby.jdbc,\
  *
+XX-bkp: org.apache.openjpa.enhance,\
+ org.apache.openjpa.util
+ 

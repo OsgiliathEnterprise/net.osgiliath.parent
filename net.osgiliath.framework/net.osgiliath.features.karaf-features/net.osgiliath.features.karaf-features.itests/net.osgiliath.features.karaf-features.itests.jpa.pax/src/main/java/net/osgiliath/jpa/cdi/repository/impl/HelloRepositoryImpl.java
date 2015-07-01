@@ -20,8 +20,6 @@ package net.osgiliath.jpa.cdi.repository.impl;
  * #L%
  */
 
-
-
 import java.util.Collection;
 import java.util.List;
 import javax.inject.Inject;
@@ -42,7 +40,6 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 @OsgiServiceProvider
 @Slf4j
-@Transactional
 public class HelloRepositoryImpl implements HelloRepository {
 
   /**
@@ -50,14 +47,26 @@ public class HelloRepositoryImpl implements HelloRepository {
    */
   @Inject
   private EntityManager entityManager;
+//  @Inject
+//  @OsgiService
+//  private UserTransaction userTransaction;
 
   /**
    * save method
    */
- 
+  @Transactional
   public HelloEntity save(final HelloEntity entity) {
-    log.info("Persisting hello with message: " + entity.getHelloMessage());
-    entityManager.persist(entity);
+//    log.info("Persisting hello with message: " + entity.getHelloMessage());
+//    try {
+//      userTransaction.begin();
+//      entityManager.joinTransaction();
+      entityManager.persist(entity);
+      entityManager.flush();
+//      userTransaction.commit();
+//    }
+//    catch (NotSupportedException | SystemException | IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | RollbackException e) {
+//     log.error("Error persisting the data", e);
+//    }
     return entity;
   }
 

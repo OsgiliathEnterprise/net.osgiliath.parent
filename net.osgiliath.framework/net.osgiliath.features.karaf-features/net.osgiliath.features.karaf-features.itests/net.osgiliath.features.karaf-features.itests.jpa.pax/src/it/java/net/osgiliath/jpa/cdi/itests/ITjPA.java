@@ -75,16 +75,16 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
     return builder;
   }
 
-  @Ignore
+  // @Ignore
   @Test
   public void testSayHello() throws Exception {
 
     HelloEntity entity = HelloEntity.builder().helloMessage("hello").build();
-    
+
     entity = repository.save(entity);
     Collection<? extends HelloEntity> entities = repository.getAll();
 
-    assertEquals( 1,entities.size());
+    assertEquals(1, entities.size());
     HelloEntity persisted = entities.iterator().next();
     assertEquals(persisted.getHelloMessage(), "hello");
     assertNotNull(persisted.getEntityId());
@@ -102,13 +102,13 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-   // paxRunnerVmOption = DEBUG_VM_OPTION;
+    // paxRunnerVmOption = DEBUG_VM_OPTION;
 
   }
 
-//  @Override
+  // @Override
 //  protected Option loggingLevel() {
-//    // TODO Auto-generated method stub
+//    // // TODO Auto-generated method stub
 //    return logLevel(LogLevel.DEBUG);
 //  }
 

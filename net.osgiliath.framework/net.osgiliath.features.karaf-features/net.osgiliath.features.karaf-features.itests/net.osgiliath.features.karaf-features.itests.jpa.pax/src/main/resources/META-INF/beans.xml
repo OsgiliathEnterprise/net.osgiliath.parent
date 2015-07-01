@@ -29,6 +29,7 @@
         <class>org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor</class>
     </interceptors>
       <alternatives>
-        <class>net.osgiliath.helpers.deltaspike.tx.OsgiUserTransactionStrategy</class>
+      <class>net.osgiliath.helpers.deltaspike.tx.OsgiUserTransactionStrategy</class>
+       <!--  <class>conf.HelloTransactionStrategy</class>  -->
     </alternatives> 
 </beans>

@@ -79,7 +79,7 @@ import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
 
     private Bundle bundle;
-    
+
     private String version;
 
     private PersistenceUnit persistenceUnit;
@@ -98,7 +98,8 @@ public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
 
     private PersistenceUnitState state;
 
-    public PersistenceUnitInfoImpl(Bundle bundle, String version, PersistenceUnit persistenceUnit, Properties props) {
+    public PersistenceUnitInfoImpl(Bundle bundle, String version, PersistenceUnit persistenceUnit,
+        Properties props) {
         this.bundle = bundle;
         this.version = version;
         this.persistenceUnit = persistenceUnit;
@@ -131,46 +132,50 @@ public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
 
     @Override
     public DataSource getJtaDataSource() {
-      String dataSourceName = persistenceUnit.getJtaDataSource();
-      return commonParseJNDIDatasource(dataSourceName); 
+        String dataSourceName = persistenceUnit.getJtaDataSource();
+        if (dataSourceName != null) {
+            return commonParseJNDIDatasource(dataSourceName);
+        }
+        return null;
     }
 
-    private DataSource commonParseJNDIDatasource (String dataSourceName) {
-      if (dataSourceName != null) {
-        try {
-            InitialContext context = new InitialContext();
-            DataSource dataSource = (DataSource) context.lookup(dataSourceName);
-            return dataSource;
+    private DataSource commonParseJNDIDatasource(String dataSourceName) {
+        if (dataSourceName != null) {
+            try {
+                InitialContext context = new InitialContext();
+                DataSource dataSource = (DataSource) context.lookup(dataSourceName);
+                return dataSource;
+            }
+            catch (NamingException exc) {
+                throw new Ops4jException(exc);
+            }
         }
-        catch (NamingException exc) {
+        String url = props.getProperty(JpaConstants.JPA_URL);
+        String user = props.getProperty(JpaConstants.JPA_USER);
+        String password = props.getProperty(JpaConstants.JPA_PASSWORD);
+        Properties dsfProps = new Properties();
+
+        if (url != null) {
+            dsfProps.setProperty(DataSourceFactory.JDBC_URL, url);
+        }
+        if (user != null) {
+            dsfProps.setProperty(DataSourceFactory.JDBC_USER, user);
+        }
+        if (password != null) {
+            dsfProps.setProperty(DataSourceFactory.JDBC_PASSWORD, password);
+        }
+        try {
+            return dataSourceFactory.createDataSource(dsfProps);
+        }
+        catch (SQLException exc) {
             throw new Ops4jException(exc);
         }
     }
-    String url = props.getProperty(JpaConstants.JPA_URL);
-    String user = props.getProperty(JpaConstants.JPA_USER);
-    String password = props.getProperty(JpaConstants.JPA_PASSWORD);
-    Properties dsfProps = new Properties();
 
-    if (url != null) {
-        dsfProps.setProperty(DataSourceFactory.JDBC_URL, url);
-    }
-    if (user != null) {
-        dsfProps.setProperty(DataSourceFactory.JDBC_USER, user);
-    }
-    if (password != null) {
-        dsfProps.setProperty(DataSourceFactory.JDBC_PASSWORD, password);
-    }
-    try {
-        return dataSourceFactory.createDataSource(dsfProps);
-    }
-    catch (SQLException exc) {
-        throw new Ops4jException(exc);
-    }
-    }
     @Override
     public DataSource getNonJtaDataSource() {
         String dataSourceName = persistenceUnit.getNonJtaDataSource();
-       return commonParseJNDIDatasource(dataSourceName); 
+        return commonParseJNDIDatasource(dataSourceName);
     }
 
     @Override
@@ -301,9 +306,10 @@ public class PersistenceUnitInfoImpl implements PersistenceUnitInfo {
     public void setState(PersistenceUnitState state) {
         this.state = state;
     }
-    
+
     public boolean hasJndiDataSource() {
-        return persistenceUnit.getNonJtaDataSource() != null ||  persistenceUnit.getJtaDataSource() != null;
+        return persistenceUnit.getNonJtaDataSource() != null
+            || persistenceUnit.getJtaDataSource() != null;
     }
 
 }

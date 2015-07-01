@@ -3,6 +3,7 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=eager)"
 Web-ContextPath: /helloService
 Webapp-Context: /helloService
+Pax-ManagedBeans: META-INF/beans.xml
 Import-Package: javax.servlet,javax.servlet.http,\
  org.apache.cxf.binding.soap,\
  org.apache.cxf.binding.xml,\

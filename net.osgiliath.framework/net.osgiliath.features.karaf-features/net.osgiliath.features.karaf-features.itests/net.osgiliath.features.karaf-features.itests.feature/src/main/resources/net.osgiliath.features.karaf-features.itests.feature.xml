@@ -59,7 +59,7 @@ limitations under the License.
 	</feature>
 	<feature name='osgiliath-itests-jaxrs-web-cdi' version='${project.version}'>
 		<feature version='${karaf.version}'>osgiliath-war</feature>
-		<feature version='${project.version}'>osgiliath-cdi</feature>
+		<feature version='${project.version}'>osgiliath-cdi-web</feature>
 		<feature version='${project.version}'>osgiliath-functional</feature>
 		<feature version='${project.version}'>osgiliath-rest-cdi</feature>
 		<feature version='${org.apache.cxf.version}'>osgiliath-cxf-jaxws</feature>

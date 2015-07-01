@@ -20,71 +20,65 @@ package net.osgiliath.helpers.deltaspike.tx;
  * #L%
  */
 
-import org.slf4j.Logger;
-
-import org.slf4j.LoggerFactory;
-import java.io.IOException;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.FrameworkUtil;
-import net.osgiliath.helpers.deltaspike.configadmin.ConfigAdminAccessor;
-import javax.transaction.TransactionManager;
-import java.lang.annotation.Annotation;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Alternative;
+
+import java.util.HashMap;
+import java.util.Map;
+import org.osgi.framework.BundleContext;
+import javax.enterprise.context.Dependent;
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.Collection;
 import javax.inject.Inject;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.transaction.Status;
 import javax.transaction.SystemException;
-import javax.transaction.TransactionSynchronizationRegistry;
 import javax.transaction.UserTransaction;
-import org.apache.deltaspike.core.api.provider.BeanProvider;
+import net.osgiliath.helpers.deltaspike.configadmin.ConfigAdminAccessor;
 import org.apache.deltaspike.core.util.ExceptionUtils;
 import org.apache.deltaspike.jpa.api.transaction.TransactionConfig;
 import org.apache.deltaspike.jpa.impl.transaction.BeanManagedUserTransactionStrategy;
 import org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy;
 import org.apache.deltaspike.jpa.impl.transaction.context.EntityManagerEntry;
 import org.ops4j.pax.cdi.api.OsgiService;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.InvalidSyntaxException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * @author charliemordant This class must be subclassed in the project providing
+ *         EntityManager.
+ */
 @Dependent
 @Alternative
 @SuppressWarnings("UnusedDeclaration")
-
 public class OsgiUserTransactionStrategy extends
     ResourceLocalTransactionStrategy
 
 {
+  
 
   private static final long serialVersionUID = -2432802805095533499L;
 
   private static final Logger LOGGER = LoggerFactory
-      .getLogger(OsgiUserTransactionStrategy.class.getName());
+      .getLogger(OsgiUserTransactionStrategy.class);
 
   private transient TransactionConfig transactionConfig;
-
   @Inject
-  @OsgiService
+  @OsgiService(required = true)
   private UserTransaction userTransaction;
-  @Inject
-  @OsgiService
-  private TransactionManager transactionManager;
-  @Inject
-  @OsgiService
-  private TransactionSynchronizationRegistry transactionSynchronizationRegistry;
-
   @Override
   protected EntityManagerEntry createEntityManagerEntry(
 
-  EntityManager entityManager, Class<? extends Annotation> qualifier)
-
-  {
+  EntityManager entityManager, Class<? extends Annotation> qualifier) {
 
     applyTransactionTimeout(); // needs to be done before UserTransaction#begin
                                // - TODO move this call
-
     return super.createEntityManagerEntry(entityManager, qualifier);
-
   }
 
   protected void applyTransactionTimeout()
@@ -114,7 +108,7 @@ public class OsgiUserTransactionStrategy extends
 
       {
 
-        userTransaction.setTransactionTimeout(transactionTimeout);
+        this.userTransaction.setTransactionTimeout(transactionTimeout);
 
       }
 
@@ -124,8 +118,7 @@ public class OsgiUserTransactionStrategy extends
 
     {
 
-      LOGGER.warn("UserTransaction#setTransactionTimeout failed",
-          e);
+      LOGGER.warn("UserTransaction#setTransactionTimeout failed", e);
 
     }
 
@@ -159,16 +152,7 @@ public class OsgiUserTransactionStrategy extends
 
     }
 
-   // this.transactionConfig = BeanProvider.getContextualReference(
-    //    TransactionConfig.class, true);
-
-    //if (this.transactionConfig == null)
-
-    //{
-
-      this.transactionConfig = createDefaultTransactionConfig();
-
-    //}
+    this.transactionConfig = createDefaultTransactionConfig();
 
   }
 
@@ -186,20 +170,22 @@ public class OsgiUserTransactionStrategy extends
       public Integer getUserTransactionTimeoutInSeconds()
 
       {
-        int ret = 10;
+        int ret = 600;
         try {
-          String prop = ConfigAdminAccessor.getProperty(FrameworkUtil.getBundle(getClass()).getBundleContext(), " aries.transaction.timeout");
-              if (prop != null && !prop.isEmpty()) {
-                ret = Integer.valueOf(prop);
-              }
-          
+          String prop = ConfigAdminAccessor.getProperty(FrameworkUtil
+              .getBundle(getClass()).getBundleContext(),
+              "aries.transaction.timeout");
+          LOGGER.info("setting transaction timeout to:" + prop);
+          if (prop != null && !prop.isEmpty()) {
+            ret = Integer.valueOf(prop);
+          }
+
         }
         catch (NumberFormatException | IOException | InvalidSyntaxException e) {
           LOGGER.error("unable to find default transaction timeout", e);
-          
+
         }
-       return ret;
-        
+        return ret;
 
       }
 
@@ -267,75 +253,32 @@ public class OsgiUserTransactionStrategy extends
    */
 
   @Override
-  protected void beforeProceed(InvocationContext invocationContext,
+  protected synchronized void beforeProceed(InvocationContext invocationContext,
 
   EntityManagerEntry entityManagerEntry,
 
   EntityTransaction transaction)
 
   {
-
     entityManagerEntry.getEntityManager().joinTransaction();
-
   }
-
   protected UserTransaction resolveUserTransaction()
 
   {
-
     return userTransaction;
-  }
-
-  protected TransactionSynchronizationRegistry resolveTransactionRegistry()
-
-  {
-
-    return transactionSynchronizationRegistry;
-
   }
 
   private class UserTransactionAdapter implements EntityTransaction
 
   {
 
-    private final UserTransaction userTransaction;
 
     // needed for calls through an EJB with CMT
-
-    private final TransactionSynchronizationRegistry transactionSynchronizationRegistry;
 
     public UserTransactionAdapter()
 
     {
-
-      this.userTransaction = resolveUserTransaction();
-
-      if (this.userTransaction == null)
-
-      {
-
-        this.transactionSynchronizationRegistry = resolveTransactionRegistry();
-
-        if (this.transactionSynchronizationRegistry.getTransactionStatus() != Status.STATUS_ACTIVE)
-
-        {
-
-          throw new IllegalStateException(
-
-          "The CMT is not active. Please check the config of the Data-Source.");
-
-        }
-
-      }
-
-      else
-
-      {
-
-        this.transactionSynchronizationRegistry = null;
-
-      }
-
+      
     }
 
     /**
@@ -352,7 +295,7 @@ public class OsgiUserTransactionStrategy extends
 
     {
 
-      if (this.userTransaction == null)
+      if (resolveUserTransaction() == null)
 
       {
 
@@ -370,14 +313,15 @@ public class OsgiUserTransactionStrategy extends
 
         // currently to filter STATUS_UNKNOWN - see to-do -> TODO re-visit it
 
-        if (this.userTransaction.getStatus() == Status.STATUS_NO_TRANSACTION)
+        if (resolveUserTransaction().getStatus() == Status.STATUS_NO_TRANSACTION)
 
         {
 
-          this.userTransaction.begin();
+          resolveUserTransaction().begin();
+          
+         
 
         }
-
       }
 
       catch (Exception e)
@@ -412,7 +356,7 @@ public class OsgiUserTransactionStrategy extends
 
     {
 
-      if (this.userTransaction == null)
+      if (resolveUserTransaction() == null)
 
       {
 
@@ -429,8 +373,7 @@ public class OsgiUserTransactionStrategy extends
 
         {
 
-          this.userTransaction.commit();
-
+          resolveUserTransaction().commit();
         }
 
       }
@@ -471,7 +414,7 @@ public class OsgiUserTransactionStrategy extends
 
     {
 
-      if (this.userTransaction == null)
+      if (resolveUserTransaction() == null)
 
       {
 
@@ -488,8 +431,7 @@ public class OsgiUserTransactionStrategy extends
 
         {
 
-          this.userTransaction.rollback();
-
+          resolveUserTransaction().rollback();
         }
 
       }
@@ -513,20 +455,11 @@ public class OsgiUserTransactionStrategy extends
 
       {
 
-        if (this.userTransaction != null)
+        if (resolveUserTransaction() != null)
 
         {
 
-          this.userTransaction.setRollbackOnly();
-
-        }
-
-        else
-
-        {
-
-          this.transactionSynchronizationRegistry.setRollbackOnly();
-
+          resolveUserTransaction().setRollbackOnly();
         }
 
       }
@@ -630,24 +563,18 @@ public class OsgiUserTransactionStrategy extends
 
     {
 
-      if (this.userTransaction != null)
+      if (resolveUserTransaction() != null)
 
       {
 
-        return this.userTransaction.getStatus();
+        return resolveUserTransaction().getStatus();
 
       }
-
-      else
-
-      {
-
-        return this.transactionSynchronizationRegistry.getTransactionStatus();
-
-      }
+      return Status.STATUS_UNKNOWN;
 
     }
 
   }
+
 
 }

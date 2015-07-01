@@ -20,17 +20,15 @@ package conf;
  * #L%
  */
 
-import javax.transaction.UserTransaction;
+import javax.enterprise.context.ApplicationScoped;
 
-import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
-import org.ops4j.pax.cdi.api.PrototypeScoped;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import org.ops4j.pax.cdi.api.BundleScoped;
 import org.ops4j.pax.cdi.api.OsgiService;
 
 /**
@@ -44,11 +42,13 @@ public class JpaConfiguration {
    * Entity manager factory
    */
   @Inject
-  @OsgiService(timeout=3000)
+  @OsgiService(timeout = 100000)
   private EntityManagerFactory emf;
-//  @Inject
-//  @OsgiService
-//  private UserTransaction tx;
+  private transient EntityManager mgr;
+
+  // @Inject
+  // @OsgiService
+  // private UserTransaction tx;
 
   /**
    * transaction manager
@@ -58,11 +58,11 @@ public class JpaConfiguration {
   // @Inject
   // @OsgiService(dynamic=true,required=true)
   // private TransactionManager txManager;
-//  @Produces
-//  @Default
-//  public UserTransaction createUserTransaction() {
-//    return this.tx;
-//  }
+  // @Produces
+  // @Default
+  // public UserTransaction createUserTransaction() {
+  // return this.tx;
+  // }
 
   /**
    * Entity manager producer
@@ -70,9 +70,11 @@ public class JpaConfiguration {
    * @return the entity manager
    */
   @Produces
-  @Default
   public EntityManager createEntityManager() {
-    return this.emf.createEntityManager();
+    if (mgr == null) {
+      mgr = this.emf.createEntityManager();
+    }
+    return mgr;
   }
 
   public void dispose(@Disposes @Default EntityManager entityManager) {
@@ -84,11 +86,5 @@ public class JpaConfiguration {
   // @Default
   // protected TransactionManager createTx() {
   // return this.txManager;
-  // }
-  // protected void closeEntityManager(@Disposes @Default EntityManager
-  // entityManager) {
-  // if (entityManager.isOpen()) {
-  // entityManager.close();
-  // }
   // }
 }
