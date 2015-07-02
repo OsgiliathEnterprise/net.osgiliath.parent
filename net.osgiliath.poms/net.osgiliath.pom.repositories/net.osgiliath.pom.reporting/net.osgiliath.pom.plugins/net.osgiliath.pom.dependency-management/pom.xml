@@ -1752,7 +1752,7 @@
 		<org.jboss.weld.version>2.2.13.Final</org.jboss.weld.version>
 		<org.osgi.version>5.0.0</org.osgi.version>
 		<org.ops4j.base.version>1.5.0</org.ops4j.base.version>
-		<org.ops4j.pax.cdi.version>0.12.0</org.ops4j.pax.cdi.version>
+		<org.ops4j.pax.cdi.version>1.0.0.RC1</org.ops4j.pax.cdi.version>
 		<org.ops4j.pax.jpa.version>0.3.0</org.ops4j.pax.jpa.version>
 		<org.ops4j.pax.swissbox.version>1.8.1</org.ops4j.pax.swissbox.version>
 		<org.ops4j.pax.url.version>2.4.1</org.ops4j.pax.url.version>

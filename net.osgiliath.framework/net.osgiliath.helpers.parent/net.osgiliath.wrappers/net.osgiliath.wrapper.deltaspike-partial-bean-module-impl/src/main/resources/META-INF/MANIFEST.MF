@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1434140817236
+Build-Jdk: 1.7.0_51
+Built-By: gpetracek
+Bundle-Description: Apache DeltaSpike Parent for container projects
+Bundle-DocURL: http://www.apache.org/
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: deltaspike-partial-bean-module-impl
+Bundle-SymbolicName: org.apache.deltaspike.modules.deltaspike-partial-be
+ an-module-impl
+Bundle-Vendor: The Apache Software Foundation
+Bundle-Version: 1.4.1
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.deltaspike.partialbean.impl;uses:="org.apache
+ .deltaspike.core.util.metadata.builder,org.apache.deltaspike.proxy.api,
+ org.apache.deltaspike.core.util,org.apache.deltaspike.core.util.bean,ja
+ vax.enterprise.inject.spi,javax.enterprise.event,org.apache.deltaspike.
+ partialbean.api,org.apache.deltaspike.core.spi.activation,javax.enterpr
+ ise.inject";version="1.4.1"
+Implementation-Title: Apache DeltaSpike Partial-Bean-Module Impl
+Implementation-Vendor: The Apache Software Foundation
+Implementation-Vendor-Id: org.apache.deltaspike.modules
+Implementation-Version: 1.4.1
+Import-Package: javax.enterprise.event;version="[1.0,2)",javax.enterpris
+ e.inject;version="[1.0,2)",javax.enterprise.inject.spi;version="[1.0,2)
+ ",org.apache.deltaspike.core.spi.activation;version="[1.4,2)",org.apach
+ e.deltaspike.core.util;version="[1.4,2)",org.apache.deltaspike.core.uti
+ l.bean;version="[1.4,2)",org.apache.deltaspike.core.util.metadata.build
+ er;version="[1.4,2)",org.apache.deltaspike.partialbean.api;version="[1.
+ 4,2)",org.apache.deltaspike.proxy.api;version="[1.4,2)"
+Karaf-Info: DeltaSpike;deltaspike-partial-bean-module-impl=1.4.1
+Provide-Capability: org.ops4j.pax.cdi.extension;extension=deltaspike-par
+ tial-bean-module-impl
+Require-Capability: org.ops4j.pax.cdi.extension;filter:="(extension=pax-
+ cdi-extension)"
+Specification-Title: Apache DeltaSpike Partial-Bean-Module Impl
+Specification-Vendor: The Apache Software Foundation
+Specification-Version: 1.4.1
+Tool: Bnd-1.50.0

@@ -84,7 +84,7 @@ public class ITjPACDI extends AbstractPaxExamKarafConfiguration {
    */
   @Test
  @Ignore
-  public void testSayHello() {
+public void testSayHello() {
     LOG.trace("Begin integration test");
     final HelloEntity entity = new HelloEntity();
     entity.setHelloMessage("hello");
@@ -113,7 +113,7 @@ public class ITjPACDI extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
+   //  paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
   /**

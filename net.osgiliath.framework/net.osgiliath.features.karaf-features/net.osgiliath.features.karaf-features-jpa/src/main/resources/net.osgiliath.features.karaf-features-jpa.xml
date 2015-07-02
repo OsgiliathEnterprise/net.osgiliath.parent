@@ -84,7 +84,8 @@ limitations under the License.
 		<!-- <bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-data-module-impl/${org.apache.deltaspike.modules_deltaspike-data-module-api.version}</bundle>  -->
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-data-impl/${project.version}</bundle>
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-partial-bean-module-api/${org.apache.deltaspike.modules_deltaspike-partial-bean-module-api.version}</bundle>
-		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-partial-bean-module-impl/${org.apache.deltaspike.modules_deltaspike-partial-bean-module-impl.version}</bundle>
+		<bundle dependency='true'>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-partial-bean-module-impl/${project.version}</bundle>
+		<!-- <bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-partial-bean-module-impl/${org.apache.deltaspike.modules_deltaspike-partial-bean-module-impl.version}</bundle>-->
 		<bundle dependency='true'>mvn:org.apache.deltaspike.modules/deltaspike-proxy-module-api/${org.apache.deltaspike.modules_deltaspike-proxy-module-api.version}</bundle>
 		<bundle>mvn:org.apache.deltaspike.modules/deltaspike-proxy-module-impl-asm5/${org.apache.deltaspike.modules_deltaspike-proxy-module-impl-asm5.version}</bundle>
 	</feature>	
