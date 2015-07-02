@@ -9,7 +9,7 @@
 	<name>Wrapper for swagger JaxRS module</name>
 	<build>
 		<plugins>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
@@ -30,7 +30,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -61,7 +61,7 @@
 									<groupId>org.apache.servicemix.bundles</groupId>
 									<artifactId>org.apache.servicemix.bundles.swagger-jaxrs</artifactId>
 									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+									<outputDirectory>${project.build.directory}/classes</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -86,7 +86,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
@@ -108,6 +108,17 @@
 						<groupId>net.osgiliath.framework</groupId>
 						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
 					</executableDependency>
+				</configuration>
+			</plugin> -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<_include>-osgi.bnd</_include>
+						<Bundle-Version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-jaxrs.version}</Bundle-Version>
+						<Embed-Dependency>org.apache.servicemix.bundles.swagger-jaxrs,!*</Embed-Dependency>
+					</instructions>
 				</configuration>
 			</plugin>
 		</plugins>

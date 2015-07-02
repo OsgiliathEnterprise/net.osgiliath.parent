@@ -20,13 +20,13 @@ package net.osgiliath.jpa.cdi.daos;
  * #L%
  */
 
-import org.apache.deltaspike.data.api.Query;
-
-import org.apache.deltaspike.data.api.Repository;
 import net.osgiliath.jpa.cdi.entities.HelloEntity;
 import org.apache.deltaspike.data.api.EntityRepository;
+import org.apache.deltaspike.data.api.Query;
+import org.apache.deltaspike.data.api.Repository;
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
 @Repository
-public interface HelloJPACDIRepository extends EntityRepository<HelloEntity, Long>{
-  @Query("from HelloEntity h where h.helloMessage = ?1")
-  HelloEntity findByMessage(String message);
+public interface HelloJPACDIRepository extends EntityRepository<HelloEntity, Long> {
+//  @Query("from HelloEntity h where h.helloMessage = ?1")
+//  HelloEntity findByHelloMessage(String message);
 }

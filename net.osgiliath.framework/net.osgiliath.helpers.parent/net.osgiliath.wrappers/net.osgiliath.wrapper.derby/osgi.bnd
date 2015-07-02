@@ -14,9 +14,3 @@ Import-Package: !com.ibm.db2.jcc,\
  !org.slf4j.impl,\
  org.apache.commons.logging,\
  *
-XX-Previous: org.apache.derby.iapi.services.property,\
- !org.apache.derby.shared.common.reference,\
- !org.apache.derby.iapi.reference,\
- !org.apache.derby.iapi.services.info,\
- !org.apache.derby.jdbc,\
- !org.apache.derby.loc,\

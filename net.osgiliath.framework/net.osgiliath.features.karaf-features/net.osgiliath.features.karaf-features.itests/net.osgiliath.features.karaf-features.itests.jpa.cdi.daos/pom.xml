@@ -6,7 +6,7 @@
     <version>0.1.9-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.features.karaf-features.itests.jpa.cdi.daos</artifactId>
-  <name>JPA CDI tests withdeltaspike-data</name>
+  <name>JPA CDI tests with deltaspike-data</name>
   <description>Uses a combination of CDI, pax-jpa and deltaspike data to provide database access</description>
    	<build>
 		<resources>

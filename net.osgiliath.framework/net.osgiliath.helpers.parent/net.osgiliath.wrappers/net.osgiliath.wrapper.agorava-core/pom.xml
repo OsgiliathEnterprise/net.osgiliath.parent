@@ -25,7 +25,7 @@
 								<artifactItem>
 									<groupId>org.agorava</groupId>
 									<artifactId>agorava-core-api</artifactId>
-									<overWrite>false</overWrite>
+									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/classes</outputDirectory>
 								</artifactItem>
 							</artifactItems>

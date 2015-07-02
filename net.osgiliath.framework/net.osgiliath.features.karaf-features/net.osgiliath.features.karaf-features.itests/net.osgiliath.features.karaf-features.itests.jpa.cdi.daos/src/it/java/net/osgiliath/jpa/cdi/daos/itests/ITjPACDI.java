@@ -88,8 +88,8 @@ public class ITjPACDI extends AbstractPaxExamKarafConfiguration {
     LOG.trace("Begin integration test");
     final HelloEntity entity = new HelloEntity();
     entity.setHelloMessage("hello");
-    this.repositoryProducer.getOrCreateHelloRepositoryBean().save(entity);
-    final Collection<? extends HelloEntity> entities = this.repositoryProducer.getOrCreateHelloRepositoryBean().findAll();
+    this.repositoryProducer.save(entity);
+    final Collection<? extends HelloEntity> entities = this.repositoryProducer.findAll();
 
     assertEquals(entities.size(), 1);
     final HelloEntity persisted = entities.iterator().next();

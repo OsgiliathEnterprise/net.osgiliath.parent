@@ -1,4 +1,3 @@
-XX-Require-Capability:org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-jpa-module-impl)"
 Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
  org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-data-module-impl)",\
@@ -6,10 +5,20 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-jpa-module-impl)",\
  org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-impl)",\
  org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-api)"
-Import-Package: org.apache.openjpa.enhance;resolution:=optional,\
- org.apache.openjpa.util;resolution:=optional,\
+Require-Bundle: org.apache.deltaspike.core.deltaspike-core-api,\
+ org.apache.deltaspike.core.deltaspike-core-impl,\
+ net.osgiliath.wrappers.net.osgiliath.wrapper.deltaspike-data-impl,\
+ org.apache.deltaspike.modules.deltaspike-jpa-module-impl,\
+ org.apache.deltaspike.modules.deltaspike-proxy-module-api,\
+ org.apache.deltaspike.modules.deltaspike-proxy-module-impl-asm5,\
+ org.apache.deltaspike.modules.deltaspike-partial-bean-module-api,\
+ org.apache.deltaspike.modules.deltaspike-partial-bean-module-impl
+Import-Package: javax.persistence.*;version="[2.0,3.0)",\
+ net.osgiliath.helpers.deltaspike.tx,\
+ org.apache.deltaspike.jpa.impl.transaction,\
  org.apache.derby.jdbc,\
- org.apache.deltaspike.partialbean.impl.interception,\
- org.apache.deltaspike.data.impl.handler,\
  *
-XX-Import: org.apache.deltaspike.partialbean.impl.proxy
+XX-BKPImport: org.apache.deltaspike.data.impl.handler,\
+ org.apache.deltaspike.proxy.impl,\
+ org.apache.deltaspike.proxy.impl.invocation,\
+ org.apache.deltaspike.proxy.spi

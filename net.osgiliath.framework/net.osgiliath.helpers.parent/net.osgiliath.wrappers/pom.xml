@@ -36,6 +36,7 @@
 		<module>net.osgiliath.wrapper.deltaspike-servlet-module-api</module>
 		<module>net.osgiliath.wrapper.deltaspike-servlet-module-impl</module>
 		<module>net.osgiliath.wrapper.osgi-enterprise-jpa-spec</module>
+		<module>net.osgiliath.wrapper.deltaspike-data-impl</module>
 	</modules>
 	<!-- <build>
 		<plugins>

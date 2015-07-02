@@ -20,8 +20,10 @@ package net.osgiliath.jpa.cdi.daos.facade;
  * #L%
  */
 
-import net.osgiliath.jpa.cdi.daos.HelloJPACDIRepository;
+import java.util.List;
+import net.osgiliath.jpa.cdi.entities.HelloEntity;
 
 public interface OsgiRepositoriesProducer {
-  HelloJPACDIRepository getOrCreateHelloRepositoryBean();
+    public HelloEntity save(HelloEntity entity);
+    public List<HelloEntity> findAll();
 }

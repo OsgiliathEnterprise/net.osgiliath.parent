@@ -1,2 +1,1 @@
-Import-Package: *
-Export-Package: com.wordnik.swagger.jaxrs
+-include: src/main/resources/META-INF/MANIFEST.MF,override.bnd

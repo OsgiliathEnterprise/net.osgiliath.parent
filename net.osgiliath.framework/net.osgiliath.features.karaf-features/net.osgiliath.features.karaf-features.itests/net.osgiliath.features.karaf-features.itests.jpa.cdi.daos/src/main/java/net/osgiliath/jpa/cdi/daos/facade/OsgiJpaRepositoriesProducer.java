@@ -20,20 +20,24 @@ package net.osgiliath.jpa.cdi.daos.facade;
  * #L%
  */
 
-import javax.enterprise.context.ApplicationScoped;
+import java.util.List;
 
-import net.osgiliath.helpers.cdi.eager.Eager;
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-import javax.enterprise.inject.Produces;
+import net.osgiliath.jpa.cdi.entities.HelloEntity;
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
 import javax.inject.Inject;
 import net.osgiliath.jpa.cdi.daos.HelloJPACDIRepository;
-@Eager
-@ApplicationScoped
+import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 @OsgiServiceProvider
+@Transactional
 public class OsgiJpaRepositoriesProducer implements OsgiRepositoriesProducer{
   @Inject
   private HelloJPACDIRepository helloRepository;
-  public HelloJPACDIRepository getOrCreateHelloRepositoryBean() {
-    return helloRepository;
+  
+  public HelloEntity save(HelloEntity entity) {
+      return helloRepository.save(entity);
   }
+  public List<HelloEntity> findAll() {
+      return helloRepository.findAll();
+  }
+  
 }

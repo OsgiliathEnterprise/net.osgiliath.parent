@@ -31,7 +31,8 @@
 	<!-- Bundles needed if only client will be deployed in the container -->
 	<feature name="osgiliath-activemq-client" description="ActiveMQ client libraries" version="${org.apache.activemq.version}" resolver="(obr)" start-level="50">
 		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring</feature>
-		<!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/${geronimo-annotation_1.1_spec.version}</bundle>  -->
+		<bundle dependency="true" start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
+		<!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/${geronimo-annotation_1.1_spec.version}</bundle> -->
 		<!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-jta_1.1_spec.version}</bundle>  -->
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</bundle>
@@ -41,6 +42,8 @@
 		<bundle dependency="true">mvn:commons-net/commons-net/${commons-net_commons-net.version}</bundle>
 		<bundle dependency='true'>wrap:mvn:org.apache.zookeeper/zookeeper/${org.apache.zookeeper_zookeeper.version}$Import-Package=*;resolution:=optional&amp;Export-Package=org.apache.zookeeper*;-noimport:=true&amp;overwrite=merge</bundle>
 		<!-- uber osgi bundle means client is not that lean, todo: introduce client osgi bundle -->
+		<feature>osgiliath-spring-web</feature>
+		<!-- <bundle dependency="true">mvn:commons-logging/commons-logging/${commons-logging_commons-logging.version}</bundle> -->
 		<bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq_activemq-osgi.version}</bundle>
 		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.features.karaf-features-messaging/${project.version}/cfg/activemq</configfile>

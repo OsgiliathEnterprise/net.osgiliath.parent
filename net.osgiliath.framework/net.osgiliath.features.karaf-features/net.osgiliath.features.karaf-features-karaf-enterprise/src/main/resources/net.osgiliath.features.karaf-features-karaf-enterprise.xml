@@ -18,7 +18,7 @@
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
 		<bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
-		<bundle dependency="true" start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
+		<!-- <bundle dependency="true" start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle> -->
 		<bundle dependency="true">mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
 		<bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
 		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
@@ -26,7 +26,7 @@
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>	
-		<bundle dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>
+		<!-- <bundle dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>  -->
 		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/${org.apache.xbean_xbean-asm5-shaded.version}</bundle>
 		<bundle start-level="29">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa_openjpa.version}</bundle>
 	</feature>

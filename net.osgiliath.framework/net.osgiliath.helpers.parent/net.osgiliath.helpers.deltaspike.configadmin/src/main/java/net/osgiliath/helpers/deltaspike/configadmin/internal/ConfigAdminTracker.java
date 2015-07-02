@@ -89,15 +89,18 @@ public class ConfigAdminTracker implements
       BundleContext context) {
     if (instance == null) {
       instance = new ConfigAdminTracker();
-      if (context == null) {
-        instance.context = FrameworkUtil.getBundle(DeltaSpike.class)
-            .getBundleContext();
-      } else {
-        instance.context = context;
-      }
+      
+    }
+    if (context == null) {
+      instance.context = FrameworkUtil.getBundle(DeltaSpike.class)
+          .getBundleContext();
+    } else {
+      instance.context = context;
+    }
+    if (instance.context != null && instance.tracker == null) {
       instance.tracker = new ServiceTracker(instance.context,
           ConfigurationAdmin.class,
-          ConfigAdminTracker.getInstance(instance.context));
+          instance);
       instance.parseInitialContribution(instance.context);
       instance.tracker.open();
 

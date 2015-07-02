@@ -65,8 +65,6 @@ limitations under the License.
 		<feature version='${org.apache.cxf.version}'>osgiliath-cxf-jaxws</feature>
 		<feature version='${org.apache.wss4j.version}'>osgiliath-wss4j</feature>
 		<feature version='${org.apache.cxf.version}'>osgiliath-cxf-ws-policy</feature>
-		
-
 		<bundle>file:${project.root.basedir}/net.osgiliath.features.karaf-features.itests.jaxrs.web.cdi/target/net.osgiliath.features.karaf-features.itests.jaxrs.web.cdi-${project.version}.jar</bundle>
 	</feature>
 	<feature name='osgiliath-itests-jpa' version='${project.version}'>

@@ -9,7 +9,7 @@
 	<name>Wrapper for Swagger core module</name>
 	<build>
 		<plugins>
-			<plugin>
+		<!-- 	<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
@@ -30,7 +30,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -61,7 +61,7 @@
 									<groupId>org.apache.servicemix.bundles</groupId>
 									<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
 									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+									<outputDirectory>${project.build.directory}/classes</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -86,7 +86,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
@@ -109,6 +109,17 @@
 						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
+			</plugin> -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<_include>-osgi.bnd</_include>
+						<Bundle-Version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-core.version}</Bundle-Version>
+						<Embed-Dependency>org.apache.servicemix.bundles.swagger-core,!*</Embed-Dependency>
+					</instructions>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -117,10 +128,10 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.swagger-core</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency>  -->
 	</dependencies>
 </project>

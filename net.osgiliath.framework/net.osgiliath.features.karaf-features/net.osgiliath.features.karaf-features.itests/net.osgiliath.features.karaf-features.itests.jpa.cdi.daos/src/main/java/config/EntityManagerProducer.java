@@ -29,15 +29,18 @@ import javax.persistence.EntityManagerFactory;
 import net.osgiliath.helpers.cdi.eager.Eager;
 import org.ops4j.pax.cdi.api.OsgiService;
 @ApplicationScoped
-@Eager
 public class EntityManagerProducer {
   @Inject
-  @OsgiService(filter="(osgi.unit.name=myTestPu)",timeout=10)
+  @OsgiService(timeout = 100000)
   private EntityManagerFactory emf;
+  private transient EntityManager mgr;
   @Produces // you can also make this @RequestScoped
   public EntityManager create()
   {
-      return emf.createEntityManager();
+      if (mgr == null) {
+          mgr = emf.createEntityManager(); 
+      }
+      return mgr;
   }
 
   public void close(@Disposes EntityManager em)

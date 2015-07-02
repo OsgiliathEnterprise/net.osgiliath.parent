@@ -58,11 +58,11 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ITPaxWebCxf extends AbstractPaxExamKarafConfiguration {
+public class ITCxfCdi extends AbstractPaxExamKarafConfiguration {
   /**
    * Logger.
    */
-  private static final Logger LOG = LoggerFactory.getLogger(ITPaxWebCxf.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ITCxfCdi.class);
 
   /**
    * Boot finished event.

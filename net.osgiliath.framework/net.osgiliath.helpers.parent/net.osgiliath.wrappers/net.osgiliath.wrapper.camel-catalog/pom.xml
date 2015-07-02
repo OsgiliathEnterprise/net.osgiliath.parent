@@ -10,7 +10,7 @@
 	<description>As Camel catalog has some bundle export issues, we've got to wrap it: see https://issues.apache.org/jira/browse/CAMEL-8490</description>
 	<build>
 		<plugins>
-			<plugin>
+<!-- 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
@@ -31,7 +31,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -62,7 +62,7 @@
 									<groupId>org.apache.camel</groupId>
 									<artifactId>camel-catalog</artifactId>
 									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+									<outputDirectory>${project.build.directory}/classes</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -79,7 +79,7 @@
 									<groupId>org.apache.camel</groupId>
 									<artifactId>camel-catalog</artifactId>
 									<includes>META-INF/MANIFEST.MF</includes>
-									<overWrite>true</overWrite><!-- TODO set to true -->
+									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.resources[0].directory}/</outputDirectory>
 								</artifactItem>
 							</artifactItems>
@@ -87,7 +87,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+<!-- 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
@@ -110,6 +110,17 @@
 						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
+			</plugin> -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<_include>-osgi.bnd</_include>
+						<Bundle-Version>${org.apache.camel_camel-catalog.version}</Bundle-Version>
+						<Embed-Dependency>camel-catalog,!*</Embed-Dependency>
+					</instructions>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -118,10 +129,10 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-catalog</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency>  -->
 	</dependencies>
 </project>

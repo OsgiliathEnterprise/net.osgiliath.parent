@@ -106,6 +106,11 @@
 				<version>${commons-lang_commons-lang.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging_commons-logging.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>commons-net</groupId>
 				<artifactId>commons-net</artifactId>
 				<version>${commons-net_commons-net.version}</version>
@@ -1473,6 +1478,7 @@
 		<commons-collections_commons-collections.version>3.2.1</commons-collections_commons-collections.version>
 		<commons-io_commons-io.version>2.4</commons-io_commons-io.version>
 		<commons-lang_commons-lang.version>2.6</commons-lang_commons-lang.version>
+		<commons-logging_commons-logging.version>1.2</commons-logging_commons-logging.version>
 		<commons-net_commons-net.version>3.3</commons-net_commons-net.version>
 		<commons-pool_commons-pool.version>1.6</commons-pool_commons-pool.version>
 		<io.hawt_hawtio-karaf.version>${hawtio.version}</io.hawt_hawtio-karaf.version>
@@ -1636,11 +1642,11 @@
 		<org.apache.xbean_xbean-reflect.version>${xbean.version}</org.apache.xbean_xbean-reflect.version>
 		<org.apache.xbean_xbean-spring.version>${xbean.version}</org.apache.xbean_xbean-spring.version>
 		<org.apache.wss4j_wss4j-bindings.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-bindings.version>
-			<org.apache.wss4j_wss4j-policy.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-policy.version>
-			<org.apache.wss4j_wss4j-ws-security-common.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-common.version>
-			<org.apache.wss4j_wss4j-wss4j-ws-security-dom.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-wss4j-ws-security-dom.version>
-			<org.apache.wss4j_wss4j-ws-security-policy-stax.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-policy-stax.version>
-			<org.apache.wss4j_wss4j-ws-security-stax.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-stax.version>
+		<org.apache.wss4j_wss4j-policy.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-policy.version>
+		<org.apache.wss4j_wss4j-ws-security-common.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-common.version>
+		<org.apache.wss4j_wss4j-wss4j-ws-security-dom.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-wss4j-ws-security-dom.version>
+		<org.apache.wss4j_wss4j-ws-security-policy-stax.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-policy-stax.version>
+		<org.apache.wss4j_wss4j-ws-security-stax.version>${org.apache.wss4j.version}</org.apache.wss4j_wss4j-ws-security-stax.version>
 		<org.apache.zookeeper_zookeeper.version>3.4.5</org.apache.zookeeper_zookeeper.version>
 		<org.codehaus.jackson_jackson-core-asl.version>${org.codehaus.jackson.version}</org.codehaus.jackson_jackson-core-asl.version>
 		<org.codehaus.jackson_jackson-mapper-asl.version>${org.codehaus.jackson.version}</org.codehaus.jackson_jackson-mapper-asl.version>
@@ -1732,9 +1738,9 @@
 		<org.apache.activemq.version>5.9.0</org.apache.activemq.version><!-- see https://issues.apache.org/jira/browse/AMQ-5169 -->
 		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
 		<org.apache.aries.transaction.version>1.1.1</org.apache.aries.transaction.version>
-		<org.apache.camel.version>2.15.0</org.apache.camel.version>
+		<org.apache.camel.version>2.15.2</org.apache.camel.version>
 		<org.apache.cxf.version>3.0.3</org.apache.cxf.version>
-		<org.apache.deltaspike.version>1.4.0</org.apache.deltaspike.version>
+		<org.apache.deltaspike.version>1.4.1</org.apache.deltaspike.version>
 		<org.apache.servicemix.bundles.jaxb.version>2.2.1.1_2</org.apache.servicemix.bundles.jaxb.version>
 		<org.apache.servicemix.bundles.spring4.version>4.1.2.RELEASE_1</org.apache.servicemix.bundles.spring4.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>1.3.2.RELEASE_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>
