@@ -1,7 +1,0 @@
-Import-Package: javax.ws.rs.ext,\
-	javax.ws.rs.core,\
-	org.jdom2,\
-	org.jdom2.output,\
-	org.jdom2.input,\
-	*
-Private-Package: net.osgiliath.helpers.cxf.exception.handling

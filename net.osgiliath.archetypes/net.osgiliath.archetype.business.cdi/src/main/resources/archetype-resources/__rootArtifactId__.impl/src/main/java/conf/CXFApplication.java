@@ -30,7 +30,7 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
+import net.osgiliath.helper.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 
 /**

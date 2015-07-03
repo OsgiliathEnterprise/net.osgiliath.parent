@@ -1,8 +1,0 @@
-Import-Package:  \
-	javax.jms,\
-	javax.transaction,\
-	org.springframework.jms.connection;version="[4,5)",\
-	org.springframework.jms.core;version="[4,5)",\
-	org.springframework.*;version="[4,5)"
-	*
-Export-Package: net.osgiliath.helpers.spring.jms.*

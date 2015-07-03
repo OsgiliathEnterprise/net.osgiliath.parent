@@ -35,7 +35,7 @@
 	<!-- JSR 303 validator -->
 	<reference id="validatorFactory" interface="javax.validation.ValidatorFactory"
 		availability="mandatory" />
-	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helpers.spring.jms.listeners.JmsTemplateContainerListenerFactory" />
+	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helper.spring.jms.listeners.JmsTemplateContainerListenerFactory" />
 	
 	<reference id="jmsTemplate" interface="org.springframework.jms.core.JmsOperations"
 		availability="mandatory" filter="(component-type=jms)">
@@ -88,7 +88,7 @@
 			<ref component-id="jaxbProvider" />
 			<!-- <ref component-id="jsonProvider" /> -->
 			<bean id="validationException"
-				class="net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
+				class="net.osgiliath.helper.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
 			<ref component-id="resourceWriter" />
 			<ref component-id="apiWriter" />
 		</jaxrs:providers>

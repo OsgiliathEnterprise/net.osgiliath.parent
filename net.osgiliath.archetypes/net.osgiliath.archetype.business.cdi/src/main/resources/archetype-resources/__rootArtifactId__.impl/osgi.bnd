@@ -6,12 +6,10 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=eager)"
 Require-Bundle: org.hibernate.validator
-Import-Package: net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper,\
+Import-Package: net.osgiliath.helper.cxf.exception.handling.jaxrs.mapper,\
  javax.annotation;version=0,\
  javax.transaction,\
  javax.validation,\
- net.osgiliath.helpers.cdi.eager,\
- net.osgiliath.helpers.cdi.eager.extension,\
  org.apache.camel,\
  org.apache.camel.builder.xml,\
  org.apache.camel.cdi.component.properties,\

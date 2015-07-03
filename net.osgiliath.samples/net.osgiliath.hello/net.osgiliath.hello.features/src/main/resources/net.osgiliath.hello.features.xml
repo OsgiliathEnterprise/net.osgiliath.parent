@@ -11,7 +11,7 @@
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
 	<!-- TODO add your features here -->
 	<repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.framework/net.osgiliath.feature.full/${project.version}/xml/features</repository>
 	
 	<!-- Model -->
 	<feature name="${project.parent.artifactId}.model.db" version="${project.version}">

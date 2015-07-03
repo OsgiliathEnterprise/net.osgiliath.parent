@@ -1,5 +1,0 @@
-Import-Package: org.apache.cxf.jaxrs.provider,\
- org.apache.cxf.jaxrs.provider.json,\
- org.apache.cxf.jaxrs.impl.tl,\
- net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper,\
- *

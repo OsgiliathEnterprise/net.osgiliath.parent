@@ -20,6 +20,8 @@ package net.osgiliath.hello.model.jpa.model;
  * #L%
  */
 
+import lombok.Builder;
+
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
@@ -33,7 +35,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.experimental.Builder;
+
 
 /**
  * Sample of a model bean exportable by web service

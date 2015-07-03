@@ -83,28 +83,28 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-common</artifactId>
+			<artifactId>net.osgiliath.feature.common</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
+			<artifactId>net.osgiliath.feature.jpa</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
+			<artifactId>net.osgiliath.feature.security</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.features.karaf-features-validation</artifactId>
+			<artifactId>net.osgiliath.feature.validation</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>

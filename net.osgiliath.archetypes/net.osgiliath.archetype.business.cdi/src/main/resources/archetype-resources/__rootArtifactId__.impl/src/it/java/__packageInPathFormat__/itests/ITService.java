@@ -5,7 +5,7 @@ package ${package}.itests;
 import javax.inject.Inject;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
+import net.osgiliath.helper.exam.AbstractPaxExamKarafConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Test;

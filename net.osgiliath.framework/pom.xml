@@ -10,8 +10,8 @@
   <description>Karaf features and Osgiliath frameworks modules</description>
   <packaging>pom</packaging>
   <modules>
-  <module>net.osgiliath.features.karaf-features</module>
-  <module>net.osgiliath.helpers.parent</module>
+  <module>net.osgiliath.features</module>
+  <module>net.osgiliath.helpers</module>
   </modules>
   <reporting>
 		<plugins>

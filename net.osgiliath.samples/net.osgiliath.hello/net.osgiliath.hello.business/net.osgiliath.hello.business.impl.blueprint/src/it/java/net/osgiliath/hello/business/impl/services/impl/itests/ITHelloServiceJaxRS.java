@@ -36,7 +36,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import net.osgiliath.hello.business.model.Hellos;
 import net.osgiliath.hello.model.jpa.model.HelloEntity;
-import net.osgiliath.helpers.exam.AbstractPaxExamKarafConfiguration;
+import net.osgiliath.helper.exam.AbstractPaxExamKarafConfiguration;
 import org.apache.karaf.features.BootFinished;
 import org.junit.Before;
 import org.junit.Test;

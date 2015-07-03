@@ -152,6 +152,12 @@
 			<artifactId>guava</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>net.osgiliath.framework</groupId>
+			<version>${osgiliath.framework.maven.version}</version>
+			<artifactId>net.osgiliath.helper.exam</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam</artifactId>
 			<scope>test</scope>

@@ -108,7 +108,7 @@
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.helpers.exam</artifactId>
+			<artifactId>net.osgiliath.helper.exam</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -130,35 +130,35 @@
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-cdi</artifactId>
+			<artifactId>net.osgiliath.feature.cdi</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
+			<artifactId>net.osgiliath.feature.functional</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-jaxrs</artifactId>
+			<artifactId>net.osgiliath.feature.jaxrs</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-messaging</artifactId>
+			<artifactId>net.osgiliath.feature.messaging</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-security</artifactId>
+			<artifactId>net.osgiliath.feature.security</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>

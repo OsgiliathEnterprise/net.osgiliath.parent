@@ -25,7 +25,7 @@ ${symbol_pound}L%
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${symbol_dollar}{project.artifactId}-${symbol_dollar}{project.version}">
 	<!-- TODO add your features here, check the mapping with your bundles-->
 	<repository>mvn:org.apache.karaf.features/standard/${symbol_dollar}{karaf.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.framework/net.osgiliath.features.karaf-features-full/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.framework/net.osgiliath.feature.full/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.model.db" version="${symbol_dollar}{project.version}">
 		<feature version='${symbol_dollar}{osgiliath.framework.maven.version}'>osgiliath-derby</feature>
 		<configfile finalname="/etc/org.ops4j.datasource-${symbol_dollar}{project.parent.artifactId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/database</configfile>

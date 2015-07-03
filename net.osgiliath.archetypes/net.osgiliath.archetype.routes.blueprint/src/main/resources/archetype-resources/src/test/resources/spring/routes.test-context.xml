@@ -47,6 +47,6 @@
 	<bean id="helloService" class="mocks.HelloServiceMock" />-->
 <!-- CXF helper to convert JSR303 validation message to rest message body -->
 	<bean id="thrownExceptionMessageToInBodyProcessor"
-		class="net.osgiliath.helpers.camel.ThrownExceptionMessageToInBodyProcessor" />
+		class="net.osgiliath.helper.camel.ThrownExceptionMessageToInBodyProcessor" />
 
 </beans>

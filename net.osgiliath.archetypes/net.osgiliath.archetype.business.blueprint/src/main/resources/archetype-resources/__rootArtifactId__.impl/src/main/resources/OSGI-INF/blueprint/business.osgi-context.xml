@@ -35,7 +35,7 @@
 	<reference id="jTATransactionManager" interface="javax.transaction.TransactionManager"></reference>
 	<reference id="validatorFactory" interface="javax.validation.ValidatorFactory"
 		availability="mandatory" />
-	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helpers.spring.jms.listeners.JmsTemplateContainerListenerFactory" />
+	<reference id="jmsTemplateContainerListenerFactory" interface="net.osgiliath.helper.spring.jms.listeners.JmsTemplateContainerListenerFactory" />
 	
 	<reference id="jmsTemplate" interface="org.springframework.jms.core.JmsOperations"
 		availability="mandatory" filter="(component-type=jms)">
@@ -86,7 +86,7 @@
 			<ref component-id="resourceWriter" />
 			<ref component-id="apiWriter" />
 			<bean id="validationException"
-				class="net.osgiliath.helpers.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
+				class="net.osgiliath.helper.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper" />
 		</jaxrs:providers>
 	</jaxrs:server> 
 	<bean id="swaggerConfig" class="com.wordnik.swagger.jaxrs.config.BeanConfig">

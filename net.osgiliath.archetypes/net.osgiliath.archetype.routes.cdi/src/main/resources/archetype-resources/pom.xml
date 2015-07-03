@@ -86,14 +86,14 @@
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-routes</artifactId>
+			<artifactId>net.osgiliath.feature.routes</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-functional</artifactId>
+			<artifactId>net.osgiliath.feature.functional</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>

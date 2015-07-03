@@ -25,7 +25,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import net.osgiliath.helpers.cdi.eager.Eager;
+import net.osgiliath.helper.cdi.eager.Eager;
 
 import org.apache.camel.Component;
 import org.ops4j.pax.cdi.api.OsgiService;

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  Osgiliath Camel
+  %%
+  Copyright (C) 2013 - 2015 Osgiliath
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+    <repository>mvn:${project.groupId}/net.osgiliath.feature.functional/${project.version}/xml/features</repository>
+    <repository>mvn:${project.groupId}/net.osgiliath.feature.cxf/${project.version}/xml/features</repository>
+    <repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
+    <feature name='osgiliath-xml-specs-api' version='${org.apache.servicemix.specs.version}' resolver='(obr)' start-level='10'>
+        <bundle>mvn:org.codehaus.woodstox/stax2-api/${org.codehaus.woodstox_stax2-api.version}</bundle>
+        <bundle>mvn:org.codehaus.woodstox/woodstox-core-asl/${org.codehaus.woodstox_woodstox-core-asl.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-core' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <feature version='${org.apache.servicemix.specs.version}'>osgiliath-xml-specs-api</feature>
+        <bundle>mvn:org.apache.camel/camel-core/${org.apache.camel_camel-core.version}</bundle>
+        <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.camel-catalog/${project.version}</bundle>
+        <bundle>mvn:org.apache.camel/camel-commands-core/${org.apache.camel_camel-commands-core.version}</bundle>
+        <bundle>mvn:org.apache.camel.karaf/camel-karaf-commands/${org.apache.camel.karaf_camel-karaf-commands.version}</bundle>
+        <bundle>mvn:org.apache.camel.karaf/camel-karaf-commands-catalog/${org.apache.camel.karaf_camel-karaf-commands-catalog.version}</bundle>
+    </feature>
+     <feature name='osgiliath-camel-jms' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <bundle dependency='true'>mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</bundle>
+        <bundle dependency='true'>mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        <feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-jms</feature>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.camel-jms/${project.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-blueprint' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle>mvn:org.apache.camel/camel-blueprint/${org.apache.camel_camel-blueprint.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-xstream' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version}</bundle>
+        <bundle dependency='true'>mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.dom4j.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.kxml2/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version}</bundle>
+        <bundle>mvn:org.apache.camel/camel-xstream/${org.apache.camel_camel-xstream.version}</bundle>
+        <bundle>mvn:org.codehaus.jettison/jettison/${org.codehaus.jettison_jettison.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-jaxb' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle>mvn:org.apache.camel/camel-jaxb/${org.apache.camel_camel-jaxb.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-jackson' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core_jackson-core.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.core_jackson-databind.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.core_jackson-annotations.version}</bundle>
+        <bundle dependency='true'>mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${com.fasterxml.jackson.module_jackson-module-jaxb-annotations.version}</bundle>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle>mvn:org.apache.camel/camel-jackson/${org.apache.camel_camel-jackson.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-xmljson' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <bundle dependency='true'>mvn:commons-beanutils/commons-beanutils/${commons-beanutils_commons-beanutils.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ezmorph/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ezmorph}</bundle>
+        <bundle dependency='true'>mvn:xom/xom/${xom_xom.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.json-lib/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version}</bundle>
+        <bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
+        <bundle dependency='true'>mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle>mvn:org.apache.camel/camel-xmljson/${org.apache.camel_camel-xmljson.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-http' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version}</bundle>
+        <bundle dependency='true'>mvn:commons-codec/commons-codec/${commons-codec_commons-codec.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+        <bundle>mvn:org.apache.camel/camel-http/${org.apache.camel_camel-http.version}</bundle>
+    </feature>
+    <feature name='osgiliath-camel-websocket' version='${org.apache.camel.version}' resolver='(obr)' start-level='50'>
+        <feature>osgiliath-jetty</feature>
+        <feature version='${org.apache.camel.version}'>osgiliath-camel-core</feature>
+        <bundle dependency='true'>mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+        <bundle>mvn:org.apache.camel/camel-websocket/${org.apache.camel_camel-websocket.version}</bundle>
+    </feature>
+</features>

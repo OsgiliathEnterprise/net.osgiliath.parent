@@ -68,7 +68,7 @@
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-full</artifactId>
+			<artifactId>net.osgiliath.feature.full</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>

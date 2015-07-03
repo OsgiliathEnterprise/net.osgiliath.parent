@@ -25,7 +25,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import net.osgiliath.helpers.cdi.eager.Eager;
+import net.osgiliath.helper.cdi.eager.Eager;
 import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.cxf.jaxrs.provider.json.JSONProvider;
 import com.wordnik.swagger.annotations.Api;

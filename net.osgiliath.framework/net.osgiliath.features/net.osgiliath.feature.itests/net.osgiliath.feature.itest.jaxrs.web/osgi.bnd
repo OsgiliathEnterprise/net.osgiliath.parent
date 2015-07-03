@@ -1,0 +1,12 @@
+Web-ContextPath: /helloService
+Import-Package: javax.servlet,\
+ javax.servlet.http,\
+ org.apache.cxf.jaxb,\
+ org.apache.cxf.jaxrs.servlet,\
+ org.apache.cxf.jaxrs.provider,\
+ org.apache.cxf.jaxrs.provider.json,\
+ org.apache.cxf.jaxrs.impl.tl,\
+ org.apache.cxf.transport.http,\
+ net.osgiliath.helper.cxf.exception.handling.jaxrs.mapper,\
+ *
+ 
