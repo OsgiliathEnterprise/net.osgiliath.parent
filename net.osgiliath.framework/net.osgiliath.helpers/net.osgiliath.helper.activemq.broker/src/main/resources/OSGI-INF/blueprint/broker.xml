@@ -6,7 +6,7 @@
 	http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
 	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd
 	http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.9.0.xsd">
-	<cm:property-placeholder persistent-id="net.osgiliath.features.karaf-features-messaging" id="net.osgiliath.features.karaf-features-messaging" placeholder-prefix="$[" placeholder-suffix="]">
+	<cm:property-placeholder persistent-id="net.osgiliath.feature.messaging" id="net.osgiliath.feature.messaging" placeholder-prefix="$[" placeholder-suffix="]">
 		<cm:default-properties>
 			<cm:property name="async.broker.name" value="amq-broker" />
 			<cm:property name="async.transport.uri.jms" value="tcp://localhost:61616" />
