@@ -20,15 +20,10 @@ package net.osgiliath.helper.deltaspike.tx;
  * #L%
  */
 
-import javax.enterprise.inject.Alternative;
-
-import java.util.HashMap;
-import java.util.Map;
-import org.osgi.framework.BundleContext;
-import javax.enterprise.context.Dependent;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.util.Collection;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;

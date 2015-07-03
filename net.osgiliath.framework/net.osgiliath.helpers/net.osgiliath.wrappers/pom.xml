@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
-		<artifactId>net.osgiliath.helpers.parent</artifactId>
+		<artifactId>net.osgiliath.helpers</artifactId>
 		<version>0.1.9-SNAPSHOT</version>
 	</parent>
 	<groupId>net.osgiliath.wrappers</groupId>

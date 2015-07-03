@@ -7,7 +7,7 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-api)"
 Require-Bundle: org.apache.deltaspike.core.deltaspike-core-api,\
  org.apache.deltaspike.core.deltaspike-core-impl,\
- net.osgiliath.wrappers.net.osgiliath.wrapper.deltaspike-data-impl,\
+ org.apache.deltaspike.modules.deltaspike-data-module-impl,\
  org.apache.deltaspike.modules.deltaspike-jpa-module-impl,\
  org.apache.deltaspike.modules.deltaspike-proxy-module-api,\
  org.apache.deltaspike.modules.deltaspike-proxy-module-impl-asm5,\

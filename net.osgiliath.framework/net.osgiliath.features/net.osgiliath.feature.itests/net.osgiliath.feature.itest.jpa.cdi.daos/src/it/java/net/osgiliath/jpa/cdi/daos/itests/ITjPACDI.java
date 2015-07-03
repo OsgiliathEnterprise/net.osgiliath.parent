@@ -59,7 +59,7 @@ public class ITjPACDI extends AbstractPaxExamKarafConfiguration {
   private static final Logger LOG = LoggerFactory.getLogger(ITjPACDI.class);
 
   /**
-   *  Exported service via blueprint.xml.
+   * Exported service via blueprint.xml.
    */
   @Inject
   @Filter(timeout = 60000)
@@ -67,57 +67,65 @@ public class ITjPACDI extends AbstractPaxExamKarafConfiguration {
 
   /**
    * probe adding the abstract test class.
-   * @param builder the pax probe builder
+   * 
+   * @param builder
+   *          the pax probe builder
    * @return the provisionned probe.
    */
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
-    builder.setHeader(Constants.EXPORT_PACKAGE, "net.osgiliath.jpa.cdi.daos.itests");
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "net.osgiliath.jpa.cdi.daos.itests");
     builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
     builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
     return builder;
   }
+
   /**
    * Send entity to persist.
-   * @throws Exception not expected
+   * 
+   * @throws Exception
+   *           not expected
    */
   @Test
- @Ignore
-public void testSayHello() {
+  @Ignore
+  public void testSayHello() {
     LOG.trace("Begin integration test");
     final HelloEntity entity = new HelloEntity();
     entity.setHelloMessage("hello");
     this.repositoryProducer.save(entity);
-    final Collection<? extends HelloEntity> entities = this.repositoryProducer.findAll();
+    final Collection<? extends HelloEntity> entities = this.repositoryProducer
+        .findAll();
 
     assertEquals(entities.size(), 1);
     final HelloEntity persisted = entities.iterator().next();
     assertEquals(persisted.getHelloMessage(), "hello");
     assertNotNull(persisted.getEntityId());
   }
+
   /**
    * Feature to test.
+   * 
    * @return the feature
    */
   @Override
   protected Option featureToTest() {
 
-    return features(
-        maven()
-            .artifactId("net.osgiliath.feature.itest.feature")
-            .groupId("net.osgiliath.framework").type("xml")
-            .classifier("features").versionAsInProject(),
-        "osgiliath-itests-jpa-cdi-data");
+    return features(maven().artifactId("net.osgiliath.feature.itest.feature")
+        .groupId("net.osgiliath.framework").type("xml").classifier("features")
+        .versionAsInProject(), "osgiliath-itests-jpa-cdi-data");
   }
 
   static {
     // uncomment to enable debugging of this test class
-   //  paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
+    //paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
+
   /**
    * Creates the default configuration.
+   * 
    * @return the default configuration
    */
   @Configuration
