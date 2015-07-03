@@ -24,8 +24,8 @@
 	http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
 	http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
 
-	<cm:property-placeholder persistent-id="net.osgiliath.features.karaf-features-jaxrs"
-		id="net.osgiliath.features.karaf-features-jaxrs" placeholder-prefix="${symbol_dollar}[" placeholder-suffix="]" />
+	<cm:property-placeholder persistent-id="net.osgiliath.feature.jaxrs"
+		id="net.osgiliath.feature.jaxrs" placeholder-prefix="${symbol_dollar}[" placeholder-suffix="]" />
 	<!-- TODO we expose this service as an OSGI one in order to make pax-exam 
 		aware of the deplyement -->
 	<!-- TODO your OSGI service references here (if you don't use annotations 
