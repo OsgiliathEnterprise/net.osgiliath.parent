@@ -99,7 +99,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
+					<mainClass>net.osgiliath.helper.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
 						<argument>overrides=org.springframework.beans.factory=[4,5)</argument>
 						<argument>basedir=${project.basedir}</argument>
@@ -107,7 +107,7 @@
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
-						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+						<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
 			</plugin>
@@ -120,7 +120,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+			<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

@@ -63,7 +63,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
+					<mainClass>net.osgiliath.helper.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
 						<argument>overrides=org.apache.deltaspike.core.api.config=[0.7,${org.apache.deltaspike.version}];org.apache.deltaspike.core.api.literal=[0.7,${org.apache.deltaspike.version}];org.apache.deltaspike.core.api.provider=[0.7,${org.apache.deltaspike.version}];org.apache.deltaspike.core.util.metadata.builder=[0.7,${org.apache.deltaspike.version}]</argument>
 						<argument>basedir=${project.basedir}</argument>
@@ -71,7 +71,7 @@
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
-						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+						<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
 			</plugin>
@@ -102,7 +102,7 @@
 		</dependency>
 			<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+			<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 			<version>${project.version}</version>
 			
 		</dependency>

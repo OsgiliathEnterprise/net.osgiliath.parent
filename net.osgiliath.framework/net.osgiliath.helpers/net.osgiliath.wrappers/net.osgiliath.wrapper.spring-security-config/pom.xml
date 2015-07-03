@@ -99,7 +99,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
+					<mainClass>net.osgiliath.helper.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
 						<argument>overrides=org.springframework.aop=[4.0.0,5.0.0);org.springframework.aop.config=[4.0.0,5.0.0);org.springframework.aop.framework=[4.0.0,5.0.0);org.springframework.aop.target=[4.0.0,5.0.0);org.springframework.beans=[4.0.0,5.0.0);org.springframework.beans.factory=[4.0.0,5.0.0);org.springframework.beans.factory.annotation=[4.0.0,5.0.0);org.springframework.beans.factory.config=[4.0.0,5.0.0);org.springframework.beans.factory.parsing=[4.0.0,5.0.0);org.springframework.beans.factory.support=[4.0.0,5.0.0);org.springframework.beans.factory.xml=[4.0.0,5.0.0);org.springframework.context=[4.0.0,5.0.0);org.springframework.context.annotation=[4.0.0,5.0.0);org.springframework.core=[4.0.0,5.0.0);org.springframework.core.annotation=[4.0.0,5.0.0);org.springframework.core.io=[4.0.0,5.0.0);org.springframework.core.type=[4.0.0,5.0.0);org.springframework.http=[4.0.0,5.0.0);org.springframework.jdbc.datasource.init=[4.0.0,5.0.0);org.springframework.util=[4.0.0,5.0.0);org.springframework.util.xml=[4.0.0,5.0.0);org.springframework.web.accept=[4.0.0,5.0.0);org.springframework.web.servlet.config.annotation=[4.0.0,5.0.0);org.springframework.web.servlet.support=[4.0.0,5.0.0)</argument>
 						<argument>basedir=${project.basedir}</argument>
@@ -107,7 +107,7 @@
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
-						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+						<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
 			</plugin>
@@ -120,7 +120,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+			<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

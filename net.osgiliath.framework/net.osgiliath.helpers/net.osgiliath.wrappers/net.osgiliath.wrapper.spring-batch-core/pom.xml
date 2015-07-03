@@ -99,7 +99,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
+					<mainClass>net.osgiliath.helper.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
 						<argument>overrides=org.springframework.aop=[4,5);org.springframework.aop.framework=[4,5);org.springframework.aop.scope=[4,5);org.springframework.aop.support=[4,5);org.springframework.aop.target=[4,5);org.springframework.beans=[4,5);org.springframework.beans.factory=[4,5);org.springframework.beans.factory.annotation=[4,5);org.springframework.beans.factory.config=[4,5);org.springframework.beans.factory.parsing=[4,5);org.springframework.beans.factory.support=[4,5);org.springframework.beans.factory.xml=[4,5);org.springframework.classify=[4,5);org.springframework.context=[4,5);org.springframework.context.annotation=[4,5);org.springframework.context.event=[4,5);org.springframework.context.support=[4,5);org.springframework.core=[4,5);org.springframework.core.annotation=[4,5);org.springframework.core.io=[4,5);org.springframework.core.serializer=[4,5);org.springframework.core.task=[4,5);org.springframework.core.type=[4,5);org.springframework.dao=[4,5);org.springframework.jdbc.core=[4,5);org.springframework.jdbc.core.simple=[4,5);org.springframework.jdbc.datasource=[4,5);org.springframework.jdbc.support.incrementer=[4,5);org.springframework.jdbc.support.lob=[4,5);org.springframework.stereotype=[4,5);org.springframework.transaction=[4,5);org.springframework.transaction.annotation=[4,5);org.springframework.transaction.interceptor=[4,5);org.springframework.transaction.support=[4,5);org.springframework.util=[4,5);org.springframework.util.xml=[4,5)</argument>
 						<argument>basedir=${project.basedir}</argument>
@@ -107,7 +107,7 @@
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
-						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+						<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
 			</plugin>
@@ -120,7 +120,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+			<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

@@ -99,7 +99,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
+					<mainClass>net.osgiliath.helper.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
 						<argument>overrides=org.springframework.aop=[4.0.0,5.0.0);org.springframework.aop.framework=[4.0.0,5.0.0);org.springframework.aop.support=[4.0.0,5.0.0);org.springframework.beans=[4.0.0,5.0.0);org.springframework.beans.factory=[4.0.0,5.0.0);org.springframework.beans.propertyeditors=[4.0.0,5.0.0);org.springframework.cache=[4.0.0,5.0.0);org.springframework.context=[4.0.0,5.0.0);org.springframework.context.expression=[4.0.0,5.0.0);org.springframework.context.support=[4.0.0,5.0.0);org.springframework.core=[4.0.0,5.0.0);org.springframework.core.annotation=[4.0.0,5.0.0);org.springframework.core.io=[4.0.0,5.0.0);org.springframework.core.task=[4.0.0,5.0.0);org.springframework.dao=[4.0.0,5.0.0);org.springframework.expression=[4.0.0,5.0.0);org.springframework.expression.spel.standard=[4.0.0,5.0.0);org.springframework.expression.spel.support=[4.0.0,5.0.0);org.springframework.jdbc.core=[4.0.0,5.0.0);org.springframework.jdbc.core.support=[4.0.0,5.0.0);org.springframework.scheduling=[4.0.0,5.0.0);org.springframework.util=[4.0.0,5.0.0)</argument>
 						<argument>basedir=${project.basedir}</argument>
@@ -107,7 +107,7 @@
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
-						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+						<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
 			</plugin>
@@ -120,7 +120,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+			<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

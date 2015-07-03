@@ -99,7 +99,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
+					<mainClass>net.osgiliath.helper.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
 						<argument>overrides=org.springframework.aop=[4.0.0,5.0.0);org.springframework.aop.framework=[4.0.0,5.0.0);org.springframework.aop.support=[4.0.0,5.0.0);org.springframework.beans=[4.0.0,5.0.0);org.springframework.beans.factory=[4.0.0,5.0.0);org.springframework.classify=[4.0.0,5.0.0);org.springframework.core=[4.0.0,5.0.0);org.springframework.core.annotation=[4.0.0,5.0.0);org.springframework.core.convert.converter=[4.0.0,5.0.0);org.springframework.core.io=[4.0.0,5.0.0);org.springframework.core.task=[4.0.0,5.0.0);org.springframework.dao=[4.0.0,5.0.0);org.springframework.expression=[4.0.0,5.0.0);org.springframework.expression.spel.standard=[4.0.0,5.0.0);org.springframework.jdbc=[4.0.0,5.0.0);org.springframework.jdbc.core=[4.0.0,5.0.0);org.springframework.jdbc.core.metadata=[4.0.0,5.0.0);org.springframework.jdbc.core.namedparam=[4.0.0,5.0.0);org.springframework.jdbc.datasource=[4.0.0,5.0.0);org.springframework.jdbc.support=[4.0.0,5.0.0);org.springframework.jdbc.support.incrementer=[4.0.0,5.0.0);org.springframework.jms=[4.0.0,5.0.0);org.springframework.jms.core=[4.0.0,5.0.0);org.springframework.mail=[4.0.0,5.0.0);org.springframework.mail.javamail=[4.0.0,5.0.0);org.springframework.orm.hibernate3=[4.0.0,5.0.0);org.springframework.orm.ibatis=[4.0.0,5.0.0);org.springframework.orm.jpa=[4.0.0,5.0.0);org.springframework.oxm=[4.0.0,5.0.0);org.springframework.transaction=[4.0.0,5.0.0);org.springframework.transaction.support=[4.0.0,5.0.0);org.springframework.util=[4.0.0,5.0.0);org.springframework.validation=[4.0.0,5.0.0)</argument>
 						<argument>basedir=${project.basedir}</argument>
@@ -107,7 +107,7 @@
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
-						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+						<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
 			</plugin>
@@ -120,7 +120,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+			<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

@@ -98,7 +98,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.osgiliath.helpers.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
+					<mainClass>net.osgiliath.helper.manifest.transformer.ManifestBundleImportVersionUpdaterTransformer</mainClass>
 					<arguments>
 						<argument>overrides=scala=[2,3);scala.xml=[1.0.0,3.0.0);scala.collection=[2,3);scala.collection.convert=[2,3);scala.collection.generic=[2,3);scala.collection.immutable=[2,3);scala.collection.mutable=[2,3);scala.math=[2,3);scala.reflect=[2,3);scala.runtime=[2,3);scala.util.matching=[2,3)</argument>
 						<argument>basedir=${project.basedir}</argument>
@@ -106,7 +106,7 @@
 					</arguments>
 					<executableDependency>
 						<groupId>net.osgiliath.framework</groupId>
-						<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+						<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 					</executableDependency>
 				</configuration>
 			</plugin> -->
@@ -130,7 +130,7 @@
 		</dependency>
 		<!-- <dependency>
 			<groupId>net.osgiliath.framework</groupId>
-			<artifactId>net.osgiliath.helpers.manifest.transformer</artifactId>
+			<artifactId>net.osgiliath.helper.manifest.transformer</artifactId>
 			<version>${project.version}</version>
 		</dependency>  -->
 	</dependencies>
