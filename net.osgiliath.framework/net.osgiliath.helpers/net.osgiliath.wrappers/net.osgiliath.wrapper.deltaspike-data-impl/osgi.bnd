@@ -5,4 +5,7 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
  org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-api)",\
  org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-impl)"
-Require-Bundle: net.osgiliath.framework.net.osgiliath.helper.deltaspike.tx
+Import-Package: javax.persistence*;version="[2,3)",\
+ !org.apache.deltaspike.data.impl.*,\
+ net.osgiliath.helper.deltaspike.tx,\
+ * 

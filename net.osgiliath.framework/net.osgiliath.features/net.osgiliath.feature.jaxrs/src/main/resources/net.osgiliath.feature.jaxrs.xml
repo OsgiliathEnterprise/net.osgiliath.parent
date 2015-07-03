@@ -20,14 +20,14 @@
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version}</bundle>
 		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helper.cxf.exception.handling/${project.version}</bundle>
-		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.features.karaf-features-jaxrs/${project.version}/cfg/cxf</configfile>
+		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.feature.jaxrs/${project.version}/cfg/cxf</configfile>
 	</feature>
 
 	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)" description="RESTful web services support for CDI">
 		<feature version='${project.version}'>osgiliath-rest</feature>
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${project.version}'>osgiliath-validation-cdi</feature>
-		 <bundle start-level="40">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.cxf-integration-cdi/${project.version}</bundle>
+		<bundle start-level="40">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.cxf-integration-cdi/${project.version}</bundle>
 		<bundle start-level="40">mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
 	</feature>
 	<feature name="osgiliath-swagger-rest-cdi" version="${project.version}" resolver="(obr)" description="Swagger (REST API description) support for CDI">

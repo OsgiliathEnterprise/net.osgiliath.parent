@@ -34,9 +34,11 @@ public class CdiConfigAdminServiceStarter {
   /**
    * Configadmin service tracker.
    */
-  @Setter
   private transient BundleContext context;
 
+  public CdiConfigAdminServiceStarter(BundleContext bundleContext) {
+    this.context = bundleContext;
+  }
   /**
    * (non-Javadoc)
    * 
@@ -44,8 +46,7 @@ public class CdiConfigAdminServiceStarter {
    * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
    * @param bundleContext the osgi bundle context
    */
-  public final void start(final BundleContext bundleContext) {
-    this.context = bundleContext;
+  public void start() {
     ConfigAdminTracker.getInstance(this.context);
 
   }
@@ -57,9 +58,9 @@ public class CdiConfigAdminServiceStarter {
    * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
    * @param bundleContext the osgi bundle context
    */
-  public final void stop(final BundleContext context) {
-    this.context = null;
+  public void stop() {
     ConfigAdminTracker.stop();
+    this.context = null;
   }
 
 }

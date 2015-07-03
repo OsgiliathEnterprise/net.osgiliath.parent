@@ -1,0 +1,2 @@
+Import-Package: net.osgiliath.helper.deltaspike.tx,\
+ *

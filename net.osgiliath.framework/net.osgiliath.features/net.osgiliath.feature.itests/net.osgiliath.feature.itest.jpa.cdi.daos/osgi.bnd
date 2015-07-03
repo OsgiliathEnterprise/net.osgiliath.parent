@@ -10,9 +10,9 @@ Require-Bundle: org.apache.deltaspike.core.deltaspike-core-api,\
  org.apache.deltaspike.modules.deltaspike-data-module-impl,\
  org.apache.deltaspike.modules.deltaspike-jpa-module-impl,\
  org.apache.deltaspike.modules.deltaspike-proxy-module-api,\
- org.apache.deltaspike.modules.deltaspike-proxy-module-impl-asm5,\
  org.apache.deltaspike.modules.deltaspike-partial-bean-module-api,\
- org.apache.deltaspike.modules.deltaspike-partial-bean-module-impl
+ org.apache.deltaspike.modules.deltaspike-partial-bean-module-impl,\
+ org.apache.deltaspike.modules.deltaspike-proxy-module-impl-asm5
 Import-Package: javax.persistence.*;version="[2.0,3.0)",\
  net.osgiliath.helper.deltaspike.tx,\
  org.apache.deltaspike.jpa.impl.transaction,\

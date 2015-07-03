@@ -20,6 +20,11 @@ package net.osgiliath.helper.deltaspike.tx;
  * #L%
  */
 
+import org.apache.deltaspike.core.api.common.DeltaSpike;
+
+import org.osgi.framework.wiring.BundleWiring;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import javax.enterprise.context.Dependent;
@@ -55,7 +60,6 @@ public class OsgiUserTransactionStrategy extends
     ResourceLocalTransactionStrategy
 
 {
-  
 
   private static final long serialVersionUID = -2432802805095533499L;
 
@@ -66,6 +70,7 @@ public class OsgiUserTransactionStrategy extends
   @Inject
   @OsgiService(required = true)
   private UserTransaction userTransaction;
+
   @Override
   protected EntityManagerEntry createEntityManagerEntry(
 
@@ -248,15 +253,17 @@ public class OsgiUserTransactionStrategy extends
    */
 
   @Override
-  protected synchronized void beforeProceed(InvocationContext invocationContext,
+  protected synchronized void beforeProceed(
+      InvocationContext invocationContext,
 
-  EntityManagerEntry entityManagerEntry,
+      EntityManagerEntry entityManagerEntry,
 
-  EntityTransaction transaction)
+      EntityTransaction transaction)
 
   {
     entityManagerEntry.getEntityManager().joinTransaction();
   }
+
   protected UserTransaction resolveUserTransaction()
 
   {
@@ -267,13 +274,12 @@ public class OsgiUserTransactionStrategy extends
 
   {
 
-
     // needed for calls through an EJB with CMT
 
     public UserTransactionAdapter()
 
     {
-      
+
     }
 
     /**
@@ -313,8 +319,6 @@ public class OsgiUserTransactionStrategy extends
         {
 
           resolveUserTransaction().begin();
-          
-         
 
         }
       }
@@ -570,6 +574,5 @@ public class OsgiUserTransactionStrategy extends
     }
 
   }
-
 
 }

@@ -31,23 +31,27 @@ import javax.transaction.UserTransaction;
 import org.jboss.weld.transaction.spi.TransactionServices;
 import lombok.Setter;
 import org.osgi.framework.BundleContext;
+
 @Slf4j
 public class CdiTxBridge implements TransactionServices {
   /**
    * Configadmin service tracker.
    */
-  @Setter
   private transient BundleContext context;
+
+  public CdiTxBridge(BundleContext bundleContext) {
+    this.context = bundleContext;
+  }
 
   /**
    * (non-Javadoc)
    * 
-   * @see
-   * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
-   * @param bundleContext the osgi bundle context
+   * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
+   *      )
+   * @param bundleContext
+   *          the osgi bundle context
    */
-  public final void start(final BundleContext bundleContext) {
-    this.context = bundleContext;
+  public final void start() {
     UserTransactionTracker.getInstance(this.context);
     TransactionManagerTracker.getInstance(this.context);
   }
@@ -55,32 +59,32 @@ public class CdiTxBridge implements TransactionServices {
   /**
    * (non-Javadoc)
    * 
-   * @see
-   * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext )
-   * @param bundleContext the osgi bundle context
+   * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
+   *      )
+   * @param bundleContext
+   *          the osgi bundle context
    */
-  public final void stop(final BundleContext context) {
-    this.context = null;
+  public final void stop() {
     UserTransactionTracker.stop();
     TransactionManagerTracker.stop();
+    this.context = null;
   }
-
- 
 
   @Override
   public void cleanup() {
-   
-
+    this.context = null;
   }
 
   @Override
   public void registerSynchronization(Synchronization synchronizedObserver) {
-    Collection<TransactionManager> tx = TransactionManagerTracker.getInstance(this.context).getAdmins();
-    
+    Collection<TransactionManager> tx = TransactionManagerTracker.getInstance(
+        this.context).getAdmins();
+
     try {
       if (!tx.isEmpty()) {
-        tx.iterator().next().getTransaction().registerSynchronization(synchronizedObserver);
-        
+        tx.iterator().next().getTransaction()
+            .registerSynchronization(synchronizedObserver);
+
       }
     }
     catch (IllegalStateException | RollbackException | SystemException e) {
@@ -92,22 +96,21 @@ public class CdiTxBridge implements TransactionServices {
 
   @Override
   public boolean isTransactionActive() {
-    try
-    {
-       return getUserTransaction().getStatus() == STATUS_ACTIVE;
+    try {
+      return getUserTransaction().getStatus() == STATUS_ACTIVE;
     }
-    catch (SystemException e)
-    {
-       throw new RuntimeException("Failed to determine transaction status", e);
+    catch (SystemException e) {
+      throw new RuntimeException("Failed to determine transaction status", e);
     }
   }
 
   @Override
   public UserTransaction getUserTransaction() {
-    Collection<UserTransaction> tx = UserTransactionTracker.getInstance(this.context).getUserTransactions();
+    Collection<UserTransaction> tx = UserTransactionTracker.getInstance(
+        this.context).getUserTransactions();
     if (!tx.isEmpty())
-    return tx.iterator().next();
-    
+      return tx.iterator().next();
+
     return null;
   }
 
