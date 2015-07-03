@@ -46,7 +46,7 @@
 		<!-- <bundle dependency="true">mvn:commons-logging/commons-logging/${commons-logging_commons-logging.version}</bundle> -->
 		<bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq_activemq-osgi.version}</bundle>
-		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.features.karaf-features-messaging/${project.version}/cfg/activemq</configfile>
+		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.feature.messaging/${project.version}/cfg/activemq</configfile>
 	</feature>
 
 	<!-- All bundles needed by the broker -->
