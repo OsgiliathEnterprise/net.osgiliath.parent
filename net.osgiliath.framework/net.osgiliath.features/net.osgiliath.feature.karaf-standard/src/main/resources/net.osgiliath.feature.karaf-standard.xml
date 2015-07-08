@@ -3,12 +3,12 @@
 	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing
 	permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="${project.artifactId}-${project.version}">
     <repository>mvn:${project.groupId}/net.osgiliath.feature.pax-web/${project.version}/xml/features</repository>
     <feature name="osgiliath-http" version="${karaf.version}" description="Implementation of the OSGI HTTP Service" resolver="(obr)">
         <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-http</feature>
         <bundle start-level="30">mvn:org.apache.karaf.http/org.apache.karaf.http.core/${org.apache.karaf.http_org.apache.karaf.http.core.version}</bundle>
-        <bundle start-level="30">mvn:org.apache.karaf.http/org.apache.karaf.http.command/${org.apache.karaf.http_org.apache.karaf.http.command.version}</bundle>
+        <!-- <bundle start-level="30">mvn:org.apache.karaf.http/org.apache.karaf.http.command/${org.apache.karaf.http_org.apache.karaf.http.command.version}</bundle>  -->
     </feature>
     <feature name="osgiliath-http-whiteboard" version="${karaf.version}" description="Provide HTTP Whiteboard pattern support" resolver="(obr)">
         <feature>osgiliath-http</feature>
@@ -18,15 +18,9 @@
         <feature>osgiliath-http</feature>
         <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-war</feature>
         <bundle start-level="30">mvn:org.apache.karaf.web/org.apache.karaf.web.core/${org.apache.karaf.web_org.apache.karaf.web.core.version}</bundle>
-        <bundle start-level="30">mvn:org.apache.karaf.web/org.apache.karaf.web.command/${org.apache.karaf.web_org.apache.karaf.web.command.version}</bundle>
+        <!-- <bundle start-level="30">mvn:org.apache.karaf.web/org.apache.karaf.web.command/${org.apache.karaf.web_org.apache.karaf.web.command.version}</bundle>  -->
     </feature>
     <feature name="osgiliath-jetty" version="${org.eclipse.jetty.version}" resolver="(obr)">
         <feature>osgiliath-pax-jetty</feature>
-    </feature>
-    <feature name="osgiliath-spring-web" version="${org.apache.servicemix.bundles.spring4.version}" description="Spring 4.0.x Web support" resolver="(obr)">
-        <feature version="${org.apache.servicemix.bundles.spring4.version}">spring</feature>
-        <feature>osgiliath-http</feature>
-        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-web/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version}</bundle>
-        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version}</bundle>
     </feature>
 </features>

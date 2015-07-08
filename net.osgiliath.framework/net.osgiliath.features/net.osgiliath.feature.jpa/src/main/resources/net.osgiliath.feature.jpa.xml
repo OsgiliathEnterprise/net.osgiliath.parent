@@ -19,7 +19,7 @@ limitations under the License.
 #L%
 -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
@@ -30,7 +30,7 @@ limitations under the License.
 	<feature name='osgiliath-jpa' version='${project.version}' resolver="(obr)" start-level="41" description="Java persistence API stack" >
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
 		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring-tx</feature>
-		<feature version='${org.apache.aries.transaction.version}'>transaction</feature>
+		<feature version='${org.apache.aries.transaction.version}' prerequisite="true" dependency="true">transaction</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jndi</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jdbc</feature>
 		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
@@ -42,6 +42,8 @@ limitations under the License.
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
 		<bundle>mvn:org.springframework.data/spring-data-commons/${org.springframework.data_spring-data-commons.version}</bundle>
 		<bundle>mvn:org.springframework.data/spring-data-jpa/${org.springframework.data_spring-data-jpa.version}</bundle>
+		<requirement>osgiliath.datasource.provider</requirement>
+		<capability>osgiliath.persistence.provider;provider:=openjpa</capability>
 	</feature>
 	
 	<feature name="osgiliath-pax-jpa" description="Provides JPA Service support" version="${project.version}" resolver="(obr)"
@@ -59,8 +61,8 @@ limitations under the License.
         <feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>
         <bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.osgi-enterprise-jpa-spec/${project.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
-
         <bundle>mvn:${project.groupId}/net.osgiliath.helper.pax-jpa.tx/${project.version}</bundle>
+        <requirement>osgiliath.datasource.provider</requirement>
     </feature>
 	<feature name='osgiliath-jpa-cdi' version='${project.version}' resolver="(obr)" description="Java persistence API for CDI stack (try)" start-level="41">
 		<feature version='${project.version}'>osgiliath-cdi</feature>

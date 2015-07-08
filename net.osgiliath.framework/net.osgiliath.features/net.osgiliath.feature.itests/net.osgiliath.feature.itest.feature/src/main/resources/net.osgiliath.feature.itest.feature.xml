@@ -19,7 +19,7 @@ limitations under the License.
 #L%
 -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.derby/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cxf/${project.version}/xml/features</repository>
@@ -67,11 +67,21 @@ limitations under the License.
 		<feature version='${org.apache.cxf.version}'>osgiliath-cxf-ws-policy</feature>
 		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.jaxrs.web.cdi/target/net.osgiliath.feature.itest.jaxrs.web.cdi-${project.version}.jar</bundle>
 	</feature>
-	<feature name='osgiliath-itests-jpa' version='${project.version}'>
-		<feature version='${project.version}'>osgiliath-derby</feature>
-		<feature version='${project.version}'>osgiliath-jpa</feature>
+	<feature name='osgiliath-itests-db' version='${project.version}' start-level="37">
+		<requirement>osgiliath.database.provider</requirement>
 		<configfile finalname="/etc/org.ops4j.datasource-myDb.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/db</configfile>
+		<capability>osgiliath.datasource.provider;provider:=itests</capability>
+	</feature>
+	<feature name='osgiliath-itests-jpa-jar' version='${project.version}'>
+		<requirement>osgiliath.persistence.provider</requirement>
+		<requirement>osgiliath.datasource.provider</requirement>
 		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.jpa/target/net.osgiliath.feature.itest.jpa-${project.version}.jar</bundle>
+	</feature>
+	<feature name='osgiliath-itests-jpa' version='${project.version}'>
+		<feature version='${project.version}' prerequisite="true">osgiliath-derby</feature>
+		<feature version='${project.version}' prerequisite="true">osgiliath-itests-db</feature>
+		<feature version='${project.version}'>osgiliath-jpa</feature>
+		<feature version='${project.version}'>osgiliath-itests-jpa-jar</feature>
 	</feature>
 	<feature name='osgiliath-itests-jpa-cdi' version='${project.version}'>
 		<feature version='${project.version}'>osgiliath-derby</feature>

@@ -3,7 +3,7 @@
 	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing 
 	permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="${project.artifactId}-${project.version}">
 	<feature name="osgiliath-swagger-annotations" version="${project.version}" resolver="(obr)" start-level="30" description="Swagger annotations">
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.swagger-annotations/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.swagger-annotations.version}</bundle>
 	</feature>

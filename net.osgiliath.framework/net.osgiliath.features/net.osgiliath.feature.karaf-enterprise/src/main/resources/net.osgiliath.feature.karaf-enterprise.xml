@@ -3,7 +3,7 @@
 	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing 
 	permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
 	<feature name="osgiliath-connector" version="${org.apache.geronimo.components_geronimo-connector.version}" description="OSGi Support for JCA Connector 1.6" resolver="(obr)">
         <details>OSGi support for JCA Connector 1.6</details>
@@ -29,5 +29,6 @@
 		<!-- <bundle dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>  -->
 		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/${org.apache.xbean_xbean-asm5-shaded.version}</bundle>
 		<bundle start-level="29">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa_openjpa.version}</bundle>
+		<requirement>osgiliath.datasource.provider</requirement>
 	</feature>
 </features>

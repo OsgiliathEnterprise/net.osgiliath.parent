@@ -8,7 +8,7 @@
 	OF ANY KIND, either express or implied. See the License for the specific 
 	language governing permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
 	name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.functional/${project.version}/xml/features</repository>

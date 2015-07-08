@@ -8,7 +8,7 @@
 	KIND, either express or implied. See the License for the specific language 
 	governing permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="${project.artifactId}-${project.version}">
 	<feature name='osgiliath-functional' version='${project.version}' start-level="60" description="Java functional libs (i.e. Guava)">
 		<bundle>mvn:com.google.guava/guava/${com.google.guava_guava.version}</bundle>
 	</feature>

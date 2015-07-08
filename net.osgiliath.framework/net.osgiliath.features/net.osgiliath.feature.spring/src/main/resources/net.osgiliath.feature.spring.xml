@@ -3,7 +3,7 @@
 	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing 
 	permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="spring-${org.apache.servicemix.bundles.spring4.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="spring-${org.apache.servicemix.bundles.spring4.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
 	<feature name="osgiliath-spring-web" version="${org.apache.servicemix.bundles.spring4.version}" description="Spring ${org.apache.servicemix.bundles.spring4.version} Web support" resolver="(obr)">

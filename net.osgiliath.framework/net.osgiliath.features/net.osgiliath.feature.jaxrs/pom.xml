@@ -115,11 +115,11 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.swagger-annotations</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.eclipse.jetty.aggregate</groupId>
 			<artifactId>jetty-all-server</artifactId>
 			<version>${org.eclipse.jetty.aggregate_jetty-all-server.version}</version>
-		</dependency>
+		</dependency>  -->
 	</dependencies>
 	<build>
 		<resources>
