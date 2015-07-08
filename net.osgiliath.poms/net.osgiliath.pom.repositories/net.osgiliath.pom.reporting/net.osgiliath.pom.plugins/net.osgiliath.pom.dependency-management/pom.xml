@@ -1739,7 +1739,7 @@
 		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
 		<org.apache.aries.transaction.version>1.1.1</org.apache.aries.transaction.version>
 		<org.apache.camel.version>2.15.2</org.apache.camel.version>
-		<org.apache.cxf.version>3.0.3</org.apache.cxf.version>
+		<org.apache.cxf.version>3.1.1</org.apache.cxf.version>
 		<org.apache.deltaspike.version>1.4.1</org.apache.deltaspike.version>
 		<org.apache.servicemix.bundles.jaxb.version>2.2.1.1_2</org.apache.servicemix.bundles.jaxb.version>
 		<org.apache.servicemix.bundles.spring4.version>4.1.2.RELEASE_1</org.apache.servicemix.bundles.spring4.version>
