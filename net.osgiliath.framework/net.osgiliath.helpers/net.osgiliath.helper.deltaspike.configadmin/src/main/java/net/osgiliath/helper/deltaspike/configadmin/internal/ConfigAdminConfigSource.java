@@ -20,14 +20,15 @@ package net.osgiliath.helper.deltaspike.configadmin.internal;
  * #L%
  */
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import org.osgi.framework.InvalidSyntaxException;
-
 import org.osgi.framework.FrameworkUtil;
 import net.osgiliath.helper.deltaspike.configadmin.ConfigAdminAccessor;
 import java.util.Map;
 import org.apache.deltaspike.core.spi.config.ConfigSource;
-
+@Slf4j
 public class ConfigAdminConfigSource implements ConfigSource {
 
   @Override
@@ -49,12 +50,10 @@ public class ConfigAdminConfigSource implements ConfigSource {
       return ConfigAdminAccessor.getProperty(FrameworkUtil.getBundle(ConfigAdminConfigSource.class).getBundleContext(), key);
     }
     catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      log.error("IO exception while querying the config admin accessor for a property", e);
     }
     catch (InvalidSyntaxException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      log.error("Invalid syntax exception while querying the config admin accessor for a property", e);
     }
     return null;
   }
