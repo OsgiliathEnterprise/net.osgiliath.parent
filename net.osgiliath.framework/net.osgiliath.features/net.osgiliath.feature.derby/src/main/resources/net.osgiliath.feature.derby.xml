@@ -7,11 +7,14 @@
 	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
 	<repository>mvn:org.ops4j.pax.jdbc/pax-jdbc-features/${org.ops4j.pax.jdbc_pax-jdbc-features.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.spring/${project.version}/xml/features</repository>
 	<feature name='osgiliath-derby' version='${project.version}' resolver="(obr)" start-level="35" description="Derby database simplified creation via property and Liquibase (database versioning) support">
-		<feature version='${karaf.version}' prerequisite="true">jndi</feature>
+		<feature version='${karaf.version}' prerequisite="true">osgiliath-jndi</feature>
+		
 		<feature version='${org.ops4j.pax.jdbc_pax-jdbc-features.version}' prerequisite="true">osgiliath-pax-jdbc-pool-aries</feature>
 		<feature version='${org.ops4j.pax.jdbc_pax-jdbc-features.version}' prerequisite="true">pax-jdbc-config</feature>
-		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring</feature>
+		<feature version='${org.apache.servicemix.bundles.spring4.version}'>osgiliath-spring</feature>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.derby/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.liquibase/liquibase-osgi/${org.liquibase_liquibase-osgi.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.neethi/neethi/${org.apache.neethi_neethi.version}</bundle>
@@ -24,16 +27,37 @@
 	<feature name="osgiliath-pax-jdbc-pool-aries" description="Provides JDBC Pooling DataSourceFactory using Aries Transaction JDBC"
              version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}"
              resolver="(obr)" start-level="34">
-        <feature prerequisite="true">pax-jdbc</feature>
-		<feature version='${org.apache.aries.transaction.version}' prerequisite="true">transaction</feature>
-		
-        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
+        <feature prerequisite="true">osgiliath-pax-jdbc</feature>
+      	<feature version='${org.apache.aries.transaction.version}' prerequisite="true">osgiliath-transaction</feature>
+		<feature version='${org.apache.geronimo.components_geronimo-connector.version}'>osgiliath-connector</feature>
         <bundle >mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.components/geronimo-connector/${org.apache.geronimo.components_geronimo-connector.version}</bundle>
         <bundle dependency="true">mvn:org.apache.xbean/xbean-spring/${org.apache.xbean_xbean-spring.version}</bundle>
         <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.jdbc/${org.apache.aries.transaction_org.apache.aries.transaction.jdbc.version}</bundle>
+         <conditional>
+            <condition>aries-blueprint</condition>
+           <bundle dependency="true">mvn:org.apache.xbean/xbean-blueprint/${org.apache.xbean_xbean-blueprint.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>osgiliath-openjpa</condition>
+        	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
+        </conditional>
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-common/${org.ops4j.pax.jdbc_pax-jdbc-features.version}</bundle>
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-aries/${org.ops4j.pax.jdbc_pax-jdbc-features.version}</bundle>
+    </feature>
+     <feature name="osgiliath-pax-jdbc" description="Provides JDBC Service support" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}" resolver="(obr)">
+     <!-- <feature>pax-jdbc-spec</feature>  -->
+     <feature version='${org.apache.karaf.features_enterprise.version}'>osgiliath-jdbc</feature>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-spi/${org.ops4j.base_ops4j-base.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-lang/${org.ops4j.base_ops4j-base-lang.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/${org.ops4j.pax.swissbox_pax-swissbox-core.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/${org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</bundle>
+
+        <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc/${org.ops4j.pax.jdbc_pax-jdbc-features.version}</bundle>
+    </feature>
+    <feature name="osgiliath-pax-jdbc-config" description="Provides JDBC Config support" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}"
+             resolver="(obr)">
+        <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-config/${org.ops4j.pax.jdbc_pax-jdbc-features.version}</bundle>
     </feature>
 </features>

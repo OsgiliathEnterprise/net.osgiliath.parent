@@ -20,17 +20,17 @@
 	<name>Pom repositories</name>
 	<description>Repositories configuration for the entire Osgiliath submodules</description>
 	<repositories>
-		<!-- <repository>
+		 <repository>
 			<id>apache.snapshots</id>
 			<name>Apache Development Snapshot Repository</name>
-			<url>http://repository.apache.org/content/repositories/snapshots/</url>
+			<url>http://repository.apache.org/content/groups/snapshots-group</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-		</repository>-->
+		</repository>
 		<!-- <repository> <id>openqa</id> <url>http://maven.openqa.org</url> </repository> 
 			<repository> <id>ops4j snapshots</id> <name>The OPS4J Snapshot Repository</name> 
 			<url>http://oss.sonatype.org/content/repositories/ops4j-snapshots</url> <snapshots> 

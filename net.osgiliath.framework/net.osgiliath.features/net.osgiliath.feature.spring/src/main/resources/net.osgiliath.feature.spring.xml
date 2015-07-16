@@ -7,9 +7,114 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
 	<feature name="osgiliath-spring-web" version="${org.apache.servicemix.bundles.spring4.version}" description="Spring ${org.apache.servicemix.bundles.spring4.version} Web support" resolver="(obr)">
-		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring</feature>
+		<feature version="${org.apache.servicemix.bundles.spring4.version}">osgiliath-spring</feature>
 		<feature>osgiliath-http</feature>
 		<bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-web/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version}</bundle>
 		<bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version}</bundle>
 	</feature>
+	
+	 <feature name="osgiliath-spring" description="Spring 4.1.x support" version="${org.apache.servicemix.bundles.spring4.version}">
+        <details>Spring Support</details>
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-core/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-expression/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-beans/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aop/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context-support/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        <conditional>
+            <condition>deployer</condition>
+            <bundle start-level="30">mvn:org.apache.karaf.deployer/org.apache.karaf.deployer.spring/${org.apache.karaf.features_spring.version}</bundle>
+        </conditional>
+        <conditional>
+			<condition>osgiliath-activemq-client</condition>
+			<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        </conditional>
+		<conditional>
+            <condition>osgiliath-camel-http</condition>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+		</conditional>
+        <conditional>
+            <condition>osgiliath-camel-jms</condition>
+            <bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        </conditional>
+		<conditional>
+            <condition>osgiliath-camel-websocket</condition>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+		</conditional>
+        <conditional>
+            <condition>osgiliath-connector</condition>
+            <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
+            <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>osgiliath-derby</condition>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+		</conditional>
+        <conditional>
+            <condition>osgiliath-jpa</condition>
+            <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
+            <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
+	        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jdbc/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+	        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-orm/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>osgiliath-messaging-websocket</condition>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+		</conditional>        
+        <conditional>
+            <condition>osgiliath-openjpa</condition>
+            <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
+            <bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>	
+			<bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
+		</conditional>
+        <conditional>
+            <condition>osgiliath-pax-cdi-1.2</condition>
+            <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>osgiliath-pax-cdi-1.2-web</condition>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>osgiliath-pax-jetty</condition>
+        	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+        </conditional> 
+        <conditional>
+           <condition>osgiliath-pax-jdbc-pool-aries</condition>
+           <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+        </conditional>
+        <conditional>
+           <condition>osgiliath-pax-jpa</condition>
+	       <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>osgiliath-validation-common</condition>
+            <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
+        </conditional>
+		<bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
+        <bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
+		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>       
+		<bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jdbc/${org.apache.servicemix.bundles.spring4.version}</bundle>
+	    <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-orm/${org.apache.servicemix.bundles.spring4.version}</bundle>
+	    <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
+    </feature>
+    <feature name="osgiliath-spring-jdbc" description="Spring 4.1.x JDBC support" version="${org.apache.servicemix.bundles.spring4.version}">
+        <feature version="${org.apache.servicemix.bundles.spring4.version}" prerequisite="false" dependency="false">osgiliath-spring-tx</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jdbc/${org.apache.servicemix.bundles.spring4.version}</bundle>
+    </feature>
+    
+     <feature name="osgiliath-spring-tx" description="Spring 4.1.x Transaction (TX) support" version="${org.apache.servicemix.bundles.spring4.version}">
+        <feature version="${org.apache.servicemix.bundles.spring4.version}" prerequisite="false" dependency="false">osgiliath-spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-tx/${org.apache.servicemix.bundles.spring4.version}</bundle>        
+    </feature>
 </features>

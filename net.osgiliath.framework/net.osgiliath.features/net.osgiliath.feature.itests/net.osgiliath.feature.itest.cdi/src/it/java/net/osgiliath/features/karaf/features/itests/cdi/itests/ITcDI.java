@@ -23,6 +23,9 @@ package net.osgiliath.features.karaf.features.itests.cdi.itests;
 import static org.junit.Assert.assertEquals;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
+
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 
 import javax.inject.Inject;
 import net.osgiliath.cdi.IConsumer;
@@ -101,6 +104,11 @@ public class ITcDI extends AbstractPaxExamKarafConfiguration {
     // uncomment to enable debugging of this test class
     // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
+  }
+  
+  @Override
+  protected Option loggingLevel() {
+    return logLevel(LogLevel.DEBUG);
   }
   /**
    * Creates the default configuration.

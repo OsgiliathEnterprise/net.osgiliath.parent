@@ -5,9 +5,10 @@
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.spring/${project.version}/xml/features</repository>
 	<feature name="osgiliath-connector" version="${org.apache.geronimo.components_geronimo-connector.version}" description="OSGi Support for JCA Connector 1.6" resolver="(obr)">
         <details>OSGi support for JCA Connector 1.6</details>
-        <feature version="${org.apache.aries.transaction.version}">transaction</feature>
+        <feature version="${org.apache.aries.transaction.version}" prerequisite="true">osgiliath-transaction</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
         <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
         <bundle>mvn:org.apache.geronimo.components/geronimo-connector/${org.apache.geronimo.components_geronimo-connector.version}</bundle>
@@ -26,9 +27,35 @@
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>	
-		<!-- <bundle dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>  -->
+		<bundle dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/${org.apache.xbean_xbean-asm5-shaded.version}</bundle>
 		<bundle start-level="29">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa_openjpa.version}</bundle>
-		<requirement>osgiliath.datasource.provider</requirement>
+		<capability>persistence.provider;provider:=openjpa</capability>
 	</feature>
+	<feature name="osgiliath-spring-orm" description="Spring 4.1.x ORM support" version="${org.apache.servicemix.bundles.spring4.version}">
+        <feature version="${org.apache.servicemix.bundles.spring4.version}" prerequisite="false" dependency="false">osgiliath-spring-jdbc</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-orm/${org.apache.servicemix.bundles.spring4.version}</bundle>
+        <feature>osgiliath-openjpa</feature>
+        <requirement>persistence.provider</requirement>
+        <capability>osgiliath.orm.implementation;provider:=openjpa</capability>
+    </feature>
+	<feature name="osgiliath-transaction" version="${org.apache.aries.transaction.version}" description="transaction support for osgiliath" resolver="(obr)">
+	 	<conditional>
+            <condition>osgiliath-spring</condition>
+            <feature version="${org.apache.servicemix.bundles.spring4.version}" prerequisite="true">osgiliath-spring-tx</feature>
+        </conditional>
+		<feature version="${org.apache.aries.transaction.version}">transaction</feature>
+	</feature>
+	<feature name="osgiliath-jndi" version="${org.apache.karaf.features_enterprise.version}" description="JNDI support for osgiliath" resolver="(obr)">
+	 	<conditional>
+            <condition>osgiliath-jpa</condition>
+            <feature version="${org.apache.karaf.features_enterprise.version}" prerequisite="true">aries-blueprint</feature>
+        </conditional>
+		<feature version="${org.apache.karaf.features_enterprise.version}">jndi</feature>
+	</feature>
+	<feature name="osgiliath-jdbc" description="JDBC service and commands" version="${org.apache.karaf.features_enterprise.version}">
+        <details>JDBC support providing service, commands, and MBean.</details>
+        <bundle>mvn:org.apache.karaf.jdbc/org.apache.karaf.jdbc.core/${org.apache.karaf.features_enterprise.version}</bundle>
+        <feature version="${org.apache.karaf.features_enterprise.version}" prerequisite="true">shell-compat</feature>
+    </feature>
 </features>

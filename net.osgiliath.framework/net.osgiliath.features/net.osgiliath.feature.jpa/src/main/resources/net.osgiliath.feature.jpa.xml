@@ -23,22 +23,22 @@ limitations under the License.
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.spring/${project.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
-	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.spring/${project.version}/xml/features</repository>
 	
 	<repository>mvn:org.ops4j.pax.jpa/pax-jpa-features/${org.ops4j.pax.jpa_pax-jpa-features.version}/xml/features</repository>
 	<feature name='osgiliath-jpa' version='${project.version}' resolver="(obr)" start-level="41" description="Java persistence API stack" >
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
-		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring-tx</feature>
-		<feature version='${org.apache.aries.transaction.version}' prerequisite="true" dependency="true">transaction</feature>
-		<feature version='${org.apache.karaf.features_enterprise.version}'>jndi</feature>
-		<feature version='${org.apache.karaf.features_enterprise.version}'>jdbc</feature>
+		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
+		
+		<feature version='${org.apache.karaf.features_enterprise.version}'>osgiliath-jndi</feature>
+		
 		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
 		<feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>
 		<feature version='${project.version}'>osgiliath-openjpa</feature>
 		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
-		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring</feature>
-		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring-orm</feature>
+		<feature version='${org.apache.servicemix.bundles.spring4.version}'>osgiliath-spring-orm</feature>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
 		<bundle>mvn:org.springframework.data/spring-data-commons/${org.springframework.data_spring-data-commons.version}</bundle>
 		<bundle>mvn:org.springframework.data/spring-data-jpa/${org.springframework.data_spring-data-jpa.version}</bundle>
@@ -66,10 +66,10 @@ limitations under the License.
     </feature>
 	<feature name='osgiliath-jpa-cdi' version='${project.version}' resolver="(obr)" description="Java persistence API for CDI stack (try)" start-level="41">
 		<feature version='${project.version}'>osgiliath-cdi</feature>
-		<feature version='${org.apache.karaf.features_enterprise.version}'>jndi</feature>
+		<feature version='${org.apache.karaf.features_enterprise.version}'>osgiliath-jndi</feature>
 		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jdbc</feature>
-		<feature version='${org.apache.aries.transaction.version}'>transaction</feature>
+		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
 		<feature version='${project.version}'>osgiliath-openjpa</feature>
 		<feature version='${project.version}'>osgiliath-pax-jpa</feature>
 		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>

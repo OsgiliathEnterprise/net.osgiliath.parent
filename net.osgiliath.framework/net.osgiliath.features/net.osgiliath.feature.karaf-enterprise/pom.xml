@@ -73,6 +73,13 @@
 			<artifactId>validation-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.spring</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.geronimo.components</groupId>
 			<artifactId>geronimo-connector</artifactId>
 		</dependency>
