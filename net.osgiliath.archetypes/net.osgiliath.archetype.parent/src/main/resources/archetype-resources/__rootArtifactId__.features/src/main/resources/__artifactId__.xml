@@ -22,7 +22,7 @@ limitations under the License.
 ${symbol_pound}L%
 -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${symbol_dollar}{project.artifactId}-${symbol_dollar}{project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${symbol_dollar}{project.artifactId}-${symbol_dollar}{project.version}">
 	<!-- TODO add your features here, check the mapping with your bundles-->
 	<repository>mvn:org.apache.karaf.features/standard/${symbol_dollar}{karaf.version}/xml/features</repository>
 	<repository>mvn:net.osgiliath.framework/net.osgiliath.feature.full/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>

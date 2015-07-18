@@ -19,7 +19,7 @@
   #L%
   -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
     <feature name="osgiliath-pax-jetty" description="Provide Jetty engine support" version="${org.eclipse.jetty.version}" resolver="(obr)">
         <bundle dependency="true" start-level="30">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version}</bundle>
         <bundle dependency="false" start-level="30">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>

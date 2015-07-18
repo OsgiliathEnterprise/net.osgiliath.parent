@@ -19,7 +19,7 @@
   #L%
   -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<feature name='osgiliath-social' version='${project.version}' resolver="(obr)" description="Social features for osgiliath (Agorava)">
 		<feature>osgiliath-cdi</feature>

@@ -13,6 +13,13 @@
 	<description>Feature for Derby database support</description>
 	<dependencies>
 		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.karaf-enterprise</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<artifactId>net.osgiliath.helper.derby</artifactId>
 			<version>${project.version}</version>

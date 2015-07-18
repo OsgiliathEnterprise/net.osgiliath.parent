@@ -3,17 +3,34 @@
 	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing 
 	permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
 	<feature name="osgiliath-connector" version="${org.apache.geronimo.components_geronimo-connector.version}" description="OSGi Support for JCA Connector 1.6" resolver="(obr)">
         <details>OSGi support for JCA Connector 1.6</details>
-        <feature version="${org.apache.aries.transaction.version}">transaction</feature>
+        <feature version="${org.apache.aries.transaction.version}">osgiliath-transaction</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
         <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
         <bundle>mvn:org.apache.geronimo.components/geronimo-connector/${org.apache.geronimo.components_geronimo-connector.version}</bundle>
     </feature>
+    <feature name="osgiliath-jdbc" version="${org.apache.karaf.features_enterprise.version}" description="JDBC service and commands" resolver="(obr)">
+        <details>JDBC support providing service, commands, and MBean.</details>
+        <feature version="${org.apache.aries.transaction.version}">osgiliath-transaction</feature>
+        <bundle>mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version}</bundle>
+        <bundle>mvn:org.apache.karaf.jdbc/org.apache.karaf.jdbc.core/${org.apache.karaf.features_enterprise.version}</bundle>
+        <bundle>mvn:org.apache.karaf.jdbc/org.apache.karaf.jdbc.command/${org.apache.karaf.features_enterprise.version}</bundle>
+    </feature>
+    <feature name="osgiliath-jms" version="${org.apache.karaf.features_enterprise.version}" description="JMS service and commands" resolver="(obr)">
+        <details>JMS support provinding service, commands, and MBean.</details>
+        <feature version="${org.apache.aries.transaction.version}">osgiliath-transaction</feature>
+        <bundle>mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        <bundle>mvn:org.apache.karaf.jms/org.apache.karaf.jms.core/${org.apache.karaf.features_enterprise.version}</bundle>
+        <bundle>mvn:org.apache.karaf.jms/org.apache.karaf.jms.command/${org.apache.karaf.features_enterprise.version}</bundle>
+    </feature>
 	<feature name="osgiliath-openjpa" version="${project.version}" resolver="(obr)" start-level='30' description="OpenJPA (persistence implementation) engine">
 		<details>Enable Apache OpenJPA as persistence engine.</details>
+		<feature>spring-orm</feature>
 		<!-- <feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>  -->
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
@@ -26,8 +43,33 @@
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>	
-		<!-- <bundle dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>  -->
+		<bundle dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/${org.apache.xbean_xbean-asm5-shaded.version}</bundle>
 		<bundle start-level="29">mvn:org.apache.openjpa/openjpa/${org.apache.openjpa_openjpa.version}</bundle>
 	</feature>
+	<feature name="osgiliath-karaf-jpa" version="${org.apache.karaf.features_enterprise_jpa.version}" description="OSGi Persistence Container" resolver="(obr)">
+        <details>JPA implementation provided by Apache Aries JPA 1.0.2. NB: this feature doesn't provide the JPA engine, you have to install one by yourself (OpenJPA for instance)</details>
+        <feature version="${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}">osgiliath-transaction</feature>
+        <bundle start-level="30" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.api/${org.apache.aries.jpa.api.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.blueprint.aries/${org.apache.aries.jpa.blueprint.aries.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.container/${org.apache.aries.jpa.api.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.jpa/org.apache.aries.jpa.container.context/${org.apache.aries.jpa.blueprint.aries.version}</bundle>
+    </feature>
+	<feature name="osgiliath-transaction" version="${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}" description="OSGi Transaction Manager" resolver="(obr)">
+        <details>JTA implementation provided by Apache Aries Transaction ${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</details>
+        <config name="org.apache.aries.transaction" append="false">
+            aries.transaction.recoverable = true
+            aries.transaction.timeout = 600
+            aries.transaction.howl.logFileDir = ${karaf.data}/txlog
+            aries.transaction.howl.maxLogFiles = 2
+            aries.transaction.howl.maxBlocksPerFile = 512
+            aries.transaction.howl.bufferSizeKBytes = 4
+        </config>
+        <bundle dependency='true'>mvn:org.apache.xbean/xbean-blueprint/${xbean.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.transaction/org.apache.aries.transaction.blueprint/${org.apache.aries.transaction_org.apache.aries.transaction.blueprint.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.transaction/org.apache.aries.transaction.manager/${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}</bundle>
+        <feature>spring-tx</feature>
+    </feature>
 </features>

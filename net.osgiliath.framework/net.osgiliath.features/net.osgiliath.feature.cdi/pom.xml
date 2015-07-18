@@ -59,6 +59,13 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.karaf-enterprise</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.helper.cdi.eager</artifactId>
 			<version>${project.version}</version>
 		</dependency>

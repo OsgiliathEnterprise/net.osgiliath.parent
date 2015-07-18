@@ -24,6 +24,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
+
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 
 import java.util.Collection;
 import javax.inject.Inject;
@@ -112,6 +115,12 @@ public class ITjPA extends AbstractPaxExamKarafConfiguration {
     // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
+  
+//  @Override
+//  protected Option loggingLevel() {
+//    
+//    return logLevel(LogLevel.DEBUG);
+//  }
   /**
    * Creates the default configuration.
    * @return the default configuration

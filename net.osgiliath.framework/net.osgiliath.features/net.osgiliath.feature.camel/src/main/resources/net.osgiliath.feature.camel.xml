@@ -19,7 +19,7 @@
   #L%
   -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
     <repository>mvn:${project.groupId}/net.osgiliath.feature.functional/${project.version}/xml/features</repository>
     <repository>mvn:${project.groupId}/net.osgiliath.feature.cxf/${project.version}/xml/features</repository>
     <repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>

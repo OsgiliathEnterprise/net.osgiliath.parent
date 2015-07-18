@@ -19,7 +19,7 @@
   #L%
   -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
 	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
@@ -64,7 +64,7 @@
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version}</bundle>
 		<bundle dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.manager/${org.apache.aries.transaction.version}</bundle>
+		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
 		<bundle dependency="true">mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries_org.apache.aries.util.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.activemq/activeio-core/${org.apache.activemq_activeio-core.version}</bundle>
 		<bundle dependency="true">mvn:org.codehaus.jettison/jettison/${org.codehaus.jettison_jettison.version}</bundle>
@@ -85,8 +85,8 @@
 	<feature name="osgiliath-messaging" version="${project.version}" start-level="50" description="Osgiliath common client libraries">
 		<bundle >mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
 		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring-tx</feature>
-		<feature version='${org.apache.aries.transaction.version}'>transaction</feature>
-		<feature version='${org.apache.karaf.features_enterprise.version}'>jms</feature>
+		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
+		<feature version='${org.apache.karaf.features_enterprise.version}'>osgiliath-jms</feature>
 		<feature version='${org.apache.activemq.version}'>osgiliath-activemq-blueprint</feature>
 		<bundle dependency='true'>mvn:commons-io/commons-io/${commons-io_commons-io.version}</bundle>
 		<bundle>mvn:${project.groupId}/net.osgiliath.helper.activemq.jms.connectionfactory.exporter/${project.version}</bundle>

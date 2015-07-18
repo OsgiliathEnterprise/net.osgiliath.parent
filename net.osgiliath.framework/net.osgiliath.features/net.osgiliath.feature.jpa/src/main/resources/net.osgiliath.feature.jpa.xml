@@ -19,7 +19,7 @@ limitations under the License.
 #L%
 -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
@@ -30,11 +30,11 @@ limitations under the License.
 	<feature name='osgiliath-jpa' version='${project.version}' resolver="(obr)" start-level="41" description="Java persistence API stack" >
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
 		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring-tx</feature>
-		<feature version='${org.apache.aries.transaction.version}'>transaction</feature>
+		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jndi</feature>
-		<feature version='${org.apache.karaf.features_enterprise.version}'>jdbc</feature>
+		<feature version='${org.apache.karaf.features_enterprise.version}'>osgiliath-jdbc</feature>
 		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
-		<feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>
+		<feature version='${org.apache.karaf.features_enterprise_jpa.version}'>osgiliath-karaf-jpa</feature>
 		<feature version='${project.version}'>osgiliath-openjpa</feature>
 		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
 		<feature version='${org.apache.servicemix.bundles.spring4.version}'>spring</feature>
@@ -56,7 +56,7 @@ limitations under the License.
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/${org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version}</bundle>
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-tracker/${org.ops4j.pax.swissbox_pax-swissbox-tracker.version}</bundle>
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-framework/${org.ops4j.pax.swissbox_pax-swissbox-framework.version}</bundle>
-        <feature version='${org.apache.karaf.features_enterprise_jpa.version}'>jpa</feature>
+        <feature version='${org.apache.karaf.features_enterprise_jpa.version}'>osgiliath-karaf-jpa</feature>
         <bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.osgi-enterprise-jpa-spec/${project.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</bundle>
 
@@ -66,8 +66,8 @@ limitations under the License.
 		<feature version='${project.version}'>osgiliath-cdi</feature>
 		<feature version='${org.apache.karaf.features_enterprise.version}'>jndi</feature>
 		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
-		<feature version='${org.apache.karaf.features_enterprise.version}'>jdbc</feature>
-		<feature version='${org.apache.aries.transaction.version}'>transaction</feature>
+		<feature version='${org.apache.karaf.features_enterprise.version}'>osgiliath-jdbc</feature>
+		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
 		<feature version='${project.version}'>osgiliath-openjpa</feature>
 		<feature version='${project.version}'>osgiliath-pax-jpa</feature>
 		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
