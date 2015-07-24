@@ -1371,7 +1371,7 @@
 		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
 		<maven-failsafe-plugin.version>2.17</maven-failsafe-plugin.version>
 		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
-		<maven-processor-plugin.version>2.2.4</maven-processor-plugin.version>
+		<maven-processor-plugin.version>3.1.0-beta1</maven-processor-plugin.version>
 		<maven-jar-plugin.version>2.3.2</maven-jar-plugin.version>
 		<maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
 		<maven-shade-plugin.version>2.3</maven-shade-plugin.version>
