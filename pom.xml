@@ -629,17 +629,18 @@
 								</property>
 							</properties>
 							<scripts>
-								<script> <![CDATA[ 
-									import java.io.*;
-									String filename = parentPropertiesFile
-									File file = new File((String)filename)
-									String ret = "../"
-									while (!file.exists()) {
-										file = new File(ret + filename)
-										ret+= "../"
-									}
-									project.properties['property-maven-plugin-file-path'] = file.getAbsolutePath()
-								]]>
+								<script>
+									<![CDATA[ 
+										import java.io.*;
+										String filename = parentPropertiesFile;
+										File file = new File((String)filename);
+										String ret = "../";
+										while (!file.exists()) {
+											file = new File(ret + filename);
+											ret+= "../";
+										}
+										project.properties['property-maven-plugin-file-path'] = file.getAbsolutePath();
+									]]>
 								</script>
 							</scripts>
 						</configuration>
