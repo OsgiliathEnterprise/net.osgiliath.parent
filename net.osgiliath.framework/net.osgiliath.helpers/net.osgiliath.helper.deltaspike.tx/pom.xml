@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers</artifactId>
-		<version>0.1.9-SNAPSHOT</version>
+		<version>0.2.0</version>
 	</parent>
 	<artifactId>net.osgiliath.helper.deltaspike.tx</artifactId>
 	<build>
