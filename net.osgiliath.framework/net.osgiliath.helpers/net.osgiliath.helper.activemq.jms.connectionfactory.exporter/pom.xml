@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers</artifactId>
-		<version>0.2.0</version>
+		<version>0.2.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helper.activemq.jms.connectionfactory.exporter</artifactId>
 	<name>Connection factory</name>
