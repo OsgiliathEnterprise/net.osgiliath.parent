@@ -1761,7 +1761,7 @@
 		<org.ops4j.pax.swissbox.version>1.8.1</org.ops4j.pax.swissbox.version>
 		<org.ops4j.pax.url.version>2.4.1</org.ops4j.pax.url.version>
 		<org.ops4j.pax.web.version>3.1.4</org.ops4j.pax.web.version>
-		<org.scala-lang.version>2.10.4</org.scala-lang.version>
+		<org.scala-lang.version>2.10.5</org.scala-lang.version>
 		<org.seleniumhq.selenium.version>2.46.0</org.seleniumhq.selenium.version>
 		<org.springframework.version>4.1.4.RELEASE</org.springframework.version>
 		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
