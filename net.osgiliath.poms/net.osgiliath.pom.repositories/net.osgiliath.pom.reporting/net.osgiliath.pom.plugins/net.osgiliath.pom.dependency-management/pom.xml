@@ -199,6 +199,26 @@
 				<version>${org.agorava_agorava-core-impl-cdi.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-facebook-api</artifactId>
+				<version>${org.agorava_agorava-facebook-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-facebook-cdi</artifactId>
+				<version>${org.agorava_agorava-facebook-cdi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-twitter-api</artifactId>
+				<version>${org.agorava_agorava-twitter-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-twitter-cdi</artifactId>
+				<version>${org.agorava_agorava-twitter-cdi.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activeio-core</artifactId>
 				<version>${org.apache.activemq_activeio-core.version}</version>
@@ -1496,6 +1516,10 @@
 		<org.agorava_agorava-core-api.version>${agorava.version}</org.agorava_agorava-core-api.version>
 		<org.agorava_agorava-core-impl.version>${agorava.version}</org.agorava_agorava-core-impl.version>
 		<org.agorava_agorava-core-impl-cdi.version>${agorava.version}</org.agorava_agorava-core-impl-cdi.version>
+		<org.agorava_agorava-facebook-api.version>${agorava.version}</org.agorava_agorava-facebook-api.version>
+		<org.agorava_agorava-facebook-cdi.version>${agorava.version}</org.agorava_agorava-facebook-cdi.version>
+		<org.agorava_agorava-twitter-api.version>${agorava.version}</org.agorava_agorava-twitter-api.version>
+		<org.agorava_agorava-twitter-cdi.version>${agorava.version}</org.agorava_agorava-twitter-cdi.version>
 		<org.apache.activemq_activeio-core.version>3.1.4</org.apache.activemq_activeio-core.version>
 		<org.apache.activemq_activemq-blueprint.version>${org.apache.activemq.version}</org.apache.activemq_activemq-blueprint.version>
 		<org.apache.activemq_activemq-camel.version>${org.apache.activemq.version}</org.apache.activemq_activemq-camel.version>

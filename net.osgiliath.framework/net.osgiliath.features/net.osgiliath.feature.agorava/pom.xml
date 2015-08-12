@@ -86,6 +86,24 @@
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.agorava-facebook-cdi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.agorava</groupId>
+			<artifactId>agorava-facebook-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.agorava-twitter-cdi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.agorava</groupId>
+			<artifactId>agorava-twitter-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
 			<artifactId>net.osgiliath.wrapper.deltaspike-servlet-module-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>

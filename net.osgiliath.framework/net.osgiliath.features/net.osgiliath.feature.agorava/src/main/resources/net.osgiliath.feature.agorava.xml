@@ -32,5 +32,14 @@
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-servlet-module-api/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.deltaspike-servlet-module-impl/${project.version}</bundle>
 	</feature>
-	
+	<feature name='osgiliath-social-facebook' version='${project.version}' resolver="(obr)" description="Social features for osgiliath (Agorava)">
+		<feature>osgiliath-social</feature>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.agorava-facebook-cdi/${project.version}</bundle>
+		<bundle>wrap:mvn:org.agorava/agorava-facebook-api/${org.agorava_agorava-facebook-api.version}</bundle>
+	</feature>
+	<feature name='osgiliath-social-twitter' version='${project.version}' resolver="(obr)" description="Social features for osgiliath (Agorava)">
+		<feature>osgiliath-social</feature>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.agorava-twitter-cdi/${project.version}</bundle>
+		<bundle>wrap:mvn:org.agorava/agorava-twitter-api/${org.agorava_agorava-twitter-api.version}</bundle>
+	</feature>
 </features>

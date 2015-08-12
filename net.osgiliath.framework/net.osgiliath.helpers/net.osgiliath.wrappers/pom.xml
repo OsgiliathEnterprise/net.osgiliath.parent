@@ -33,6 +33,8 @@
 		<module>net.osgiliath.wrapper.agorava-core</module>
 		<module>net.osgiliath.wrapper.agorava-core-impl</module>
 		<module>net.osgiliath.wrapper.agorava-core-impl-cdi</module>
+		<module>net.osgiliath.wrapper.agorava-facebook-cdi</module>
+		<module>net.osgiliath.wrapper.agorava-twitter-cdi</module>
 		<module>net.osgiliath.wrapper.deltaspike-servlet-module-api</module>
 		<module>net.osgiliath.wrapper.deltaspike-servlet-module-impl</module>
 		<module>net.osgiliath.wrapper.osgi-enterprise-jpa-spec</module>
