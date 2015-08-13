@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
-		<version>0.2.1-SNAPSHOT</version>
+		<version>0.2.1</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.validation</artifactId>
 	<name>Osgiliath validation features</name>
