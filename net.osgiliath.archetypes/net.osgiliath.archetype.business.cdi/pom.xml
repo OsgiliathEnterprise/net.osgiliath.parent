@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>net.osgiliath</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
-		<version>0.2.1</version>
+		<version>0.2.2-SNAPSHOT</version>
 		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
 	<groupId>net.osgiliath.archetypes</groupId>
