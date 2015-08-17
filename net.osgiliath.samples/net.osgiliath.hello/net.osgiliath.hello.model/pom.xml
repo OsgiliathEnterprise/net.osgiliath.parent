@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>net.osgiliath.hello</groupId>
 		<artifactId>net.osgiliath.hello</artifactId>
-		<version>0.2.1-SNAPSHOT</version>
+		<version>0.2.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.hello.model</artifactId>
 	<packaging>pom</packaging>
