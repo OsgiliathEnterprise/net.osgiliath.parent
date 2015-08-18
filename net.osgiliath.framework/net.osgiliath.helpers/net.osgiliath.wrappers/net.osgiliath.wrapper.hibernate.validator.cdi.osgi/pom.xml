@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.wrappers</groupId>
 		<artifactId>net.osgiliath.wrappers</artifactId>
-		<version>0.2.2-SNAPSHOT</version>
+		<version>0.2.2</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.hibernate.validator.cdi.osgi</artifactId>
 	<name>Wrapper for Hibernate validator CDI</name>

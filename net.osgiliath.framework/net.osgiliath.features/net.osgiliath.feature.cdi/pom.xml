@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
-		<version>0.2.2-SNAPSHOT</version>
+		<version>0.2.2</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.cdi</artifactId>
 	<name>Osgiliath CDI features</name>

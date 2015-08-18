@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.feature.itests</artifactId>
-		<version>0.2.2-SNAPSHOT</version>
+		<version>0.2.2</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.itest.cdi.properties</artifactId>
 	<name>Property usage via Config resolver class</name>
