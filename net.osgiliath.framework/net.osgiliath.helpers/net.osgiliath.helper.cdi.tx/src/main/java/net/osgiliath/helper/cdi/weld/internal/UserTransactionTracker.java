@@ -113,6 +113,7 @@ public class UserTransactionTracker implements
     try {
       final ServiceReference<?>[] registeredConfigAdmins = (ServiceReference<?>[]) bundleContext
           .getAllServiceReferences(UserTransaction.class.getName(), null);
+      if (null != registeredConfigAdmins)
       for (final ServiceReference<?> adminRef : registeredConfigAdmins) {
 
         UserTransactionTracker.getInstance(bundleContext).getUserTransactions()
