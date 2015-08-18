@@ -38,8 +38,7 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
  * @author charliemordant
  */
 @Slf4j
-public class TransactionManagerTracker implements
-    ServiceTrackerCustomizer<TransactionManager, Object> {
+public class TransactionManagerTracker implements ServiceTrackerCustomizer<TransactionManager, Object> {
 
   /**
    * Properties.
@@ -75,19 +74,16 @@ public class TransactionManagerTracker implements
    *          the bundle context
    * @return the singleton instance
    */
-  public static synchronized TransactionManagerTracker getInstance(
-      BundleContext context) {
+  public static synchronized TransactionManagerTracker getInstance(BundleContext context) {
     if (instance == null) {
       instance = new TransactionManagerTracker();
       if (context == null) {
-        instance.context = FrameworkUtil.getBundle(TransactionServices.class)
-            .getBundleContext();
+        instance.context = FrameworkUtil.getBundle(TransactionServices.class).getBundleContext();
       }
       else {
         instance.context = context;
       }
-      instance.tMTracker = new ServiceTracker(instance.context,
-          TransactionManager.class,
+      instance.tMTracker = new ServiceTracker(instance.context, TransactionManager.class,
           TransactionManagerTracker.getInstance(instance.context));
       instance.parseInitialContribution(instance.context);
       instance.tMTracker.open();
@@ -113,10 +109,12 @@ public class TransactionManagerTracker implements
     try {
       final ServiceReference<?>[] registeredConfigAdmins = (ServiceReference<?>[]) bundleContext
           .getAllServiceReferences(TransactionManager.class.getName(), null);
-      for (final ServiceReference<?> adminRef : registeredConfigAdmins) {
+      if (null != registeredConfigAdmins) {
+        for (final ServiceReference<?> adminRef : registeredConfigAdmins) {
 
-        TransactionManagerTracker.getInstance(bundleContext).getAdmins()
-            .add((TransactionManager) bundleContext.getService(adminRef));
+          TransactionManagerTracker.getInstance(bundleContext).getAdmins()
+              .add((TransactionManager) bundleContext.getService(adminRef));
+        }
       }
     }
     catch (InvalidSyntaxException e) {
@@ -128,8 +126,7 @@ public class TransactionManagerTracker implements
    * Adds config.
    */
   @Override
-  public final Object addingService(
-      final ServiceReference<TransactionManager> reference) {
+  public final Object addingService(final ServiceReference<TransactionManager> reference) {
     final TransactionManager admin = this.context.getService(reference);
     getInstance(null).txManagers.add(admin);
     return admin;
@@ -139,8 +136,7 @@ public class TransactionManagerTracker implements
    * Modified a config.
    */
   @Override
-  public final void modifiedService(
-      final ServiceReference<TransactionManager> reference, Object service) {
+  public final void modifiedService(final ServiceReference<TransactionManager> reference, Object service) {
     removedService(reference, service);
     this.addingService(reference);
 
@@ -150,8 +146,7 @@ public class TransactionManagerTracker implements
    * removed config.
    */
   @Override
-  public final void removedService(
-      ServiceReference<TransactionManager> reference, final Object service) {
+  public final void removedService(ServiceReference<TransactionManager> reference, final Object service) {
     final TransactionManager admin = this.context.getService(reference);
     getInstance(null).txManagers.remove(admin);
 
