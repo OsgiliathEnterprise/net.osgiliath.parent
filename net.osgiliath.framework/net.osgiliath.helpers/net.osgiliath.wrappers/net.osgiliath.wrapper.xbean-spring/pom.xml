@@ -3,7 +3,7 @@
   <parent>
     <groupId>net.osgiliath.wrappers</groupId>
     <artifactId>net.osgiliath.wrappers</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.wrapper.xbean-spring</artifactId>
   <name>XBean spring wrapper</name>

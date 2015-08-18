@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers</artifactId>
-		<version>0.2.2</version>
+		<version>0.2.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.helper.cdi.eager</artifactId>
 	<name>Helper CDI Eager extension</name>

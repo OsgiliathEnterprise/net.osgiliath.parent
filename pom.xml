@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.osgiliath</groupId>
 	<artifactId>net.osgiliath.parent</artifactId>
-	<version>0.2.2</version>
+	<version>0.2.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<prerequisites>
 		<maven>2.2.1</maven>
@@ -99,7 +99,7 @@
 		<connection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</connection>
 		<developerConnection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
 		<url>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</url>
-		<tag>net.osgiliath.parent-0.2.2</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>

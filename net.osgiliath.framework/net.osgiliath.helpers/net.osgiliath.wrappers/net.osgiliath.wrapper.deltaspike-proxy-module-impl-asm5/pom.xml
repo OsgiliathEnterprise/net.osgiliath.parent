@@ -3,7 +3,7 @@
   <parent>
     <groupId>net.osgiliath.wrappers</groupId>
     <artifactId>net.osgiliath.wrappers</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.wrapper.deltaspike-proxy-module-impl-asm5</artifactId>
   <name>DS proxy module wrappers</name>
