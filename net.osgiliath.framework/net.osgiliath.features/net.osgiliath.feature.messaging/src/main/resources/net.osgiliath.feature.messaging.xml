@@ -46,7 +46,7 @@
 		<!-- <bundle dependency="true">mvn:commons-logging/commons-logging/${commons-logging_commons-logging.version}</bundle> -->
 		<bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq_activemq-osgi.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.activemq/commons-pool2/${org.apache.commons_commons-pool2.version}</bundle>
+		<!-- <bundle dependency="true">mvn:org.apache.commons/commons-pool2/${org.apache.commons_commons-pool2.version}</bundle> -->
 		
 		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.feature.messaging/${project.version}/cfg/activemq</configfile>
 	</feature>
