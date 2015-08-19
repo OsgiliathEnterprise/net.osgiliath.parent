@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
-		<version>0.2.3-SNAPSHOT</version>
+		<version>0.2.3</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.pax-web</artifactId>
 	<name>Osgiliath Pax-Web</name>

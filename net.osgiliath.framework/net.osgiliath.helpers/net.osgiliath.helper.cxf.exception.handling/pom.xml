@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.helpers</artifactId>
-		<version>0.2.3-SNAPSHOT</version>
+		<version>0.2.3</version>
 	</parent>
 	<artifactId>net.osgiliath.helper.cxf.exception.handling</artifactId>
 	<name>Helper for CXF RS validation exceptions</name>
