@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.framework</groupId>
 		<artifactId>net.osgiliath.feature.itests</artifactId>
-		<version>0.2.3</version>
+		<version>0.2.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.itest.jaxrs.cdi</artifactId>
 	<name>Osgiliath integration tests JaxRS CDI</name>
