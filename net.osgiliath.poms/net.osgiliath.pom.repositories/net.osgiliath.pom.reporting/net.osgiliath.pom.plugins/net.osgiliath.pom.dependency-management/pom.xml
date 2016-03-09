@@ -1501,7 +1501,7 @@
 		<com.google.guava_guava.version>13.0.1</com.google.guava_guava.version>
 		<commons-beanutils_commons-beanutils.version>1.9.2</commons-beanutils_commons-beanutils.version>
 		<commons-codec_commons-codec.version>1.9</commons-codec_commons-codec.version>
-		<commons-collections_commons-collections.version>3.2.1</commons-collections_commons-collections.version>
+		<commons-collections_commons-collections.version>3.2.2</commons-collections_commons-collections.version>
 		<commons-io_commons-io.version>2.4</commons-io_commons-io.version>
 		<commons-lang_commons-lang.version>2.6</commons-lang_commons-lang.version>
 		<commons-logging_commons-logging.version>1.2</commons-logging_commons-logging.version>
