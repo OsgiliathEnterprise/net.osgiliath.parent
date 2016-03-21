@@ -87,11 +87,7 @@
 			<artifactId>net.osgiliath.module.jms.connectionfactories</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.activemq-pool</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-ra</artifactId>
