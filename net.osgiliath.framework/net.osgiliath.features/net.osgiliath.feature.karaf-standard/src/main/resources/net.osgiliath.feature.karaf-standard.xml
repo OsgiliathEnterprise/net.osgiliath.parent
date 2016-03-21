@@ -1,32 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- #%L karaf-features-validation %% Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing
-	permissions and limitations under the License. #L% -->
-
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
-    <repository>mvn:${project.groupId}/net.osgiliath.feature.pax-web/${project.version}/xml/features</repository>
-    <feature name="osgiliath-http" version="${karaf.version}" description="Implementation of the OSGI HTTP Service" resolver="(obr)">
-        <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-http</feature>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
+	name="${project.artifactId}-${project.version}">
+	<repository>mvn:org.apache.karaf.features/standard/${org.apache.karaf.features_standard.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.pax-web/${project.version}/xml/features</repository>
+	<feature name="osgiliath-scr" description="Declarative Service support" version="${org.apache.karaf.features_standard.version}">
+        <bundle start-level="30" dependency="true">mvn:org.apache.felix/org.apache.felix.metatype/${org.apache.felix_org.apache.felix.metatype.version}</bundle>
+        <!-- wasn't dep=true --><bundle start-level="30" dependency="true">mvn:org.apache.felix/org.apache.felix.scr/${org.apache.felix_org.apache.felix.scr.version}</bundle>
+        <!-- wasn't dep=true --><bundle start-level="30" dependency="true">mvn:org.apache.felix/org.apache.felix.scr.compat/${org.apache.felix_org.apache.felix.scr.compat.version}</bundle>
+        <conditional>
+           <condition>management</condition>
+           <bundle start-level="30">mvn:org.apache.karaf.scr/org.apache.karaf.scr.management/${org.apache.karaf.scr_org.apache.karaf.scr.management.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>webconsole</condition>
+            <bundle start-level="30">mvn:org.apache.felix/org.apache.felix.inventory/${org.apache.felix_org.apache.felix.inventory.version}</bundle>
+            <bundle start-level="30">mvn:org.apache.felix/org.apache.felix.webconsole.plugins.ds/${org.apache.felix_org.apache.felix.webconsole.plugins.ds.version}</bundle>
+        </conditional>
+        <conditional>
+            <condition>shell</condition>
+            <bundle start-level="30">mvn:org.apache.karaf.scr/org.apache.karaf.scr.command/${org.apache.karaf.scr_org.apache.karaf.scr.command.version}</bundle>
+        </conditional>
+        <capability>
+            osgi.service;effective:=active;objectClass=org.apache.felix.scr.ScrService,
+            osgi.extender;osgi.extender="osgi.component";uses:="org.osgi.service.component";version:Version="1.2.1"
+        </capability>
+    </feature>
+    
+    <feature name="osgiliath-aries-proxy" description="Aries Proxy" version="${org.apache.karaf.features_standard.version}">
+        <bundle start-level="20" dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>
+        <bundle start-level="20" dependency="true">mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries_org.apache.aries.util.version}</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.proxy/org.apache.aries.proxy.api/${org.apache.aries.proxy_org.apache.aries.proxy.api.version}</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.proxy/org.apache.aries.proxy.impl/${org.apache.aries.proxy_org.apache.aries.proxy.impl.version}</bundle>
+        <capability>
+            osgi.service;effective:=active;objectClass=org.apache.aries.proxy.ProxyManager
+        </capability>
+    </feature>
+    <feature name="osgiliath-aries-blueprint" description="Aries Blueprint" version="${org.apache.karaf.features_standard.version}">
+        <feature prerequisite="false" dependency="false">osgiliath-aries-proxy</feature>
+        <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.api/${org.apache.aries.blueprint_org.apache.aries.blueprint.api.version}</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.cm/${org.apache.aries.blueprint_org.apache.aries.blueprint.cm.version}</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core.compatibility/${org.apache.aries.blueprint_org.apache.aries.blueprint.core.compatibility.version}</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${org.apache.aries.blueprint_org.apache.aries.blueprint.core.version}</bundle>
+        <conditional>
+            <condition>bundle</condition>
+            <bundle start-level="30">mvn:org.apache.karaf.bundle/org.apache.karaf.bundle.blueprintstate/${org.apache.karaf.bundle_org.apache.karaf.bundle.blueprintstate.version}</bundle>
+        </conditional>
+        <capability>
+            osgi.service;effective:=active;objectClass=org.apache.aries.blueprint.services.ParserService,
+            osgi.extender; osgi.extender="osgi.blueprint";uses:="org.osgi.service.blueprint.container,org.osgi.service.blueprint.reflect";version:Version="1.0"
+        </capability>
+    </feature>
+    
+    <feature name="osgiliath-jetty" version="${org.eclipse.jetty.version}">
+        <feature prerequisite="false" dependency="false">osgiliath-pax-jetty</feature>
+    </feature>
+    
+    <feature name="osgiliath-http" description="Implementation of the OSGI HTTP Service" version="${org.apache.karaf.features_standard.version}">
+        <feature prerequisite="false" dependency="false">osgiliath-pax-http</feature>
         <bundle start-level="30">mvn:org.apache.karaf.http/org.apache.karaf.http.core/${org.apache.karaf.http_org.apache.karaf.http.core.version}</bundle>
-        <bundle start-level="30">mvn:org.apache.karaf.http/org.apache.karaf.http.command/${org.apache.karaf.http_org.apache.karaf.http.command.version}</bundle>
     </feature>
-    <feature name="osgiliath-http-whiteboard" version="${karaf.version}" description="Provide HTTP Whiteboard pattern support" resolver="(obr)">
-        <feature>osgiliath-http</feature>
-        <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-http-whiteboard</feature>
-    </feature>
-    <feature name="osgiliath-war" version="${karaf.version}" description="Turn Karaf as a full WebContainer" resolver="(obr)">
-        <feature>osgiliath-http</feature>
-        <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-war</feature>
+    <feature name="osgiliath-war" description="Turn Karaf as a full WebContainer" version="${org.apache.karaf.features_standard.version}">
+        <feature prerequisite="false" dependency="false">osgiliath-http</feature>
+        <feature prerequisite="false" dependency="false">osgiliath-pax-war</feature>
         <bundle start-level="30">mvn:org.apache.karaf.web/org.apache.karaf.web.core/${org.apache.karaf.web_org.apache.karaf.web.core.version}</bundle>
-        <bundle start-level="30">mvn:org.apache.karaf.web/org.apache.karaf.web.command/${org.apache.karaf.web_org.apache.karaf.web.command.version}</bundle>
     </feature>
-    <feature name="osgiliath-jetty" version="${org.eclipse.jetty.version}" resolver="(obr)">
-        <feature>osgiliath-pax-jetty</feature>
-    </feature>
-    <feature name="osgiliath-spring-web" version="${org.apache.servicemix.bundles.spring4.version}" description="Spring 4.0.x Web support" resolver="(obr)">
-        <feature version="${org.apache.servicemix.bundles.spring4.version}">spring</feature>
-        <feature>osgiliath-http</feature>
-        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-web/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version}</bundle>
-        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version}</bundle>
+    <feature name="osgiliath-jolokia" description="Jolokia monitoring support" version="/${org.jolokia_jolokia-osgi.version}">
+        <config name="org.jolokia.osgi" append="false">
+            org.jolokia.user=karaf
+            org.jolokia.realm=karaf
+            org.jolokia.authMode=jaas
+        </config>
+        <feature prerequisite="false" dependency="false">osgiliath-http</feature>
+        <bundle>mvn:org.jolokia/jolokia-osgi/${org.jolokia_jolokia-osgi.version}</bundle>
     </feature>
 </features>

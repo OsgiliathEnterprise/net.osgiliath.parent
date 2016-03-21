@@ -5,9 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>net.osgiliath.pom.repositories</artifactId>
-		<groupId>net.osgiliath</groupId>
+		<groupId>net.osgiliath.poms</groupId>
 		<version>0.2.4-SNAPSHOT</version>
-		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>net.osgiliath.pom.reporting</artifactId>
 	<packaging>pom</packaging>

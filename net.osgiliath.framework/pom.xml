@@ -1,43 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>net.osgiliath</groupId>
-    <artifactId>net.osgiliath.parent</artifactId>
-    <version>0.2.4-SNAPSHOT</version>
-  </parent>
+		<groupId>net.osgiliath.poms</groupId>
+		<version>0.2.4-SNAPSHOT</version>
+		<artifactId>net.osgiliath.pom.projects.definition</artifactId>
+		<relativePath>../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management/net.osgiliath.pom.projects.definition</relativePath>
+	</parent>
+	
   <artifactId>net.osgiliath.framework</artifactId>
-  <name>Pom Osgiliath framework</name>
-  <description>Karaf features and Osgiliath frameworks modules</description>
   <packaging>pom</packaging>
   <modules>
-  <module>net.osgiliath.features</module>
-  <module>net.osgiliath.helpers</module>
+  	<module>net.osgiliath.features</module>
+  	<module>net.osgiliath.modules</module>
+  	<module>net.osgiliath.wrappers</module>
   </modules>
-  <reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${maven-javadoc-plugin.version}</version>
-
-				<configuration>
-					<minmemory>128m</minmemory>
-					<maxmemory>1024m</maxmemory>
-				</configuration>
-				<reportSets>
-
-					<reportSet>
-						<id>aggregate</id>
-						<inherited>false</inherited>
-						<configuration>
-							<!-- Specific configuration for the aggregate report -->
-						</configuration>
-						<reports>
-							<report>aggregate</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-		</plugins>
-	</reporting>
 </project>

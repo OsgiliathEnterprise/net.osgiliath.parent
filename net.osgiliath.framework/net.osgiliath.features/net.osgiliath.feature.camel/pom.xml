@@ -1,7 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath.framework</groupId>
+		<groupId>net.osgiliath.features</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
 		<version>0.2.4-SNAPSHOT</version>
 	</parent>
@@ -23,8 +24,11 @@
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-resources-plugin</artifactId> <configuration> <useDefaultDelimiters>false</useDefaultDelimiters> <delimiters> <delimiter>${*}</delimiter> </delimiters> </configuration> <executions> 
-				<execution> <id>filter</id> <phase>generate-resources</phase> <goals> <goal>resources</goal> </goals> </execution> </executions> </plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-resources-plugin</artifactId> 
+				<configuration> <useDefaultDelimiters>false</useDefaultDelimiters> <delimiters> 
+				<delimiter>${*}</delimiter> </delimiters> </configuration> <executions> <execution> 
+				<id>filter</id> <phase>generate-resources</phase> <goals> <goal>resources</goal> 
+				</goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -67,10 +71,6 @@
 			<artifactId>jackson-module-jaxb-annotations</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 		</dependency>
@@ -87,41 +87,48 @@
 			<artifactId>commons-pool</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>javax.transaction-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.feature.functional</artifactId>
-			<type>xml</type>
+			<artifactId>net.osgiliath.feature.pax-cdi</artifactId>
 			<version>${project.version}</version>
+			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.feature.cxf</artifactId>
-			<type>xml</type>
+			<artifactId>net.osgiliath.feature.karaf-spring</artifactId>
 			<version>${project.version}</version>
+			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.feature.karaf-standard</artifactId>
-			<type>xml</type>
 			<version>${project.version}</version>
+			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.camel-catalog</artifactId>
-			<version>${project.version}</version>
+		<groupId>net.osgiliath.wrappers</groupId>
+		<artifactId>net.osgiliath.wrapper.camel-cdi</artifactId>
+		<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.camel-websocket</artifactId>
 			<version>${project.version}</version>
-			<artifactId>net.osgiliath.wrapper.camel-jms</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-blueprint</artifactId>
@@ -130,6 +137,7 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-catalog</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-commands-core</artifactId>
@@ -144,6 +152,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jackson</artifactId>
 		</dependency>
 		<dependency>
@@ -152,8 +164,9 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-websocket</artifactId>
+			<artifactId>camel-jms</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-xmljson</artifactId>
@@ -173,20 +186,16 @@
 			<artifactId>camel-karaf-commands</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.camel.karaf</groupId>
-			<artifactId>camel-karaf-commands-catalog</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jms_1.1_spec</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jta_1.1_spec</artifactId>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-servlet_3.0_spec</artifactId>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-beanutils</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
@@ -201,17 +210,17 @@
 			<artifactId>org.apache.servicemix.bundles.ezmorph</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jaxb-api-2.2</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jaxb-impl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.jdom</artifactId>
-			<version>1.1_4</version>
+			<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom1.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
@@ -232,6 +241,10 @@
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.stax-api-1.0</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jettison</groupId>

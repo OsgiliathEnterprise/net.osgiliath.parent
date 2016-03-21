@@ -1,2 +1,0 @@
-Import-Package: *
-Bundle-Activator: net.osgiliath.database.impl.Activator

@@ -1,15 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>net.osgiliath</groupId>
-		<artifactId>net.osgiliath.parent</artifactId>
-		<version>0.2.4-SNAPSHOT</version>
-	</parent>
-	<artifactId>net.osgiliath.samples</artifactId>
-	<packaging>pom</packaging>
-	<name>Pom samples</name>
-	<description>Pom for Osgiliath samples</description>
-	<modules>
-		<module>net.osgiliath.hello</module>
-	</modules>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.osgiliath.poms</groupId>
+    <artifactId>net.osgiliath.pom.projects.definition</artifactId>
+    <relativePath>../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management/net.osgiliath.pom.projects.definition</relativePath>
+    <version>0.2.4-SNAPSHOT</version>
+  </parent>
+  <groupId>net.osgiliath.samples</groupId>
+  <artifactId>net.osgiliath.samples</artifactId>
+  <packaging>pom</packaging>
+  <name>Osgiliath samples</name>
+  <description>Samples of Osgiliath framework usage</description>
+  <modules>
+  	<module>net.osgiliath.sample.webapp.simple</module>
+  </modules>
 </project>

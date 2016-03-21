@@ -1,112 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  #%L
-  Osgiliath messaging features
-  %%
-  Copyright (C) 2013 - 2015 Osgiliath
-  %%
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-  
-       http://www.apache.org/licenses/LICENSE-2.0
-  
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  #L%
-  -->
-
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
-	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
-	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.feature.common/${project.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}">
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.activemq/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
-	
-
-	<!-- Bundles needed if only client will be deployed in the container -->
-	<feature name="osgiliath-activemq-client" description="ActiveMQ client libraries" version="${org.apache.activemq.version}" resolver="(obr)" start-level="50">
-		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring</feature>
-		<bundle dependency="true" start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
-		<!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/${geronimo-annotation_1.1_spec.version}</bundle> -->
-		<!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo-jta_1.1_spec.version}</bundle>  -->
-		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</bundle>
-		<bundle dependency="true">mvn:org.jvnet.jaxb2_commons/jaxb2-basics-runtime/${org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version}</bundle>
-		<bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
-		<bundle dependency="true">mvn:commons-net/commons-net/${commons-net_commons-net.version}</bundle>
-		<bundle dependency='true'>wrap:mvn:org.apache.zookeeper/zookeeper/${org.apache.zookeeper_zookeeper.version}$Import-Package=*;resolution:=optional&amp;Export-Package=org.apache.zookeeper*;-noimport:=true&amp;overwrite=merge</bundle>
-		<!-- uber osgi bundle means client is not that lean, todo: introduce client osgi bundle -->
-		<feature>osgiliath-spring-web</feature>
-		<!-- <bundle dependency="true">mvn:commons-logging/commons-logging/${commons-logging_commons-logging.version}</bundle> -->
-		<bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq_activemq-osgi.version}</bundle>
-		<!-- <bundle dependency="true">mvn:org.apache.commons/commons-pool2/${org.apache.commons_commons-pool2.version}</bundle> -->
-		
-		<configfile finalname="/etc/${project.artifactId}.cfg">mvn:${project.groupId}/net.osgiliath.feature.messaging/${project.version}/cfg/activemq</configfile>
-	</feature>
-
-	<!-- All bundles needed by the broker -->
-	<feature name="osgiliath-activemq-broker" description="ActiveMQ broker libraries plus default broker" version="${org.apache.activemq.version}" resolver="(obr)" start-level="50">
-		<feature>osgiliath-jetty</feature>
-		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
-		<bundle>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq_activemq-karaf.version}</bundle>
-		<bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
-		<bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
-		<bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
-		<bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec_commons-codec.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.velocity/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version}</bundle>
-		<!-- <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/${org.apache.servicemix.specs.version}</bundle>  -->
-		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version}</bundle>
-		<bundle dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version}</bundle>
-		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
-		<bundle dependency="true">mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries_org.apache.aries.util.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.activemq/activeio-core/${org.apache.activemq_activeio-core.version}</bundle>
-		<bundle dependency="true">mvn:org.codehaus.jettison/jettison/${org.codehaus.jettison_jettison.version}</bundle>
-		<bundle dependency="true">mvn:org.codehaus.jackson/jackson-core-asl/${org.codehaus.jackson_jackson-core-asl.version}</bundle>
-		<bundle dependency="true">mvn:org.codehaus.jackson/jackson-mapper-asl/${org.codehaus.jackson_jackson-mapper-asl.version}</bundle>
-		<bundle dependency='true'>mvn:org.scala-lang/scala-library/${org.scala-lang_scala-library.version}</bundle>
-		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helper.activemq.broker/${project.version}</bundle>
-		<feature version='${org.apache.activemq.version}'>osgiliath-activemq-blueprint</feature>
-		<!-- Scala 2.9 is not OSGi bundle. But 2.10 is <bundle dependency="true">mvn:org.scala-lang/scala-library/2.9.1</bundle> -->
-	</feature>
-	<feature name="osgiliath-activemq-blueprint" version="${org.apache.activemq.version}" resolver="(obr)" start-level="50" description="ActiveMQ client with blueprint support">
-		<bundle dependency='true'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.scripting-api-1.0/${org.apache.servicemix.specs_org.apache.servicemix.specs.scripting-api-1.0.version}</bundle>
-		<bundle dependency='true'>mvn:org.apache.commons/commons-jexl/${org.apache.commons_commons-jexl.version}</bundle>
-		<bundle dependency='true'>mvn:org.apache.xbean/xbean-blueprint/${xbean.version}</bundle>
-		<bundle>mvn:org.apache.activemq/activemq-blueprint/${org.apache.activemq_activemq-blueprint.version}</bundle>
-		<feature version="${org.apache.activemq.version}">osgiliath-activemq-client</feature>
-	</feature>
-	<feature name="osgiliath-messaging" version="${project.version}" start-level="50" description="Osgiliath common client libraries">
-		<bundle >mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
-		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring-tx</feature>
-		<feature version='${org.apache.aries.transaction.version}'>osgiliath-transaction</feature>
-		<feature version='${org.apache.karaf.features_enterprise.version}'>osgiliath-jms</feature>
-		<feature version='${org.apache.activemq.version}'>osgiliath-activemq-blueprint</feature>
+	<feature name="osgiliath-messaging" version="${project.version}" start-level="50" description="Osgiliath messaging fwk">
+		<bundle>mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-tx</feature>
+		<feature version="${apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
+		<feature version="${org.apache.karaf.features_enterprise.version}">osgiliath-jms</feature>
+		<feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq-blueprint</feature>
 		<bundle dependency='true'>mvn:commons-io/commons-io/${commons-io_commons-io.version}</bundle>
-		<bundle>mvn:${project.groupId}/net.osgiliath.helper.activemq.jms.connectionfactory.exporter/${project.version}</bundle>
-		<bundle>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq_activemq-karaf.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version}</bundle>
-		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom1.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version}</bundle>
+		<feature prerequisite="true">wrap</feature>
+		<bundle>wrap:mvn:org.apache.activemq/activemq-ra/${org.apache.activemq_activemq-ra.version}</bundle>
+		<!-- <feature>osgiliath-jetty</feature>  -->
 	</feature>
-	<feature name="osgiliath-messaging-spring" version="${project.version}"  start-level="50" description="Spring JMS templates (Blueprint way of JMS handling in Osgiliath)">
-		<feature version='${project.version}'>osgiliath-messaging</feature>
+	
+	<feature name="osgiliath-messaging-default-broker" version="${project.version}" start-level="50" description="Osgiliath standalone broker">
+		<feature version="${project.version}">osgiliath-messaging</feature>
+		<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.activemq.jms.broker/${project.version}</bundle>
+	</feature>
+	
+	<feature name="osgiliath-messaging-client" version="${project.version}"  start-level="50" description="Spring JMS templates (Blueprint way of JMS handling in Osgiliath)">
+		<feature version="${project.version}">osgiliath-messaging</feature>
 		<bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
-		<feature version="${org.apache.servicemix.bundles.spring4.version}">spring-jms</feature>
-		<bundle>mvn:net.osgiliath.framework/net.osgiliath.helper.spring-jms/${project.version}</bundle>
-	</feature>
-	<feature name="osgiliath-messaging-websocket" version="${project.version}" start-level="51" description="Websocket needed libraries">
-		<feature version='${project.version}'>osgiliath-messaging</feature>
-		<feature>osgiliath-jetty</feature>
-		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
-		<bundle>mvn:org.eclipse.jetty/jetty-websocket/${org.eclipse.jetty_jetty-websocket.version}</bundle>
+		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-jms</feature>
+		<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.jms.connectionfactories/${project.version}</bundle>
 	</feature>
 </features>

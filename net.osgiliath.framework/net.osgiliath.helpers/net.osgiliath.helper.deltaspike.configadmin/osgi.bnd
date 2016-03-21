@@ -1,3 +1,0 @@
-Fragment-Host: org.apache.deltaspike.core.deltaspike-core-api
-Import-Package: *
-Export-Package: *,!internal

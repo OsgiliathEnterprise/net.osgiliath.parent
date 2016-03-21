@@ -1,6 +1,0 @@
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
-Provide-Capability: org.ops4j.pax.cdi.extension;extension="cxf-integration-cdi"
-Import-Package: javax.enterprise.inject,\
- org.apache.cxf.interceptor,\
- *
-Export-Package: org.apache.cxf.cdi

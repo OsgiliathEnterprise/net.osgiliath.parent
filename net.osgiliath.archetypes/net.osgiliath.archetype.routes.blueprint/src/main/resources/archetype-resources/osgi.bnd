@@ -1,3 +1,0 @@
-Import-Package: *
-DynamicImport-Package: *
-Require-TldBundle: org.springframework.web.servlet

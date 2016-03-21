@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- #%L karaf-features-cdi %% Copyright (C) 2013 Osgiliath corp %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You
-	may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS
-	IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. #L% -->
-
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="${project.artifactId}-${project.version}">
-    <repository>mvn:org.apache.karaf.features/standard/${org.apache.karaf.features_standard.version}/xml/features</repository>
-    <repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
-    
-   
-    <feature name="osgiliath-pax-cdi-1.2" description="Provide CDI 1.2 support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}" resolver="(obr)">
-        <feature>scr</feature>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
+	name="${project.artifactId}-${project.version}">
+	<repository>mvn:org.ops4j.pax.cdi/pax-cdi-features/${org.ops4j.pax.cdi_pax-cdi-features.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.pax-base/${project.version}/xml/features</repository>
+	
+	<feature name="osgiliath-pax-cdi" description="Provide CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}"
+        resolver="(obr)">
+        <feature>osgiliath-scr</feature>
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
+        <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
         <bundle dependency="true">mvn:javax.enterprise/cdi-api/${javax.enterprise_cdi-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
         <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
@@ -18,7 +17,7 @@
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/${org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version}</bundle>
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</bundle>
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/${org.ops4j.pax.swissbox_pax-swissbox-core.version}</bundle>
-        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base/${org.ops4j.base_ops4j-base.version}</bundle>
+        <feature version="${org.ops4j.base_pax-base-features.version}">osgiliath-pax-base</feature>
         <bundle dependency="true">mvn:org.apache.xbean/xbean-bundleutils/${org.apache.xbean_xbean-bundleutils.version}</bundle>
         <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-api/${org.ops4j.pax.cdi_pax-cdi-api.version}</bundle>
         <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-spi/${org.ops4j.pax.cdi_pax-cdi-spi.version}</bundle>
@@ -26,24 +25,54 @@
         <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extender/${org.ops4j.pax.cdi_pax-cdi-extender.version}</bundle>
     </feature>
     
-    <feature name='osgiliath-weld' version='${org.ops4j.pax.cdi.version}' resolver="(obr)" description="Enables Context dependency injection and CDI configuration admin handling in your project">
-        <feature version="${org.ops4j.pax.cdi.version}">osgiliath-pax-cdi-1.2</feature>
+    <feature name="osgiliath-pax-cdi-openwebbeans" description="OpenWebBeans CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}"
+        resolver="(obr)">
+        <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
+        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+        <!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-validation_1.0_spec/1.1</bundle>-->
+        <!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>-->
+        <bundle>mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
+<!--         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/1.0</bundle> -->
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/${org.apache.xbean_xbean-asm5-shaded.version}</bundle>
+        <!--<bundle dependency="true">mvn:org.apache.xbean/xbean-finder-shaded/4.1</bundle>-->
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-finder/${org.apache.xbean_xbean-finder.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-spi/${org.apache.openwebbeans_openwebbeans-spi.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-impl/${org.apache.openwebbeans_openwebbeans-impl.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-el22/${org.apache.openwebbeans_openwebbeans-el22.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-osgi/${org.apache.openwebbeans_openwebbeans-osgi.version}</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-openwebbeans/${org.ops4j.pax.cdi_pax-cdi-openwebbeans.version}</bundle>
+    </feature>
+    
+	<feature name="osgiliath-pax-cdi-weld" description="Weld CDI 1.2 support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}"
+        resolver="(obr)">
+        <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
         <bundle dependency="true">mvn:org.jboss.weld/weld-osgi-bundle/${org.jboss.weld_weld-osgi-bundle.version}</bundle>
         <bundle>mvn:org.jboss.logging/jboss-logging/${org.jboss.logging_jboss-logging.version}</bundle>
         <bundle>mvn:com.google.guava/guava/${com.google.guava_guava.version}</bundle>
         <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-weld/${org.ops4j.pax.cdi_pax-cdi-weld.version}</bundle>
     </feature>
+	
+	<feature name="osgiliath-pax-cdi-web" description="Web CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}"
+        resolver="(obr)">
+        <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
+        <feature prerequisite="true">osgiliath-war</feature>
+        <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web/${org.ops4j.pax.cdi_pax-cdi-web.version}</bundle>
+    </feature>
+	
+	<feature name="osgiliath-pax-cdi-web-weld" description="Weld Web CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}"
+        resolver="(obr)">
+        <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi-web</feature>
+        <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi-weld</feature>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web-weld/${org.ops4j.pax.cdi_pax-cdi-web-weld.version}</bundle>
+    </feature>
     
-    <feature name="osgiliath-pax-cdi-1.2-web" description="Web CDI support" version="${org.ops4j.pax.cdi.version}" resolver="(obr)">
-		<feature version="${org.ops4j.pax.cdi.version}">osgiliath-pax-cdi-1.2</feature>
-		<feature>osgiliath-war</feature>
-		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</bundle>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web/${org.ops4j.pax.cdi_pax-cdi-web.version}</bundle>
+	<feature name="osgiliath-deltaspike-core" description="Apache Deltaspike core support"
+		version="${org.apache.deltaspike.core.version}" resolver="(obr)">
+		<feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
+        <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.core_deltaspike-core-api.version}</bundle>
+        <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-impl/${org.apache.deltaspike.core_deltaspike-core-impl.version}</bundle>
 	</feature>
 
-	<feature name="osgilath-pax-cdi-1.2-web-weld" description="Weld Web CDI 1.2 support" version="${org.ops4j.pax.cdi.version}" resolver="(obr)">
-		<feature version="${org.ops4j.pax.cdi.version}">osgiliath-pax-cdi-1.2-web</feature>
-		<feature version="${org.ops4j.pax.cdi.version}">osgiliath-weld</feature>
-		<bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web-weld/${org.ops4j.pax.cdi_pax-cdi-web-weld.version}</bundle>
-	</feature>
+
 </features>

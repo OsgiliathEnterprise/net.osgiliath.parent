@@ -1,7 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath.framework</groupId>
+		<groupId>net.osgiliath.features</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
 		<version>0.2.4-SNAPSHOT</version>
 	</parent>
@@ -49,6 +50,10 @@
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>com.fasterxml</groupId>
+			<artifactId>classmate</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 		</dependency>
@@ -69,12 +74,121 @@
 			<artifactId>javax.el-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.interceptor</groupId>
+			<artifactId>javax.interceptor-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>javax.transaction-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.karaf-standard</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.pax-jdbc</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.features</groupId>
+			<artifactId>enterprise</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.transaction</groupId>
+			<artifactId>org.apache.aries.transaction.blueprint</artifactId>
+			<version>${org.apache.aries.transaction_org.apache.aries.transaction.blueprint.version1}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.transaction</groupId>
+			<artifactId>org.apache.aries.transaction.blueprint</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.transaction</groupId>
+			<artifactId>org.apache.aries.transaction.manager</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries</groupId>
+			<artifactId>org.apache.aries.util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jndi</groupId>
+			<artifactId>org.apache.aries.jndi.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jndi</groupId>
+			<artifactId>org.apache.aries.jndi.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jndi</groupId>
+			<artifactId>org.apache.aries.jndi.legacy.support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jndi</groupId>
+			<artifactId>org.apache.aries.jndi.rmi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jndi</groupId>
+			<artifactId>org.apache.aries.jndi.url</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jpa</groupId>
+			<artifactId>org.apache.aries.jpa.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jpa</groupId>
+			<artifactId>org.apache.aries.jpa.blueprint</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jpa</groupId>
+			<artifactId>org.apache.aries.jpa.container</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.aries.jpa</groupId>
+			<artifactId>org.apache.aries.jpa.support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.coordinator</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.geronimo.components</groupId>
 			<artifactId>geronimo-connector</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-atinject_1.0_spec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.jdbc</groupId>
+			<artifactId>org.apache.karaf.jdbc.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.jms</groupId>
+			<artifactId>org.apache.karaf.jms.core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.jndi</groupId>
+			<artifactId>org.apache.karaf.jndi.core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
@@ -84,20 +198,9 @@
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jms_1.1_spec</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jpa_2.0_spec</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>enterprise</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-servlet_3.0_spec</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.openjpa</groupId>
@@ -107,9 +210,16 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.ant</artifactId>
 		</dependency>
+		<!-- <dependency> <groupId>org.apache.servicemix.bundles</groupId> <artifactId>org.apache.servicemix.bundles.antlr</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.commons-dbcp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.dom4j</artifactId>
+			
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
@@ -117,7 +227,37 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.xbean</groupId>
-			<artifactId>xbean-asm4-shaded</artifactId>
+			<artifactId>xbean-asm5-shaded</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xbean</groupId>
+			<artifactId>xbean-naming</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.el</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>org.eclipse.persistence</groupId> <artifactId>javax.persistence</artifactId> 
+			</dependency> -->
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
+			</dependency> <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-entitymanager</artifactId> 
+			</dependency> <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-osgi</artifactId> 
+			</dependency> <dependency> <groupId>org.hibernate.common</groupId> <artifactId>hibernate-commons-annotations</artifactId> 
+			</dependency> <dependency> <groupId>org.javassist</groupId> <artifactId>javassist</artifactId> 
+			</dependency> <dependency> <groupId>org.jboss</groupId> <artifactId>jandex</artifactId> 
+			</dependency> <dependency> <groupId>org.jboss.spec.javax.security.jacc</groupId> 
+			<artifactId>jboss-jacc-api_1.4_spec</artifactId> </dependency> -->
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.jdbc</artifactId>
 		</dependency>
 	</dependencies>
 </project>

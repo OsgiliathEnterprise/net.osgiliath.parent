@@ -1,4 +1,0 @@
-Import-Package: javax.validation,\
- org.springframework.**;version="[3,5)",\
- javax.transaction,\
- *

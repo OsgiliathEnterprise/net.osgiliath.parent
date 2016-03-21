@@ -1,82 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the 
-		Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, 
-		software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
 	<parent>
-		<groupId>net.osgiliath.framework</groupId>
+		<groupId>net.osgiliath.features</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
 		<version>0.2.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.validation</artifactId>
-	<name>Osgiliath validation features</name>
-	<description>JSR303 (validation) support for Osgiliath framework</description>
-	<dependencies>
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.feature.cdi</artifactId>
-			<version>${project.version}</version>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.feature.functional</artifactId>
-			<version>${project.version}</version>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>net.osgiliath.helper.validation.osgi.services</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.wrappers</groupId>
-			<artifactId>net.osgiliath.wrapper.hibernate.validator.cdi.osgi</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-atinject_1.0_spec</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>enterprise</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.karaf.features</groupId>
-			<artifactId>spring</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging</artifactId>
-		</dependency>
-	</dependencies>
+	<name>Osgiliath Validation features</name>
+	<description>Feature for Osgiliath validation support</description>
 	<build>
 		<resources>
 			<resource>
@@ -116,4 +48,65 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.paranamer</groupId>
+			<artifactId>paranamer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.cdi</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.karaf-enterprise</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.karaf-spring</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.modules</groupId>
+			<artifactId>net.osgiliath.module.validation.osgi.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.wrappers</groupId>
+			<artifactId>net.osgiliath.wrapper.hibernate.validator.cdi</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-atinject_1.0_spec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.aspectj</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.jsoup</artifactId>
+		</dependency>
+	</dependencies>
 </project>

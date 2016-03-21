@@ -1,1 +1,0 @@
-# Wrapper for Swagger Jaxrs (support for JaxRS 2 spec)

@@ -1,2 +1,0 @@
-XXX-Require-Capability: osgi.extender; filter:="(osgi.extender=pax.cdi)"
-Import-Package: *

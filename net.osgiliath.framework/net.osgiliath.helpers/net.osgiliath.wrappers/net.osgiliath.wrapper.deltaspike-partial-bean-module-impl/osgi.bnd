@@ -1,8 +1,0 @@
--include: src/main/resources/META-INF/MANIFEST.MF 
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
- org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
- org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-api)",\
- org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-impl)"
-Import-Package: !org.apache.deltaspike.partialbean.impl.*,\
- net.osgiliath.helper.deltaspike.tx,\
- *

@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath.framework</groupId>
+		<groupId>net.osgiliath.features</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
 		<version>0.2.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.pax-web</artifactId>
-	<name>Osgiliath Pax-Web</name>
-	<description>Pax-web wrapped features</description>
+	<name>Pax-web</name>
+	<description>Pax web wrapped Osgiliath feature</description>
 	<build>
 		<resources>
 			<resource>
@@ -49,28 +50,50 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>biz.aQute.bnd</groupId>
-			<artifactId>bndlib</artifactId>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.interceptor</groupId>
+			<artifactId>javax.interceptor-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>javax.transaction-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jaspic_1.0_spec</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jta_1.1_spec</artifactId>
+			<groupId>org.apache.aries.spifly</groupId>
+			<artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.aries</groupId>
+			<artifactId>org.apache.aries.util</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-jta_1.1_spec</artifactId> 
+			</dependency> -->
+		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-servlet_3.0_spec</artifactId>
+			<artifactId>geronimo-atinject_1.0_spec</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.specs</groupId>
@@ -89,44 +112,113 @@
 			<artifactId>xbean-reflect</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.jetty.aggregate</groupId>
-			<artifactId>jetty-all-server</artifactId>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+			<artifactId>ecj</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.base</groupId>
-			<artifactId>ops4j-base-lang</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-client</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.base</groupId>
-			<artifactId>ops4j-base-monitors</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-continuation</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.base</groupId>
-			<artifactId>ops4j-base-net</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-http</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.base</groupId>
-			<artifactId>ops4j-base-util-property</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-io</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.pax.swissbox</groupId>
-			<artifactId>pax-swissbox-bnd</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jaas</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.pax.swissbox</groupId>
-			<artifactId>pax-swissbox-core</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jaspi</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.pax.swissbox</groupId>
-			<artifactId>pax-swissbox-property</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jmx</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-commons</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jndi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-plus</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-rewrite</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlets</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util-ajax</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-xml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>javax-websocket-client-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>javax-websocket-server-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-servlet</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
 			<artifactId>pax-url-war</artifactId>
+			<classifier>uber</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.web</groupId>
@@ -146,11 +238,35 @@
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-features</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-features</artifactId>
+			<type>xml</type>
+			<classifier>jettyconfig</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-jetty</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-jsp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
 			<artifactId>pax-web-runtime</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.ops4j.pax.web</groupId>
 			<artifactId>pax-web-spi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-all</artifactId>
 		</dependency>
 	</dependencies>
 </project>
