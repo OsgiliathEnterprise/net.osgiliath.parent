@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.osgiliath.features</groupId>
+    <artifactId>net.osgiliath.features</artifactId>
+    <version>0.2.4-SNAPSHOT</version>
+  </parent>
+  <groupId>net.osgiliath.itests</groupId>
+  <artifactId>net.osgiliath.features.itests</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>net.osgiliath.feature.itest.cdi</module>
+  	<module>net.osgiliath.feature.itest.feature</module>
+  	<module>net.osgiliath.feature.itest.cdi.configadmin</module>
+  	<module>net.osgiliath.feature.itest.jaxrs</module>
+  	<module>net.osgiliath.feature.itest.persistence.entities</module>
+  	<module>net.osgiliath.feature.itest.persistence.daos</module>
+  	<module>net.osgiliath.feature.itest.validation.spring</module>
+  	<module>net.osgiliath.feature.itest.validation.cdi</module>
+  	<module>net.osgiliath.feature.itest.security</module>
+  	<module>net.osgiliath.feature.itest.messaging</module>
+  </modules>
+</project>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
+	name="${project.artifactId}-${project.version}">
+	<feature name="osgiliath-pax-base" description="Provide CDI support" version="${org.ops4j.base_pax-base-features.version}">
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-exec/${org.ops4j.base_ops4j-base-exec.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-io/${org.ops4j.base_ops4j-base-io.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-lang/${org.ops4j.base_ops4j-base-lang.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-monitors/${org.ops4j.base_ops4j-base-monitors.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-net/${org.ops4j.base_ops4j-base-net.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-spi/${org.ops4j.base_ops4j-base-spi.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-store/${org.ops4j.base_ops4j-base-store.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-util/${org.ops4j.base_ops4j-base-util.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-util-collections/${org.ops4j.base_ops4j-base-util-collections.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-util-property/${org.ops4j.base_ops4j-base-util-property.version}</bundle>
+		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-util-xml/${org.ops4j.base_ops4j-base-util-xml.version}</bundle>
+	</feature>
+</features>

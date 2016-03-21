@@ -1,0 +1,12 @@
+/target
+/node_modules
+/src/main/javascript/bower_components
+/.settings
+/.classpath
+/.project
+/.tmp
+/.sass-cache/
+/npm-debug.log
+/.DS_Store
+/src/site
+.tern-project

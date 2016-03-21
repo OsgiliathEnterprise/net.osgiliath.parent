@@ -1,0 +1,5 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)"
+Import-Package: org.apache.deltaspike.core.api.config,\
+ *

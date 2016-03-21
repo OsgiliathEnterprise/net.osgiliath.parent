@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
+	name="${project.artifactId}-${project.version}">
+	 <repository>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq_activemq-karaf.version}/xml/features-core</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-spring/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
+	
+	<feature name="osgiliath-activemq-client" description="ActiveMQ client libraries" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+        <feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring</feature>
+        <!-- <feature>spring-dm</feature> -->
+        <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
+        <bundle dependency="true">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</bundle>
+        <bundle dependency="true">mvn:org.jvnet.jaxb2_commons/jaxb2-basics-runtime/${org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version}</bundle>
+        <bundle dependency="false">mvn:org.apache.commons/commons-pool2/${org.apache.commons_commons-pool2.version}</bundle>
+        <bundle dependency="false">mvn:commons-net/commons-net/${commons-net_commons-net.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.zookeeper/zookeeper/${org.apache.zookeeper_zookeeper.version}</bundle>
+        <!-- uber osgi bundle means client is not that lean, todo: introduce client osgi bundle -->
+        
+        <bundle dependency="false">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
+       <!--  <bundle>mvn:org.apache.activemq/activemq-osgi/${org.apache.activemq_activemq-osgi.version}</bundle>  -->
+        <feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq-osgi</feature>
+       
+    </feature>
+    
+     <feature name="osgiliath-activemq" description="ActiveMQ broker libraries" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+      <!-- <feature>osgiliath-http</feature> -->
+      
+      <feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq-client</feature>
+      <!-- <bundle>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq_activemq-karaf.version}</bundle>  -->
+      <bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
+      <bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
+      <bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
+      <bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec_commons-codec.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.velocity/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt-spring31/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt-spring31.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version}</bundle>
+      <bundle dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.manager/${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries_org.apache.aries.util.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.activemq/activeio-core/${org.apache.activemq_activeio-core.version}</bundle>
+      <bundle dependency="true">mvn:org.codehaus.jettison/jettison/${org.codehaus.jettison_jettison.version}</bundle>
+      <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core_jackson-core.version}</bundle>
+      <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.core_jackson-databind.version}</bundle>
+      <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.core_jackson-annotations.version}</bundle>
+      <bundle dependency="true">mvn:org.scala-lang/scala-library/${org.scala-lang_scala-library.version}</bundle>
+    </feature>
+    
+    <feature name="osgiliath-activemq-osgi" description="ActiveMQ broker libraries splitted" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+    	<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core_jackson-core.version}</bundle>
+      	<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.core_jackson-databind.version}</bundle>
+      	<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.core_jackson-annotations.version}</bundle>
+      	<bundle dependency="true">mvn:org.fusesource.hawtbuf/hawtbuf/${org.fusesource.hawtbuf_hawtbuf.version}</bundle>
+      	<bundle dependency="true">mvn:org.fusesource.hawtbuf/hawtbuf-proto/${org.fusesource.hawtbuf_hawtbuf-proto.version}</bundle>
+    	<bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
+      	<bundle dependency="true">mvn:javax.jmdns/jmdns/${javax.jmdns_jmdns.version}</bundle>
+    	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</bundle>
+        <bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.activemq/${project.version}</bundle>
+        <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.commons/commons-pool2/${org.apache.commons_commons-pool2.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.activemq/activeio-core/${org.apache.activemq_activeio-core.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt-spring31/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt-spring31.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version}</bundle>
+      	<bundle dependency="false">mvn:commons-net/commons-net/${commons-net_commons-net.version}</bundle>
+        <bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
+      	<bundle dependency="true">mvn:org.codehaus.jettison/jettison/${org.codehaus.jettison_jettison.version}</bundle>
+      	<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring</feature>
+      	<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-jms</feature>
+      	<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-tx</feature>
+      	<bundle dependency="false">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
+      	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version}</bundle>
+      	<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jacc_1.1_spec/${org.apache.geronimo.specs_geronimo-jacc_1.1_spec.version}</bundle>
+      	<bundle dependency="true">mvn:org.fusesource.hawtdispatch/hawtdispatch/${org.fusesource.hawtdispatch_hawtdispatch.version}</bundle>
+      	<bundle dependency="true">mvn:org.fusesource.hawtdispatch/hawtdispatch-transport/${org.fusesource.hawtdispatch_hawtdispatch-transport.version}</bundle>
+      	<bundle dependency="true">mvn:org.fusesource.mqtt-client/mqtt-client/${org.fusesource.mqtt-client_mqtt-client.version}</bundle>
+      	<bundle dependency="true">mvn:org.apache.velocity/velocity/${org.apache.velocity_velocity.version}</bundle>
+      	<bundle dependency="true">mvn:commons-daemon/commons-daemon/${commons-daemon_commons-daemon.version}</bundle>
+      	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.josql/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.josql.version}</bundle>
+      	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.httpcore/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.httpcore.version}</bundle>
+      	<feature prerequisite="true">wrap</feature>
+      	<bundle dependency="true">wrap:mvn:org.apache.httpcomponents/httpclient/${org.apache.httpcomponents_httpclient.version}</bundle>
+    </feature>
+</features>

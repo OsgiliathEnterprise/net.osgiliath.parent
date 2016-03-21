@@ -1,0 +1,8 @@
+Import-Package:\
+ !org.apache.camel.component.websocket.*,\
+ org.eclipse.jetty.util.ssl;resolution:=optional,\
+ org.eclipse.jetty.http.ssl;resolution:=optional,\
+ org.eclipse.jetty.server.ssl;resolution:=optional,\
+ org.eclipse.jetty.websocket;resolution:=optional,\
+ *
+ 

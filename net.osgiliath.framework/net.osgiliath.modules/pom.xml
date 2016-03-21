@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.osgiliath.poms</groupId>
+    <artifactId>net.osgiliath.framework</artifactId>
+    <version>0.2.4-SNAPSHOT</version>
+  </parent>
+  <groupId>net.osgiliath.modules</groupId>
+  <artifactId>net.osgiliath.modules</artifactId>
+  <packaging>pom</packaging>
+  <name>Osgiliath modules</name>
+  <description>Osgiliath specific module: they're deserved to be included in their specific communities</description>
+  <modules>
+  	<module>net.osgiliath.module.cdi.tx</module>
+  	<module>net.osgiliath.module.deltaspike.configadmin</module>
+  	<module>net.osgiliath.module.cdi.eager</module>
+  	<module>net.osgiliath.module.exam</module>
+  	<module>net.osgiliath.module.derby</module>
+  	<module>net.osgiliath.module.spring-data-jpa</module>
+  	<module>net.osgiliath.module.validation.osgi.services</module>
+  	<module>net.osgiliath.module.cxf.exception.handling</module>
+  	<module>net.osgiliath.module.activemq.jms.broker</module>
+  	<module>net.osgiliath.module.jms.connectionfactories</module>
+  	<module>net.osgiliath.module.camel.activemq</module>
+  	<module>net.osgiliath.module.camel</module>
+  	<module>net.osgiliath.module.swagger-ui</module>
+  </modules>
+</project>

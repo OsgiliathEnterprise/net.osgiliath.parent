@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}">
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.persistence/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.jdbc/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.validation/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.webservices/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.security/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.routes/${project.version}/xml/features</repository>
+	<feature name='osgiliath-itests-cdi' version='${project.version}'>
+		<feature version="${project.version}" prerequisite="true">osgiliath-cdi</feature>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.cdi/target/net.osgiliath.feature.itest.cdi-${project.version}.jar</bundle>
+	</feature>
+	
+	<feature name='osgiliath-itests-cdi-configadmin' version='${project.version}'>
+		<configfile finalname="${karaf.etc}/${project.groupId}.deltaspike.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/camel</configfile>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-cdi</feature>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.cdi.configadmin/target/net.osgiliath.feature.itest.cdi.configadmin-${project.version}.jar</bundle>		
+	</feature>
+	<feature name='osgiliath-itests-jaxrs-cdi' version='${project.version}'>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-rest-cdi</feature>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.jaxrs/target/net.osgiliath.feature.itest.jaxrs-${project.version}.jar</bundle>
+	</feature>
+	<feature name='osgiliath-itests-persistence' version='${project.version}'>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-jdbc</feature>
+		<feature version="${project.version}" prerequisite="true">osgiliath-cdi</feature>
+		<feature version="${project.version}" prerequisite="true">osgiliath-persistence</feature>
+		<configfile finalname="/etc/org.ops4j.datasource-myDb.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/db</configfile>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.persistence.entities/target/net.osgiliath.feature.itest.persistence.entities-${project.version}.jar</bundle>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.persistence.daos/target/net.osgiliath.feature.itest.persistence.daos-${project.version}.jar</bundle>
+	</feature>
+	
+	<feature name='osgiliath-itests-validation-spring' version='${project.version}'>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-spring</feature>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.validation.spring/target/net.osgiliath.feature.itest.validation.spring-${project.version}.jar</bundle>
+	</feature>
+	<feature name='osgiliath-itests-validation-cdi' version='${project.version}'>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.validation.cdi/target/net.osgiliath.feature.itest.validation.cdi-${project.version}.jar</bundle>
+	</feature>
+	<feature name='osgiliath-itests-security' version='${project.version}'>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-security</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-cdi</feature>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.security/target/net.osgiliath.feature.itest.security-${project.version}.jar</bundle>
+	</feature>
+	
+	<feature name='osgiliath-itests-messaging-cdi' version='${project.version}'>
+		<feature version="${project.version}" prerequisite="true" >osgiliath-messaging-cdi</feature>
+		<feature version="${project.version}" prerequisite="true">osgiliath-messaging-default-broker</feature>
+		<configfile finalname="${karaf.etc}/${project.groupId}.deltaspike.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/camel</configfile>
+		<bundle>file:${project.root.basedir}/net.osgiliath.feature.itest.messaging/target/net.osgiliath.feature.itest.messaging-${project.version}.jar</bundle>
+	</feature>
+</features>

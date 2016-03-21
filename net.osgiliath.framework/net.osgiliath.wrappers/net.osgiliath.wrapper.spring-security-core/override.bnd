@@ -1,0 +1,23 @@
+Import-Package:\
+ javax.annotation.security;resolution:="optional",\
+ javax.crypto;resolution:="optional",\
+ javax.crypto.spec;resolution:="optional",\
+ javax.security.auth;resolution:="optional",\
+ javax.security.auth.callback;resolution:="optional",\
+ javax.security.auth.login;resolution:="optional",\
+ javax.security.auth.spi;resolution:="optional",\
+ net.sf.ehcache;resolution:="optional",\
+ org.aspectj.lang;resolution:="optional",\
+ org.aspectj.lang.reflect;resolution:="optional",\
+ org.springframework.aop;resolution:="optional";version="[4,5)",\
+ org.springframework.aop.framework;resolution:="optional";version="[4,5)",\
+ org.springframework.aop.support;resolution:="optional";version="[4,5)",\
+ org.springframework.cache;resolution:="optional";version="[4,5)",\
+ org.springframework.dao;resolution:="optional";version="[4,5)",\
+ org.springframework.expression;resolution:="optional";version="[4,5)",\
+ org.springframework.expression.spel.standard;resolution:="optional";version="[4,5)",\
+ org.springframework.expression.spel.support;resolution:="optional";version="[4,5)",\
+ org.springframework.jdbc.core;resolution:="optional";version="[4,5)",\
+ org.springframework.jdbc.core.support;resolution:="optional";version="[4,5)",\
+ org.springframework.scheduling;resolution:="optional";version="[4,5)",\
+ *

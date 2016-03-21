@@ -1,0 +1,5 @@
+/target
+/.settings/
+/.classpath
+/.project
+/src/main/resources/META-INF

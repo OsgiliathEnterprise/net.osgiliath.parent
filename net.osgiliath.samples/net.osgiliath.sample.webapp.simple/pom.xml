@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.osgiliath.samples</groupId>
+    <artifactId>net.osgiliath.samples</artifactId>
+    <version>0.2.4-SNAPSHOT</version>
+  </parent>
+  <artifactId>net.osgiliath.sample.webapp.simple</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>net.osgiliath.sample.webapp.simple.features</module>
+  	<module>net.osgiliath.sample.webapp.simple.model</module>
+  	<module>net.osgiliath.sample.webapp.simple.ui</module>
+  	<module>net.osgiliath.sample.webapp.simple.business</module>
+  </modules>
+  <name>Simple Helloworld sample</name>
+	<description>
+	This is a simple osgiliath sample made with framework, composed of a web part and a model one
+	</description>
+	<organization>
+		<name>Osgiliath</name>
+	</organization>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.rat</groupId>
+				<artifactId>apache-rat-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>1024m</maxmemory>
+				</configuration>
+				<reportSets>
+
+					<reportSet>
+						<id>projectjdoc</id>
+						<configuration>
+							<!-- Specific configuration for the aggregate report -->
+						</configuration>
+						<reports>
+							<report>javadoc-no-fork</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+	<properties>
+		<!-- TODO change your organization, all your Manifests will be signed with 
+			this -->
+		<manifest.organization>Osgiliath</manifest.organization>
+		<!-- the database port, don't use the default Derby one as it conflicts 
+			with liquibase integration (imemdb plugin) -->
+		<database.port>1528</database.port>
+		<database.user>sa</database.user>
+		<database.password>sa</database.password>
+	</properties>
+</project>

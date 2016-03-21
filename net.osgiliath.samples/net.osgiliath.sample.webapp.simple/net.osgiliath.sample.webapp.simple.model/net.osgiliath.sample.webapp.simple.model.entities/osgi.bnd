@@ -1,0 +1,13 @@
+Meta-Persistence: META-INF/persistence.xml
+Import-Package: \
+ javax.persistence.*;version='[2.0,3.0)',\
+ org.apache.derby.tools;resolution:=optional,\
+ org.apache.derby.jdbc;resolution:=optional,\
+ org.apache.openjpa.enhance;resolution:=optional,\
+ org.apache.openjpa.util;resolution:=optional,\
+ *
+XX-Backup:	org.hibernate.proxy,\
+	javassist.util.proxy,\
+	org.hibernate.dialect,\
+	org.hibernate.jpa,\
+	org.hibernate.engine.spi

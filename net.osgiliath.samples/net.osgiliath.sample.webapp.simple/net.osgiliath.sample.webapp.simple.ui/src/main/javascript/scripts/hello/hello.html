@@ -1,0 +1,43 @@
+<div class="wrapper">
+<div class="row">
+	<div class="col-md-8" id="helloInput">
+		<form id="helloForm" ng-submit="sendHello()" class="form-inline">
+			<div id="helloFieldGroup" ng-class="(errors=='')?'form-group has-success has-feedback':'form-group has-feedback has-error'">
+				<label id="helloFieldLabel" for="helloInput" class="control-label">Message: </label>
+				<div id="helloInputDiv" class="form-group">
+					<input type="text" id="helloInput" class="form-control" placeholder="Hello message"
+						ng-model="helloMessage" />
+				</div>
+				<span class="bg-danger">{{errors}}</span>
+			</div>
+		</form>
+	</div>
+		<!-- <form id="helloResultForm" ng-submit="refreshHello()"> -->
+		
+	<!-- <div id="helloResultModalFooter">
+				<input type="submit" id="refreshButton" class="btn" value="Refresh hello" />
+			</div>
+		</form> -->
+	
+	<div class="col-md-4" id="helloSync">
+		<form id="sendHelloSync" ng-submit="sendHelloSync()" class="form-inline">
+			<input type="submit" id="helloButtonSync" class="btn" value="Say hello synchronously" />
+		</form>
+	</div>
+</div>
+<div class="row">
+<div class="col-md-offset-8 col-md-4" id="helloAsync">
+		<form id="sendHelloAsync" ng-submit="sendHelloAsync()" class="form-inline">
+			<input type="submit" id="helloButtonAsync" class="btn" value="Say hello asynchronously" />
+		</form>
+	</div>
+	<div  class="col-md-8">
+		<table id="helloResult" class="table table-striped">
+			<tr ng-repeat="i in helloMessages track by $index">
+				<td>{{i}}</td>
+			</tr>
+		</table>
+	</div>
+	
+</div>
+</div>

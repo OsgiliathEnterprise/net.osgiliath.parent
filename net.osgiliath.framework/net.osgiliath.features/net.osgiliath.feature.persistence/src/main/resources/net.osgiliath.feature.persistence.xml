@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
+	name="${project.artifactId}-${project.version}">
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-spring/${project.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.jdbc/${project.version}/xml/features</repository>
+	<feature name='osgiliath-persistence' version='${project.version}' resolver="(obr)" start-level="41" description="Java persistence API stack" >
+		<bundle dependency='true'>mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
+		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-tx</feature>
+		<feature version="${apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
+		<feature version="${org.apache.karaf.features_enterprise.version}">osgiliath-jndi</feature>
+		<feature version="${project.version}">osgiliath-jdbc</feature>
+		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
+		<feature version="${org.apache.aries.jpa.version}">osgiliath-jpa</feature>
+		<bundle dependency='true'>mvn:org.osgi/org.osgi.service.jpa/${org.osgi_org.osgi.service.jpa.version}</bundle>
+		<feature version="${org.apache.openjpa.version}">osgiliath-openjpa</feature>
+		<feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
+		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
+		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
+		<feature version="${project.version}">osgiliath-spring-data-jpa</feature>
+		<bundle start-level="35" dependency="true">mvn:io.swagger/swagger-annotations/${io.swagger_swagger-annotations.version}</bundle>
+    </feature>
+	<feature name='osgiliath-spring-data-jpa' version='${project.version}' resolver="(obr)" start-level="41" description="Java persistence API stack" >
+		<bundle>mvn:org.springframework.data/spring-data-commons/${org.springframework.data_spring-data-commons.version}</bundle>
+		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-data-jpa/${project.version}</bundle>
+		<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.spring-data-jpa/${project.version}</bundle>
+		
+		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-orm</feature>
+		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-aspects</feature>
+		<bundle>mvn:com.mysema.querydsl/querydsl-core/${com.mysema.querydsl_querydsl-core.version}</bundle>
+		<bundle>mvn:com.mysema.querydsl/querydsl-jpa/${com.mysema.querydsl_querydsl-jpa.version}</bundle>
+		<bundle>mvn:com.mysema.commons/mysema-commons-lang/${com.mysema.commons_mysema-commons-lang.version}</bundle>
+		<bundle>mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
+	</feature>
+	
+</features>

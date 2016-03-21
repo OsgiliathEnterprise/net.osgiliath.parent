@@ -1,0 +1,2 @@
+Import-Package: *
+Bundle-Activator: net.osgiliath.module.derby.impl.Activator

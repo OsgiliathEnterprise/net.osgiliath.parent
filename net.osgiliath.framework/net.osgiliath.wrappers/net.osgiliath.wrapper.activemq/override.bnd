@@ -1,0 +1,15 @@
+Bundle-SymbolicName: org.apache.activemq.activemq-osgi
+Import-Package:\
+ javax.transaction*;resolution:=optional,\
+ org.apache.geronimo.transaction.manager*;resolution:=optional,\
+ javax.jmdns;resolution:=optional,\
+ org.apache.commons.net.*;resolution:=optional,\
+ org.apache.maven.*;resolution:=optional,\
+ org.apache.activemq.*;resolution:=optional,\
+ org.apache.activemq;resolution:=optional,\
+ org.springframework.osgi.*;resolution:=optional,\
+ org.apache.activemq.camel.*;resolution:=optional,\
+ org.apache.activemq.camel;resolution:=optional,\
+ *
+Export-Package: *
+ 

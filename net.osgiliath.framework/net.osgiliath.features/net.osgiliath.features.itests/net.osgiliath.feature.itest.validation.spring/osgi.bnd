@@ -1,0 +1,3 @@
+Require-Bundle: org.hibernate.validator
+Import-Package: !net.osgiliath.validation,\
+ *

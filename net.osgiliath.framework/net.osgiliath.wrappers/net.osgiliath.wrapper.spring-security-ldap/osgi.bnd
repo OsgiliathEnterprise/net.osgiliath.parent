@@ -1,0 +1,1 @@
+-include: src/main/resources/META-INF/MANIFEST.MF,override.bnd

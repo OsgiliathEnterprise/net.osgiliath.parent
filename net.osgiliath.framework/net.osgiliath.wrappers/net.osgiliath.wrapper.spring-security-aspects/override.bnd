@@ -1,0 +1,15 @@
+Import-Package:\
+ org.aspectj.lang;resolution:="optional",\
+ org.aspectj.lang.annotation;resolution:="optional",\
+ org.aspectj.runtime.internal;resolution:="optional",\
+ org.springframework.aop;version="[4,5)",\
+ org.springframework.aop.*;version="[4,5)",\
+ org.springframework.beans;version="[4,5)",\
+ org.springframework.beans.*;version="[4,5)",\
+ org.springframework.context;version="[4,5)",\
+ org.springframework.context.*;version="[4,5)",\
+ org.springframework.jdbc;version="[4,5)";resolution:="optional",\
+ org.springframework.jdbc.*;version="[4,5)";resolution:="optional",\
+ org.springframework.transaction;version="[4,5)",\
+ org.springframework.transaction.*;version="[4,5)",\
+ *

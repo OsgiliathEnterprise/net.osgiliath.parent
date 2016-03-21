@@ -1,0 +1,10 @@
+Import-Package:\
+ com.thoughtworks.qdox;resolution:=optional,\
+ com.thoughtworks.qdox.model;resolution:=optional,\
+ org.apache.tools.ant;resolution:=optional,\
+ org.apache.tools.ant.taskdefs;resolution:=optional,\
+ org.apache.tools.ant.types;resolution:=optional,\
+ org.springframework.web.context.support;resolution:=optional;version="[4,5)",\
+ org.springframework.core;resolution:=optional;version="[4,5)",\
+ org.springframework.*;version="[4,5)",\
+ *

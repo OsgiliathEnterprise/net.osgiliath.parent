@@ -1,0 +1,7 @@
+Import-Package: javax.ws.rs.ext,\
+ javax.ws.rs.core,\
+ org.apache.camel,\
+ org.jdom2,\
+ org.jdom2.output,\
+ org.jdom2.input,\
+ *

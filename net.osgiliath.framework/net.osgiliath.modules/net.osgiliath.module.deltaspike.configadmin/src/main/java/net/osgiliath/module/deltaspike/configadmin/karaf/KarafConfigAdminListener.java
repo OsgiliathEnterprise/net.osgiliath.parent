@@ -1,0 +1,237 @@
+package net.osgiliath.module.deltaspike.configadmin.karaf;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.deltaspike.core.api.config.ConfigResolver;
+import org.apache.deltaspike.core.spi.config.ConfigSource;
+import org.apache.deltaspike.core.spi.config.ConfigSourceProvider;
+
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceRegistration;
+import org.osgi.service.cm.Configuration;
+import org.osgi.service.cm.ConfigurationAdmin;
+import org.osgi.service.cm.ConfigurationEvent;
+import org.osgi.service.cm.ConfigurationListener;
+
+import lombok.extern.slf4j.Slf4j;
+import net.osgiliath.module.cdi.weld.api.SingleServiceTracker;
+
+@Slf4j
+public class KarafConfigAdminListener
+		implements ConfigurationListener, SingleServiceTracker.SingleServiceListener, ConfigSourceProvider {
+
+	private static KarafConfigAdminListener instance;
+	private BundleContext bundleContext;
+	private ServiceRegistration<ConfigurationListener> registration;
+	private SingleServiceTracker configAdminTracker;
+	private Collection<Configuration> configurations;
+	private Collection<String> skippedProperties = new HashSet<String>(
+			Arrays.asList("org.apache.deltaspike.core.spi.activation.ClassDeactivator",
+					"org.apache.deltaspike.ProjectStage", "javax.faces.PROJECT_STAGE", "faces.PROJECT_STAGE",
+					"deltaspike.bean-manager.delegate_lookup.Production", "deltaspike.bean-manager.delegate_lookup",
+					"deltaspike.interceptor.priority.Production", "deltaspike.interceptor.priority"));
+
+	public KarafConfigAdminListener() {
+		if (null == configurations)
+			this.configurations = new HashSet<>();
+	}
+
+	public KarafConfigAdminListener(BundleContext bundleContext) throws InvalidSyntaxException {
+		this();
+		this.getInstance().bundleContext = bundleContext;
+		this.getInstance().registration = bundleContext.registerService(ConfigurationListener.class, this, null);
+		this.getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, ConfigurationAdmin.class,
+				this);
+		this.getInstance().configAdminTracker.open();
+
+	}
+
+	public static KarafConfigAdminListener getInstance() {
+		if (null == instance) {
+			instance = new KarafConfigAdminListener();
+		}
+		return instance;
+	}
+
+	public void stop() {
+		this.getInstance().registration.unregister();
+		this.getInstance().configAdminTracker.close();
+		this.getInstance().configAdminTracker = null;
+		this.getInstance().registration = null;
+		this.getInstance().bundleContext = null;
+
+	}
+
+	@Override
+	public void configurationEvent(ConfigurationEvent event) {
+		try {
+			switch (event.getType()) {
+			case ConfigurationEvent.CM_DELETED:
+				reparse();
+				break;
+			case ConfigurationEvent.CM_UPDATED:
+				reparse();
+				break;
+
+			}
+		} catch (Exception e) {
+
+			log.error("Problem processing Configuration Event {}", event, e);
+		}
+
+	}
+
+	@Override
+	public void serviceFound() {
+
+		getInstance().reparse();
+	}
+
+	public void reparse() {
+		try {
+			ConfigResolver.freeConfigSources();
+			internalReparse();
+		} catch (Exception e) {
+			log.error("error parsing configadmin", e);
+
+		}
+	}
+
+	public void internalReparse() throws IOException, InvalidSyntaxException {
+		ConfigurationAdmin configAdmin = (ConfigurationAdmin) this.getInstance().configAdminTracker.getService();
+		if (null != configAdmin) {
+			Configuration[] configs = configAdmin.listConfigurations(null);
+			if (configs != null) {
+				log.debug("parsing configuration admin sources");
+				if (null != getInstance().configurations) {
+					getInstance().configurations.clear();
+					for (Configuration config : configs) {
+						log.debug("adding configuration to deltaspike configadmin with pid " + config.getPid());
+						getInstance().configurations.add(config);
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void serviceLost() {
+		getInstance().reparse();
+	}
+
+	@Override
+	public void serviceReplaced() {
+		getInstance().reparse();
+	}
+
+	@Override
+	public List<ConfigSource> getConfigSources() {
+		List<ConfigSource> ret = new ArrayList<>();
+		if (null != getInstance().configurations) {
+			for (Configuration config : getInstance().configurations) {
+				ret.add(new ConfigSource() {
+
+					@Override
+					public boolean isScannable() {
+
+						return true;
+					}
+
+					@Override
+					public String getPropertyValue(String key) {
+
+						log.debug(
+								"Osgiliath: retreiving property: " + key + ", from CM factory pid: " + config.getPid());
+						String res = getConfigValue(config, key);
+						if (null != res) {
+							log.info("ds configadmin retreived value: " + res);
+							return res;
+						}
+						if (getInstance().configurations.size() == ret.size() && this.equals(ret.get(ret.size() - 1))
+								&& !skippedProperties.contains(key)) {
+							int cpt = 0;
+							while (res == null && cpt < 10) {
+								try {
+									internalReparse();
+									for (Configuration config : getInstance().configurations) {
+										res = getConfigValue(config, key);
+										if (null != res) {
+
+											return res;
+										}
+									}
+									try {// fucking async configadmin
+										Thread.sleep(1000);
+									} catch (InterruptedException e) {
+										log.error("error waiting config update", e);
+									}
+								} catch (IOException | InvalidSyntaxException e1) {
+									log.error("error waiting config update", e1);
+
+								}
+								cpt += 1;
+							}
+						}
+						return null;
+					}
+
+					public String getConfigValue(Configuration config, String key) {
+						if (null != config && null != config.getProperties()) {
+							final Object valObject = config.getProperties().get(key);
+							if (valObject instanceof String) {
+								return (String) valObject;
+							}
+						}
+						return null;
+					}
+
+					@Override
+					public Map<String, String> getProperties() {
+
+						final Map<String, String> ret = new HashMap<>();
+						final Dictionary<String, ?> dictionary = config.getProperties();
+						;
+						if (null != dictionary) {
+							final Enumeration<String> keys = dictionary.keys();
+							if (null != keys) {
+								while (keys.hasMoreElements()) {
+									final String key = keys.nextElement();
+									final Object val = dictionary.get(key);
+									if (val instanceof String) {
+										ret.put(key, (String) val);
+									}
+								}
+							}
+						}
+						return ret;
+
+					}
+
+					@Override
+					public int getOrdinal() {
+
+						return 407;
+					}
+
+					@Override
+					public String getConfigName() {
+						return config.getPid();
+
+					}
+				});
+			}
+		}
+		return ret;
+	}
+
+}

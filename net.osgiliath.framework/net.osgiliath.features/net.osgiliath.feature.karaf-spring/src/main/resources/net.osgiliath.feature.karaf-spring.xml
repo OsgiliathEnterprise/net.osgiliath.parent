@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
+	name="${project.artifactId}-${project.version}">
+	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
+	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
+	<feature name="osgiliath-spring" description="Spring 4.2.x support" version="${org.apache.servicemix.bundles.spring.version}">
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-core/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-core.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-expression/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-expression.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-beans/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aop/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aop.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-context.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-context-support/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-context-support.version}</bundle>
+    </feature>
+    <feature name="osgiliath-spring-jdbc" description="Spring 4.2.x JDBC support" version="${org.apache.servicemix.bundles.spring.version}">
+        <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring-tx</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jdbc/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jdbc.version}</bundle>
+    </feature>
+    <feature name="osgiliath-spring-jms" description="Spring 4.2.x JMS support" version="${org.apache.servicemix.bundles.spring.version}">
+        <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring-tx</feature>
+        <bundle start-level="10">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
+        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jms/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version}</bundle>
+    </feature>
+    
+    
+     <feature name="osgiliath-spring-orm" description="Spring 4.2.x ORM support" version="${org.apache.servicemix.bundles.spring.version}">
+        <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring-jdbc</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-orm/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-orm.version}</bundle>
+    </feature>
+    <feature name="osgiliath-spring-tx" description="Spring 4.2.x Transaction (TX) support" version="${org.apache.servicemix.bundles.spring.version}">
+        <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-tx/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-tx.version}</bundle>
+    </feature>
+    <feature name="osgiliath-spring-web" description="Spring 4.2.x Web support" version="${org.apache.servicemix.bundles.spring.version}">
+        <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring</feature>
+        <feature prerequisite="false" dependency="false">osgiliath-http</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-web/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-webmvc/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version}</bundle>
+    </feature>
+    <feature name="osgiliath-spring-aspects" description="Spring 4.2.x AOP support" version="${org.apache.servicemix.bundles.spring.version}">
+        <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring</feature>
+        <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-aspects/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aspects.version}</bundle>
+    </feature>
+    
+   
+</features>

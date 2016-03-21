@@ -1,0 +1,80 @@
+<!-- #%L net.osgiliath.helpers.activemq.broker %% Copyright (C) 2013 - 2014 Osgiliath %% Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License 
+	at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+	See the License for the specific language governing permissions and limitations under the License. #L% -->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+	http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd
+	">
+	<!-- 
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.13.0.xsd
+	 -->
+	<cm:property-placeholder persistent-id="net.osgiliath.feature.messaging" id="net.osgiliath.feature.messaging" placeholder-prefix="$[" placeholder-suffix="]">
+		<cm:default-properties>
+			<cm:property name="async.broker.name" value="amq-broker" />
+			<cm:property name="async.transport.uri.jms" value="tcp://localhost:61616" />
+			<cm:property name="async.transport.uri.jms.xa" value="tcp://localhost:61626" />
+			<cm:property name="async.transport.uri.stomp" value="stomp://localhost:61612" />
+			<cm:property name="async.transport.uri.stomp.xa" value="stomp://localhost:61623" />
+			<cm:property name="async.transport.uri.websocket" value="ws://localhost:61614" />
+			<cm:property name="async.transport.uri.websocket.xa" value="ws://localhost:61624" />
+		</cm:default-properties>
+	</cm:property-placeholder>
+	
+	<bean class="net.osgiliath.module.activemq.jms.broker.BrokerFactory" init-method="init" destroy-method="shutdown" activation="eager">
+		<property name="brokerName" value="$[async.broker.name]"/>
+		<property name="jmsURI" value="$[async.transport.uri.jms]"/>
+		<property name="jmsXAURI" value="$[async.transport.uri.jms.xa]"/>
+		<property name="stompURI" value="$[async.transport.uri.stomp]"/>
+		<property name="stompXAURI" value="$[async.transport.uri.stomp.xa]"/>
+		<property name="websocketURI" value="$[async.transport.uri.websocket]"/>
+		<property name="websocketXAURI" value="$[async.transport.uri.websocket.xa]"/>
+	</bean>
+	
+	<!-- <amq:broker brokerName="$[async.broker.name]" shutdownOnMasterFailure="true" useJmx="true">
+		<amq:destinationPolicy>
+			<amq:policyMap>
+				<amq:policyEntries>
+					<amq:policyEntry queue=">" producerFlowControl="true"  memoryLimit="20mb">
+						<amq:deadLetterStrategy>
+							<amq:individualDeadLetterStrategy queuePrefix="DLQ." useQueueForQueueMessages="true" />
+						</amq:deadLetterStrategy>
+					</amq:policyEntry>
+				</amq:policyEntries>
+			</amq:policyMap>
+		</amq:destinationPolicy>
+		
+		<amq:managementContext>
+			<amq:managementContext createConnector="true" />
+		</amq:managementContext>
+		<amq:persistenceAdapter>
+			<amq:kahaDB directory="activeMQ/kahadb-jms" enableJournalDiskSyncs="false" indexWriteBatchSize="10000" indexCacheSize="1000" />
+		</amq:persistenceAdapter>
+		<amq:plugins>
+			<amq:loggingBrokerPlugin />
+		</amq:plugins>
+		<amq:systemUsage>
+			<amq:systemUsage>
+				<amq:memoryUsage>
+					<amq:memoryUsage limit="420 mb" />
+				</amq:memoryUsage>
+				<amq:storeUsage>
+					<amq:storeUsage limit="1 gb" />
+				</amq:storeUsage>
+				<amq:tempUsage>
+					<amq:tempUsage limit="200 mb" />
+				</amq:tempUsage>
+			</amq:systemUsage>
+		</amq:systemUsage>
+		<amq:transportConnectors>
+			<amq:transportConnector name="stomp" uri="$[async.transport.uri.stomp]" />
+			<amq:transportConnector name="stompXA" uri="$[async.transport.uri.stomp.xa]" />
+			<amq:transportConnector name="websocket" uri="$[async.transport.uri.websocket]" />
+			<amq:transportConnector name="websocketXA" uri="$[async.transport.uri.websocket.xa]" />
+			<amq:transportConnector name="jms" uri="$[async.transport.uri.jms]" />
+			<amq:transportConnector name="jmsXA" uri="$[async.transport.uri.jms.xa]" />
+		</amq:transportConnectors>
+	</amq:broker>
+ -->
+</blueprint>
