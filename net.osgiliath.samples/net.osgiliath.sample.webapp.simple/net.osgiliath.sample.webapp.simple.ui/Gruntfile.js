@@ -290,6 +290,7 @@ module.exports = function (grunt) {
             '*.html',
             'scripts/{,*/}*.html',
             'bower_components/**/*',
+            'components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'
           ]
