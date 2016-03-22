@@ -1,14 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.osgiliath.modules</groupId>
-    <artifactId>net.osgiliath.modules</artifactId>
-    <version>0.2.4-SNAPSHOT</version>
-  </parent>
-  <artifactId>net.osgiliath.module.activemq.jms.broker</artifactId>
-  <name>Osgiliath broker</name>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath.modules</groupId>
+		<artifactId>net.osgiliath.modules</artifactId>
+		<version>0.2.4-SNAPSHOT</version>
+	</parent>
+	<artifactId>net.osgiliath.module.activemq.jms.broker</artifactId>
+	<name>Osgiliath broker</name>
 	<description>Default activeMQ broker configuration (local) for an Osgiliath project</description>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.felix</groupId>

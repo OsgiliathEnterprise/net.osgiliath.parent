@@ -8,7 +8,7 @@
 angular.module('commonapp', []).service('stompservice', function(){
 	this.protocol = 'ws';
 	this.host = '127.0.0.1';
-	this.port = '61614';
+	this.port = '${defaultWebSocketXAPort}';
 	this.user = '${database.user}';
 	this.password = '${database.password}';
 	this.url = this.protocol + '://' + this.host + ':' + this.port ;
@@ -35,10 +35,8 @@ angular.module('commonapp', []).service('stompservice', function(){
           var id = this.stompClient.subscribe(queue, callback);
           console.info('stompObject: ' + JSON.stringify(this));
           console.info('Subscription ID: ' + id);
-        //  var heartBeatId = this.heartBeat(this.stompClient, queue);
           var protocolData = {
-            'connectionId' : id,
-         //   'heartBeatId' : heartBeatId
+            'connectionId' : id
           };
           return protocolData;
         };
@@ -46,7 +44,6 @@ angular.module('commonapp', []).service('stompservice', function(){
 	this.unsubscribe = function(id) {
 		console.info('unsubscribing ID: ' + id.connectionId);
 		this.stompClient.unsubscribe(id.connectionId);
-		//window.clearInterval(id.heartBeatId);
 	};
 	this.disconnect = function() {
 		this.stompClient.disconnect(this.disconnectcb);

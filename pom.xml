@@ -118,10 +118,17 @@
 			<url>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
 		</site>
 	</distributionManagement>
-
 	<properties>
 		<apache-rat-plugin.version>0.11</apache-rat-plugin.version>
 		<parentPropertiesFile>build.properties</parentPropertiesFile>
+		<defaultWebSocketPort>61614</defaultWebSocketPort>
+		<defaultWebSocketXAPort>61624</defaultWebSocketXAPort>
+		<defaultJmsPort>61616</defaultJmsPort>
+		<defaultJmsXAPort>61626</defaultJmsXAPort>
+		<defaultStompPort>61612</defaultStompPort>
+		<defaultStompXAPort>61623</defaultStompXAPort>
+		
+		
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
 		<doxia-module-markdown.version>1.6</doxia-module-markdown.version>
 		<github.global.server>github</github.global.server>

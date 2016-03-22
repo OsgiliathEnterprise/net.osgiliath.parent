@@ -6,10 +6,11 @@ Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=eager)"
 Require-Bundle: org.hibernate.validator
-Import-Package: javax.annotation;version=0,\
+Import-Package: \
+ javax.annotation;version=0,\
  !javax.transaction,\
  javax.transaction;version='[1.1,2)',\
- javax.servlet,\
+ javax.servlet;version='[3,4)',\
  org.springframework.data.domain;resolution:=optional,\
  org.apache.camel.builder.xml,\
  org.apache.camel.model.rest,\
@@ -17,5 +18,4 @@ Import-Package: javax.annotation;version=0,\
  org.apache.cxf.transport.servlet,\
  org.apache.cxf.service.factory,\
  io.swagger.jaxrs.listing,\
- * 
- 
+ *

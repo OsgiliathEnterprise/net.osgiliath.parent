@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.poms</groupId>
@@ -76,11 +75,11 @@
 				<version>${com.mysema.querydsl_querydsl-jpa.version}</version>
 			</dependency>
 			<dependency>
-	<groupId>com.thoughtworks.paranamer</groupId>
-	<artifactId>paranamer</artifactId>
-	<version>${com.thoughtworks.paranamer_paranamer.version}</version>
-</dependency>
-			
+				<groupId>com.thoughtworks.paranamer</groupId>
+				<artifactId>paranamer</artifactId>
+				<version>${com.thoughtworks.paranamer_paranamer.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
@@ -282,8 +281,7 @@
 				<artifactId>activemq-openwire-legacy</artifactId>
 				<version>${org.apache.activemq_activemq-openwire-legacy.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.apache.activemq</groupId> <artifactId>activemq-osgi</artifactId> 
-				<version>${org.apache.activemq_activemq-osgi.version}</version> </dependency> -->
+			<!-- <dependency> <groupId>org.apache.activemq</groupId> <artifactId>activemq-osgi</artifactId> <version>${org.apache.activemq_activemq-osgi.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-pool</artifactId>
@@ -646,17 +644,13 @@
 				<artifactId>geronimo-connector</artifactId>
 				<version>${org.apache.geronimo.components_geronimo-connector.version}</version>
 			</dependency>
-			<!-- replace by javax.annotation<dependency> <groupId>org.apache.geronimo.specs</groupId> 
-				<artifactId>geronimo-annotation_1.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-annotation_1.0_spec.version}</version> 
-				</dependency> -->
+			<!-- replace by javax.annotation<dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-annotation_1.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-annotation_1.0_spec.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-atinject_1.0_spec</artifactId>
 				<version>${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</version>
 			</dependency>
-			<!-- replace by javax.el-api<dependency> <groupId>org.apache.geronimo.specs</groupId> 
-				<artifactId>geronimo-el_1.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-el_1.0_spec.version}</version> 
-				</dependency> -->
+			<!-- replace by javax.el-api<dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-el_1.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-el_1.0_spec.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-j2ee-connector_1.6_spec</artifactId>
@@ -667,9 +661,7 @@
 				<artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
 				<version>${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</version>
 			</dependency>
-			<!-- replace by javax.validation <dependency> <groupId>org.apache.geronimo.specs</groupId> 
-				<artifactId>geronimo-validation_1.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-validation_1.0_spec.version}</version> 
-				</dependency> -->
+			<!-- replace by javax.validation <dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-validation_1.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-validation_1.0_spec.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-jacc_1.1_spec</artifactId>
@@ -690,20 +682,14 @@
 				<artifactId>geronimo-jpa_2.0_spec</artifactId>
 				<version>${org.apache.geronimo.specs_geronimo-jpa_2.0_spec.version}</version>
 			</dependency>
-			<!-- replace everytime by javax.transaction <dependency> <groupId>org.apache.geronimo.specs</groupId> 
-				<artifactId>geronimo-jta_1.1_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</version> 
-				</dependency> -->
+			<!-- replace everytime by javax.transaction <dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-jta_1.1_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-osgi-registry</artifactId>
 				<version>${org.apache.geronimo.specs_geronimo-osgi-registry.version}</version>
 			</dependency>
-			<!-- replace by javax.servlet-api<dependency> <groupId>org.apache.geronimo.specs</groupId> 
-				<artifactId>geronimo-servlet_2.5_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-servlet_2.5_spec.version}</version> 
-				</dependency> -->
-			<!-- replace by javax.servlet-api<dependency> <groupId>org.apache.geronimo.specs</groupId> 
-				<artifactId>geronimo-servlet_3.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</version> 
-				</dependency> -->
+			<!-- replace by javax.servlet-api<dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-servlet_2.5_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-servlet_2.5_spec.version}</version> </dependency> -->
+			<!-- replace by javax.servlet-api<dependency> <groupId>org.apache.geronimo.specs</groupId> <artifactId>geronimo-servlet_3.0_spec</artifactId> <version>${org.apache.geronimo.specs_geronimo-servlet_3.0_spec.version}</version> </dependency> -->
 
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
@@ -817,9 +803,7 @@
 				<artifactId>org.apache.servicemix.bundles.ant</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.apache.servicemix.bundles</groupId> <artifactId>org.apache.servicemix.bundles.antlr</artifactId> 
-				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.antlr.version}</version> 
-				</dependency> -->
+			<!-- <dependency> <groupId>org.apache.servicemix.bundles</groupId> <artifactId>org.apache.servicemix.bundles.antlr</artifactId> <version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.antlr.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
@@ -856,11 +840,11 @@
 				<artifactId>org.apache.servicemix.bundles.dom4j</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.dom4j.version}</version>
 				<exclusions>
-				<exclusion>
-					<groupId>xml-apis</groupId>
-					<artifactId>xml-apis</artifactId>
-				</exclusion>
-			</exclusions>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -888,8 +872,7 @@
 				<artifactId>org.apache.servicemix.bundles.jasypt-spring31</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt-spring31.version}</version>
 			</dependency>
-			<!-- replace by geronimo-atinject <dependency> <groupId>org.apache.servicemix.bundles</groupId> 
-				<artifactId>org.apache.servicemix.bundles.javax-inject</artifactId> <version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.javax-inject.version}</version> 
+			<!-- replace by geronimo-atinject <dependency> <groupId>org.apache.servicemix.bundles</groupId> <artifactId>org.apache.servicemix.bundles.javax-inject</artifactId> <version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.javax-inject.version}</version> 
 				</dependency> -->
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -917,9 +900,9 @@
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version}</version>
 			</dependency>
 			<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-<artifactId>org.apache.servicemix.bundles.jsoup</artifactId>
-<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jsoup.version}</version>
+				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.jsoup</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jsoup.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1307,33 +1290,23 @@
 				<artifactId>hibernate-validator-cdi</artifactId>
 				<version>${org.hibernate_hibernate-validator-cdi.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.eclipse.persistence</groupId> <artifactId>javax.persistence</artifactId> 
-				<version>${org.eclipse.persistence_javax.persistence.version}</version> </dependency> 
-				<dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
-				<version>${org.hibernate_hibernate-core.version}</version> </dependency> 
-				<dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-entitymanager</artifactId> 
-				<version>${org.hibernate_hibernate-entitymanager.version}</version> </dependency> 
-				<dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-osgi</artifactId> 
-				<version>${org.hibernate_hibernate-osgi.version}</version> </dependency> 
-				<dependency> <groupId>org.hibernate.common</groupId> <artifactId>hibernate-commons-annotations</artifactId> 
-				<version>${org.hibernate.common_hibernate-commons-annotations.version}</version> 
-				</dependency> -->
+			<!-- <dependency> <groupId>org.eclipse.persistence</groupId> <artifactId>javax.persistence</artifactId> <version>${org.eclipse.persistence_javax.persistence.version}</version> </dependency> <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
+				<version>${org.hibernate_hibernate-core.version}</version> </dependency> <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-entitymanager</artifactId> <version>${org.hibernate_hibernate-entitymanager.version}</version> </dependency> <dependency> 
+				<groupId>org.hibernate</groupId> <artifactId>hibernate-osgi</artifactId> <version>${org.hibernate_hibernate-osgi.version}</version> </dependency> <dependency> <groupId>org.hibernate.common</groupId> <artifactId>hibernate-commons-annotations</artifactId> 
+				<version>${org.hibernate.common_hibernate-commons-annotations.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
 				<version>${org.javassist_javassist.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.jboss</groupId> <artifactId>jandex</artifactId> 
-				<version>${org.jboss_jandex.version}</version> </dependency> -->
+			<!-- <dependency> <groupId>org.jboss</groupId> <artifactId>jandex</artifactId> <version>${org.jboss_jandex.version}</version> </dependency> -->
 
 			<dependency>
 				<groupId>org.jboss.logging</groupId>
 				<artifactId>jboss-logging</artifactId>
 				<version>${org.jboss.logging_jboss-logging.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>org.jboss.spec.javax.security.jacc</groupId> 
-				<artifactId>jboss-jacc-api_1.4_spec</artifactId> <version>${org.jboss.spec.javax.security.jacc_jboss-jacc-api_1.4_spec.version}</version> 
-				</dependency> -->
+			<!-- <dependency> <groupId>org.jboss.spec.javax.security.jacc</groupId> <artifactId>jboss-jacc-api_1.4_spec</artifactId> <version>${org.jboss.spec.javax.security.jacc_jboss-jacc-api_1.4_spec.version}</version> </dependency> -->
 
 			<dependency>
 				<groupId>org.jboss.weld</groupId>
@@ -1951,9 +1924,7 @@
 		<org.glassfish.web_javax.el.version>2.2.4</org.glassfish.web_javax.el.version>
 		<org.hibernate_hibernate-validator.version>5.2.2.Final</org.hibernate_hibernate-validator.version>
 		<org.hibernate_hibernate-validator-cdi.version>${org.hibernate_hibernate-validator.version}</org.hibernate_hibernate-validator-cdi.version>
-		<!-- <org.hibernate_hibernate-core.version>${org.hibernate.version}</org.hibernate_hibernate-core.version> 
-			<org.hibernate_hibernate-entitymanager.version>${org.hibernate.version}</org.hibernate_hibernate-entitymanager.version> 
-			<org.hibernate_hibernate-osgi.version>${org.hibernate.version}</org.hibernate_hibernate-osgi.version> 
+		<!-- <org.hibernate_hibernate-core.version>${org.hibernate.version}</org.hibernate_hibernate-core.version> <org.hibernate_hibernate-entitymanager.version>${org.hibernate.version}</org.hibernate_hibernate-entitymanager.version> <org.hibernate_hibernate-osgi.version>${org.hibernate.version}</org.hibernate_hibernate-osgi.version> 
 			<org.hibernate.common_hibernate-commons-annotations.version>4.0.4.Final</org.hibernate.common_hibernate-commons-annotations.version> -->
 		<org.javassist_javassist.version>3.19.0-GA</org.javassist_javassist.version>
 		<!-- <org.jboss_jandex.version>1.2.2.Final</org.jboss_jandex.version> -->
@@ -2057,7 +2028,7 @@
 		<persistence-api_feature.version>2.0.0</persistence-api_feature.version>
 		<transaction-api_feature.version>1.2.0</transaction-api_feature.version>
 		<xml-specs-api.version>2.5.0</xml-specs-api.version>
-		
+
 		<osgiliath.framework.maven.version>${project.version}</osgiliath.framework.maven.version>
 	</properties>
 </project>

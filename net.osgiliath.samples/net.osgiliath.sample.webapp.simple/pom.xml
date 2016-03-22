@@ -70,5 +70,10 @@
 		<database.port>1528</database.port>
 		<database.user>sa</database.user>
 		<database.password>sa</database.password>
+		<app.serverHost>localhost</app.serverHost>
+		<app.restendpoint>/cxf/helloService/hello</app.restendpoint>
+		<app.inQueueStomp>/queue/helloServiceQueueIn</app.inQueueStomp>
+		<app.outTopicStomp>/topic/helloServiceQueueOut</app.outTopicStomp>
+		<app.outErrorQueue>/queue/helloMessagingErrors</app.outErrorQueue>
 	</properties>
 </project>

@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
-        files: ['<%= yeoman.sources %>/scripts/{,*/}*.js',  '<%= yeoman.sources %>/styles/*.scss'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js',  '<%= yeoman.app %>/styles/*.scss'],
         tasks: ['newer:jshint:all','compass:server'],
         options: {
           livereload: true
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.sources %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },
       gruntfile: {
@@ -52,9 +52,9 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.sources %>/{,*/}*.html',
+          '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.sources %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -72,7 +72,7 @@ module.exports = function (grunt) {
           open: true,
           base: [
             '.tmp',
-            '<%= yeoman.sources %>'
+            '<%= yeoman.app %>'
           ]
         }
       },

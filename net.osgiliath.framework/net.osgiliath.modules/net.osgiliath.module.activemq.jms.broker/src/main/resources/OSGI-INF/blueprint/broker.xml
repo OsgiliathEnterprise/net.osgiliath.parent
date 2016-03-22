@@ -13,12 +13,12 @@
 	<cm:property-placeholder persistent-id="net.osgiliath.feature.messaging" id="net.osgiliath.feature.messaging" placeholder-prefix="$[" placeholder-suffix="]">
 		<cm:default-properties>
 			<cm:property name="async.broker.name" value="amq-broker" />
-			<cm:property name="async.transport.uri.jms" value="tcp://localhost:61616" />
-			<cm:property name="async.transport.uri.jms.xa" value="tcp://localhost:61626" />
-			<cm:property name="async.transport.uri.stomp" value="stomp://localhost:61612" />
-			<cm:property name="async.transport.uri.stomp.xa" value="stomp://localhost:61623" />
-			<cm:property name="async.transport.uri.websocket" value="ws://localhost:61614" />
-			<cm:property name="async.transport.uri.websocket.xa" value="ws://localhost:61624" />
+			<cm:property name="async.transport.uri.jms" value="tcp://localhost:${defaultJmsPort}" />
+			<cm:property name="async.transport.uri.jms.xa" value="tcp://localhost:${defaultJmsXAPort}" />
+			<cm:property name="async.transport.uri.stomp" value="stomp://localhost:${defaultStompPort}" />
+			<cm:property name="async.transport.uri.stomp.xa" value="stomp://localhost:${defaultStompXAPort}" />
+			<cm:property name="async.transport.uri.websocket" value="ws://localhost:${defaultWebSocketPort}" />
+			<cm:property name="async.transport.uri.websocket.xa" value="ws://localhost:${defaultWebSocketXAPort}" />
 		</cm:default-properties>
 	</cm:property-placeholder>
 	

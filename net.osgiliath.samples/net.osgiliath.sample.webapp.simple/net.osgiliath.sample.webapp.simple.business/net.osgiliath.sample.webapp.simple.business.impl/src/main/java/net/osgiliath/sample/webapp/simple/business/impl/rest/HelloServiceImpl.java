@@ -1,9 +1,5 @@
 package net.osgiliath.sample.webapp.simple.business.impl.rest;
 
-import javax.inject.Inject;
-
-import org.ops4j.pax.cdi.api.OsgiService;
-
 /*
  * #%L
  * net.osgiliath.features.karaf-features.itests.jaxrs.web
@@ -26,12 +22,12 @@ import org.ops4j.pax.cdi.api.OsgiService;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import net.osgiliath.sample.webapp.simple.business.spi.HelloService;
+import javax.inject.Inject;
 import net.osgiliath.sample.webapp.simple.business.spi.annotations.REST;
 import net.osgiliath.sample.webapp.simple.business.spi.model.Hellos;
 import net.osgiliath.sample.webapp.simple.model.daos.HelloRepository;
 import net.osgiliath.sample.webapp.simple.model.entities.HelloEntity;
+import org.ops4j.pax.cdi.api.OsgiService;
 
 
 /**

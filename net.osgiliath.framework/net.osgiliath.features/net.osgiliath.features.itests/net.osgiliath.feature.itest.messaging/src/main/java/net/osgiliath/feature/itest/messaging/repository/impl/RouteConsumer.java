@@ -41,10 +41,9 @@ import org.apache.camel.cdi.ContextName;
 @ContextName
 public class RouteConsumer extends RouteBuilder {
 	/**
-	 * message consuming route.
+	 * Message consuming route.
 	 */
 	@Override
-	
 	public void configure() throws Exception {
 		from("properties:{{messaging.routequeuein}}"/*"jms:queue:helloServiceQueueIn"*/).log(LoggingLevel.INFO, "received JMS message on the queue")
 				.process(new Processor() {

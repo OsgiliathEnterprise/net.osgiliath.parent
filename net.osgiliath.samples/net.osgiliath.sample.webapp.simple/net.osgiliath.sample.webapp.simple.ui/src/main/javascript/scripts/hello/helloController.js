@@ -8,12 +8,12 @@ angular.module('hello').controller('HelloController',
 			$scope.sendHelloSync = function() {
 				$http({
 				       method: 'POST',
-				       url: 'http://localhost:8181/cxf/helloService/hello',
+				       url: 'http://${app.serverHost}:8181${app.restendpoint}',
 				       data: '{"helloEntity" : {"helloMessage": "' + $scope.helloMessage + '"}}',
 				        headers: {
 				            'Content-Type': 'application/json'
 				   }});
-				$http.get('http://localhost:8181/cxf/helloService/hello').
+				$http.get('http://${app.serverHost}:8181${app.restendpoint}').
 		        	success(function(data) {
 		        		
 		        		//var json = JSON.parse(data);
@@ -25,14 +25,13 @@ angular.module('hello').controller('HelloController',
 							for ( var i in hellos) {
 								$scope.helloMessages.push(hellos[i]);
 							}
-							//$scope.$apply();
 						}
 		        	});
 			}
 			$scope.sendHelloAsync = function() {
 				$scope.errors = '';
 				if (!$scope.registered) {
-					stompservice.subscribe('/topic/helloServiceQueueOut', function(
+					stompservice.subscribe('${app.outTopicStomp}', function(
 							message) {
 						if (!stompservice.heartBeatFilter(message)) {
 							var body = message.body;
@@ -49,7 +48,7 @@ angular.module('hello').controller('HelloController',
 							}
 						}
 					});
-					stompservice.subscribe('/queue/MessagingErrors', function(
+					stompservice.subscribe('${app.outErrorQueue}', function(
 							message) {
 						if (!stompservice.heartBeatFilter(message)) {
 							var body = message.body;
@@ -62,7 +61,7 @@ angular.module('hello').controller('HelloController',
 						$scope.registered = true;
 					});
 				}
-				stompservice.send('/queue/helloServiceQueueIn', {
+				stompservice.send('${app.inQueueStomp}', {
 					'httpRequestType' : 'POST'
 				}, '{"helloMessage": "' + $scope.helloMessage + '"}');
 			};
