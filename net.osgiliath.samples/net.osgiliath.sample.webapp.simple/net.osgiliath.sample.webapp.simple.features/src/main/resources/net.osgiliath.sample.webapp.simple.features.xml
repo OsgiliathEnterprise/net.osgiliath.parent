@@ -41,6 +41,16 @@
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.business.spi/${project.version}/jar</bundle>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.business.impl/${project.version}/jar</bundle>
 	</feature>
+	<feature name="${project.parent.artifactId}.business.itests" version="${project.version}">
+		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<feature version="${project.version}">${project.parent.artifactId}.model</feature>
+		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.business.spi/${project.version}/jar</bundle>
+		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.business/${project.parent.artifactId}.business.impl/target/${project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
+	</feature>
 	<!-- UI -->
 	<feature name="${project.parent.artifactId}.ui" version="${project.version}">
 		<feature version="${project.version}">${project.parent.artifactId}.business</feature>

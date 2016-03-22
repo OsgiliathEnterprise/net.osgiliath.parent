@@ -52,7 +52,7 @@ public interface HelloServiceJaxRS extends HelloService {
    */
   @POST
   @Override
-  @Consumes(MediaType.APPLICATION_JSON)
+  @Consumes(value={MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
   void persistHello(@NotNull @Valid HelloEntity helloObject);
 
   /**
@@ -61,7 +61,7 @@ public interface HelloServiceJaxRS extends HelloService {
    */
   @GET
   @Override
-  @Produces(MediaType.APPLICATION_JSON)
+  @Produces(value={MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
   @ApiOperation(value = "Find all hellos", notes = "More notes about this method", response = Hellos.class)
   Hellos getHellos();
 

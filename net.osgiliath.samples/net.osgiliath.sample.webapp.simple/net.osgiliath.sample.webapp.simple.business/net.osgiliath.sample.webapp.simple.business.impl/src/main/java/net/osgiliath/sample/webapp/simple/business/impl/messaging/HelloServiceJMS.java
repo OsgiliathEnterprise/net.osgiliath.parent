@@ -135,7 +135,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 	 */
 	@Override
 	public void configure() throws Exception {
-		from("jms:queue:helloServiceQueueIn").filter(header("webSocketMsgType").isNotEqualTo("heartBeat"))
+		from("jms:queue:helloServiceQueueIn")
 		.log(LoggingLevel.INFO, "received jms message: ${body}").unmarshal(this.helloObjectJSonFormat).process(new Processor() {
 
 			@Override
