@@ -7,7 +7,7 @@
 		<version>0.2.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.sample.webapp.simple.business.impl</artifactId>
-	<name>CDI configured business module</name>
+	<name>Helloworld sample business module</name>
 	<description>Send HelloMessages via REST or Messaging</description>
 	<build>
 		<resources>

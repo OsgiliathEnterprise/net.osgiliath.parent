@@ -23,10 +23,10 @@ Starting from the archetype, you have a simple implemented helloworld, don't for
 
 Follow the different TODO keywords, starting from this module order:
 
-    <project>.model
-    <project>.business
-    <project>.ui
+    <project>.database
+    <project>.model.jpa
     <project>.features
+    <project>.ui
 
 UI module:
 Prerequisite:
@@ -45,4 +45,4 @@ Deployement:
 
 Prerequisite: Karaf 4.0.4
 
-Usage: run 'feature:repo-add mvn:${project.groupId}/${project.artifactId}.features/${project.version}/xml/feature', then 'feature:install ${project.artifactId}.ui'
+Usage: run 'feature:repo-add mvn:net.osgiliath.samples/net.osgiliath.sample.features/${version}/xml/feature', then 'feature:install net.osgiliath.sample.full'

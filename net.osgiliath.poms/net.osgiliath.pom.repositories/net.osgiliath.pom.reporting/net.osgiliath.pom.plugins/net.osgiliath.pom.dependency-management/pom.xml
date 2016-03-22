@@ -1784,7 +1784,7 @@
 		<org.apache.camel_camel-websocket.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-websocket.version>
 		<org.apache.camel_camel-xmljson.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-xmljson.version>
 		<org.apache.camel_camel-xstream.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-xstream.version>
-		<org.apache.camel.karaf_apache-camel.version>2.16.1</org.apache.camel.karaf_apache-camel.version>
+		<org.apache.camel.karaf_apache-camel.version>2.16.2</org.apache.camel.karaf_apache-camel.version>
 		<org.apache.camel.karaf_camel-karaf-commands.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel.karaf_camel-karaf-commands.version>
 		<org.apache.commons_commons-jexl.version>2.0.1</org.apache.commons_commons-jexl.version>
 		<org.apache.commons_commons-lang3.version>3.4</org.apache.commons_commons-lang3.version>

@@ -1,4 +1,4 @@
-package conf;
+package net.osgiliath.feature.itest.security.conf;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;

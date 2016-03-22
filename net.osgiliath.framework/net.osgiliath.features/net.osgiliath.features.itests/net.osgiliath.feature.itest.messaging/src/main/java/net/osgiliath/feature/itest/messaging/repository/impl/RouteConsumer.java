@@ -22,18 +22,14 @@ package net.osgiliath.feature.itest.messaging.repository.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.enterprise.context.ApplicationScoped;
-
+import net.osgiliath.feature.itest.messaging.HelloEntity;
+import net.osgiliath.feature.itest.messaging.Hellos;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
-
-import net.osgiliath.feature.itest.messaging.HelloEntity;
-import net.osgiliath.feature.itest.messaging.Hellos;
-import net.osgiliath.module.cdi.eager.Eager;
 
 /**
  * CDI consumer via routes.

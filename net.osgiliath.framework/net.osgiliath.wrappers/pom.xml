@@ -1,31 +1,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.osgiliath.poms</groupId>
-    <artifactId>net.osgiliath.framework</artifactId>
-    <version>0.2.4-SNAPSHOT</version>
-  </parent>
-  <groupId>net.osgiliath.wrappers</groupId>
-  <artifactId>net.osgiliath.wrappers</artifactId>
-  <packaging>pom</packaging>
-  <modules>
-  	<module>net.osgiliath.wrapper.derby</module>
-  	<module>net.osgiliath.wrapper.spring-data-jpa</module>
-  	<module>net.osgiliath.wrapper.hibernate.validator.cdi</module>
-
-  	<module>net.osgiliath.wrapper.cxf-integration-cdi</module>
-  	<module>net.osgiliath.wrapper.spring-batch-core</module>
-  	<module>net.osgiliath.wrapper.spring-batch-infrastructure</module>
-  	<module>net.osgiliath.wrapper.spring-ldap</module>
-  	<module>net.osgiliath.wrapper.spring-security-aspects</module>
-  	<module>net.osgiliath.wrapper.spring-security-config</module>
-  	<module>net.osgiliath.wrapper.spring-security-core</module>
-  	<module>net.osgiliath.wrapper.spring-security-ldap</module>
-  	<module>net.osgiliath.wrapper.spring-security-web</module>
-  	<module>net.osgiliath.wrapper.xbean-spring</module>
-  	<module>net.osgiliath.wrapper.camel-websocket</module>
-  	<module>net.osgiliath.wrapper.activemq</module>
-  	<module>net.osgiliath.wrapper.camel-cdi</module>
-  	
-  </modules>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath.poms</groupId>
+		<artifactId>net.osgiliath.framework</artifactId>
+		<version>0.2.4-SNAPSHOT</version>
+	</parent>
+	<groupId>net.osgiliath.wrappers</groupId>
+	<artifactId>net.osgiliath.wrappers</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>net.osgiliath.wrapper.derby</module>
+		<module>net.osgiliath.wrapper.spring-data-jpa</module>
+		<module>net.osgiliath.wrapper.hibernate.validator.cdi</module>
+		<module>net.osgiliath.wrapper.cxf-integration-cdi</module>
+		<module>net.osgiliath.wrapper.spring-batch-core</module>
+		<module>net.osgiliath.wrapper.spring-batch-infrastructure</module>
+		<module>net.osgiliath.wrapper.spring-ldap</module>
+		<module>net.osgiliath.wrapper.spring-security-aspects</module>
+		<module>net.osgiliath.wrapper.spring-security-config</module>
+		<module>net.osgiliath.wrapper.spring-security-core</module>
+		<module>net.osgiliath.wrapper.spring-security-ldap</module>
+		<module>net.osgiliath.wrapper.spring-security-web</module>
+		<module>net.osgiliath.wrapper.xbean-spring</module>
+		<module>net.osgiliath.wrapper.camel-websocket</module>
+		<module>net.osgiliath.wrapper.activemq</module>
+	</modules>
 </project>

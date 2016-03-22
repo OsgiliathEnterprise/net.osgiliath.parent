@@ -1,4 +1,4 @@
-package conf;
+package net.osgiliath.feature.itest.jaxrs.conf;
 
 /*
  * #%L

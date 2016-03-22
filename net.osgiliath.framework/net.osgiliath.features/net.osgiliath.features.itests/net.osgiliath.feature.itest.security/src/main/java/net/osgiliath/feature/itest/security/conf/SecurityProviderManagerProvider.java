@@ -1,4 +1,4 @@
-package conf;
+package net.osgiliath.feature.itest.security.conf;
 
 import java.util.ArrayList;
 import java.util.List;

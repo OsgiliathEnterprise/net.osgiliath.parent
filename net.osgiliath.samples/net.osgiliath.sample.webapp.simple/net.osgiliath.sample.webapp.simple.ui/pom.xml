@@ -189,6 +189,11 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
+			<artifactId>${project.parent.artifactId}.business.impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
 			<artifactId>${project.parent.artifactId}.features</artifactId>
 			<classifier>features</classifier>
 			<type>xml</type>

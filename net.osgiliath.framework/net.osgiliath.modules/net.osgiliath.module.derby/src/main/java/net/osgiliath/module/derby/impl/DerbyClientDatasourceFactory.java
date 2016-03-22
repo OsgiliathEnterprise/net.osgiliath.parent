@@ -54,7 +54,8 @@ import org.slf4j.LoggerFactory;
  */
 @Slf4j
 public class DerbyClientDatasourceFactory implements DataSourceFactory {
-	private static final Logger LOG = LoggerFactory.getLogger(DerbyClientDatasourceFactory.class);
+  private static final Logger LOG = LoggerFactory.getLogger(DerbyClientDatasourceFactory.class);
+
   /**
    * creates a datasource from properties.
    * 
@@ -79,40 +80,32 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
    * @throws SQLException
    *           in case of unsupported DS Operations
    */
-  private void setProperties(ClientDataSource datasource, Properties properties)
-      throws SQLException {
-	  LOG.info("setting properties for datasource");
-	  logProperties(properties);
+  private void setProperties(ClientDataSource datasource, Properties properties) throws SQLException {
+    LOG.info("setting properties for datasource");
+    logProperties(properties);
     final Properties props = (Properties) properties.clone();
-    final String doStartServer = (String) props
-        .remove(ClientConnectionConstant.AUTO_START_SERVER);
+    final String doStartServer = (String) props.remove(ClientConnectionConstant.AUTO_START_SERVER);
     if (doStartServer != null && Boolean.parseBoolean(doStartServer)) {
       this.doStartServer(props);
     }
-    final String databaseName = (String) props
-        .remove(DataSourceFactory.JDBC_DATABASE_NAME);
+    final String databaseName = (String) props.remove(DataSourceFactory.JDBC_DATABASE_NAME);
     if (databaseName == null) {
-      throw new SQLException("missing required property "
-          + DataSourceFactory.JDBC_DATABASE_NAME);
+      throw new SQLException("missing required property " + DataSourceFactory.JDBC_DATABASE_NAME);
     }
     datasource.setDatabaseName(databaseName);
 
-    final String password = (String) props
-        .remove(DataSourceFactory.JDBC_PASSWORD);
+    final String password = (String) props.remove(DataSourceFactory.JDBC_PASSWORD);
     datasource.setPassword(password);
 
     final String user = (String) props.remove(DataSourceFactory.JDBC_USER);
     datasource.setUser(user);
 
-    final String createDatabase = (String) props
-        .remove(ClientConnectionConstant.CREATE_DATABASE);
+    final String createDatabase = (String) props.remove(ClientConnectionConstant.CREATE_DATABASE);
     datasource.setCreateDatabase(createDatabase);
 
-    final String serverName = (String) props
-        .remove(DataSourceFactory.JDBC_SERVER_NAME);
+    final String serverName = (String) props.remove(DataSourceFactory.JDBC_SERVER_NAME);
     datasource.setServerName(serverName);
-    final String portNumber = (String) props
-        .remove(DataSourceFactory.JDBC_PORT_NUMBER);
+    final String portNumber = (String) props.remove(DataSourceFactory.JDBC_PORT_NUMBER);
     if (portNumber != null) {
       datasource.setPortNumber(Integer.parseInt(portNumber));
     }
@@ -132,22 +125,17 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
     if (host == null) {
       host = ClientConnectionConstant.DEFAULT_HOST;
     }
-    final String portNumberS = (String) properties
-        .get(DataSourceFactory.JDBC_PORT_NUMBER);
-    final int portNumber = portNumberS == null ? ClientConnectionConstant.DEFAULT_PORT
-        : Integer.parseInt(portNumberS);
+    final String portNumberS = (String) properties.get(DataSourceFactory.JDBC_PORT_NUMBER);
+    final int portNumber = portNumberS == null ? ClientConnectionConstant.DEFAULT_PORT : Integer.parseInt(portNumberS);
     boolean alreadyStarted = false;
     if (Activator.getInstance().getStartedServers().containsKey(host)) {
-      alreadyStarted = Activator.getInstance().getStartedServers().get(host)
-          .contains(portNumber);
+      alreadyStarted = Activator.getInstance().getStartedServers().get(host).contains(portNumber);
     }
     if (!alreadyStarted) {
       try {
         final InetAddress adress = InetAddress.getByName(host);
-        final NetworkServerControl control = new NetworkServerControl(adress,
-            portNumber);
-        String writer = (String) properties
-            .remove(ClientConnectionConstant.LOG_FILE_PROPERTY);
+        final NetworkServerControl control = new NetworkServerControl(adress, portNumber);
+        String writer = (String) properties.remove(ClientConnectionConstant.LOG_FILE_PROPERTY);
         if (writer == null) {
           writer = ClientConnectionConstant.LOG_FILE;
         }
@@ -155,10 +143,12 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
         control.start(printWriter);
         boolean isStarted = false;
         while (!isStarted) {
-        	try {
-        	control.ping();
-        	isStarted = true;
-        	} catch (Exception e) {}
+          try {
+            control.ping();
+            isStarted = true;
+          }
+          catch (Exception e) {
+          }
         }
         LOG.info("Derby server started!");
         Activator.getInstance().addNetworkControl(host, portNumber, control);
@@ -178,8 +168,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
    * @return the datasource
    */
   @Override
-  public ConnectionPoolDataSource createConnectionPoolDataSource(
-      Properties props) throws SQLException {
+  public ConnectionPoolDataSource createConnectionPoolDataSource(Properties props) throws SQLException {
     final ClientConnectionPoolDataSource40 datasource = new ClientConnectionPoolDataSource40();
     setProperties(datasource, props);
     LOG.info("creating Derby connection pool datasource");
@@ -202,12 +191,12 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
     return datasource;
   }
 
-public void logProperties(Properties props) {
-	for (Object keyO : props.keySet()) {
-        String key = (String) keyO;
-    	LOG.info("key: " + key + ", value: " + props.get(key));
+  public void logProperties(Properties props) {
+    for (Object keyO : props.keySet()) {
+      String key = (String) keyO;
+      LOG.trace("key: " + key + ", value: " + props.get(key));
     }
-}
+  }
 
   /**
    * Creates Client driver.
@@ -218,7 +207,7 @@ public void logProperties(Properties props) {
    */
   @Override
   public Driver createDriver(Properties props) throws SQLException {
-	  LOG.info("creating Derby driver");
+    LOG.info("creating Derby driver");
     final ClientDriver40 driver = new ClientDriver40();
 
     return driver;

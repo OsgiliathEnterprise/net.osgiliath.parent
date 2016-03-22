@@ -1,6 +1,4 @@
-package conf;
-
-import java.util.Properties;
+package net.osgiliath.feature.itest.messaging.conf;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -27,13 +25,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import org.apache.camel.Component;
-
-import org.apache.camel.component.properties.DefaultPropertiesParser;
-import org.apache.camel.component.properties.PropertiesComponent;
-import org.apache.camel.component.properties.PropertiesParser;
-import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

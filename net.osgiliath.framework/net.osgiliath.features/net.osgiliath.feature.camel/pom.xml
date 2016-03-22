@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.features</groupId>
@@ -24,11 +23,8 @@
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-resources-plugin</artifactId> 
-				<configuration> <useDefaultDelimiters>false</useDefaultDelimiters> <delimiters> 
-				<delimiter>${*}</delimiter> </delimiters> </configuration> <executions> <execution> 
-				<id>filter</id> <phase>generate-resources</phase> <goals> <goal>resources</goal> 
-				</goals> </execution> </executions> </plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-resources-plugin</artifactId> <configuration> <useDefaultDelimiters>false</useDefaultDelimiters> <delimiters> <delimiter>${*}</delimiter> </delimiters> </configuration> <executions> 
+				<execution> <id>filter</id> <phase>generate-resources</phase> <goals> <goal>resources</goal> </goals> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -120,11 +116,6 @@
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
-		<groupId>net.osgiliath.wrappers</groupId>
-		<artifactId>net.osgiliath.wrapper.camel-cdi</artifactId>
-		<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>net.osgiliath.wrappers</groupId>
 			<artifactId>net.osgiliath.wrapper.camel-websocket</artifactId>
 			<version>${project.version}</version>
@@ -137,7 +128,10 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-catalog</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cdi</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-commands-core</artifactId>
