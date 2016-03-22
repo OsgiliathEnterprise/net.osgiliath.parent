@@ -15,7 +15,7 @@
   </modules>
   <name>Simple Helloworld sample</name>
 	<description>
-	This is a simple osgiliath sample made with framework, composed of a web part and a model one
+	This is a simple Osgiliath sample made with framework, composed of a web part and a model one
 	</description>
 	<organization>
 		<name>Osgiliath</name>
@@ -43,13 +43,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${maven-javadoc-plugin.version}</version>
-
 				<configuration>
 					<minmemory>128m</minmemory>
 					<maxmemory>1024m</maxmemory>
 				</configuration>
 				<reportSets>
-
 					<reportSet>
 						<id>projectjdoc</id>
 						<configuration>

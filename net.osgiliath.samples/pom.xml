@@ -13,5 +13,6 @@
   <description>Samples of Osgiliath framework usage</description>
   <modules>
   	<module>net.osgiliath.sample.webapp.simple</module>
+  	<module>net.osgiliath.sample.enterprise</module>
   </modules>
 </project>
