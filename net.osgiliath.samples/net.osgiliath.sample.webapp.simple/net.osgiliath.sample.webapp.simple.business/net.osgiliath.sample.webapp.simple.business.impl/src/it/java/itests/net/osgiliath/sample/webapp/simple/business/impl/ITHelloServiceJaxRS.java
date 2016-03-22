@@ -25,11 +25,9 @@ import static org.junit.Assert.assertTrue;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -42,7 +40,6 @@ import net.osgiliath.sample.webapp.simple.business.spi.model.Hellos;
 import net.osgiliath.sample.webapp.simple.model.entities.HelloEntity;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.Component;
-import org.apache.camel.ComponentConfiguration;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.ProducerTemplate;
 import org.apache.karaf.features.BootFinished;
@@ -103,8 +100,8 @@ public class ITHelloServiceJaxRS extends AbstractPaxExamKarafConfiguration {
   @ProbeBuilder
   public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
     builder.addTest(AbstractPaxExamKarafConfiguration.class);
-    builder.setHeader(Constants.EXPORT_PACKAGE,
-        "net.osgiliath.hello.business.impl.services.impl.services.impl.itests");
+    builder.setHeader(Constants.EXPORT_PACKAGE, this.getClass().getPackage().getName()
+        );
     builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
     builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
     return builder;

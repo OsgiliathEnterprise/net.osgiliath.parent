@@ -15,7 +15,6 @@
 	</modules>
 	<dependencyManagement>
 		<dependencies>
-
 			<dependency>
 				<groupId>com.fasterxml</groupId>
 				<artifactId>classmate</artifactId>
@@ -2058,5 +2057,7 @@
 		<persistence-api_feature.version>2.0.0</persistence-api_feature.version>
 		<transaction-api_feature.version>1.2.0</transaction-api_feature.version>
 		<xml-specs-api.version>2.5.0</xml-specs-api.version>
+		
+		<osgiliath.framework.maven.version>${project.version}</osgiliath.framework.maven.version>
 	</properties>
 </project>
