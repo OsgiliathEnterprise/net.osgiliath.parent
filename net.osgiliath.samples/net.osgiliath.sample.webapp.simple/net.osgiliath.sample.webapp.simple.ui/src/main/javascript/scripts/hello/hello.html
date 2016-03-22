@@ -1,10 +1,10 @@
 <div class="wrapper">
 <div class="row">
-	<div class="col-md-8" id="helloInput">
+	<div class="col-md-8" id="helloInputDiv">
 		<form id="helloForm" ng-submit="sendHello()" class="form-inline">
 			<div id="helloFieldGroup" ng-class="(errors=='')?'form-group has-success has-feedback':'form-group has-feedback has-error'">
 				<label id="helloFieldLabel" for="helloInput" class="control-label">Message: </label>
-				<div id="helloInputDiv" class="form-group">
+				<div id="helloInputFormDiv" class="form-group">
 					<input type="text" id="helloInput" class="form-control" placeholder="Hello message"
 						ng-model="helloMessage" />
 				</div>

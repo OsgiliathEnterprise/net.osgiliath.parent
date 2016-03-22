@@ -56,7 +56,7 @@ public class ITHelloWebUITest {
   private static final String CORRECT_NAME = "CorrectName";
 
   @Test
-  @Ignore
+  
   public void testSayHello() throws Exception {
     final WebDriver driver;
     driver = new FirefoxDriver();
@@ -77,7 +77,7 @@ public class ITHelloWebUITest {
     element = driver.findElement(By.id("helloInput"));
     element.click();
     element.sendKeys(CORRECT_NAME);
-    element = driver.findElement(By.id("helloButton"));
+    element = driver.findElement(By.id("helloButtonAsync"));
     element.click();
     (new WebDriverWait(driver, 20)).until(new ExpectedCondition<Boolean>() {
       public Boolean apply(WebDriver d) {

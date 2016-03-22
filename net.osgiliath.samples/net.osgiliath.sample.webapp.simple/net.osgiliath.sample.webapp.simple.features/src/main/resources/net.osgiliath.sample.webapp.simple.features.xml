@@ -60,10 +60,9 @@
 	
 	<feature name="${project.parent.artifactId}.ui.itests" version="${project.version}">
 		
-		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
+		<feature version="${project.version}">${project.parent.artifactId}.business</feature>
 		<feature version="${karaf.version}" prerequisite = "true">osgiliath-war</feature>
-		<feature version="${project.version}">${project.parent.artifactId}.model</feature>
+		
 		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.ui/target/${project.parent.artifactId}.ui.war</bundle>
 	</feature>
 	
