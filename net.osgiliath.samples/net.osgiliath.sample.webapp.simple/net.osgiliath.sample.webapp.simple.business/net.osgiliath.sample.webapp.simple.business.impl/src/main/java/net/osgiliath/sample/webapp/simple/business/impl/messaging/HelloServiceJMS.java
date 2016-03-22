@@ -1,36 +1,10 @@
 package net.osgiliath.sample.webapp.simple.business.impl.messaging;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-
-import org.apache.camel.CamelExecutionException;
-import org.apache.camel.Exchange;
-import org.apache.camel.LoggingLevel;
-import org.apache.camel.Processor;
-import org.apache.camel.ProducerTemplate;
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.cdi.ContextName;
-import org.apache.camel.cdi.Uri;
-import org.apache.camel.component.jackson.JacksonDataFormat;
-import org.apache.camel.spi.DataFormat;
-import org.ops4j.pax.cdi.api.OsgiService;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 /*
  * #%L
- * net.osgiliath.hello.business.impl
+ * Helloworld sample business module
  * %%
- * Copyright (C) 2013 Osgiliath
+ * Copyright (C) 2013 - 2016 Osgiliath
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +20,30 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * #L%
  */
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Collection;
+import java.util.stream.Collectors;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.sample.webapp.simple.business.spi.HelloService;
 import net.osgiliath.sample.webapp.simple.business.spi.model.Hellos;
 import net.osgiliath.sample.webapp.simple.model.daos.HelloRepository;
 import net.osgiliath.sample.webapp.simple.model.entities.HelloEntity;
+import org.apache.camel.CamelExecutionException;
+import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.Processor;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.cdi.ContextName;
+import org.apache.camel.cdi.Uri;
+import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.apache.camel.spi.DataFormat;
+import org.ops4j.pax.cdi.api.OsgiService;
 
 /**
  * JMS sample of Hello service exports.
@@ -63,8 +52,8 @@ import net.osgiliath.sample.webapp.simple.model.entities.HelloEntity;
  * 
  */
 @Slf4j
-@ContextName
 @ApplicationScoped
+@ContextName
 public class HelloServiceJMS extends RouteBuilder implements HelloService {
 	private final transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
 		      HelloEntity.class, Hellos.class);
@@ -135,7 +124,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
 	 */
 	@Override
 	public void configure() throws Exception {
-		from("jms:queue:helloServiceQueueIn")
+		from("properties:{{helloApp.inQueueJMS}}"/*"jms:queue:helloServiceQueueIn"*/)
 		.log(LoggingLevel.INFO, "received jms message: ${body}").unmarshal(this.helloObjectJSonFormat).process(new Processor() {
 
 			@Override
