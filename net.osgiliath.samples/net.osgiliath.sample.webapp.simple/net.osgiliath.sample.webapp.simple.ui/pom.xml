@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.osgiliath.samples</groupId>
@@ -19,8 +18,20 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>src/main/javascript</directory>
 				<filtering>true</filtering>
+				<includes>
+					<include>**/*.js</include>
+					<include>**/*.html</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/javascript</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.js</exclude>
+					<exclude>**/*.html</exclude>
+				</excludes>
 			</resource>
 		</resources>
 		<finalName>${project.artifactId}</finalName>
@@ -98,8 +109,7 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<configuration>
 					<filesets>
-						<!-- <fileset> <directory>src/main/javascript/bower_components</directory> 
-							</fileset> <fileset> <directory>node_modules</directory> </fileset> -->
+						<!-- <fileset> <directory>src/main/javascript/bower_components</directory> </fileset> <fileset> <directory>node_modules</directory> </fileset> -->
 						<fileset>
 							<directory>target</directory>
 						</fileset>
@@ -138,14 +148,16 @@
 					</execution>
 					<execution>
 						<id>add-js-source</id>
-						<phase>generate-sources</phase>
+						<phase>generate-resources</phase>
 						<goals>
-							<goal>add-source</goal>
+							<goal>add-resource</goal>
 						</goals>
 						<configuration>
-							<sources>
-								<source>src/main/javascript</source>
-							</sources>
+							<resources>
+								<resource>
+									<directory>src/main/javascript</directory>
+								</resource>
+							</resources>
 						</configuration>
 					</execution>
 					<execution>

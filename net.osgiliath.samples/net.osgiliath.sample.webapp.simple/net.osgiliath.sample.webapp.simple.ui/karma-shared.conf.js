@@ -16,11 +16,11 @@ var shared = function(config) {
 		//singleRun : false,
 		colors : true,
 		preprocessors : {
-			'src/main/javascript/scripts/**/*.js' : 'coverage'
+			'target/classes/scripts/**/*.js' : 'coverage'
 		},
 	});
 };
-shared.mainfolder = 'src/main/javascript/';
+shared.mainfolder = 'target/classes/';
 shared.bowercomponent = shared.mainfolder + 'bower_components/';
 
 

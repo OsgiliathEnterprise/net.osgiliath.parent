@@ -1,15 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!-- Licensed to the Apache Software Foundation (ASF) under one or more 
-		contributor license agreements. See the NOTICE file distributed with this 
-		work for additional information regarding copyright ownership. The ASF licenses 
-		this file to You under the Apache License, Version 2.0 (the "License"); you 
-		may not use this file except in compliance with the License. You may obtain 
-		a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless 
-		required by applicable law or agreed to in writing, software distributed 
-		under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
-		OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
-		the specific language governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the 
+		Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, 
+		software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>net.osgiliath.pom.reporting</artifactId>
@@ -59,15 +51,11 @@
 							<artifactId>openjpa</artifactId>
 							<version>${org.apache.openjpa.version}</version>
 						</dependency>
-						<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-jpamodelgen</artifactId> 
-							<version>${org.hibernate.version}</version> </dependency> -->
+						<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-jpamodelgen</artifactId> <version>${org.hibernate.version}</version> </dependency> -->
 					</dependencies>
 				</plugin>
-				<!-- <plugin> <groupId>de.juplo</groupId> <artifactId>hibernate4-maven-plugin</artifactId> 
-					<version>${de.juplo_hibernate4-maven-plugin.version}</version> <dependencies> 
-					<dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
-					<version>${org.hibernate.version}</version> </dependency> </dependencies> 
-					</plugin> -->
+				<!-- <plugin> <groupId>de.juplo</groupId> <artifactId>hibernate4-maven-plugin</artifactId> <version>${de.juplo_hibernate4-maven-plugin.version}</version> <dependencies> <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-core</artifactId> 
+					<version>${org.hibernate.version}</version> </dependency> </dependencies> </plugin> -->
 				<plugin>
 					<groupId>org.apache.aries.blueprint</groupId>
 					<artifactId>blueprint-maven-plugin</artifactId>
@@ -230,6 +218,13 @@
 							</configuration>
 						</execution>
 					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.shared</groupId>
+							<artifactId>maven-filtering</artifactId>
+							<version>${org.apache.maven.shared_maven-filtering.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -336,27 +331,13 @@
 								</resources>
 							</configuration>
 						</execution>
-						<!-- <execution> <id>add-resource</id> <phase>generate-resources</phase> 
-							<goals> <goal>add-resource</goal> </goals> <configuration> <resources> <resource> 
-							<directory>${project.build.directory}/generated-resources</directory> </resource> 
-							</resources> </configuration> </execution> -->
-						<!-- <execution>
-							<id>add-source</id>
-							<phase>generate-sources</phase>
-							<goals>
-								<goal>add-source</goal>
-							</goals>
-							<configuration>
-								<sources>
-									<source>src/main/scala</source>
-								</sources>
-							</configuration>
-						</execution> -->
+						<!-- <execution> <id>add-resource</id> <phase>generate-resources</phase> <goals> <goal>add-resource</goal> </goals> <configuration> <resources> <resource> <directory>${project.build.directory}/generated-resources</directory> </resource> </resources> 
+							</configuration> </execution> -->
+						<!-- <execution> <id>add-source</id> <phase>generate-sources</phase> <goals> <goal>add-source</goal> </goals> <configuration> <sources> <source>src/main/scala</source> </sources> </configuration> </execution> -->
 					</executions>
 				</plugin>
 				<plugin>
-					<!-- Set timestamp in a variable so it can be used for generated files 
-						by liquibase in different goals -->
+					<!-- Set timestamp in a variable so it can be used for generated files by liquibase in different goals -->
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>buildnumber-maven-plugin</artifactId>
 					<version>${buildnumber-maven-plugin.version}</version>
@@ -403,7 +384,7 @@
 							<include>${project.basedir}/src/main/java/**/model/**/*.java</include>
 						</includes>
 						<excludes>
-						<exclude>${project.basedir}/src/main/scala</exclude>
+							<exclude>${project.basedir}/src/main/scala</exclude>
 							<exclude>**/Abstract*.java</exclude>
 							<exclude>**/*Repository.java</exclude>
 							<exclude>**/*Service.java</exclude>
@@ -577,9 +558,7 @@
 										<ignore />
 									</action>
 								</pluginExecution>
-								<!-- <pluginExecution> <pluginExecutionFilter> <groupId> de.juplo</groupId> 
-									<artifactId>hibernate4-maven-plugin </artifactId> <versionRange> [1,) </versionRange> 
-									<goals> <goal>export</goal> </goals> </pluginExecutionFilter> <action> <execute> 
+								<!-- <pluginExecution> <pluginExecutionFilter> <groupId> de.juplo</groupId> <artifactId>hibernate4-maven-plugin </artifactId> <versionRange> [1,) </versionRange> <goals> <goal>export</goal> </goals> </pluginExecutionFilter> <action> <execute> 
 									<ignore /> </execute> </action> </pluginExecution> -->
 								<pluginExecution>
 									<pluginExecutionFilter>
@@ -1049,8 +1028,7 @@
 						<addOutputDirectory>false</addOutputDirectory>
 						<sourceDirectory>src/main/java</sourceDirectory>
 					</configuration>
-				</plugin><!--This plugin's configuration is used to store Eclipse m2e 
-					settings only. It has no influence on the Maven build itself. -->
+				</plugin><!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.scala-tools</groupId>
 					<artifactId>maven-scala-plugin</artifactId>
@@ -1321,8 +1299,7 @@
 			</build>
 		</profile>
 		<!-- ============================================================================================ -->
-		<!-- Generate database data changelog for liquibase (run previously mvn 
-			-Pprod test-compile if you want to generate changelog for production data) -->
+		<!-- Generate database data changelog for liquibase (run previously mvn -Pprod test-compile if you want to generate changelog for production data) -->
 		<!-- ============================================================================================ -->
 		<profile>
 			<id>db-data</id>
@@ -1500,7 +1477,7 @@
 		<org.apache.maven.plugins_maven-assembly-plugin.version>2.5.3</org.apache.maven.plugins_maven-assembly-plugin.version>
 		<org.apache.openjpa.version>2.4.1</org.apache.openjpa.version>
 		<org.apache.xbean_xbean-asm5-shaded.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-asm5-shaded.version>
-
+		<org.apache.maven.shared_maven-filtering.version>3.0.0</org.apache.maven.shared_maven-filtering.version>
 		<org.apache.xbean.latest.version>4.5</org.apache.xbean.latest.version>
 		<org.codehaus.plexus.version>1.5.5</org.codehaus.plexus.version>
 		<!-- <org.hibernate.version>4.3.6.Final</org.hibernate.version> -->

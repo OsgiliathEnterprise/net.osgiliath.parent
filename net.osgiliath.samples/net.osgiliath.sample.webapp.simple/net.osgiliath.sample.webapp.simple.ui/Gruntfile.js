@@ -21,25 +21,27 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: {
       // configurable paths
-      app: require('./bower.json').appPath || 'src/main/javascript',
-      dist: 'target/net.osgiliath.sample.webapp.simple.ui'
+      sources: 'src/main/javascript',
+      app: require('./bower.json').appPath || 'target/classes',
+      dist: 'target/net.osgiliath.sample.webapp.simple.ui',
+      testsPath : 'src/test/javascript'
     },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js',  '<%= yeoman.app %>/styles/*.scss'],
+        files: ['<%= yeoman.sources %>/scripts/{,*/}*.js',  '<%= yeoman.sources %>/styles/*.scss'],
         tasks: ['newer:jshint:all','compass:server'],
         options: {
           livereload: true
         }
       },
       jsTest: {
-        files: ['src/test/javascript/spec/{,*/}*.js'],
+        files: ['<%= yeoman.testsPath %>/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.sources %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },
       gruntfile: {
@@ -50,9 +52,9 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.sources %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.sources %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -70,7 +72,7 @@ module.exports = function (grunt) {
           open: true,
           base: [
             '.tmp',
-            '<%= yeoman.app %>'
+            '<%= yeoman.sources %>'
           ]
         }
       },
@@ -79,7 +81,7 @@ module.exports = function (grunt) {
           port: 9003,
           base: [
             '.tmp',
-            'src/test/javascript',
+            '<%= yeoman.testsPath %>',
             '<%= yeoman.app %>'
           ]
         }
@@ -105,7 +107,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: '.jshintrc'
         },
-        src: ['src/test/javascript/spec/{,*/}*.js']
+        src: ['<%= yeoman.testsPath %>/spec/{,*/}*.js']
       }
     },
 
@@ -147,13 +149,13 @@ module.exports = function (grunt) {
       }
     },
     wiredep: {
-      task: {
+      target: {
         src: [
-    	  '<%= yeoman.app %>/**/*.html',   // .html support...
-    	  'app/styles/app.scss',  // .scss & .sass support...
+          '<%= yeoman.sources %>/**/*.html',// .html support...
+          '<%= yeoman.sources %>/styles/app.scss'// .scss & .sass support...
     	],
     	options: {
-    	}
+        }
       }
     },
     // Compiles Sass to CSS and generates necessary files if requested

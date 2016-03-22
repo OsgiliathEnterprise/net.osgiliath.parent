@@ -9,8 +9,8 @@ angular.module('commonapp', []).service('stompservice', function(){
 	this.protocol = 'ws';
 	this.host = '127.0.0.1';
 	this.port = '61614';
-	this.user = 'sa';
-	this.password = 'sa';
+	this.user = '${database.user}';
+	this.password = '${database.password}';
 	this.url = this.protocol + '://' + this.host + ':' + this.port ;
 	this.stompClient = Stomp.client(this.url, 'v11.stomp');
 	this.stompClient.heartbeat.outgoing = 30000;
@@ -43,16 +43,10 @@ angular.module('commonapp', []).service('stompservice', function(){
           return protocolData;
         };
 	
-	
-
-	
-	
-	
-	
 	this.unsubscribe = function(id) {
 		console.info('unsubscribing ID: ' + id.connectionId);
 		this.stompClient.unsubscribe(id.connectionId);
-		window.clearInterval(id.heartBeatId);
+		//window.clearInterval(id.heartBeatId);
 	};
 	this.disconnect = function() {
 		this.stompClient.disconnect(this.disconnectcb);

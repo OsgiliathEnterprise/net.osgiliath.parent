@@ -24,7 +24,7 @@ var unit = function(config) {
 			'/' : 'http://localhost:9003/'
 	};
 };
-unit.mainfolder = 'src/main/javascript/';
+unit.mainfolder = 'target/classes/';
 unit.bowercomponent = shared.mainfolder + 'bower_components/';
 unit.testfolder = 'src/test/javascript/';
 

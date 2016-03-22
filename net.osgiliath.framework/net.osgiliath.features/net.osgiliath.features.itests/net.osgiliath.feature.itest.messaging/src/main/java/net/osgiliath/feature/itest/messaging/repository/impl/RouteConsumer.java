@@ -46,7 +46,7 @@ public class RouteConsumer extends RouteBuilder {
 	@Override
 	
 	public void configure() throws Exception {
-		from(/*"{{messaging.routequeuein}}"*/"jms:queue:helloServiceQueueIn").log(LoggingLevel.INFO, "received JMS message on the queue")
+		from("properties:{{messaging.routequeuein}}"/*"jms:queue:helloServiceQueueIn"*/).log(LoggingLevel.INFO, "received JMS message on the queue")
 				.process(new Processor() {
 
 					@Override
