@@ -79,7 +79,6 @@
 				<artifactId>paranamer</artifactId>
 				<version>${com.thoughtworks.paranamer_paranamer.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
@@ -166,7 +165,6 @@
 				<artifactId>jmdns</artifactId>
 				<version>${javax.jmdns_jmdns.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>javax.json</groupId>
 				<artifactId>javax.json-api</artifactId>
@@ -468,6 +466,21 @@
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-jms</artifactId>
 				<version>${org.apache.camel_camel-jms.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-spring</artifactId>
+				<version>${org.apache.camel_camel-spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test</artifactId>
+				<version>${org.apache.camel_camel-test.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test-spring</artifactId>
+				<version>${org.apache.camel_camel-test-spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
@@ -986,6 +999,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
+				<artifactId>org.apache.servicemix.bundles.spring-test</artifactId>
+				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-test.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.spring-tx</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-tx.version}</version>
 			</dependency>
@@ -1281,6 +1299,11 @@
 				<version>${org.glassfish.web_javax.el.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.glassfish</groupId>
+				<artifactId>javax.json</artifactId>
+				<version>${org.glassfish_javax.json.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
 				<version>${org.hibernate_hibernate-validator.version}</version>
@@ -1324,10 +1347,21 @@
 				<version>${org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.kubek2k</groupId>
+				<artifactId>springockito</artifactId>
+				<version>${org.kubek2k_springockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-osgi</artifactId>
 				<version>${org.liquibase_liquibase-osgi.version}</version>
 			</dependency>
+			<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${org.mockito_mockito-all.version}</version>
+		</dependency>
 			<dependency>
 				<groupId>org.ops4j.base</groupId>
 				<artifactId>ops4j-base-exec</artifactId>
@@ -1753,6 +1787,9 @@
 		<org.apache.camel_camel-jackson.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-jackson.version>
 		<org.apache.camel_camel-jaxb.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-jaxb.version>
 		<org.apache.camel_camel-jms.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-jms.version>
+		<org.apache.camel_camel-spring.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-spring.version>
+		<org.apache.camel_camel-test.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-test.version>
+		<org.apache.camel_camel-test-spring.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-test-spring.version>
 		<org.apache.camel_camel-websocket.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-websocket.version>
 		<org.apache.camel_camel-xmljson.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-xmljson.version>
 		<org.apache.camel_camel-xstream.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-xstream.version>
@@ -1862,6 +1899,7 @@
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>1.3.2.RELEASE_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-ldap.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-orm.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-orm.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-test.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-test.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-tx.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-tx.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-web.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version>
@@ -1921,6 +1959,7 @@
 		<org.fusesource.hawtdispatch_hawtdispatch.version>1.22</org.fusesource.hawtdispatch_hawtdispatch.version>
 		<org.fusesource.hawtdispatch_hawtdispatch-transport.version>${org.fusesource.hawtdispatch_hawtdispatch.version}</org.fusesource.hawtdispatch_hawtdispatch-transport.version>
 		<org.fusesource.mqtt-client_mqtt-client.version>1.12</org.fusesource.mqtt-client_mqtt-client.version>
+		<org.glassfish_javax.json.version>1.0.4</org.glassfish_javax.json.version>
 		<org.glassfish.web_javax.el.version>2.2.4</org.glassfish.web_javax.el.version>
 		<org.hibernate_hibernate-validator.version>5.2.2.Final</org.hibernate_hibernate-validator.version>
 		<org.hibernate_hibernate-validator-cdi.version>${org.hibernate_hibernate-validator.version}</org.hibernate_hibernate-validator-cdi.version>
@@ -1933,7 +1972,9 @@
 		<org.jboss.weld_weld-osgi-bundle.version>${org.jboss.weld.version}</org.jboss.weld_weld-osgi-bundle.version>
 		<org.jolokia_jolokia-osgi.version>1.3.2</org.jolokia_jolokia-osgi.version>
 		<org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>0.6.4</org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>
+		<org.kubek2k_springockito.version>1.0.9</org.kubek2k_springockito.version>
 		<org.liquibase_liquibase-osgi.version>${org.liquibase.version}</org.liquibase_liquibase-osgi.version>
+		<org.mockito_mockito-all.version>1.8.4</org.mockito_mockito-all.version>
 		<org.ops4j.base_ops4j-base-exec.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base-exec.version>
 		<org.ops4j.base_ops4j-base-io.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base-io.version>
 		<org.ops4j.base_ops4j-base-lang.version>${org.ops4j.base.version}</org.ops4j.base_ops4j-base-lang.version>

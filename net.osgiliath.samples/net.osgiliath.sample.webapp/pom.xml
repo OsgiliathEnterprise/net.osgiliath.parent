@@ -1,15 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.osgiliath.samples</groupId>
-    <artifactId>net.osgiliath.samples</artifactId>
-    <version>0.2.4-SNAPSHOT</version>
-  </parent>
-  <artifactId>net.osgiliath.sample.enterprise</artifactId>
-  <packaging>pom</packaging>
-  <name>Enterprise Helloworld sample</name>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath.samples</groupId>
+		<artifactId>net.osgiliath.samples</artifactId>
+		<version>0.2.4-SNAPSHOT</version>
+	</parent>
+	<artifactId>net.osgiliath.sample.webapp</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>net.osgiliath.sample.webapp.features</module>
+		<module>net.osgiliath.sample.webapp.model</module>
+		<module>net.osgiliath.sample.webapp.ui</module>
+		<module>net.osgiliath.sample.webapp.business</module>
+	</modules>
+	<name>Simple Helloworld sample</name>
 	<description>
-	This is an advanced sample of Osgiliath usage made with framework, it uses a mediator bus to route messages between UI and services 
+	This is a simple Osgiliath sample made with framework, composed of a web part and a model one
 	</description>
 	<organization>
 		<name>Osgiliath</name>
@@ -63,9 +69,9 @@
 		<database.user>sa</database.user>
 		<database.password>sa</database.password>
 		<app.serverHost>localhost</app.serverHost>
+		<app.restendpoint>/cxf/helloService/hello</app.restendpoint>
+		<app.inQueueStomp>/queue/helloServiceQueueIn</app.inQueueStomp>
+		<app.outTopicStomp>/topic/helloServiceQueueOut</app.outTopicStomp>
+		<app.outErrorQueue>/queue/helloMessagingErrors</app.outErrorQueue>
 	</properties>
-	<modules>
-		<module>net.osgiliath.sample.enterprise.features</module>
-		<module>net.osgiliath.sample.enterprise.routes</module>
-	</modules>
 </project>
