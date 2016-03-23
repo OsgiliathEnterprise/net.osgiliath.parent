@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
-	name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:org.ops4j.pax.web/pax-web-features/${org.ops4j.pax.web_pax-web-features.version}/xml/features</repository>
 	
-	   <feature name="osgiliath-pax-jetty" description="Provide Jetty engine support" version="${org.eclipse.jetty.version}">
+	<feature name="osgiliath-pax-jetty" description="Provide Jetty engine support" version="${org.eclipse.jetty.version}">
         <bundle dependency="true" start-level="30">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version}</bundle>
         <bundle dependency="true" start-level="30">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
         <bundle dependency="true" start-level="30">mvn:javax.mail/mail/${javax.mail_mail.version}</bundle>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
-	name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.pax-jdbc/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-spring/${project.version}/xml/features</repository>
 	
 	<feature name='osgiliath-jdbc' version='${project.version}' resolver="(obr)" start-level="35" description="JDBC database simplified creation via property and Liquibase (database versioning) support">
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring</feature>
-		<feature version="${apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
+		<feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
 		<feature version="${org.apache.karaf.features_enterprise.version}">osgiliath-karaf-jdbc</feature>
 		<feature version="${org.apache.karaf.features_enterprise.version}">osgiliath-jndi</feature>
 		<feature version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}">osgiliath-pax-jdbc-pool-aries</feature>

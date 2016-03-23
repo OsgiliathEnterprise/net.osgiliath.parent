@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
-	name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cxf/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.validation/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.pax-cdi/${project.version}/xml/features</repository>
 	<feature name="osgiliath-rest" version="${project.version}" resolver="(obr)" start-level="50" description="RESTful web services support">
-	<feature version="${apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
+		<feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
 		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
 		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxb</feature>
 		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-databinding-jaxb</feature>

@@ -8,14 +8,8 @@
 	OF ANY KIND, either express or implied. See the License for the specific 
 	language governing permissions and limitations under the License. #L% -->
 
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<!-- TODO add your features here -->
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.persistence/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.jdbc/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.webservices/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.routes/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.messaging/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.sample.webapp.features/${project.version}/xml/features</repository>
 	
 	

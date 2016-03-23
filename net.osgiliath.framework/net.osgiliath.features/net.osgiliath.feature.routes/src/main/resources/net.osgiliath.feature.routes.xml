@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
-	name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.messaging/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.webservices/${project.version}/xml/features</repository>
@@ -24,7 +23,7 @@
 		<feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-http</feature>
 		<feature version="${project.version}">osgiliath-routes-xmlandjson</feature>
 		<bundle>mvn:${project.groupId}/net.osgiliath.module.camel/${project.version}</bundle>
-		<!-- <feature version="${org.apache.camel.version}">osgiliath-camel-cxf</feature>  -->
+		<!-- <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-cxf</feature>  -->
 	</feature>
 	<feature name="osgiliath-routes-xmlandjson" version="${project.version}" start-level="60" description="Xml to Json transformation libs">
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom.version}</bundle>

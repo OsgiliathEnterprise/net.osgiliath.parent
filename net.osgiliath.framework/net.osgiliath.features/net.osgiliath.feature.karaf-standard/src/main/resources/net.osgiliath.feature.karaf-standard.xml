@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
-	name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:org.apache.karaf.features/standard/${org.apache.karaf.features_standard.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.pax-web/${project.version}/xml/features</repository>
 	<feature name="osgiliath-scr" description="Declarative Service support" version="${org.apache.karaf.features_standard.version}">

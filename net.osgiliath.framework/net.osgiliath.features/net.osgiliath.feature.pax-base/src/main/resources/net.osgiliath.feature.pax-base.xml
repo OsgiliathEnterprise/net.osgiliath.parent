@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
-	name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<feature name="osgiliath-pax-base" description="Provide CDI support" version="${org.ops4j.base_pax-base-features.version}">
 		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-exec/${org.ops4j.base_ops4j-base-exec.version}</bundle>
 		<bundle dependency="true" start-level="20">mvn:org.ops4j.base/ops4j-base-io/${org.ops4j.base_ops4j-base-io.version}</bundle>

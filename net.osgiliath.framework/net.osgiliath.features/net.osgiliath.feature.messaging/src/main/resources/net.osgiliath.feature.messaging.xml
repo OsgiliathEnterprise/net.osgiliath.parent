@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.activemq/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
 	<feature name="osgiliath-messaging" version="${project.version}" start-level="50" description="Osgiliath messaging fwk">
 		<bundle>mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-tx</feature>
-		<feature version="${apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
+		<feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
 		<feature version="${org.apache.karaf.features_enterprise.version}">osgiliath-jms</feature>
 		<feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq-blueprint</feature>
 		<bundle dependency='true'>mvn:commons-io/commons-io/${commons-io_commons-io.version}</bundle>
