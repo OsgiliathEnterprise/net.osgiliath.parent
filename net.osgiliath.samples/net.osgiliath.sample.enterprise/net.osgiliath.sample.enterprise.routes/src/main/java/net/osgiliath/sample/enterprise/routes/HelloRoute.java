@@ -107,7 +107,7 @@ public class HelloRoute extends RouteBuilder {
         .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))
         .unmarshal(this.helloObjectJSonFormat).marshal(jaxBDataFormat)
         .log(LoggingLevel.INFO, "marshalled: ${body}").doTry()
-        .inOnly("properties:{{helloApp.restEndpoint}}/hello")
+        .inOnly("properties:{{helloApp.restEndpoint}}")
         .to("direct:updateTopic").doCatch(Exception.class)
         .log(LoggingLevel.WARN, "Exception while persisting message")
         .to("direct:helloValidationError").end();
@@ -115,7 +115,7 @@ public class HelloRoute extends RouteBuilder {
     from("direct:updateTopic")
         .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
         .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))
-        .inOut("properties:{{helloApp.restEndpoint}}/hello")
+        .inOut("properties:{{helloApp.restEndpoint}}")
         .inOut("direct:marshall").to("properties:{{helloApp.outCamelTopicJMS}}");
 
     from("direct:marshall").process(this.octetsStreamToStringProcessor)

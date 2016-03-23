@@ -55,7 +55,7 @@
 		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.business/${project.parent.artifactId}.business.impl/target/${project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
 	</feature>
 	<!-- UI -->
-	<feature name="${project.parent.artifactId}.ui" version="${project.version}">
+	<feature name="${project.parent.artifactId}.ui.feature" version="${project.version}">
 		<feature version="${project.version}">${project.parent.artifactId}.business</feature>
 		<feature version="${org.apache.karaf.features_standard.version}" prerequisite = "true">osgiliath-war</feature>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.ui/${project.version}/war</bundle>

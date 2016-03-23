@@ -45,4 +45,4 @@ Deployement:
 
 Prerequisite: Karaf 4.0.4
 
-Usage: run 'feature:repo-add mvn:${project.groupId}/${project.artifactId}.features/${project.version}/xml/feature', then 'feature:install ${project.artifactId}.ui'
+Usage: run 'feature:repo-add mvn:${project.groupId}/${project.artifactId}.features/${project.version}/xml/feature', then 'feature:install ${project.artifactId}.ui.feature'

@@ -9,7 +9,6 @@
 	<name>Helloworld sample routes</name>
 	<description>Routes between UI and business</description>
 	<build>
-		<finalName>${project.artifactId}</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -65,6 +64,13 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.spring-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<version>${project.version}</version>
+			<artifactId>${project.parent.artifactId}.features</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.framework</groupId>
