@@ -60,21 +60,5 @@ public class CDIMessagingComponents {
     return this.jms;
   }
   
-//  @Produces
-//  @ApplicationScoped
-//  @Named("properties")
-//  PropertiesComponent properties(PropertiesParser parser) {
-//      PropertiesComponent component = new PropertiesComponent();
-//      component.setPropertiesParser(parser);
-//      return component;
-//  }
-//   
-//  // PropertiesParser bean that uses DeltaSpike to resolve properties
-//  static class DeltaSpikeParser extends DefaultPropertiesParser {
-//      @Override
-//      public String parseProperty(String key, String value, Properties properties) {
-//          return ConfigResolver.getPropertyValue(key);
-//      }
-//  }
 
 }

@@ -72,13 +72,7 @@
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
-		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
-			<version>${project.version}</version>
-			<artifactId>net.osgiliath.feature.routes</artifactId>
-			<type>xml</type>
-			<classifier>features</classifier>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.spring-expression</artifactId>

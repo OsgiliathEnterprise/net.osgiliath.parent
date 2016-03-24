@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="net.osgiliath.raw.ui"
+    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <fileSets>
+  	<fileSet filtered="true" encoding="UTF-8">
+      <directory>src/it/java</directory>
+      <includes>
+        <include>**/*.java</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/main/webapp</directory>
+      <includes>
+        <include>**/*.xml</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/test/javascript</directory>
+      <includes>
+        <include>**/*.html</include>
+        <include>**/*.js</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/main/javascript</directory>
+      <includes>
+      	<include>**/*.js</include>
+        <include>**/*.html</include>
+        <include>**/*.txt</include>
+        <include>**/*.css</include>
+        <include>**/*.scss</include>
+      </includes>
+      <excludes>
+          <exclude>**/*stomp.js</exclude>
+      </excludes>
+    </fileSet>
+    <fileSet filtered="false" encoding="UTF-8">
+      <directory>src/main/javascript</directory>
+      <includes>
+      	<include>.bowerrc</include>
+      	<include>**/*stomp.js</include>
+      </includes>
+    </fileSet>  
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>**/*.bowerrc</include>
+        <include>**/*.json</include>
+        <include>**/*.js</include>
+        <include>**/*.jshintrc</include>
+        <include>LICENSE.txt</include>
+        <include>NOTICE.txt</include>
+        <include>readme.md</include>
+        <include>.gitignore</include>
+        <include>osgi.bnd</include>
+      </includes>
+      <excludes>
+          <exclude>**/*stomp.js</exclude>
+      </excludes>
+    </fileSet>
+  </fileSets>
+</archetype-descriptor>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the 
+		Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, 
+		software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}</artifactId>
+		<version>${version}</version>
+	</parent>
+	<artifactId>${artifactId}</artifactId>
+	<packaging>pom</packaging>
+	<profiles>
+		<profile>
+			<id>dev-db</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.groupId>org.apache.derby</jdbc.groupId>
+				<jdbc.clientArtifactId>derbyclient</jdbc.clientArtifactId>
+				<jdbc.networkArtifactId>derbynet</jdbc.networkArtifactId>
+				<jdbc.serverArtifactId>derby</jdbc.serverArtifactId>
+				<jdbc.version>${derby.version}</jdbc.version>
+				<jdbc.driverClassName>org.apache.derby.jdbc.ClientDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:derby://localhost:1527/memory:${project.parent.artifactId}.database</jdbc.url>
+				<jdbc.username>sa</jdbc.username>
+				<jdbc.password>sa</jdbc.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod-db</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.prod.groupId>org.apache.derby</jdbc.prod.groupId>
+				<jdbc.prod.clientArtifactId>derbyclient</jdbc.prod.clientArtifactId>
+				<jdbc.prod.networkArtifactId>derbynet</jdbc.prod.networkArtifactId>
+				<jdbc.prod.serverArtifactId>derby</jdbc.prod.serverArtifactId>
+				<jdbc.prod.version>${derby.version}</jdbc.prod.version>
+				<jdbc.prod.driverClassName>org.apache.derby.jdbc.ClientDriver</jdbc.prod.driverClassName>
+				<jdbc.prod.url>jdbc:derby://localhost:${database.port}/${project.parent.artifactId}.database</jdbc.prod.url>
+				<jdbc.prod.username>${database.user}</jdbc.prod.username>
+				<jdbc.prod.password>${database.password}</jdbc.prod.password>
+			</properties>
+		</profile>
+	</profiles>
+</project>

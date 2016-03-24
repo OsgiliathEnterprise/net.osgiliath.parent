@@ -10,12 +10,12 @@
 
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<!-- TODO add your features here -->
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.persistence/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.jdbc/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.webservices/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.routes/${project.version}/xml/features</repository>
-	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.messaging/${project.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.persistence/${osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.jdbc/${osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.cdi/${osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.webservices/${osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.routes/${osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.messaging/${osgiliath.framework.maven.version}/xml/features</repository>
 	
 	<!-- Model -->
 	<feature name="${project.parent.artifactId}.model.db" version="${project.version}">
@@ -66,14 +66,4 @@
 		<feature version="${org.apache.karaf.features_standard.version}" prerequisite = "true">osgiliath-war</feature>
 		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.ui/target/${project.parent.artifactId}.ui.war</bundle>
 	</feature>
-	
-
-	
-	<!-- Management and dev features: uncomment the one(s) you want -->
-	<!-- <feature name="${project.groupId}-management" version="${project.version}">
-		<feature version="${project.version}">osgiliath-hawtio</feature>
-	</feature>
-	<feature name="${project.groupId}-development" version="${project.version}">
-		<feature version="${project.version}">osgiliath-swagger-rest</feature>
-	</feature> -->
 </features>

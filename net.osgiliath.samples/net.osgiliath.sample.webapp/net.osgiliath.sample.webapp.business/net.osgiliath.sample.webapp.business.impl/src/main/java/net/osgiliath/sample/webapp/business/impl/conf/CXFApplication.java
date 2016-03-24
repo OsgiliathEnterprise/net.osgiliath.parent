@@ -1,17 +1,5 @@
 package net.osgiliath.sample.webapp.business.impl.conf;
 
-import java.util.Set;
-
-import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-
-import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
-import org.apache.cxf.jaxrs.swagger.Swagger2Feature;
-import org.apache.cxf.jaxrs.validation.JAXRSBeanValidationInInterceptor;
-import org.apache.cxf.jaxrs.validation.JAXRSBeanValidationOutInterceptor;
-import org.apache.cxf.jaxrs.validation.ValidationExceptionMapper;
-
 /*
  * #%L
  * Osgiliath integration tests JaxRS CDI
@@ -34,15 +22,18 @@ import org.apache.cxf.jaxrs.validation.ValidationExceptionMapper;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.google.common.collect.Sets;
-
-import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
+import java.util.Set;
+import javax.inject.Inject;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.module.cdi.eager.Eager;
-import net.osgiliath.module.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
 import net.osgiliath.sample.webapp.business.impl.rest.HelloServiceJaxRS;
 import net.osgiliath.sample.webapp.business.spi.HelloService;
 import net.osgiliath.sample.webapp.business.spi.annotations.REST;
+import org.apache.cxf.jaxrs.swagger.Swagger2Feature;
+import org.apache.cxf.jaxrs.validation.ValidationExceptionMapper;
 
 /**
  * Main CXF application that publishes services.

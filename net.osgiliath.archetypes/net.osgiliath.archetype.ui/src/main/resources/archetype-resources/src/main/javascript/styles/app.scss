@@ -1,0 +1,8 @@
+@import 'compass';
+@import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+/*
+* Custom overrides */
+body {
+   @include background(linear-gradient(#eee, #fff));
+}

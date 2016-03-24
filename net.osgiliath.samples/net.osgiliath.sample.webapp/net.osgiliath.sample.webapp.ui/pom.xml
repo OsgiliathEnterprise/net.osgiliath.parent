@@ -103,7 +103,6 @@
 				<groupId>org.apache.servicemix.tooling</groupId>
 				<artifactId>depends-maven-plugin</artifactId>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -194,7 +193,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.osgiliath.modules</groupId>
-			<version>${project.version}</version>
+			<version>${osgiliath.framework.maven.version}</version>
 			<artifactId>net.osgiliath.module.exam</artifactId>
 			<scope>test</scope>
 		</dependency>

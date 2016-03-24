@@ -1,0 +1,83 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+${symbol_pound}%L
+net.osgiliath.hello.features
+%%
+Copyright (C) 2013 Osgiliath
+%%
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+${symbol_pound}L%
+-->
+
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${symbol_dollar}{project.artifactId}-${symbol_dollar}{project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
+	<!-- TODO add your features here -->
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.persistence/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.jdbc/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.cdi/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.webservices/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.routes/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
+	<repository>mvn:net.osgiliath.features/net.osgiliath.feature.messaging/${symbol_dollar}{osgiliath.framework.maven.version}/xml/features</repository>
+	
+	<!-- Model -->
+	<feature name="${symbol_dollar}{project.parent.artifactId}.model.db" version="${symbol_dollar}{project.version}">
+	<!-- Keep this prefix as it is mandatory for jdbc scan -->
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-jdbc</feature>
+		<configfile finalname="${symbol_dollar}{karaf.etc}/org.ops4j.datasource-${symbol_dollar}{project.parent.artifactId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/database</configfile>
+	</feature>
+	<feature name="${symbol_dollar}{project.parent.artifactId}.model" version="${symbol_dollar}{project.version}">
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-persistence</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-validation-common</feature>
+		<feature version="${symbol_dollar}{project.version}" prerequisite = "true">${symbol_dollar}{project.parent.artifactId}.model.db</feature>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.model.entities/${symbol_dollar}{project.version}/jar</bundle>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.model.daos/${symbol_dollar}{project.version}/jar</bundle>
+	</feature>
+	<feature name="${symbol_dollar}{project.parent.artifactId}.business" version="${symbol_dollar}{project.version}">
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<configfile finalname="${symbol_dollar}{karaf.etc}/${symbol_dollar}{project.parent.artifactId}-transport.deltaspike.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/transport</configfile>
+		<feature version="${symbol_dollar}{project.version}">${symbol_dollar}{project.parent.artifactId}.model</feature>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.business.impl/${symbol_dollar}{project.version}/jar</bundle>
+	</feature>
+	<feature name="${symbol_dollar}{project.parent.artifactId}.business.itests" version="${symbol_dollar}{project.version}">
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<configfile finalname="${symbol_dollar}{karaf.etc}/${symbol_dollar}{project.parent.artifactId}-transport.deltaspike.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/transport</configfile>
+		<feature version="${symbol_dollar}{project.version}">${symbol_dollar}{project.parent.artifactId}.model</feature>
+		<feature version="${symbol_dollar}{org.apache.karaf.features_standard.version}" prerequisite = "true">osgiliath-war</feature>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
+		<bundle>file:${symbol_dollar}{project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.business/${symbol_dollar}{project.parent.artifactId}.business.impl/target/${symbol_dollar}{project.parent.artifactId}.business.impl-${symbol_dollar}{project.version}.jar</bundle>
+	</feature>
+	<!-- UI -->
+	<feature name="${symbol_dollar}{project.parent.artifactId}.ui.feature" version="${symbol_dollar}{project.version}">
+		<feature version="${symbol_dollar}{project.version}">${symbol_dollar}{project.parent.artifactId}.business</feature>
+		<feature version="${symbol_dollar}{org.apache.karaf.features_standard.version}" prerequisite = "true">osgiliath-war</feature>
+		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.ui/${symbol_dollar}{project.version}/war</bundle>
+	</feature>
+	
+	<feature name="${symbol_dollar}{project.parent.artifactId}.ui.itests" version="${symbol_dollar}{project.version}">
+		<feature version="${symbol_dollar}{project.version}">${symbol_dollar}{project.parent.artifactId}.business</feature>
+		<feature version="${symbol_dollar}{org.apache.karaf.features_standard.version}" prerequisite = "true">osgiliath-war</feature>
+		<bundle>file:${symbol_dollar}{project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.ui/target/${symbol_dollar}{project.parent.artifactId}.ui.war</bundle>
+	</feature>
+</features>
