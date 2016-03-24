@@ -33,13 +33,11 @@
 				<configuration>
 					<minmemory>128m</minmemory>
 					<maxmemory>1024m</maxmemory>
+					<additionalparam>-Xdoclint:none</additionalparam>
 				</configuration>
 				<reportSets>
 					<reportSet>
 						<id>jdoc</id>
-						<configuration>
-							<!-- Specific configuration for the aggregate report -->
-						</configuration>
 						<reports>
 							<report>javadoc</report>
 						</reports>
