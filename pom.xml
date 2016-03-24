@@ -130,7 +130,7 @@
 		
 		
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
-		<doxia-module-markdown.version>1.6</doxia-module-markdown.version>
+		<doxia-module-markdown.version>1.7</doxia-module-markdown.version>
 		<github.global.server>github</github.global.server>
 		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
 		<license-maven-plugin.version>1.7</license-maven-plugin.version>
