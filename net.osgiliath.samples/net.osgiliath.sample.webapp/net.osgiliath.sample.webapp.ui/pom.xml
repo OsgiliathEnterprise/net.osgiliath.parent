@@ -193,7 +193,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.osgiliath.modules</groupId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<artifactId>net.osgiliath.module.exam</artifactId>
 			<scope>test</scope>
 		</dependency>

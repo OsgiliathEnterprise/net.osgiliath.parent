@@ -14,11 +14,11 @@
 	
 	
 	<feature name="${project.parent.artifactId}.business" version="${project.version}">
-		<feature version="${osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
-		<feature version="${osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
-		<feature version="${osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
-		<feature version="${osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
-		<feature version="${osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
 		<configfile finalname="${karaf.etc}/${project.parent.artifactId}-transport.deltaspike.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/transport</configfile>
 		<feature version="${project.version}">net.osgiliath.sample.webapp.model</feature>
 		<bundle>mvn:${project.groupId}/net.osgiliath.sample.webapp.business.spi/${project.version}/jar</bundle>
@@ -26,7 +26,7 @@
 	</feature>
 	<feature name="${project.parent.artifactId}.route" version="${project.version}">
 		<feature version='${project.version}'>${project.parent.artifactId}.business</feature>
-		<feature version="${osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-routes-webservices</feature>
+		<feature version="${project.version}" prerequisite = "true">osgiliath-routes-webservices</feature>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.routes/${project.version}/jar</bundle>
 	</feature>
 	<!-- UI -->

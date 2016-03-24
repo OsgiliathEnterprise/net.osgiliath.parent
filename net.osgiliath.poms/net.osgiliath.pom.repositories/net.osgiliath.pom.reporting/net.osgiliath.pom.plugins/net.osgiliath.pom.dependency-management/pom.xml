@@ -2070,6 +2070,6 @@
 		<transaction-api_feature.version>1.2.0</transaction-api_feature.version>
 		<xml-specs-api.version>2.5.0</xml-specs-api.version>
 
-		<osgiliath.framework.maven.version>${project.version}</osgiliath.framework.maven.version>
+		
 	</properties>
 </project>

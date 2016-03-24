@@ -53,14 +53,14 @@
 		<dependency>
 			<groupId>net.osgiliath.features</groupId>
 			<artifactId>net.osgiliath.feature.cdi</artifactId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
 		<dependency>
 			<groupId>net.osgiliath.features</groupId>
 			<artifactId>net.osgiliath.feature.persistence</artifactId>
-			<version>${osgiliath.framework.maven.version}</version>
+			<version>${project.version}</version>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
