@@ -949,9 +949,9 @@
 									<include>${project.artifactId}.*</include>
 								</includes>
 								<excludes>
-									<exclude>*.itests.*</exclude>
-									<exclude>*.mock.*</exclude>
-									<exclude>*.coverage.*</exclude>
+									<exclude>*itests.*</exclude>
+									<exclude>*mock.*</exclude>
+									<exclude>*coverage.*</exclude>
 								</excludes>
 							</configuration>
 						</execution>
@@ -978,9 +978,9 @@
 									<include>${project.artifactId}.*</include>
 								</includes>
 								<excludes>
-									<exclude>*.itests.*</exclude>
-									<exclude>*.mock.*</exclude>
-									<exclude>*.coverage.*</exclude>
+									<exclude>*itests.*</exclude>
+									<exclude>*mock.*</exclude>
+									<exclude>*coverage.*</exclude>
 								</excludes>
 								<append>true</append>
 							</configuration>
