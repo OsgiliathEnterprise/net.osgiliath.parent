@@ -1,17 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
 		<groupId>net.osgiliath.poms</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 		<version>0.2.4-SNAPSHOT</version>
 		<relativePath>../../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management</relativePath>
 	</parent>
 	<groupId>net.osgiliath.archetypes</groupId>
-  <artifactId>net.osgiliath.archetype.model</artifactId>
-  <packaging>maven-archetype</packaging>
-
-	<name>Osgiliath model archetype</name>
-	<description>Must be behind an Osgiliath parent archetype, database persistence of your model</description>
+	<artifactId>net.osgiliath.archetype.routes</artifactId>
+	<packaging>maven-archetype</packaging>
+	<name>Osgiliath route archetype with CDI</name>
+	<description>Must be behind an Osgiliath parent archetype, routing support between modules</description>
 	<build>
 		<extensions>
 			<extension>
@@ -46,6 +45,7 @@
 			</roles>
 		</developer>
 	</developers>
+
 	<licenses>
 		<license>
 			<name>Apache Licence 2.0</name>

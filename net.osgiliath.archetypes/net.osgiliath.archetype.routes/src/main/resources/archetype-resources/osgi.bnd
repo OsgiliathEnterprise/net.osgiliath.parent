@@ -1,0 +1,10 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=cxf-integration-cdi)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=camel-cdi-extension)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=deltaspike-core-api)",\
+ org.ops4j.pax.cdi.extension;filter:="(extension=eager)"
+Import-Package: org.springframework.transaction;version="[4,5)",\
+ *
+Require-TldBundle: org.springframework.web.servlet
+DynamicImport-Package: *

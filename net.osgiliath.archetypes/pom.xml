@@ -15,5 +15,6 @@
 		<module>net.osgiliath.archetype.model</module>
 		<module>net.osgiliath.archetype.business</module>
 		<module>net.osgiliath.archetype.ui</module>
+		<module>net.osgiliath.archetype.routes</module>
 	</modules>
 </project>
