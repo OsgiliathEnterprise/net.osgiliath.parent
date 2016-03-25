@@ -141,7 +141,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
 		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
-		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
+		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
 		<maven-release-plugin.version>2.5.2</maven-release-plugin.version>
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
@@ -674,7 +674,7 @@
 				</executions>
 			</plugin>
 				<plugin>
-				<groupId>org.codehaus.mojo</groupId>
+				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
