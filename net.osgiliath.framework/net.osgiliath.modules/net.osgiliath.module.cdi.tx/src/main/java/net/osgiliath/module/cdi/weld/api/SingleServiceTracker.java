@@ -59,24 +59,67 @@ public final class SingleServiceTracker<T> implements ServiceListener {
          */
         public void serviceReplaced();
     }
-
+    /**
+     * Bundle context.
+     */
     private final BundleContext ctx;
+    /**
+     * Name of the listened class.
+     */
     private final String className;
+    /**
+     * Service instance.
+     */
     private final AtomicReference<T> service = new AtomicReference<>();
+    /**
+     * Service reference.
+     */
     private final AtomicReference<ServiceReference> ref = new AtomicReference<>();
+    /**
+     * Service listener opening flag.
+     */
     private final AtomicBoolean open = new AtomicBoolean(false);
+    /**
+     * Service listener.
+     */
     private final SingleServiceListener serviceListener;
+    /**
+     * Service filter.
+     */
     private final String filterString;
+    /**
+     * Filter instance.
+     */
     private final Filter filter;
-
+    /**
+     * Ctor.
+     * @param context osgi bundle context.
+     * @param clazz Service class.
+     * @param sl listener.
+     * @throws InvalidSyntaxException something goes wrong.
+     */
     public SingleServiceTracker(BundleContext context, Class<T> clazz, SingleServiceListener sl) throws InvalidSyntaxException {
         this(context, clazz, null, sl);
     }
-
+    /**
+     * Ctor.
+     * @param context osgi bundle context.
+     * @param clazz Service class.
+     * @param sl listener.
+     * @param filterString the service filter.
+     * @throws InvalidSyntaxException something goes wrong.
+     */
     public SingleServiceTracker(BundleContext context, Class<T> clazz, String filterString, SingleServiceListener sl) throws InvalidSyntaxException {
         this(context, clazz.getName(), filterString, sl);
     }
-
+    /**
+     * Ctor.
+     * @param context osgi bundle context.
+     * @param className the class name.
+     * @param sl listener.
+     * @param filterString the service filter.
+     * @throws InvalidSyntaxException something goes wrong.
+     */
     public SingleServiceTracker(BundleContext context, String className, String filterString, SingleServiceListener sl) throws InvalidSyntaxException {
         this.ctx = context;
         this.className = className;
@@ -89,15 +132,23 @@ public final class SingleServiceTracker<T> implements ServiceListener {
             this.filter = context.createFilter(filterString);
         }
     }
-
+    /**
+     * Retreives the service.
+     * @return the service instance.
+     */
     public T getService() {
         return service.get();
     }
-
+    /**
+     * Service reference.
+     * @return the service reference.
+     */
     public ServiceReference getServiceReference() {
         return ref.get();
     }
-
+    /**
+     * Opens the listener.
+     */
     public void open() {
         if (open.compareAndSet(false, true)) {
             try {
@@ -110,7 +161,9 @@ public final class SingleServiceTracker<T> implements ServiceListener {
             }
         }
     }
-
+    /**
+     * Servcie change method. 
+     */
     public void serviceChanged(ServiceEvent event) {
         if (open.get()) {
             if (event.getType() == ServiceEvent.UNREGISTERING) {
@@ -123,7 +176,10 @@ public final class SingleServiceTracker<T> implements ServiceListener {
             }
         }
     }
-
+    /**
+     * Reference retrieval.
+     * @param original the original service reference.
+     */
     private void findMatchingReference(ServiceReference original) {
         try {
             boolean clear = true;
@@ -153,7 +209,13 @@ public final class SingleServiceTracker<T> implements ServiceListener {
             // this can never happen. (famous last words :)
         }
     }
-
+    /**
+     * Service reference update method.
+     * @param deadRef old reference.
+     * @param newRef new reference.
+     * @param service new service instance.
+     * @return the service update.
+     */
     private boolean update(ServiceReference deadRef, ServiceReference newRef, T service) {
         boolean result = false;
         int foundLostReplaced = -1;
@@ -189,7 +251,9 @@ public final class SingleServiceTracker<T> implements ServiceListener {
 
         return result;
     }
-
+    /**
+     * Close tracking method.
+     */
     public void close() {
         if (open.compareAndSet(true, false)) {
             ctx.removeServiceListener(this);

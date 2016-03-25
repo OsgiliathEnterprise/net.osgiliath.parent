@@ -20,19 +20,43 @@ package net.osgiliath.module.derby.constants;
  * #L%
  */
 /**
- * Database constants.
+ * Database description constants.
  * @author charliemordant
  *
  */
 public final class ClientConnectionConstant {
+  /**
+   * Private ctor.
+   */
   private ClientConnectionConstant() {
     //Do nothing
   }
+  /**
+   * autostarting derby server.
+   */
   public static final String AUTO_START_SERVER = "serverAutoStart";
+  /**
+   * creating default database.
+   */
   public static final String CREATE_DATABASE = "createDatabase";
+  /**
+   * Log file.
+   */
   public static final Object LOG_FILE_PROPERTY = "derbyServerLog";
+  /**
+   * pax-jdbc config header.
+   */
   public static final String PAX_JDBC_DS_ID = "osgiliathderbystandalone";
+  /**
+   * Derby server port.
+   */
   public static final int DEFAULT_PORT = 1527;
+  /**
+   * Derby server host.
+   */
   public static final String DEFAULT_HOST = "localhost";
+  /**
+   * Default log file.
+   */
   public static final String LOG_FILE = "derbyServer.log";
 }

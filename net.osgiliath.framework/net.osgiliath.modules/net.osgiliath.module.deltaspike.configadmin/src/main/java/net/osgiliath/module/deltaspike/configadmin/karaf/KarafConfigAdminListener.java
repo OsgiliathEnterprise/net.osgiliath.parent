@@ -25,27 +25,55 @@ import org.osgi.service.cm.ConfigurationListener;
 
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.module.cdi.weld.api.SingleServiceTracker;
-
+/**
+ * Karaf configuration admin listener.
+ * @author charliemordant
+ *
+ */
 @Slf4j
 public class KarafConfigAdminListener
 		implements ConfigurationListener, SingleServiceTracker.SingleServiceListener, ConfigSourceProvider {
-
+    /**
+     * Singleton instance.
+     */
 	private static KarafConfigAdminListener instance;
+	/**
+	 * OSGi BundleContext.
+	 */
 	private BundleContext bundleContext;
+	/**
+	 * Config admin service listener.
+	 */
 	private ServiceRegistration<ConfigurationListener> registration;
+	/**
+	 * Service tracker.
+	 */
 	private SingleServiceTracker configAdminTracker;
+	/**
+	 * Cached configurations.
+	 */
 	private Collection<Configuration> configurations;
+	/**
+	 * Deltaspike properties to skip.
+	 */
 	private Collection<String> skippedProperties = new HashSet<String>(
 			Arrays.asList("org.apache.deltaspike.core.spi.activation.ClassDeactivator",
 					"org.apache.deltaspike.ProjectStage", "javax.faces.PROJECT_STAGE", "faces.PROJECT_STAGE",
 					"deltaspike.bean-manager.delegate_lookup.Production", "deltaspike.bean-manager.delegate_lookup",
 					"deltaspike.interceptor.priority.Production", "deltaspike.interceptor.priority"));
-
+	/**
+	 * Ctor.
+	 * Initializes the cache.
+	 */
 	public KarafConfigAdminListener() {
 		if (null == configurations)
 			this.configurations = new HashSet<>();
 	}
-
+	/**
+	 * Ctor taking osgi context. initializes service listeners.
+	 * @param bundleContext the OSGi {@link BundleContext}
+	 * @throws InvalidSyntaxException service registration error.
+	 */
 	public KarafConfigAdminListener(BundleContext bundleContext) throws InvalidSyntaxException {
 		this();
 		this.getInstance().bundleContext = bundleContext;
@@ -55,14 +83,19 @@ public class KarafConfigAdminListener
 		this.getInstance().configAdminTracker.open();
 
 	}
-
+	/**
+	 * The singleton instance.
+	 * @return the instance.
+	 */
 	public static KarafConfigAdminListener getInstance() {
 		if (null == instance) {
 			instance = new KarafConfigAdminListener();
 		}
 		return instance;
 	}
-
+	/**
+	 * Stops listening.
+	 */
 	public void stop() {
 		this.getInstance().registration.unregister();
 		this.getInstance().configAdminTracker.close();
@@ -96,7 +129,9 @@ public class KarafConfigAdminListener
 
 		getInstance().reparse();
 	}
-
+	/**
+	 * Reparses config admin.
+	 */
 	public void reparse() {
 		try {
 			ConfigResolver.freeConfigSources();
@@ -106,7 +141,11 @@ public class KarafConfigAdminListener
 
 		}
 	}
-
+	/**
+	 * internal function to reparse.
+	 * @throws IOException configuration read error.
+	 * @throws InvalidSyntaxException service listening error.
+	 */
 	public void internalReparse() throws IOException, InvalidSyntaxException {
 		ConfigurationAdmin configAdmin = (ConfigurationAdmin) this.getInstance().configAdminTracker.getService();
 		if (null != configAdmin) {

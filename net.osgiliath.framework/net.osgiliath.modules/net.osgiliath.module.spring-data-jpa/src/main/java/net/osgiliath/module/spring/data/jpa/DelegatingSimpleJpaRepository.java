@@ -2,6 +2,7 @@ package net.osgiliath.module.spring.data.jpa;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.metamodel.Metamodel;
@@ -15,7 +16,13 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaPersistableEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-
+/**
+ * Delegates the construction of spring-data-jpa repository (blueprint integration needs this.
+ * @author charliemordant
+ *
+ * @param <T> repository Entity type.
+ * @param <ID> entity ID.
+ */
 @javax.transaction.Transactional
 public abstract class DelegatingSimpleJpaRepository<T, ID extends Serializable>
 		implements JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
@@ -152,7 +159,12 @@ public abstract class DelegatingSimpleJpaRepository<T, ID extends Serializable>
 	public T getOne(ID id) {
 		return delegate.getOne(id);
 	}
-
+	/**
+	 * Instancites a spring data repository: must be called within postconstruct.
+	 * @param emf the {@link EntityManagerFactory}.
+	 * @param em the {@link EntityManager}.
+	 * @param domainClass the repository class.
+	 */
 	protected void instanciateDelegateRepository(EntityManagerFactory emf, EntityManager em, Class<T> domainClass) {
 		Metamodel mm = emf.getMetamodel();
 		if (Persistable.class.isAssignableFrom(domainClass)) {
@@ -162,8 +174,9 @@ public abstract class DelegatingSimpleJpaRepository<T, ID extends Serializable>
 			delegate = new TransactionalSimpleJpaRepository(new JpaMetamodelEntityInformation(domainClass, mm), em);
 
 		}
-
 	}
-
+	/**
+	 * Client must call this annotated with {@link PostConstruct} annotation, should call instanciateDelegateRepository.
+	 */
 	public abstract void postConstruct();
 }
