@@ -25,10 +25,8 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 
 import javax.inject.Inject;
-
 import net.osgiliath.feature.itest.cdi.IConsumer;
 import net.osgiliath.module.exam.AbstractPaxExamKarafConfiguration;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;

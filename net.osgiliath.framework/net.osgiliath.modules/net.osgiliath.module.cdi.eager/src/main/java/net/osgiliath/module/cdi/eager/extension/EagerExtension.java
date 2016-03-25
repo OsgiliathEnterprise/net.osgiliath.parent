@@ -47,6 +47,7 @@ public class EagerExtension implements Extension {
    * Add beans to eager startup beans registry.
    * 
    * @param event event to process
+   * @param <T> the type.
    */
   public <T> void collect(@Observes ProcessBean<T> event) {
     if (event.getAnnotated().isAnnotationPresent(Eager.class)

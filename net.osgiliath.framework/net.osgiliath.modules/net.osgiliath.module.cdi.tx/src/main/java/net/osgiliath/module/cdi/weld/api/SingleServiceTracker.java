@@ -33,13 +33,30 @@ import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 
 //This is from aries util
+/**
+ * Karaf copy pasted service listener.
+ * @author charliemordant
+ *
+ * @param <T> the type.
+ */
 public final class SingleServiceTracker<T> implements ServiceListener {
-
+    /**
+     * API.
+     * @author charliemordant
+     *
+     */
     public static interface SingleServiceListener {
+        /**
+         * Found service.
+         */
         public void serviceFound();
-
+        /**
+         * Lost service.
+         */
         public void serviceLost();
-
+        /**
+         * Replaced service.
+         */
         public void serviceReplaced();
     }
 

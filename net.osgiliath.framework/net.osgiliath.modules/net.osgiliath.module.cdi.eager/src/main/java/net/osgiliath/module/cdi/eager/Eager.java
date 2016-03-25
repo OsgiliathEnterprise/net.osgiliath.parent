@@ -29,9 +29,9 @@ import javax.inject.Qualifier;
 
 
 /**
- * 
- * @author charliemordant Eager annotated bean will start at bundle startup even
- *         if they're not injected
+ * Eager annotated bean will start at bundle startup even
+ *         if they're not injected.
+ * @author charliemordant 
  */
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)

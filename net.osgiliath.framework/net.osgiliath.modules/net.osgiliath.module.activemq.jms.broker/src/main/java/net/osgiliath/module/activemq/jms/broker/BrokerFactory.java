@@ -1,11 +1,9 @@
 package net.osgiliath.module.activemq.jms.broker;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.activemq.broker.BrokerPlugin;
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.broker.TransportConnector;
@@ -22,43 +20,120 @@ import org.apache.activemq.usage.StoreUsage;
 import org.apache.activemq.usage.SystemUsage;
 import org.apache.activemq.usage.TempUsage;
 import org.apache.activemq.util.MemoryPropertyEditor;
-
+/**
+ * ActiveMq broker configuration.
+ * @author charliemordant
+ *
+ */
 public class BrokerFactory {
-
+    /**
+     * Broker's name.
+     */
 	private String brokerName;
+	/**
+	 * JMS uri.
+	 */
 	private String jmsURI;
+	/**
+	 * JMS transactional URI.
+	 */
 	private String jmsXAURI;
+	/**
+	 * Stomp URI.
+	 */
 	private String stompURI;
+	/**
+	 * Stomp transactional URI.
+	 */
 	private String stompXAURI;
+	/**
+	 * WebSocket URI.
+	 */
 	private String websocketURI;
+	/**
+	 * Transactional URI.
+	 */
 	private String websocketXAURI;
+	/**
+	 * Persistence system.
+	 */
 	private KahaDBPersistenceAdapter persistenceAdapter;
+	/**
+	 * Broker.
+	 */
 	private BrokerService broker;
 
 	
+	/**
+	 * Sets the broker name.
+	 *
+	 * @param brokerName the new broker name
+	 */
 	public void setBrokerName(String brokerName) {
 		this.brokerName = brokerName;
 	}
+	
+	/**
+	 * Sets the jms uri.
+	 *
+	 * @param jmsURI the new jms uri
+	 */
 	public void setJmsURI(String jmsURI) {
 		this.jmsURI = jmsURI;
 	}
+	/**
+	 * Sets the XA URI.
+	 * @param jmsXAURI jms URI
+	 */
 	public void setJmsXAURI(String jmsXAURI) {
 		this.jmsXAURI = jmsXAURI;
 	}
+	/**
+	 * Sets the stomp URI.
+	 * @param stompURI stomp URI
+	 */
 	public void setStompURI(String stompURI) {
 		this.stompURI = stompURI;
 	}
+	
+	/**
+	 * Sets the stomp xauri.
+	 *
+	 * @param stompXAURI the new stomp xauri
+	 */
 	public void setStompXAURI(String stompXAURI) {
 		this.stompXAURI = stompXAURI;
 	}
+	
+	/**
+	 * Sets the websocket uri.
+	 *
+	 * @param websocketURI the new websocket uri
+	 */
 	public void setWebsocketURI(String websocketURI) {
 		this.websocketURI = websocketURI;
 	}
+	
+	/**
+	 * Sets the websocket xauri.
+	 *
+	 * @param websocketXAURI the new websocket xauri
+	 */
 	public void setWebsocketXAURI(String websocketXAURI) {
 		this.websocketXAURI = websocketXAURI;
 	}
+	
+	/**
+	 * Instantiates a new broker factory.
+	 */
 	public BrokerFactory() {
 	}
+	
+	/**
+	 * Inits the factory.
+	 *
+	 * @throws Exception the exception when something is wrong.
+	 */
 	public void init() throws Exception {
 		BrokerService broker = new BrokerService();
 		broker.setBrokerName(brokerName);
@@ -73,11 +148,23 @@ public class BrokerFactory {
 		this.broker = broker;
 		broker.start();
 	}
+	
+	/**
+	 * Shutdown.
+	 *
+	 * @throws Exception the exception.
+	 */
 	public void shutdown() throws Exception {
 		this.broker.stop();
 		this.broker = null;
 		this.persistenceAdapter = null;
 	}
+	
+	/**
+	 * Creates a new transport object.
+	 *
+	 * @return the list< transport connector>
+	 */
 	private List<TransportConnector> createTransportConnectors() {
 		List<TransportConnector> ret = new ArrayList<>();
 		TransportConnector stompConnector = new TransportConnector();
@@ -112,6 +199,12 @@ public class BrokerFactory {
 
 		return ret;
 	}
+	
+	/**
+	 * Creates a new system usage.
+	 *
+	 * @return the system usage
+	 */
 	private SystemUsage createSystemUsage() {
 		SystemUsage ret = new SystemUsage();
 		MemoryUsage memoryUsage = new MemoryUsage();
@@ -133,11 +226,19 @@ public class BrokerFactory {
 		ret.setTempUsage(tempUsage);
 		return ret;
 	}
+	/**
+	 * Creates broker plugins.
+	 * @return the plugins.
+	 */
 	private BrokerPlugin[] createPlugins() {
 		BrokerPlugin[] ret = new BrokerPlugin[1];
 		ret[0] = new LoggingBrokerPlugin();
 		return ret;
 	}
+	/**
+	 * Creates the persistence adapter.
+	 * @return the persistence adapter.
+	 */
 	private PersistenceAdapter createPersistenceAdapter() {
 		KahaDBPersistenceAdapter adapter = new KahaDBPersistenceAdapter();
 		adapter.setDirectory(new File("activeMQ/kahadb-jms"));
@@ -147,21 +248,37 @@ public class BrokerFactory {
 		this.persistenceAdapter = adapter; 
 		return adapter;
 	}
+	/**
+	 * Creates the management context.
+	 * @return the context.
+	 */
 	private ManagementContext createManagementContext() {
 		ManagementContext ret = new ManagementContext();
 		ret.setCreateConnector(true);
 		return ret;
 	}
+	/**
+	 * Creates the policy map.
+	 * @return the policy map.
+	 */
 	private PolicyMap createPolicyMap() {
 		PolicyMap ret = new PolicyMap();
 		ret.setPolicyEntries(createPolicyEntries());
 		return ret;
 	}
+	/**
+	 * Policy entries.
+	 * @return the policy entries.
+	 */
 	private List createPolicyEntries() {
 		List<PolicyEntry> entries = new ArrayList<>();
 		entries.add(createPolicyEntry());
 		return entries;
 	}
+	/**
+	 * The default policy entry.
+	 * @return the entry.
+	 */
 	private PolicyEntry createPolicyEntry() {
 		PolicyEntry ret = new PolicyEntry();
 		ret.setQueue(">");
@@ -172,6 +289,10 @@ public class BrokerFactory {
 		ret.setDeadLetterStrategy(createDeadLetterStrategy());
 		return ret;
 	}
+	/**
+	 * Creates the DLQ strategy.
+	 * @return the strategy.
+	 */
 	private DeadLetterStrategy createDeadLetterStrategy() {
 		IndividualDeadLetterStrategy ret = new IndividualDeadLetterStrategy();
 		ret.setQueuePrefix("DLQ.");

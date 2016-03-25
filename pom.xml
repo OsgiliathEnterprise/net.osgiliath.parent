@@ -56,18 +56,13 @@
 		<module>net.osgiliath.framework</module>
 		<module>net.osgiliath.samples</module>
 	</modules>
-	
+
 	<reporting>
+	
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<minmemory>128m</minmemory>
-					<maxmemory>1024m</maxmemory>
-					<additionalparam>-Xdoclint:none</additionalparam>
-					<failOnError>false</failOnError>
-				</configuration>
 				<reportSets>
 					<reportSet>
 						<id>aggregated</id>
@@ -129,8 +124,8 @@
 		<defaultJmsXAPort>61626</defaultJmsXAPort>
 		<defaultStompPort>61612</defaultStompPort>
 		<defaultStompXAPort>61623</defaultStompXAPort>
-		
-		
+
+
 		<com.github.downloads-maven-plugin.version>0.6</com.github.downloads-maven-plugin.version>
 		<doxia-module-markdown.version>1.7</doxia-module-markdown.version>
 		<github.global.server>github</github.global.server>
@@ -160,7 +155,7 @@
 		<sonar.jacoco.reportPath>${parent.path}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${parent.path}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<sonar-maven-plugin.version>3.0.1</sonar-maven-plugin.version>
-		
+
 		<maven-scm.version>1.9.1</maven-scm.version>
 		<site.deploy.dir>/tmp/deploy</site.deploy.dir>
 	</properties>
@@ -433,6 +428,12 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${maven-javadoc-plugin.version}</version>
+					<configuration>
+						<minmemory>128m</minmemory>
+						<maxmemory>1024m</maxmemory>
+						<additionalparam>-Xdoclint:none</additionalparam>
+						<failOnError>false</failOnError>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -673,7 +674,7 @@
 					</execution>
 				</executions>
 			</plugin>
-				<plugin>
+			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 			</plugin>

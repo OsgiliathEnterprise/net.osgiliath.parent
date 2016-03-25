@@ -11,7 +11,11 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 @Transactional
 public class TransactionalSimpleJpaRepository<T, ID extends Serializable> extends SimpleJpaRepository<T, Serializable>{
 
-	
+	/**
+	 * Constructor.
+	 * @param jpaPersistableEntityInformation the entity {@link JpaEntityInformationSupport}.
+	 * @param em the {@link EntityManager}
+	 */
 	public TransactionalSimpleJpaRepository(JpaEntityInformationSupport jpaPersistableEntityInformation,
 			EntityManager em) {
 		super (jpaPersistableEntityInformation, em);

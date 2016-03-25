@@ -2,11 +2,9 @@ package net.osgiliath.module.spring.data.jpa;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.metamodel.Metamodel;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Persistable;
@@ -17,12 +15,13 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaPersistableEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @javax.transaction.Transactional
 public abstract class DelegatingSimpleJpaRepository<T, ID extends Serializable>
 		implements JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
+    /**
+     * Delegate spring-data-jpa repository.
+     */
 	protected SimpleJpaRepository<T, ID> delegate;
 
 	@Override

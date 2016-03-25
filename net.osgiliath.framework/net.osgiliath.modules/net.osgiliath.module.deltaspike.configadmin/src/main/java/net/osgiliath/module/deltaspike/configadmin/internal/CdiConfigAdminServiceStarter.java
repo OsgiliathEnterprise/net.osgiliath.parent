@@ -26,11 +26,20 @@ public class CdiConfigAdminServiceStarter {
 	 * Configadmin service tracker.
 	 */
 	private transient BundleContext context;
+	/**
+	 * Service tracker.
+	 */
 	private ServiceTracker configAdminServiceTracker;
+	/**
+	 * Service listener.
+	 */
 	private KarafConfigAdminListener listener;
 	
 	
-
+	/**
+	 * Default constructor.
+	 * @param bundleContext OSGI bundle context.
+	 */
 	public CdiConfigAdminServiceStarter(BundleContext bundleContext) {
 		this.context = bundleContext;
 	}
@@ -40,8 +49,6 @@ public class CdiConfigAdminServiceStarter {
 	 * 
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
 	 *      )
-	 * @param bundleContext
-	 *            the osgi bundle context
 	 */
 	public void start() {
 		log.info("Osgiliath: starting deltaspike config admin tracker");
@@ -60,8 +67,6 @@ public class CdiConfigAdminServiceStarter {
 	 * 
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
 	 *      )
-	 * @param bundleContext
-	 *            the osgi bundle context
 	 */
 	public void stop() {
 		log.info("Osgiliath: destroying deltaspike config admin tracker");

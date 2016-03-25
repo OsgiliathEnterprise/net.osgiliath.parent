@@ -45,8 +45,17 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
  */
 @Slf4j
 public class UserTransactionTracker implements SingleServiceTracker.SingleServiceListener {
+    /**
+     * Singleton instance.
+     */
 	private static UserTransactionTracker instance;
+	/**
+	 * Bundle context.
+	 */
 	private BundleContext bundleContext;
+	/**
+	 * Main tracker.
+	 */
 	private SingleServiceTracker configAdminTracker;
 
 	/**
@@ -62,12 +71,18 @@ public class UserTransactionTracker implements SingleServiceTracker.SingleServic
 	public final Collection<UserTransaction> getUserTransactions() {
 		return this.userTransactions;
 	}
-
+	/**
+	 * Default Ctor.
+	 */
 	public UserTransactionTracker() {
 		if (null == userTransactions)
 			this.userTransactions = new HashSet<>();
 	}
-
+	/**
+	 * Setter with contexts: registers listeners/tracker.
+	 * @param bundleContext the bundle context.
+	 * @throws InvalidSyntaxException wrong filter.
+	 */
 	public UserTransactionTracker(BundleContext bundleContext) throws InvalidSyntaxException {
 		this();
 		this.getInstance().bundleContext = bundleContext;
@@ -80,8 +95,6 @@ public class UserTransactionTracker implements SingleServiceTracker.SingleServic
 	/**
 	 * Singleton.
 	 * 
-	 * @param context
-	 *            the bundle context
 	 * @return the singleton instance
 	 */
 	public static synchronized UserTransactionTracker getInstance() {
@@ -104,8 +117,6 @@ public class UserTransactionTracker implements SingleServiceTracker.SingleServic
 	/**
 	 * Initializes the uTTracker.
 	 * 
-	 * @param bundleContext
-	 *            the bundle context
 	 */
 
 	public void internalReparse() {
@@ -127,19 +138,25 @@ public class UserTransactionTracker implements SingleServiceTracker.SingleServic
 			}
 		}
 	}
-
+	/**
+     * Reparses on new service.
+     */
 	@Override
 	public void serviceFound() {
 		getInstance().internalReparse();
 
 	}
-
+	/**
+     * Reparses on lost service.
+     */
 	@Override
 	public void serviceLost() {
 		getInstance().internalReparse();
 
 	}
-
+	/**
+     * Reparses on service replacement.
+     */
 	@Override
 	public void serviceReplaced() {
 		getInstance().internalReparse();

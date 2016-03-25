@@ -24,18 +24,12 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.sql.Driver;
 import java.sql.SQLException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
-
 import javax.sql.ConnectionPoolDataSource;
 import javax.sql.DataSource;
 import javax.sql.XADataSource;
-
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.module.derby.constants.ClientConnectionConstant;
-
 import org.apache.derby.drda.NetworkServerControl;
 import org.apache.derby.jdbc.ClientConnectionPoolDataSource40;
 import org.apache.derby.jdbc.ClientDataSource;
@@ -54,8 +48,7 @@ import org.slf4j.LoggerFactory;
  */
 @Slf4j
 public class DerbyClientDatasourceFactory implements DataSourceFactory {
-  private static final Logger LOG = LoggerFactory.getLogger(DerbyClientDatasourceFactory.class);
-
+  
   /**
    * creates a datasource from properties.
    * 
@@ -81,7 +74,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
    *           in case of unsupported DS Operations
    */
   private void setProperties(ClientDataSource datasource, Properties properties) throws SQLException {
-    LOG.info("setting properties for datasource");
+    log.info("setting properties for datasource");
     logProperties(properties);
     final Properties props = (Properties) properties.clone();
     final String doStartServer = (String) props.remove(ClientConnectionConstant.AUTO_START_SERVER);
@@ -150,7 +143,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
           catch (Exception e) {
           }
         }
-        LOG.info("Derby server started!");
+        log.info("Derby server started!");
         Activator.getInstance().addNetworkControl(host, portNumber, control);
       }
       catch (Exception e) {
@@ -171,7 +164,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
   public ConnectionPoolDataSource createConnectionPoolDataSource(Properties props) throws SQLException {
     final ClientConnectionPoolDataSource40 datasource = new ClientConnectionPoolDataSource40();
     setProperties(datasource, props);
-    LOG.info("creating Derby connection pool datasource");
+    log.info("creating Derby connection pool datasource");
     return datasource;
   }
 
@@ -185,16 +178,19 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
   @Override
   public XADataSource createXADataSource(Properties props) throws SQLException {
     final ClientXADataSource40 datasource = new ClientXADataSource40();
-    LOG.info("creating Derby xadatasource with properties");
+    log.info("creating Derby xadatasource with properties");
     logProperties(props);
     this.setProperties(datasource, props);
     return datasource;
   }
-
+  /**
+   * Logs the added properties.
+   * @param props the properties
+   */
   public void logProperties(Properties props) {
     for (Object keyO : props.keySet()) {
       String key = (String) keyO;
-      LOG.trace("key: " + key + ", value: " + props.get(key));
+      log.trace("key: " + key + ", value: " + props.get(key));
     }
   }
 
@@ -207,7 +203,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
    */
   @Override
   public Driver createDriver(Properties props) throws SQLException {
-    LOG.info("creating Derby driver");
+    log.info("creating Derby driver");
     final ClientDriver40 driver = new ClientDriver40();
 
     return driver;
