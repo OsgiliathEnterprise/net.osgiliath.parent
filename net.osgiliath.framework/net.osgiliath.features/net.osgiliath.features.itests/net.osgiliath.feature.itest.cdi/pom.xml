@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.itests</groupId>
 		<artifactId>net.osgiliath.features.itests</artifactId>
-		<version>0.3.2-SNAPSHOT</version>
+		<version>0.3.2</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.itest.cdi</artifactId>
 	<name>Osgiliath integration tests CDI</name>
