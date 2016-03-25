@@ -4,7 +4,7 @@
 
 	<bannerLeft>
 		<name>Github</name>
-		<href>http://${project.artifactId}</href>
+		<href>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</href>
 	</bannerLeft>
 
 	<skin>
@@ -17,31 +17,36 @@
 			<sideBarEnabled>true</sideBarEnabled>
 			<topBarEnabled>true</topBarEnabled>
 			<topBarIcon>
-				<name>Maven Fluido Skin</name>
-				<alt>Maven Fluido Skin</alt>
-				<src>http://${project.organization.name}.github.io/${project.artifactId}/images/logo.png</src>
-				<href>http://${project.organization.name}.github.io/${project.artifactId}/index.html</href>
+				<name>Osgiliath logo</name>
+				<alt>Osgiliath logo</alt>
+				<src>http://osgiliathenterprise.github.io/net.osgiliath.parent/images/osgiliath.png</src>
+				<href>http://osgiliathenterprise.github.io/net.osgiliath.parent/index.html</href>
 			</topBarIcon>
 			<googleSearch>
 				<sitesearch />
 			</googleSearch>
 			<sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
 			<gitHub>
-				<projectId>${project.organization}/${project.artifactId}</projectId>
+				<projectId>OsgiliathEnterprise/net.osgiliath.parent</projectId>
 				<ribbonOrientation>right</ribbonOrientation>
 				<ribbonColor>green</ribbonColor>
 			</gitHub>
 			<googlePlusOne />
+			<twitter>
+				<user>Tcharl</user>
+				<showUser>true</showUser>
+				<showFollowers>true</showFollowers>
+			</twitter>
 			<facebookLike />
 		</fluidoSkin>
-		<custom.fluidoSkin.googleSearch.sitesearch>http://${project.organization.name}.github.io/${project.artifactId}/</custom.fluidoSkin.googleSearch.sitesearch>
+		<custom.fluidoSkin.googleSearch.sitesearch>http://osgiliathenterprise.github.io/net.osgiliath.parent/</custom.fluidoSkin.googleSearch.sitesearch>
 	</custom>
 
 
 	<body>
 		<links>
-			<item name="${project.organization.name} repo" href="https://github.com/${project.organization.name}/${project.artifactId}" />
-			<item name="${project.organization.name} documentation" href="http://${project.organization.name}.github.io/projects.documentations/documentations/${project.artifactId}/" />
+			<item name="Osgiliath repo" href="https://github.com/OsgiliathEnterprise/net.osgiliath.parent" />
+			<item name="Osgiliath documentation" href="http://osgiliathenterprise.github.io/projects.documentations/documentations/osgiliath-enterprise-framework/" />
 		</links>
 
 		<menu name="Documentation" >
