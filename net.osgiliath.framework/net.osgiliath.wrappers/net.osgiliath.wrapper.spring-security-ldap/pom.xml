@@ -3,7 +3,7 @@
   <parent>
     <groupId>net.osgiliath.wrappers</groupId>
     <artifactId>net.osgiliath.wrappers</artifactId>
-    <version>0.3.2</version>
+    <version>0.3.3-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.wrapper.spring-security-ldap</artifactId>
   	<name>spring-security-ldap wrapper</name>
