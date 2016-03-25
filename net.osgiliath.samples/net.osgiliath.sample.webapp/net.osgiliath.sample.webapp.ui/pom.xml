@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.samples</groupId>
 		<artifactId>net.osgiliath.sample.webapp</artifactId>
-		<version>0.2.4-SNAPSHOT</version>
+		<version>0.3.0</version>
 	</parent>
 	<artifactId>net.osgiliath.sample.webapp.ui</artifactId>
 	<name>Helloworld simple sample Interface</name>
