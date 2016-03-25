@@ -3,7 +3,7 @@
   <parent>
     <groupId>net.osgiliath.wrappers</groupId>
     <artifactId>net.osgiliath.wrappers</artifactId>
-    <version>0.3.1</version>
+    <version>0.3.2-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.wrapper.cxf-integration-cdi</artifactId>
   	<name>Wrapper for CXF integration cdi</name>
