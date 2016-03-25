@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.features</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
-		<version>0.3.1</version>
+		<version>0.3.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.karaf-standard</artifactId>
 	<name>Karaf Standard</name>
