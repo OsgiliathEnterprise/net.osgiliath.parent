@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.samples</groupId>
 		<artifactId>net.osgiliath.sample.webapp.model</artifactId>
-		<version>0.3.0</version>
+		<version>0.3.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.sample.webapp.model.daos</artifactId>
 	<build>
