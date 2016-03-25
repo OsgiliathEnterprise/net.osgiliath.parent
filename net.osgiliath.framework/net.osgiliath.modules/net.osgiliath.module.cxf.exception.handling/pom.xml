@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.modules</groupId>
 		<artifactId>net.osgiliath.modules</artifactId>
-		<version>0.3.1-SNAPSHOT</version>
+		<version>0.3.1</version>
 	</parent>
 	<artifactId>net.osgiliath.module.cxf.exception.handling</artifactId>
 	<name>Helper for CXF RS validation exceptions</name>
