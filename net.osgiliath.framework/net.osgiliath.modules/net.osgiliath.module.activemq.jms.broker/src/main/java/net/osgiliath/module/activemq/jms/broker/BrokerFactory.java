@@ -127,6 +127,8 @@ public class BrokerFactory {
 	 * Instantiates a new broker factory.
 	 */
 	public BrokerFactory() {
+	  super();
+	  //do nothing, bean instanciation.
 	}
 	
 	/**
@@ -135,18 +137,18 @@ public class BrokerFactory {
 	 * @throws Exception the exception when something is wrong.
 	 */
 	public void init() throws Exception {
-		BrokerService broker = new BrokerService();
-		broker.setBrokerName(brokerName);
-		broker.setShutdownOnMasterFailure(true);
-		broker.setUseJmx(true);
-		broker.setDestinationPolicy(createPolicyMap());
-		broker.setManagementContext(createManagementContext());
-		broker.setPersistenceAdapter(createPersistenceAdapter());
-		broker.setPlugins(createPlugins());
-		broker.setSystemUsage(createSystemUsage());
-		broker.setTransportConnectors(createTransportConnectors());
-		this.broker = broker;
-		broker.start();
+		BrokerService newBroker = new BrokerService();
+		newBroker.setBrokerName(brokerName);
+		newBroker.setShutdownOnMasterFailure(true);
+		newBroker.setUseJmx(true);
+		newBroker.setDestinationPolicy(createPolicyMap());
+		newBroker.setManagementContext(createManagementContext());
+		newBroker.setPersistenceAdapter(createPersistenceAdapter());
+		newBroker.setPlugins(createPlugins());
+		newBroker.setSystemUsage(createSystemUsage());
+		newBroker.setTransportConnectors(createTransportConnectors());
+		this.broker = newBroker;
+		newBroker.start();
 	}
 	
 	/**
