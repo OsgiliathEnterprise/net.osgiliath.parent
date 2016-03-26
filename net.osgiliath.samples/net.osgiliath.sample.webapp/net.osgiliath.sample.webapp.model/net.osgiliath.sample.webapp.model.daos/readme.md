@@ -12,6 +12,8 @@
 * [Repository implementation](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.sample.webapp/net.osgiliath.sample.webapp.model/net.osgiliath.sample.webapp.model.daos/src/main/java/net/osgiliath/sample/webapp/model/daos/repository/impl/HelloObjectJpaRepository.java)
 * [Model feature declaration](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.samples/net.osgiliath.sample.webapp/net.osgiliath.sample.webapp.features/src/main/resources/net.osgiliath.sample.webapp.features.xml)
 
+This module uses blueprint and generates xml file from cdi annotations, for more informations look at the liquid-reality (Christian Schneider) blog
+
 ## Using database versionning
 
 In order to use database versioning, follow this steps:
