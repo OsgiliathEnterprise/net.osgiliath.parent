@@ -29,6 +29,14 @@ import net.osgiliath.validator.osgi.internal.ValidatorFactorySingleton;
  * @author charliemordant 
  */
 public class ValidatorHelper {
+  
+
+  /**
+   * private Ctor so that it can't be instantiated.
+   */
+  private ValidatorHelper() {
+    super();
+  }
 
   /**
    * The validator.

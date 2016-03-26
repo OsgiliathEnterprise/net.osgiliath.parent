@@ -22,6 +22,7 @@ package net.osgiliath.sample.webapp.business.impl.rest;
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 import net.osgiliath.sample.webapp.business.spi.annotations.REST;
 import net.osgiliath.sample.webapp.business.spi.model.Hellos;
@@ -38,10 +39,12 @@ import org.ops4j.pax.cdi.api.OsgiService;
 @REST
 public class HelloServiceImpl implements HelloServiceJaxRS {
 	
-	
+	/**
+	 * JPA repository.
+	 */
 	@Inject
 	@OsgiService
-	private transient HelloRepository repository;
+	private HelloRepository repository;
 	
   
 
@@ -63,14 +66,8 @@ public class HelloServiceImpl implements HelloServiceJaxRS {
    */
   @Override
   public Hellos getHellos() {
-	  
-    return new Hellos(Lists.newArrayList(Iterables.transform(repository.findAll(),
-        new Function<HelloEntity, String>() {
-          @Override
-          public String apply(final HelloEntity input) {
-            return input.getHelloMessage();
-          }
-        })));
+    
+    return new Hellos(repository.findAll().stream().map(input -> input.getHelloMessage()).collect(Collectors.toList()));
   }
 
   /**

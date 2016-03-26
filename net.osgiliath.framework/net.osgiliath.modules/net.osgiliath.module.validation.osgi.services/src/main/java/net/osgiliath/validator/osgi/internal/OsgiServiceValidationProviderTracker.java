@@ -38,7 +38,7 @@ public class OsgiServiceValidationProviderTracker implements
   /**
    * bundle context.
    */
-  private final transient BundleContext context;
+  private final BundleContext context;
 
   /**
    * CTor.
@@ -56,6 +56,7 @@ public class OsgiServiceValidationProviderTracker implements
    * @return the service
    */
   // callback method if MyClass service object is registered
+  @Override
   public Object addingService(final ServiceReference reference) {
     final Object serviceObject = this.context.getService(reference);
     if (serviceObject instanceof ValidationProvider<?>
@@ -74,6 +75,7 @@ public class OsgiServiceValidationProviderTracker implements
    * @param service the service to remove
    */
   // callback if necessary class is deregistred
+  @Override
   public void removedService(final ServiceReference reference,
       final Object service) {
     final Object serviceObject = this.context.getService(reference);

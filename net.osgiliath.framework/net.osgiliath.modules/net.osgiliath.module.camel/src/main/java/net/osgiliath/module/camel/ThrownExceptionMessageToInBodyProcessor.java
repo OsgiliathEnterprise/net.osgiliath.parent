@@ -21,9 +21,7 @@ package net.osgiliath.module.camel;
  */
 
 import java.io.StringReader;
-
 import net.osgiliath.module.cxf.exception.handling.ExceptionMappingConstants;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.component.http.HttpOperationFailedException;

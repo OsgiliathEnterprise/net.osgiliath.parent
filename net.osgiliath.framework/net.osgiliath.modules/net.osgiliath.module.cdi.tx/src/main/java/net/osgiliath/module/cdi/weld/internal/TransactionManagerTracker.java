@@ -1,7 +1,5 @@
 package net.osgiliath.module.cdi.weld.internal;
 
-import java.io.IOException;
-
 /*
  * #%L
  * net.osgiliath.helper.camel.cdi.configadmin
@@ -24,15 +22,12 @@ import java.io.IOException;
 
 import java.util.Collection;
 import java.util.HashSet;
-
 import javax.transaction.TransactionManager;
-
+import lombok.extern.slf4j.Slf4j;
+import net.osgiliath.module.cdi.weld.api.SingleServiceTracker;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-
-import lombok.extern.slf4j.Slf4j;
-import net.osgiliath.module.cdi.weld.api.SingleServiceTracker;
 
 /**
  * Service uTTracker for camel cdi config admin properties resolution.
@@ -58,14 +53,7 @@ public class TransactionManagerTracker implements SingleServiceTracker.SingleSer
 	 */
 	private Collection<TransactionManager> txManagers;
 
-	/**
-	 * Gets the registered configurations.
-	 * 
-	 * @return the registered configurations
-	 */
-	final Collection<TransactionManager> getAdmins() {
-		return this.txManagers;
-	}
+	
 	/**
 	 * Default ctor.
 	 */
@@ -80,13 +68,20 @@ public class TransactionManagerTracker implements SingleServiceTracker.SingleSer
 	 */
 	public TransactionManagerTracker(BundleContext bundleContext) throws InvalidSyntaxException {
 		this();
-		this.getInstance().bundleContext = bundleContext;
-		this.getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, TransactionManager.class,
+		getInstance().bundleContext = bundleContext;
+		getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, TransactionManager.class,
 				this);
-		this.getInstance().configAdminTracker.open();
+		getInstance().configAdminTracker.open();
 
 	}
-
+	/**
+     * Gets the registered configurations.
+     * 
+     * @return the registered configurations
+     */
+    final Collection<TransactionManager> getAdmins() {
+        return this.txManagers;
+    }
 	/**
 	 * Singleton.
 	 * 
@@ -104,10 +99,10 @@ public class TransactionManagerTracker implements SingleServiceTracker.SingleSer
 	 * Stops the uTTracker.
 	 */
 	public synchronized void stop() {
-		this.getInstance().configAdminTracker.close();
-		this.getInstance().configAdminTracker = null;
-		this.getInstance().txManagers = null;
-		this.getInstance().bundleContext = null;
+		getInstance().configAdminTracker.close();
+		getInstance().configAdminTracker = null;
+		getInstance().txManagers = null;
+		getInstance().bundleContext = null;
 	}
 	/**
 	 * Reparses configuration.

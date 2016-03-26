@@ -64,64 +64,7 @@ public class BrokerFactory {
 	private BrokerService broker;
 
 	
-	/**
-	 * Sets the broker name.
-	 *
-	 * @param brokerName the new broker name
-	 */
-	public void setBrokerName(String brokerName) {
-		this.brokerName = brokerName;
-	}
 	
-	/**
-	 * Sets the jms uri.
-	 *
-	 * @param jmsURI the new jms uri
-	 */
-	public void setJmsURI(String jmsURI) {
-		this.jmsURI = jmsURI;
-	}
-	/**
-	 * Sets the XA URI.
-	 * @param jmsXAURI jms URI
-	 */
-	public void setJmsXAURI(String jmsXAURI) {
-		this.jmsXAURI = jmsXAURI;
-	}
-	/**
-	 * Sets the stomp URI.
-	 * @param stompURI stomp URI
-	 */
-	public void setStompURI(String stompURI) {
-		this.stompURI = stompURI;
-	}
-	
-	/**
-	 * Sets the stomp xauri.
-	 *
-	 * @param stompXAURI the new stomp xauri
-	 */
-	public void setStompXAURI(String stompXAURI) {
-		this.stompXAURI = stompXAURI;
-	}
-	
-	/**
-	 * Sets the websocket uri.
-	 *
-	 * @param websocketURI the new websocket uri
-	 */
-	public void setWebsocketURI(String websocketURI) {
-		this.websocketURI = websocketURI;
-	}
-	
-	/**
-	 * Sets the websocket xauri.
-	 *
-	 * @param websocketXAURI the new websocket xauri
-	 */
-	public void setWebsocketXAURI(String websocketXAURI) {
-		this.websocketXAURI = websocketXAURI;
-	}
 	
 	/**
 	 * Instantiates a new broker factory.
@@ -130,7 +73,64 @@ public class BrokerFactory {
 	  super();
 	  //do nothing, bean instanciation.
 	}
-	
+	/**
+     * Sets the broker name.
+     *
+     * @param brokerName the new broker name
+     */
+    public void setBrokerName(String brokerName) {
+        this.brokerName = brokerName;
+    }
+    
+    /**
+     * Sets the jms uri.
+     *
+     * @param jmsURI the new jms uri
+     */
+    public void setJmsURI(String jmsURI) {
+        this.jmsURI = jmsURI;
+    }
+    /**
+     * Sets the XA URI.
+     * @param jmsXAURI jms URI
+     */
+    public void setJmsXAURI(String jmsXAURI) {
+        this.jmsXAURI = jmsXAURI;
+    }
+    /**
+     * Sets the stomp URI.
+     * @param stompURI stomp URI
+     */
+    public void setStompURI(String stompURI) {
+        this.stompURI = stompURI;
+    }
+    
+    /**
+     * Sets the stomp xauri.
+     *
+     * @param stompXAURI the new stomp xauri
+     */
+    public void setStompXAURI(String stompXAURI) {
+        this.stompXAURI = stompXAURI;
+    }
+    
+    /**
+     * Sets the websocket uri.
+     *
+     * @param websocketURI the new websocket uri
+     */
+    public void setWebsocketURI(String websocketURI) {
+        this.websocketURI = websocketURI;
+    }
+    
+    /**
+     * Sets the websocket xauri.
+     *
+     * @param websocketXAURI the new websocket xauri
+     */
+    public void setWebsocketXAURI(String websocketXAURI) {
+        this.websocketXAURI = websocketXAURI;
+    }
 	/**
 	 * Inits the factory.
 	 *

@@ -50,7 +50,7 @@ public class HelloRoute extends RouteBuilder {
   /**
    * Json Dataformat.
    */
-  private final transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
+  private final DataFormat helloObjectJSonFormat = new JacksonDataFormat(
       HelloEntity.class, Hellos.class);
   /**
    * JSR303 Validation message processor.
@@ -58,17 +58,17 @@ public class HelloRoute extends RouteBuilder {
   @Inject
   @Named("thrownExceptionMessageToInBodyProcessor")
   @Setter
-  private transient Processor thrownExceptionMessageToInBodyProcessor;
+  private Processor thrownExceptionMessageToInBodyProcessor;
   /**
    * XmlJson processor.
    */
   @Inject
   @Named("xmljson")
-  private transient DataFormat xmljson;
+  private DataFormat xmljson;
   /**
    * changes inputstream to string.
    */
-  private final transient Processor octetsStreamToStringProcessor = new Processor() {
+  private Processor octetsStreamToStringProcessor = new Processor() {
 
     @Override
     public void process(Exchange exchange) throws Exception {
@@ -124,15 +124,9 @@ public class HelloRoute extends RouteBuilder {
 
     from("direct:helloValidationError")
         .process(this.thrownExceptionMessageToInBodyProcessor)
-        .process(new Processor() {
-
-          @Override
-          public void process(Exchange exchange) throws Exception {
-            exchange.getIn().setBody(
-                exchange.getIn().getBody(String.class).replaceAll("\"", "'")
-                    .replaceAll("\n", ""));
-          }
-        }).setBody(simple("{\"error\": \"${body}\"}"))
+        .process(exchange ->  exchange.getIn().setBody(
+            exchange.getIn().getBody(String.class).replaceAll("\"", "'")
+            .replaceAll("\n", ""))).setBody(simple("{\"error\": \"${body}\"}"))
         .log("Subscription error: ${body}").to("properties:{{helloApp.outCamelErrorQueueJMS}}");
 
   }

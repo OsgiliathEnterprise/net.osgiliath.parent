@@ -55,85 +55,77 @@ import org.ops4j.pax.cdi.api.OsgiService;
 @ApplicationScoped
 @ContextName
 public class HelloServiceJMS extends RouteBuilder implements HelloService {
-	private final transient DataFormat helloObjectJSonFormat = new JacksonDataFormat(
-		      HelloEntity.class, Hellos.class);
-	/**
-	 * The repository.
-	 */
-	@Inject
-	@OsgiService
-	private transient HelloRepository helloObjectRepository;
-	/**
-	 * JMS producer.
-	 */
-	@Inject
-	@Uri("jms:topic:helloServiceQueueOut")
-	private transient ProducerTemplate producer;
+  private final DataFormat helloObjectJSonFormat = new JacksonDataFormat(HelloEntity.class, Hellos.class);
+  /**
+   * The repository.
+   */
+  @Inject
+  @OsgiService
+  private HelloRepository helloObjectRepository;
+  /**
+   * JMS producer.
+   */
+  @Inject
+  @Uri("jms:topic:helloServiceQueueOut")
+  private ProducerTemplate producer;
 
-	/**
-	 * saves element
-	 * 
-	 * @param helloObject
-	 *            element to save
-	 */
-	@Override
-	public void persistHello(@NotNull @Valid HelloEntity helloObject) {
-		log.info("****************** Save on JMS Service **********************");
-		log.info("persisting new message with jms: " + helloObject.getHelloMessage());
-		this.helloObjectRepository.save(helloObject);
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			this.producer.sendBody( mapper.writeValueAsString(getHellos()));
-		} catch (CamelExecutionException | JsonProcessingException e) {
-			log.error("exception marshalling messages", e);
-			
-		}
-	}
+  /**
+   * saves element
+   * 
+   * @param helloObject
+   *          element to save
+   */
+  @Override
+  public void persistHello(@NotNull @Valid HelloEntity helloObject) {
+    log.info("****************** Save on JMS Service **********************");
+    log.info("persisting new message with jms: " + helloObject.getHelloMessage());
+    this.helloObjectRepository.save(helloObject);
+    ObjectMapper mapper = new ObjectMapper();
+    try {
+      this.producer.sendBody(mapper.writeValueAsString(getHellos()));
+    }
+    catch (CamelExecutionException | JsonProcessingException e) {
+      log.error("exception marshalling messages", e);
 
-	/**
-	 * Returns all elements.
-	 * 
-	 * @return all elements
-	 */
-	@Override
-	public Hellos getHellos() {
+    }
+  }
 
-		final Collection<HelloEntity> helloObjects = this.helloObjectRepository.findAll();
-		if (helloObjects.isEmpty()) {
-			throw new UnsupportedOperationException("You could not call this method when the list is empty");
-		}
-		return Hellos.builder()
-				.helloCollection(helloObjects.stream().map(x -> x.getHelloMessage()).collect(Collectors.toList())).build();
-	}
+  /**
+   * Returns all elements.
+   * 
+   * @return all elements
+   */
+  @Override
+  public Hellos getHellos() {
 
-	
-	/**
-	 * Deletes all elements.
-	 */
-	@Override
-	public void deleteHellos() {
-		this.helloObjectRepository.deleteAll();
+    final Collection<HelloEntity> helloObjects = this.helloObjectRepository.findAll();
+    if (helloObjects.isEmpty()) {
+      throw new UnsupportedOperationException("You could not call this method when the list is empty");
+    }
+    return Hellos.builder()
+        .helloCollection(helloObjects.stream().map(x -> x.getHelloMessage()).collect(Collectors.toList())).build();
+  }
 
-	}
+  /**
+   * Deletes all elements.
+   */
+  @Override
+  public void deleteHellos() {
+    this.helloObjectRepository.deleteAll();
 
-	/**
-	 * receives JMS message.
-	 * 
-	 * @throws Exception
-	 *             Persistence error
-	 */
-	@Override
-	public void configure() throws Exception {
-		from("properties:{{helloApp.inQueueJMS}}"/*"jms:queue:helloServiceQueueIn"*/)
-		.log(LoggingLevel.INFO, "received jms message: ${body}").unmarshal(this.helloObjectJSonFormat).process(new Processor() {
+  }
 
-			@Override
-			public void process(Exchange exchange) throws Exception {
-				HelloServiceJMS.this.persistHello((HelloEntity) exchange.getIn().getBody());
-			}
-
-		});
-
-	}
+  /**
+   * receives JMS message.
+   * 
+   * @throws Exception
+   *           Persistence error
+   */
+  @Override
+  public void configure() throws Exception {
+    from("properties:{{helloApp.inQueueJMS}}"/* "jms:queue:helloServiceQueueIn" */)
+        .log(LoggingLevel.INFO, "received jms message: ${body}").unmarshal(this.helloObjectJSonFormat)
+        .process(exchange ->  HelloServiceJMS.this.persistHello((HelloEntity) exchange.getIn().getBody()));
+  }
 
 }

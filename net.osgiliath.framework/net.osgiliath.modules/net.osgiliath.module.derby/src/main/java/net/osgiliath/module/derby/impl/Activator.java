@@ -44,7 +44,7 @@ public class Activator implements BundleActivator {
   /**
    * Started derby servers.
    */
-  private final Map<String, Map<Integer, NetworkServerControl>> startedServers = new HashMap<String, Map<Integer, NetworkServerControl>>();
+  private final Map<String, Map<Integer, NetworkServerControl>> startedServers = new HashMap<>();
   /**
    * Singleton.
    */
@@ -101,7 +101,7 @@ public class Activator implements BundleActivator {
    * @return the started derby servers
    */
   protected Map<String, Collection<Integer>> getStartedServers() {
-    final Map<String, Collection<Integer>> ret = new HashMap<String, Collection<Integer>>();
+    final Map<String, Collection<Integer>> ret = new HashMap<>();
     for (final Entry<String, Map<Integer, NetworkServerControl>> keys : this.startedServers
         .entrySet()) {
       ret.put(keys.getKey(), keys.getValue().keySet());
@@ -125,7 +125,7 @@ public class Activator implements BundleActivator {
     Map<Integer, NetworkServerControl> candidate = this.startedServers
         .get(host);
     if (candidate == null) {
-      candidate = new HashMap<Integer, NetworkServerControl>();
+      candidate = new HashMap<>();
       this.startedServers.put(host, candidate);
     }
     candidate.put(port, control);

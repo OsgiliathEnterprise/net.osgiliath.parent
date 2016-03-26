@@ -37,7 +37,7 @@ public class SwaggerAPIAccessService extends ApiListingResource {
    * Swagger configuration.
    */
   @Inject
-  private transient BeanConfig config;
+  private BeanConfig config;
 
   /**
    * Creates configuration.

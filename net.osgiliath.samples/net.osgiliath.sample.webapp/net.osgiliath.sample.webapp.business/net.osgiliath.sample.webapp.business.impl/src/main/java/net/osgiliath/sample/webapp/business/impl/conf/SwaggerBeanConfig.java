@@ -2,7 +2,7 @@ package net.osgiliath.sample.webapp.business.impl.conf;
 
 /*
  * #%L
- * CDI configured business module
+ * Helloworld sample business module
  * %%
  * Copyright (C) 2013 - 2016 Osgiliath
  * %%
@@ -20,19 +20,12 @@ package net.osgiliath.sample.webapp.business.impl.conf;
  * #L%
  */
 
-import java.io.IOException;
-
+import io.swagger.jaxrs.config.BeanConfig;
 import javax.enterprise.inject.Produces;
 import javax.ws.rs.ApplicationPath;
-
-import org.apache.deltaspike.core.api.config.ConfigResolver;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.InvalidSyntaxException;
-
-import io.swagger.jaxrs.config.BeanConfig;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.sample.webapp.business.impl.rest.HelloServiceJaxRS;
+import org.apache.deltaspike.core.api.config.ConfigResolver;
 
 /**
  * Swagger configuration.
@@ -50,8 +43,7 @@ public class SwaggerBeanConfig {
 	@Produces
 	public BeanConfig getConfig() {
 		final BeanConfig beanConfig = new BeanConfig();
-		String endPointURI = "";
-		endPointURI = ConfigResolver.getPropertyValue("jaxrs.server.protocol") + "://"
+		final String endPointURI = ConfigResolver.getPropertyValue("jaxrs.server.protocol") + "://"
 				+ ConfigResolver.getPropertyValue("jaxrs.server.uri") + ":"
 				+ ConfigResolver.getPropertyValue("jaxrs.server.port") + "/cxf"
 				+ CXFApplication.class.getAnnotation(ApplicationPath.class).value();

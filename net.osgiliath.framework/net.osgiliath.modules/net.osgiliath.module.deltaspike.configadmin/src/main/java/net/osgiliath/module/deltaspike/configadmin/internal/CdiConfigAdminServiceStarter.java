@@ -1,19 +1,10 @@
 package net.osgiliath.module.deltaspike.configadmin.internal;
 
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.Constants;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceEvent;
-import org.osgi.framework.ServiceListener;
-import org.osgi.framework.ServiceReference;
-import org.osgi.service.cm.ConfigurationAdmin;
-import org.osgi.service.cm.ManagedService;
-import org.osgi.service.cm.ManagedServiceFactory;
-import org.osgi.util.tracker.ServiceTracker;
-import org.osgi.util.tracker.ServiceTrackerCustomizer;
-
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.module.deltaspike.configadmin.karaf.KarafConfigAdminListener;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Activator for config admin listener.
@@ -25,7 +16,7 @@ public class CdiConfigAdminServiceStarter {
 	/**
 	 * Configadmin service tracker.
 	 */
-	private transient BundleContext context;
+	private BundleContext context;
 	/**
 	 * Service tracker.
 	 */
@@ -53,10 +44,10 @@ public class CdiConfigAdminServiceStarter {
 	public void start() {
 		log.info("Osgiliath: starting deltaspike config admin tracker");
 		try {
-			 listener = new KarafConfigAdminListener(context);
+			 this.listener = new KarafConfigAdminListener(context);
 			 
 		} catch (InvalidSyntaxException e) {
-			
+			log.error("error gettint service", e);
 		}
 		
 		
@@ -71,8 +62,8 @@ public class CdiConfigAdminServiceStarter {
 	public void stop() {
 		log.info("Osgiliath: destroying deltaspike config admin tracker");
 		
-		listener.stop();
-		listener = null;
+		this.listener.stop();
+		this.listener = null;
 		this.context = null;
 	}
 

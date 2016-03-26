@@ -35,7 +35,14 @@ public class ValidatorFactorySingleton {
   /**
    * factory singleton.
    */
-  private static transient ValidatorFactory validatorFactory = null;
+  private static ValidatorFactory validatorFactory = null;
+
+  /**
+   * private constructor so that it can't be instantiated.
+   */
+  private ValidatorFactorySingleton() {
+    super();
+  }
 
   /**
    * returns the validatorfactory.

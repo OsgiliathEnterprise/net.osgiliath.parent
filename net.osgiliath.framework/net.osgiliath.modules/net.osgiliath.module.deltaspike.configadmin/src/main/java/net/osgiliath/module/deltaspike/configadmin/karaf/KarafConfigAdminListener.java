@@ -56,7 +56,7 @@ public class KarafConfigAdminListener
 	/**
 	 * Deltaspike properties to skip.
 	 */
-	private Collection<String> skippedProperties = new HashSet<String>(
+	private Collection<String> skippedProperties = new HashSet<>(
 			Arrays.asList("org.apache.deltaspike.core.spi.activation.ClassDeactivator",
 					"org.apache.deltaspike.ProjectStage", "javax.faces.PROJECT_STAGE", "faces.PROJECT_STAGE",
 					"deltaspike.bean-manager.delegate_lookup.Production", "deltaspike.bean-manager.delegate_lookup",
@@ -76,11 +76,11 @@ public class KarafConfigAdminListener
 	 */
 	public KarafConfigAdminListener(BundleContext bundleContext) throws InvalidSyntaxException {
 		this();
-		this.getInstance().bundleContext = bundleContext;
-		this.getInstance().registration = bundleContext.registerService(ConfigurationListener.class, this, null);
-		this.getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, ConfigurationAdmin.class,
+		getInstance().bundleContext = bundleContext;
+		getInstance().registration = bundleContext.registerService(ConfigurationListener.class, this, null);
+		getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, ConfigurationAdmin.class,
 				this);
-		this.getInstance().configAdminTracker.open();
+		getInstance().configAdminTracker.open();
 
 	}
 	/**
@@ -97,11 +97,11 @@ public class KarafConfigAdminListener
 	 * Stops listening.
 	 */
 	public void stop() {
-		this.getInstance().registration.unregister();
-		this.getInstance().configAdminTracker.close();
-		this.getInstance().configAdminTracker = null;
-		this.getInstance().registration = null;
-		this.getInstance().bundleContext = null;
+		getInstance().registration.unregister();
+		getInstance().configAdminTracker.close();
+		getInstance().configAdminTracker = null;
+		getInstance().registration = null;
+		getInstance().bundleContext = null;
 
 	}
 
@@ -147,7 +147,7 @@ public class KarafConfigAdminListener
 	 * @throws InvalidSyntaxException service listening error.
 	 */
 	public void internalReparse() throws IOException, InvalidSyntaxException {
-		ConfigurationAdmin configAdmin = (ConfigurationAdmin) this.getInstance().configAdminTracker.getService();
+		ConfigurationAdmin configAdmin = (ConfigurationAdmin) getInstance().configAdminTracker.getService();
 		if (null != configAdmin) {
 			Configuration[] configs = configAdmin.listConfigurations(null);
 			if (configs != null) {
@@ -199,7 +199,7 @@ public class KarafConfigAdminListener
 						if (getInstance().configurations.size() == ret.size() && this.equals(ret.get(ret.size() - 1))
 								&& !skippedProperties.contains(key)) {
 							int cpt = 0;
-							while (res == null && cpt < 10) {
+							while (cpt < 10) {
 								try {
 									internalReparse();
 									for (Configuration config : getInstance().configurations) {

@@ -33,11 +33,12 @@ import lombok.Data;
 
 /**
  * General persistence entity.
+ * mark @XmlRootElement on your child class
  * @author charliemordant
  */
 @Data
 @MappedSuperclass
-// @XmlRootElement on your child class
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class GenericEntity {
   /**

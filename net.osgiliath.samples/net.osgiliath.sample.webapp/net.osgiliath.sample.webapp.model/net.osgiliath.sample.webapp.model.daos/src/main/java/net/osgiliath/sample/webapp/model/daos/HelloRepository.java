@@ -40,7 +40,7 @@ public interface HelloRepository extends JpaRepository<HelloEntity, Long>
    *          message
    * @return corresponding entities
    */
-  Collection<? extends HelloEntity> findByHelloObjectMessage(String message);
+  Collection<HelloEntity> findByHelloObjectMessage(String message);
 
   
 }

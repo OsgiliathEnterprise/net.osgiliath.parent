@@ -32,6 +32,7 @@ import net.osgiliath.module.cdi.eager.Eager;
 import net.osgiliath.sample.webapp.business.impl.rest.HelloServiceJaxRS;
 import net.osgiliath.sample.webapp.business.spi.HelloService;
 import net.osgiliath.sample.webapp.business.spi.annotations.REST;
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.cxf.jaxrs.swagger.Swagger2Feature;
 import org.apache.cxf.jaxrs.validation.ValidationExceptionMapper;
 
@@ -45,40 +46,37 @@ import org.apache.cxf.jaxrs.validation.ValidationExceptionMapper;
 @ApplicationPath("/helloService")
 @Slf4j
 public class CXFApplication extends Application {
-//  /**
-//   * The injected REST endpoint.
-//   */
+  /**
+   * The injected REST endpoint.
+   */
   @Inject
   @REST
-  private transient HelloService helloService;
+  private HelloService helloService;
+  /**
+   * Swagger support.
+   */
   @Inject
-  private transient SwaggerAPIAccessService swagger;
-  
-  /*
+  private SwaggerAPIAccessService swagger;
+
+  /**
    * @see {@link javax.ws.rs.core.Application#getSingletons()}
    */
   @Override
   public Set<Object> getSingletons() {
-	  log.error("Osgiliath: registering cxf servlet");
-	  Swagger2Feature feature = new Swagger2Feature();
-	  
-	    // customize some of the properties
-	    feature.setBasePath("/api");
-	    feature.setResourcePackage(HelloServiceJaxRS.class.getPackage().getName());
-	  /*BeanManager bm = CDI.current().getBeanManager();
-	  Bean<HelloServiceJaxRS> bean= (Bean<HelloServiceJaxRS>) bm.getBeans(HelloServiceJaxRS.class).iterator().next();
-	  CreationalContext<HelloServiceJaxRS> ctx = bm.createCreationalContext(bean);
-	  HelloServiceJaxRS helloService = (HelloServiceJaxRS) bm.getReference(bean, HelloServiceJaxRS.class, ctx);*/
-	 // log.error("Osgiliath: got bean helloservice via cdi");
-    return Sets.<Object> newHashSet(helloService,swagger,
-        //new JAXBElementProvider<Object>(), 
-        //new ExceptionXmlMapper(),
-    		
-    		new SwaggerSerializers(),
-        new ValidationExceptionMapper(),
-       // new JAXRSBeanValidationInInterceptor(),
-       // new JAXRSBeanValidationOutInterceptor(),
-        
+    log.error("Osgiliath: registering cxf servlet");
+    Swagger2Feature feature = new Swagger2Feature();
+
+    // customize some of the properties
+    feature.setBasePath("/api");
+    feature.setResourcePackage(HelloServiceJaxRS.class.getPackage().getName());
+    return Sets.<Object> newHashSet(helloService, swagger,
+         new JAXBElementProvider<Object>(),
+        // new ExceptionXmlMapper(),
+
+        new SwaggerSerializers(), new ValidationExceptionMapper(),
+        // new JAXRSBeanValidationInInterceptor(),
+        // new JAXRSBeanValidationOutInterceptor(),
+
         new JacksonJsonProvider());
   }
 }

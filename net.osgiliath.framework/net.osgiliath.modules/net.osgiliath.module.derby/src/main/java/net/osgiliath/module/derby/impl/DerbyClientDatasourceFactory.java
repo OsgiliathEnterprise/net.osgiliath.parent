@@ -37,8 +37,6 @@ import org.apache.derby.jdbc.ClientDataSource40;
 import org.apache.derby.jdbc.ClientDriver40;
 import org.apache.derby.jdbc.ClientXADataSource40;
 import org.osgi.service.jdbc.DataSourceFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * DS factory.
@@ -48,7 +46,7 @@ import org.slf4j.LoggerFactory;
  */
 @Slf4j
 public class DerbyClientDatasourceFactory implements DataSourceFactory {
-  
+
   /**
    * creates a datasource from properties.
    * 
@@ -141,6 +139,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
             isStarted = true;
           }
           catch (Exception e) {
+            log.trace("waiting database server start", e);
           }
         }
         log.info("Derby server started!");
@@ -183,9 +182,12 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
     this.setProperties(datasource, props);
     return datasource;
   }
+
   /**
    * Logs the added properties.
-   * @param props the properties
+   * 
+   * @param props
+   *          the properties
    */
   public void logProperties(Properties props) {
     for (Object keyO : props.keySet()) {
@@ -204,9 +206,7 @@ public class DerbyClientDatasourceFactory implements DataSourceFactory {
   @Override
   public Driver createDriver(Properties props) throws SQLException {
     log.info("creating Derby driver");
-    final ClientDriver40 driver = new ClientDriver40();
-
-    return driver;
+    return new ClientDriver40();
   }
 
 }

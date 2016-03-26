@@ -41,7 +41,7 @@ public class EagerExtension implements Extension {
   /**
    * List of eager startup beans.
    */
-  private final transient Collection<Bean<?>> eagerBeansList = new ArrayList<Bean<?>>();
+  private final Collection<Bean<?>> eagerBeansList = new ArrayList<>();
 
   /**
    * Add beans to eager startup beans registry.

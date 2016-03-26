@@ -1,7 +1,5 @@
 package net.osgiliath.module.cdi.weld.internal;
 
-import java.io.IOException;
-
 /*
  * #%L
  * net.osgiliath.helper.camel.cdi.configadmin
@@ -24,19 +22,13 @@ import java.io.IOException;
 
 import java.util.Collection;
 import java.util.HashSet;
-
 import javax.transaction.TransactionManager;
 import javax.transaction.UserTransaction;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.module.cdi.weld.api.SingleServiceTracker;
-
-import org.jboss.weld.transaction.spi.TransactionServices;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.osgi.util.tracker.ServiceTracker;
-import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 /**
  * Service uTTracker for camel cdi config admin properties resolution.
@@ -63,14 +55,7 @@ public class UserTransactionTracker implements SingleServiceTracker.SingleServic
 	 */
 	private Collection<UserTransaction> userTransactions;
 
-	/**
-	 * Gets the registered configurations.
-	 * 
-	 * @return the registered configurations
-	 */
-	public final Collection<UserTransaction> getUserTransactions() {
-		return this.userTransactions;
-	}
+	
 	/**
 	 * Default Ctor.
 	 */
@@ -85,13 +70,20 @@ public class UserTransactionTracker implements SingleServiceTracker.SingleServic
 	 */
 	public UserTransactionTracker(BundleContext bundleContext) throws InvalidSyntaxException {
 		this();
-		this.getInstance().bundleContext = bundleContext;
-		this.getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, TransactionManager.class,
+		getInstance().bundleContext = bundleContext;
+		getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, TransactionManager.class,
 				this);
-		this.getInstance().configAdminTracker.open();
+		getInstance().configAdminTracker.open();
 
 	}
-
+	/**
+     * Gets the registered configurations.
+     * 
+     * @return the registered configurations
+     */
+    public final Collection<UserTransaction> getUserTransactions() {
+        return this.userTransactions;
+    }
 	/**
 	 * Singleton.
 	 * 
@@ -108,10 +100,10 @@ public class UserTransactionTracker implements SingleServiceTracker.SingleServic
 	 * Stops the uTTracker.
 	 */
 	public synchronized void stop() {
-		this.getInstance().configAdminTracker.close();
-		this.getInstance().configAdminTracker = null;
-		this.getInstance().userTransactions = null;
-		this.getInstance().bundleContext = null;
+		getInstance().configAdminTracker.close();
+		getInstance().configAdminTracker = null;
+		getInstance().userTransactions = null;
+		getInstance().bundleContext = null;
 	}
 
 	/**

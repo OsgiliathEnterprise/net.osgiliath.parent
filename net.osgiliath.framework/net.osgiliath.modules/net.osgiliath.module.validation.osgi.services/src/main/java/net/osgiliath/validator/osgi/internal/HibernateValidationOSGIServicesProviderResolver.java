@@ -41,7 +41,7 @@ public class HibernateValidationOSGIServicesProviderResolver implements
   /**
    * Validation providers.
    */
-  private final transient List<ValidationProvider<?>> providers = Lists.newArrayList();
+  private final List<ValidationProvider<?>> providers = Lists.newArrayList();
 
   /**
    * private CTor.
@@ -56,7 +56,7 @@ public class HibernateValidationOSGIServicesProviderResolver implements
    * 
    * @return the Singleton instance
    */
-  public synchronized static ValidationProviderResolver getInstance() {
+  public static synchronized ValidationProviderResolver getInstance() {
     if (instance == null) {
       instance = new HibernateValidationOSGIServicesProviderResolver();
       ((HibernateValidationOSGIServicesProviderResolver) instance).providers

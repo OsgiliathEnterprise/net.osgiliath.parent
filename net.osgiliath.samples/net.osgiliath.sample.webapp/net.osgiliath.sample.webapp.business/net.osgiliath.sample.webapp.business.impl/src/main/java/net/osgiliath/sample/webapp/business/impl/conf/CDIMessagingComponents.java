@@ -47,7 +47,7 @@ public class CDIMessagingComponents {
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
-  private transient Component jms;
+  private Component jms;
 
   /**
    * Producer.

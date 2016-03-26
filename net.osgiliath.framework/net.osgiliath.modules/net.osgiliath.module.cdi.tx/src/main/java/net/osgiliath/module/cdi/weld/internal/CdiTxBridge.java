@@ -43,7 +43,7 @@ public class CdiTxBridge implements TransactionServices {
   /**
    * Configadmin service tracker.
    */
-  private transient BundleContext context;
+  private BundleContext context;
   /**
    * Config admin tracker.
    */

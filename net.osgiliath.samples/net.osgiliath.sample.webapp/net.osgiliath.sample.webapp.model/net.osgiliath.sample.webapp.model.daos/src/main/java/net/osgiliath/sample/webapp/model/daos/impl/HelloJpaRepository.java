@@ -65,7 +65,7 @@ public class HelloJpaRepository extends DelegatingSimpleJpaRepository<HelloEntit
 	 * @return all corresponding entities
 	 */
 	@Override
-	public final Collection<? extends HelloEntity> findByHelloObjectMessage(final String message) {
+	public final Collection<HelloEntity> findByHelloObjectMessage(final String message) {
 		final CriteriaBuilder builder = this.em.getCriteriaBuilder();
 		final CriteriaQuery<HelloEntity> criteria = builder.createQuery(HelloEntity.class);
 		final Root<HelloEntity> helloObject = criteria.from(HelloEntity.class);

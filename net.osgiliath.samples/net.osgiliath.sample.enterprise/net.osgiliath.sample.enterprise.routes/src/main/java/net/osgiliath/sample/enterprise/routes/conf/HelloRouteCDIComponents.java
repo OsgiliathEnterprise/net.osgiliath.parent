@@ -46,13 +46,13 @@ public class HelloRouteCDIComponents {
    */
   @Inject
   @OsgiService(filter = "(component-type=jms)", dynamic = true)
-  private transient Component jms;
+  private Component jms;
   /**
    * transactional messaging component.
    */
   @Inject
   @OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
-  private transient Component jmsXA;
+  private Component jmsXA;
 
   /**
    * Exception message converter processor.
