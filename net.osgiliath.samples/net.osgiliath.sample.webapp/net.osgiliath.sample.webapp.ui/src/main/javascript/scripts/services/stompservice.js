@@ -49,41 +49,14 @@ angular.module('commonapp', []).service('stompservice', function(){
 		this.stompClient.disconnect(this.disconnectcb);
 	};
 	
-	
-	
-	
+
 	/**
 	 * Callback for disconnection
 	 */
 	this.disconnectcb=function() {
 		console.info('client disconnected!');
 	};
-	/**
-	 * Send heartbeat to keep stomp connection alive
-	 * 
-	 * @param client
-	 *            the stomp client
-	 * @param queue
-	 *            the queue to send
-	 * @returns the heartbeat ref
-	 */
-	this.heartBeat = function (client, queue) {
-		return setInterval(function() {
-			client.send(queue, {
-				webSocketMsgType : 'heartBeat'
-			}, '');
-		}, 3000);
-	};
-	/**
-	 * Filter heartbeat message
-	 * 
-	 * @param message
-	 *            the input message
-	 * @returns {Boolean} true if the message is heartbeat
-	 */
-	this.heartBeatFilter = function (message) {
-		return message.headers.webSocketMsgType === 'heartBeat';
-	};
+	
 	
 });
 
