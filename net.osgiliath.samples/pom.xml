@@ -15,4 +15,7 @@
   	<module>net.osgiliath.sample.webapp</module>
   	<module>net.osgiliath.sample.enterprise</module>
   </modules>
+  <properties>
+	<jacoco.scan.base>net.osgiliath</jacoco.scan.base>
+</properties>
 </project>

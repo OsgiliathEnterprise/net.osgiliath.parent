@@ -1,19 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
 		<groupId>net.osgiliath.poms</groupId>
 		<version>0.3.3-SNAPSHOT</version>
 		<artifactId>net.osgiliath.pom.projects.definition</artifactId>
 		<relativePath>../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management/net.osgiliath.pom.projects.definition</relativePath>
 	</parent>
-	
-  <artifactId>net.osgiliath.framework</artifactId>
-  <packaging>pom</packaging>
-  <name>Osgiliath framework features and modules</name>
-  <description>All that makes Osgiliath framework a framework...</description>
-  <modules>
-  	<module>net.osgiliath.features</module>
-  	<module>net.osgiliath.modules</module>
-  	<module>net.osgiliath.wrappers</module>
-  </modules>
+
+	<artifactId>net.osgiliath.framework</artifactId>
+	<packaging>pom</packaging>
+	<name>Osgiliath framework features and modules</name>
+	<description>All that makes Osgiliath framework a framework...</description>
+	<modules>
+		<module>net.osgiliath.features</module>
+		<module>net.osgiliath.modules</module>
+		<module>net.osgiliath.wrappers</module>
+	</modules>
+	<properties>
+		<jacoco.scan.base>net.osgiliath</jacoco.scan.base>
+	</properties>
 </project>

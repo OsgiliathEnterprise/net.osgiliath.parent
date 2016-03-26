@@ -76,6 +76,7 @@
 		<app.serverHost>localhost</app.serverHost>
   		<osgiliath.framework.maven.version>${project.version}</osgiliath.framework.maven.version>
   		<project.license>apache_v2</project.license><!-- please read the documentation of license-maven-plugin and choose a license that fits-->
+  		<jacoco.scan.base>\${project.artifactId}</jacoco.scan.base><!-- You can replace this property's value by a package prefix shared by all your project's modules to have a better integration test coverage-->
 	</properties>
 	<scm>
 		<connection><!-- your scm urls here --></connection>

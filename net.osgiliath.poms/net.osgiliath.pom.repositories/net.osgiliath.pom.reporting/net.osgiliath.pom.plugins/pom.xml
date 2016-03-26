@@ -946,7 +946,7 @@
 								<skip>${jacoco-coverage-skip}</skip>
 								<destFile>${sonar.jacoco.reportPath}</destFile>
 								<includes>
-									<include>${project.artifactId}.*</include>
+									<include>${jacoco.scan.base}.*</include>
 								</includes>
 								<excludes>
 									<exclude>*itests.*</exclude>
@@ -1492,6 +1492,7 @@
 		<wagon-maven-plugin.version>1.0-beta-5</wagon-maven-plugin.version>
 		<xerces.version>2.4.0</xerces.version>
 		<jacoco-coverage-skip>false</jacoco-coverage-skip>
+		<jacoco.scan.base>${project.artifactId}</jacoco.scan.base>
 		<osgiliath-model.compiler.level>1.7</osgiliath-model.compiler.level>
 	</properties>
 	<modules>
