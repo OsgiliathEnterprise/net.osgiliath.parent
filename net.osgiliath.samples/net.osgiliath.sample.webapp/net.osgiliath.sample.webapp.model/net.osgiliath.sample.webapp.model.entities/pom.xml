@@ -6,8 +6,8 @@
     <version>0.3.3-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.sample.webapp.model.entities</artifactId>
-  	<name>Entities for tests</name>
-	<description>Persistence entities for tests</description>
+  	<name>Sample Entities module</name>
+	<description>Persistence entities for the osgiliath reference sample</description>
 	<build>
 		<resources>
 			<resource>

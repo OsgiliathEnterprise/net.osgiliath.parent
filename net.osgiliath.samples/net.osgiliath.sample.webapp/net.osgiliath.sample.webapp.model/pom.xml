@@ -23,8 +23,8 @@
 				<jdbc.version>${derby.version}</jdbc.version>
 				<jdbc.driverClassName>org.apache.derby.jdbc.ClientDriver</jdbc.driverClassName>
 				<jdbc.url>jdbc:derby://localhost:1527/memory:${project.parent.artifactId}.database</jdbc.url>
-				<jdbc.username>sa</jdbc.username>
-				<jdbc.password>sa</jdbc.password>
+				<jdbc.username>${database.user}</jdbc.username>
+				<jdbc.password>${database.password}</jdbc.password>
 			</properties>
 		</profile>
 		<profile>

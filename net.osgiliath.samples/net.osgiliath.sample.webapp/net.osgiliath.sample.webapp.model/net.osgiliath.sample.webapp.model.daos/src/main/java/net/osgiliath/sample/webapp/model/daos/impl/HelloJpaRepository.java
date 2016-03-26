@@ -21,7 +21,6 @@ package net.osgiliath.sample.webapp.model.daos.impl;
  */
 
 import java.util.Collection;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -76,21 +75,15 @@ public class HelloJpaRepository extends DelegatingSimpleJpaRepository<HelloEntit
 		final TypedQuery<HelloEntity> query = this.em.createQuery(criteria);
 		return query.getResultList();
 	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@PostConstruct
 	public void postConstruct() {
 		instanciateDelegateRepository(emf, em, HelloEntity.class);
 	}
 
-	@Override
-	public List<HelloEntity> findAll() {
-		final CriteriaBuilder builder = this.em.getCriteriaBuilder();
-		final CriteriaQuery<HelloEntity> criteria = builder.createQuery(HelloEntity.class);
-		final Root<HelloEntity> helloObject = criteria.from(HelloEntity.class);
-		criteria.select(helloObject);
-		final TypedQuery<HelloEntity> query = this.em.createQuery(criteria);
-		return query.getResultList();
-	}
+	
 
 }

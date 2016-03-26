@@ -9,6 +9,8 @@
 	
   <artifactId>net.osgiliath.framework</artifactId>
   <packaging>pom</packaging>
+  <name>Osgiliath framework features and modules</name>
+  <description>All that makes Osgiliath framework a framework...</description>
   <modules>
   	<module>net.osgiliath.features</module>
   	<module>net.osgiliath.modules</module>

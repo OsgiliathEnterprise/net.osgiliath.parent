@@ -6,6 +6,8 @@
 		<version>0.3.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.sample.webapp.model.daos</artifactId>
+	<name>Data access module</name>
+	<description>Provides classes to save and retrieve data to/from the datasource</description>
 	<build>
 		<resources>
 			<resource>
