@@ -975,7 +975,7 @@
 								<propertyName>jcoverage.command</propertyName>
 								<destFile>${sonar.jacoco.itReportPath}</destFile>
 								<includes>
-									<include>${project.artifactId}.*</include>
+									<include>${jacoco.scan.base}.*</include>
 								</includes>
 								<excludes>
 									<exclude>*itests.*</exclude>
