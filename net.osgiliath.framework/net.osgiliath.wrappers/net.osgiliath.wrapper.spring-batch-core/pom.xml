@@ -1,37 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.osgiliath.wrappers</groupId>
-    <artifactId>net.osgiliath.wrappers</artifactId>
-    <version>0.3.3-SNAPSHOT</version>
-  </parent>
-  <artifactId>net.osgiliath.wrapper.spring-batch-core</artifactId>
-  	<name>spring-batch-core wrapper</name>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath.wrappers</groupId>
+		<artifactId>net.osgiliath.wrappers</artifactId>
+		<version>0.3.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>net.osgiliath.wrapper.spring-batch-core</artifactId>
+	<name>spring-batch-core wrapper</name>
 	<description>Spring4 support for spring-batch-core</description>
 	<build>
 		<plugins>
-			<!-- <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>assembly:package</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<appendAssemblyId>false</appendAssemblyId>
-							<descriptors>
-								<descriptor>src/main/resources/assembly.xml</descriptor>
-							</descriptors>
-							<archive>
-								<manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
-							</archive>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-assembly-plugin</artifactId> <executions> <execution> <id>assembly:package</id> <phase>package</phase> <goals> <goal>single</goal> </goals> <configuration> <appendAssemblyId>false</appendAssemblyId> 
+				<descriptors> <descriptor>src/main/resources/assembly.xml</descriptor> </descriptors> <archive> <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile> </archive> </configuration> </execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -101,6 +81,10 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.batch</groupId>
 			<artifactId>spring-batch-core</artifactId>
