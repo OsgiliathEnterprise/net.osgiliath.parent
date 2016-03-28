@@ -95,6 +95,10 @@
 			<artifactId>javax.transaction-api</artifactId>
 		</dependency>
 		<dependency>
+			<artifactId>jline</artifactId>
+			<groupId>jline</groupId>
+		</dependency>
+		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
@@ -164,7 +168,6 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jms</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-xmljson</artifactId>
@@ -188,6 +191,14 @@
 		<dependency>
 			<groupId>org.apache.camel.karaf</groupId>
 			<artifactId>camel-karaf-commands</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.jaas</groupId>
+			<artifactId>org.apache.karaf.jaas.boot</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.shell</groupId>
+			<artifactId>org.apache.karaf.shell.console</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>

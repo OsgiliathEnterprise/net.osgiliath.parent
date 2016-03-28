@@ -106,6 +106,10 @@
 			<artifactId>validation-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>jline</groupId>
+			<artifactId>jline</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.feature.karaf-standard</artifactId>
 			<version>${project.version}</version>
@@ -175,6 +179,10 @@
 			<artifactId>geronimo-osgi-registry</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.karaf.shell</groupId>
+			<artifactId>org.apache.karaf.shell.console</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.fastinfoset</artifactId>
 		</dependency>
@@ -233,7 +241,6 @@
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-
 		</dependency>
 	</dependencies>
 </project>
