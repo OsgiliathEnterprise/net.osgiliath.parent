@@ -8,6 +8,8 @@
   <groupId>net.osgiliath.itests</groupId>
   <artifactId>net.osgiliath.features.itests</artifactId>
   <packaging>pom</packaging>
+  <name>Feature integration tests</name>
+  <description>All test that ensures the functionality of different features</description>
   <modules>
   	<module>net.osgiliath.feature.itest.cdi</module>
   	<module>net.osgiliath.feature.itest.feature</module>
