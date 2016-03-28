@@ -33,7 +33,7 @@ angular.module('hello').controller('HelloController',
 				if (!$scope.registered) {
 					stompservice.subscribe('${app.outTopicStomp}', function(
 							message) {
-						if (!stompservice.heartBeatFilter(message)) {
+						
 							var body = message.body;
 							console.log('helloMessage received: ' + body);
 							var json = JSON.parse(body);
@@ -46,7 +46,6 @@ angular.module('hello').controller('HelloController',
 								}
 								$scope.$apply();
 							}
-						}
 					});
 					stompservice.subscribe('${app.outErrorQueue}', function(
 							message) {

@@ -239,6 +239,10 @@
 						<groupId>com.thoughtworks.xstream</groupId>
 						<artifactId>xstream</artifactId>
 					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
 				</exclusions>
 			</dependency>
 			<dependency>
@@ -327,6 +331,12 @@
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activeio-core</artifactId>
 				<version>${org.apache.activemq_activeio-core.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.activemq.protobuf</groupId>
@@ -520,6 +530,12 @@
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-xmljson</artifactId>
 				<version>${org.apache.camel_camel-xmljson.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.camel</groupId>
@@ -538,11 +554,16 @@
 				<artifactId>camel-karaf-commands</artifactId>
 				<version>${org.apache.camel.karaf_camel-karaf-commands.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-jexl</artifactId>
 				<version>${org.apache.commons_commons-jexl.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -865,13 +886,18 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.commons-beanutils</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.commons-dbcp</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
@@ -939,6 +965,12 @@
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.json-lib</artifactId>
 				<version>${org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
@@ -1691,6 +1723,10 @@
 				<artifactId>spring-batch-core</artifactId>
 				<version>${org.springframework.batch_spring-batch-core.version}</version>
 				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
 					<exclusion>
 						<groupId>com.thoughtworks.xstream</groupId>
 						<artifactId>xstream</artifactId>
