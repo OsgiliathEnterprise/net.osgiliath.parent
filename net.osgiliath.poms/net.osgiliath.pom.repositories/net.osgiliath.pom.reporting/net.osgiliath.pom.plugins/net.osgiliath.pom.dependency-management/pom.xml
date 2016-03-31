@@ -462,6 +462,12 @@
 				<groupId>org.apache.aries.jpa</groupId>
 				<artifactId>org.apache.aries.jpa.blueprint</artifactId>
 				<version>${org.apache.aries.jpa_org.apache.aries.jpa.blueprint.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.compendium</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.aries.jpa</groupId>
@@ -476,6 +482,10 @@
 					<exclusion>
 						<groupId>org.eclipse.persistence</groupId>
 						<artifactId>javax.persistence</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.compendium</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -1698,6 +1708,12 @@
 				<groupId>org.ops4j.pax.jdbc</groupId>
 				<artifactId>pax-jdbc</artifactId>
 				<version>${org.ops4j.pax.jdbc_pax-jdbc.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.osgi</groupId>
+						<artifactId>org.osgi.compendium</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.ops4j.pax.jdbc</groupId>
@@ -1820,6 +1836,11 @@
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-spi</artifactId>
 				<version>${org.ops4j.pax.web_pax-web-spi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.compendium</artifactId>
+				<version>${org.osgi_org.osgi.compendium.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
@@ -2262,6 +2283,7 @@
 		<org.ops4j.pax.web_pax-web-jsp.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-jsp.version>
 		<org.ops4j.pax.web_pax-web-runtime.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-runtime.version>
 		<org.ops4j.pax.web_pax-web-spi.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-spi.version>
+		<org.osgi_org.osgi.compendium.version>${org.osgi_org.osgi.enterprise.version}</org.osgi_org.osgi.compendium.version>
 		<org.osgi_org.osgi.core.version>${org.osgi.core.version}</org.osgi_org.osgi.core.version>
 		<org.osgi_org.osgi.enterprise.version>5.0.0</org.osgi_org.osgi.enterprise.version>
 		<org.osgi_org.osgi.service.jdbc.version>1.0.0</org.osgi_org.osgi.service.jdbc.version>
