@@ -1462,6 +1462,12 @@
 				<groupId>org.eclipse.jetty.websocket</groupId>
 				<artifactId>javax-websocket-server-impl</artifactId>
 				<version>${org.eclipse.jetty.websocket_javax-websocket-server-impl.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.jetty.websocket</groupId>
