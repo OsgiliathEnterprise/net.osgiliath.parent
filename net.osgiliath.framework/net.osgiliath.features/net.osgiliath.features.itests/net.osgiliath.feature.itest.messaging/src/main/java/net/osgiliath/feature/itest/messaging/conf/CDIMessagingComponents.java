@@ -1,5 +1,6 @@
 package net.osgiliath.feature.itest.messaging.conf;
 
+import java.util.Properties;
 import javax.enterprise.context.ApplicationScoped;
 
 /*
@@ -26,6 +27,11 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.camel.Component;
+
+import org.apache.camel.component.properties.DefaultPropertiesParser;
+import org.apache.camel.component.properties.PropertiesComponent;
+import org.apache.camel.component.properties.PropertiesParser;
+import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,22 +64,21 @@ public class CDIMessagingComponents {
     LOG.info("Inject jms route");
     return this.jms;
   }
-  
-//  @Produces
-//  @ApplicationScoped
-//  @Named("properties")
-//  PropertiesComponent properties(PropertiesParser parser) {
-//      PropertiesComponent component = new PropertiesComponent();
-//      component.setPropertiesParser(parser);
-//      return component;
-//  }
-//   
-//  // PropertiesParser bean that uses DeltaSpike to resolve properties
-//  static class DeltaSpikeParser extends DefaultPropertiesParser {
-//      @Override
-//      public String parseProperty(String key, String value, Properties properties) {
-//          return ConfigResolver.getPropertyValue(key);
-//      }
-//  }
+  @Produces
+  @Named("properties")
+  PropertiesComponent properties(PropertiesParser parser) {
+      PropertiesComponent component = new PropertiesComponent();
+      component.setPropertiesParser(parser);
+      return component;
+  }
+   
+  // PropertiesParser bean that uses DeltaSpike to resolve properties
+  static class DeltaSpikeParser extends DefaultPropertiesParser {
+      @Override
+      public String parseProperty(String key, String value, Properties properties) {
+          return ConfigResolver.getPropertyValue(key);
+      }
+  }
+
 
 }

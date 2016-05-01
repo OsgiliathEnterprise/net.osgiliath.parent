@@ -31,6 +31,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 
+
 /**
  * CDI consumer via routes.
  * 
@@ -38,7 +39,7 @@ import org.apache.camel.cdi.ContextName;
  */
 
 @ApplicationScoped
-@ContextName
+@ContextName(value="camelctx")
 public class RouteConsumer extends RouteBuilder {
 	/**
 	 * Message consuming route.

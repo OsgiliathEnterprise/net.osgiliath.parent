@@ -53,7 +53,7 @@ import org.ops4j.pax.cdi.api.OsgiService;
  */
 @Slf4j
 @ApplicationScoped
-@ContextName
+@ContextName(value="camelctx")
 public class HelloServiceJMS extends RouteBuilder implements HelloService {
   private final DataFormat helloObjectJSonFormat = new JacksonDataFormat(HelloEntity.class, Hellos.class);
   /**

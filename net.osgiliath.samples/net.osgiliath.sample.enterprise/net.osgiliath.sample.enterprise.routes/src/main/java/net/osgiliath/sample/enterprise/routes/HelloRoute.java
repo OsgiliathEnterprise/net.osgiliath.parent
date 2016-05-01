@@ -45,7 +45,7 @@ import org.apache.commons.io.IOUtils;
  * 
  * @author charliemordant
  */
-@ContextName
+@ContextName(value="camelctx")
 public class HelloRoute extends RouteBuilder {
   /**
    * Json Dataformat.

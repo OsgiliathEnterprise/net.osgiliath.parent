@@ -20,6 +20,8 @@ package {package}.conf;
  * #L%
  */
 
+import java.util.Properties;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 
 import javax.inject.Inject;
@@ -33,8 +35,12 @@ import org.apache.camel.Component;
 import org.apache.camel.Processor;
 import org.apache.camel.component.http.HttpComponent;
 import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.apache.camel.component.properties.DefaultPropertiesParser;
+import org.apache.camel.component.properties.PropertiesComponent;
+import org.apache.camel.component.properties.PropertiesParser;
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
 import org.apache.camel.spi.DataFormat;
+import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.ops4j.pax.cdi.api.OsgiService;
 /**
  * CDI injected camel components.
@@ -116,4 +122,19 @@ public class Components {
 	public DataFormat getXmlJsonDataFormat() {
 		return new XmlJsonDataFormat();
 	}
+	@Produces
+	  @Named("properties")
+	  PropertiesComponent properties(PropertiesParser parser) {
+	      PropertiesComponent component = new PropertiesComponent();
+	      component.setPropertiesParser(parser);
+	      return component;
+	  }
+	   
+	  // PropertiesParser bean that uses DeltaSpike to resolve properties
+	  static class DeltaSpikeParser extends DefaultPropertiesParser {
+	      @Override
+	      public String parseProperty(String key, String value, Properties properties) {
+	          return ConfigResolver.getPropertyValue(key);
+	      }
+	  }
 }
