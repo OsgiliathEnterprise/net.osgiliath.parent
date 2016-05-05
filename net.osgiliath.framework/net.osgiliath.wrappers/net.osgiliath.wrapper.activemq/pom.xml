@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.wrappers</groupId>
 		<artifactId>net.osgiliath.wrappers</artifactId>
-		<version>0.3.3-SNAPSHOT</version>
+		<version>0.3.3</version>
 	</parent>
 	<artifactId>net.osgiliath.wrapper.activemq</artifactId>
 	<name>ActiveMQ Client wrapper</name>
