@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.modules</groupId>
 		<artifactId>net.osgiliath.modules</artifactId>
-		<version>0.3.3</version>
+		<version>0.3.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.module.deltaspike.configadmin</artifactId>
 	<name>Helper configAdmin cdi support</name>
