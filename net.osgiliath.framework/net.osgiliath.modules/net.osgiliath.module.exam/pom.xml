@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.modules</groupId>
 		<artifactId>net.osgiliath.modules</artifactId>
-		<version>0.3.4-SNAPSHOT</version>
+		<version>0.3.4</version>
 	</parent>
 	<artifactId>net.osgiliath.module.exam</artifactId>
 	<name>Helper for PaxExam Karaf</name>

@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.features</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
-		<version>0.3.4-SNAPSHOT</version>
+		<version>0.3.4</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.security</artifactId>
 	<name>Osgiliath security features</name>
