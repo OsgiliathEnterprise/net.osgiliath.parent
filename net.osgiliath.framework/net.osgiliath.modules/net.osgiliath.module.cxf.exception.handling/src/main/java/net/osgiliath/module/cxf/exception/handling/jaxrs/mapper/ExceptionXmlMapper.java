@@ -43,7 +43,8 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
   /**
    * The Logger.
    */
-  private static final Logger LOG = LoggerFactory.getLogger(ExceptionXmlMapper.class);
+  private static final Logger LOG = LoggerFactory
+      .getLogger(ExceptionXmlMapper.class);
 
   /**
    * Map the catched Exception to the response body (xml format).
@@ -54,7 +55,8 @@ public class ExceptionXmlMapper implements ExceptionMapper<Exception> {
     final Element root = new Element("Exception");
     final Document doc = new Document(root);
     this.populateXML(arg0, root);
-    final String res = new XMLOutputter(Format.getPrettyFormat()).outputString(doc);
+    final String res = new XMLOutputter(Format.getPrettyFormat())
+        .outputString(doc);
     LOG.info("CXF exception thrown: " + res, arg0);
     return Response.status(Response.Status.FORBIDDEN)
         .type(MediaType.APPLICATION_XML)

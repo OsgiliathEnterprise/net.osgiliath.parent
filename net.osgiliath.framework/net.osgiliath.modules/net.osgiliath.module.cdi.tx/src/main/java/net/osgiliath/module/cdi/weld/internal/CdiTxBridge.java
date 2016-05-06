@@ -33,8 +33,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.jboss.weld.transaction.spi.TransactionServices;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
+
 /**
  * Weld bridge for CDI.
+ * 
  * @author charliemordant
  *
  */
@@ -52,9 +54,12 @@ public class CdiTxBridge implements TransactionServices {
    * User transaction tracker.
    */
   private UserTransactionTracker uttracker;
+
   /**
    * Ctor.
-   * @param bundleContext the bundle context.
+   * 
+   * @param bundleContext
+   *          the bundle context.
    */
   public CdiTxBridge(BundleContext bundleContext) {
     this.context = bundleContext;
@@ -70,8 +75,7 @@ public class CdiTxBridge implements TransactionServices {
     try {
       tmtracker = new TransactionManagerTracker(this.context);
       uttracker = new UserTransactionTracker(this.context);
-    }
-    catch (InvalidSyntaxException e) {
+    } catch (InvalidSyntaxException e) {
       log.error("error instantiating tm tracker", e);
     }
 
@@ -112,15 +116,16 @@ public class CdiTxBridge implements TransactionServices {
    */
   @Override
   public void registerSynchronization(Synchronization synchronizedObserver) {
-    Collection<TransactionManager> tx = TransactionManagerTracker.getInstance().getAdmins();
+    Collection<TransactionManager> tx = TransactionManagerTracker.getInstance()
+        .getAdmins();
 
     try {
       if (!tx.isEmpty()) {
-        tx.iterator().next().getTransaction().registerSynchronization(synchronizedObserver);
+        tx.iterator().next().getTransaction()
+            .registerSynchronization(synchronizedObserver);
 
       }
-    }
-    catch (IllegalStateException | RollbackException | SystemException e) {
+    } catch (IllegalStateException | RollbackException | SystemException e) {
       log.error("error registering userTransactions", e);
 
     }
@@ -134,8 +139,7 @@ public class CdiTxBridge implements TransactionServices {
   public boolean isTransactionActive() {
     try {
       return getUserTransaction().getStatus() == STATUS_ACTIVE;
-    }
-    catch (SystemException e) {
+    } catch (SystemException e) {
       throw new RuntimeException("Failed to determine transaction status", e);
     }
   }
@@ -145,7 +149,8 @@ public class CdiTxBridge implements TransactionServices {
    */
   @Override
   public UserTransaction getUserTransaction() {
-    Collection<UserTransaction> tx = UserTransactionTracker.getInstance().getUserTransactions();
+    Collection<UserTransaction> tx = UserTransactionTracker.getInstance()
+        .getUserTransactions();
     if (!tx.isEmpty())
       return tx.iterator().next();
 

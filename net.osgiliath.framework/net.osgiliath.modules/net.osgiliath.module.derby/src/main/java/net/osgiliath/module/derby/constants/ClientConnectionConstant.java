@@ -21,6 +21,7 @@ package net.osgiliath.module.derby.constants;
  */
 /**
  * Database description constants.
+ * 
  * @author charliemordant
  *
  */
@@ -29,8 +30,9 @@ public final class ClientConnectionConstant {
    * Private ctor.
    */
   private ClientConnectionConstant() {
-    //Do nothing
+    // Do nothing
   }
+
   /**
    * autostarting derby server.
    */

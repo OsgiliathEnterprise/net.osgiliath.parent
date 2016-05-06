@@ -29,6 +29,7 @@ import org.hibernate.validator.HibernateValidatorConfiguration;
 
 /**
  * The validator factory singleton.
+ * 
  * @author charliemordant
  */
 public class ValidatorFactorySingleton {
@@ -46,6 +47,7 @@ public class ValidatorFactorySingleton {
 
   /**
    * returns the validatorfactory.
+   * 
    * @return the singleton validatorfactory
    */
   public static synchronized ValidatorFactory getValidatorFactory() {
@@ -54,15 +56,15 @@ public class ValidatorFactorySingleton {
           .byProvider(HibernateValidator.class);
 
       // bootstrap to properly resolve in an OSGi environment
-      validationBootStrap
-          .providerResolver(HibernateValidationOSGIServicesProviderResolver
-              .getInstance());
+      validationBootStrap.providerResolver(
+          HibernateValidationOSGIServicesProviderResolver.getInstance());
 
       final HibernateValidatorConfiguration configure = validationBootStrap
           .configure();
-      validatorFactory = configure./*constraintValidatorFactory (new
-                                    CDIAwareConstraintValidatorFactory ())
-                                   .*/buildValidatorFactory();
+      validatorFactory = configure./*
+                                    * constraintValidatorFactory (new
+                                    * CDIAwareConstraintValidatorFactory ()) .
+                                    */buildValidatorFactory();
     }
     return validatorFactory;
   }

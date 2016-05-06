@@ -1,7 +1,6 @@
 package net.osgiliath.sample.enterprise.routes.conf;
 
 import java.util.Properties;
-import javax.enterprise.context.ApplicationScoped;
 
 /*
  * #%L
@@ -43,6 +42,7 @@ import org.ops4j.pax.cdi.api.OsgiService;
 
 /**
  * CDI configuration.
+ * 
  * @author charliemordant
  */
 @Slf4j
@@ -63,6 +63,7 @@ public class HelloRouteCDIComponents {
 
   /**
    * Exception message converter processor.
+   * 
    * @return JSR303 message processor
    */
   @Produces
@@ -74,6 +75,7 @@ public class HelloRouteCDIComponents {
 
   /**
    * JMS Component.
+   * 
    * @return JMS component CDI export
    */
   @Produces
@@ -85,6 +87,7 @@ public class HelloRouteCDIComponents {
 
   /**
    * JMS XA component.
+   * 
    * @return JMS XA component CDI export
    */
   @Produces
@@ -96,6 +99,7 @@ public class HelloRouteCDIComponents {
 
   /**
    * HTTP camel component.
+   * 
    * @return HTTP component CDI export
    */
   @Produces
@@ -107,6 +111,7 @@ public class HelloRouteCDIComponents {
 
   /**
    * JSon dataformat.
+   * 
    * @return Json component CDI export
    */
   @Produces
@@ -117,6 +122,7 @@ public class HelloRouteCDIComponents {
 
   /**
    * XML to json dataformat.
+   * 
    * @return XmlJson component CDI export
    */
   @Produces
@@ -124,19 +130,21 @@ public class HelloRouteCDIComponents {
   public DataFormat getXmlJsonDataFormat() {
     return new XmlJsonDataFormat();
   }
+
   @Produces
   @Named("properties")
   PropertiesComponent properties(PropertiesParser parser) {
-      PropertiesComponent component = new PropertiesComponent();
-      component.setPropertiesParser(parser);
-      return component;
+    PropertiesComponent component = new PropertiesComponent();
+    component.setPropertiesParser(parser);
+    return component;
   }
-   
+
   // PropertiesParser bean that uses DeltaSpike to resolve properties
   static class DeltaSpikeParser extends DefaultPropertiesParser {
-      @Override
-      public String parseProperty(String key, String value, Properties properties) {
-          return ConfigResolver.getPropertyValue(key);
-      }
+    @Override
+    public String parseProperty(String key, String value,
+        Properties properties) {
+      return ConfigResolver.getPropertyValue(key);
+    }
   }
 }

@@ -26,14 +26,13 @@ import javax.validation.ValidationProviderResolver;
 import javax.validation.spi.ValidationProvider;
 import org.hibernate.validator.HibernateValidator;
 
-
 /**
  * OSGi classpath aware {@link javax.validation.ValidationProviderResolver
  * ValidationProviderResolver}.
  * 
  */
-public class HibernateValidationOSGIServicesProviderResolver implements
-    ValidationProviderResolver {
+public class HibernateValidationOSGIServicesProviderResolver
+    implements ValidationProviderResolver {
   /**
    * Singleton instance.
    */
@@ -67,6 +66,7 @@ public class HibernateValidationOSGIServicesProviderResolver implements
 
   /**
    * gets providers.
+   * 
    * @return the validation providers
    */
   @Override

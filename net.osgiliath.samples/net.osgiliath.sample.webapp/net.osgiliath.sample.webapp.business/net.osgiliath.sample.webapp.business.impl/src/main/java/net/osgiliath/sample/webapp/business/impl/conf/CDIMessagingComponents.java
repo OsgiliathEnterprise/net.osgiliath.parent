@@ -38,6 +38,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Components configuration with CDI.
+ * 
  * @author charliemordant
  */
 @ApplicationScoped
@@ -56,6 +57,7 @@ public class CDIMessagingComponents {
 
   /**
    * Producer.
+   * 
    * @return the jms component
    */
   @Produces
@@ -64,20 +66,22 @@ public class CDIMessagingComponents {
     LOG.info("Inject jms route");
     return this.jms;
   }
+
   @Produces
   @Named("properties")
   PropertiesComponent properties(PropertiesParser parser) {
-      PropertiesComponent component = new PropertiesComponent();
-      component.setPropertiesParser(parser);
-      return component;
+    PropertiesComponent component = new PropertiesComponent();
+    component.setPropertiesParser(parser);
+    return component;
   }
-   
+
   // PropertiesParser bean that uses DeltaSpike to resolve properties
   static class DeltaSpikeParser extends DefaultPropertiesParser {
-      @Override
-      public String parseProperty(String key, String value, Properties properties) {
-          return ConfigResolver.getPropertyValue(key);
-      }
+    @Override
+    public String parseProperty(String key, String value,
+        Properties properties) {
+      return ConfigResolver.getPropertyValue(key);
+    }
   }
 
 }

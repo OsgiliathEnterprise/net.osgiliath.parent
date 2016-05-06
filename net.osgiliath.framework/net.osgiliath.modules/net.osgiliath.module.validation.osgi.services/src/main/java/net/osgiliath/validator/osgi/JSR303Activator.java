@@ -33,7 +33,8 @@ import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * Activator for JSR303 provider services.
- * @author charliemordant 
+ * 
+ * @author charliemordant
  */
 public class JSR303Activator implements BundleActivator {
   /**
@@ -43,7 +44,9 @@ public class JSR303Activator implements BundleActivator {
 
   /**
    * Start method.
-   * @param context the bundle context
+   * 
+   * @param context
+   *          the bundle context
    */
   @Override
   public void start(BundleContext context) throws Exception {
@@ -63,7 +66,9 @@ public class JSR303Activator implements BundleActivator {
 
   /**
    * Stop validation providers bundle.
-   * @param context the bundle context
+   * 
+   * @param context
+   *          the bundle context
    */
   @Override
   public void stop(BundleContext context) throws Exception {

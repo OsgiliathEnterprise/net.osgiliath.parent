@@ -26,10 +26,10 @@ import net.osgiliath.validator.osgi.internal.ValidatorFactorySingleton;
 
 /**
  * gets the validator.
- * @author charliemordant 
+ * 
+ * @author charliemordant
  */
 public class ValidatorHelper {
-  
 
   /**
    * private Ctor so that it can't be instantiated.
@@ -40,6 +40,7 @@ public class ValidatorHelper {
 
   /**
    * The validator.
+   * 
    * @return the singleton validator
    */
   public static Validator getValidator() {

@@ -110,8 +110,8 @@ public final class SingleServiceTracker<T> implements ServiceListener {
    * @throws InvalidSyntaxException
    *           something goes wrong.
    */
-  public SingleServiceTracker(BundleContext context, Class<T> clazz, SingleServiceListener sl)
-      throws InvalidSyntaxException {
+  public SingleServiceTracker(BundleContext context, Class<T> clazz,
+      SingleServiceListener sl) throws InvalidSyntaxException {
     this(context, clazz, null, sl);
   }
 
@@ -129,7 +129,8 @@ public final class SingleServiceTracker<T> implements ServiceListener {
    * @throws InvalidSyntaxException
    *           something goes wrong.
    */
-  public SingleServiceTracker(BundleContext context, Class<T> clazz, String filterString, SingleServiceListener sl)
+  public SingleServiceTracker(BundleContext context, Class<T> clazz,
+      String filterString, SingleServiceListener sl)
       throws InvalidSyntaxException {
     this(context, clazz.getName(), filterString, sl);
   }
@@ -148,7 +149,8 @@ public final class SingleServiceTracker<T> implements ServiceListener {
    * @throws InvalidSyntaxException
    *           something goes wrong.
    */
-  public SingleServiceTracker(BundleContext context, String className, String filterString, SingleServiceListener sl)
+  public SingleServiceTracker(BundleContext context, String className,
+      String filterString, SingleServiceListener sl)
       throws InvalidSyntaxException {
     this.ctx = context;
     this.className = className;
@@ -156,8 +158,7 @@ public final class SingleServiceTracker<T> implements ServiceListener {
     if (filterString == null || filterString.isEmpty()) {
       this.filterString = null;
       this.filter = null;
-    }
-    else {
+    } else {
       this.filterString = filterString;
       this.filter = context.createFilter(filterString);
     }
@@ -187,7 +188,8 @@ public final class SingleServiceTracker<T> implements ServiceListener {
   public void open() {
     if (open.compareAndSet(false, true)) {
       try {
-        String finalFilterString = '(' + Constants.OBJECTCLASS + '=' + className + ')';
+        String finalFilterString = '(' + Constants.OBJECTCLASS + '=' + className
+            + ')';
         if (filter != null) {
           finalFilterString = "(&" + finalFilterString + filter + ')';
         }
@@ -212,8 +214,8 @@ public final class SingleServiceTracker<T> implements ServiceListener {
         if (deadRef.equals(ref.get())) {
           findMatchingReference(deadRef);
         }
-      }
-      else if (event.getType() == ServiceEvent.REGISTERED && ref.get() == null) {
+      } else if (event.getType() == ServiceEvent.REGISTERED
+          && ref.get() == null) {
         findMatchingReference(null);
       }
     }
@@ -228,7 +230,8 @@ public final class SingleServiceTracker<T> implements ServiceListener {
   private void findMatchingReference(ServiceReference original) {
     try {
       boolean clear = true;
-      ServiceReference[] refs = ctx.getServiceReferences(className, filterString);
+      ServiceReference[] refs = ctx.getServiceReferences(className,
+          filterString);
       if (refs != null && refs.length > 0) {
         if (refs.length > 1) {
           Arrays.sort(refs);
@@ -244,8 +247,7 @@ public final class SingleServiceTracker<T> implements ServiceListener {
             ctx.ungetService(refs[0]);
           }
         }
-      }
-      else if (original == null) {
+      } else if (original == null) {
         clear = false;
       }
 
@@ -270,7 +272,8 @@ public final class SingleServiceTracker<T> implements ServiceListener {
    *          new service instance.
    * @return the service update.
    */
-  private boolean update(ServiceReference deadRef, ServiceReference newRef, T service) {
+  private boolean update(ServiceReference deadRef, ServiceReference newRef,
+      T service) {
     boolean result = false;
     int foundLostReplaced = -1;
 

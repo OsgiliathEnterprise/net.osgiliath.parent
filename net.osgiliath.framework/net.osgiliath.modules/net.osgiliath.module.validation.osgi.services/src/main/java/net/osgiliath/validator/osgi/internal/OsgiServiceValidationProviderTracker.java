@@ -31,10 +31,11 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 /**
  * Service tracker for validation providers.
+ * 
  * @author charliemordant
  */
-public class OsgiServiceValidationProviderTracker implements
-    ServiceTrackerCustomizer {
+public class OsgiServiceValidationProviderTracker
+    implements ServiceTrackerCustomizer {
   /**
    * bundle context.
    */
@@ -52,7 +53,9 @@ public class OsgiServiceValidationProviderTracker implements
 
   /**
    * Adding validation provider.
-   * @param reference the service reference to add
+   * 
+   * @param reference
+   *          the service reference to add
    * @return the service
    */
   // callback method if MyClass service object is registered
@@ -71,8 +74,11 @@ public class OsgiServiceValidationProviderTracker implements
 
   /**
    * Removed validation provider.
-   * @param reference the service reference
-   * @param service the service to remove
+   * 
+   * @param reference
+   *          the service reference
+   * @param service
+   *          the service to remove
    */
   // callback if necessary class is deregistred
   @Override
@@ -108,8 +114,11 @@ public class OsgiServiceValidationProviderTracker implements
 
   /**
    * Modified service.
-   * @param reference service reference
-   * @param service service
+   * 
+   * @param reference
+   *          service reference
+   * @param service
+   *          service
    */
   @Override
   public void modifiedService(final ServiceReference reference,

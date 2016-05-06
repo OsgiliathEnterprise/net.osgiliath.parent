@@ -35,120 +35,132 @@ import org.osgi.framework.ServiceReference;
  * @author charliemordant
  */
 @Slf4j
-public class TransactionManagerTracker implements SingleServiceTracker.SingleServiceListener {
-    /**
-     * Singleton instance.
-     */
-	private static TransactionManagerTracker instance;
-	/**
-	 * Bundle context.
-	 */
-	private BundleContext bundleContext;
-	/**
-	 * Main tracker.
-	 */
-	private SingleServiceTracker configAdminTracker;
-	/**
-	 * Properties.
-	 */
-	private Collection<TransactionManager> txManagers;
+public class TransactionManagerTracker
+    implements SingleServiceTracker.SingleServiceListener {
+  /**
+   * Singleton instance.
+   */
+  private static TransactionManagerTracker instance;
+  /**
+   * Bundle context.
+   */
+  private BundleContext bundleContext;
+  /**
+   * Main tracker.
+   */
+  private SingleServiceTracker configAdminTracker;
+  /**
+   * Properties.
+   */
+  private Collection<TransactionManager> txManagers;
 
-	
-	/**
-	 * Default ctor.
-	 */
-	public TransactionManagerTracker() {
-		if (null == txManagers)
-			this.txManagers = new HashSet<>();
-	}
-	/**
-	 * Ctor with OSGI bundle context (registers the service tracker/listener).
-	 * @param bundleContext the bundle context.
-	 * @throws InvalidSyntaxException don't know when (suppose wrong filter).
-	 */
-	public TransactionManagerTracker(BundleContext bundleContext) throws InvalidSyntaxException {
-		this();
-		getInstance().bundleContext = bundleContext;
-		getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext, TransactionManager.class,
-				this);
-		getInstance().configAdminTracker.open();
+  /**
+   * Default ctor.
+   */
+  public TransactionManagerTracker() {
+    if (null == txManagers)
+      this.txManagers = new HashSet<>();
+  }
 
-	}
-	/**
-     * Gets the registered configurations.
-     * 
-     * @return the registered configurations
-     */
-    final Collection<TransactionManager> getAdmins() {
-        return this.txManagers;
+  /**
+   * Ctor with OSGI bundle context (registers the service tracker/listener).
+   * 
+   * @param bundleContext
+   *          the bundle context.
+   * @throws InvalidSyntaxException
+   *           don't know when (suppose wrong filter).
+   */
+  public TransactionManagerTracker(BundleContext bundleContext)
+      throws InvalidSyntaxException {
+    this();
+    getInstance().bundleContext = bundleContext;
+    getInstance().configAdminTracker = new SingleServiceTracker<>(bundleContext,
+        TransactionManager.class, this);
+    getInstance().configAdminTracker.open();
+
+  }
+
+  /**
+   * Gets the registered configurations.
+   * 
+   * @return the registered configurations
+   */
+  final Collection<TransactionManager> getAdmins() {
+    return this.txManagers;
+  }
+
+  /**
+   * Singleton.
+   * 
+   * the bundle context
+   * 
+   * @return the singleton instance
+   */
+  public static synchronized TransactionManagerTracker getInstance() {
+    if (null == instance) {
+      instance = new TransactionManagerTracker();
     }
-	/**
-	 * Singleton.
-	 * 
-	 *            the bundle context
-	 * @return the singleton instance
-	 */
-	public static synchronized TransactionManagerTracker getInstance() {
-		if (null == instance) {
-			instance = new TransactionManagerTracker();
-		}
-		return instance;
-	}
+    return instance;
+  }
 
-	/**
-	 * Stops the uTTracker.
-	 */
-	public synchronized void stop() {
-		getInstance().configAdminTracker.close();
-		getInstance().configAdminTracker = null;
-		getInstance().txManagers = null;
-		getInstance().bundleContext = null;
-	}
-	/**
-	 * Reparses configuration.
-	 */
-	public void internalReparse() {
-		if (null != TransactionManagerTracker.getInstance()
-				&& null != TransactionManagerTracker.getInstance().getAdmins()) {
-			TransactionManagerTracker.getInstance().getAdmins().clear();
-			try {
-				final ServiceReference<?>[] registeredConfigAdmins = (ServiceReference<?>[]) bundleContext
-						.getAllServiceReferences(TransactionManager.class.getName(), null);
-				if (null != registeredConfigAdmins) {
-					for (final ServiceReference<?> adminRef : registeredConfigAdmins) {
+  /**
+   * Stops the uTTracker.
+   */
+  public synchronized void stop() {
+    getInstance().configAdminTracker.close();
+    getInstance().configAdminTracker = null;
+    getInstance().txManagers = null;
+    getInstance().bundleContext = null;
+  }
 
-						TransactionManagerTracker.getInstance().getAdmins()
-								.add((TransactionManager) bundleContext.getService(adminRef));
-					}
-				}
-			} catch (InvalidSyntaxException e) {
-				log.error("Error getting servicereferences of config admin", e);
-			}
-		}
-	}
-/**
- * Reparses on new service appearance.
- */
-	@Override
-	public void serviceFound() {
-		getInstance().internalReparse();
+  /**
+   * Reparses configuration.
+   */
+  public void internalReparse() {
+    if (null != TransactionManagerTracker.getInstance()
+        && null != TransactionManagerTracker.getInstance().getAdmins()) {
+      TransactionManagerTracker.getInstance().getAdmins().clear();
+      try {
+        final ServiceReference<?>[] registeredConfigAdmins = (ServiceReference<?>[]) bundleContext
+            .getAllServiceReferences(TransactionManager.class.getName(), null);
+        if (null != registeredConfigAdmins) {
+          for (final ServiceReference<?> adminRef : registeredConfigAdmins) {
 
-	}
-	/**
-	 * Reparses on new service lost.
-	 */
-	@Override
-	public void serviceLost() {
-		getInstance().internalReparse();
+            TransactionManagerTracker.getInstance().getAdmins()
+                .add((TransactionManager) bundleContext.getService(adminRef));
+          }
+        }
+      } catch (InvalidSyntaxException e) {
+        log.error("Error getting servicereferences of config admin", e);
+      }
+    }
+  }
 
-	}
-	/**
-	 * Reparses on new service replacement.
-	 */
-	@Override
-	public void serviceReplaced() {
-		getInstance().internalReparse();
+  /**
+   * Reparses on new service appearance.
+   */
+  @Override
+  public void serviceFound() {
+    getInstance().internalReparse();
 
-	}
+  }
+
+  /**
+   * Reparses on new service lost.
+   */
+  @Override
+  public void serviceLost() {
+    getInstance().internalReparse();
+
+  }
+
+  /**
+   * Reparses on new service replacement.
+   */
+  @Override
+  public void serviceReplaced() {
+    getInstance().internalReparse();
+
+  }
 
 }

@@ -24,7 +24,7 @@ import java.io.StringReader;
 import net.osgiliath.module.cxf.exception.handling.ExceptionMappingConstants;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.component.http.HttpOperationFailedException;
+import org.apache.camel.http.common.HttpOperationFailedException;
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
 import org.slf4j.Logger;

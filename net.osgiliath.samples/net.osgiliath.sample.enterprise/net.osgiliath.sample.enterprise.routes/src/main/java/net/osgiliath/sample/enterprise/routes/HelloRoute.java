@@ -45,7 +45,7 @@ import org.apache.commons.io.IOUtils;
  * 
  * @author charliemordant
  */
-@ContextName(value="camelctx")
+@ContextName(value = "camelctx")
 public class HelloRoute extends RouteBuilder {
   /**
    * Json Dataformat.
@@ -87,17 +87,14 @@ public class HelloRoute extends RouteBuilder {
    */
   @Override
   public void configure() throws Exception {
-    final JAXBContext ctx = JAXBContext.newInstance(new Class[] {
-        HelloEntity.class, Hellos.class, });
+    final JAXBContext ctx = JAXBContext
+        .newInstance(new Class[] { HelloEntity.class, Hellos.class, });
     final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);
 
     from("properties:{{helloApp.inCamelQueueJMS}}")
-        .log(LoggingLevel.INFO, "Received message: \"${in.body}\"")
-        .choice()
+        .log(LoggingLevel.INFO, "Received message: \"${in.body}\"").choice()
         .when(header("httpRequestType").isEqualTo(HttpMethod.POST))
-        .to("direct:persistObject")
-        .endChoice()
-        .otherwise()
+        .to("direct:persistObject").endChoice().otherwise()
         .setBody(
             simple("{error:  'Command not supported for the JaxRS queue'}"))
         .to("direct:toError");
@@ -107,16 +104,16 @@ public class HelloRoute extends RouteBuilder {
         .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))
         .unmarshal(this.helloObjectJSonFormat).marshal(jaxBDataFormat)
         .log(LoggingLevel.INFO, "marshalled: ${body}").doTry()
-        .inOnly("properties:{{helloApp.restEndpoint}}")
-        .to("direct:updateTopic").doCatch(Exception.class)
+        .inOnly("properties:{{helloApp.restEndpoint}}").to("direct:updateTopic")
+        .doCatch(Exception.class)
         .log(LoggingLevel.WARN, "Exception while persisting message")
         .to("direct:helloValidationError").end();
 
     from("direct:updateTopic")
         .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
         .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))
-        .inOut("properties:{{helloApp.restEndpoint}}")
-        .inOut("direct:marshall").to("properties:{{helloApp.outCamelTopicJMS}}");
+        .inOut("properties:{{helloApp.restEndpoint}}").inOut("direct:marshall")
+        .to("properties:{{helloApp.outCamelTopicJMS}}");
 
     from("direct:marshall").process(this.octetsStreamToStringProcessor)
         .log("hello data retrieved from JaxRS : ${in.body}")
@@ -124,10 +121,12 @@ public class HelloRoute extends RouteBuilder {
 
     from("direct:helloValidationError")
         .process(this.thrownExceptionMessageToInBodyProcessor)
-        .process(exchange ->  exchange.getIn().setBody(
-            exchange.getIn().getBody(String.class).replaceAll("\"", "'")
-            .replaceAll("\n", ""))).setBody(simple("{\"error\": \"${body}\"}"))
-        .log("Subscription error: ${body}").to("properties:{{helloApp.outCamelErrorQueueJMS}}");
+        .process(exchange -> exchange.getIn()
+            .setBody(exchange.getIn().getBody(String.class)
+                .replaceAll("\"", "'").replaceAll("\n", "")))
+        .setBody(simple("{\"error\": \"${body}\"}"))
+        .log("Subscription error: ${body}")
+        .to("properties:{{helloApp.outCamelErrorQueueJMS}}");
 
   }
 
