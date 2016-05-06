@@ -3,7 +3,7 @@
   <parent>
     <groupId>net.osgiliath.samples</groupId>
     <artifactId>net.osgiliath.sample.webapp.model</artifactId>
-    <version>0.3.4</version>
+    <version>0.3.5-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.sample.webapp.model.entities</artifactId>
   	<name>Sample Entities module</name>
