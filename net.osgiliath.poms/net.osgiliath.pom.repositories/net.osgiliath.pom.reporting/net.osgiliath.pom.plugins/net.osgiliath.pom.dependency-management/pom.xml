@@ -2010,7 +2010,7 @@
 		<org.apache.activemq_activemq-jaas.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-jaas.version>
 		<org.apache.activemq_activemq-jms-pool.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-jms-pool.version>
 		<org.apache.activemq_activemq-kahadb-store.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-kahadb-store.version>
-		<org.apache.activemq_activemq-karaf.version>5.13.1</org.apache.activemq_activemq-karaf.version>
+		<org.apache.activemq_activemq-karaf.version>5.13.3</org.apache.activemq_activemq-karaf.version>
 		<org.apache.activemq_activemq-mqtt.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-mqtt.version>
 		<org.apache.activemq_activemq-openwire-legacy.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-openwire-legacy.version>
 		<!-- <org.apache.activemq_activemq-osgi.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-osgi.version> -->

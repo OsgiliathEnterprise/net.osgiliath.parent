@@ -1449,7 +1449,7 @@
 		<de.juplo_hibernate4-maven-plugin.version>1.1.0</de.juplo_hibernate4-maven-plugin.version>
 		<depends-maven-plugin.version>1.2</depends-maven-plugin.version>
 		<eclipselink.version>2.4.2</eclipselink.version>
-		<org.ops4j.pax.exam.version>4.8.0</org.ops4j.pax.exam.version>
+		<org.ops4j.pax.exam.version>4.9.1</org.ops4j.pax.exam.version>
 		<exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
 		<features-maven-plugin.version>2.2.5</features-maven-plugin.version>
 		<inmemdb-maven-plugin.version>1.4.3</inmemdb-maven-plugin.version>
@@ -1493,7 +1493,7 @@
 		<xerces.version>2.4.0</xerces.version>
 		<jacoco-coverage-skip>false</jacoco-coverage-skip>
 		<jacoco.scan.base>${project.artifactId}</jacoco.scan.base>
-		<osgiliath-model.compiler.level>1.7</osgiliath-model.compiler.level>
+		<osgiliath-model.compiler.level>1.8</osgiliath-model.compiler.level>
 	</properties>
 	<modules>
 		<module>net.osgiliath.pom.dependency-management</module>

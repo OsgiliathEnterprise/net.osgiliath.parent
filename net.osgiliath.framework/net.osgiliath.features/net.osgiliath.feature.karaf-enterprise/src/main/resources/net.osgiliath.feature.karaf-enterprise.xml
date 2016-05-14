@@ -63,6 +63,7 @@
         <details>JMS support provinding service, commands, and MBean.</details>
         <feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}" prerequisite="false" dependency="false">osgiliath-transaction</feature>
         <feature prerequisite="false" dependency="false">osgiliath-aries-blueprint</feature>
+        <feature prerequisite="true" dependency="true">shell</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
         <bundle>mvn:org.apache.karaf.jms/org.apache.karaf.jms.core/${org.apache.karaf.jms_org.apache.karaf.jms.core.version}</bundle>
         <requirement>

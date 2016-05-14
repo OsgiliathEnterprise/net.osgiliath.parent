@@ -11,5 +11,6 @@ Import-Package:\
  org.apache.activemq.camel.*;resolution:=optional,\
  org.apache.activemq.camel;resolution:=optional,\
  *
+DynamicImport-Package: *
 Export-Package: *
  
