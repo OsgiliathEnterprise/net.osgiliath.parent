@@ -17,8 +17,8 @@
     </feature>
     <feature name="osgiliath-spring-jms" description="Spring 4.2.x JMS support" version="${org.apache.servicemix.bundles.spring.version}">
         <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring-tx</feature>
-        <bundle start-level="10">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
-        <bundle start-level="10">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
+        <bundle start-level="10" dependency="true">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
+        <bundle start-level="10" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
         <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jms/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version}</bundle>
     </feature>
     
