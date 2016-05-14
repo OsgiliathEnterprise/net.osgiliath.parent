@@ -13,7 +13,7 @@
 		the specific language governing permissions and limitations under the License. -->
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.osgiliath</groupId>
+		<groupId>net.osgiliath.poms</groupId>
 		<artifactId>net.osgiliath.pom.dependency-management</artifactId>
 		<version>${project.version}</version>
 	</parent>

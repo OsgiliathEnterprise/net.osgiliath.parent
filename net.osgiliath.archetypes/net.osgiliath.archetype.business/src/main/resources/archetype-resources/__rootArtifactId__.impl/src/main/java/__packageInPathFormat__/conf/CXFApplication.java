@@ -32,6 +32,8 @@ import net.osgiliath.module.cdi.eager.Eager;
 import ${package}.annotations.REST;
 import org.apache.cxf.jaxrs.swagger.Swagger2Feature;
 import org.apache.cxf.jaxrs.validation.ValidationExceptionMapper;
+import net.osgiliath.module.cxf.exception.handling.jaxrs.mapper.ExceptionXmlMapper;
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 
 /**
  * Main CXF application that publishes services.
@@ -60,7 +62,7 @@ public class CXFApplication extends Application {
 	  log.error("Osgiliath: registering cxf servlet");
 
 	
-    return Sets.<Object> newHashSet(/* TODO inject your REST services here sampleService*/,swagger,
+    return Sets.<Object> newHashSet(/* TODO inject your REST services here sampleService*/swagger,
         new JAXBElementProvider<Object>(), 
         new ExceptionXmlMapper(),
     		

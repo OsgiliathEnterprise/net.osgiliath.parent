@@ -11,11 +11,11 @@
 		OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
 		the specific language governing permissions and limitations under the License. -->
   <modelVersion>4.0.0</modelVersion>
-  <parent>
+  <!-- <parent>
     <groupId>${groupId}</groupId>
 		<artifactId>${rootArtifactId}</artifactId>
 		<version>${version}</version>
-  </parent>
+  </parent> -->
   <artifactId>${artifactId}</artifactId>
   <packaging>pom</packaging>
 </project>

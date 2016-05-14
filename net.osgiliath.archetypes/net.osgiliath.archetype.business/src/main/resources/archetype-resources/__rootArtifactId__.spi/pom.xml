@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
-			<artifactId>><!-- TODO your features module if any --></artifactId>
+			<artifactId><!-- TODO your features module if any --></artifactId>
 			<classifier>features</classifier>
 			<type>xml</type>
 		</dependency>

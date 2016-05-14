@@ -18,8 +18,6 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.module.exam.AbstractPaxExamKarafConfiguration;
-import net.osgiliath.sample.webapp.business.spi.model.Hellos;
-import net.osgiliath.sample.webapp.model.entities.HelloEntity;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.Component;
 import org.apache.camel.ConsumerTemplate;

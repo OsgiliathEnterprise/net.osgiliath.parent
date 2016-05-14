@@ -1,4 +1,4 @@
-package net.osgiliath.sample.webapp.business.impl.conf;
+package ${package}.conf;
 
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;

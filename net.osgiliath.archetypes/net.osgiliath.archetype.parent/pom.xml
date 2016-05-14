@@ -58,22 +58,5 @@
 			</resource>
 		</resources>
 	</build>
-	<developers>
-		<developer>
-			<id>cmordant</id>
-			<name>Charlie mordant</name>
-			<organization>Osgiliath.net</organization>
-			<organizationUrl>https://blog.osgiliath.net</organizationUrl>
-			<roles>
-				<role>Architect</role>
-			</roles>
-		</developer>
-	</developers>
-	<licenses>
-		<license>
-			<name>Apache Licence 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+	
 </project>

@@ -64,10 +64,31 @@
 		</plugins>
 	</build>
 	<dependencies>
-		<dependency>
-			<groupId>net.osgiliath.framework</groupId>
+	<dependency>
+			<groupId>net.osgiliath.features</groupId>
 			<version>${osgiliath.framework.maven.version}</version>
-			<artifactId>net.osgiliath.feature.full</artifactId>
+			<artifactId>net.osgiliath.feature.webservices</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.features</groupId>
+			<version>${osgiliath.framework.maven.version}</version>
+			<artifactId>net.osgiliath.feature.routes</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.features</groupId>
+			<version>${osgiliath.framework.maven.version}</version>
+			<artifactId>net.osgiliath.feature.security</artifactId>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>net.osgiliath.samples</groupId>
+<version>${osgiliath.framework.maven.version}</version>
+						<artifactId>net.osgiliath.sample.webapp.features</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
