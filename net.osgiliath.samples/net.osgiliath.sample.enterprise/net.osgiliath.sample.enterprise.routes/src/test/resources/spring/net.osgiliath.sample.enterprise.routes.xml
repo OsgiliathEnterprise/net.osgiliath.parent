@@ -14,7 +14,7 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/beans/spring-context.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
-       http://www.mockito.org/spring/mockito https://bitbucket.org/duncan85/springockito/raw/54e7ede42392c830be9fa3d69bd71fbe91ca1f93/springockito/src/main/resources/spring/mockito.xsd">
+       http://www.mockito.org/spring/mockito https://raw.githubusercontent.com/filiphr/springockito-1/master/springockito/src/main/resources/spring/mockito.xsd">
 	<!-- TODO Route unit test sample -->
 	<mockito:spy beanName="helloService" />
 	<bean id="propertyResolver"
