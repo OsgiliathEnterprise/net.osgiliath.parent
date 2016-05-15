@@ -152,7 +152,7 @@
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.license>apache_v2</project.license>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.jacoco.reportPath>${parent.path}/target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.jacoco.reportPath>${project.build.directory/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${parent.path}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<sonar-maven-plugin.version>3.0.1</sonar-maven-plugin.version>
 
@@ -680,4 +680,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	<organization>
+		<name>Osgiliath Corp.</name>
+	</organization>
 </project>
