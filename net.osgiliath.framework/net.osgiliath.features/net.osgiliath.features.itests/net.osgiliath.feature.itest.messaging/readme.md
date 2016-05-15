@@ -1,6 +1,6 @@
 # Messaging (e.g. JMS) Integration tests with CDI
 
-Messagin tests with CDI (e.g. annotations)
+Messaging tests with CDI (e.g. annotations)
 
 ## Relevant files
 * [Component imports](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.framework/net.osgiliath.features/net.osgiliath.feature.itests/net.osgiliath.feature.itest.messaging/src/main/java/conf/CDIMessagingComponents.java)
