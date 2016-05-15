@@ -2228,7 +2228,7 @@
 		<org.fusesource.mqtt-client_mqtt-client.version>1.12</org.fusesource.mqtt-client_mqtt-client.version>
 		<org.glassfish_javax.json.version>1.0.4</org.glassfish_javax.json.version>
 		<org.glassfish.web_javax.el.version>2.2.4</org.glassfish.web_javax.el.version>
-		<org.hibernate_hibernate-validator.version>5.2.2.Final</org.hibernate_hibernate-validator.version>
+		<org.hibernate_hibernate-validator.version>5.2.4.Final</org.hibernate_hibernate-validator.version>
 		<org.hibernate_hibernate-validator-cdi.version>${org.hibernate_hibernate-validator.version}</org.hibernate_hibernate-validator-cdi.version>
 		<!-- <org.hibernate_hibernate-core.version>${org.hibernate.version}</org.hibernate_hibernate-core.version> <org.hibernate_hibernate-entitymanager.version>${org.hibernate.version}</org.hibernate_hibernate-entitymanager.version> <org.hibernate_hibernate-osgi.version>${org.hibernate.version}</org.hibernate_hibernate-osgi.version> 
 			<org.hibernate.common_hibernate-commons-annotations.version>4.0.4.Final</org.hibernate.common_hibernate-commons-annotations.version> -->
