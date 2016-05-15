@@ -2311,9 +2311,9 @@
 		<org.springframework.security_spring-security-web.version>${org.springframework.security.version}</org.springframework.security_spring-security-web.version>
 		<xom_xom.version>1.2.5</xom_xom.version>
 
-		<com.fasterxml.jackson.version>2.6.3</com.fasterxml.jackson.version>
+		<com.fasterxml.jackson.version>2.6.5</com.fasterxml.jackson.version>
 		<com.mysema.querydsl.version>3.6.6</com.mysema.querydsl.version>
-		<io.swagger.version>1.5.4</io.swagger.version>
+		<io.swagger.version>1.5.8</io.swagger.version>
 		<org.apache.aries.jpa.version>2.3.0</org.apache.aries.jpa.version>
 		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
 		<org.apache.deltaspike.version>1.5.2</org.apache.deltaspike.version>
