@@ -59,7 +59,7 @@ public class RouteConsumer extends RouteBuilder {
 						exchange.getOut().setBody(hellos);
 
 					}
-				}).to("jms:queue:helloServiceQueueOut");
+				}).to("jms:queue:helloServiceQueueOut1");
 
 	}
 

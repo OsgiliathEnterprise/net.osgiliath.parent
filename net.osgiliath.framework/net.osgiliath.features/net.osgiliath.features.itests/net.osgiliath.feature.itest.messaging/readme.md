@@ -5,7 +5,8 @@ Messagin tests with CDI (e.g. annotations)
 ## Relevant files
 * [Component imports](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.framework/net.osgiliath.features/net.osgiliath.feature.itests/net.osgiliath.feature.itest.messaging/src/main/java/conf/CDIMessagingComponents.java)
 * [Message producer](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.framework/net.osgiliath.features/net.osgiliath.feature.itests/net.osgiliath.feature.itest.messaging/src/main/java/net/osgiliath/feature/itest/messaging/repository/impl/HelloJMSCDIRepository.java) (consumer annotation don't work in CDI, take care!)
-* [Messages consumer](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.framework/net.osgiliath.features/net.osgiliath.feature.itests/net.osgiliath.feature.itest.messaging/src/main/java/net/osgiliath/feature/itest/messaging/repository/impl/RouteConsumer.java)
+* [Camel route style  messages consumer](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.framework/net.osgiliath.features/net.osgiliath.feature.itests/net.osgiliath.feature.itest.messaging/src/main/java/net/osgiliath/feature/itest/messaging/repository/impl/RouteConsumer.java)
+* [CDI annotated style Messages consumer](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.framework/net.osgiliath.features/net.osgiliath.feature.itests/net.osgiliath.feature.itest.messaging/src/main/java/net/osgiliath/feature/itest/messaging/repository/impl/AnnotatedConsumer.java)
 * [Manifest Requierments](https://github.com/OsgiliathEnterprise/net.osgiliath.parent/blob/master/net.osgiliath.framework/net.osgiliath.features/net.osgiliath.feature.itests/net.osgiliath.feature.itest.messaging/osgi.bnd)
 
 ## Relevant Documentation:
