@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/OsgiliathEnterprise/net.osgiliath.parent](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/OsgiliathEnterprise/net.osgiliath.parent)
 
-[![Build Status](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent.svg?branch=master)](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent)
+[![Build Status](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent.svg?branch=master)](https://travis-ci.org/OsgiliathEnterprise/net.osgiliath.parent) sometimes fail due to timeout)
 [![Codeship Status](https://codeship.io/projects/642d0130-f74b-0131-9906-6abae1c59881/status?branch=master)](https://codeship.com/projects/28581)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.osgiliath/net.osgiliath.parent/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/net.osgiliath.poms/net.osgiliath.parent)
 [![Js dependencies status](https://david-dm.org/OsgiliathEnterprise/net.osgiliath.parent.svg?path=net.osgiliath.samples/net.osgiliath.sample.webapp/net.osgiliath.sample.webapp.ui)](https://david-dm.org/OsgiliathEnterprise/net.osgiliath.parent.json?path=net.osgiliath.samples/net.osgiliath.sample.webapp/net.osgiliath.sample.webapp.ui)
