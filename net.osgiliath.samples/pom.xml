@@ -4,7 +4,7 @@
     <groupId>net.osgiliath.poms</groupId>
     <artifactId>net.osgiliath.pom.projects.definition</artifactId>
     <relativePath>../net.osgiliath.poms/net.osgiliath.pom.repositories/net.osgiliath.pom.reporting/net.osgiliath.pom.plugins/net.osgiliath.pom.dependency-management/net.osgiliath.pom.projects.definition</relativePath>
-    <version>0.3.5-SNAPSHOT</version>
+    <version>0.3.5</version>
   </parent>
   <groupId>net.osgiliath.samples</groupId>
   <artifactId>net.osgiliath.samples</artifactId>
