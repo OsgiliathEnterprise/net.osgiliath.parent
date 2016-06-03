@@ -57,23 +57,13 @@
 		</plugins>
 	</build>
 	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<version>${project.version}</version>
-			<artifactId><!-- TODO your dao module here if any --></artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<version>${project.version}</version>
 			<artifactId>${project.parent.artifactId}.spi</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<version>${project.version}</version>
-			<artifactId><!-- TODO your feature module here --></artifactId>
-			<classifier>features</classifier>
-			<type>xml</type>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

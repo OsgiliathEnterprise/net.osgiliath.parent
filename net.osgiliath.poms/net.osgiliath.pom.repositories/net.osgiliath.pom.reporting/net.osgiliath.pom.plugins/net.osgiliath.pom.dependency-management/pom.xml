@@ -2154,7 +2154,7 @@
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>0.9.9_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>1.15.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aop.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aop.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aspects.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aspects.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>
