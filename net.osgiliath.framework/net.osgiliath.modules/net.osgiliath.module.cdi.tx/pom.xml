@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.modules</groupId>
 		<artifactId>net.osgiliath.modules</artifactId>
-		<version>0.3.5-SNAPSHOT</version>
+		<version>0.3.7-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.module.cdi.tx</artifactId>
 	<name>Aries tx CDI bridge</name>

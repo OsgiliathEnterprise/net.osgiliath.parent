@@ -3,7 +3,7 @@
   <parent>
     <groupId>net.osgiliath.itests</groupId>
     <artifactId>net.osgiliath.features.itests</artifactId>
-    <version>0.3.5-SNAPSHOT</version>
+    <version>0.3.7-SNAPSHOT</version>
   </parent>
   <artifactId>net.osgiliath.feature.itest.security</artifactId>
   	<name>Osgiliath integration tests security</name>
