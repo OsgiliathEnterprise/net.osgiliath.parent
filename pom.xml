@@ -96,7 +96,7 @@
 		<connection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</connection>
 		<developerConnection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
 		<url>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</url>
-		<tag>net.osgiliath.parent-0.3.2-SNAPSHOT</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>
@@ -113,6 +113,7 @@
 			<id>github-pages</id>
 			<name>Github GH Pages</name>
 			<url>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
+			<tag>HEAD</tag>
 		</site>
 	</distributionManagement>
 	<properties>
