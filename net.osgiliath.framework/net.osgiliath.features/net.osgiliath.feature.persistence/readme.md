@@ -12,7 +12,7 @@ Reference this feature in your pom:
 <dependency>
 			<groupId>net.osgiliath.framework</groupId>
 			<version>${osgiliath.maven.version.version}</version>
-			<artifactId>net.osgiliath.features.karaf-features-jpa</artifactId>
+			<artifactId>net.osgiliath.features.karaf-features-persistence</artifactId>
 			<type>xml</type>
 			<classifier>features</classifier>
 		</dependency>
