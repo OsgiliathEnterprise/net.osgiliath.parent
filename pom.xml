@@ -96,7 +96,6 @@
 		<connection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</connection>
 		<developerConnection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
 		<url>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</url>
-		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>
