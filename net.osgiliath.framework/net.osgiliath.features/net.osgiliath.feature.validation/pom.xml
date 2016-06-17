@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.features</groupId>
 		<artifactId>net.osgiliath.features</artifactId>
-		<version>0.3.7</version>
+		<version>0.3.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.feature.validation</artifactId>
 	<name>Osgiliath Validation features</name>
