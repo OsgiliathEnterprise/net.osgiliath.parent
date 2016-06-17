@@ -1,0 +1,4 @@
+net.osgiliath.feature.itest.jaxrs
+net.osgiliath.feature.itest.jaxrs.conf
+net.osgiliath.feature.itest.jaxrs.impl
+net.osgiliath.feature.itest.jaxrs.model

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>HelloEntity.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sample Entities module</a> &gt; <a href="index.source.html" class="el_package">net.osgiliath.sample.webapp.model.entities</a> &gt; <span class="el_source">HelloEntity.java</span></div><h1>HelloEntity.java</h1><pre class="source lang-java linenums">package net.osgiliath.sample.webapp.model.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+
+/*
+ * #%L
+ * net.osgiliath.hello.model.jpa
+ * %%
+ * Copyright (C) 2013 Osgiliath
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+
+/**
+ * Sample of a model bean exportable by web service
+ *         (xml), persistable and validatable supporting builder pattern.
+ * @author charliemordant 
+ */
+<span class="nc" id="L47">@Data</span>
+// equals, hashcode, getters and setters
+<span class="nc" id="L49">@Builder</span>
+// builder pattern
+<span class="nc" id="L51">@NoArgsConstructor</span>
+// constructor
+<span class="nc" id="L53">@AllArgsConstructor</span>
+// other constructor
+@Entity
+// persistence class declaration
+@XmlRootElement
+// xml marshalling
+<span class="nc bnc" id="L59" title="All 16 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
+@ApiModel(value = &quot;Hello Entity&quot;, description = &quot;Hello resource representation&quot;)
+public class HelloEntity extends GenericEntity implements Serializable {
+  /**
+   * Serial.
+   */
+  private static final transient long serialVersionUID = 6233801298404301547L;
+  /**
+   * Message.
+   */
+  @XmlElement
+  // XML node
+  @NotNull(message = &quot;message must not be null&quot;)
+  // Validation for null object
+  @Size(min = 2, max = 12, message = &quot;message size must be between 2 and 12&quot;)
+  // size validation
+  @Pattern(regexp = &quot;[a-zA-Z0-9]+&quot;, message = &quot;must not contain special characters&quot;)
+  // pattern validation
+  @ApiModelProperty(value = &quot;The thing to greet&quot;, required = true)
+<span class="nc" id="L78">  private String helloMessage;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

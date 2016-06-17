@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Osgiliath integration tests messaging with cdi,net.osgiliath.feature.itest.messaging.repository.impl,RouteConsumer.new Processor() {...},0,32,0,0,0,8,0,2,0,2
+Osgiliath integration tests messaging with cdi,net.osgiliath.feature.itest.messaging.repository.impl,AnnotatedConsumer,0,15,0,0,0,5,0,3,0,3
+Osgiliath integration tests messaging with cdi,net.osgiliath.feature.itest.messaging.repository.impl,RouteConsumer,0,20,0,0,0,5,0,2,0,2
+Osgiliath integration tests messaging with cdi,net.osgiliath.feature.itest.messaging,Hellos,61,22,14,0,0,2,10,4,3,4
+Osgiliath integration tests messaging with cdi,net.osgiliath.feature.itest.messaging,HelloEntity,96,30,22,0,0,3,15,5,4,5
+Osgiliath integration tests messaging with cdi,net.osgiliath.feature.itest.messaging.conf,CDIMessagingComponents.DeltaSpikeParser,0,6,0,0,0,2,0,2,0,2
+Osgiliath integration tests messaging with cdi,net.osgiliath.feature.itest.messaging.conf,CDIMessagingComponents,0,22,0,0,0,8,0,4,0,4

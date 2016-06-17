@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Entities for tests,net.osgiliath.feature.itest.persistence.entities,HelloEntity,725,0,107,0,6,0,106,0,51,0
+Entities for tests,net.osgiliath.feature.itest.persistence.entities,HelloEntity_,3,0,0,0,1,0,1,0,1,0
+Entities for tests,net.osgiliath.feature.itest.persistence.entities,HelloEntity.HelloEntityBuilder,38,0,0,0,1,0,5,0,5,0

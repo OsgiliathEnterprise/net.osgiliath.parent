@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Sample Entities module,net.osgiliath.sample.webapp.model.entities,HelloEntity,412,0,56,0,6,0,54,0,26,0
+Sample Entities module,net.osgiliath.sample.webapp.model.entities,GenericEntity_,3,0,0,0,1,0,1,0,1,0
+Sample Entities module,net.osgiliath.sample.webapp.model.entities,GenericEntity,689,0,101,0,3,0,99,0,47,0
+Sample Entities module,net.osgiliath.sample.webapp.model.entities,HelloEntity.HelloEntityBuilder,26,0,0,0,1,0,4,0,4,0
+Sample Entities module,net.osgiliath.sample.webapp.model.entities,HelloEntity_,3,0,0,0,1,0,1,0,1,0

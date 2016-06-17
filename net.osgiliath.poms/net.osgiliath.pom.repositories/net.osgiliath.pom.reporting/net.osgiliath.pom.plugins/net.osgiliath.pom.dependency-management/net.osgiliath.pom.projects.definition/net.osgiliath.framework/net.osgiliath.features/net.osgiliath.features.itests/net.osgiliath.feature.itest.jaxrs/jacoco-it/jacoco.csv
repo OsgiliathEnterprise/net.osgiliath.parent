@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Osgiliath integration tests JaxRS,net.osgiliath.feature.itest.jaxrs.model,HelloObject,77,16,14,0,1,4,12,4,5,4
+Osgiliath integration tests JaxRS,net.osgiliath.feature.itest.jaxrs.model,Hellos.HellosBuilder,26,0,0,0,1,0,4,0,4,0
+Osgiliath integration tests JaxRS,net.osgiliath.feature.itest.jaxrs.model,Hellos,81,12,14,0,2,3,13,3,6,3
+Osgiliath integration tests JaxRS,net.osgiliath.feature.itest.jaxrs.model,HelloObject.HelloObjectBuilder,12,14,0,0,0,1,1,3,1,3
+Osgiliath integration tests JaxRS,net.osgiliath.feature.itest.jaxrs.impl,HelloServiceImpl.new Function() {...},0,9,0,0,0,2,0,2,0,2
+Osgiliath integration tests JaxRS,net.osgiliath.feature.itest.jaxrs.impl,HelloServiceImpl,0,30,0,0,0,7,0,4,0,4
+Osgiliath integration tests JaxRS,net.osgiliath.feature.itest.jaxrs.conf,CXFApplication,0,30,0,0,0,2,0,2,0,2

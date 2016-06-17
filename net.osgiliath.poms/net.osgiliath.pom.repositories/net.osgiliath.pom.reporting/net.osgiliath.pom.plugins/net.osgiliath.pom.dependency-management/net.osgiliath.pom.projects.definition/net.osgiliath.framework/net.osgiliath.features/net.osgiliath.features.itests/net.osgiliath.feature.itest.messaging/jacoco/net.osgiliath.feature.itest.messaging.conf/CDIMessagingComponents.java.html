@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CDIMessagingComponents.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Osgiliath integration tests messaging with cdi</a> &gt; <a href="index.source.html" class="el_package">net.osgiliath.feature.itest.messaging.conf</a> &gt; <span class="el_source">CDIMessagingComponents.java</span></div><h1>CDIMessagingComponents.java</h1><pre class="source lang-java linenums">package net.osgiliath.feature.itest.messaging.conf;
+
+import java.util.Properties;
+import javax.enterprise.context.ApplicationScoped;
+
+/*
+ * #%L
+ * net.osgiliath.features.karaf-features.itests.messaging.cdi
+ * %%
+ * Copyright (C) 2013 - 2014 Osgiliath corp
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+
+import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
+import javax.inject.Named;
+import org.apache.camel.Component;
+
+import org.apache.camel.component.properties.DefaultPropertiesParser;
+import org.apache.camel.component.properties.PropertiesComponent;
+import org.apache.camel.component.properties.PropertiesParser;
+import org.apache.deltaspike.core.api.config.ConfigResolver;
+import org.ops4j.pax.cdi.api.OsgiService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Components configuration with CDI.
+ * @author charliemordant
+ */
+@ApplicationScoped
+<span class="nc" id="L44">public class CDIMessagingComponents {</span>
+  /**
+   * Logger.
+   */
+<span class="nc" id="L48">  private static final Logger LOG = LoggerFactory</span>
+<span class="nc" id="L49">      .getLogger(CDIMessagingComponents.class);</span>
+  /**
+   * OSGI service import.
+   */
+  @Inject
+  @OsgiService(filter = &quot;(component-type=jms)&quot;, dynamic = true)
+  private transient Component jms;
+
+  /**
+   * Producer.
+   * @return the jms component
+   */
+  @Produces
+  @Named(&quot;jms&quot;)
+  public final Component getJms() {
+<span class="nc" id="L64">    LOG.info(&quot;Inject jms route&quot;);</span>
+<span class="nc" id="L65">    return this.jms;</span>
+  }
+  @Produces
+  @Named(&quot;properties&quot;)
+  PropertiesComponent properties(PropertiesParser parser) {
+<span class="nc" id="L70">      PropertiesComponent component = new PropertiesComponent();</span>
+<span class="nc" id="L71">      component.setPropertiesParser(parser);</span>
+<span class="nc" id="L72">      return component;</span>
+  }
+   
+  // PropertiesParser bean that uses DeltaSpike to resolve properties
+<span class="nc" id="L76">  static class DeltaSpikeParser extends DefaultPropertiesParser {</span>
+      @Override
+      public String parseProperty(String key, String value, Properties properties) {
+<span class="nc" id="L79">          return ConfigResolver.getPropertyValue(key);</span>
+      }
+  }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

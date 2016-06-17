@@ -1,0 +1,4 @@
+net.osgiliath.feature.itest.messaging
+net.osgiliath.feature.itest.messaging.conf
+net.osgiliath.feature.itest.messaging.repository
+net.osgiliath.feature.itest.messaging.repository.impl

@@ -1,0 +1,3 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Osgiliath integration tests Validation,net.osgiliath.feature.itest.validation.spring.impl,ValidatorFactorySample,14,29,3,1,3,7,2,4,0,4
+Osgiliath integration tests Validation,net.osgiliath.feature.itest.validation.spring,HelloObject,55,28,13,1,0,2,10,4,3,4

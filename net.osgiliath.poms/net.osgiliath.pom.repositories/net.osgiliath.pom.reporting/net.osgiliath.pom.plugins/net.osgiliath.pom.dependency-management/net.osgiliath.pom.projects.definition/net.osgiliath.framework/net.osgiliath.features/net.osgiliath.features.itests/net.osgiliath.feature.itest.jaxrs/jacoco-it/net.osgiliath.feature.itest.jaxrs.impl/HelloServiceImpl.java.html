@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>HelloServiceImpl.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Osgiliath integration tests JaxRS</a> &gt; <a href="index.source.html" class="el_package">net.osgiliath.feature.itest.jaxrs.impl</a> &gt; <span class="el_source">HelloServiceImpl.java</span></div><h1>HelloServiceImpl.java</h1><pre class="source lang-java linenums">package net.osgiliath.feature.itest.jaxrs.impl;
+
+/*
+ * #%L
+ * net.osgiliath.features.karaf-features.itests.jaxrs.web
+ * %%
+ * Copyright (C) 2013 - 2014 Osgiliath corp
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
+import net.osgiliath.feature.itest.jaxrs.HelloServiceJaxRS;
+import net.osgiliath.feature.itest.jaxrs.model.HelloObject;
+import net.osgiliath.feature.itest.jaxrs.model.Hellos;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+
+/**
+ * REST Service implementation for testing purpose.
+ * 
+ * @author charliemordant
+ */
+<span class="fc" id="L39">public class HelloServiceImpl implements HelloServiceJaxRS {</span>
+  /**
+   * Instances elements.
+   */
+<span class="fc" id="L43">  private final transient Collection&lt;HelloObject&gt; objects = new ArrayList&lt;HelloObject&gt;();</span>
+
+  /**
+   * Registering instance.
+   * 
+   * @param helloObject
+   *          the element to save in the database
+   */
+  @Override
+  public void persistHello(final HelloObject helloObject) {
+<span class="fc" id="L53">    this.objects.add(helloObject);</span>
+
+<span class="fc" id="L55">  }</span>
+
+  /**
+   * Returns registered instances.
+   * 
+   * @return all instances
+   */
+  @Override
+  public Hellos getHellos() {
+<span class="fc" id="L64">    return new Hellos(Lists.newArrayList(Iterables.transform(this.objects,</span>
+<span class="fc" id="L65">        new Function&lt;HelloObject, String&gt;() {</span>
+          @Override
+          public String apply(final HelloObject input) {
+<span class="fc" id="L68">            return input.getHelloMessage();</span>
+          }
+        })));
+  }
+
+  /**
+   * Deletes all elements.
+   */
+  @Override
+  public void deleteHellos() {
+<span class="fc" id="L78">    this.objects.clear();</span>
+<span class="fc" id="L79">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

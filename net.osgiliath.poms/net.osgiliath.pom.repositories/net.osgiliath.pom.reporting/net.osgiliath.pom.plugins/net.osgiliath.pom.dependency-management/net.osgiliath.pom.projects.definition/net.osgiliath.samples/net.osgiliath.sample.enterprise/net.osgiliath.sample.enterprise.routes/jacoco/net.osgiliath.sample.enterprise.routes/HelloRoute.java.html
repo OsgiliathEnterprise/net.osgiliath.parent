@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>HelloRoute.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Helloworld sample routes</a> &gt; <a href="index.source.html" class="el_package">net.osgiliath.sample.enterprise.routes</a> &gt; <span class="el_source">HelloRoute.java</span></div><h1>HelloRoute.java</h1><pre class="source lang-java linenums">package net.osgiliath.sample.enterprise.routes;
+
+/*
+ * #%L
+ * net.osgiliath.hello.routes
+ * %%
+ * Copyright (C) 2013 Osgiliath
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+
+import java.io.InputStream;
+import java.io.StringWriter;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.ws.rs.HttpMethod;
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.JAXBContext;
+import lombok.Setter;
+import net.osgiliath.sample.webapp.business.spi.model.Hellos;
+import net.osgiliath.sample.webapp.model.entities.HelloEntity;
+import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.Processor;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.cdi.ContextName;
+import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.camel.spi.DataFormat;
+import org.apache.commons.io.IOUtils;
+
+/**
+ * sample route, see apache camel and EIP keyword on the net ;).
+ * 
+ * @author charliemordant
+ */
+@ContextName(value = &quot;camelctx&quot;)
+<span class="fc" id="L49">public class HelloRoute extends RouteBuilder {</span>
+  /**
+   * Json Dataformat.
+   */
+<span class="fc" id="L53">  private final DataFormat helloObjectJSonFormat = new JacksonDataFormat(</span>
+      HelloEntity.class, Hellos.class);
+  /**
+   * JSR303 Validation message processor.
+   */
+  @Inject
+  @Named(&quot;thrownExceptionMessageToInBodyProcessor&quot;)
+<span class="fc" id="L60">  @Setter</span>
+  private Processor thrownExceptionMessageToInBodyProcessor;
+  /**
+   * XmlJson processor.
+   */
+  @Inject
+  @Named(&quot;xmljson&quot;)
+  private DataFormat xmljson;
+  /**
+   * changes inputstream to string.
+   */
+<span class="fc" id="L71">  private Processor octetsStreamToStringProcessor = new Processor() {</span>
+
+    @Override
+    public void process(Exchange exchange) throws Exception {
+<span class="fc" id="L75">      final InputStream bodyObject = exchange.getIn()</span>
+<span class="fc" id="L76">          .getBody(InputStream.class);</span>
+<span class="fc" id="L77">      final StringWriter writer = new StringWriter();</span>
+<span class="fc" id="L78">      IOUtils.copy(bodyObject, writer);</span>
+<span class="fc" id="L79">      final String theString = writer.toString();</span>
+<span class="fc" id="L80">      exchange.getIn().setBody(theString);</span>
+
+<span class="fc" id="L82">    }</span>
+  };
+
+  /**
+   * Messaging route.
+   */
+  @Override
+  public void configure() throws Exception {
+<span class="fc" id="L90">    final JAXBContext ctx = JAXBContext</span>
+<span class="fc" id="L91">        .newInstance(new Class[] { HelloEntity.class, Hellos.class, });</span>
+<span class="fc" id="L92">    final DataFormat jaxBDataFormat = new JaxbDataFormat(ctx);</span>
+
+<span class="fc" id="L94">    from(&quot;properties:{{helloApp.inCamelQueueJMS}}&quot;)</span>
+<span class="fc" id="L95">        .log(LoggingLevel.INFO, &quot;Received message: \&quot;${in.body}\&quot;&quot;).choice()</span>
+<span class="fc" id="L96">        .when(header(&quot;httpRequestType&quot;).isEqualTo(HttpMethod.POST))</span>
+<span class="fc" id="L97">        .to(&quot;direct:persistObject&quot;).endChoice().otherwise()</span>
+<span class="fc" id="L98">        .setBody(</span>
+<span class="fc" id="L99">            simple(&quot;{error:  'Command not supported for the JaxRS queue'}&quot;))</span>
+<span class="fc" id="L100">        .to(&quot;direct:toError&quot;);</span>
+
+<span class="fc" id="L102">    from(&quot;direct:persistObject&quot;)</span>
+<span class="fc" id="L103">        .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.POST))</span>
+<span class="fc" id="L104">        .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))</span>
+<span class="fc" id="L105">        .unmarshal(this.helloObjectJSonFormat).marshal(jaxBDataFormat)</span>
+<span class="fc" id="L106">        .log(LoggingLevel.INFO, &quot;marshalled: ${body}&quot;).doTry()</span>
+<span class="fc" id="L107">        .inOnly(&quot;properties:{{helloApp.restEndpoint}}&quot;).to(&quot;direct:updateTopic&quot;)</span>
+<span class="fc" id="L108">        .doCatch(Exception.class)</span>
+<span class="fc" id="L109">        .log(LoggingLevel.WARN, &quot;Exception while persisting message&quot;)</span>
+<span class="fc" id="L110">        .to(&quot;direct:helloValidationError&quot;).end();</span>
+
+<span class="fc" id="L112">    from(&quot;direct:updateTopic&quot;)</span>
+<span class="fc" id="L113">        .setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))</span>
+<span class="fc" id="L114">        .setHeader(Exchange.CONTENT_TYPE, constant(MediaType.APPLICATION_XML))</span>
+<span class="fc" id="L115">        .inOut(&quot;properties:{{helloApp.restEndpoint}}&quot;).inOut(&quot;direct:marshall&quot;)</span>
+<span class="fc" id="L116">        .to(&quot;properties:{{helloApp.outCamelTopicJMS}}&quot;);</span>
+
+<span class="fc" id="L118">    from(&quot;direct:marshall&quot;).process(this.octetsStreamToStringProcessor)</span>
+<span class="fc" id="L119">        .log(&quot;hello data retrieved from JaxRS : ${in.body}&quot;)</span>
+<span class="fc" id="L120">        .marshal(this.xmljson).log(LoggingLevel.INFO, &quot;marshalled: ${body}&quot;);</span>
+
+<span class="fc" id="L122">    from(&quot;direct:helloValidationError&quot;)</span>
+<span class="fc" id="L123">        .process(this.thrownExceptionMessageToInBodyProcessor)</span>
+<span class="pc" id="L124">        .process(exchange -&gt; exchange.getIn()</span>
+<span class="nc" id="L125">            .setBody(exchange.getIn().getBody(String.class)</span>
+<span class="nc" id="L126">                .replaceAll(&quot;\&quot;&quot;, &quot;'&quot;).replaceAll(&quot;\n&quot;, &quot;&quot;)))</span>
+<span class="fc" id="L127">        .setBody(simple(&quot;{\&quot;error\&quot;: \&quot;${body}\&quot;}&quot;))</span>
+<span class="fc" id="L128">        .log(&quot;Subscription error: ${body}&quot;)</span>
+<span class="fc" id="L129">        .to(&quot;properties:{{helloApp.outCamelErrorQueueJMS}}&quot;);</span>
+
+<span class="fc" id="L131">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

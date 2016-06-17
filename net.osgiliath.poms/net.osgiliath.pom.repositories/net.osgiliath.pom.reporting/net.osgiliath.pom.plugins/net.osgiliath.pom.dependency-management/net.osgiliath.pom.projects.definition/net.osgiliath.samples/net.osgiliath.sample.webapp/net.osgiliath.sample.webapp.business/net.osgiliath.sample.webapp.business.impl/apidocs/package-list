@@ -1,0 +1,3 @@
+net.osgiliath.sample.webapp.business.impl.conf
+net.osgiliath.sample.webapp.business.impl.messaging
+net.osgiliath.sample.webapp.business.impl.rest

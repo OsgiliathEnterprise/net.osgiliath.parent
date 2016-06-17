@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RouteConsumer.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Osgiliath integration tests messaging with cdi</a> &gt; <a href="index.source.html" class="el_package">net.osgiliath.feature.itest.messaging.repository.impl</a> &gt; <span class="el_source">RouteConsumer.java</span></div><h1>RouteConsumer.java</h1><pre class="source lang-java linenums">package net.osgiliath.feature.itest.messaging.repository.impl;
+
+/*
+ * #%L
+ * net.osgiliath.features.karaf-features.itests.messaging.cdi
+ * %%
+ * Copyright (C) 2013 - 2014 Osgiliath corp
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.enterprise.context.ApplicationScoped;
+import net.osgiliath.feature.itest.messaging.HelloEntity;
+import net.osgiliath.feature.itest.messaging.Hellos;
+import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.Processor;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.cdi.ContextName;
+
+
+/**
+ * CDI consumer via routes.
+ * 
+ * @author charliemordant
+ */
+
+@ApplicationScoped
+@ContextName(value=&quot;camelctx&quot;)
+<span class="fc" id="L43">public class RouteConsumer extends RouteBuilder {</span>
+	/**
+	 * Message consuming route.
+	 */
+	@Override
+	public void configure() throws Exception {
+<span class="fc" id="L49">		from(&quot;properties:{{messaging.routequeuein}}&quot;/*&quot;jms:queue:helloServiceQueueIn&quot;*/).log(LoggingLevel.INFO, &quot;received JMS message on the queue&quot;)</span>
+<span class="fc" id="L50">				.process(new Processor() {</span>
+
+					@Override
+					public void process(Exchange exchange) throws Exception {
+<span class="fc" id="L54">						final Hellos hellos = new Hellos();</span>
+<span class="fc" id="L55">						final HelloEntity entity = exchange.getIn().getBody(HelloEntity.class);</span>
+<span class="fc" id="L56">						final Collection&lt;HelloEntity&gt; entities = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L57">						entities.add(entity);</span>
+<span class="fc" id="L58">						hellos.setEntities(entities);</span>
+<span class="fc" id="L59">						exchange.getOut().setBody(hellos);</span>
+
+<span class="fc" id="L61">					}</span>
+<span class="fc" id="L62">				}).to(&quot;jms:queue:helloServiceQueueOut1&quot;);</span>
+
+<span class="fc" id="L64">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
