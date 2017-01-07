@@ -1,0 +1,11 @@
+Import-Package: \
+ !javax.transaction,\
+ javax.transaction;version='[1.1,2)',\
+ javax.servlet;version='[3,4)',\
+ javax.servlet*;version='[3,4)',\
+ org.springframework.data.domain;resolution:=optional,\
+ org.apache.cxf.transport.servlet,\
+ *
+Webapp-Context: ${project.artifactId}
+Web-ContextPath: ${project.artifactId}
+Bundle-ClassPath: .
