@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath.modules</groupId>
+		<artifactId>net.osgiliath.modules</artifactId>
+		<version>0.3.7-SNAPSHOT</version>
+	</parent>
+	<artifactId>net.osgiliath.module.org.apache.aries.blueprint.core.compatibility.xbean-blueprint</artifactId>
+	<name>XBean blueprint compat</name>
+	<description>aries core compat with xbean blueprint</description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<_include>-osgi.bnd</_include>
+						<Bundle-Version>${org.apache.aries.blueprint_org.apache.aries.blueprint.core.version}</Bundle-Version>
+						<_failok>true</_failok>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.aries.blueprint</groupId>
+			<artifactId>org.apache.aries.blueprint.core</artifactId>
+		</dependency>
+	</dependencies>
+</project>

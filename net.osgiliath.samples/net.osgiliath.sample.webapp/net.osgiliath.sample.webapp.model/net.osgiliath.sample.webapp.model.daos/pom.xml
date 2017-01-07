@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.osgiliath.samples</groupId>
 		<artifactId>net.osgiliath.sample.webapp.model</artifactId>
-		<version>0.3.7-SNAPSHOT</version>
+		<version>0.3.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.sample.webapp.model.daos</artifactId>
 	<name>Data access module</name>

@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>net.osgiliath.pom.reporting</artifactId>
 		<groupId>net.osgiliath.poms</groupId>
-		<version>0.3.7-SNAPSHOT</version>
+		<version>0.3.8-SNAPSHOT</version>
 	</parent>
 	<artifactId>net.osgiliath.pom.plugins</artifactId>
 	<packaging>pom</packaging>
