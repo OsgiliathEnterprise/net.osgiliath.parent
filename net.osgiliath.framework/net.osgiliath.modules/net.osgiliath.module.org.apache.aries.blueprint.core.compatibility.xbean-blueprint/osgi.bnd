@@ -1,0 +1,2 @@
+Fragment-Host: org.apache.aries.blueprint.core
+Export-Package: org.apache.aries.blueprint.ext.impl
