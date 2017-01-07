@@ -3,3 +3,4 @@
 /.project
 /jacoco-it.exec
 /.settings
+.DS_Store
