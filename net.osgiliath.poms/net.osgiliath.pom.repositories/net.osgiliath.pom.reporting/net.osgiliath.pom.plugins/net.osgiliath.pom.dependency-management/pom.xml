@@ -2331,7 +2331,7 @@
 		<org.ops4j.pax.url.version>2.4.7</org.ops4j.pax.url.version>
 		<org.ops4j.pax.web.version>4.2.6</org.ops4j.pax.web.version>
 		<org.osgi.core.version>6.0.0</org.osgi.core.version>
-		<org.seleniumhq.selenium.version>2.53.0</org.seleniumhq.selenium.version>
+		<org.seleniumhq.selenium.version>2.53.1</org.seleniumhq.selenium.version>
 		<org.slf4j.version>1.7.12</org.slf4j.version>
 		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
