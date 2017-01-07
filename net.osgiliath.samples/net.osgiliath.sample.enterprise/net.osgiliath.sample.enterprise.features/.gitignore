@@ -3,3 +3,4 @@
 /.settings
 src/site
 .DS_Store
+/.classpath
