@@ -31,7 +31,7 @@
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Osgiliath Snapshots public</name>
-			<url>https://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
+			<url>https://dist.osgiliath.net/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 </project>
