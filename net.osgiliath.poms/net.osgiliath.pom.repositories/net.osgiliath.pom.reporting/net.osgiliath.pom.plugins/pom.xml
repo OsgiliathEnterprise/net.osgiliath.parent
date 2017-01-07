@@ -177,6 +177,7 @@
 									<project.groupId>${project.groupId}</project.groupId>
 									<project.parent.artifactId>${project.parent.artifactId}</project.parent.artifactId>
 									<project.artifactId>${project.artifactId}</project.artifactId>
+									<webdriver.gecko.driver>${gecko.driver.path}</webdriver.gecko.driver>
 								</systemPropertyVariables>
 							</configuration>
 						</execution>

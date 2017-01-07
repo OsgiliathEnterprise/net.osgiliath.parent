@@ -159,6 +159,7 @@
 
 		<maven-scm.version>1.9.1</maven-scm.version>
 		<site.deploy.dir>/tmp/deploy</site.deploy.dir>
+		
 	</properties>
 	<profiles>
 		<profile>
