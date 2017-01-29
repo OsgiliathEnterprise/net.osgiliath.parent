@@ -15,6 +15,13 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>com.codeborne</groupId>
+				<artifactId>phantomjsdriver</artifactId>
+				<scope>test</scope>
+				<version>${com.codeborne_phantomjsdriver.version}</version>
+				
+			</dependency>
+			<dependency>
 				<groupId>com.fasterxml</groupId>
 				<artifactId>classmate</artifactId>
 				<version>${com.fasterxml_classmate.version}</version>
@@ -954,26 +961,7 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.openwebbeans</groupId>
-				<artifactId>openwebbeans-el22</artifactId>
-				<version>${org.apache.openwebbeans_openwebbeans-el22.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.openwebbeans</groupId>
-				<artifactId>openwebbeans-impl</artifactId>
-				<version>${org.apache.openwebbeans_openwebbeans-impl.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.openwebbeans</groupId>
-				<artifactId>openwebbeans-osgi</artifactId>
-				<version>${org.apache.openwebbeans_openwebbeans-osgi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.openwebbeans</groupId>
-				<artifactId>openwebbeans-spi</artifactId>
-				<version>${org.apache.openwebbeans_openwebbeans-spi.version}</version>
-			</dependency>
+			
 			<dependency>
 				<groupId>org.apache.servicemix.bundles</groupId>
 				<artifactId>org.apache.servicemix.bundles.ant</artifactId>
@@ -1670,11 +1658,7 @@
 				<type>xml</type>
 				<classifier>features</classifier>
 			</dependency>
-			<dependency>
-				<groupId>org.ops4j.pax.cdi</groupId>
-				<artifactId>pax-cdi-openwebbeans</artifactId>
-				<version>${org.ops4j.pax.cdi_pax-cdi-openwebbeans.version}</version>
-			</dependency>
+			
 			<dependency>
 				<groupId>org.ops4j.pax.cdi</groupId>
 				<artifactId>pax-cdi-spi</artifactId>
@@ -1888,12 +1872,21 @@
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
 				<version>${org.seleniumhq.selenium_selenium-java.version}</version>
+				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>com.github.detro.ghostdriver</groupId>
+						<artifactId>phantomjsdriver</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-firefox-driver</artifactId>
-				<version>${org.seleniumhq.selenium_selenium-firefox-driver.version}</version>
+				<artifactId>selenium-remote-driver</artifactId>
+				<scope>test</scope>
+				<version>${org.seleniumhq.selenium_selenium-remote-driver.version}</version>
 			</dependency>
+			
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
@@ -1962,6 +1955,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<properties>
+	<com.codeborne_phantomjsdriver.version>1.3.0</com.codeborne_phantomjsdriver.version>
 		<com.google.guava_guava.version>18.0</com.google.guava_guava.version>
 		<com.fasterxml_classmate.version>1.1.0</com.fasterxml_classmate.version>
 		<com.fasterxml.jackson.core_jackson-annotations.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.core_jackson-annotations.version>
@@ -2124,10 +2118,6 @@
 		<org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>1.1.1</org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>
 		<org.apache.neethi_neethi.version>3.0.3</org.apache.neethi_neethi.version>
 		<org.apache.openjpa_openjpa.version>${org.apache.openjpa.version}</org.apache.openjpa_openjpa.version>
-		<org.apache.openwebbeans_openwebbeans-el22.version>${org.apache.openwebbeans.version}</org.apache.openwebbeans_openwebbeans-el22.version>
-		<org.apache.openwebbeans_openwebbeans-impl.version>${org.apache.openwebbeans.version}</org.apache.openwebbeans_openwebbeans-impl.version>
-		<org.apache.openwebbeans_openwebbeans-osgi.version>${org.apache.openwebbeans.version}</org.apache.openwebbeans_openwebbeans-osgi.version>
-		<org.apache.openwebbeans_openwebbeans-spi.version>${org.apache.openwebbeans.version}</org.apache.openwebbeans_openwebbeans-spi.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>1.8.2_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>
 		<!-- <org.apache.servicemix.bundles_org.apache.servicemix.bundles.antlr.version>2.7.7_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.antlr.version> -->
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>1.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>
@@ -2258,7 +2248,6 @@
 		<org.ops4j.pax.cdi_pax-cdi-extender.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-extender.version>
 		<org.ops4j.pax.cdi_pax-cdi-extension.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-extension.version>
 		<org.ops4j.pax.cdi_pax-cdi-features.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-features.version>
-		<org.ops4j.pax.cdi_pax-cdi-openwebbeans.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-openwebbeans.version>
 		<org.ops4j.pax.cdi_pax-cdi-spi.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-spi.version>
 		<org.ops4j.pax.cdi_pax-cdi-web.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-web.version>
 		<org.ops4j.pax.cdi_pax-cdi-web-weld.version>${org.ops4j.pax.cdi.version}</org.ops4j.pax.cdi_pax-cdi-web-weld.version>
@@ -2297,7 +2286,7 @@
 		<org.ow2.asm_asm-all.version>5.0.4</org.ow2.asm_asm-all.version>
 		<org.scala-lang_scala-library.version>2.11.0</org.scala-lang_scala-library.version>
 		<org.seleniumhq.selenium_selenium-java.version>${org.seleniumhq.selenium.version}</org.seleniumhq.selenium_selenium-java.version>
-		<org.seleniumhq.selenium_selenium-firefox-driver.version>${org.seleniumhq.selenium.version}</org.seleniumhq.selenium_selenium-firefox-driver.version>
+		<org.seleniumhq.selenium_selenium-remote-driver.version>${org.seleniumhq.selenium.version}</org.seleniumhq.selenium_selenium-remote-driver.version>
 
 		<org.slf4j_slf4j-api.version>${org.slf4j.version}</org.slf4j_slf4j-api.version>
 		<org.springframework.batch_spring-batch-core.version>${org.springframework.batch.version}</org.springframework.batch_spring-batch-core.version>
@@ -2318,8 +2307,7 @@
 		<org.apache.aries.spifly.version>1.0.1</org.apache.aries.spifly.version>
 		<org.apache.deltaspike.version>1.5.2</org.apache.deltaspike.version>
 		<org.apache.deltaspike.core.version>${org.apache.deltaspike.version}</org.apache.deltaspike.core.version>
-		<org.apache.derby.version>10.10.2.0</org.apache.derby.version>
-		<org.apache.openwebbeans.version>1.6.1</org.apache.openwebbeans.version>
+		<org.apache.derby.version>10.13.1.1</org.apache.derby.version>
 		<org.eclipse.jetty.version>9.2.15.v20160210</org.eclipse.jetty.version>
 		<org.jboss.weld.version>2.2.11.Final</org.jboss.weld.version>
 		<org.liquibase.version>3.2.2</org.liquibase.version>

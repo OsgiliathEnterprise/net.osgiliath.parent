@@ -8,7 +8,8 @@
         <bundle dependency="true" start-level="30">mvn:javax.mail/mail/${javax.mail_mail.version}</bundle>
         <bundle>mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
         <!-- <bundle dependency="true" start-level="30">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${org.apache.geronimo.specs_geronimo-jta_1.1_spec.version}</bundle>-->
-		<bundle dependency="true" start-level="30">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
+		<!-- <bundle dependency="true" start-level="30">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>  -->
+		<bundle start-level="9">mvn:org.apache.geronimo.specs/geronimo-osgi-registry/${org.apache.geronimo.specs_geronimo-osgi-registry.version}</bundle>
         <bundle dependency="true" start-level="30">mvn:org.apache.geronimo.specs/geronimo-jaspic_1.0_spec/${org.apache.geronimo.specs_geronimo-jaspic_1.0_spec.version}</bundle>
         <bundle dependency="true" start-level="30">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>
         <bundle dependency="true" start-level="30">mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/${org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version}</bundle>
@@ -44,7 +45,6 @@
         <bundle dependency="true">mvn:javax.enterprise/cdi-api/${javax.enterprise_cdi-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
         <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
-        
         <capability>
             pax.http.provider;provider:=jetty
         </capability>
@@ -58,6 +58,7 @@
             org.ops4j.pax.web.config.file=${karaf.base}/etc/jetty.xml
         </config>
         <feature version="${org.eclipse.jetty.version}">osgiliath-pax-jetty</feature>
+        <bundle dependency="true">mvn:org.glassfish.web/javax.el/${org.glassfish.web_javax.el.version}</bundle>
         <bundle dependency="true" start-level="20">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>
         <bundle dependency="true" start-level="20">mvn:org.apache.xbean/xbean-bundleutils/${org.apache.xbean_xbean-bundleutils.version}</bundle>
         <bundle dependency="true" start-level="20">mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
@@ -79,6 +80,7 @@
     <feature name="osgiliath-pax-http-whiteboard" description="Provide HTTP Whiteboard pattern support" version="${org.ops4j.pax.web_pax-web-features.version}">
         <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-http</feature>
         <bundle dependency="true" start-level="30">mvn:org.eclipse.jdt.core.compiler/ecj/${org.eclipse.jdt.core.compiler_ecj.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
         <bundle start-level="30">mvn:org.ops4j.pax.web/pax-web-jsp/${org.ops4j.pax.web_pax-web-jsp.version}</bundle>
         <bundle start-level="30">mvn:org.ops4j.pax.web/pax-web-extender-whiteboard/${org.ops4j.pax.web_pax-web-extender-whiteboard.version}</bundle>
     </feature>
@@ -88,6 +90,7 @@
             org.ops4j.pax.url.war.importPaxLoggingPackages=true
         </config>
         <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-http-whiteboard</feature>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
         <bundle start-level="30">mvn:org.ops4j.pax.web/pax-web-jsp/${org.ops4j.pax.web_pax-web-jsp.version}</bundle>
         <bundle start-level="30">mvn:org.ops4j.pax.web/pax-web-extender-war/${org.ops4j.pax.web_pax-web-extender-war.version}</bundle>
         <bundle start-level="30">mvn:org.ops4j.pax.web/pax-web-extender-whiteboard/${org.ops4j.pax.web_pax-web-extender-whiteboard.version}</bundle>

@@ -6,7 +6,7 @@
 	
 	<feature name='osgiliath-jdbc' version='${project.version}' resolver="(obr)" start-level="35" description="JDBC database simplified creation via property and Liquibase (database versioning) support">
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring</feature>
-		<feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
+		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
 		<feature version="${org.apache.karaf.features_enterprise.version}">osgiliath-karaf-jdbc</feature>
 		<feature version="${org.apache.karaf.features_enterprise.version}">osgiliath-jndi</feature>
 		<feature version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}">osgiliath-pax-jdbc-pool-aries</feature>
@@ -18,7 +18,7 @@
 	 	<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.derby/${project.version}</bundle>
 	 	<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.derby/${project.version}</bundle>
 	 	<conditional>
-            <condition>blueprint</condition>
+            <condition>osgiliath-aries-blueprint</condition>
             <bundle>mvn:org.apache.xbean/xbean-blueprint/${org.apache.xbean_xbean-blueprint.version}</bundle>
         </conditional>
 	</feature>

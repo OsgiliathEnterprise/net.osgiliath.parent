@@ -11,6 +11,7 @@
     </feature>
     <feature name="osgiliath-activemq-blueprint" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
       <feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq</feature>
+      <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
       <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.scripting-api-1.0/2.4.0</bundle>
       <bundle dependency="true">mvn:org.apache.commons/commons-jexl/${org.apache.commons_commons-jexl.version}</bundle>
       <bundle dependency="true">mvn:org.apache.xbean/xbean-blueprint/${org.apache.xbean_xbean-blueprint.version}</bundle>

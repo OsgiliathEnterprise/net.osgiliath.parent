@@ -55,6 +55,15 @@
 			<type>zip</type>
 			<scope>test</scope>
 		</dependency>
-
-	</dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<scope>compile</scope>
+		</dependency>
+			</dependencies>
 </project>

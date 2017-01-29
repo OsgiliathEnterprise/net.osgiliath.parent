@@ -15,7 +15,6 @@
   </feature>
   <feature name='osgiliath-camel' version='${org.apache.camel.karaf_apache-camel.version}' resolver='(obr)' start-level='50'>
     <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-core</feature>
-    <!-- <feature version="2.16.1">camel-spring</feature>  -->
     <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-blueprint</feature>
   </feature>
   <feature name='osgiliath-camel-core' version='${org.apache.camel.karaf_apache-camel.version}' resolver='(obr)' start-level='50'>

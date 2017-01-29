@@ -24,8 +24,11 @@
 	
 	<feature name="osgiliath-messaging-client" version="${project.version}"  start-level="50" description="Spring JMS templates (Blueprint way of JMS handling in Osgiliath)">
 		<feature version="${project.version}">osgiliath-messaging</feature>
-		<bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-jms</feature>
 		<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.jms.connectionfactories/${project.version}</bundle>
+		<conditional>
+            <condition>osgiliath-spring</condition>
+            <bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
+		</conditional>
 	</feature>
 </features>

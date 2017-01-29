@@ -6,8 +6,7 @@
 	<feature name='osgiliath-security' version='${project.version}' description="Spring Security feature (Auth/Autz)">
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-jdbc</feature>
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-jms</feature>
-		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version}</bundle>
-		<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
+		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-aspects</feature>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-aspects/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-core/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-config/${project.version}</bundle>
@@ -18,7 +17,6 @@
 		<bundle>mvn:net.sf.ehcache/ehcache/${net.sf.ehcache_ehcache.version}</bundle>
 		<!-- <bundle>mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle> -->
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-web</feature>
-		<feature version="${org.apache.karaf.features_standard.version}">osgiliath-http</feature>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-security-web/${project.version}</bundle>
 	</feature>
 </features>

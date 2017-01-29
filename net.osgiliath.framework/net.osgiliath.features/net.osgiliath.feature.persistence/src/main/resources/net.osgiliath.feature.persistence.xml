@@ -17,13 +17,16 @@
 		<bundle>mvn:org.apache.xbean/xbean-reflect/${org.apache.xbean_xbean-reflect.version}</bundle>
 		<bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
 		<feature version="${project.version}">osgiliath-spring-data-jpa</feature>
-		<bundle start-level="35" dependency="true">mvn:io.swagger/swagger-annotations/${io.swagger_swagger-annotations.version}</bundle>
+		<conditional>
+			<condition>osgiliath-rest-management</condition>
+			<bundle start-level="35" dependency="true">mvn:io.swagger/swagger-annotations/${io.swagger_swagger-annotations.version}</bundle>
+		</conditional>	
     </feature>
 	<feature name='osgiliath-spring-data-jpa' version='${project.version}' resolver="(obr)" start-level="41" description="Java persistence API stack" >
 		<bundle>mvn:org.springframework.data/spring-data-commons/${org.springframework.data_spring-data-commons.version}</bundle>
 		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.spring-data-jpa/${project.version}</bundle>
 		<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.spring-data-jpa/${project.version}</bundle>
-		
+		<feature version="${project.version}">osgiliath-persistence</feature>
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-orm</feature>
 		<feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring-aspects</feature>
 		<bundle>mvn:com.mysema.querydsl/querydsl-core/${com.mysema.querydsl_querydsl-core.version}</bundle>

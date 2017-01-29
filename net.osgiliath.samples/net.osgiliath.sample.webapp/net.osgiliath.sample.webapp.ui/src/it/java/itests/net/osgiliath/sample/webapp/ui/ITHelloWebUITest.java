@@ -21,6 +21,7 @@ package itests.net.osgiliath.sample.webapp.ui;
  */
 
 import java.util.Collection;
+import net.osgiliath.module.exam.selenium.SeleniumBaseTest;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -37,7 +38,7 @@ import org.slf4j.LoggerFactory;
  * @author charliemordant
  * 
  */
-public class ITHelloWebUITest {
+public class ITHelloWebUITest extends SeleniumBaseTest{
   private static Logger LOG = LoggerFactory.getLogger(ITHelloWebUITest.class);
 
   /**
@@ -48,8 +49,7 @@ public class ITHelloWebUITest {
   @Test
   
   public void testSayHello() throws Exception {
-    final WebDriver driver;
-    driver = new FirefoxDriver();
+    WebDriver driver = getDriver();
 
     // Sleep until the elements we want is visible or 5 seconds is over
     long end = System.currentTimeMillis() + 10000;

@@ -8,7 +8,7 @@
         resolver="(obr)">
         <feature>osgiliath-scr</feature>
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
-        <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
+        <!-- <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>  -->
         <bundle dependency="true">mvn:javax.enterprise/cdi-api/${javax.enterprise_cdi-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
         <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
@@ -24,23 +24,7 @@
         <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extender/${org.ops4j.pax.cdi_pax-cdi-extender.version}</bundle>
     </feature>
     
-    <feature name="osgiliath-pax-cdi-openwebbeans" description="OpenWebBeans CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}"
-        resolver="(obr)">
-        <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
-        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
-        <!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-validation_1.0_spec/1.1</bundle>-->
-        <!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>-->
-        <bundle>mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
-<!--         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/1.0</bundle> -->
-        <bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/${org.apache.xbean_xbean-asm5-shaded.version}</bundle>
-        <!--<bundle dependency="true">mvn:org.apache.xbean/xbean-finder-shaded/4.1</bundle>-->
-        <bundle dependency="true">mvn:org.apache.xbean/xbean-finder/${org.apache.xbean_xbean-finder.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-spi/${org.apache.openwebbeans_openwebbeans-spi.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-impl/${org.apache.openwebbeans_openwebbeans-impl.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-el22/${org.apache.openwebbeans_openwebbeans-el22.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-osgi/${org.apache.openwebbeans_openwebbeans-osgi.version}</bundle>
-        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-openwebbeans/${org.ops4j.pax.cdi_pax-cdi-openwebbeans.version}</bundle>
-    </feature>
+   
     
 	<feature name="osgiliath-pax-cdi-weld" description="Weld CDI 1.2 support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}"
         resolver="(obr)">

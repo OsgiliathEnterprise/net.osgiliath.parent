@@ -22,8 +22,27 @@
 				</plugin>
 				<plugin>
 					<groupId>com.googlecode.maven-download-plugin</groupId>
-					<artifactId>maven-download-plugin</artifactId>
-					<version>${com.googlecode.maven-download-plugin.version}</version>
+					<artifactId>download-maven-plugin</artifactId>
+					<version>${com.googlecode.maven-download-plugin.download-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.lazerycode.selenium</groupId>
+					<artifactId>driver-binary-downloader-maven-plugin</artifactId>
+					<version>${com.lazerycode.selenium_driver-binary-downloader-maven-plugin.version}</version>
+					<configuration>
+						<rootStandaloneServerDirectory>${selenium.driver.target}/selenium_standalone_binaries</rootStandaloneServerDirectory>
+						<downloadedZipFileDirectory>${selenium.driver.target}/selenium_standalone_zips</downloadedZipFileDirectory>
+						<customRepositoryMap>${selenium.driver.target}/RepositoryMap.xml</customRepositoryMap>
+						<overwriteFilesThatExist>${selenium.overwrite.binaries}</overwriteFilesThatExist>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>selenium</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>com.mysema.maven</groupId>
@@ -70,7 +89,7 @@
 							<goals>
 								<goal>blueprint-generate</goal>
 							</goals>
-							<phase>compile</phase>
+							<phase>process-classes</phase>
 						</execution>
 					</executions>
 					<dependencies>
@@ -177,7 +196,24 @@
 									<project.groupId>${project.groupId}</project.groupId>
 									<project.parent.artifactId>${project.parent.artifactId}</project.parent.artifactId>
 									<project.artifactId>${project.artifactId}</project.artifactId>
-									<webdriver.gecko.driver>${gecko.driver.path}</webdriver.gecko.driver>
+									<!-- Selenium -->
+									<browser>${selenium.browser}</browser>
+									<remoteDriver>${selenium.remote}</remoteDriver>
+									<gridURL>${selenium.seleniumGridURL}</gridURL>
+									<desiredPlatform>${selenium.platform}</desiredPlatform>
+									<desiredBrowserVersion>${selenium.browserVersion}</desiredBrowserVersion>
+									<proxyEnabled>${selenium.proxyEnabled}</proxyEnabled>
+									<proxyHost>${selenium.proxyHost}</proxyHost>
+									<proxyPort>${selenium.proxyPort}</proxyPort>
+
+									<!--Set properties passed in by the driver binary downloader -->
+									<phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>
+									<webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+									<webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
+									<webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
+									<webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
+									<webdriver.edge.driver>${webdriver.edge.driver}</webdriver.edge.driver>
+
 								</systemPropertyVariables>
 							</configuration>
 						</execution>
@@ -198,35 +234,7 @@
 						</archive>
 					</configuration>
 				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${maven-resources-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>copy-resources</id>
-							<!-- here the phase you need -->
-							<phase>compile</phase>
-							<goals>
-								<goal>copy-resources</goal>
-							</goals>
-							<configuration>
-								<outputDirectory>${project.build.directory}/classes/OSGI-INF/blueprint</outputDirectory>
-								<resources>
-									<resource>
-										<directory>${project.build.directory}/generated-resources/OSGI-INF/blueprint</directory>
-									</resource>
-								</resources>
-							</configuration>
-						</execution>
-					</executions>
-					<dependencies>
-						<dependency>
-							<groupId>org.apache.maven.shared</groupId>
-							<artifactId>maven-filtering</artifactId>
-							<version>${org.apache.maven.shared_maven-filtering.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-shade-plugin</artifactId>
@@ -394,11 +402,7 @@
 					</configuration>
 				</plugin>
 
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>selenium-maven-plugin</artifactId>
-					<version>${selenium-maven-plugin.version}</version>
-				</plugin>
+
 
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -1443,15 +1447,16 @@
 
 	</profiles>
 	<properties>
-		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
+		<build-helper-maven-plugin.version>1.12</build-helper-maven-plugin.version>
 		<buildnumber-maven-plugin.version>1.3</buildnumber-maven-plugin.version>
-		<com.googlecode.maven-download-plugin.version>1.0.0</com.googlecode.maven-download-plugin.version>
+		<com.googlecode.maven-download-plugin.download-maven-plugin.version>1.3.0</com.googlecode.maven-download-plugin.download-maven-plugin.version>
+		<com.lazerycode.selenium_driver-binary-downloader-maven-plugin.version>1.0.11</com.lazerycode.selenium_driver-binary-downloader-maven-plugin.version>
 		<com.mysema.maven_apt-maven-plugin.version>1.1.3</com.mysema.maven_apt-maven-plugin.version>
 		<de.juplo_hibernate4-maven-plugin.version>1.1.0</de.juplo_hibernate4-maven-plugin.version>
 		<depends-maven-plugin.version>1.2</depends-maven-plugin.version>
 		<eclipselink.version>2.4.2</eclipselink.version>
-		<org.ops4j.pax.exam.version>4.9.1</org.ops4j.pax.exam.version>
-		<exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
+		<org.ops4j.pax.exam.version>4.9.2</org.ops4j.pax.exam.version>
+		<exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
 		<features-maven-plugin.version>2.2.5</features-maven-plugin.version>
 		<inmemdb-maven-plugin.version>1.4.3</inmemdb-maven-plugin.version>
 		<inmemdb-maven-plugin.monitorRetryInterval>2000</inmemdb-maven-plugin.monitorRetryInterval>
@@ -1474,27 +1479,40 @@
 		<maven-shade-plugin.version>2.3</maven-shade-plugin.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<org.apache.aries.blueprint_blueprint-maven-plugin.version>1.4.0</org.apache.aries.blueprint_blueprint-maven-plugin.version>
+		<org.apache.aries.blueprint_blueprint-maven-plugin.version>1.5.0</org.apache.aries.blueprint_blueprint-maven-plugin.version>
 		<org.apache.maven.plugins_maven-assembly-plugin.version>2.5.3</org.apache.maven.plugins_maven-assembly-plugin.version>
-		<org.apache.openjpa.version>2.4.1</org.apache.openjpa.version>
+		<org.apache.openjpa.version>2.4.2</org.apache.openjpa.version>
 		<org.apache.xbean_xbean-asm5-shaded.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-asm5-shaded.version>
 		<org.apache.maven.shared_maven-filtering.version>3.0.0</org.apache.maven.shared_maven-filtering.version>
 		<org.apache.xbean.latest.version>4.5</org.apache.xbean.latest.version>
 		<org.codehaus.plexus.version>1.5.5</org.codehaus.plexus.version>
 		<!-- <org.hibernate.version>4.3.6.Final</org.hibernate.version> -->
 		<org.hsqldb_hsqldb.version>2.3.2</org.hsqldb_hsqldb.version>
-		<org.projectlombok.version>1.16.8</org.projectlombok.version>
+		<org.projectlombok.version>1.16.12</org.projectlombok.version>
 		<org.projectlombok.lombok.plugin.version>${org.projectlombok.version}.0</org.projectlombok.lombok.plugin.version>
 		<org.projectlombok-pg.version>0.11.3</org.projectlombok-pg.version>
 		<org.springframework.data.commons.core.version>1.4.1.RELEASE</org.springframework.data.commons.core.version>
 		<maven-pax-plugin.version>1.5</maven-pax-plugin.version>
-		<selenium-maven-plugin.version>2.3</selenium-maven-plugin.version>
+		<selenium.driver.target>${project.build.directory}/selenium</selenium.driver.target>
+		<selenium.map.location>https://raw.githubusercontent.com/Ardesco/Selenium-Maven-Template/master/src/test/resources/RepositoryMap.xml</selenium.map.location>
+		<selenium.overwrite.binaries>false</selenium.overwrite.binaries>
+
+		<selenium.browser>firefox</selenium.browser>
+		<selenium.remote>false</selenium.remote>
+		<selenium.seleniumGridURL />
+		<selenium.platform />
+		<selenium.browserVersion />
+		<selenium.proxyEnabled>false</selenium.proxyEnabled>
+		<selenium.proxyHost />
+		<selenium.proxyPort />
+
+
 		<project.root.build.directory>${session.executionRootDirectory}/target</project.root.build.directory>
 		<wagon-maven-plugin.version>1.0-beta-5</wagon-maven-plugin.version>
 		<xerces.version>2.4.0</xerces.version>
 		<jacoco-coverage-skip>false</jacoco-coverage-skip>
 		<jacoco.scan.base>${project.artifactId}</jacoco.scan.base>
-		<osgiliath-model.compiler.level>1.8</osgiliath-model.compiler.level>
+		<osgiliathmodel.compiler.level>1.8</osgiliathmodel.compiler.level>
 	</properties>
 	<modules>
 		<module>net.osgiliath.pom.dependency-management</module>

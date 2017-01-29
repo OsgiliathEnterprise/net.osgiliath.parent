@@ -30,7 +30,13 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.keepRunti
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.ops4j.pax.exam.CoreOptions;
 import org.ops4j.pax.exam.MavenUtils;
 import org.ops4j.pax.exam.Option;
@@ -212,6 +218,10 @@ public abstract class AbstractPaxExamKarafConfiguration {
   protected Option addExtraOptions() {
     return new DefaultCompositeOption();
   }
+  
+  
+  
+  
   /**
    * Karaf feature to test.
    * @return karaf feature Option

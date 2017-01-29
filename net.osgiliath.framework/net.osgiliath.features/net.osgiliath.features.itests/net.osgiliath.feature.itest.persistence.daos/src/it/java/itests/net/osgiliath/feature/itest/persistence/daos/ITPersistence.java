@@ -24,11 +24,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import java.util.Collection;
-
 import javax.inject.Inject;
-
+import net.osgiliath.feature.itest.persistence.daos.HelloRepository;
+import net.osgiliath.feature.itest.persistence.entities.HelloEntity;
+import net.osgiliath.module.exam.AbstractPaxExamKarafConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -36,16 +38,13 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import net.osgiliath.feature.itest.persistence.daos.HelloRepository;
-import net.osgiliath.feature.itest.persistence.entities.HelloEntity;
-import net.osgiliath.module.exam.AbstractPaxExamKarafConfiguration;
 
 /**
  * JPA test case.

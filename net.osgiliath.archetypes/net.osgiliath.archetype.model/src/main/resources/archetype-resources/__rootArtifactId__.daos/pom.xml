@@ -23,7 +23,32 @@
 				<artifactId>blueprint-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				
+			</plugin>
+			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-bp</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+
+						<configuration>
+							<outputDirectory>${project.build.outputDirectory}/OSGI-INF/blueprint</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/generated-sources/blueprint/OSGI-INF/blueprint</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
