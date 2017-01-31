@@ -7,3 +7,4 @@ Import-Package: net.sf.cglib.proxy,\
 	*
 Private-Package: net.osgiliath.validator.osgi.internal
 Bundle-Activator: net.osgiliath.validator.osgi.JSR303Activator
+Provide-Capability: net.osgiliath.capability;capability="validator.factory"

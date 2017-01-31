@@ -17,7 +17,7 @@
   	<module>net.osgiliath.feature.itest.jaxrs</module>
   	<module>net.osgiliath.feature.itest.persistence.entities</module>
   	<module>net.osgiliath.feature.itest.persistence.daos</module>
-  	<module>net.osgiliath.feature.itest.validation.spring</module>
+  	<!-- <module>net.osgiliath.feature.itest.validation.spring</module>  -->
   	<module>net.osgiliath.feature.itest.validation.cdi</module>
   	<module>net.osgiliath.feature.itest.security</module>
   	<module>net.osgiliath.feature.itest.messaging</module>

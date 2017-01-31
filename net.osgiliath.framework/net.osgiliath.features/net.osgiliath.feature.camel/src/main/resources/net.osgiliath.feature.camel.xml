@@ -43,7 +43,6 @@
   	<!-- you've got to install pax-cdi-weld or pax-cdi-openwebbeans in order to make it works -->
   	<feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
     <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-core</feature>
-    <!-- <bundle>mvn:org.apache.camel/camel-cdi/${org.apache.camel_camel-cdi.version}</bundle>-->
     <bundle>mvn:org.apache.camel/camel-cdi/${org.apache.camel_camel-cdi.version}</bundle>
   </feature>
   <feature name='osgiliath-camel-http' version='${org.apache.camel.karaf_apache-camel.version}' resolver='(obr)' start-level='50'>

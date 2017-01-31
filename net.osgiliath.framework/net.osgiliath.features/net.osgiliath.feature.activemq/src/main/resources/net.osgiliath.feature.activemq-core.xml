@@ -33,7 +33,6 @@
       <!-- <bundle>mvn:org.apache.activemq/activemq-karaf/${org.apache.activemq_activemq-karaf.version}</bundle>  -->
       <bundle dependency="true">mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.xbean-spring/${project.version}</bundle>
       <bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
-      <bundle dependency='true'>mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
       <bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec_commons-codec.version}</bundle>
       <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.velocity/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version}</bundle>
       <bundle dependency="true" start-level="30">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>

@@ -1,5 +1,6 @@
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
-Provide-Capability = org.ops4j.pax.cdi.extension; extension="validation"
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
+ net.osgiliath.capability;filter:="(capability=validator.factory)"
+Provide-Capability: org.ops4j.pax.cdi.extension; extension="validation"
 Bundle-SymbolicName: org.hibernate.validator.cdi
 Export-Package: org.hibernate.validator.cdi.*,\
  org.hibernate.validator.internal.cdi.interceptor
