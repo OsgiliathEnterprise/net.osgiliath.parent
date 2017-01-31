@@ -30,6 +30,7 @@ import org.apache.derby.drda.NetworkServerControl;
 import org.apache.derby.jdbc.ClientDriver;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.jdbc.DataSourceFactory;
 
 import net.osgiliath.module.derby.constants.ClientConnectionConstant;
@@ -50,6 +51,7 @@ public class Activator implements BundleActivator {
    */
   private static Activator instance;
 
+ private ServiceRegistration<?> dsfR;
   /**
    * Start method.
    * 
@@ -64,7 +66,7 @@ public class Activator implements BundleActivator {
         ClientDriver.class.getName());
     props.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME,
         ClientConnectionConstant.PAX_JDBC_DS_ID);
-    context.registerService(DataSourceFactory.class.getName(), dsf, props);
+    dsfR = context.registerService(DataSourceFactory.class.getName(), dsf, props);
     instance = this;
   }
 
@@ -83,7 +85,7 @@ public class Activator implements BundleActivator {
       }
     }
     getInstance().startedServers.clear();
-
+    dsfR.unregister();
   }
 
   /**
