@@ -21,12 +21,8 @@ package net.osgiliath.feature.itest.persistence.daos;
  */
 
 import java.util.Collection;
-
-import javax.transaction.Transactional;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import net.osgiliath.feature.itest.persistence.entities.HelloEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * JPA accessible interface by business or route module

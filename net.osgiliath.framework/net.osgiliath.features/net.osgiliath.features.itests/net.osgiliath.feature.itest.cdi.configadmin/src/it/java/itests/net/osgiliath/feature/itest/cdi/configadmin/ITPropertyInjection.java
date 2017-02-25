@@ -136,7 +136,7 @@ String s = this.consumer.getInjectedProperty();
 	 * @return Log level options
 	 */
 	protected Option loggingLevel() {
-		return logLevel(LogLevel.INFO);
+		return logLevel(LogLevel.TRACE);
 	}
 
 }

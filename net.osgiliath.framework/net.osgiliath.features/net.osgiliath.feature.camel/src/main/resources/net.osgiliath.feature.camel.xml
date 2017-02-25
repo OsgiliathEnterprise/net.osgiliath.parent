@@ -7,7 +7,7 @@
 	
   <feature name='osgiliath-xml-specs-api' version='${xml-specs-api.version}' resolver='(obr)' start-level='10'>
     <bundle dependency='true'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version}</bundle>
-    <bundle dependency='true'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version}</bundle>
+    <bundle dependency='true'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.2/${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.2.version}</bundle>
     <bundle dependency='true'>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxb-api-2.2/${org.apache.servicemix.specs_org.apache.servicemix.specs.jaxb-api-2.2.version}</bundle>
     <bundle>mvn:org.codehaus.woodstox/stax2-api/${org.codehaus.woodstox_stax2-api.version}</bundle>
     <bundle>mvn:org.codehaus.woodstox/woodstox-core-asl/${org.codehaus.woodstox_woodstox-core-asl.version}</bundle>

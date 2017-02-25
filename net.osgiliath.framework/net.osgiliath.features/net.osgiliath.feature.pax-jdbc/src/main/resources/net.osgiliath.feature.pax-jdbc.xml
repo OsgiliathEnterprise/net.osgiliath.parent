@@ -3,6 +3,14 @@
 	<repository>mvn:org.ops4j.pax.jdbc/pax-jdbc-features/${org.ops4j.pax.jdbc_pax-jdbc-features.version}/xml/features</repository>
 	<feature name="osgiliath-pax-jdbc-spec" description="Osgiliath wrapper: Provides OSGi JDBC Service spec" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}" resolver="(obr)">
         <bundle>mvn:org.osgi/org.osgi.service.jdbc/${org.osgi_org.osgi.service.jdbc.version}</bundle>
+   		<bundle dependency="true">mvn:javax.enterprise/cdi-api/${javax.enterprise_cdi-api.version}</bundle>
+        <!-- <bundle>mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>  -->
+        <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
+        <bundle dependency="true">mvn:org.osgi/org.osgi.service.jdbc/${org.osgi_org.osgi.service.jdbc.version}</bundle>
+        <!-- these are hack... -->
+        <bundle>mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
+        <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
     </feature>
     
     <feature name="osgiliath-pax-jdbc" description="Provides JDBC Service support" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}" resolver="(obr)">
@@ -17,25 +25,17 @@
 
     <feature name="osgiliath-pax-jdbc-config" description="Provides JDBC Config support" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}" resolver="(obr)">
         <feature>osgiliath-pax-jdbc-spec</feature>
-        <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
+        <bundle>mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-common/${org.ops4j.pax.jdbc_pax-jdbc-pool-common.version}</bundle>
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-config/${org.ops4j.pax.jdbc_pax-jdbc-config.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version}</bundle>
     </feature>
     
      <feature name="osgiliath-pax-jdbc-pool-aries" description="Provides JDBC Pooling DataSourceFactory using Aries Transaction JDBC" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}" resolver="(obr)">
         <feature>osgiliath-pax-jdbc-spec</feature>
-        <!-- <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
-        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.geronimo.components/geronimo-connector/${org.apache.geronimo.components_geronimo-connector.version}</bundle>  -->
+        <bundle>mvn:org.tranql/tranql-connector/${org.tranql_tranql-connector.version}</bundle>
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-common/${org.ops4j.pax.jdbc_pax-jdbc-pool-common.version}</bundle>
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-aries/${org.ops4j.pax.jdbc_pax-jdbc-pool-aries.version}</bundle>
-        <conditional>
-            <condition>osgiliath-aries-blueprint</condition>
-            <bundle dependency="true">mvn:org.apache.xbean/xbean-blueprint/${org.apache.xbean_xbean-blueprint.version}</bundle>
-        </conditional>
-        <conditional>
-            <condition>osgiliath-transaction</condition>
-            <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.jdbc/${org.apache.aries.transaction_org.apache.aries.transaction.jdbc.version}</bundle>
-        </conditional>
+      
     </feature>
 </features>

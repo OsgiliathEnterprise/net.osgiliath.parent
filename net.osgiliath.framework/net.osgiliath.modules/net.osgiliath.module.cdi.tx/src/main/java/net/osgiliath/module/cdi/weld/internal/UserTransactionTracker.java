@@ -60,8 +60,9 @@ public class UserTransactionTracker
    * Default Ctor.
    */
   public UserTransactionTracker() {
-    if (null == userTransactions)
+    if (null == userTransactions) {
       this.userTransactions = new HashSet<>();
+    }
   }
 
   /**

@@ -24,33 +24,32 @@
 		<configfile finalname="${karaf.etc}/org.ops4j.datasource-${project.parent.artifactId}.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/database</configfile>
 	</feature>
 	<feature name="${project.parent.artifactId}.model" version="${project.version}">
-		<feature version="${project.version}" prerequisite = "true">osgiliath-persistence</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-cdi</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-common</feature>
-		<feature version="${project.version}" prerequisite = "true">${project.parent.artifactId}.model.db</feature>
+		<feature version="${project.version}">osgiliath-persistence</feature>
+		<feature version="${project.version}">osgiliath-cdi</feature>
+		<feature version="${project.version}">osgiliath-validation-common</feature>
+		<feature version="${project.version}">${project.parent.artifactId}.model.db</feature>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.model.entities/${project.version}/jar</bundle>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.model.daos/${project.version}/jar</bundle>
 	</feature>
 	<feature name="${project.parent.artifactId}.business" version="${project.version}">
-		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<feature version="${project.version}">osgiliath-validation-cdi</feature>
+		<feature version="${project.version}">osgiliath-rest-cdi-web</feature>
+		<feature version="${project.version}">osgiliath-messaging-cdi</feature>
+		<feature version="${project.version}">osgiliath-routes-xmlandjson</feature>
+		<feature version="${project.version}">osgiliath-messaging-default-broker</feature>
 		<configfile finalname="${karaf.etc}/${project.parent.artifactId}-transport.deltaspike.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/transport</configfile>
 		<feature version="${project.version}">${project.parent.artifactId}.model</feature>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.business.spi/${project.version}/jar</bundle>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.business.impl/${project.version}/jar</bundle>
 	</feature>
 	<feature name="${project.parent.artifactId}.business.itests" version="${project.version}">
-		<feature version="${project.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
-		<feature version="${project.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<feature version="${project.version}">osgiliath-validation-cdi</feature>
+		<feature version="${project.version}">osgiliath-rest-cdi-web</feature>
+		<feature version="${project.version}">osgiliath-messaging-cdi</feature>
+		<feature version="${project.version}">osgiliath-routes-xmlandjson</feature>
+		<feature version="${project.version}">osgiliath-messaging-default-broker</feature>
 		<configfile finalname="${karaf.etc}/${project.parent.artifactId}-transport.deltaspike.cfg">mvn:${project.groupId}/${project.artifactId}/${project.version}/cfg/transport</configfile>
 		<feature version="${project.version}">${project.parent.artifactId}.model</feature>
-		<feature version="${org.apache.karaf.features_standard.version}" prerequisite = "true">osgiliath-war</feature>
 		<bundle>mvn:${project.groupId}/${project.parent.artifactId}.business.spi/${project.version}/jar</bundle>
 		<bundle>file:${project.parent.basedir}/${project.parent.artifactId}.business/${project.parent.artifactId}.business.impl/target/${project.parent.artifactId}.business.impl-${project.version}.jar</bundle>
 	</feature>

@@ -1,7 +1,6 @@
 package net.osgiliath.module.deltaspike.configadmin.internal;
 
 import lombok.extern.slf4j.Slf4j;
-import net.osgiliath.module.deltaspike.configadmin.karaf.KarafConfigAdminListener;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.util.tracker.ServiceTracker;

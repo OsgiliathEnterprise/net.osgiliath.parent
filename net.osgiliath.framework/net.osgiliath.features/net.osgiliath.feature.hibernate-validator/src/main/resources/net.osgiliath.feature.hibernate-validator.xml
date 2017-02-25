@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
+	<!-- <repository>mvn:org.hibernate.validator/hibernate-validator-osgi-karaf-features/${org.hibernate.validator_hibernate-validator-osgi-karaf-features.version}/xml/features</repository>  -->
+	 <feature name="osgiliath-hibernate-validator" description="Hibernate Validator support" version="${org.hibernate.validator_hibernate-validator-osgi-karaf-features.version}">
+        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml/classmate/${com.fasterxml_classmate.version}</bundle>
+        <bundle dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
+		<bundle>mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
+        <bundle dependency="true">mvn:org.jboss.logging/jboss-logging/${org.jboss.logging_jboss-logging.version}</bundle>
+        <bundle>mvn:org.hibernate/hibernate-validator/${org.hibernate_hibernate-validator.version}</bundle>
+		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsoup/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jsoup.version}</bundle>
+		<bundle>mvn:javax.money/money-api/${javax.money_money-api.version}</bundle>
+        <bundle>mvn:org.javamoney/moneta/${org.javamoney_moneta.version}</bundle>
+    </feature>
+    
+     
+    <feature name="osgiliath-hibernate-validator-paranamer" version="${org.hibernate.validator_hibernate-validator-osgi-karaf-features.version}">
+        <feature>osgiliath-hibernate-validator</feature>
+ 		<bundle>mvn:com.thoughtworks.paranamer/paranamer/${com.thoughtworks.paranamer_paranamer.version}</bundle>
+   </feature>
+</features>

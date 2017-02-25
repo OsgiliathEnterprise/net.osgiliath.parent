@@ -3,8 +3,13 @@
 	<repository>mvn:org.apache.karaf.features/spring/${org.apache.karaf.features_spring.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<feature name="osgiliath-spring" description="Spring 4.2.x support" version="${org.apache.servicemix.bundles.spring.version}">
-        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version}</bundle>
+        <bundle>mvn:com.google.guava/guava/${com.google.guava_guava.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.velocity/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version}</bundle>
         <bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version}</bundle>
+        <bundle dependency='true'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jdom1.version}</bundle>
+    
+        <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version}</bundle>
         <bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version}</bundle>
         <bundle dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
       	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
@@ -25,7 +30,7 @@
     </feature>
     <feature name="osgiliath-spring-jms" description="Spring 4.2.x JMS support" version="${org.apache.servicemix.bundles.spring.version}">
         <feature version="${org.apache.servicemix.bundles.spring.version}" prerequisite="false" dependency="false">osgiliath-spring-tx</feature>
-        <bundle start-level="10" dependency="true">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
+        <!-- <bundle start-level="10" dependency="true">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>  -->
         <bundle start-level="10" dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
         <bundle start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.spring-jms/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-jms.version}</bundle>
     </feature>

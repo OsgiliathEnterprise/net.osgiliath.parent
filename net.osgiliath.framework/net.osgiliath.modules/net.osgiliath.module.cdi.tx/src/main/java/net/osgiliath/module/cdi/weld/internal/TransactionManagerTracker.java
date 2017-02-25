@@ -58,8 +58,9 @@ public class TransactionManagerTracker
    * Default ctor.
    */
   public TransactionManagerTracker() {
-    if (null == txManagers)
+    if (null == txManagers) {
       this.txManagers = new HashSet<>();
+    }
   }
 
   /**
@@ -117,8 +118,7 @@ public class TransactionManagerTracker
    * Reparses configuration.
    */
   public void internalReparse() {
-    if (null != TransactionManagerTracker.getInstance()
-        && null != TransactionManagerTracker.getInstance().getAdmins()) {
+    if (null != TransactionManagerTracker.getInstance().getAdmins()) {
       TransactionManagerTracker.getInstance().getAdmins().clear();
       try {
         final ServiceReference<?>[] registeredConfigAdmins = (ServiceReference<?>[]) bundleContext

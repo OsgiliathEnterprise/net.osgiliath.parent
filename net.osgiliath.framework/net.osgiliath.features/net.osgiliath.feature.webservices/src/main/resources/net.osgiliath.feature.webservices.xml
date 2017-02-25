@@ -25,8 +25,8 @@
 	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)" start-level="50" description="RESTful web services support via annotations">
 		<feature version="${project.version}">osgiliath-cdi</feature>
 		<feature version="${project.version}">osgiliath-rest</feature>
+		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs-cdi</feature>
 		<feature version="${project.version}">osgiliath-validation-cdi</feature>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.cxf-integration-cdi/${project.version}</bundle>
 	</feature>
 	<feature name="osgiliath-rest-cdi-web" version="${project.version}" resolver="(obr)" start-level="50" description="RESTful web services support via annotations">
 		<feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi-web-weld</feature>

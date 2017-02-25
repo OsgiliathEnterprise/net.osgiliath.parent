@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:org.apache.karaf.features/enterprise/${org.apache.karaf.features_enterprise.version}/xml/features</repository>
-	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.pax-jdbc/${project.version}/xml/features</repository>
 	 <feature name="osgiliath-transaction-api" version="${transaction-api_feature.version}">
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
-        <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
+        <bundle>mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
         <bundle dependency="true">mvn:javax.enterprise/cdi-api/${javax.enterprise_cdi-api.version}</bundle>
         <bundle>mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
     </feature>
     <feature name="osgiliath-transaction" description="OSGi Transaction Manager" version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">
         <details>JTA implementation provided by Apache Aries Transaction</details>
-        <config name="org.apache.aries.transaction" append="false">
+        <config name="org.apache.aries.transaction">
             aries.transaction.recoverable = true
             aries.transaction.timeout = 600
             aries.transaction.howl.logFileDir = ${karaf.data}/txlog
@@ -20,27 +19,43 @@
             aries.transaction.howl.maxBlocksPerFile = 512
             aries.transaction.howl.bufferSize = 4
         </config>
-        <feature version="${transaction-api_feature.version}" prerequisite="false" dependency="false">osgiliath-transaction-api</feature>
+        <feature version="${transaction-api_feature.version}">osgiliath-transaction-api</feature>
         <bundle dependency="true">mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries_org.apache.aries.util.version}</bundle>
         <bundle>mvn:org.apache.aries.transaction/org.apache.aries.transaction.manager/${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}</bundle>
+        
         <conditional>
             <condition>osgiliath-aries-blueprint</condition>
             <bundle dependency="true">mvn:org.apache.felix/org.apache.felix.coordinator/${org.apache.felix_org.apache.felix.coordinator.version}</bundle>
             <bundle>mvn:org.apache.aries.transaction/org.apache.aries.transaction.blueprint/${org.apache.aries.transaction_org.apache.aries.transaction.blueprint.version1}</bundle>
             <bundle>mvn:org.apache.aries.transaction/org.apache.aries.transaction.blueprint/${org.apache.aries.transaction_org.apache.aries.transaction.blueprint.version}</bundle>
+            <bundle dependency="true">mvn:org.apache.commons/commons-jexl/${org.apache.commons_commons-jexl.version}</bundle>
             <bundle>mvn:org.apache.xbean/xbean-blueprint/${org.apache.xbean_xbean-blueprint.version}</bundle>
         </conditional>
         <conditional>
             <condition>osgiliath-spring</condition>
             <feature version="${org.apache.servicemix.bundles.spring.version}" dependency="true">osgiliath-spring-tx</feature>
         </conditional>
+        <conditional>
+            <condition>osgiliath-pax-jdbc-pool-aries</condition>
+            <!-- mandatory due to restart of tx-jdbc and jndi linking. please try to remove dep to aries-bp spring-orm, jpa stuff and spring-tx at each release-->
+            <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
+            <feature version="${org.apache.servicemix.bundles.spring.version}" dependency="true">osgiliath-spring-tx</feature>
+            <feature version="${org.apache.servicemix.bundles.spring.version}" dependency="true">osgiliath-spring-orm</feature>
+            <feature version="${org.apache.aries.jpa.version}" dependency="true">osgiliath-jpa</feature>
+            <feature version="${org.apache.aries.jpa.version}" dependency="true">osgiliath-openjpa</feature>
+
+      <!--     pax-jdbc also wraps datasourcefactory  <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.jdbc/${org.apache.aries.transaction_org.apache.aries.transaction.jdbc.version}</bundle>  -->
+        </conditional>
+         <capability>
+            transaction-manager;provider:=geronimo
+        </capability>   
     </feature>
     
     <feature name="osgiliath-connector" version="${org.apache.geronimo.components_geronimo-connector.version}" description="OSGi Support for JCA Connector 1.6" resolver="(obr)">
         <details>OSGi support for JCA Connector 1.6</details>
         <feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>
-        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api1.version}</bundle>
         <bundle>mvn:org.apache.geronimo.components/geronimo-connector/${org.apache.geronimo.components_geronimo-connector.version}</bundle>
     </feature>
     
@@ -60,7 +75,6 @@
         <details>JDBC support providing service, commands, and MBean.</details>
         <feature prerequisite="true" dependency="false">osgiliath-pax-jdbc</feature>
         <feature prerequisite="true" dependency="false">osgiliath-pax-jdbc-config</feature>
-        <bundle dependency="true">mvn:org.osgi/org.osgi.service.jdbc/${org.osgi_org.osgi.service.jdbc.version}</bundle>
         <bundle>mvn:org.apache.karaf.jdbc/org.apache.karaf.jdbc.core/${org.apache.karaf.jdbc_org.apache.karaf.jdbc.core.version}</bundle>
     </feature>
     <feature name="osgiliath-jms" description="JMS service and commands" version="${org.apache.karaf.features_enterprise.version}">
@@ -99,11 +113,13 @@
     
      <feature name="osgiliath-openjpa" description="Apache OpenJPA 2.4.x persistence engine support" version="${org.apache.openjpa.version}">
         <details>Enable Apache OpenJPA as persistence engine.</details>
-        <feature version="${transaction-api_feature.version}" prerequisite="false" dependency="false">osgiliath-transaction-api</feature>
-        <feature version="${persistence-api_feature.version}" prerequisite="false" dependency="false">osgiliath-persistence-api</feature>
+        <feature version="${transaction-api_feature.version}" >osgiliath-transaction-api</feature>
+        <feature version="${persistence-api_feature.version}" >osgiliath-persistence-api</feature>
+        <feature version="${org.apache.karaf.features_enterprise.version}" >osgiliath-jndi</feature>
         <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
-        <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
-        <bundle dependency="true">mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
+        <!-- <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle> -->
+       <bundle dependency="true">mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
+         <bundle dependency="true">mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
         <bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
         <bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version}</bundle>
@@ -111,34 +127,13 @@
         <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
         <bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/${org.apache.xbean_xbean-asm5-shaded.version}</bundle>
+        <capability>
+            osgi.service;effective:=active;objectClass=javax.persistence.spi.PersistenceProvider
+        </capability>
         <bundle>mvn:org.apache.openjpa/openjpa/${org.apache.openjpa_openjpa.version}</bundle>
     </feature>
-     <feature name="osgiliath-hibernate-validator" description="Hibernate Validator support" version="${org.hibernate_hibernate-validator.version}">
-        <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
-        <bundle dependency="true">mvn:com.fasterxml/classmate/${com.fasterxml_classmate.version}</bundle>
-        <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
-        <bundle dependency="true">mvn:org.glassfish.web/javax.el/${org.glassfish.web_javax.el.version}</bundle>
-        <bundle dependency="true">mvn:org.jboss.logging/jboss-logging/${org.jboss.logging_jboss-logging.version}</bundle>
-        <bundle>mvn:org.hibernate/hibernate-validator/${org.hibernate_hibernate-validator.version}</bundle>
-    </feature>
-   <!--  <feature name="osgiliath-hibernate" description="Hibernate 4.3.x JPA persistence engine support" version="${org.hibernate.version}">
-        <details>Enable Hibernate 4.3.x as persistence engine.</details>
-        <feature prerequisite="false" dependency="false">osgiliath-http</feature>
-        <feature version="${persistence-api_feature.version}" prerequisite="false" dependency="false">osgiliath-persistence-api</feature>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.antlr/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.antlr.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.dom4j.version}</bundle>
-        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.serp/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version}</bundle>
-        <bundle dependency="true">mvn:com.fasterxml/classmate/${com.fasterxml_classmate.version}</bundle>
-        <bundle dependency="true">mvn:org.javassist/javassist/${org.javassist_javassist.version}</bundle>
-        <bundle dependency="true">mvn:org.jboss.spec.javax.security.jacc/jboss-jacc-api_1.4_spec/${org.jboss.spec.javax.security.jacc_jboss-jacc-api_1.4_spec.version}</bundle>
-        <bundle dependency="true">mvn:org.jboss/jandex/${org.jboss_jandex.version}</bundle>
-        <bundle dependency="true">mvn:org.jboss.logging/jboss-logging/${org.jboss.logging_jboss-logging.version}</bundle>
-        <bundle dependency="true">mvn:org.hibernate.common/hibernate-commons-annotations/${org.hibernate.common_hibernate-commons-annotations.version}</bundle>
-        <bundle>mvn:org.hibernate/hibernate-core/${org.hibernate_hibernate-core.version}</bundle>
-        <bundle>mvn:org.hibernate/hibernate-entitymanager/${org.hibernate_hibernate-entitymanager.version}</bundle>
-        <bundle>mvn:org.hibernate/hibernate-osgi/${org.hibernate_hibernate-osgi.version}</bundle>
-    </feature> -->
+    
+  
     
    
 </features>

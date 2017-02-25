@@ -1,10 +1,12 @@
 DynamicImport-Package: *
 Import-Package: net.sf.cglib.proxy,\
-	net.sf.cglib.core,\
-	org.aspectj.lang,\
-	net.sf.cglib.reflect,\
-	javax.validation,\
-	*
+ net.sf.cglib.core,\
+ org.aspectj.lang,\
+ net.sf.cglib.reflect,\
+ javax.validation,\
+ javax.el,\
+ com.sun.el,\
+ *
 Private-Package: net.osgiliath.validator.osgi.internal
 Bundle-Activator: net.osgiliath.validator.osgi.JSR303Activator
 Provide-Capability: net.osgiliath.capability;capability="validator.factory"

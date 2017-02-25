@@ -29,5 +29,6 @@
   	<module>net.osgiliath.feature.activemq</module>
   	<module>net.osgiliath.feature.messaging</module>
   	<module>net.osgiliath.feature.routes</module>
+  	<module>net.osgiliath.feature.hibernate-validator</module>
   </modules>
 </project>

@@ -50,8 +50,10 @@ public class Activator implements BundleActivator {
    * Singleton.
    */
   private static Activator instance;
-
- private ServiceRegistration<?> dsfR;
+  /**
+   * Datasource factory registration.
+   */
+ private ServiceRegistration<DataSourceFactory> dsfR;
   /**
    * Start method.
    * 
@@ -66,7 +68,7 @@ public class Activator implements BundleActivator {
         ClientDriver.class.getName());
     props.put(DataSourceFactory.OSGI_JDBC_DRIVER_NAME,
         ClientConnectionConstant.PAX_JDBC_DS_ID);
-    dsfR = context.registerService(DataSourceFactory.class.getName(), dsf, props);
+    dsfR = (ServiceRegistration<DataSourceFactory>) context.registerService(DataSourceFactory.class.getName(), dsf, props);
     instance = this;
   }
 

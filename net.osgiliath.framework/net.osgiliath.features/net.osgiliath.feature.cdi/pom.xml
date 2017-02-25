@@ -78,6 +78,11 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
+		<groupId>net.osgiliath.wrappers</groupId>
+		<artifactId>net.osgiliath.wrapper.xbean-finder</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.aries.spifly</groupId>
 			<artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
 		</dependency>

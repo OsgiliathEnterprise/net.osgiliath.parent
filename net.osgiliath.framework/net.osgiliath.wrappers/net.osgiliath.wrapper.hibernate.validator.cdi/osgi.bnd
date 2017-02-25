@@ -4,5 +4,7 @@ Provide-Capability: org.ops4j.pax.cdi.extension; extension="validation"
 Bundle-SymbolicName: org.hibernate.validator.cdi
 Export-Package: org.hibernate.validator.cdi.*,\
  org.hibernate.validator.internal.cdi.interceptor
-Import-Package: *;resolution:=optional
+Import-Package: javax.el,\
+ com.sun.el,\
+ *;resolution:=optional
 Fragment-Host: org.hibernate.validator

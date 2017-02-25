@@ -34,37 +34,36 @@ ${symbol_pound}L%
 	<!-- Model -->
 	<feature name="${symbol_dollar}{project.parent.artifactId}.model.db" version="${symbol_dollar}{project.version}">
 	<!-- Keep this prefix as it is mandatory for jdbc scan -->
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-jdbc</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-jdbc</feature>
 		<configfile finalname="${symbol_dollar}{karaf.etc}/org.ops4j.datasource-${symbol_dollar}{project.parent.artifactId}.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/database</configfile>
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.model" version="${symbol_dollar}{project.version}">
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-persistence</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-cdi</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-validation-common</feature>
-		<feature version="${symbol_dollar}{project.version}" prerequisite = "true">${symbol_dollar}{project.parent.artifactId}.model.db</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-persistence</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-validation-common</feature>
+		<feature version="${symbol_dollar}{project.version}">${symbol_dollar}{project.parent.artifactId}.model.db</feature>
 		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.model.entities/${symbol_dollar}{project.version}/jar</bundle>
 		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.model.daos/${symbol_dollar}{project.version}/jar</bundle>
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.business" version="${symbol_dollar}{project.version}">
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-validation-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-rest-cdi-web</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-messaging-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-routes-xmlandjson</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-messaging-default-broker</feature>
 		<configfile finalname="${symbol_dollar}{karaf.etc}/${symbol_dollar}{project.parent.artifactId}-transport.deltaspike.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/transport</configfile>
 		<feature version="${symbol_dollar}{project.version}">${symbol_dollar}{project.parent.artifactId}.model</feature>
 		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
 		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.business.impl/${symbol_dollar}{project.version}/jar</bundle>
 	</feature>
 	<feature name="${symbol_dollar}{project.parent.artifactId}.business.itests" version="${symbol_dollar}{project.version}">
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-validation-cdi</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-rest-cdi-web</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-cdi</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-routes-xmlandjson</feature>
-		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}" prerequisite = "true">osgiliath-messaging-default-broker</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-validation-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-rest-cdi-web</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-messaging-cdi</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-routes-xmlandjson</feature>
+		<feature version="${symbol_dollar}{osgiliath.framework.maven.version}">osgiliath-messaging-default-broker</feature>
 		<configfile finalname="${symbol_dollar}{karaf.etc}/${symbol_dollar}{project.parent.artifactId}-transport.deltaspike.cfg">mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.artifactId}/${symbol_dollar}{project.version}/cfg/transport</configfile>
 		<feature version="${symbol_dollar}{project.version}">${symbol_dollar}{project.parent.artifactId}.model</feature>
-		<feature version="${symbol_dollar}{org.apache.karaf.features_standard.version}" prerequisite = "true">osgiliath-war</feature>
 		<bundle>mvn:${symbol_dollar}{project.groupId}/${symbol_dollar}{project.parent.artifactId}.business.spi/${symbol_dollar}{project.version}/jar</bundle>
 		<bundle>file:${symbol_dollar}{project.parent.basedir}/${symbol_dollar}{project.parent.artifactId}.business/${symbol_dollar}{project.parent.artifactId}.business.impl/target/${symbol_dollar}{project.parent.artifactId}.business.impl-${symbol_dollar}{project.version}.jar</bundle>
 	</feature>

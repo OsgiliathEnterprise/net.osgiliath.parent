@@ -1,4 +1,4 @@
-package net.osgiliath.module.deltaspike.configadmin.karaf;
+package net.osgiliath.module.deltaspike.configadmin.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,11 +10,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-
+import lombok.extern.slf4j.Slf4j;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.apache.deltaspike.core.spi.config.ConfigSource;
 import org.apache.deltaspike.core.spi.config.ConfigSourceProvider;
-
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceRegistration;
@@ -22,9 +21,6 @@ import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.cm.ConfigurationEvent;
 import org.osgi.service.cm.ConfigurationListener;
-
-import lombok.extern.slf4j.Slf4j;
-import net.osgiliath.module.cdi.weld.api.SingleServiceTracker;
 
 /**
  * Karaf configuration admin listener.
@@ -71,8 +67,9 @@ public class KarafConfigAdminListener implements ConfigurationListener,
    * Ctor. Initializes the cache.
    */
   public KarafConfigAdminListener() {
-    if (null == configurations)
+    if (null == configurations) {
       this.configurations = new HashSet<>();
+    }
   }
 
   /**
@@ -262,7 +259,6 @@ public class KarafConfigAdminListener implements ConfigurationListener,
 
             final Map<String, String> ret = new HashMap<>();
             final Dictionary<String, ?> dictionary = config.getProperties();
-            ;
             if (null != dictionary) {
               final Enumeration<String> keys = dictionary.keys();
               if (null != keys) {
@@ -276,19 +272,16 @@ public class KarafConfigAdminListener implements ConfigurationListener,
               }
             }
             return ret;
-
           }
 
           @Override
           public int getOrdinal() {
-
             return 407;
           }
 
           @Override
           public String getConfigName() {
             return config.getPid();
-
           }
         });
       }

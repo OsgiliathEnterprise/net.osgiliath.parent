@@ -1,0 +1,7 @@
+Import-Package: org.objectweb.asm,\
+ org.objectweb.asm.commons,\
+ org.objectweb.asm.signature,\
+ org.apache.xbean.osgi.bundle.util,\
+ org.osgi.framework,\
+ org.osgi.service.packageadmin,\
+ org.slf4j

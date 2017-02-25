@@ -151,9 +151,9 @@ public class CdiTxBridge implements TransactionServices {
   public UserTransaction getUserTransaction() {
     Collection<UserTransaction> tx = UserTransactionTracker.getInstance()
         .getUserTransactions();
-    if (!tx.isEmpty())
+    if (!tx.isEmpty()) {
       return tx.iterator().next();
-
+    }
     return null;
   }
 

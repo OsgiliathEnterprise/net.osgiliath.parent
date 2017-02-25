@@ -23,6 +23,7 @@ package itests.net.osgiliath.feature.itest.validation.cdi;
 import static org.junit.Assert.fail;
 import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.logLevel;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
@@ -38,6 +39,7 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.junit.PaxExam;
+import org.ops4j.pax.exam.karaf.options.LogLevelOption.LogLevel;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
@@ -69,7 +71,7 @@ public class ITjSRCDI303 extends AbstractPaxExamKarafConfiguration {
    * Exported service via blueprint.xml.
    */
   @Inject
-  @Filter(timeout = 40000)
+  @Filter(timeout = 400000)
   private transient IValidatorFactorySample consumer;
 
   /**
@@ -147,6 +149,13 @@ public class ITjSRCDI303 extends AbstractPaxExamKarafConfiguration {
   @Configuration
   public Option[] config() {
     return createConfig();
+  }
+  /**
+   * Default logging level.
+   * @return Log level options
+   */
+  protected Option loggingLevel() {
+    return logLevel(LogLevel.DEBUG);
   }
 
 }

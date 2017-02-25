@@ -76,6 +76,13 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
+			<artifactId>net.osgiliath.feature.hibernate-validator</artifactId>
+			<version>${project.version}</version>
+			<type>xml</type>
+			<classifier>features</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>net.osgiliath.feature.karaf-spring</artifactId>
 			<version>${project.version}</version>
 			<type>xml</type>

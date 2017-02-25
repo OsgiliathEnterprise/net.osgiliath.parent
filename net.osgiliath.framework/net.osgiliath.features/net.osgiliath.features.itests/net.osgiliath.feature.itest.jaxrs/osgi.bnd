@@ -1,7 +1,7 @@
 Import-Package:  !javax.transaction,\
  javax.transaction;version="[1.1,2)",\
  *
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)",\
+Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
  org.ops4j.pax.cdi.extension;filter:="(extension=pax-cdi-extension)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=cxf-integration-cdi)",\
  org.ops4j.pax.cdi.extension;filter:="(extension=validation)",\

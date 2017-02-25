@@ -6,7 +6,7 @@
         <bundle start-level="9">mvn:org.apache.geronimo.specs/geronimo-osgi-registry/${org.apache.geronimo.specs_geronimo-osgi-registry.version}</bundle>
         <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version}</bundle>
         <!-- <bundle start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>  -->
-        <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version}</bundle>
+        <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.2/${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.2.version}</bundle>
         <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxb-api-2.2/${org.apache.servicemix.specs_org.apache.servicemix.specs.jaxb-api-2.2.version}</bundle>
         <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/${org.apache.servicemix.specs_org.apache.servicemix.specs.jaxws-api-2.2.version}</bundle>
         <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/${org.apache.servicemix.specs_org.apache.servicemix.specs.saaj-api-1.3.version}</bundle>
@@ -54,17 +54,17 @@
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-rs-service-description/${org.apache.cxf_cxf-rt-rs-service-description.version}</bundle>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-frontend-jaxrs/${org.apache.cxf_cxf-rt-frontend-jaxrs.version}</bundle>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-rs-client/${org.apache.cxf_cxf-rt-rs-client.version}</bundle>
-    </feature>
-     <feature name="osgiliath-cxf-rs-description-swagger2" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
-        <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
-        <bundle start-level="10" dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
-        <bundle start-level="35" dependency="true">mvn:org.apache.commons/commons-lang3/${org.apache.commons_commons-lang3.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core_jackson-core.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.core_jackson-annotations.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.core_jackson-databind.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/${com.fasterxml.jackson.dataformat_jackson-dataformat-yaml.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${com.fasterxml.jackson.jaxrs_jackson-jaxrs-base.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${com.fasterxml.jackson.jaxrs_jackson-jaxrs-json-provider.version}</bundle>
+    </feature>
+     <feature name="osgiliath-cxf-rs-description-swagger2" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+        <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
+        <bundle start-level="10" dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
+        <bundle start-level="35" dependency="true">mvn:org.apache.commons/commons-lang3/${org.apache.commons_commons-lang3.version}</bundle>
         <bundle start-level="30" dependency="true">mvn:org.javassist/javassist/${org.javassist_javassist.version}</bundle>
         <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.reflections/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version}</bundle>
         <bundle start-level="25" dependency="true">mvn:com.google.guava/guava/${com.google.guava_guava.version}</bundle>
@@ -78,6 +78,11 @@
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-databinding-jaxb/${org.apache.cxf_cxf-rt-databinding-jaxb.version}</bundle>
     </feature>
     
+    
+     <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+        <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
+        <bundle start-level="40">mvn:org.apache.cxf/cxf-integration-cdi/${org.apache.cxf_cxf-integration-cdi.version}</bundle>
+    </feature>
     <!-- wrapped <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-integration-cdi/${org.apache.cxf_cxf-integration-cdi.version}</bundle>

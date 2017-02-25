@@ -48,8 +48,8 @@ import net.osgiliath.module.spring.data.jpa.DelegatingSimpleJpaRepository;
  * 
  * @author charliemordant
  */
-@OsgiServiceProvider(classes = { HelloRepository.class })
 @Singleton
+@OsgiServiceProvider(classes = { HelloRepository.class })
 @Transactional
 public class HelloJpaRepository extends DelegatingSimpleJpaRepository<HelloEntity, Long> implements HelloRepository {
 	/**

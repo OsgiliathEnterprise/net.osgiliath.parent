@@ -5,7 +5,6 @@
 	
 	<feature name="osgiliath-activemq-camel" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
         <feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq-client</feature>
-        <!-- <bundle>mvn:org.apache.activemq/activemq-camel/${org.apache.activemq_activemq-camel.version}</bundle> -->
         <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-jms</feature>
         <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel</feature>
     </feature>

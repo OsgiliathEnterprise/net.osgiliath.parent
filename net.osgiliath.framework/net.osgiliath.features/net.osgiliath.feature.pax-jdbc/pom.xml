@@ -137,5 +137,9 @@
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.service.jdbc</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.tranql</groupId>
+			<artifactId>tranql-connector</artifactId>
+		</dependency>
 	</dependencies>
 </project>

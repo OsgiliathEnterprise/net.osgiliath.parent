@@ -77,6 +77,11 @@
 			<artifactId>javax.websocket-api</artifactId>
 		</dependency>
 		<dependency>
+		<groupId>net.osgiliath.wrappers</groupId>
+		<artifactId>net.osgiliath.wrapper.xbean-finder</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jaspic_1.0_spec</artifactId>
 		</dependency>
@@ -102,10 +107,7 @@
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-bundleutils</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.xbean</groupId>
-			<artifactId>xbean-finder</artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-reflect</artifactId>

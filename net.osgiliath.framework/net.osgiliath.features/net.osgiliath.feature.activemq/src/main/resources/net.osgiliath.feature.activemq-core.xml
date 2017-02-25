@@ -7,7 +7,6 @@
 	<feature name="osgiliath-activemq-client" description="ActiveMQ client libraries" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
         <feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring</feature>
         <!-- <feature>spring-dm</feature> -->
-        <!-- <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle> -->
         <bundle dependency="true">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</bundle>
@@ -37,7 +36,7 @@
       <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.velocity/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version}</bundle>
       <bundle dependency="true" start-level="30">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
       <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jasypt.version}</bundle>      
-      <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.0.version}</bundle>
+      <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.2/${org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.2.version}</bundle>
       <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xpp3/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version}</bundle>
       <bundle dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
       <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version}</bundle>
