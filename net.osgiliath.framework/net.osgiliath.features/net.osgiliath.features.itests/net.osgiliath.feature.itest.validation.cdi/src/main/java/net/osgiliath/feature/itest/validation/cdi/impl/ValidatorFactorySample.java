@@ -27,15 +27,17 @@ import javax.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.feature.itest.validation.cdi.HelloObject;
 import net.osgiliath.feature.itest.validation.cdi.IValidatorFactorySample;
-
+import org.ops4j.pax.cdi.api.Component;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
+import org.ops4j.pax.cdi.api.Service;
 
 /**
  * Validation test.
  * @author charliemordant
  */
 @Default
-@OsgiServiceProvider
+@Component
+@Service
 @Slf4j
 public class ValidatorFactorySample implements IValidatorFactorySample {
   /**

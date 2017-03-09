@@ -38,7 +38,6 @@
         <feature prerequisite="false" dependency="false">osgiliath-aries-proxy</feature>
         <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.api/${org.apache.aries.blueprint_org.apache.aries.blueprint.api.version}</bundle>
         <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.cm/${org.apache.aries.blueprint_org.apache.aries.blueprint.cm.version}</bundle>
-        <!-- <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core.compatibility/${org.apache.aries.blueprint_org.apache.aries.blueprint.core.compatibility.version}</bundle>  -->
         <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${org.apache.aries.blueprint_org.apache.aries.blueprint.core.version}</bundle>
         <conditional>
             <condition>bundle</condition>
@@ -59,7 +58,7 @@
         <requirement>http-service</requirement>
     </feature>
     <feature name="osgiliath-pax-http-service" description="Pax-Web OSGi HTTP Service" version="${org.apache.karaf.features_standard.version}">
-        <feature>pax-http</feature>
+        <feature>osgiliath-pax-http</feature>
         <bundle start-level="30">mvn:org.apache.karaf.http/org.apache.karaf.http.core/${org.apache.karaf.http_org.apache.karaf.http.core.version}</bundle>
         <capability>http-service;provider:=pax-http</capability>
         <conditional>

@@ -6,7 +6,6 @@
         <feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
         <feature version="${org.apache.karaf.features_standard.version}" dependency="true">osgiliath-aries-blueprint</feature>
         <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}" dependency="true">osgiliath-pax-cdi-weld</feature>
-        <bundle dependency="true" start-level="30">mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/${org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version}</bundle>
         <feature version="${org.apache.deltaspike.core.version}">osgiliath-deltaspike-core</feature>
         <bundle>mvn:net.osgiliath.modules/net.osgiliath.module.cdi.eager/${project.version}</bundle>
         <requirement>

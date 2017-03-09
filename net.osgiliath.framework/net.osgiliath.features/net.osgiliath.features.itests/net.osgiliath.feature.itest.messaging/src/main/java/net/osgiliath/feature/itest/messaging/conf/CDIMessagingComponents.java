@@ -27,12 +27,12 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.camel.Component;
-
 import org.apache.camel.component.properties.DefaultPropertiesParser;
 import org.apache.camel.component.properties.PropertiesComponent;
 import org.apache.camel.component.properties.PropertiesParser;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
-import org.ops4j.pax.cdi.api.OsgiService;
+import org.ops4j.pax.cdi.api.Filter;
+import org.ops4j.pax.cdi.api.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +51,8 @@ public class CDIMessagingComponents {
    * OSGI service import.
    */
   @Inject
-  @OsgiService(filter = "(component-type=jms)", dynamic = true)
+  @Service
+  @Filter("(component-type=jms)")
   private transient Component jms;
 
   /**

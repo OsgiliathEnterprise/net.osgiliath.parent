@@ -1,8 +1,9 @@
 package net.osgiliath.feature.itest.cdi.configadmin.impl;
 
 import org.apache.deltaspike.core.api.config.ConfigResolver;
+import org.ops4j.pax.cdi.api.Component;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-
+import org.ops4j.pax.cdi.api.Service;
 import lombok.extern.slf4j.Slf4j;
 import net.osgiliath.feature.itest.cdi.configadmin.api.IPropertyConsumer;
 
@@ -30,7 +31,8 @@ import net.osgiliath.feature.itest.cdi.configadmin.api.IPropertyConsumer;
  * @author charliemordant
  *
  */
-@OsgiServiceProvider
+@Component
+@Service
 @Slf4j
 public class PropertyConsumer implements IPropertyConsumer {
 

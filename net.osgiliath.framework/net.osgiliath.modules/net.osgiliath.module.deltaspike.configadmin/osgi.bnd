@@ -1,3 +1,2 @@
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
 Fragment-Host: org.apache.deltaspike.core.deltaspike-core-api
 DynamicImport-Package: *

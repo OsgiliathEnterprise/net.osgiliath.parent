@@ -43,7 +43,9 @@ import org.apache.camel.cdi.ContextName;
 import org.apache.camel.cdi.Uri;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.spi.DataFormat;
+import org.ops4j.pax.cdi.api.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
+import org.ops4j.pax.cdi.api.Service;
 
 /**
  * JMS sample of Hello service exports.
@@ -60,7 +62,7 @@ public class HelloServiceJMS extends RouteBuilder implements HelloService {
    * The repository.
    */
   @Inject
-  @OsgiService
+  @Service
   private HelloRepository helloObjectRepository;
   /**
    * JMS producer.

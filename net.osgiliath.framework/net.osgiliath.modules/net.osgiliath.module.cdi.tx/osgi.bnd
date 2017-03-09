@@ -1,3 +1,2 @@
-DynamicImport-Package: *
-Require-Capability: osgi.extender;filter:="(osgi.extender=pax.cdi)"
 Fragment-Host: org.jboss.weld.osgi-bundle
+DynamicImport-Package: *

@@ -21,10 +21,10 @@ package net.osgiliath.feature.itest.cdi.impl;
  */
 
 import javax.inject.Inject;
-
+import org.ops4j.pax.cdi.api.Component;
 import org.ops4j.pax.cdi.api.OsgiService;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-
+import org.ops4j.pax.cdi.api.Service;
 import net.osgiliath.feature.itest.cdi.IConsumer;
 import net.osgiliath.feature.itest.cdi.IProvider;
 
@@ -32,13 +32,14 @@ import net.osgiliath.feature.itest.cdi.IProvider;
  * Consumes provider's message.
  * @author charliemordant Consumer of injected bean
  */
-@OsgiServiceProvider(classes = { IConsumer.class })
+@Component
+@Service
 public class Consumer implements IConsumer {
   /**
    * Injected CDI provider.
    */
   @Inject
-  @OsgiService(timeout = 2000, dynamic = true)
+  @Service
   private transient IProvider provider;
 
   /**

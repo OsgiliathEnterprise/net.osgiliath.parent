@@ -116,7 +116,7 @@ String s = this.consumer.getInjectedProperty();
 
 	static {
 		// uncomment to enable debugging of this test class
-		// paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
+	 //paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
 	}
 

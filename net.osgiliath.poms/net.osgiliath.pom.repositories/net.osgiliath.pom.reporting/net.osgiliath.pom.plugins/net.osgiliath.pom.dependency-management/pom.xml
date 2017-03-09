@@ -1812,6 +1812,11 @@
 				<version>${org.ops4j.pax.web_pax-web-deployer.version}</version>
 			</dependency>
 			<dependency>
+			<groupId>org.ops4j.pax.web</groupId>
+			<artifactId>pax-web-descriptor</artifactId>
+			<version>${org.ops4j.pax.web_pax-web-descriptor.version}</version>
+		</dependency>
+			<dependency>
 				<groupId>org.ops4j.pax.web</groupId>
 				<artifactId>pax-web-extender-war</artifactId>
 				<version>${org.ops4j.pax.web_pax-web-extender-war.version}</version>
@@ -2208,8 +2213,8 @@
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.2.version>${xml-specs-api.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.2.version>
 		<org.apache.xbean.version>4.1</org.apache.xbean.version>
 		<org.apache.xbean_xbean-blueprint.version>3.18</org.apache.xbean_xbean-blueprint.version>
-		<org.apache.xbean_xbean-bundleutils.version>4.5</org.apache.xbean_xbean-bundleutils.version>
-		<org.apache.xbean_xbean-finder.version>4.5</org.apache.xbean_xbean-finder.version>
+		<org.apache.xbean_xbean-bundleutils.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-bundleutils.version>
+		<org.apache.xbean_xbean-finder.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-finder.version>
 		<org.apache.xbean_xbean-naming.version>3.18</org.apache.xbean_xbean-naming.version>
 		<org.apache.xbean_xbean-spring.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-spring.version>
 		<org.apache.xbean_xbean-reflect.version>${org.apache.xbean.version}</org.apache.xbean_xbean-reflect.version>
@@ -2255,7 +2260,7 @@
 		<org.glassfish_javax.json.version>1.0.4</org.glassfish_javax.json.version>
 		<org.glassfish_javax.el.version>3.0.0</org.glassfish_javax.el.version>
 		<org.hibernate.validator_hibernate-validator-osgi-karaf-features.version>${org.hibernate_hibernate-validator.version}</org.hibernate.validator_hibernate-validator-osgi-karaf-features.version>
-		<org.hibernate_hibernate-validator.version>5.2.4.Final</org.hibernate_hibernate-validator.version><!-- 6.0.0.Alpha1 -->
+		<org.hibernate_hibernate-validator.version>5.3.4.Final</org.hibernate_hibernate-validator.version><!-- 6.0.0.Alpha1 -->
 		<org.hibernate_hibernate-validator-cdi.version>${org.hibernate_hibernate-validator.version}</org.hibernate_hibernate-validator-cdi.version>
 		<!-- <org.hibernate_hibernate-core.version>${org.hibernate.version}</org.hibernate_hibernate-core.version> <org.hibernate_hibernate-entitymanager.version>${org.hibernate.version}</org.hibernate_hibernate-entitymanager.version> <org.hibernate_hibernate-osgi.version>${org.hibernate.version}</org.hibernate_hibernate-osgi.version> 
 			<org.hibernate.common_hibernate-commons-annotations.version>4.0.4.Final</org.hibernate.common_hibernate-commons-annotations.version> -->
@@ -2310,6 +2315,7 @@
 		<org.ops4j.pax.url_pax-url-war.version>${org.ops4j.pax.url.version}</org.ops4j.pax.url_pax-url-war.version>
 		<org.ops4j.pax.web_pax-web-api.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-api.version>
 		<org.ops4j.pax.web_pax-web-deployer.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-deployer.version>
+		<org.ops4j.pax.web_pax-web-descriptor.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-descriptor.version>
 		<org.ops4j.pax.web_pax-web-extender-war.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-extender-war.version>
 		<org.ops4j.pax.web_pax-web-extender-whiteboard.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-extender-whiteboard.version>
 		<org.ops4j.pax.web_pax-web-features.version>${org.ops4j.pax.web.version}</org.ops4j.pax.web_pax-web-features.version>

@@ -22,7 +22,6 @@ package net.osgiliath.feature.itest.persistence.daos.impl;
 
 import java.util.Collection;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -35,13 +34,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
-
-import org.ops4j.pax.cdi.api.OsgiServiceProvider;
-
 import net.osgiliath.feature.itest.persistence.daos.HelloRepository;
 import net.osgiliath.feature.itest.persistence.entities.HelloEntity;
 import net.osgiliath.feature.itest.persistence.entities.HelloEntity_;
 import net.osgiliath.module.spring.data.jpa.DelegatingSimpleJpaRepository;
+import org.ops4j.pax.cdi.api.Component;
+import org.ops4j.pax.cdi.api.Service;
 
 /**
  * Spring data jpa repository declaration.
@@ -49,7 +47,8 @@ import net.osgiliath.module.spring.data.jpa.DelegatingSimpleJpaRepository;
  * @author charliemordant
  */
 @Singleton
-@OsgiServiceProvider(classes = { HelloRepository.class })
+@Component
+@Service
 @Transactional
 public class HelloJpaRepository extends DelegatingSimpleJpaRepository<HelloEntity, Long> implements HelloRepository {
 	/**

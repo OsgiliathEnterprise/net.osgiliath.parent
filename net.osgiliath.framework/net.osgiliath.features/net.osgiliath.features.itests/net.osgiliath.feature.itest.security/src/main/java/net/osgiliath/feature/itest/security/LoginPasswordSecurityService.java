@@ -23,8 +23,9 @@ package net.osgiliath.feature.itest.security;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
-
+import org.ops4j.pax.cdi.api.Component;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
+import org.ops4j.pax.cdi.api.Service;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.SaltSource;
@@ -40,7 +41,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * 
  */
 @Slf4j
-@OsgiServiceProvider(classes = { SecurityService.class })
+@Component
+@Service
 public class LoginPasswordSecurityService implements SecurityService {
 	/**
 	 * The {@link AuthenticationManager}.

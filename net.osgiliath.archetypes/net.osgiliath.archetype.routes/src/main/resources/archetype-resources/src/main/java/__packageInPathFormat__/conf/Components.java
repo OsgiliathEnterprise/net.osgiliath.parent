@@ -41,7 +41,8 @@ import org.apache.camel.component.properties.PropertiesParser;
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
 import org.apache.camel.spi.DataFormat;
 import org.apache.deltaspike.core.api.config.ConfigResolver;
-import org.ops4j.pax.cdi.api.OsgiService;
+import org.ops4j.pax.cdi.api.Filter;
+import org.ops4j.pax.cdi.api.Service;
 /**
  * CDI injected camel components.
  * @author charliemordant
@@ -54,14 +55,16 @@ public class Components {
      * JMS component.
      */
 	@Inject
-	@OsgiService(filter = "(component-type=jms)", dynamic = true)
+	 @Service
+	  @Filter("(component-type=jms)")
 	private transient Component jms;
     /**
      * JMS transacted component.
      */
 	
 	@Inject
-	@OsgiService(filter = "(component-type=jmsXA)", dynamic = true)
+	 @Service
+	  @Filter("(component-type=jmsXA)")
 	private transient Component jmsXA;
     /**
      * Validation exception transformer component.

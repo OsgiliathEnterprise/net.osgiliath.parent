@@ -16,10 +16,10 @@
     <feature name="osgiliath-pax-jdbc" description="Provides JDBC Service support" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}" resolver="(obr)">
         <feature>osgiliath-pax-jdbc-spec</feature>
         <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-spi/${org.ops4j.base_ops4j-base-spi.version}</bundle>
-        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-lang/${org.ops4j.base_ops4j-base-lang.version}</bundle>
+        <!-- <bundle dependency="true">mvn:org.ops4j.base/ops4j-base-lang/${org.ops4j.base_ops4j-base-lang.version}</bundle>
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/${org.ops4j.pax.swissbox_pax-swissbox-core.version}</bundle>
         <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/${org.ops4j.pax.swissbox_pax-swissbox-lifecycle.version}</bundle>
-        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/${org.ops4j.pax.swissbox_pax-swissbox-extender.version}</bundle>  -->
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc/${org.ops4j.pax.jdbc_pax-jdbc.version}</bundle>
     </feature>
 
@@ -32,7 +32,7 @@
     </feature>
     
      <feature name="osgiliath-pax-jdbc-pool-aries" description="Provides JDBC Pooling DataSourceFactory using Aries Transaction JDBC" version="${org.ops4j.pax.jdbc_pax-jdbc-features.version}" resolver="(obr)">
-        <feature>osgiliath-pax-jdbc-spec</feature>
+        <feature>osgiliath-pax-jdbc</feature>
         <bundle>mvn:org.tranql/tranql-connector/${org.tranql_tranql-connector.version}</bundle>
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-common/${org.ops4j.pax.jdbc_pax-jdbc-pool-common.version}</bundle>
         <bundle>mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-aries/${org.ops4j.pax.jdbc_pax-jdbc-pool-aries.version}</bundle>
