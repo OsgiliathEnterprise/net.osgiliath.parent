@@ -40,18 +40,14 @@
             <!-- mandatory due to restart of tx-jdbc and jndi linking. please try to remove dep to aries-bp spring-orm, jpa stuff and spring-tx at each release-->
             <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
             <feature version="${org.apache.servicemix.bundles.spring.version}" dependency="true">osgiliath-spring-tx</feature>
-            <feature version="${org.apache.servicemix.bundles.spring.version}" dependency="true">osgiliath-spring-orm</feature>
-            <feature version="${org.apache.aries.jpa.version}" dependency="true">osgiliath-jpa</feature>
-            <feature version="${org.apache.aries.jpa.version}" dependency="true">osgiliath-openjpa</feature>
-
-      <!--     pax-jdbc also wraps datasourcefactory  <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.jdbc/${org.apache.aries.transaction_org.apache.aries.transaction.jdbc.version}</bundle>  -->
+               pax-jdbc also wraps datasourcefactory  <bundle dependency="true">mvn:org.apache.aries.transaction/org.apache.aries.transaction.jdbc/${org.apache.aries.transaction_org.apache.aries.transaction.jdbc.version}</bundle>  -->
         </conditional>
          <capability>
             transaction-manager;provider:=geronimo
         </capability>   
     </feature>
     
-    <feature name="osgiliath-connector" version="${org.apache.geronimo.components_geronimo-connector.version}" description="OSGi Support for JCA Connector 1.6" resolver="(obr)">
+    <feature name="osgiliath-connector" version="${org.apache.geronimo.components_geronimo-connector.version}" description="OSGi Support for JCA Connector 1.6">
         <details>OSGi support for JCA Connector 1.6</details>
         <feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.6_spec/${org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version}</bundle>

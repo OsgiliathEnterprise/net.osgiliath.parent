@@ -54,89 +54,92 @@ import net.osgiliath.module.exam.AbstractPaxExamKarafConfiguration;
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class ITPropertyInjection extends AbstractPaxExamKarafConfiguration {
-	private static final Logger LOG = LoggerFactory.getLogger(ITPropertyInjection.class);
-	/**
-	 * OSGI exported deltaspike consumer.
-	 */
-	@Inject
-	@Filter(timeout = 40000)
-	private transient IPropertyConsumer consumer;
+  private static final Logger LOG = LoggerFactory
+      .getLogger(ITPropertyInjection.class);
+  /**
+   * OSGI exported deltaspike consumer.
+   */
+  @Inject
+  @Filter(timeout = 400000)
+  private transient IPropertyConsumer consumer;
 
-	/**
-	 * probe adding the abstract test class.
-	 * 
-	 * @param builder
-	 *            the pax probe builder
-	 * @return the provisionned probe.
-	 */
-	@ProbeBuilder
-	public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
-		builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
-		builder.addTest(AbstractPaxExamKarafConfiguration.class);
-		builder.setHeader(Constants.EXPORT_PACKAGE,
-				"itests.net.osgiliath.feature.itest.cdi.configadmin");
-		builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
-		return builder;
-	}
+  /**
+   * probe adding the abstract test class.
+   * 
+   * @param builder
+   *          the pax probe builder
+   * @return the provisionned probe.
+   */
+  @ProbeBuilder
+  public TestProbeBuilder extendProbe(TestProbeBuilder builder) {
+    builder.setHeader(Constants.BUNDLE_MANIFESTVERSION, "2");
+    builder.addTest(AbstractPaxExamKarafConfiguration.class);
+    builder.setHeader(Constants.EXPORT_PACKAGE,
+        "itests.net.osgiliath.feature.itest.cdi.configadmin");
+    builder.setHeader(Constants.DYNAMICIMPORT_PACKAGE, "*");
+    return builder;
+  }
 
-	/**
-	 * Test an injected property.
-	 */
-	@Test
-	public void testSayHello() {
-//		String s = null;
-//		int cpt = 0;
-//		while (s == null && cpt < 15) {
-//			s = this.consumer.getInjectedProperty();
-//			if (null == s) {
-//				try {// fucking async configadmin
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e) {
-//					LOG.error("error waiting config update", e);
-//				}
-//			}
-//			cpt += 1;
-//		}
-String s = this.consumer.getInjectedProperty();
-		LOG.info("consumer should be injected");
-		assertEquals("hello", s);
-	}
+  /**
+   * Test an injected property.
+   */
+  @Test
+  public void testSayHello() {
+    // String s = null;
+    // int cpt = 0;
+    // while (s == null && cpt < 15) {
+    // s = this.consumer.getInjectedProperty();
+    // if (null == s) {
+    // try {// fucking async configadmin
+    // Thread.sleep(1000);
+    // } catch (InterruptedException e) {
+    // LOG.error("error waiting config update", e);
+    // }
+    // }
+    // cpt += 1;
+    // }
+    String s = this.consumer.getInjectedProperty();
+    LOG.info("consumer should be injected");
+    assertEquals("hello", s);
+  }
 
-	/**
-	 * Karaf feature to test.
-	 * 
-	 * @return the feature
-	 */
-	@Override
-	protected Option featureToTest() {
-		return features(maven().artifactId("net.osgiliath.feature.itest.feature")
-				.groupId(System.getProperty(MODULE_GROUP_ID)).type("xml").classifier("features").versionAsInProject(),
-				"osgiliath-itests-cdi-configadmin");
-	}
+  /**
+   * Karaf feature to test.
+   * 
+   * @return the feature
+   */
+  @Override
+  protected Option featureToTest() {
+    return features(
+        maven().artifactId("net.osgiliath.feature.itest.feature")
+            .groupId(System.getProperty(MODULE_GROUP_ID)).type("xml")
+            .classifier("features").versionAsInProject(),
+        "osgiliath-itests-cdi-configadmin");
+  }
 
-	static {
-		// uncomment to enable debugging of this test class
-	 //paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
+  static {
+    // uncomment to enable debugging of this test class
+    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
-	}
+  }
 
-	/**
-	 * Pax exam configuration creation.
-	 * 
-	 * @return the provisionned configuration
-	 */
-	@Configuration
-	public Option[] config() {
-		return createConfig();
-	}
+  /**
+   * Pax exam configuration creation.
+   * 
+   * @return the provisionned configuration
+   */
+  @Configuration
+  public Option[] config() {
+    return createConfig();
+  }
 
-	/**
-	 * Default logging level.
-	 * 
-	 * @return Log level options
-	 */
-	protected Option loggingLevel() {
-		return logLevel(LogLevel.TRACE);
-	}
+  /**
+   * Default logging level.
+   * 
+   * @return Log level options
+   */
+  protected Option loggingLevel() {
+    return logLevel(LogLevel.TRACE);
+  }
 
 }

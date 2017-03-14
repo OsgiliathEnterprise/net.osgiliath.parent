@@ -32,7 +32,6 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-
 import net.osgiliath.feature.itest.jaxrs.model.HelloObject;
 import net.osgiliath.feature.itest.jaxrs.model.Hellos;
 import net.osgiliath.module.exam.AbstractPaxExamKarafConfiguration;
@@ -143,7 +142,7 @@ public class ITCxfCdi extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
+     //paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
 

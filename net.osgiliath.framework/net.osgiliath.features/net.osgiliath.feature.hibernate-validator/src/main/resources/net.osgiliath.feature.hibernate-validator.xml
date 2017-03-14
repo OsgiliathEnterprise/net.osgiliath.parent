@@ -7,7 +7,7 @@
         <bundle dependency="true">mvn:joda-time/joda-time/${joda-time_joda-time.version}</bundle>
 		<bundle>mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
         <bundle dependency="true">mvn:org.jboss.logging/jboss-logging/${org.jboss.logging_jboss-logging.version}</bundle>
-        <bundle>mvn:org.hibernate/hibernate-validator/${org.hibernate_hibernate-validator.version}</bundle>
+        <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.hibernate.validator/${project.version}</bundle>
 		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jsoup/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jsoup.version}</bundle>
 		<bundle>mvn:javax.money/money-api/${javax.money_money-api.version}</bundle>
         <bundle>mvn:org.javamoney/moneta/${org.javamoney_moneta.version}</bundle>

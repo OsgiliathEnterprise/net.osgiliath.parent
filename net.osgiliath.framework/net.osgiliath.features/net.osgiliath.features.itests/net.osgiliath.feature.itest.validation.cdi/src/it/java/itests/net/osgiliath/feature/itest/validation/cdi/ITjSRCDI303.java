@@ -71,7 +71,7 @@ public class ITjSRCDI303 extends AbstractPaxExamKarafConfiguration {
    * Exported service via blueprint.xml.
    */
   @Inject
-  @Filter(timeout = 400000)
+  @Filter(timeout = 4000000)
   private transient IValidatorFactorySample consumer;
 
   /**
@@ -137,7 +137,7 @@ public class ITjSRCDI303 extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-    // paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
+     paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
 

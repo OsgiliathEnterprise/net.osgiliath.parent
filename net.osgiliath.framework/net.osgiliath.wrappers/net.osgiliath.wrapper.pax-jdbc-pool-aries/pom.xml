@@ -5,9 +5,9 @@
 		<artifactId>net.osgiliath.wrappers</artifactId>
 		<version>0.3.8-SNAPSHOT</version>
 	</parent>
-	<artifactId>net.osgiliath.wrapper.spring-batch-core</artifactId>
-	<name>spring-batch-core wrapper</name>
-	<description>Spring4 support for spring-batch-core</description>
+	<artifactId>net.osgiliath.wrapper.pax-jdbc-pool-aries</artifactId>
+	<name>Pax-jdbc-pool-aries wrapper</name>
+	<description>Aries jdbc pool wrapper</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -37,8 +37,8 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.springframework.batch</groupId>
-									<artifactId>spring-batch-core</artifactId>
+									<groupId>org.ops4j.pax.jdbc</groupId>
+									<artifactId>pax-jdbc-pool-aries</artifactId>
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/classes</outputDirectory>
 								</artifactItem>
@@ -54,8 +54,8 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.springframework.batch</groupId>
-									<artifactId>spring-batch-core</artifactId>
+									<groupId>org.ops4j.pax.jdbc</groupId>
+									<artifactId>pax-jdbc-pool-aries</artifactId>
 									<includes>META-INF/MANIFEST.MF</includes>
 									<overWrite>true</overWrite><!-- TODO set to true -->
 									<outputDirectory>${project.build.resources[0].directory}/</outputDirectory>
@@ -70,9 +70,10 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
-						<Embed-Dependency>spring-batch-core</Embed-Dependency>
+						<Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
+						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
 						<_include>-osgi.bnd</_include>
-						<Bundle-Version>${org.springframework.batch_spring-batch-core.version}</Bundle-Version>
+						<Bundle-Version>${org.ops4j.pax.jdbc_pax-jdbc-pool-aries.version}</Bundle-Version>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -80,16 +81,9 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
+			<groupId>org.ops4j.pax.jdbc</groupId>
+			<artifactId>pax-jdbc-pool-aries</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.xstream</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.batch</groupId>
-			<artifactId>spring-batch-core</artifactId>
-		</dependency>
+
 	</dependencies>
 </project>

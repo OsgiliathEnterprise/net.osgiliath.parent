@@ -5,7 +5,7 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.validation/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.cdi/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.pax-cdi/${project.version}/xml/features</repository>
-	<feature name="osgiliath-rest" version="${project.version}" resolver="(obr)" start-level="50" description="RESTful web services support">
+	<feature name="osgiliath-rest" version="${project.version}" start-level="50" description="RESTful web services support">
 		<feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
 		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
 		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxb</feature>
@@ -22,18 +22,18 @@
             <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-commands</feature>
         </conditional>
 	</feature>
-	<feature name="osgiliath-rest-cdi" version="${project.version}" resolver="(obr)" start-level="50" description="RESTful web services support via annotations">
+	<feature name="osgiliath-rest-cdi" version="${project.version}" start-level="50" description="RESTful web services support via annotations">
 		<feature version="${project.version}">osgiliath-cdi</feature>
 		<feature version="${project.version}">osgiliath-rest</feature>
 		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs-cdi</feature>
 		<feature version="${project.version}">osgiliath-validation-cdi</feature>
 	</feature>
-	<feature name="osgiliath-rest-cdi-web" version="${project.version}" resolver="(obr)" start-level="50" description="RESTful web services support via annotations">
+	<feature name="osgiliath-rest-cdi-web" version="${project.version}" start-level="50" description="RESTful web services support via annotations">
 		<feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi-web-weld</feature>
 		<feature version="${project.version}">osgiliath-rest-cdi</feature>
 	</feature>
 	
-	<feature name="osgiliath-rest-management" version="${project.version}" resolver="(obr)" start-level="50" description="Swagger support for REST webservices">
+	<feature name="osgiliath-rest-management" version="${project.version}" start-level="50" description="Swagger support for REST webservices">
 		<feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-rs-description-swagger2</feature>
 		<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.swagger-ui/${project.version}</bundle>
 	</feature>

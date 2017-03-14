@@ -5,7 +5,7 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.webservices/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.camel/${project.version}/xml/features</repository>
 	
-	<feature name="osgiliath-messaging-cdi" version="${project.version}" resolver="(obr)" description="Messaging CDI way (requires Camel)">
+	<feature name="osgiliath-messaging-cdi" version="${project.version}" description="Messaging CDI way (requires Camel)">
 		<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.camel.activemq/${project.version}</bundle>
 		<feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-blueprint</feature>
 		<feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-websocket</feature>
@@ -17,7 +17,7 @@
 		<feature version="${project.version}">osgiliath-cdi</feature>
 	</feature>
 	
-	<feature name="osgiliath-routes-webservices" version="${project.version}" resolver="(obr)" start-level="60" description="REST client with camel">
+	<feature name="osgiliath-routes-webservices" version="${project.version}" start-level="60" description="REST client with camel">
 		<feature version="${project.version}">osgiliath-rest</feature>
 		<feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-blueprint</feature>
 		<feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-http</feature>

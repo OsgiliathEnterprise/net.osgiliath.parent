@@ -2260,7 +2260,7 @@
 		<org.glassfish_javax.json.version>1.0.4</org.glassfish_javax.json.version>
 		<org.glassfish_javax.el.version>3.0.0</org.glassfish_javax.el.version>
 		<org.hibernate.validator_hibernate-validator-osgi-karaf-features.version>${org.hibernate_hibernate-validator.version}</org.hibernate.validator_hibernate-validator-osgi-karaf-features.version>
-		<org.hibernate_hibernate-validator.version>5.3.4.Final</org.hibernate_hibernate-validator.version><!-- 6.0.0.Alpha1 -->
+		<org.hibernate_hibernate-validator.version>5.2.4.Final</org.hibernate_hibernate-validator.version><!-- 6.0.0.Alpha1 -->
 		<org.hibernate_hibernate-validator-cdi.version>${org.hibernate_hibernate-validator.version}</org.hibernate_hibernate-validator-cdi.version>
 		<!-- <org.hibernate_hibernate-core.version>${org.hibernate.version}</org.hibernate_hibernate-core.version> <org.hibernate_hibernate-entitymanager.version>${org.hibernate.version}</org.hibernate_hibernate-entitymanager.version> <org.hibernate_hibernate-osgi.version>${org.hibernate.version}</org.hibernate_hibernate-osgi.version> 
 			<org.hibernate.common_hibernate-commons-annotations.version>4.0.4.Final</org.hibernate.common_hibernate-commons-annotations.version> -->
@@ -2359,7 +2359,7 @@
 		<org.liquibase.version>3.2.2</org.liquibase.version>
 		<org.ops4j.base.version>1.5.0</org.ops4j.base.version>
 		<org.ops4j.pax.cdi.version>1.0.0.RC2</org.ops4j.pax.cdi.version>
-		<org.ops4j.pax.jdbc.version>1.1.0-SNAPSHOT</org.ops4j.pax.jdbc.version>
+		<org.ops4j.pax.jdbc.version>1.0.1</org.ops4j.pax.jdbc.version>
 		<org.ops4j.pax.logging.version>1.9.1</org.ops4j.pax.logging.version>
 		<org.ops4j.pax.swissbox.version>1.8.2</org.ops4j.pax.swissbox.version>
 		<org.ops4j.pax.url.version>2.5.2</org.ops4j.pax.url.version>

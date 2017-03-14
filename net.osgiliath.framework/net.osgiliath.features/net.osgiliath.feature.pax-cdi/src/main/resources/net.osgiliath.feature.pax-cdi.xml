@@ -4,7 +4,7 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	<!-- <repository>mvn:${project.groupId}/net.osgiliath.feature.pax-base/${project.version}/xml/features</repository>  -->
 	
-	<feature name="osgiliath-pax-cdi" description="Provide CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}">
+	<feature name="osgiliath-pax-cdi" description="Provide CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}" start-level="50">
         <feature>osgiliath-scr</feature>
         <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
@@ -21,7 +21,7 @@
     
    
     
-	<feature name="osgiliath-pax-cdi-weld" description="Weld CDI 1.2 support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}">
+	<feature name="osgiliath-pax-cdi-weld" description="Weld CDI 1.2 support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}" start-level="50">
         <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
         <bundle dependency="true">mvn:org.jboss.weld/weld-osgi-bundle/${org.jboss.weld_weld-osgi-bundle.version}</bundle>
         <bundle>mvn:org.jboss.logging/jboss-logging/${org.jboss.logging_jboss-logging.version}</bundle>
@@ -33,8 +33,8 @@
         </capability>
         <conditional>
             <condition>osgiliath-transaction</condition>
-            <condition>osgiliath-aries-blueprint</condition>
-        	<bundle>mvn:net.osgiliath.modules/net.osgiliath.module.cdi.tx/${project.version}</bundle>
+            <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
+           <bundle>mvn:net.osgiliath.modules/net.osgiliath.module.cdi.tx/${project.version}</bundle>
         </conditional>
         <conditional>
             <condition>osgiliath-pax-cdi-web</condition>
@@ -43,7 +43,7 @@
         </conditional>
     </feature>
 	
-	<feature name="osgiliath-pax-cdi-web" description="Web CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}">
+	<feature name="osgiliath-pax-cdi-web" description="Web CDI support" version="${org.ops4j.pax.cdi_pax-cdi-features.version}" start-level="50">
         <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}">osgiliath-pax-cdi</feature>
         <feature prerequisite="true">osgiliath-war</feature>
         <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
@@ -53,11 +53,12 @@
 	
     
 	<feature name="osgiliath-deltaspike-core" description="Apache Deltaspike core support"
-		version="${org.apache.deltaspike.core.version}">
-		<bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.core_deltaspike-core-api.version}</bundle>
+		version="${org.apache.deltaspike.core.version}" start-level="50">
+		<feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}" dependency="true">osgiliath-pax-cdi-weld</feature>
+        <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.core_deltaspike-core-api.version}</bundle>
         <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-impl/${org.apache.deltaspike.core_deltaspike-core-impl.version}</bundle>
-        <feature version="${org.ops4j.pax.cdi_pax-cdi-features.version}" dependency="true">osgiliath-pax-cdi-weld</feature>
-        <bundle dependency="true" start-level="30">mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/${org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/${org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version}</bundle>
+        <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
         <bundle>mvn:net.osgiliath.modules/net.osgiliath.module.deltaspike.configadmin/${project.version}</bundle>
         <requirement>
             pax.cdi.provider

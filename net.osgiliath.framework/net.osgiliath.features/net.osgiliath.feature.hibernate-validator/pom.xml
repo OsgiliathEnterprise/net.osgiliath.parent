@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.osgiliath.features</groupId>
-    <artifactId>net.osgiliath.features</artifactId>
-    <version>0.3.8-SNAPSHOT</version>
-  </parent>
-  <artifactId>net.osgiliath.feature.hibernate-validator</artifactId>
-  <name>Karaf Hibernate validator</name>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.osgiliath.features</groupId>
+		<artifactId>net.osgiliath.features</artifactId>
+		<version>0.3.8-SNAPSHOT</version>
+	</parent>
+	<artifactId>net.osgiliath.feature.hibernate-validator</artifactId>
+	<name>Karaf Hibernate validator</name>
 	<description>Hibernate validator wrapped Osgiliath feature</description>
 	<build>
 		<resources>
@@ -47,13 +47,24 @@
 			</plugin>
 		</plugins>
 	</build>
-  <dependencies><!-- 
-  <dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator-osgi-karaf-features</artifactId>
-			
-			<type>xml</type>
-			<classifier>features</classifier>
-			</dependency>-->
-  </dependencies> 
+	<dependencies>
+		<dependency>
+			<groupId>com.thoughtworks.paranamer</groupId>
+			<artifactId>paranamer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.money</groupId>
+			<artifactId>money-api</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>net.osgiliath.wrappers</groupId>
+		<artifactId>net.osgiliath.wrapper.hibernate.validator</artifactId>
+		<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javamoney</groupId>
+			<artifactId>moneta</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>org.hibernate.validator</groupId> <artifactId>hibernate-validator-osgi-karaf-features</artifactId> <type>xml</type> <classifier>features</classifier> </dependency> -->
+	</dependencies>
 </project>

@@ -102,10 +102,5 @@
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.compendium</artifactId>
 		</dependency>
-		<dependency>
-    <groupId>org.tranql</groupId>
-    <artifactId>tranql-connector</artifactId>
-    <version>${org.tranql_tranql-connector.version}</version>
-</dependency>
 	</dependencies>
 </project>

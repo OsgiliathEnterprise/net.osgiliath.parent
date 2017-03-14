@@ -39,7 +39,6 @@ public class Consumer implements IConsumer {
    * Injected CDI provider.
    */
   @Inject
-  @Service
   private transient IProvider provider;
 
   /**

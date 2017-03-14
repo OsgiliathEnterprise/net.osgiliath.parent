@@ -22,6 +22,7 @@ package net.osgiliath.sample.webapp.model.daos.impl;
 
 import java.util.Collection;
 import javax.annotation.PostConstruct;
+import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,7 +46,7 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
  * @author charliemordant
  */
 @OsgiServiceProvider(classes = { HelloRepository.class })
-@Singleton
+@Named
 @Transactional
 public class HelloJpaRepository extends DelegatingSimpleJpaRepository<HelloEntity, Long> implements HelloRepository {
 	/**

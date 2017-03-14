@@ -22,6 +22,7 @@
 <beans xmlns="http://java.sun.com/xml/ns/javaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-                           http://xmlns.jcp.org/xml/ns/javaee/beans_1_0.xsd">
+                           http://xmlns.jcp.org/xml/ns/javaee/beans_1_0.xsd" >
+              
        
 </beans>

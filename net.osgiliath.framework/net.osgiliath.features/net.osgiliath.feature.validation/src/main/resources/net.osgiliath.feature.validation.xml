@@ -6,12 +6,12 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.hibernate-validator/${project.version}/xml/features</repository>
 	<feature name='osgiliath-validation-common' version='${project.version}' start-level="50" description="Validation common libraries (JSR303)">
 		<bundle>mvn:com.google.guava/guava/${com.google.guava_guava.version}</bundle>
-		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
-		<feature version="${org.hibernate.validator_hibernate-validator-osgi-karaf-features.version}">osgiliath-hibernate-validator</feature>
 		<bundle >mvn:net.osgiliath.modules/net.osgiliath.module.validation.osgi.services/${project.version}</bundle>
+		<feature version="${org.apache.geronimo.components_geronimo-connector.version}">osgiliath-connector</feature>
 		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.cglib/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version}</bundle>
 		<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
 		<bundle >mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version}</bundle>
+		<feature version="${org.hibernate.validator_hibernate-validator-osgi-karaf-features.version}">osgiliath-hibernate-validator</feature>
 	</feature>
 	
 	<feature name='osgiliath-validation-spring' version='${project.version}' start-level="50" description="Validation with Spring">
@@ -22,6 +22,6 @@
 		<feature version="${project.version}">osgiliath-cdi</feature>
 		<feature version="${project.version}">osgiliath-validation-common</feature>
 		<feature version="${org.hibernate.validator_hibernate-validator-osgi-karaf-features.version}">osgiliath-hibernate-validator-paranamer</feature>
-		<bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.hibernate.validator.cdi/${project.version}</bundle>
+		<!-- <bundle>mvn:net.osgiliath.wrappers/net.osgiliath.wrapper.hibernate.validator.cdi/${project.version}</bundle>  -->
 	</feature>
 </features>

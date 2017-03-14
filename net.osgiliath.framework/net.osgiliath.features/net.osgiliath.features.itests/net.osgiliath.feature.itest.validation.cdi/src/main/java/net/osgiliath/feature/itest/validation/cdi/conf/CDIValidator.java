@@ -1,5 +1,7 @@
 package net.osgiliath.feature.itest.validation.cdi.conf;
 
+import javax.enterprise.context.ApplicationScoped;
+
 /*
  * #%L
  * net.osgiliath.features.karaf-features.itests.validation
@@ -23,13 +25,14 @@ package net.osgiliath.feature.itest.validation.cdi.conf;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.validation.Validator;
-
+import net.osgiliath.module.cdi.eager.Eager;
 import net.osgiliath.validator.osgi.ValidatorHelper;
 
 /**
  * CDI bootstrap configuration class.
  * @author charliemordant
  */
+@Eager
 public class CDIValidator {
   /**
    * cdi injected validator.
