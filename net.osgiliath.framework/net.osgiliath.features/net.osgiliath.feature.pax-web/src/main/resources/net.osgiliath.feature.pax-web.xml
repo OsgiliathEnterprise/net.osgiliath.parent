@@ -52,7 +52,9 @@
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
         <!-- <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle> -->
         <capability>
-            pax.http.provider;provider:=jetty
+            pax.http.provider;provider:=jetty,
+            osgi.contract;osgi.contract=JavaServlet;version:Version="3.1.0";uses:="javax.servlet,javax.servlet.http,javax.servlet.descriptor,javax.servlet.annotation",
+            osgi.contract;osgi.contract=JavaWebSockets;version:Version="1";uses:="javax.websocket, javax.websocket.server"
         </capability>
     </feature>
 		
@@ -87,9 +89,14 @@
         <feature version="${org.ops4j.pax.web_pax-web-features.version}">osgiliath-pax-http</feature>
         <bundle start-level="30" dependency="true">mvn:org.eclipse.jdt.core.compiler/ecj/${org.eclipse.jdt.core.compiler_ecj.version}</bundle>
         <bundle start-level="30" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ant/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version}</bundle>
-        <bundle start-level="30" dependency="true">mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
+        <bundle start-level="30" dependency="true">mvn:org.glassfish.web/javax.el/${org.glassfish.web_javax.el.version}</bundle>
         <bundle start-level="30">mvn:org.ops4j.pax.web/pax-web-jsp/${org.ops4j.pax.web_pax-web-jsp.version}</bundle>
         <bundle start-level="30">mvn:org.ops4j.pax.web/pax-web-extender-whiteboard/${org.ops4j.pax.web_pax-web-extender-whiteboard.version}</bundle>
+        <capability>
+            osgi.contract;osgi.contract=JavaEl;version:Version="3";uses:="javax.el",
+            osgi.contract;osig.contract=JavaJSP;version:Version="2.3";uses:="javax.servlet.jsp, javax.servlet.jsp.el, javax.servlet.jsp.tagext",
+            osgi.contract;osgi.contract=JavaJSTL;version:Version="1.2";uses:="javax.servlet.jsp.jstl.core, javax.servlet.jsp.jstl.fmt, javax.servlet.jsp.jstl.sql, javax.servlet.jsp.jstl.tlv"
+        </capability>
     </feature>
 
     <feature name="osgiliath-pax-war" description="Provide support of a full WebContainer" version="${org.ops4j.pax.web_pax-web-features.version}">

@@ -8,7 +8,8 @@
         <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
         <bundle dependency="true">mvn:org.osgi/org.osgi.service.jdbc/${org.osgi_org.osgi.service.jdbc.version}</bundle>
         <!-- these are hack... -->
-        <bundle>mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
+		<bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
+        <bundle>mvn:org.glassfish.web/javax.el/${org.glassfish.web_javax.el.version}</bundle>
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
     </feature>

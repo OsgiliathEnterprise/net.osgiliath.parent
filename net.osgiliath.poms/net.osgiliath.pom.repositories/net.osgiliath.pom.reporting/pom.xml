@@ -104,7 +104,6 @@
 		<profile>
 			<id>reporting</id>
 			<properties>
-				<skipExec>true</skipExec>
 				<failsafe.skiptests>true</failsafe.skiptests>
 			</properties>
 		</profile>

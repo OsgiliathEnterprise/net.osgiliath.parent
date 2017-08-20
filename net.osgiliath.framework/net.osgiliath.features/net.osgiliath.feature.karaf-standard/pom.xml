@@ -77,11 +77,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.aries.proxy</groupId>
-			<artifactId>org.apache.aries.proxy.api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.aries.proxy</groupId>
-			<artifactId>org.apache.aries.proxy.impl</artifactId>
+			<artifactId>org.apache.aries.proxy</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.felix</groupId>

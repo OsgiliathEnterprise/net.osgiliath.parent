@@ -11,7 +11,6 @@
 	<modules>
 		<module>net.osgiliath.wrapper.derby</module>
 		<module>net.osgiliath.wrapper.spring-data-jpa</module>
-		<!-- <module>net.osgiliath.wrapper.hibernate.validator.cdi</module>  -->
 		<module>net.osgiliath.wrapper.spring-batch-core</module>
 		<module>net.osgiliath.wrapper.spring-batch-infrastructure</module>
 		<module>net.osgiliath.wrapper.spring-ldap</module>

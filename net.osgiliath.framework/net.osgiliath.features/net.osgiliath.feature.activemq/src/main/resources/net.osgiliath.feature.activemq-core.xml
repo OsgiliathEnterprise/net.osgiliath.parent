@@ -7,6 +7,7 @@
 	<feature name="osgiliath-activemq-client" description="ActiveMQ client libraries" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
         <feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring</feature>
         <!-- <feature>spring-dm</feature> -->
+        <feature version="[3.2,5)">osgiliath-spring</feature>
         <bundle dependency="true">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/${org.apache.geronimo.specs_geronimo-jms_1.1_spec.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-management_1.1_spec/${org.apache.geronimo.specs_geronimo-j2ee-management_1.1_spec.version}</bundle>

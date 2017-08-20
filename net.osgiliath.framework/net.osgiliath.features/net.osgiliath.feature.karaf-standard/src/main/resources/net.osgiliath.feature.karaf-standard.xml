@@ -27,15 +27,14 @@
     
     <feature name="osgiliath-aries-proxy" description="Aries Proxy" version="${org.apache.karaf.features_standard.version}">
         <bundle start-level="20" dependency="true">mvn:org.ow2.asm/asm-all/${org.ow2.asm_asm-all.version}</bundle>
-        <bundle start-level="20" dependency="true">mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries_org.apache.aries.util.version}</bundle>
-        <bundle start-level="20">mvn:org.apache.aries.proxy/org.apache.aries.proxy.api/${org.apache.aries.proxy_org.apache.aries.proxy.api.version}</bundle>
-        <bundle start-level="20">mvn:org.apache.aries.proxy/org.apache.aries.proxy.impl/${org.apache.aries.proxy_org.apache.aries.proxy.impl.version}</bundle>
+        <bundle start-level="20">mvn:org.apache.aries.proxy/org.apache.aries.proxy/${org.apache.aries.proxy_org.apache.aries.proxy.version}</bundle>
         <capability>
             osgi.service;effective:=active;objectClass=org.apache.aries.proxy.ProxyManager
         </capability>
     </feature>
     <feature name="osgiliath-aries-blueprint" description="Aries Blueprint" version="${org.apache.karaf.features_standard.version}">
         <feature prerequisite="false" dependency="false">osgiliath-aries-proxy</feature>
+        <bundle start-level="20" dependency="true">mvn:org.apache.aries/org.apache.aries.util/${org.apache.aries_org.apache.aries.util.version}</bundle>
         <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.api/${org.apache.aries.blueprint_org.apache.aries.blueprint.api.version}</bundle>
         <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.cm/${org.apache.aries.blueprint_org.apache.aries.blueprint.cm.version}</bundle>
         <bundle start-level="20">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${org.apache.aries.blueprint_org.apache.aries.blueprint.core.version}</bundle>

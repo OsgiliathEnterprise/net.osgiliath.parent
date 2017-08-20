@@ -5,7 +5,7 @@
 	 <feature name="osgiliath-transaction-api" version="${transaction-api_feature.version}">
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
-        <bundle dependency="true">mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
+        <bundle dependency="true">mvn:org.glassfish.web/javax.el/${org.glassfish.web_javax.el.version}</bundle>
         <bundle dependency="true">mvn:javax.enterprise/cdi-api/${javax.enterprise_cdi-api.version}</bundle>
         <bundle dependency="true">mvn:javax.transaction/javax.transaction-api/${javax.transaction_javax.transaction-api.version}</bundle>
     </feature>
@@ -114,7 +114,7 @@
         <feature version="${org.apache.karaf.features_enterprise.version}" >osgiliath-jndi</feature>
         <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet_javax.servlet-api.version}</bundle>
         <!-- <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle> -->
-       <bundle dependency="true">mvn:org.glassfish/javax.el/${org.glassfish_javax.el.version}</bundle>
+       <bundle dependency="true">mvn:org.glassfish.web/javax.el/${org.glassfish.web_javax.el.version}</bundle>
          <bundle dependency="true">mvn:commons-lang/commons-lang/${commons-lang_commons-lang.version}</bundle>
         <bundle dependency="true">mvn:commons-collections/commons-collections/${commons-collections_commons-collections.version}</bundle>
         <bundle dependency="true">mvn:commons-pool/commons-pool/${commons-pool_commons-pool.version}</bundle>

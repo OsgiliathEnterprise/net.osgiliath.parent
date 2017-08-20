@@ -1,5 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!-- <parent> <groupId>org.sonatype.oss</groupId> <artifactId>oss-parent</artifactId> <version>9</version> </parent> -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- <parent> <groupId>org.sonatype.oss</groupId> <artifactId>oss-parent</artifactId> 
+		<version>9</version> </parent> -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.osgiliath.poms</groupId>
 	<artifactId>net.osgiliath.parent</artifactId>
@@ -58,7 +60,7 @@
 	</modules>
 
 	<reporting>
-	
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -89,15 +91,22 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	<!-- <distributionManagement> Distribution des artefacts compilés Rajoutez ceci dans votre fichier ~.m2/settings.xml <servers> <server> <id>releases</id> <username>username</username> <password>password</password> </server> <server> <id>snapshots</id> 
-		<username>username</username> <password>password</password> </server> </servers> <repository> <id>releases</id> <name>Nexus Releases public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/releases</url> </repository> <snapshotRepository> 
-		<id>snapshots</id> <name>Nexus Snapshots public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url> </snapshotRepository> <site> <id>Osgiliath</id> <name>Osgiliath</name> <url>http://blog.osgiliath.net/</url> </site> </distributionManagement> -->
+	<!-- <distributionManagement> Distribution des artefacts compilés Rajoutez 
+		ceci dans votre fichier ~.m2/settings.xml <servers> <server> <id>releases</id> 
+		<username>username</username> <password>password</password> </server> <server> 
+		<id>snapshots</id> <username>username</username> <password>password</password> 
+		</server> </servers> <repository> <id>releases</id> <name>Nexus Releases 
+		public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/releases</url> 
+		</repository> <snapshotRepository> <id>snapshots</id> <name>Nexus Snapshots 
+		public</name> <url>http://dist.osgiliath.net/nexus/content/repositories/snapshots</url> 
+		</snapshotRepository> <site> <id>Osgiliath</id> <name>Osgiliath</name> <url>http://blog.osgiliath.net/</url> 
+		</site> </distributionManagement> -->
 	<scm>
 		<connection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</connection>
 		<developerConnection>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</developerConnection>
 		<url>https://github.com/OsgiliathEnterprise/net.osgiliath.parent</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>
@@ -113,7 +122,6 @@
 			<id>github-pages</id>
 			<name>Github GH Pages</name>
 			<url>scm:git:git@github.com:OsgiliathEnterprise/net.osgiliath.parent.git</url>
-			
 		</site>
 	</distributionManagement>
 	<properties>
@@ -136,7 +144,6 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven-enforcer-plugin.version>1.2</maven-enforcer-plugin.version>
-		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
 		<maven-release-plugin.version>2.5.2</maven-release-plugin.version>
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
@@ -159,7 +166,7 @@
 
 		<maven-scm.version>1.9.1</maven-scm.version>
 		<site.deploy.dir>/tmp/deploy</site.deploy.dir>
-		
+
 	</properties>
 	<profiles>
 		<profile>
@@ -241,7 +248,8 @@
 								<configuration>
 									<tasks>
 										<mkdir dir="src/site/markdown" />
-										<copy file="readme.md" tofile="src/site/markdown/readme.md" overwrite="true" />
+										<copy file="readme.md" tofile="src/site/markdown/readme.md"
+											overwrite="true" />
 									</tasks>
 								</configuration>
 								<goals>
@@ -420,11 +428,6 @@
 							<scope>runtime</scope>
 						</dependency>
 					</dependencies>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>${maven-gpg-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
