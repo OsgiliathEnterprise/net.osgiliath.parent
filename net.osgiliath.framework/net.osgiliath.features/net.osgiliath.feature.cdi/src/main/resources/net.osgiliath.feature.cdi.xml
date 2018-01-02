@@ -4,7 +4,7 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-enterprise/${project.version}/xml/features</repository>
 	<feature name="osgiliath-cdi" description="transactional CDI 1.2 support" version="${project.version}">
         <feature version="${org.apache.aries.transaction_org.apache.aries.transaction.manager.version}">osgiliath-transaction</feature>
-        <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
+        <feature version="${org.apache.karaf.features_standard.version}">aries-blueprint</feature>
         <feature version="${org.apache.deltaspike.core.version}">osgiliath-deltaspike-core</feature>
         <bundle>mvn:net.osgiliath.modules/net.osgiliath.module.cdi.eager/${project.version}</bundle>
         <requirement>

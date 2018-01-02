@@ -123,10 +123,6 @@
 			<artifactId>pax-jdbc-pool-common</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.ops4j.pax.jdbc</groupId>
-			<artifactId>pax-jdbc-pool-common</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.ops4j.pax.swissbox</groupId>
 			<artifactId>pax-swissbox-core</artifactId>
 		</dependency>

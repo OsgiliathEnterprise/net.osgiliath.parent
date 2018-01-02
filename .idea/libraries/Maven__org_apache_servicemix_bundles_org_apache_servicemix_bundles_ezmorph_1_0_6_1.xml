@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.servicemix.bundles:org.apache.servicemix.bundles.ezmorph:1.0.6_1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/servicemix/bundles/org.apache.servicemix.bundles.ezmorph/1.0.6_1/org.apache.servicemix.bundles.ezmorph-1.0.6_1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/servicemix/bundles/org.apache.servicemix.bundles.ezmorph/1.0.6_1/org.apache.servicemix.bundles.ezmorph-1.0.6_1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/servicemix/bundles/org.apache.servicemix.bundles.ezmorph/1.0.6_1/org.apache.servicemix.bundles.ezmorph-1.0.6_1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

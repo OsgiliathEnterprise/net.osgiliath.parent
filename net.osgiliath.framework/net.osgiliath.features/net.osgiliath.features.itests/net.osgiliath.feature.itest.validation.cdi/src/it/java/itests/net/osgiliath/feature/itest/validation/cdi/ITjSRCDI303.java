@@ -137,7 +137,7 @@ public class ITjSRCDI303 extends AbstractPaxExamKarafConfiguration {
 
   static {
     // uncomment to enable debugging of this test class
-     //paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
+     paxRunnerVmOption = DEBUG_VM_OPTION; //NOSONAR
 
   }
 

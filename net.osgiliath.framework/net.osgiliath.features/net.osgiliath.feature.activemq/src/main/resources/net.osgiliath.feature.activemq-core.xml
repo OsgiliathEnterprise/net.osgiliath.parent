@@ -4,7 +4,7 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-spring/${project.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
 	
-	<feature name="osgiliath-activemq-client" description="ActiveMQ client libraries" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+	<feature name="osgiliath-activemq-client" description="ActiveMQ client libraries" version="${org.apache.activemq_activemq-karaf.version}"  start-level="50">
         <feature version="${org.apache.servicemix.bundles.spring.version}">osgiliath-spring</feature>
         <!-- <feature>spring-dm</feature> -->
         <feature version="[3.2,5)">osgiliath-spring</feature>
@@ -26,7 +26,7 @@
        
     </feature>
     
-     <feature name="osgiliath-activemq" description="ActiveMQ broker libraries" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+     <feature name="osgiliath-activemq" description="ActiveMQ broker libraries" version="${org.apache.activemq_activemq-karaf.version}"  start-level="50">
       <!-- <feature>osgiliath-http</feature> -->
       
       <feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq-client</feature>
@@ -56,7 +56,7 @@
       </conditional>
     </feature>
     
-    <feature name="osgiliath-activemq-osgi" description="ActiveMQ broker libraries splitted" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+    <feature name="osgiliath-activemq-osgi" description="ActiveMQ broker libraries splitted" version="${org.apache.activemq_activemq-karaf.version}"  start-level="50">
     	<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${com.fasterxml.jackson.core_jackson-core.version}</bundle>
       	<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${com.fasterxml.jackson.core_jackson-databind.version}</bundle>
       	<bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${com.fasterxml.jackson.core_jackson-annotations.version}</bundle>

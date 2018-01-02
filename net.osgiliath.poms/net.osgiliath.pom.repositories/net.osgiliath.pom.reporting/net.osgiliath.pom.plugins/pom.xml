@@ -1450,7 +1450,7 @@
 		<de.juplo_hibernate4-maven-plugin.version>1.1.0</de.juplo_hibernate4-maven-plugin.version>
 		<depends-maven-plugin.version>1.2</depends-maven-plugin.version>
 		<eclipselink.version>2.4.2</eclipselink.version>
-		<org.ops4j.pax.exam.version>4.10.0</org.ops4j.pax.exam.version>
+		<org.ops4j.pax.exam.version>4.11.0</org.ops4j.pax.exam.version>
 		<exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
 		<features-maven-plugin.version>2.2.5</features-maven-plugin.version>
 		<inmemdb-maven-plugin.version>1.4.3</inmemdb-maven-plugin.version>
@@ -1458,7 +1458,7 @@
 		<inmemdb-maven-plugin.monitor-port>11527</inmemdb-maven-plugin.monitor-port>
 		<jacoco.plugin.version>0.7.5.201505241946</jacoco.plugin.version>
 		<jaxb2-maven-plugin.version>1.6</jaxb2-maven-plugin.version>
-		<karaf.version>4.1.2</karaf.version>
+		<karaf.version>4.2.0.M1</karaf.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<liquibase.version>3.1.0</liquibase.version>
 		<maven-bundle-plugin.version>2.5.3</maven-bundle-plugin.version>
@@ -1474,19 +1474,18 @@
 		<maven-shade-plugin.version>2.3</maven-shade-plugin.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<org.apache.aries.blueprint_blueprint-maven-plugin.version>1.5.0</org.apache.aries.blueprint_blueprint-maven-plugin.version>
+		<org.apache.aries.blueprint_blueprint-maven-plugin.version>1.9.0</org.apache.aries.blueprint_blueprint-maven-plugin.version>
 		<org.apache.maven.plugins_maven-assembly-plugin.version>2.5.3</org.apache.maven.plugins_maven-assembly-plugin.version>
 		<org.apache.openjpa.version>2.4.2</org.apache.openjpa.version>
-		<org.apache.xbean_xbean-asm5-shaded.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-asm5-shaded.version>
+		<org.apache.xbean_xbean-asm6-shaded.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-asm6-shaded.version>
 		<org.apache.maven.shared_maven-filtering.version>3.0.0</org.apache.maven.shared_maven-filtering.version>
-		<org.apache.xbean.latest.version>4.5</org.apache.xbean.latest.version>
+		<org.apache.xbean.latest.version>4.6</org.apache.xbean.latest.version>
 		<org.codehaus.plexus.version>1.5.5</org.codehaus.plexus.version>
 		<!-- <org.hibernate.version>4.3.6.Final</org.hibernate.version> -->
 		<org.hsqldb_hsqldb.version>2.3.2</org.hsqldb_hsqldb.version>
 		<org.projectlombok.version>1.16.12</org.projectlombok.version>
 		<org.projectlombok.lombok.plugin.version>${org.projectlombok.version}.0</org.projectlombok.lombok.plugin.version>
 		<org.projectlombok-pg.version>0.11.3</org.projectlombok-pg.version>
-		<org.springframework.data.commons.core.version>1.4.1.RELEASE</org.springframework.data.commons.core.version>
 		<maven-pax-plugin.version>1.5</maven-pax-plugin.version>
 		<selenium.driver.target>${project.build.directory}/selenium</selenium.driver.target>
 		<selenium.map.location>https://raw.githubusercontent.com/Ardesco/Selenium-Maven-Template/master/src/test/resources/RepositoryMap.xml</selenium.map.location>

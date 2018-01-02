@@ -1,0 +1,45 @@
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+    Copyright 2017 OPS4J
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<features name="pax-jms-0.1.0"
+          xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="
+            http://karaf.apache.org/xmlns/features/v1.3.0
+            http://karaf.apache.org/xmlns/features/v1.3.0">
+
+    <repository>
+        mvn:org.ops4j.pax.transx/pax-transx-features/0.2.0/xml/features
+    </repository>
+
+    <feature name="pax-jms-pool" version="0.1.0">
+        <feature>pax-transx-jms</feature>
+        <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/1.9.2_1</bundle>
+        <bundle>mvn:org.ops4j.pax.jms/pax-jms-api/0.1.0</bundle>
+        <bundle>mvn:org.ops4j.pax.jms/pax-jms-pool/0.1.0</bundle>
+        <conditional>
+            <condition>artemis-core</condition>
+            <bundle>mvn:org.ops4j.pax.jms/pax-jms-artemis/0.1.0</bundle>
+        </conditional>
+        <conditional>
+            <condition>activemq-client</condition>
+            <condition>aries-blueprint</condition>
+            <bundle>mvn:org.ops4j.pax.jms/pax-jms-activemq/0.1.0</bundle>
+        </conditional>
+    </feature>
+
+</features>

@@ -2,7 +2,7 @@
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="${project.artifactId}-${project.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0 http://karaf.apache.org/xmlns/features/v1.4.0">
 	<repository>mvn:org.apache.cxf.karaf/apache-cxf/${org.apache.cxf.karaf_apache-cxf.version}/xml/features</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.karaf-standard/${project.version}/xml/features</repository>
-	<feature name="osgiliath-cxf-specs" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+	<feature name="osgiliath-cxf-specs" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <bundle start-level="9">mvn:org.apache.geronimo.specs/geronimo-osgi-registry/${org.apache.geronimo.specs_geronimo-osgi-registry.version}</bundle>
         <bundle start-level="10" dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version}</bundle>
         <!-- <bundle start-level="10">mvn:javax.annotation/javax.annotation-api/${javax.annotation_javax.annotation-api.version}</bundle>  -->
@@ -17,22 +17,22 @@
         <bundle start-level="20">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version}</bundle>
         <bundle start-level="20">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-xjc/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-xjc.version}</bundle>
     </feature>
-	<feature name="osgiliath-cxf-jaxb" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+	<feature name="osgiliath-cxf-jaxb" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-specs</feature>
         <bundle start-level="20">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-impl/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-impl.version}</bundle>
         <bundle start-level="20">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxb-xjc/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.jaxb-xjc.version}</bundle>
     </feature>
-     <feature name="osgiliath-cxf-http" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+     <feature name="osgiliath-cxf-http" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-core</feature>
         <feature>osgiliath-http</feature>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-transports-http/${org.apache.cxf_cxf-rt-transports-http.version}</bundle>
     </feature>
-     <feature name="osgiliath-cxf-http-jetty" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+     <feature name="osgiliath-cxf-http-jetty" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-http</feature>
         <feature version="${org.eclipse.jetty.version}">osgiliath-jetty</feature>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-transports-http-jetty/${org.apache.cxf_cxf-rt-transports-http-jetty.version}</bundle>
     </feature>
-     <feature name="osgiliath-cxf-core" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+     <feature name="osgiliath-cxf-core" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-specs</feature>
         <bundle start-level="30" dependency="true">mvn:org.apache.ws.xmlschema/xmlschema-core/${org.apache.ws.xmlschema_xmlschema-core.version}</bundle>
         <bundle start-level="25" dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xmlresolver/${org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version}</bundle>
@@ -40,12 +40,12 @@
         <bundle start-level="40">mvn:org.apache.cxf/cxf-core/${org.apache.cxf_cxf-core.version}</bundle>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-management/${org.apache.cxf_cxf-rt-management.version}</bundle>
     </feature>
-    <feature name="osgiliath-cxf-commands" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+    <feature name="osgiliath-cxf-commands" version="${org.apache.cxf.karaf_apache-cxf.version}" >
      	<feature version="${org.apache.karaf.features_standard.version}" prerequisite="true" dependency="false">shell-compat</feature>
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-core</feature>
         <bundle start-level="40">mvn:org.apache.cxf.karaf/cxf-karaf-commands/${org.apache.cxf.karaf_cxf-karaf-commands.version}</bundle>
     </feature>
-    <feature name="osgiliath-cxf-jaxrs" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+    <feature name="osgiliath-cxf-jaxrs" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-core</feature>
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-http</feature>
         <bundle start-level="30" dependency="true">mvn:org.codehaus.jettison/jettison/${org.codehaus.jettison_jettison.version}</bundle>
@@ -61,7 +61,7 @@
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${com.fasterxml.jackson.jaxrs_jackson-jaxrs-base.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${com.fasterxml.jackson.jaxrs_jackson-jaxrs-json-provider.version}</bundle>
     </feature>
-     <feature name="osgiliath-cxf-rs-description-swagger2" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+     <feature name="osgiliath-cxf-rs-description-swagger2" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
         <bundle start-level="10" dependency="true">mvn:javax.validation/validation-api/${javax.validation_validation-api.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:org.apache.commons/commons-lang3/${org.apache.commons_commons-lang3.version}</bundle>
@@ -73,22 +73,22 @@
         <bundle start-level="35" dependency="true">mvn:io.swagger/swagger-core/${io.swagger_swagger-core.version}</bundle>
         <bundle start-level="35" dependency="true">mvn:io.swagger/swagger-jaxrs/${io.swagger_swagger-jaxrs.version}</bundle>
     </feature>
-    <feature name="osgiliath-cxf-databinding-jaxb" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+    <feature name="osgiliath-cxf-databinding-jaxb" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-core</feature>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-rt-databinding-jaxb/${org.apache.cxf_cxf-rt-databinding-jaxb.version}</bundle>
     </feature>
     
     
-     <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+     <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-integration-cdi/${org.apache.cxf_cxf-integration-cdi.version}</bundle>
     </feature>
-    <!-- wrapped <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+    <!-- wrapped <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-integration-cdi/${org.apache.cxf_cxf-integration-cdi.version}</bundle>
     </feature> -->
     
-   <!--  <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" resolver="(obr)">
+   <!--  <feature name="osgiliath-cxf-jaxrs-cdi" version="${org.apache.cxf.karaf_apache-cxf.version}" >
         <feature version="${org.apache.cxf.karaf_apache-cxf.version}">osgiliath-cxf-jaxrs</feature>
         <bundle start-level="40">mvn:org.apache.cxf/cxf-integration-cdi/${org.apache.cxf_cxf-integration-cdi.version}</bundle>
     </feature> -->

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.servicemix.bundles:org.apache.servicemix.bundles.commons-httpclient:3.1_7">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/servicemix/bundles/org.apache.servicemix.bundles.commons-httpclient/3.1_7/org.apache.servicemix.bundles.commons-httpclient-3.1_7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/servicemix/bundles/org.apache.servicemix.bundles.commons-httpclient/3.1_7/org.apache.servicemix.bundles.commons-httpclient-3.1_7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/servicemix/bundles/org.apache.servicemix.bundles.commons-httpclient/3.1_7/org.apache.servicemix.bundles.commons-httpclient-3.1_7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

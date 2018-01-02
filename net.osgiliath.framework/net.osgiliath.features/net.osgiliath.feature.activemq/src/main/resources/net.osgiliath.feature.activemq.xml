@@ -3,14 +3,14 @@
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.activemq/${project.version}/xml/features-core</repository>
 	<repository>mvn:${project.groupId}/net.osgiliath.feature.camel/${project.version}/xml/features</repository>
 	
-	<feature name="osgiliath-activemq-camel" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+	<feature name="osgiliath-activemq-camel" version="${org.apache.activemq_activemq-karaf.version}"  start-level="50">
         <feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq-client</feature>
         <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel-jms</feature>
         <feature version="${org.apache.camel.karaf_apache-camel.version}">osgiliath-camel</feature>
     </feature>
-    <feature name="osgiliath-activemq-blueprint" version="${org.apache.activemq_activemq-karaf.version}" resolver="(obr)" start-level="50">
+    <feature name="osgiliath-activemq-blueprint" version="${org.apache.activemq_activemq-karaf.version}"  start-level="50">
       <feature version="${org.apache.activemq_activemq-karaf.version}">osgiliath-activemq</feature>
-      <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
+      <feature version="${org.apache.karaf.features_standard.version}">aries-blueprint</feature>
       <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.scripting-api-1.0/2.4.0</bundle>
       <bundle dependency="true">mvn:org.apache.commons/commons-jexl/${org.apache.commons_commons-jexl.version}</bundle>
       <bundle dependency="true">mvn:org.apache.xbean/xbean-blueprint/${org.apache.xbean_xbean-blueprint.version}</bundle>

@@ -10,7 +10,6 @@
         <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/${javax.interceptor_javax.interceptor-api.version}</bundle>
         <bundle dependency="true">mvn:org.glassfish.web/javax.el/${org.glassfish.web_javax.el.version}</bundle>
         <bundle dependency="true">mvn:javax.el/javax.el-api/${javax.el_javax.el-api.version}</bundle>
-        
         <bundle dependency="true">mvn:javax.enterprise/cdi-api/${javax.enterprise_cdi-api.version}</bundle>
         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/${org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version}</bundle>
         <bundle dependency="true">mvn:org.apache.xbean/xbean-bundleutils/${org.apache.xbean_xbean-bundleutils.version}</bundle>
@@ -35,7 +34,7 @@
         </capability>
         <conditional>
             <condition>osgiliath-transaction</condition>
-            <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
+            <feature version="${org.apache.karaf.features_standard.version}">aries-blueprint</feature>
            <bundle>mvn:net.osgiliath.modules/net.osgiliath.module.cdi.tx/${project.version}</bundle>
         </conditional>
         <conditional>
@@ -60,7 +59,7 @@
         <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/${org.apache.deltaspike.core_deltaspike-core-api.version}</bundle>
         <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-impl/${org.apache.deltaspike.core_deltaspike-core-impl.version}</bundle>
         <bundle start-level="30">mvn:org.apache.aries.spifly/org.apache.aries.spifly.dynamic.bundle/${org.apache.aries.spifly_org.apache.aries.spifly.dynamic.bundle.version}</bundle>
-        <feature version="${org.apache.karaf.features_standard.version}">osgiliath-aries-blueprint</feature>
+        <feature version="${org.apache.karaf.features_standard.version}">aries-blueprint</feature>
         <bundle>mvn:net.osgiliath.modules/net.osgiliath.module.deltaspike.configadmin/${project.version}</bundle>
         <requirement>
             pax.cdi.provider

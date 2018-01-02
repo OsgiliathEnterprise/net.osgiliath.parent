@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="net.osgiliath.module.swagger.ui:war">
+    <output-path>$PROJECT_DIR$/net.osgiliath.framework/net.osgiliath.modules/net.osgiliath.module.swagger-ui/target</output-path>
+    <root id="archive" name="net.osgiliath.module.swagger.ui.war">
+      <element id="artifact" artifact-name="net.osgiliath.module.swagger.ui:war exploded" />
+    </root>
+  </artifact>
+</component>

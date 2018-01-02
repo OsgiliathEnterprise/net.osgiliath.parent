@@ -25,7 +25,6 @@ import java.io.IOException;
 import javax.enterprise.inject.Produces;
 import javax.ws.rs.ApplicationPath;
 
-import org.apache.deltaspike.core.api.config.ConfigResolver;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="net.osgiliath.sample.webapp.ui:war exploded">
+    <output-path>$PROJECT_DIR$/net.osgiliath.samples/net.osgiliath.sample.webapp/net.osgiliath.sample.webapp.ui/target/net.osgiliath.sample.webapp.ui</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="net.osgiliath.sample.webapp.ui" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/net.osgiliath.samples/net.osgiliath.sample.webapp/net.osgiliath.sample.webapp.ui/target/net.osgiliath.sample.webapp.ui/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="net.osgiliath.sample.webapp.ui/web/Web" />
+    </root>
+  </artifact>
+</component>

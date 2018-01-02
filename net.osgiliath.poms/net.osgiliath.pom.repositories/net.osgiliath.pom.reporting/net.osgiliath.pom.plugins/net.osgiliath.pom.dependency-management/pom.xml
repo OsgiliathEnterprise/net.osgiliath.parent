@@ -940,11 +940,7 @@
 				<artifactId>org.apache.karaf.jndi.core</artifactId>
 				<version>${org.apache.karaf.jndi_org.apache.karaf.jndi.core.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.karaf.scr</groupId>
-				<artifactId>org.apache.karaf.scr.command</artifactId>
-				<version>${org.apache.karaf.scr_org.apache.karaf.scr.command.version}</version>
-			</dependency>
+
 			<dependency>
 				<groupId>org.apache.karaf.scr</groupId>
 				<artifactId>org.apache.karaf.scr.management</artifactId>
@@ -1283,8 +1279,8 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
-				<artifactId>xbean-asm5-shaded</artifactId>
-				<version>${org.apache.xbean_xbean-asm5-shaded.version}</version>
+				<artifactId>xbean-asm6-shaded</artifactId>
+				<version>${org.apache.xbean_xbean-asm6-shaded.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.xbean</groupId>
@@ -2022,8 +2018,8 @@
 	</dependencyManagement>
 	<properties>
 		<com.codeborne_phantomjsdriver.version>1.3.0</com.codeborne_phantomjsdriver.version>
-		<com.google.guava_guava.version>18.0</com.google.guava_guava.version>
-		<com.fasterxml_classmate.version>1.3.1</com.fasterxml_classmate.version>
+		<com.google.guava_guava.version>19.0</com.google.guava_guava.version>
+		<com.fasterxml_classmate.version>1.3.3</com.fasterxml_classmate.version>
 		<com.fasterxml.jackson.core_jackson-annotations.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.core_jackson-annotations.version>
 		<com.fasterxml.jackson.core_jackson-core.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.core_jackson-core.version>
 		<com.fasterxml.jackson.core_jackson-databind.version>${com.fasterxml.jackson.version}</com.fasterxml.jackson.core_jackson-databind.version>
@@ -2038,22 +2034,22 @@
 		<commons-codec_commons-codec.version>1.10</commons-codec_commons-codec.version>
 		<commons-collections_commons-collections.version>3.2.2</commons-collections_commons-collections.version>
 		<commons-daemon_commons-daemon.version>1.0.15</commons-daemon_commons-daemon.version>
-		<commons-io_commons-io.version>2.4</commons-io_commons-io.version>
+		<commons-io_commons-io.version>2.5</commons-io_commons-io.version>
 		<commons-lang_commons-lang.version>2.6</commons-lang_commons-lang.version>
 		<commons-logging_commons-logging.version>1.2</commons-logging_commons-logging.version>
-		<commons-net_commons-net.version>3.5</commons-net_commons-net.version>
-		<commons-pool_commons-pool.version>1.6</commons-pool_commons-pool.version>
+		<commons-net_commons-net.version>3.6</commons-net_commons-net.version>
+		<commons-pool_commons-pool.version>1.6</commons-pool_commons-pool.version><!-- -->
 		<io.swagger_swagger-annotations.version>${io.swagger.version}</io.swagger_swagger-annotations.version>
 		<io.swagger_swagger-core.version>${io.swagger.version}</io.swagger_swagger-core.version>
 		<io.swagger_swagger-jaxrs.version>${io.swagger.version}</io.swagger_swagger-jaxrs.version>
 		<io.swagger_swagger-models.version>${io.swagger.version}</io.swagger_swagger-models.version>
-		<javax.annotation_javax.annotation-api.version>1.2</javax.annotation_javax.annotation-api.version>
-		<javax.enterprise_cdi-api.version>1.2</javax.enterprise_cdi-api.version>
-		<javax.el_javax.el-api.version>2.2.1</javax.el_javax.el-api.version>
+		<javax.annotation_javax.annotation-api.version>1.3</javax.annotation_javax.annotation-api.version>
+		<javax.el_javax.el-api.version>3.0.0</javax.el_javax.el-api.version>
+				<javax.enterprise_cdi-api.version>1.2</javax.enterprise_cdi-api.version>
 		<javax.interceptor_javax.interceptor-api.version>1.2</javax.interceptor_javax.interceptor-api.version>
 		<javax.jmdns_jmdns.version>3.4.1</javax.jmdns_jmdns.version>
 		<javax.json_javax.json-api.version>1.0</javax.json_javax.json-api.version>
-		<javax.mail_mail.version>1.4.4</javax.mail_mail.version>
+		<javax.mail_mail.version>1.4.5</javax.mail_mail.version>
 		<javax.money_money-api.version>1.0.1</javax.money_money-api.version>
 		<javax.servlet_javax.servlet-api.version>3.1.0</javax.servlet_javax.servlet-api.version>
 		<javax.transaction_javax.transaction-api.version>1.2</javax.transaction_javax.transaction-api.version>
@@ -2061,8 +2057,8 @@
 			2.0.0.Alpha1 -->
 		<javax.validation_validation-api1.version>1.1.0.Final</javax.validation_validation-api1.version>
 		<javax.websocket_javax.websocket-api.version>1.1</javax.websocket_javax.websocket-api.version>
-		<org.jline_jline.version>3.4.0</org.jline_jline.version>
-		<joda-time_joda-time.version>2.9.5</joda-time_joda-time.version>
+		<org.jline_jline.version>3.5.1</org.jline_jline.version>
+		<joda-time_joda-time.version>2.9.9</joda-time_joda-time.version>
 		<net.sf.ehcache_ehcache.version>2.10.1</net.sf.ehcache_ehcache.version>
 		<org.apache.activemq_activemq-blueprint.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-blueprint.version>
 		<org.apache.activemq_activemq-broker.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-broker.version>
@@ -2073,7 +2069,7 @@
 		<org.apache.activemq_activemq-jaas.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-jaas.version>
 		<org.apache.activemq_activemq-jms-pool.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-jms-pool.version>
 		<org.apache.activemq_activemq-kahadb-store.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-kahadb-store.version>
-		<org.apache.activemq_activemq-karaf.version>5.14.3</org.apache.activemq_activemq-karaf.version>
+		<org.apache.activemq_activemq-karaf.version>5.15.2</org.apache.activemq_activemq-karaf.version>
 		<org.apache.activemq_activemq-mqtt.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-mqtt.version>
 		<org.apache.activemq_activemq-openwire-legacy.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-openwire-legacy.version>
 		<!-- <org.apache.activemq_activemq-osgi.version>${org.apache.activemq_activemq-karaf.version}</org.apache.activemq_activemq-osgi.version> -->
@@ -2086,7 +2082,7 @@
 		<org.apache.aries_org.apache.aries.util.version>1.1.3</org.apache.aries_org.apache.aries.util.version>
 		<org.apache.aries.blueprint_org.apache.aries.blueprint.api.version>1.0.1</org.apache.aries.blueprint_org.apache.aries.blueprint.api.version>
 		<org.apache.aries.blueprint_org.apache.aries.blueprint.cm.version>1.1.0</org.apache.aries.blueprint_org.apache.aries.blueprint.cm.version>
-		<org.apache.aries.blueprint_org.apache.aries.blueprint.core.version>1.8.2</org.apache.aries.blueprint_org.apache.aries.blueprint.core.version>
+		<org.apache.aries.blueprint_org.apache.aries.blueprint.core.version>1.8.3</org.apache.aries.blueprint_org.apache.aries.blueprint.core.version>
 		<org.apache.aries.blueprint_org.apache.aries.blueprint.core.compatibility.version>1.0.0</org.apache.aries.blueprint_org.apache.aries.blueprint.core.compatibility.version>
 		<org.apache.aries.jndi_org.apache.aries.jndi.api.version>1.1.0</org.apache.aries.jndi_org.apache.aries.jndi.api.version>
 		<org.apache.aries.jndi_org.apache.aries.jndi.core.version>1.0.2</org.apache.aries.jndi_org.apache.aries.jndi.core.version>
@@ -2119,10 +2115,10 @@
 		<org.apache.camel_camel-websocket.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-websocket.version>
 		<org.apache.camel_camel-xmljson.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-xmljson.version>
 		<org.apache.camel_camel-xstream.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel_camel-xstream.version>
-		<org.apache.camel.karaf_apache-camel.version>2.18.1</org.apache.camel.karaf_apache-camel.version>
+		<org.apache.camel.karaf_apache-camel.version>2.20.1</org.apache.camel.karaf_apache-camel.version>
 		<org.apache.camel.karaf_camel-karaf-commands.version>${org.apache.camel.karaf_apache-camel.version}</org.apache.camel.karaf_camel-karaf-commands.version>
-		<org.apache.commons_commons-jexl.version>2.0.1</org.apache.commons_commons-jexl.version>
-		<org.apache.commons_commons-lang3.version>3.4</org.apache.commons_commons-lang3.version>
+		<org.apache.commons_commons-jexl.version>2.1.1</org.apache.commons_commons-jexl.version>
+		<org.apache.commons_commons-lang3.version>3.6</org.apache.commons_commons-lang3.version>
 		<org.apache.commons_commons-pool2.version>2.4.2</org.apache.commons_commons-pool2.version>
 		<org.apache.cxf_cxf-core.version>${org.apache.cxf.karaf_apache-cxf.version}</org.apache.cxf_cxf-core.version>
 		<org.apache.cxf_cxf-integration-cdi.version>${org.apache.cxf.karaf_apache-cxf.version}</org.apache.cxf_cxf-integration-cdi.version>
@@ -2135,8 +2131,10 @@
 		<org.apache.cxf_cxf-rt-rs-service-description.version>${org.apache.cxf.karaf_apache-cxf.version}</org.apache.cxf_cxf-rt-rs-service-description.version>
 		<org.apache.cxf_cxf-rt-transports-http.version>${org.apache.cxf.karaf_apache-cxf.version}</org.apache.cxf_cxf-rt-transports-http.version>
 		<org.apache.cxf_cxf-rt-transports-http-jetty.version>${org.apache.cxf.karaf_apache-cxf.version}</org.apache.cxf_cxf-rt-transports-http-jetty.version>
-		<org.apache.cxf.karaf_apache-cxf.version>3.1.6</org.apache.cxf.karaf_apache-cxf.version>
+		<org.apache.cxf.karaf_apache-cxf.version>3.2.1</org.apache.cxf.karaf_apache-cxf.version>
 		<org.apache.cxf.karaf_cxf-karaf-commands.version>${org.apache.cxf.karaf_apache-cxf.version}</org.apache.cxf.karaf_cxf-karaf-commands.version>
+		<org.apache.deltaspike.core_deltaspike-core-api.version>${org.apache.deltaspike.core.version}</org.apache.deltaspike.core_deltaspike-core-api.version>
+		<org.apache.deltaspike.core_deltaspike-core-impl.version>${org.apache.deltaspike.core.version}</org.apache.deltaspike.core_deltaspike-core-impl.version>
 		<org.apache.derby_derby.version>${org.apache.derby.version}</org.apache.derby_derby.version>
 		<org.apache.derby_derbyclient.version>${org.apache.derby.version}</org.apache.derby_derbyclient.version>
 		<org.apache.derby_derbynet.version>${org.apache.derby.version}</org.apache.derby_derbynet.version>
@@ -2145,11 +2143,11 @@
 		<org.apache.felix_org.apache.felix.coordinator.version>1.0.2</org.apache.felix_org.apache.felix.coordinator.version>
 		<org.apache.felix_org.apache.felix.framework.version>5.6.6</org.apache.felix_org.apache.felix.framework.version>
 		<org.apache.felix_org.apache.felix.inventory.version>1.0.4</org.apache.felix_org.apache.felix.inventory.version>
-		<org.apache.felix_org.apache.felix.metatype.version>1.1.2</org.apache.felix_org.apache.felix.metatype.version>
+		<org.apache.felix_org.apache.felix.metatype.version>1.1.4</org.apache.felix_org.apache.felix.metatype.version>
 		<org.apache.felix_org.apache.felix.scr.version>2.0.12</org.apache.felix_org.apache.felix.scr.version>
 		<org.apache.felix_org.apache.felix.scr.compat.version>1.0.4</org.apache.felix_org.apache.felix.scr.compat.version>
-		<org.apache.felix_org.apache.felix.webconsole.plugins.ds.version>2.0.2</org.apache.felix_org.apache.felix.webconsole.plugins.ds.version>
-		<org.apache.geronimo.components_geronimo-connector.version>3.1.4</org.apache.geronimo.components_geronimo-connector.version>
+		<org.apache.felix_org.apache.felix.webconsole.plugins.ds.version>2.0.6</org.apache.felix_org.apache.felix.webconsole.plugins.ds.version>
+		<org.apache.geronimo.components_geronimo-connector.version>3.1.1</org.apache.geronimo.components_geronimo-connector.version>
 		<!-- <org.apache.geronimo.specs_geronimo-annotation_1.0_spec.version>1.1.1</org.apache.geronimo.specs_geronimo-annotation_1.0_spec.version> -->
 		<org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version>1.0</org.apache.geronimo.specs_geronimo-atinject_1.0_spec.version>
 		<!-- <org.apache.geronimo.specs_geronimo-el_1.0_spec.version>1.0.1</org.apache.geronimo.specs_geronimo-el_1.0_spec.version> -->
@@ -2162,7 +2160,11 @@
 		<!-- <org.apache.geronimo.specs_geronimo-servlet_2.5_spec.version>1.2</org.apache.geronimo.specs_geronimo-servlet_2.5_spec.version> -->
 		<!-- <org.apache.geronimo.specs_geronimo-validation_1.0_spec.version>1.1</org.apache.geronimo.specs_geronimo-validation_1.0_spec.version> -->
 		<!-- <org.apache.geronimo.specs_geronimo-validation_1.0_spec.version>1.1</org.apache.geronimo.specs_geronimo-validation_1.0_spec.version> -->
-		<org.apache.httpcomponents_httpclient.version>4.5.2</org.apache.httpcomponents_httpclient.version>
+		<org.apache.httpcomponents_httpclient.version>4.5.3</org.apache.httpcomponents_httpclient.version>
+		<org.apache.geronimo.components_geronimo-connector.version>3.1.1</org.apache.geronimo.components_geronimo-connector.version>
+		<org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version>1.0</org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version>
+		<org.apache.geronimo.specs_geronimo-jacc_1.1_spec.version>1.0.2</org.apache.geronimo.specs_geronimo-jacc_1.1_spec.version>
+		<org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>1.1.1</org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>
 		<org.apache.karaf_apache-karaf.version>${karaf.version}</org.apache.karaf_apache-karaf.version>
 		<org.apache.karaf_org.apache.karaf.util.version>${karaf.version}</org.apache.karaf_org.apache.karaf.util.version>
 		<org.apache.karaf.bundle_org.apache.karaf.bundle.blueprintstate.version>${karaf.version}</org.apache.karaf.bundle_org.apache.karaf.bundle.blueprintstate.version>
@@ -2179,19 +2181,13 @@
 		<org.apache.karaf.shell_org.apache.karaf.shell.console.version>${karaf.version}</org.apache.karaf.shell_org.apache.karaf.shell.console.version>
 		<org.apache.karaf.web_org.apache.karaf.web.core.version>${karaf.version}</org.apache.karaf.web_org.apache.karaf.web.core.version>
 		<org.apache.karaf.webconsole_org.apache.karaf.webconsole.http.version>${karaf.version}</org.apache.karaf.webconsole_org.apache.karaf.webconsole.http.version>
-		<org.apache.deltaspike.core_deltaspike-core-api.version>${org.apache.deltaspike.core.version}</org.apache.deltaspike.core_deltaspike-core-api.version>
-		<org.apache.deltaspike.core_deltaspike-core-impl.version>${org.apache.deltaspike.core.version}</org.apache.deltaspike.core_deltaspike-core-impl.version>
-		<org.apache.geronimo.components_geronimo-connector.version>3.1.1</org.apache.geronimo.components_geronimo-connector.version>
-		<org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version>1.0</org.apache.geronimo.specs_geronimo-j2ee-connector_1.6_spec.version>
-		<org.apache.geronimo.specs_geronimo-jacc_1.1_spec.version>1.0.2</org.apache.geronimo.specs_geronimo-jacc_1.1_spec.version>
-		<org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>1.1.1</org.apache.geronimo.specs_geronimo-jms_1.1_spec.version>
 		<org.apache.neethi_neethi.version>3.0.3</org.apache.neethi_neethi.version>
 		<org.apache.openjpa_openjpa.version>${org.apache.openjpa.version}</org.apache.openjpa_openjpa.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>1.8.2_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>1.7.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.ant.version>
 		<!-- <org.apache.servicemix.bundles_org.apache.servicemix.bundles.antlr.version>2.7.7_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.antlr.version> -->
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>1.0_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aopalliance.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>1.8.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>3.0_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>1.8.7_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.aspectj.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>3.2.5_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.cglib.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>1.8.3_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-beanutils.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version>1.4_3</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-dbcp.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>3.1_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.commons-httpclient.version>
@@ -2209,11 +2205,11 @@
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.josql.version>1.5_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.josql.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version>2.4_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.json-lib.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.jsoup.version>1.5.2_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.jsoup.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>4.12_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>2.3.0_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>4.11_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.junit.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>2.3.0_3</org.apache.servicemix.bundles_org.apache.servicemix.bundles.kxml2.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>2.0.8_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.oro.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>0.9.9_2</org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>1.15.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>0.9.10_3</org.apache.servicemix.bundles_org.apache.servicemix.bundles.reflections.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>1.14.1_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.serp.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aop.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aop.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aspects.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-aspects.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-beans.version>
@@ -2231,24 +2227,23 @@
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version>${org.apache.servicemix.bundles.spring.version}</org.apache.servicemix.bundles_org.apache.servicemix.bundles.spring-webmvc.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version>1.7_6</org.apache.servicemix.bundles_org.apache.servicemix.bundles.velocity.version>
 		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>1.2_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xmlresolver.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>1.1.4c_5</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>
-		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>1.4.8_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>1.1.4c_7</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xpp3.version>
+		<org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>1.4.10_1</org.apache.servicemix.bundles_org.apache.servicemix.bundles.xstream.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version>${xml-specs-api.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.activation-api-1.1.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.jaxb-api-2.2.version>${xml-specs-api.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.jaxb-api-2.2.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.jaxws-api-2.2.version>${xml-specs-api.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.jaxws-api-2.2.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.jsr339-api-2.0.1.version>${xml-specs-api.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.jsr339-api-2.0.1.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.saaj-api-1.3.version>${xml-specs-api.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.saaj-api-1.3.version>
 		<org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.2.version>${xml-specs-api.version}</org.apache.servicemix.specs_org.apache.servicemix.specs.stax-api-1.2.version>
-		<org.apache.xbean.version>4.1</org.apache.xbean.version>
-		<org.apache.xbean_xbean-blueprint.version>3.18</org.apache.xbean_xbean-blueprint.version>
+		<org.apache.xbean_xbean-blueprint.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-blueprint.version>
 		<org.apache.xbean_xbean-bundleutils.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-bundleutils.version>
 		<org.apache.xbean_xbean-finder.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-finder.version>
 		<org.apache.xbean_xbean-naming.version>3.18</org.apache.xbean_xbean-naming.version>
 		<org.apache.xbean_xbean-spring.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-spring.version>
-		<org.apache.xbean_xbean-reflect.version>${org.apache.xbean.version}</org.apache.xbean_xbean-reflect.version>
+		<org.apache.xbean_xbean-reflect.version>${org.apache.xbean.latest.version}</org.apache.xbean_xbean-reflect.version>
 		<org.apache.velocity_velocity.version>1.7</org.apache.velocity_velocity.version>
-		<org.apache.ws.xmlschema_xmlschema-core.version>2.2.1</org.apache.ws.xmlschema_xmlschema-core.version>
-		<org.apache.zookeeper_zookeeper.version>3.4.6</org.apache.zookeeper_zookeeper.version>
+		<org.apache.ws.xmlschema_xmlschema-core.version>2.2.2</org.apache.ws.xmlschema_xmlschema-core.version>
+		<org.apache.zookeeper_zookeeper.version>3.4.10</org.apache.zookeeper_zookeeper.version>
 		<org.codehaus.jettison_jettison.version>1.3.8</org.codehaus.jettison_jettison.version>
 		<org.codehaus.plexus_plexus-component-annotations.version>1.5.5</org.codehaus.plexus_plexus-component-annotations.version>
 		<org.codehaus.woodstox_stax2-api.version>3.1.4</org.codehaus.woodstox_stax2-api.version>
@@ -2284,9 +2279,9 @@
 		<org.fusesource.hawtbuf_hawtbuf-proto.version>${org.fusesource.hawtbuf_hawtbuf.version}</org.fusesource.hawtbuf_hawtbuf-proto.version>
 		<org.fusesource.hawtdispatch_hawtdispatch.version>1.22</org.fusesource.hawtdispatch_hawtdispatch.version>
 		<org.fusesource.hawtdispatch_hawtdispatch-transport.version>${org.fusesource.hawtdispatch_hawtdispatch.version}</org.fusesource.hawtdispatch_hawtdispatch-transport.version>
-		<org.fusesource.mqtt-client_mqtt-client.version>1.12</org.fusesource.mqtt-client_mqtt-client.version>
+		<org.fusesource.mqtt-client_mqtt-client.version>1.14</org.fusesource.mqtt-client_mqtt-client.version>
 		<org.glassfish_javax.json.version>1.0.4</org.glassfish_javax.json.version>
-		<org.glassfish.web_javax.el.version>2.2.1</org.glassfish.web_javax.el.version>
+		<org.glassfish.web_javax.el.version>2.2.5</org.glassfish.web_javax.el.version>
 		<org.hibernate.validator_hibernate-validator-osgi-karaf-features.version>${org.hibernate_hibernate-validator.version}</org.hibernate.validator_hibernate-validator-osgi-karaf-features.version>
 		<org.hibernate_hibernate-validator.version>5.3.4.Final</org.hibernate_hibernate-validator.version><!-- 
 			6.0.1.Final -->
@@ -2296,14 +2291,14 @@
 			<org.hibernate_hibernate-osgi.version>${org.hibernate.version}</org.hibernate_hibernate-osgi.version> 
 			<org.hibernate.common_hibernate-commons-annotations.version>4.0.4.Final</org.hibernate.common_hibernate-commons-annotations.version> -->
 		<org.javamoney_moneta.version>1.1</org.javamoney_moneta.version>
-		<org.javassist_javassist.version>3.19.0-GA</org.javassist_javassist.version>
+		<org.javassist_javassist.version>3.20.0-GA</org.javassist_javassist.version>
 		<!-- <org.jboss_jandex.version>1.2.2.Final</org.jboss_jandex.version> -->
 		<org.jboss.classfilewriter_jboss-classfilewriter.version>1.1.2.Final</org.jboss.classfilewriter_jboss-classfilewriter.version>
 		<org.jboss.logging_jboss-logging.version>3.3.0.Final</org.jboss.logging_jboss-logging.version>
 		<!-- <org.jboss.spec.javax.security.jacc_jboss-jacc-api_1.4_spec.version>1.0.2.Final</org.jboss.spec.javax.security.jacc_jboss-jacc-api_1.4_spec.version> -->
 		<org.jboss.weld_weld-osgi-bundle.version>${org.jboss.weld.version}</org.jboss.weld_weld-osgi-bundle.version>
-		<org.jolokia_jolokia-osgi.version>1.3.3</org.jolokia_jolokia-osgi.version>
-		<org.jsoup_jsoup.version>1.8.3</org.jsoup_jsoup.version>
+		<org.jolokia_jolokia-osgi.version>1.3.5</org.jolokia_jolokia-osgi.version>
+		<org.jsoup_jsoup.version>1.9.2</org.jsoup_jsoup.version>
 		<org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>0.6.4</org.jvnet.jaxb2_commons_jaxb2-basics-runtime.version>
 		<org.kubek2k_springockito.version>1.0.9</org.kubek2k_springockito.version>
 		<org.liquibase_liquibase-osgi.version>${org.liquibase.version}</org.liquibase_liquibase-osgi.version>
@@ -2361,7 +2356,7 @@
 		<org.osgi_org.osgi.service.jdbc.version>1.0.0</org.osgi_org.osgi.service.jdbc.version>
 		<org.osgi_org.osgi.service.jpa.version>1.0.0</org.osgi_org.osgi.service.jpa.version>
 		<org.ow2.asm_asm-all.version>5.2</org.ow2.asm_asm-all.version><!-- 6.0_ALPHA -->
-		<org.scala-lang_scala-library.version>2.11.0</org.scala-lang_scala-library.version>
+		<org.scala-lang_scala-library.version>2.11.7</org.scala-lang_scala-library.version>
 		<org.seleniumhq.selenium_selenium-java.version>${org.seleniumhq.selenium.version}</org.seleniumhq.selenium_selenium-java.version>
 		<org.seleniumhq.selenium_selenium-remote-driver.version>${org.seleniumhq.selenium.version}</org.seleniumhq.selenium_selenium-remote-driver.version>
 
@@ -2378,15 +2373,15 @@
 		<org.tranql_tranql-connector.version>1.8</org.tranql_tranql-connector.version>
 		<xom_xom.version>1.2.5</xom_xom.version>
 
-		<com.fasterxml.jackson.version>2.7.2</com.fasterxml.jackson.version>
-		<com.mysema.querydsl.version>3.6.6</com.mysema.querydsl.version>
+		<com.fasterxml.jackson.version>2.8.10</com.fasterxml.jackson.version>
+		<com.mysema.querydsl.version>3.7.4</com.mysema.querydsl.version>
 		<io.swagger.version>1.5.8</io.swagger.version>
 		<org.apache.aries.jpa.version>2.6.1</org.apache.aries.jpa.version>
-		<org.apache.aries.spifly.version>1.0.2</org.apache.aries.spifly.version>
-		<org.apache.deltaspike.version>1.5.2</org.apache.deltaspike.version>
+		<org.apache.aries.spifly.version>1.0.8</org.apache.aries.spifly.version>
+		<org.apache.deltaspike.version>1.8.0</org.apache.deltaspike.version>
 		<org.apache.deltaspike.core.version>${org.apache.deltaspike.version}</org.apache.deltaspike.core.version>
 		<org.apache.derby.version>10.13.1.1</org.apache.derby.version>
-		<org.eclipse.jetty.version>9.3.15.v20161220</org.eclipse.jetty.version>
+		<org.eclipse.jetty.version>9.3.14.v20161028</org.eclipse.jetty.version>
 		<org.jboss.weld.version>2.3.5.Final</org.jboss.weld.version>
 		<org.liquibase.version>3.2.2</org.liquibase.version>
 		<org.ops4j.base.version>1.5.0</org.ops4j.base.version>
@@ -2395,15 +2390,15 @@
 		<org.ops4j.pax.logging.version>1.10.1</org.ops4j.pax.logging.version>
 		<org.ops4j.pax.swissbox.version>1.8.2</org.ops4j.pax.swissbox.version>
 		<org.ops4j.pax.url.version>2.5.2</org.ops4j.pax.url.version>
-		<org.ops4j.pax.web.version>6.0.6</org.ops4j.pax.web.version>
+		<org.ops4j.pax.web.version>6.0.7</org.ops4j.pax.web.version>
 		<org.osgi.core.version>6.0.0</org.osgi.core.version>
 		<org.seleniumhq.selenium.version>3.0.1</org.seleniumhq.selenium.version>
 		<org.slf4j.version>1.7.12</org.slf4j.version>
 		<org.springframework.batch.version>2.2.7.RELEASE</org.springframework.batch.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 
-		<org.apache.servicemix.bundles.spring.version>4.1.9.RELEASE_1</org.apache.servicemix.bundles.spring.version>
-		<persistence-api_feature.version>2.0.0</persistence-api_feature.version>
+		<org.apache.servicemix.bundles.spring.version>4.3.12.RELEASE_1</org.apache.servicemix.bundles.spring.version>
+		<persistence-api_feature.version>2.1.0</persistence-api_feature.version>
 		<transaction-api_feature.version>1.3.0</transaction-api_feature.version>
 		<xml-specs-api.version>2.9.0</xml-specs-api.version>
 
